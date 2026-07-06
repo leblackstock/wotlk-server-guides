@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Cross-Profession Materials AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--blue:#78b7ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}.warn{color:#ffd08a}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Cross-Profession Materials AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Scope excludes cloth/tailoring, cooking/meat/fish/spices, herbs, ore/bars/stone, leather/skins, and enchanting mats.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Northrend orbs / endgame cross-profession mats</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-epic">Primordial Saronite</strong><div class="mini">ICC / Shadowmourne craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">425g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">500g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">552g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">650g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">765g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">900g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major ICC crafting component and Shadowmourne material. Check trade before posting; low-pop prices swing hard.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Crusader Orb</strong><div class="mini">ToC craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">High</span></td>
+<td>Used for ilvl 245 crafted chest/bracers. Stronger if ToC crafting is active.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Runed Orb</strong><div class="mini">Ulduar craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used for Ulduar-era crafted pieces. Slower than Crusader Orb, but still a real bottleneck.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Frozen Orb</strong><div class="mini">Heroic / Frozo trade mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Core Wrath bottleneck. Compare against Eternal prices before posting.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Northrend elemental chain</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Eternal Fire</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Best Eternal mover. Used in many desirable crafts and can be orb-linked.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Air</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Good cross-profession demand. Do not dump too many at once.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Water</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 38s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful but usually below Fire/Air.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Life</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 52s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Alchemy/herb-adjacent demand. Slower than Fire/Air.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Shadow</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Can spike if specific crafts are active.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Earth</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Usually the cheapest Eternal. Sells if priced fairly.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Fire</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 4s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 40s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Price near 1/10 Eternal Fire. Good for exact-count buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Air</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Price near 1/10 Eternal Air.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Water</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Post small stacks and 10-stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Life</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Works better in exact stacks than giant walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Shadow</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Low-mid mover.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Earth</strong><div class="mini">Northrend elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Cheap, but still moves for crafts.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland premium cross-profession mats</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-epic">Heart of Darkness</strong><div class="mini">BT / Hyjal craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Black Temple/Hyjal reagent for BS/LW/Tailoring recipes. Slow but real.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Nether Vortex</strong><div class="mini">TBC raid craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Only list if tradeable on this server and supply is low.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Primal Nether</strong><div class="mini">TBC heroic craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Include only if tradeable on this server. Niche craft bottleneck.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Might</strong><div class="mini">TBC alchemy transmute mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Alchemy-made from 5 primals. Used across high-level TBC crafts. Check against component Primal prices.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland elemental chain</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Primal Fire</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Best Outland Primal mover.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Air</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Often scarce, useful in old crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Mana</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Sells, but slower than Fire/Air.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Water</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Niche but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Life</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Alchemy/herb-adjacent demand.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Shadow</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Niche crafting demand.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Earth</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Often cheap. Do not flood.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Fire</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Price near 1/10 Primal Fire.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Air</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Price near 1/10 Primal Air.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Mana</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Can sell to exact-count buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Water</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Slow but usable.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Life</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Slower than Fire/Air.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Shadow</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche exact-count sales.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mote of Earth</strong><div class="mini">Outland elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand low">Low</span></td>
+<td>Usually cheap. Only post if supply is thin.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland pearls</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Jaggal Pearl</strong><div class="mini">TBC pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche exact-count pearl. Do not flood.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Shadow Pearl</strong><div class="mini">TBC pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>More valuable TBC pearl. Singles first.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic elemental chain</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Elemental Fire</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old-world craft material. Small stacks sell best.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Elemental Air</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Older craft material. Usually better than Earth/Water if scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Elemental Earth</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Cheap but useful in older recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Elemental Water</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Slow exact-count item.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Essence of Fire</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Higher-value old elemental mat.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Essence of Water</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Can spike if few listed.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Essence of Air</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Usually the strongest old-world essence.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Essence of Earth</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Often cheaper than Air/Water/Fire.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Essence of Undeath</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Scarce old-world mat; used in several late Classic recipes and enchants.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Living Essence</strong><div class="mini">Classic elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Looted or transmuted; niche but useful in old recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Heart of Fire</strong><div class="mini">Classic elemental core</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Older craft/quest material. List small.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Core of Earth</strong><div class="mini">Classic elemental core</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Older craft material; exact-count sales.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Globe of Water</strong><div class="mini">Classic elemental core</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Older craft/quest material. Slow but sellable if scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Breath of Wind</strong><div class="mini">Classic elemental core</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Can spike because people rarely farm it intentionally.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic raid / old bottleneck mats</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Righteous Orb</strong><div class="mini">Classic enchant/craft bottleneck</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Old-world bottleneck. Singles first.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Fiery Core</strong><div class="mini">Molten Core mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>MC crafting mat. Slow but useful when someone needs old recipes/rep crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Lava Core</strong><div class="mini">Molten Core mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Usually moves similarly to Fiery Core. Avoid flooding.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Blood of the Mountain</strong><div class="mini">Dark Iron / MC rare mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Very scarce old material. Price depends heavily on collectors/Thunderfury/Sulfuron-style demand.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic pearls / odd bottleneck drops</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Small Lustrous Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early pearl. Exact-count buyers only.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Iridescent Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in scattered recipes. Singles first.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Blue Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Old quest/craft pearl. Can spike on empty AH.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Black Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Crafting bottleneck. List singles.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Golden Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Scarce old-world pearl. Do not undercut hard.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Large Fang</strong><div class="mini">Classic odd mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in scattered old recipes. Sells better in small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Small Flame Sac</strong><div class="mini">Classic odd mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Used for fire-protection style crafts/consumes. Niche but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Larval Acid</strong><div class="mini">Classic odd mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Old-world bottleneck drop. Slow but often scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Powerful Mojo</strong><div class="mini">Classic odd mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Troll-drop material used in older recipes. Singles/small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Wildvine</strong><div class="mini">Classic odd mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Odd old-world bottleneck used in scattered crafts. Keep with general mats unless you make a dedicated odd-drops sheet.</td>
+</tr></tbody></table></div></section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Big missing items now included</h3><ul>
+<li class="gold"><span class="item q-epic">Primordial Saronite / Crusader Orb / Runed Orb</span><div class="mini">These are the major WotLK orb-ladder items, separate from Frozen Orb.</div></li>
+<li class="green"><span class="item q-uncommon">Primal Might / Heart of Darkness</span><div class="mini">TBC cross-profession bottlenecks.</div></li>
+<li class="purple"><span class="item q-uncommon">Essence of Undeath / Living Essence</span><div class="mini">Classic old-world bottleneck essences that were missing.</div></li>
+</ul></div>
+<div class="routecard"><h3>Still intentionally excluded</h3><ul>
+<li class="red">Cloth, spider silks, and cooldown cloth → Tailoring/cloth guide.</li>
+<li class="red">Meat, fish, and spices → Cooking guide.</li>
+<li class="red">Herbs/Frost Lotus → Herbalism guide.</li>
+<li class="red">Ore/bars/stone/gems → Mining/metal/JC guide.</li>
+<li class="red">Leather/scales/hides/fur → Leatherworking guide.</li>
+<li class="red">Enchanting dust/essence/shards/crystals → Enchanting mats guide.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Price use</h3><p class="small"><strong>Quick</strong> = move it fast. <strong>Target</strong> = normal listing. <strong>High</strong> = empty AH or scarce supply.</p></div>
+<div class="routecard"><h3>Orb / elemental check</h3><p class="small">If <strong>Frozen Orb</strong> is cheaper than the Eternal you need or can sell, it may be better to buy/trade the Orb instead of buying that Eternal directly.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">This guide uses Nordanaar/Turtle-style low-pop pricing as an anchor where useful, but WotLK items are estimated from Wrath demand because Nordanaar is not a WotLK economy. Scope is cross-profession/general materials only; clean profession-lane goods belong in separate sheets.</p>
+<ul>
+<li><a href="https://wotlkdb.com/?items=7">WotLKDB Trade Goods category</a></li>
+<li><a href="https://www.wowhead.com/wotlk/items/trade-goods/other">Wowhead WotLK Other Trade Goods</a></li>
+<li><a href="https://www.wowhead.com/wotlk/items/trade-goods/elemental">Wowhead WotLK Elemental Trade Goods</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=49908/primordial-saronite">Wowhead WotLK Primordial Saronite</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=45087/runed-orb">Wowhead WotLK Runed Orb</a></li>
+<li><a href="https://www.wow-professions.com/farming/crystallized-fire-farming">WoW-Professions: Frozen Orb / Frozo note</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Cross-Profession Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div></body></html>

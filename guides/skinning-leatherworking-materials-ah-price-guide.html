@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Skinning + Leatherworking Materials AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+
+.rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
+.rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
+.rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
+.rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Skinning + Leatherworking Materials AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers Skinning and Leatherworking materials, leathers, hides, scales, chitin, furs, conversion checks, vendor supplies, plus a few finished prices for major leg armors, armor kits, and drums.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Leather rule:</strong> Compare raw leather, processed leather, rare hides/scales, and finished leg armor value before converting or crafting. This server can have thin supply and weird bottlenecks.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Northrend skinning materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Skinning / LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Arctic Fur</strong><div class="mini">Rare Northrend skinning/LW mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major Wrath Leatherworking bottleneck. Also connected to Heavy Borean Leather pattern/trade value, so compare both before selling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Borean Leather</strong><div class="mini">Processed Northrend leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 52s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Core Wrath Leatherworking material and high-end pattern currency. Usually the main LW material after Arctic Fur.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Borean Leather</strong><div class="mini">Main Northrend leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main skinning material. Can be sold raw or converted into Heavy Borean Leather when the conversion premium is good.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Borean Leather Scraps</strong><div class="mini">Northrend leather scrap</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Low-value scraps. Usually better converted if the server recipe/conversion allows it profitably.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Icy Dragonscale</strong><div class="mini">Rare Northrend scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Used in mail/leatherworking crafts and Icescale-style leg armor. Stronger if dragon farms are scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Jormungar Scale</strong><div class="mini">Rare Northrend scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in specific Wrath LW crafts. Often cheaper than dragon/chitin mats but can spike when scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Nerubian Chitin</strong><div class="mini">Rare Northrend chitin</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Used in Nerubian-style LW crafts and Frosthide Leg Armor. Good small-stack item.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Chilled Meat</strong><div class="mini">Skinning-adjacent cooking drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Not Leatherworking, but skinners often loot it while farming beasts. Include only as practical farming overlap.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Wrath Leatherworking reagent overlap</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Frozen Orb</strong><div class="mini">Wrath craft reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Used in high-end leg armor and many Wrath crafts. Check against leather/scale costs before crafting.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Water</strong><div class="mini">Wrath LW reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 38s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in several Wrath Leatherworking craft paths, especially Overcast-style pieces.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Shadow</strong><div class="mini">Wrath LW reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in some Wrath LW crafts and cross-profession markets.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Fire</strong><div class="mini">Wrath premium reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>High-value cross-profession reagent. Include for high-end craft math, not as a main LW material.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Earth</strong><div class="mini">Wrath reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful cross-profession reagent. Check exact recipe demand before stocking.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Water</strong><div class="mini">Wrath reagent piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Ten combine into Eternal Water. Exact-count buyers may pay a small premium.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Shadow</strong><div class="mini">Wrath reagent piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Ten combine into Eternal Shadow. Good if Eternal Shadow is scarce.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / TBC skinning materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Skinning / LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Heavy Knothide Leather</strong><div class="mini">Processed TBC leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Core TBC Leatherworking material. Good for levelers and old patterns.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Knothide Leather</strong><div class="mini">Main TBC leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Main Outland leather. Sell raw or convert into Heavy Knothide if premium is good.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Knothide Leather Scraps</strong><div class="mini">TBC leather scrap</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Usually low-value unless conversion demand is active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Hide</strong><div class="mini">TBC rare hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC rare leatherworking material. Slow but valuable if absent.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thick Clefthoof Leather</strong><div class="mini">TBC rare leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in old TBC leatherworking. Can sell well to completionists/levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Cobra Scales</strong><div class="mini">TBC scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Rare TBC scale. Can be valuable due to annoying farm and old craft demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Wind Scales</strong><div class="mini">TBC scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC scale material. Smaller stacks first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Nether Dragonscales</strong><div class="mini">TBC scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC dragonscale material. Slow but can spike if no listings.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Scales</strong><div class="mini">TBC scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC scale material. Usually slower than Cobra Scales.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic leather</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Skinning / LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Rugged Leather</strong><div class="mini">Classic high leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Major old-world Leatherworking material. Good catch-up seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thick Leather</strong><div class="mini">Classic mid-high leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Common Classic Leatherworking bottleneck. Good volume item.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Leather</strong><div class="mini">Classic mid leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in Leatherworking and some cross-profession recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Medium Leather</strong><div class="mini">Classic low-mid leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic leveling leather. Small stacks sell well.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Light Leather</strong><div class="mini">Classic starter leather</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Starter Leatherworking material. Do not flood huge walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ruined Leather Scraps</strong><div class="mini">Classic scrap</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Usually only useful for conversion/early leveling. Very small demand.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic hides</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Skinning / LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Rugged Hide</strong><div class="mini">Classic high hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in old Leatherworking. Scarce listings can sell well.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thick Hide</strong><div class="mini">Classic hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Old Leatherworking material. Singles/5s.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Hide</strong><div class="mini">Classic hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Older LW material. Slower but useful for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Medium Hide</strong><div class="mini">Classic hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early hide. Use small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Light Hide</strong><div class="mini">Classic hide</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early hide. Low demand but can sell if AH is empty.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic specialty scales</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Skinning / LW notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Deviate Scale</strong><div class="mini">Classic specialty scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Specialty scale used in old leatherworking crafts. Can sell due to annoying farm.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Turtle Scale</strong><div class="mini">Classic specialty scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old turtle-scale recipes. Niche but recognizable.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Green Whelp Scale</strong><div class="mini">Classic specialty scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old dragonscale material. Small stacks first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Black Dragonscale</strong><div class="mini">Classic specialty scale</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old high-level dragonscale material. Scarcity can matter.</td>
+</tr></tbody></table></div></section>
+
+<section class="common ref-compact"><h2>Conversion / value checks</h2>
+<p class="small">Use these as quick rules before converting leather or crafting processed materials.</p>
+<div class="table-wrap"><table><thead><tr><th>Conversion</th><th>Rule</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Borean Leather → Heavy Borean Leather</strong><div class="mini">Wrath conversion</div></td>
+<td><span class="plain-rule">Use when Heavy Borean Leather sells above the value of the leather consumed.</span></td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main Wrath LW conversion check. Do not convert automatically if raw Borean Leather is moving faster.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Borean Leather ↔ Arctic Fur value check</strong><div class="mini">Dalaran pattern/trade relationship</div></td>
+<td><span class="plain-rule">Compare 10 Heavy Borean Leather against 1 Arctic Fur before selling either item.</span></td>
+<td><span class="demand vh">Very High</span></td>
+<td>Heavy Borean Leather and Arctic Fur can anchor each other because pattern/trade systems use them.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Knothide Leather → Heavy Knothide Leather</strong><div class="mini">TBC conversion</div></td>
+<td><span class="plain-rule">Use only when Heavy Knothide premium beats raw Knothide value.</span></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Good for TBC levelers but slower than Wrath leather.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Scraps → Leather</strong><div class="mini">Scrap cleanup</div></td>
+<td><span class="plain-rule">Convert scraps when the finished leather sells better than raw scraps.</span></td>
+<td><span class="demand med">Med</span></td>
+<td>Useful for bag cleanup and low-level mats; not usually a main gold maker.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Hide curing / older recipes</strong><div class="mini">Classic/TBC odd mats</div></td>
+<td><span class="plain-rule">Check the exact hide, salt/thread, and cured-hide demand before crafting.</span></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old cured hides are niche. Singles only.</td>
+</tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Major finished leg armors / kits / drums</h2>
+<p class="small">These are included because they directly affect material demand. Most finished gear belongs in a separate Leatherworking market guide.</p>
+<div class="table-wrap"><table><thead><tr><th>Finished item</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Pricing notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Frosthide Leg Armor</strong><div class="mini">Tank/agi leg armor</div></td>
+<td><div class="rulebox quick">materials + 5g</div></td>
+<td><div class="rulebox target">materials + 15g</div></td>
+<td><div class="rulebox high">materials + 35g</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">High</span></td>
+<td>Major finished LW price to track. Price from Arctic Fur + Nerubian Chitin + Frozen Orb.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Icescale Leg Armor</strong><div class="mini">Physical DPS leg armor</div></td>
+<td><div class="rulebox quick">materials + 5g</div></td>
+<td><div class="rulebox target">materials + 15g</div></td>
+<td><div class="rulebox high">materials + 35g</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">High</span></td>
+<td>Major finished LW price to track. Price from Arctic Fur + Icy Dragonscale + Frozen Orb.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Nerubian Leg Armor</strong><div class="mini">Lower-cost leg armor</div></td>
+<td><div class="rulebox quick">materials + 2g</div></td>
+<td><div class="rulebox target">materials + 6g</div></td>
+<td><div class="rulebox high">materials + 12g</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Budget leg armor. Useful while leveling/gearing, but do not overbuild.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Jormungar Leg Armor</strong><div class="mini">Lower-cost leg armor</div></td>
+<td><div class="rulebox quick">materials + 2g</div></td>
+<td><div class="rulebox target">materials + 6g</div></td>
+<td><div class="rulebox high">materials + 12g</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Budget physical leg armor. Price from Jormungar Scale and basic mats.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Borean Armor Kit</strong><div class="mini">Armor kit</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Convenience armor kit. Check material cost before crafting stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Drums of Forgotten Kings</strong><div class="mini">Raid utility drums</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful group buff when no Paladin blessing is available. Demand depends on raid/group habits.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Drums of the Wild</strong><div class="mini">Raid utility drums</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful group buff when no Druid mark is available. Demand depends on raid/group habits.</td>
+</tr></tbody></table></div></section>
+
+<section class="common vendor-compact">
+<h2>Vendor-only Leatherworking supplies</h2>
+<p class="small">These are vendor goods or vendor-adjacent supplies. Use the AH only for convenience, not scarcity pricing.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead><tbody><tr><td><strong class="q-common">Eternium Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in higher Leatherworking recipes. AH is convenience only.</td></tr>
+<tr><td><strong class="q-common">Rune Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Common LW tailoring-style supply. Buy from vendor when possible.</td></tr>
+<tr><td><strong class="q-common">Silken Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Old LW supply. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Heavy Silken Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Old LW supply. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Fine Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Low-level supply. Do not price as rare.</td></tr>
+<tr><td><strong class="q-common">Salt</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in older hide curing paths. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Deeprock Salt</strong></td><td class="vendor-rule">check AH</td><td class="muted">Not always vendor-cheap depending on this server's source/rules. Keep as a small-stack old-world reagent.</td></tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best material movers</h3><ul>
+<li class="gold"><span class="item q-common">Arctic Fur</span> <span class="badge gold">Wrath bottleneck</span><div class="mini">Major leg armor and pattern/currency anchor.</div></li>
+<li class="gold"><span class="item q-common">Heavy Borean Leather</span><div class="mini">Core Wrath Leatherworking material and conversion check.</div></li>
+<li class="green"><span class="item q-common">Icy Dragonscale / Nerubian Chitin</span><div class="mini">Important for high-demand leg armor material chains.</div></li>
+<li class="purple"><span class="item q-rare">Frozen Orb</span><div class="mini">Included because it directly affects leg armor pricing.</div></li>
+</ul></div>
+<div class="routecard"><h3>Posting checks</h3><ul>
+<li class="red">Do not convert all Borean Leather automatically if raw leather sells faster.</li>
+<li class="red">Do not craft big 8-day walls of armor kits or drums before proving demand.</li>
+<li class="green">Post rare scales/chitin/furs in singles, 2-stacks, and 5-stacks.</li>
+<li class="gold">Compare Frosthide/Icescale material cost before crafting leg armors.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Skinner value</h3><p class="small">Skinning farms often produce leather, rare scales/chitin/fur, meat, and vendor trash together. Price the full farm, not only the base leather.</p></div>
+<div class="routecard"><h3>Leatherworker value</h3><p class="small">If a finished leg armor, kit, or drum has no premium over materials, sell the leather, fur, scales, and orbs instead.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public Skinning/Leatherworking references, Wrath-era leather/leg armor demand, and practical reposting behavior. Always adjust for current AH supply, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/skinning/overview-leveling-routes">Wowhead WotLK Skinning overview and routes</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/leather-best-farming-locations">Wowhead WotLK rare leather farming locations</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/leatherworking/leveling-1-450">Wowhead WotLK Leatherworking leveling guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/leatherworking/recipes">Wowhead WotLK Leatherworking recipes</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/leatherworking-leveling-guide-wotlk-classic">WoW-Professions WotLK Leatherworking leveling guide</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/borean-leather-farming-wotlk-classic">WoW-Professions Borean Leather farming guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/spell=50965/frosthide-leg-armor">Wowhead Frosthide Leg Armor</a></li>
+<li><a href="https://wotlkdb.com/?item=38374">WotLKDB Icescale Leg Armor</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Skinning + Leatherworking Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
+</div></body></html>

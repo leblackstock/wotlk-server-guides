@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Alchemy Materials AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Alchemy Materials AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers Alchemy materials, herbs, Eternals, oils, transmute inputs, vendor supplies, plus a few finished prices for major flasks and potions.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Server cooldown note:</strong> Alchemy cooldowns/transmutes may be shorter or nonexistent here, so price transmutes from <strong>input cost + margin</strong>, not cooldown scarcity alone.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Northrend herbs / Alchemy materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Alchemy notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Frost Lotus</strong><div class="mini">Rare Northrend flask herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main WotLK flask bottleneck. This is the first mat to check before pricing flasks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Lichbloom</strong><div class="mini">Northrend high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Core Flask of the Frost Wyrm / high-end Alchemy herb. Also has milling pressure from scribes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Icethorn</strong><div class="mini">Northrend high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Core WotLK flask herb. Moves with Frost Lotus and raid-night demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Adder's Tongue</strong><div class="mini">Northrend high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Strong potion/elixir herb and common milling target. Good volume material.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Goldclover</strong><div class="mini">Northrend base herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Common WotLK herb used across leveling and consumable paths.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tiger Lily</strong><div class="mini">Northrend herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Good Alchemy and milling herb. Stronger when Potion of Speed/Wild Magic demand is active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Talandra's Rose</strong><div class="mini">Northrend herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful WotLK Alchemy herb; usually slower than Adder's Tongue or high flask herbs.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Deadnettle</strong><div class="mini">Northrend bonus herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in WotLK Alchemy and often appears as bonus herb supply.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Firethorn</strong><div class="mini">Northrend niche herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Niche WotLK herb. Can spike if supply is thin, but do not overpost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Pygmy Suckerfish</strong><div class="mini">Potion fish input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used to make Pygmy Oil, which feeds several Alchemy crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Pygmy Oil</strong><div class="mini">Alchemy oil input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Made from Pygmy Suckerfish. Check oil vs fish value before converting.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Northrend Eternals / transmute inputs</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Alchemy notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Eternal Life</strong><div class="mini">WotLK transmute/card reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 52s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Important Alchemy transmute reagent and Darkmoon card input for scribes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Fire</strong><div class="mini">WotLK transmute/flask reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>High-value transmute reagent and major cross-profession material.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Air</strong><div class="mini">WotLK transmute reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">14g 45s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">17g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Useful for gem/element conversion markets. Often sells in singles.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Water</strong><div class="mini">WotLK reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 38s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in several transmute/craft markets. Check against Crystallized Water.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Shadow</strong><div class="mini">WotLK reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Common transmute/cross-profession reagent. Exact-count buyer demand matters.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Earth</strong><div class="mini">WotLK reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Common WotLK reagent. Often cheaper but high-volume.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Life</strong><div class="mini">WotLK elemental piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Ten combine into Eternal Life. Good small-stack reagent.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Fire</strong><div class="mini">WotLK elemental piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 4s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 40s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Ten combine into Eternal Fire. Strong if Eternal Fire is high.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Air</strong><div class="mini">WotLK elemental piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Ten combine into Eternal Air. Useful exact-count material.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Water</strong><div class="mini">WotLK elemental piece</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Ten combine into Eternal Water. Useful exact-count material.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Scarlet Ruby</strong><div class="mini">Epic-gem transmute input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Input for Cardinal Ruby transmute paths. Compare with final epic gem price.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Autumn's Glow</strong><div class="mini">Epic-gem transmute input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Input for King's Amber transmute paths. Check final gem demand.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Monarch Topaz</strong><div class="mini">Epic-gem transmute input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Input for Ametrine transmute paths. Check final gem demand.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Sky Sapphire</strong><div class="mini">Epic-gem transmute input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Input for Majestic Zircon transmute paths. Check final gem demand.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / TBC Alchemy materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Alchemy notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Fel Lotus</strong><div class="mini">Rare Outland flask herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>TBC flask bottleneck. Slower than Frost Lotus but useful for old flask markets.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mana Thistle</strong><div class="mini">TBC high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>High-end TBC Alchemy herb. Good old flask/elixir demand when supply is thin.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Nightmare Vine</strong><div class="mini">TBC high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>High-end TBC herb. Useful but slower than WotLK herbs.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Netherbloom</strong><div class="mini">TBC herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC Alchemy/milling herb. Good exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ancient Lichen</strong><div class="mini">TBC dungeon herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Dungeon-heavy herb. Can sell high if nobody is farming it.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Terocone</strong><div class="mini">TBC herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful TBC Alchemy herb. Exact stacks sell better than giant walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Felweed</strong><div class="mini">TBC herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Common TBC leveling herb. Use small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ragveil</strong><div class="mini">TBC herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling herb. Slow but practical.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Might</strong><div class="mini">TBC transmute reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Important older Alchemy transmute product. Cooldown scarcity may not apply on this server.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Fire</strong><div class="mini">TBC elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>High-value TBC reagent used in multiple professions and transmute comparisons.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Life</strong><div class="mini">TBC elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in TBC Alchemy and Primal Might value checks.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Mana</strong><div class="mini">TBC elemental</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in older Alchemy and cross-profession recipes.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic Alchemy materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Alchemy notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Black Lotus</strong><div class="mini">Rare Classic flask herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Classic flask bottleneck. Slow but valuable if old flask demand exists.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Plaguebloom</strong><div class="mini">Classic high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>High-level Classic Alchemy herb. Good old flask/potion demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Dreamfoil</strong><div class="mini">Classic high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>High-level Classic herb used in old flasks and potions.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mountain Silversage</strong><div class="mini">Classic high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>High-level Classic herb. Smaller stacks first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Icecap</strong><div class="mini">Classic high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high herb. Useful for old Alchemy and niche demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Golden Sansam</strong><div class="mini">Classic high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high herb for old leveling and potions.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Gromsblood</strong><div class="mini">Classic mid-high herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Old potion/flask herb. Can spike if supply disappears.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ghost Mushroom</strong><div class="mini">Classic cave herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Annoying cave herb. Singles and 5-stacks work best.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Goldthorn</strong><div class="mini">Classic mid herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Common mid-level Alchemy bottleneck. Good practical overlap.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Liferoot</strong><div class="mini">Classic mid herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic Alchemy leveling herb. Good exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Swiftthistle</strong><div class="mini">Classic bonus herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in old speed potions and classic recipes. Scarcity can matter.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Grave Moss</strong><div class="mini">Classic niche herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Niche old Alchemy herb. Scarce supply can make it sell above level.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Stranglekelp</strong><div class="mini">Classic water herb</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Annoying to farm, so convenience price can be decent.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Major finished flasks / potions</h2><div class="table-wrap"><table><thead><tr><th>Finished item</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Pricing notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Flask of the Frost Wyrm</strong><div class="mini">Caster/healer flask</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major raid flask. Price from Frost Lotus + Lichbloom/Icethorn + vial cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Flask of Endless Rage</strong><div class="mini">Physical DPS flask</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major raid flask. Usually moves with raid schedule and Frost Lotus price.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Flask of Stoneblood</strong><div class="mini">Tank flask</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Tank raid flask. Demand can be smaller but steady.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Flask of Pure Mojo</strong><div class="mini">Mana/regen flask</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">22g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">26g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Healer/caster utility flask. Often slower than Frost Wyrm.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Potion of Speed</strong><div class="mini">Burst DPS potion</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Common raid pre-pot/combat potion. Price from herbs + demand, not just mat cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Potion of Wild Magic</strong><div class="mini">Caster burst potion</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Common caster/healer burst potion. Strong raid-night demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Indestructible Potion</strong><div class="mini">Tank armor potion</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Tank pre-pot/combat utility. Smaller buyer pool but meaningful demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Runic Healing Potion</strong><div class="mini">Healing potion</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>General utility potion. High competition possible.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Runic Mana Potion</strong><div class="mini">Mana potion</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>General mana potion. Good small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crazy Alchemist's Potion</strong><div class="mini">Alchemist-only utility</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Only useful to Alchemists. Do not overbuild.</td>
+</tr></tbody></table></div></section>
+
+<section class="common ref-compact"><h2>Transmute pricing rules</h2>
+<p class="small">Use these as pricing rules rather than fixed prices. Always compare input cost against the final material value.</p>
+<div class="table-wrap"><table><thead><tr><th>Transmute group</th><th>Inputs</th><th>Quick rule</th><th>Target rule</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Epic gem transmutes</strong><div class="mini">Cardinal Ruby / King's Amber / Ametrine / etc.</div></td>
+<td>rare gem + matching Eternal</td>
+<td><span class="plain-rule">materials + small tip</span></td>
+<td><span class="plain-rule">materials + fair tip</span></td>
+<td><span class="demand hi">High</span></td>
+<td>Cooldown scarcity is weaker or absent on this server; price from input cost and final gem value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Meta gem transmutes</strong><div class="mini">Earthsiege Diamond / Skyflare Diamond</div></td>
+<td>gems + Eternals as recipe requires</td>
+<td><span class="plain-rule">materials + small tip</span></td>
+<td><span class="plain-rule">materials + fair tip</span></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Check Jewelcrafting demand before transmuting. Often better when JC cuts are active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Eternal conversions</strong><div class="mini">Earth / Fire / Life / Shadow / Air / Water conversions</div></td>
+<td>one Eternal type into another</td>
+<td><span class="plain-rule">value gap + small tip</span></td>
+<td><span class="plain-rule">value gap + fair tip</span></td>
+<td><span class="demand med">Med</span></td>
+<td>Only worth doing when the target Eternal is meaningfully higher than the input.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Primal Might</strong><div class="mini">TBC Primal transmute</div></td>
+<td>Primal Air/Earth/Fire/Mana/Water as recipe requires</td>
+<td><span class="plain-rule">materials + small tip</span></td>
+<td><span class="plain-rule">materials + fair tip</span></td>
+<td><span class="demand med">Med</span></td>
+<td>Older high-value transmute. Cooldown scarcity may not apply here.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Arcanite Bar</strong><div class="mini">Classic transmute</div></td>
+<td>Arcane Crystal + Thorium Bar</td>
+<td><span class="plain-rule">materials + small tip</span></td>
+<td><span class="plain-rule">materials + fair tip</span></td>
+<td><span class="demand med">Med</span></td>
+<td>Older transmute with Enchanting/weapon-craft demand. Use material cost + margin.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Titanium transmute / Saronite path</strong><div class="mini">Wrath metal conversion, if available on this server</div></td>
+<td>Saronite/Titanium inputs</td>
+<td><span class="plain-rule">materials + small tip</span></td>
+<td><span class="plain-rule">materials + fair tip</span></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Check the exact recipe/server behavior before relying on this as a market.</td>
+</tr></tbody></table></div>
+</section>
+
+<section class="common vendor-compact">
+<h2>Vendor-only Alchemy supplies</h2>
+<p class="small">These are vendor goods. Use the AH only for convenience, not scarcity pricing.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead><tbody><tr><td><strong class="q-common">Crystal Vial</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Common vial. AH is convenience only.</td></tr>
+<tr><td><strong class="q-common">Imbued Vial</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in many higher Alchemy recipes. Do not price like a rare mat.</td></tr>
+<tr><td><strong class="q-common">Enchanted Vial</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Flask vial. Buy from vendor when possible.</td></tr>
+<tr><td><strong class="q-common">Leaded Vial</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Old-world vial. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Empty Vial</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Starter vial. Convenience only.</td></tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best material movers</h3><ul>
+<li class="gold"><span class="item q-common">Frost Lotus</span> <span class="badge gold">flask bottleneck</span><div class="mini">Usually the most important Alchemy price anchor.</div></li>
+<li class="gold"><span class="item q-common">Lichbloom / Icethorn</span><div class="mini">Core raid-flask herbs with strong demand.</div></li>
+<li class="green"><span class="item q-uncommon">Eternal Fire / Eternal Life</span><div class="mini">Important transmute and cross-profession reagents.</div></li>
+<li class="purple"><span class="item q-common">Potion of Speed / Wild Magic</span><div class="mini">Kept as finished prices because they directly affect herb demand.</div></li>
+</ul></div>
+<div class="routecard"><h3>Posting checks</h3><ul>
+<li class="red">Do not craft huge 8-day walls of finished consumables before proving demand.</li>
+<li class="red">Do not price transmutes as cooldown-only value on this server.</li>
+<li class="green">Use 5-stacks for recipe buyers and 20-stacks for bulk herb buyers.</li>
+<li class="gold">Raid nights can move flask and potion prices more than normal leveling demand.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Material-first rule</h3><p class="small">If the finished flask or potion has no premium over herbs and vials, sell the materials instead. Low-pop markets punish overcrafting.</p></div>
+<div class="routecard"><h3>Transmute rule</h3><p class="small">For transmutes, calculate the input material cost first, then add a modest margin. Cooldown scarcity should not be the main price driver here.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public Alchemy references, Wrath-era flask/potion/transmute demand, and practical reposting behavior. Always adjust for current AH supply, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/alchemy/overview">Wowhead WotLK Alchemy overview</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/alchemy/recipes">Wowhead WotLK Alchemy recipes</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/alchemy-leveling-guide-wotlk-classic">WoW-Professions WotLK Alchemy leveling guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/skill=171/alchemy">Wowhead WotLK Alchemy skill database</a></li>
+<li><a href="https://www.wowhead.com/wotlk/spell=28672/transmutation-master">Wowhead WotLK Transmutation Master</a></li>
+<li><a href="https://legacy-wow.com/wotlk-alchemy-guide/">Legacy WoW WotLK Alchemy guide</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Alchemy Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div></body></html>

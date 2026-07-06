@@ -1,0 +1,143 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1317;
+  --panel: #171d24;
+  --panel-2: #1e2630;
+  --text: #e8edf2;
+  --muted: #aeb8c2;
+  --line: #2b3541;
+  --gold: #f0c15a;
+  --gold-2: #ffe1a0;
+  --green: #8ee08e;
+  --cyan: #72e3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 12% -10%, rgba(202, 167, 255, 0.14), transparent 32rem),
+    radial-gradient(circle at 92% 0%, rgba(142, 224, 142, 0.10), transparent 28rem),
+    linear-gradient(180deg, #0b0f13 0%, var(--bg) 100%);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.site-header {
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #1b232d 0%, #151025 54%, #121820 100%);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--gold-2);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 0;
+}
+
+.intro {
+  max-width: 920px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.notice {
+  margin-top: 16px;
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  background: rgba(240, 193, 90, 0.08);
+  color: #f5dfab;
+  padding: 11px 13px;
+  font-size: 14px;
+}
+
+.guide-section {
+  margin-top: 22px;
+}
+
+.guide-section h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.guide-card {
+  min-height: 132px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 29, 36, 0.92);
+  padding: 15px;
+  text-decoration: none;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.guide-card:hover,
+.guide-card:focus-visible {
+  border-color: var(--gold);
+  background: rgba(30, 38, 48, 0.98);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.guide-title {
+  display: block;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.guide-note {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .shell {
+    width: min(100% - 22px, 1180px);
+    padding-top: 14px;
+  }
+
+  .site-header {
+    padding: 18px;
+  }
+}

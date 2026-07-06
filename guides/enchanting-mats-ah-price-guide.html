@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WotLK Enchanting Mats AH Price Guide — Low Pop</title>
+<style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--blue:#78b7ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}
+h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}
+.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:12px 14px;border-radius:10px;color:#f5dfab}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
+.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-vh{background:var(--green)}.p-watch{background:var(--red)}.p-common{background:#fff}.p-uncommon{background:#1eff00}.p-rare{background:#78b7ff}.p-epic{background:#caa7ff}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}
+.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}
+.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}
+.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}
+.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:1120px}
+th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}
+tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}
+.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}.warn{color:#ffd08a}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}
+.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}
+.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}
+.bid,.buyout{font-weight:900;white-space:nowrap}
+.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}
+.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}
+.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}
+.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}
+.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}
+.pricepair.target .label{color:#e6d7aa}
+.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}
+.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.card{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.card h2{margin:0;padding:15px 16px;background:var(--panel2);font-size:21px;border-bottom:1px solid var(--line)}.classic h2{color:var(--purple)}.tbc h2{color:var(--green)}.wrath h2{color:var(--gold)}.body{padding:15px 16px 18px}
+h3{margin:12px 0 8px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}p{margin:0 0 10px;color:var(--muted)}
+ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}
+li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}
+.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}.badge.red{background:var(--red)}.badge.blue{background:var(--cyan)}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}
+footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
+
+.compact-note{font-size:14px;padding:10px 12px}
+.compact-legend{margin-top:10px}
+.compact-legend .pill{padding:5px 9px}
+
+
+/* Slightly wider stacks column */
+th:nth-child(5), td:nth-child(5){min-width:92px;white-space:nowrap}
+
+@media(max-width:980px){.grid{grid-template-columns:1fr}.routebox{grid-template-columns:1fr}h1{font-size:24px}}
+@media print{body{background:#fff;color:#000}.card,.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Enchanting Mats AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Use <strong>Target Buyout</strong> as the normal price.</p>
+
+<div class="note compact-note">
+  <strong>Read first:</strong> Post small stacks. Use <strong>Quick</strong> to move mats fast, <strong>Target</strong> for normal sales, and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.
+</div>
+
+<div class="legend compact-legend">
+<span class="pill p-quick">Quick</span>
+<span class="pill p-bid">Target Bid</span>
+<span class="pill p-target">Target Buyout</span>
+<span class="pill p-watch">High / scarce</span>
+</div>
+</header>
+
+<section class="common"><h2>Northrend / WotLK mats — 375–450</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Infinite Dust</strong><div class="mini">Northrend 375–450</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+      </div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main Wrath dust. Move volume here.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Cosmic Essence</strong><div class="mini">Northrend 375–450</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Keep aligned with Greater Cosmic conversion.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Cosmic Essence</strong><div class="mini">Northrend 375–450</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">9g 35s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">11g</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand vh">Very High</span></td>
+<td>High-demand Wrath essence for popular enchants.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Dream Shard</strong><div class="mini">Northrend 375–450</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+      </div></td>
+<td>1 / 3 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Post singles; levelers may need exact counts.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Dream Shard</strong><div class="mini">Northrend 375–450</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+      </div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Used in many endgame enchants. Strong seller.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Abyss Crystal</strong><div class="mini">Northrend endgame</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">34g</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+      </div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Used heavily in premium enchants like Berserking and top spellpower enchants.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / TBC mats — 300–375</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Arcane Dust</strong><div class="mini">Outland 300–375</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">94s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Leveling demand; this server may have thin Outland supply.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Planar Essence</strong><div class="mini">Outland 300–375</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">94s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Check Greater Planar conversion.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Planar Essence</strong><div class="mini">Outland 300–375</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Usually better to list singles and 3-stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Prismatic Shard</strong><div class="mini">Outland 300–375</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Slow but needed for some leveling/enchant steps.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Prismatic Shard</strong><div class="mini">Outland 300–375</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Often scarce on this low-pop server.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Void Crystal</strong><div class="mini">Outland raid</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Do not price higher than shatter output value if Void Shatter exists on this server.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic / old-world mats — 1–300</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Strange Dust</strong><div class="mini">Classic 1–80</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2s 10c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2s 50c</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2s 60c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Starter enchants and leveling. Nordanaar anchor was about 3s/unit.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Soul Dust</strong><div class="mini">Classic 80–125</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">6s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Post small stacks; slow but useful for leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Vision Dust</strong><div class="mini">Classic 125–175</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">18s 70c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">22s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Usually sells to profession levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Dream Dust</strong><div class="mini">Classic 175–225</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">34s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Nordanaar anchor was about 20s/unit; list slightly higher on WotLK if supply is thin.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Illusion Dust</strong><div class="mini">Classic 225–300</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+      </div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Weird</span></td>
+<td>Can be oddly cheap on Turtle-style economies; do not overstock.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Magic Essence</strong><div class="mini">Classic 1–80</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Check against Greater Magic conversion before listing.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Magic Essence</strong><div class="mini">Classic 1–80</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Nordanaar anchor was about 22s/unit. Strong early leveling demand.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Astral Essence</strong><div class="mini">Classic 80–125</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">23s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">28s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Thin market. Singles sell better than full stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Astral Essence</strong><div class="mini">Classic 80–125</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Post 1s and 3s. Avoid flooding.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Mystic Essence</strong><div class="mini">Classic 125–175</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">68s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Check if Greater Mystic is missing; conversion can matter.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Mystic Essence</strong><div class="mini">Classic 125–175</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">94s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Can spike because fewer people farm this bracket.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Nether Essence</strong><div class="mini">Classic 175–225</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">80s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">95s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">1g 10s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 30s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Post small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Nether Essence</strong><div class="mini">Classic 175–225</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">2g 80s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g 30s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Nordanaar anchor was about 2g49s/unit.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Lesser Eternal Essence</strong><div class="mini">Classic 225–300</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 72s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g 20s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Scarcity-driven. Watch Greater Eternal conversion.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Greater Eternal Essence</strong><div class="mini">Classic 225–300</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">6g 63s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">7g 80s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">7g 22s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">8g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+      </div></td>
+<td>1 / 3 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Nordanaar anchor was about 8g10s–8g41s/unit.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Glimmering Shard</strong><div class="mini">Classic low</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand low">Low</span></td>
+<td>Very slow. List singles only unless no competition.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Glimmering Shard</strong><div class="mini">Classic low</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Mostly rods/leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Glowing Shard</strong><div class="mini">Classic mid</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">68s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Slow seller.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Glowing Shard</strong><div class="mini">Classic mid</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">94s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Post singles and 2-stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Radiant Shard</strong><div class="mini">Classic high</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Can sell to old-world enchanters.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Radiant Shard</strong><div class="mini">Classic high</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Do not dump. Slow but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Small Brilliant Shard</strong><div class="mini">Classic high</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Undercut carefully.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Brilliant Shard</strong><div class="mini">Classic 55+</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">2g 38s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">2g 80s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">2g 64s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">3g 10s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+      </div></td>
+<td>1 / 5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Nordanaar anchor was about 2g99s/unit.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Nexus Crystal</strong><div class="mini">Classic raid</div></td>
+<td>
+      <div class="pricepair quick">
+        <div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+      </div></td>
+<td>
+      <div class="pricepair target">
+        <div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+      </div></td>
+<td>
+      <div class="pricepair high">
+        <div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+        <div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+      </div></td>
+<td>1 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Nordanaar anchor was about 4g85s/unit; very sensitive to this server's supply.</td>
+</tr></tbody></table></div></section>
+
+<section class="common"><h2>Strategy notes</h2>
+<div class="routebox">
+<div class="routecard"><h3>Posting duration</h3>
+<ul>
+<li class="green"><span class="item">Fast Wrath movers:</span> 12h/2-day listings give better repost control.</li>
+<li class="gold"><span class="item">Slow old-world mats:</span> 24h–48h style listings are fine because deposits are low.</li>
+<li class="purple"><span class="item">Rare/epic mats:</span> long listings are okay when priced near Target or High.</li>
+</ul>
+</div>
+<div class="routecard"><h3>Undercutting</h3>
+<ul>
+<li class="green">If the current price is sane, undercut by <strong>1 copper to 1 silver</strong>.</li>
+<li class="gold">If the price is too high, list around this guide’s <strong>High</strong> price.</li>
+<li class="red">If the price is too low, wait, buy it out, or list small at Target. Do not join the crash.</li>
+</ul>
+</div>
+</div></section>
+
+<section class="grid" aria-label="Extra tips">
+<article class="card wrath"><h2>Best movers</h2><div class="body"><ul>
+<li class="gold"><span class="item q-common">Infinite Dust</span> <span class="badge gold">volume</span><div class="mini">Post 5s, 10s, and 20s. This is the bread-and-butter Wrath mat.</div></li>
+<li class="gold"><span class="item q-uncommon">Greater Cosmic Essence</span> <span class="badge gold">premium</span><div class="mini">Singles and 3-stacks sell well because recipes use awkward counts.</div></li>
+<li class="green"><span class="item q-rare">Dream Shard</span> <span class="badge green">endgame</span><div class="mini">Strong demand for good enchants. Do not dump.</div></li>
+<li class="green"><span class="item q-epic">Abyss Crystal</span> <span class="badge green">high value</span><div class="mini">Post singles first. Big-ticket enchants make these spike.</div></li>
+</ul></div></article>
+
+<article class="card classic"><h2>Low-pop traps</h2><div class="body"><ul>
+<li class="purple"><span class="item">Old-world mats can be scarce</span><div class="mini">That does not mean they sell fast. Leveling demand is real, but slow.</div></li>
+<li class="red"><span class="item">Do not flood 20-stack walls</span><div class="mini">Post a few stacks. Relist after sales. Low-pop buyers hate bulk-only listings.</div></li>
+<li class="gold"><span class="item">Essences beat dusts</span><div class="mini">Greater Nether / Greater Eternal style mats often carry better profit than dust.</div></li>
+</ul></div></article>
+
+<article class="card tbc"><h2>Stack setup</h2><div class="body"><ul>
+<li class="green"><span class="item q-common">Dusts</span><div class="mini">List 5, 10, and 20 stacks.</div></li>
+<li class="green"><span class="item q-uncommon">Essences</span><div class="mini">List 1, 3, and 10 stacks.</div></li>
+<li class="green"><span class="item q-rare">Shards</span><div class="mini">List mostly singles, then 2s/5s.</div></li>
+<li class="green"><span class="item q-epic">Crystals</span><div class="mini">List singles. Only stack if multiple buyers are active.</div></li>
+</ul></div></article>
+</section>
+
+
+
+<section class="common">
+<h2>Small legend / reminders</h2>
+<div class="routebox">
+<div class="routecard"><h3>Colors</h3>
+<p class="small">Item names use normal WoW quality colors. Target Buyout is gold because it is the main number to use; Target Bid is cyan.</p>
+</div>
+<div class="routecard"><h3>When to use each price</h3>
+<p class="small"><strong>Quick</strong> = fast sale. <strong>Target</strong> = normal listing. <strong>High</strong> = empty AH or scarce supply.</p>
+</div>
+</div>
+</section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Nordanaar examples used as low-pop anchors: Strange Dust around 3s, Greater Magic Essence around 22s, Dream Dust around 20s, Greater Nether Essence around 2g49s, Greater Eternal Essence around 8g+, Large Brilliant Shard around 2g99s, and Nexus Crystal around 4g85s. WotLK mats are estimated from Wrath demand because Turtle WoW/Nordanaar is not a WotLK economy.</p>
+<ul>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/strange-dust-10940">WoWAuctions Nordanaar: Strange Dust</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/greater-magic-essence-10939">WoWAuctions Nordanaar: Greater Magic Essence</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/dream-dust-11176">WoWAuctions Nordanaar: Dream Dust</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/greater-nether-essence-11175">WoWAuctions Nordanaar: Greater Nether Essence</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/greater-eternal-essence-16203">WoWAuctions Nordanaar: Greater Eternal Essence</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/large-brilliant-shard-14344">WoWAuctions Nordanaar: Large Brilliant Shard</a></li>
+<li><a href="https://www.wowauctions.net/auctionHouse/turtle-wow/nordanaar/mergedAh/nexus-crystal-20725">WoWAuctions Nordanaar: Nexus Crystal</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/enchanting/leveling-1-450">Wowhead WotLK Enchanting Leveling 1–450</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/disenchanting-tables-wotlk-classic">WoW-Professions WotLK Disenchanting Tables</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Enchanting Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div>
+</body>
+</html>

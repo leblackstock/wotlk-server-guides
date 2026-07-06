@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Fishing + Cooking Materials AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+
+.rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
+.rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
+.rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
+.rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
+
+.gear-note{color:#f5dfab;font-weight:800}
+
+.gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
+.gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
+.gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
+.gear-card strong{display:block;margin-bottom:2px}
+.gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
+.gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:860px){.gear-grid{grid-template-columns:1fr}}
+
+.fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
+.fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
+.gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
+.gear-intro strong{color:var(--gold2)}
+.gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
+.gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
+.gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
+.gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
+.gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
+.gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
+.gear-name strong{line-height:1.15}
+.gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.gear-bonus.gold{background:var(--gold)}
+.gear-bonus.purple{background:var(--purple)}
+.gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
+.gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
+.gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
+@media(max-width:1080px){.gear-showcase{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.gear-showcase{grid-template-columns:1fr}.gear-name{display:block}.gear-bonus{display:inline-block;margin-top:5px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Fishing + Cooking Materials AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers raw fish, cooking meats, eggs, clams, pearls, rare catches, rare fishing poles/devices, vendor supplies, plus a few finished prices for major raid foods and feasts.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Fishing/Cooking rule:</strong> Fish Feast fish, Northern Spices, Dragonfin Angelfish, and rare fishing gear can move very differently from ordinary leveling mats. Always check whether the item is actually tradeable on this server before pricing rare poles, hats, lines, or daily-bag rewards.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Northrend raw fish</h2><div class="table-wrap"><table><thead><tr><th>Raw fish</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Fishing / Cooking notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Musselback Sculpin</strong><div class="mini">Fish Feast fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Fish Feast input: two per feast with Glacial Salmon, Nettlefish, and Northern Spices. Strong raid-food demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Glacial Salmon</strong><div class="mini">Fish Feast fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Fish Feast input and useful cooked-food fish. Wintergrasp/Howling Fjord supply can affect price.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Nettlefish</strong><div class="mini">Fish Feast fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Fish Feast input. Often fished in Sholazar/Wintergrasp areas; check supply before undercutting.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Dragonfin Angelfish</strong><div class="mini">Premium stat-food fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Feeds Dragonfin Filet / Blackened Dragonfin-style demand. Strong for melee/agi food buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Imperial Manta Ray</strong><div class="mini">Premium stat-food fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 62s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Used for stat food such as Imperial Manta Steak. Good 5-stack and 20-stack seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bonescale Snapper</strong><div class="mini">Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Common bycatch while fishing other important Northrend fish. Useful for Snapper Extreme-style foods.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fangtooth Herring</strong><div class="mini">Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in Northrend cooking. Slower than feast fish.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Borean Man O' War</strong><div class="mini">Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Northrend fish with cooking use. Usually a secondary seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rockfin Grouper</strong><div class="mini">Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Common Northrend cooking fish. Use smaller stacks if slow.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Barrelhead Goby</strong><div class="mini">Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Sholazar-style fish. Slower but useful for cooking completion/leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Pygmy Suckerfish</strong><div class="mini">Alchemy/cooking-adjacent fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Used for Pygmy Oil in Alchemy; often caught as extra with Northrend fish. Strong practical overlap.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Giant Darkwater Clam</strong><div class="mini">Fishing/cooking catch</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Can contain clam meat/pearls. Useful bonus catch; value depends on pearl demand.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Northrend meats / cooking mats</h2><div class="table-wrap"><table><thead><tr><th>Raw mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Cooking notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Northern Spices</strong><div class="mini">Cooking daily reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Required by many high-end WotLK cooking recipes and Fish Feast. Dalaran Cooking Award supply matters.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Chilled Meat</strong><div class="mini">Main Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Used in Northern Stew and many leveling recipes. Very common but high-volume.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rhino Meat</strong><div class="mini">Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Used in Rhino Dogs and other meat recipes. Good leveler/cook demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Worm Meat</strong><div class="mini">Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used for WotLK cooking recipes. Smaller market than Chilled/Rhino.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Shoveltusk Flank</strong><div class="mini">Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in Northrend cooking. Good exact-stack item.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Chunk o' Mammoth</strong><div class="mini">Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in Mammoth-related recipes and pet treats. Check actual demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Worg Haunch</strong><div class="mini">Northrend meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Northrend cooking meat. Slower but useful for recipe completion/leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Succulent Clam Meat</strong><div class="mini">Clam cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Comes from clams. Old/Wrath cooking use depending recipes. Check exact demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Toughened Flesh</strong><div class="mini">Northrend cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Used in some cooking paths. Usually slower than core meats.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / Classic raw fish</h2><div class="table-wrap"><table><thead><tr><th>Raw fish</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Fishing / Cooking notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Golden Darter</strong><div class="mini">TBC fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful TBC cooking fish. Can sell well if Outland fish supply is thin.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Figluster's Mudfish</strong><div class="mini">TBC fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC cooking fish. Good exact stacks for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Furious Crawdad</strong><div class="mini">TBC high fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>High-end TBC food fish. Slower but valuable when needed.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Spotted Feltail</strong><div class="mini">TBC fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC cooking/fishing material. Small stacks first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Barbed Gill Trout</strong><div class="mini">TBC fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Common Outland fish. Usually a leveling mat.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Zangarian Sporefish</strong><div class="mini">TBC fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in TBC food. Can sell to completionists/levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Huge Spotted Feltail</strong><div class="mini">TBC large fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Rare/large fish. Mostly collector/recipe niche.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Whitescale Salmon</strong><div class="mini">Classic high fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>High Classic cooking fish. Useful for old food and leveling paths.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Nightfin Snapper</strong><div class="mini">Classic high fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic fish tied to Nightfin Soup-style demand. Can spike if no listings.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Sunscale Salmon</strong><div class="mini">Classic high fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic cooking fish. Smaller stacks first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Redgill</strong><div class="mini">Classic mid-high fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Classic cooking leveler fish. Slow but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Mithril Head Trout</strong><div class="mini">Classic mid fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Common cooking/fishing leveling fish. Good exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Sagefish</strong><div class="mini">Classic fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful old mana-food fish. Small stack seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Greater Sagefish</strong><div class="mini">Classic fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful old mana-food fish. Can be better than generic fish.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Longjaw Mud Snapper</strong><div class="mini">Classic low fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early cooking/fishing mat. Do not overlist.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Brilliant Smallfish</strong><div class="mini">Classic starter fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Starter cooking fish. Very small stacks only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raw Slitherskin Mackerel</strong><div class="mini">Classic starter fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Starter cooking fish. Low demand.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / Classic meats / eggs / odd cooking mats</h2><div class="table-wrap"><table><thead><tr><th>Raw mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Cooking notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Small Egg</strong><div class="mini">Holiday/cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Can spike during holiday cooking demand. Good small-stack item.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raptor Egg</strong><div class="mini">Cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in old cooking recipes. Niche but recognized.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Zesty Clam Meat</strong><div class="mini">Classic/TBC clam meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Cooking material from clams. Exact stacks sell better.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tangy Clam Meat</strong><div class="mini">Classic clam meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old cooking mat. Slow but useful for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Clam Meat</strong><div class="mini">Classic clam meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Early cooking mat. Tiny market.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crawler Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early cooking mat. Sell in small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crawler Claw</strong><div class="mini">Classic cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early cooking mat. Exact stacks only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Stringy Wolf Meat</strong><div class="mini">Classic starter meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Starter cooking mat. Avoid big walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Chunk of Boar Meat</strong><div class="mini">Classic starter meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Starter cooking mat. Low demand except levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bear Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old cooking mat. Small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Big Bear Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old cooking mat. Useful for recipe completion/leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Coyote Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand low">Low</span></td>
+<td>Old cooking mat. Low demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Goretusk Liver</strong><div class="mini">Classic cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Quest/cooking item. Can sell when people want convenience.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Kodo Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old cooking mat. Small stacks only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tender Wolf Meat</strong><div class="mini">Classic high meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in higher Classic cooking. Can sell better than low meats.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mystery Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Mid-level cooking mat. Small stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Turtle Meat</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in old turtle recipes. Recognizable leveling item.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Raptor Flesh</strong><div class="mini">Classic meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Old cooking mat. Good exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Buzzard Meat</strong><div class="mini">TBC cooking mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Outland cooking material. Slow but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Clefthoof Meat</strong><div class="mini">TBC meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC cooking meat. Good exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ravager Flesh</strong><div class="mini">TBC meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC cooking meat. Useful for old leveling and buff food.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Serpent Flesh</strong><div class="mini">TBC meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC cooking meat. Can sell if no one farms it.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Warped Flesh</strong><div class="mini">TBC meat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC cooking mat. Small stacks first.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Rare catches / pearls / clam value</h2><div class="table-wrap"><table><thead><tr><th>Catch / mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Value notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Dark Herring</strong><div class="mini">Rare Northrend fish</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Rare catch tied to achievements/collectors. Very slow but can sell high if tradeable on this server.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Sea Turtle</strong><div class="mini">Rare fishing mount</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td>self-use</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Rare fishing mount catch. Included as a farming-value note, not an AH item.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Giant Sewer Rat</strong><div class="mini">Rare Dalaran sewer pet</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">—</span></div>
+<div><span class="label">Buyout</span><span class="buyout">not AH</span></div>
+</div></td>
+<td>self-use</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Rare Dalaran sewer fishing pet. Usually self-use/collection value, not normal AH material.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Siren's Tear</strong><div class="mini">Pearl from clams</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Can come from Northrend clams and is used by Jewelcrafting. Good bonus-profit item from fishing.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Northsea Pearl</strong><div class="mini">Pearl from clams</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Pearl from Northrend clams. JC/crafting demand; smaller stacks sell better.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Golden Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Classic pearl with Enchanting/BS/JC-type demand. Rare enough to price carefully.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Black Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old pearl/crafting mat. Slow but recognized.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Iridescent Pearl</strong><div class="mini">Classic pearl</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old pearl mat. Small stacks only.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Major finished foods / feasts</h2><div class="table-wrap"><table><thead><tr><th>Finished food</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Pricing notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Fish Feast</strong><div class="mini">Raid feast</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11g 5s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">13g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Price from 2 Musselback Sculpin + 2 Glacial Salmon + 2 Nettlefish + 1 Northern Spices.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Dragonfin Filet</strong><div class="mini">Strength food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Major physical DPS/tank food. Price from Dragonfin Angelfish and spice cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Blackened Dragonfin</strong><div class="mini">Agility food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Major agility food. Price from Dragonfin Angelfish and spice cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Snapper Extreme</strong><div class="mini">Hit food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful when players need hit food. Price from Bonescale Snapper and spice cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Imperial Manta Steak</strong><div class="mini">Haste food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful haste food. Price from Imperial Manta Ray and spice cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Spiced Mammoth Treats</strong><div class="mini">Hunter pet food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Pet food market depends on hunters. Do not overbuild.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Gigantic Feast</strong><div class="mini">Group food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Finished-food price anchor. Check actual recipe mats and raid/group demand before crafting.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Small Feast</strong><div class="mini">Small group food</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Finished-food price anchor. Usually slower than Fish Feast.</td>
+</tr></tbody></table></div></section>
+
+
+
+<section class="common fishing-gear-panel"><h2>Rare fishing poles / devices / lures</h2>
+
+<div class="gear-intro">
+<strong>Use this as a rarity and value-awareness section, not a normal materials table.</strong>
+Many poles, hats, lines, and daily-bag rewards are personal/BoP under normal WotLK rules. Check tradeability on this server before buying, listing, or assigning AH value.
+<div class="gear-legend">
+<span class="personal">Mostly personal / reward</span>
+<span class="check">Check tradeability</span>
+<span class="sellable">Possibly sellable</span>
+<span>Vendor / convenience</span>
+</div>
+</div>
+
+<div class="gear-showcase">
+
+<div class="gear-column">
+<h3>Rare / useful poles <span class="gear-count">7 items</span></h3>
+
+<div class="gear-item featured">
+<div class="gear-name"><strong class="q-rare">Arcanite Fishing Pole</strong><span class="gear-bonus gold">+40</span></div>
+<div class="gear-type">STV Fishing Extravaganza reward</div>
+<div class="gear-tags"><span class="gear-tag warn">not normal AH</span><span class="gear-tag rule">personal reward</span><span class="demand vh">Very High</span></div>
+<p class="gear-note-line">Best permanent fishing-skill pole in WotLK-era sources, but usually not sellable.</p>
+</div>
+
+<div class="gear-item featured">
+<div class="gear-name"><strong class="q-rare">Mastercraft Kalu'ak Fishing Pole</strong><span class="gear-bonus gold">+30</span></div>
+<div class="gear-type">Kalu'ak reputation vendor; underwater breathing bonus</div>
+<div class="gear-tags"><span class="gear-tag warn">vendor / rep</span><span class="gear-tag rule">not AH pricing</span><span class="demand vh">Very High</span></div>
+<p class="gear-note-line">Reliable high-end pole once reputation is earned. Check vendor/rep behavior on this server.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Bone Fishing Pole</strong><span class="gear-bonus">+30</span></div>
+<div class="gear-type">Dalaran fishing daily bag reward</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">mostly personal</span><span class="demand hi">High</span></div>
+<p class="gear-note-line">Good rare daily pole; usually value-aware only, not a normal AH listing.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Jeweled Fishing Pole</strong><span class="gear-bonus">+30</span></div>
+<div class="gear-type">Dalaran fishing daily bag reward</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">mostly personal</span><span class="demand hi">High</span></div>
+<p class="gear-note-line">Similar market note to Bone Fishing Pole: valuable, but usually not a trade item.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Big Iron Fishing Pole</strong><span class="gear-bonus purple">+20</span></div>
+<div class="gear-type">Rare older fishing pole</div>
+<div class="gear-tags"><span class="gear-tag ok">possibly sellable</span><span class="gear-tag rule">25g / 45g / 80g</span><span class="demand med">Med-High</span></div>
+<p class="gear-note-line">One of the few rare poles worth checking for AH resale. Confirm bind status first.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Nat Pagle's Extreme Angler FC-5000</strong><span class="gear-bonus purple">+25</span></div>
+<div class="gear-type">Quest reward</div>
+<div class="gear-tags"><span class="gear-tag warn">quest item</span><span class="gear-tag rule">mostly personal</span><span class="demand med">Med</span></div>
+<p class="gear-note-line">Useful older pole, but usually not a normal AH item.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Seth's Graphite Fishing Pole</strong><span class="gear-bonus purple">+20</span></div>
+<div class="gear-type">Quest reward</div>
+<div class="gear-tags"><span class="gear-tag warn">quest item</span><span class="gear-tag rule">mostly personal</span><span class="demand med">Low-Med</span></div>
+<p class="gear-note-line">Good leveling/collector pole. Usually not AH-priced.</p>
+</div>
+</div>
+
+<div class="gear-column">
+<h3>Hat / line / journal <span class="gear-count">4 items</span></h3>
+
+<div class="gear-item featured">
+<div class="gear-name"><strong class="q-rare">Weather-Beaten Fishing Hat</strong><span class="gear-bonus">+5</span></div>
+<div class="gear-type">Fishing daily reward bag; on-use lure effect</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">usually personal</span><span class="demand hi">High</span></div>
+<p class="gear-note-line">Strong fishing utility item. Included for value awareness, not guaranteed AH resale.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">High Test Eternium Fishing Line</strong><span class="gear-bonus">+5</span></div>
+<div class="gear-type">Pole enchant from fishing daily / STV rare fish reward</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">check bind rules</span><span class="demand hi">High</span></div>
+<p class="gear-note-line">Permanent pole upgrade. Check server behavior before assigning AH value.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Spun Truesilver Fishing Line</strong><span class="gear-bonus purple">+3</span></div>
+<div class="gear-type">Lower pole enchant from fishing treasure/reward sources</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">check tradeability</span><span class="demand med">Med</span></div>
+<p class="gear-note-line">Lower upgrade than High Test Eternium, but still useful while gearing fishing.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Weather-Beaten Journal</strong><span class="gear-bonus gold">Find Fish</span></div>
+<div class="gear-type">Fished from wreckage/crates</div>
+<div class="gear-tags"><span class="gear-tag ok">possibly sellable</span><span class="gear-tag rule">2g / 5g / 12g</span><span class="demand med">Med-High</span></div>
+<p class="gear-note-line">Teaches Find Fish. Can be valuable if tradeable and missing from AH.</p>
+</div>
+
+<div class="gear-mini-rule">
+<strong>Rule:</strong> lines, hats, and journals are often reward-based. Treat prices as “check first” values unless tradeability is confirmed.
+</div>
+</div>
+
+<div class="gear-column">
+<h3>Lures / attractors <span class="gear-count">5 items</span></h3>
+
+<div class="gear-item featured">
+<div class="gear-name"><strong class="q-common">Aquadynamic Fish Attractor</strong><span class="gear-bonus gold">+100</span></div>
+<div class="gear-type">Engineering/vendor/crafted-style lure</div>
+<div class="gear-tags"><span class="gear-tag ok">sellable if tradeable</span><span class="gear-tag rule">1g / 1g 75s / 3g</span><span class="demand hi">High</span></div>
+<p class="gear-note-line">Best common lure market if fishers are active and the item is tradeable.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Sharpened Fish Hook</strong><span class="gear-bonus gold">+100</span></div>
+<div class="gear-type">Fishing daily reward</div>
+<div class="gear-tags"><span class="gear-tag rule">daily reward</span><span class="gear-tag warn">check AH</span><span class="demand med">Med-High</span></div>
+<p class="gear-note-line">Useful +100 lure, but may not be a regular AH item on this server.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-rare">Glow Worm</strong><span class="gear-bonus gold">+100</span></div>
+<div class="gear-type">Fishing daily reward bag; longer duration</div>
+<div class="gear-tags"><span class="gear-tag rule">rare reward</span><span class="gear-tag warn">check tradeability</span><span class="demand med">Med</span></div>
+<p class="gear-note-line">Great personal lure. Price only if it is actually tradeable.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-common">Bright Baubles</strong><span class="gear-bonus purple">+75</span></div>
+<div class="gear-type">Vendor lure</div>
+<div class="gear-tags"><span class="gear-tag warn">vendor item</span><span class="gear-tag rule">vendor + tiny tip</span><span class="demand med">Low-Med</span></div>
+<p class="gear-note-line">Convenience listing only. Do not price like a rare lure.</p>
+</div>
+
+<div class="gear-item">
+<div class="gear-name"><strong class="q-common">Aquadynamic Fish Lens</strong><span class="gear-bonus purple">+50</span></div>
+<div class="gear-type">Engineering-style lure</div>
+<div class="gear-tags"><span class="gear-tag ok">niche sellable</span><span class="gear-tag rule">50s / 90s / 1g 50s</span><span class="demand med">Low-Med</span></div>
+<p class="gear-note-line">Lower lure. Only worth selling if better lures are missing or overpriced.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+<section class="common vendor-compact">
+<h2>Vendor-only cooking / fishing supplies</h2>
+<p class="small">These are vendor goods or vendor-adjacent supplies. Use the AH only for convenience, not scarcity pricing. For campfires, use the this server's spell <strong>Basic Campfire</strong> instead of buying Flint and Tinder.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead><tbody>
+<tr><td><strong class="q-common">Simple Flour</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in old recipes. Buy from vendor when possible.</td></tr>
+<tr><td><strong class="q-common">Mild Spices</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in old recipes. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Hot Spices</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in old recipes. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Soothing Spices</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in old recipes. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Refreshing Spring Water</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Used in old recipes. Convenience only.</td></tr>
+<tr><td><strong class="q-common">Northern Spices</strong></td><td class="vendor-rule">Market item, not simple vendor</td><td class="muted">Listed in Northrend cooking mats because it has real AH value.</td></tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best material movers</h3><ul>
+<li class="gold"><span class="item q-common">Musselback Sculpin / Glacial Salmon / Nettlefish</span> <span class="badge gold">Fish Feast</span><div class="mini">These three fish anchor feast demand. Watch them together, not separately.</div></li>
+<li class="gold"><span class="item q-common">Northern Spices</span><div class="mini">Required by many WotLK cooking recipes and Fish Feast.</div></li>
+<li class="green"><span class="item q-common">Dragonfin Angelfish</span><div class="mini">Strong physical DPS/agi food demand.</div></li>
+<li class="purple"><span class="item q-uncommon">Siren's Tear / pearls</span><div class="mini">Bonus fishing value from clams; price against JC/crafting demand.</div></li>
+</ul></div>
+<div class="routecard"><h3>Posting checks</h3><ul>
+<li class="red">Do not post giant 8-day walls of low-level meats or starter fish.</li>
+<li class="red">Do not assume rare fishing gear can be sold; check bind/trade rules first.</li>
+<li class="green">Use 5-stacks for recipe buyers and 20-stacks for bulk cooks.</li>
+<li class="gold">Raid nights can move Fish Feast fish and finished feasts faster than normal days.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Fish Feast math</h3><p class="small">Fish Feast uses Musselback Sculpin, Glacial Salmon, Nettlefish, and Northern Spices. If the finished feast has no premium over materials, sell the raw fish/spices instead.</p></div>
+<div class="routecard"><h3>Rare gear rule</h3><p class="small">Rare poles, hats, and fishing lines are included for value awareness. Some may be BoP, quest-only, reward-only, or otherwise not resellable on this server.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public Fishing/Cooking references, Wrath-era feast/food demand, rare fishing gear references, and practical reposting behavior. Always adjust for current AH supply, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/fishing/overview">Wowhead WotLK Fishing overview</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/cooking/leveling-1-450">Wowhead WotLK Cooking leveling guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/cooking-materials-best-farming-locations">Wowhead WotLK Cooking materials farming guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=43015/fish-feast">Wowhead WotLK Fish Feast</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=19970/arcanite-fishing-pole">Wowhead WotLK Arcanite Fishing Pole</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/fishing/overview#other-fishing-gear">Wowhead WotLK other Fishing gear</a></li>
+<li><a href="https://www.warcrafttavern.com/wotlk/guides/valuable-fish-other-catches/">Warcraft Tavern: valuable fish and other catches</a></li>
+<li><a href="https://www.elsanglin.com/poles.html">El's Extreme Anglin': Fishing poles</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Fishing + Cooking Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
+</div></body></html>

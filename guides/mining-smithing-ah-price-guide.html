@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Metal + Stone AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}.nodevalue{color:var(--gold2);font-weight:900;white-space:nowrap}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Metal + Stone AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers ore, bars, alloys, stone, grinding stones, smithing reagents, and profession-use notes for Blacksmithing, Engineering, Jewelcrafting, and Enchanting rod buyers.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Server cooldown note:</strong> Titansteel/Arcanite-style cooldowns are shorter or nonexistent here, so price from <strong>input cost + profit margin</strong>, not cooldown scarcity alone.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Northrend ore</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Titanium Ore</strong><div class="mini">Wrath rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>JC prospecting target and Titanium Bar input. Compare ore price against epic gem/prospecting value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Saronite Ore</strong><div class="mini">Wrath ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Good JC prospecting ore and smelting input. Strong volume seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Cobalt Ore</strong><div class="mini">Wrath ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Early Wrath prospecting/smelting ore. Usually slower than Saronite.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Northrend bars / alloys</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Titansteel Bar</strong><div class="mini">Wrath alloy bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">93g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">110g</span></div>
+</div></td>
+<td>1 / 2 / 4</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major Blacksmithing/Engineering craft input. On this server, price from materials + margin, not cooldown scarcity alone.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Titanium Bar</strong><div class="mini">Wrath rare bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand hi">High</span></td>
+<td>Smelted from Titanium Ore. Used for Titansteel, Engineering, BS crafts, and high-value metal work.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Saronite Bar</strong><div class="mini">Wrath bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Core Wrath BS/Engineering bar. Used heavily in leveling and crafted gear.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Cobalt Bar</strong><div class="mini">Wrath bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 30s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Early Wrath BS/Engineering leveling bar. Good for alts and profession catch-up.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland ore</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Khorium Ore</strong><div class="mini">TBC rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Rare Outland ore. Can be prospected or smelted; compare to Khorium Bar price.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Adamantite Ore</strong><div class="mini">TBC ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC prospecting ore. Can sell to JC buyers or miners leveling by smelting.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Eternium Ore</strong><div class="mini">TBC rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Rare Outland ore. Compare to Eternium Bar and Felsteel demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Iron Ore</strong><div class="mini">TBC ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early TBC ore. Useful for leveling and prospecting, but do not flood.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland bars / alloys</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-epic">Hardened Khorium</strong><div class="mini">TBC rare alloy</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Sunwell-era premium material. Very slow but valuable if a crafter needs it.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Khorium Bar</strong><div class="mini">TBC rare bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Rare TBC bar. Used by BS/Engineering/JC-style old recipes. Singles first.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Felsteel Bar</strong><div class="mini">TBC alloy bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in TBC BS/Engineering crafts and some older gear/material paths.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Hardened Adamantite Bar</strong><div class="mini">TBC processed bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in TBC BS recipes. Check Adamantite Bar cost before buying.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Adamantite Bar</strong><div class="mini">TBC bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC BS/Engineering/JC material. Good when old profession leveling is active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Eternium Bar</strong><div class="mini">TBC bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in Felsteel and many TBC recipes. Often sells better as bars than ore.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Iron Bar</strong><div class="mini">TBC bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>TBC leveling bar. Engineering and Blacksmithing buyers both use it.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic ore</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Dark Iron Ore</strong><div class="mini">Classic special ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Needs special smelting path. Sells to people making old Dark Iron items.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thorium Ore</strong><div class="mini">Classic high ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Prospecting/smelting ore. Often farmed for Arcane Crystal chance from Rich Thorium nodes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Truesilver Ore</strong><div class="mini">Classic rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Rare ore. Usually better as bars unless JC/prospecting demand exists.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mithril Ore</strong><div class="mini">Classic mid-high ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Prospecting/smelting ore. Can be valuable when Mithril Bars are scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Iron Ore</strong><div class="mini">Classic ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Smelting/prospecting ore. Compare to Iron Bar and Steel Bar price.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Gold Ore</strong><div class="mini">Classic rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">80s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">95s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Rare ore. Compare to Gold Bar before listing.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Silver Ore</strong><div class="mini">Classic rare ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Rare low-level ore. Often better as bars.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tin Ore</strong><div class="mini">Classic ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Prospecting/smelting ore. Often worth more as Bronze path.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Copper Ore</strong><div class="mini">Classic ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early ore. Smelt if bars are scarce or priced higher.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic bars / alloys</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Arcanite Bar</strong><div class="mini">Classic transmute bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">32g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">38g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in classic weapons, Enchanting rods, and old prestige crafts. Cooldowns may be short/nonexistent here.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Dark Iron Bar</strong><div class="mini">Classic special bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Smelted at Black Forge. Used for old fire-resist/MC-style crafts and specialty recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thorium Bar</strong><div class="mini">Classic high bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Major old-world BS/Engineering/Enchanting rod material.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Truesilver Bar</strong><div class="mini">Classic rare bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in Enchanting rods, BS, and Engineering. Singles sell well.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mithril Bar</strong><div class="mini">Classic mid-high bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Common BS/Engineering/Enchanting leveling bottleneck.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Steel Bar</strong><div class="mini">Classic alloy bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Iron + Coal. Used heavily in BS/Engineering and some old recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Iron Bar</strong><div class="mini">Classic bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>BS/Engineering leveling material. Also feeds Steel Bars.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Gold Bar</strong><div class="mini">Classic rare bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Old Engineering/BS/Jewelcrafting material. Singles or 5s.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Silver Bar</strong><div class="mini">Classic rare bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>1 / 5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Early Enchanting rod and old recipe material. Singles sell well.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bronze Bar</strong><div class="mini">Classic alloy bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Copper + Tin. Strong low-level BS/Engineering/Jewelcrafting demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tin Bar</strong><div class="mini">Classic bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Low-level metal. Check Bronze Bar demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Copper Bar</strong><div class="mini">Classic bar</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Low-level profession catch-up material. Good steady small-stack seller.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Raw stone</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Dense Stone</strong><div class="mini">Classic stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used for Dense Grinding Stone and some old crafts. Thorium byproduct.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Solid Stone</strong><div class="mini">Classic stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Used for Solid Grinding Stone and old crafts. Mithril byproduct.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Stone</strong><div class="mini">Classic stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Used for Heavy Grinding Stone and some old crafts. Iron byproduct.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Coarse Stone</strong><div class="mini">Classic stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Used for Coarse Grinding Stone and low-level crafts. Tin byproduct.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rough Stone</strong><div class="mini">Classic stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand low">Low</span></td>
+<td>Used for Rough Grinding Stone and early crafts. Copper byproduct.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Grinding stones</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Dense Grinding Stone</strong><div class="mini">BS processed stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Blacksmithing leveling input. Convenience sale over raw Dense Stone.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Solid Grinding Stone</strong><div class="mini">BS processed stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Blacksmithing leveling input. Can sell above raw stone cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Grinding Stone</strong><div class="mini">BS processed stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Blacksmithing leveling input. Useful in exact stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Coarse Grinding Stone</strong><div class="mini">BS processed stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Blacksmithing leveling input and Darkmoon-style turn-in material if that demand exists here.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rough Grinding Stone</strong><div class="mini">BS processed stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early Blacksmithing leveling input. Sell small stacks.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Blacksmith-made Enchanting rod blanks</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Titanium Rod</strong><div class="mini">Wrath enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Blacksmith-made rod blank for Enchanting. Singles only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Eternium Rod</strong><div class="mini">TBC enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 5s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">13g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Enchanting rod blank. Can sell when enchanters are catching up.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Adamantite Rod</strong><div class="mini">TBC enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Enchanting rod blank. Slow but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Iron Rod</strong><div class="mini">TBC enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Enchanting rod blank. Singles only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Arcanite Rod</strong><div class="mini">Classic enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>High-value enchanting rod blank. Price from Arcanite Bar cost plus margin.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Truesilver Rod</strong><div class="mini">Classic enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Enchanting rod blank. Usually sells as a convenience craft.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Golden Rod</strong><div class="mini">Classic enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Enchanting rod blank. Singles only.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Silver Rod</strong><div class="mini">Classic enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Med</span></td>
+<td>Early enchanting rod blank. Often sells if no blacksmith is available.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Copper Rod</strong><div class="mini">Classic enchanting rod blank</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Very early enchanting rod blank. Do not flood.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Metal-adjacent smithing reagents</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Profession-use notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Eternal Earth</strong><div class="mini">Wrath BS reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in several Wrath Blacksmithing crafts and Titansteel. Check cross-prof guide too.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Fire</strong><div class="mini">Wrath BS reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>High-demand reagent used in Titansteel and many crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Shadow</strong><div class="mini">Wrath BS reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Titansteel input and craft reagent. Do not overbuy unless Titansteel margin works.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Crystallized Earth</strong><div class="mini">Wrath minor reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Can be combined to Eternal Earth. Useful exact-count material.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Fire</strong><div class="mini">TBC BS reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Used in old high-end BS/Engineering paths. Strong TBC elemental.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Earth</strong><div class="mini">TBC BS reagent</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Common old BS reagent. Do not flood.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Primal Nether</strong><div class="mini">TBC heroic craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in some TBC-era crafted items if tradeable on this server.</td>
+</tr></tbody></table></div></section>
+
+<section class="common vendor-compact">
+<h2>Vendor-only smithing supplies</h2>
+<p class="small">These are vendor goods. Use the AH only for convenience, not scarcity pricing.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead><tbody><tr><td><strong class="q-common">Coal</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Needed for Steel Bar. Do not pay rare-market prices.</td></tr>
+<tr><td><strong class="q-common">Weak Flux</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Low-level Blacksmithing supply. AH is convenience only.</td></tr>
+<tr><td><strong class="q-common">Strong Flux</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Blacksmithing supply. Buy from vendor when possible.</td></tr>
+<tr><td><strong class="q-common">Elemental Flux</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Higher-level Blacksmithing supply. Avoid trap prices.</td></tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best movers</h3><ul>
+<li class="gold"><span class="item q-rare">Titansteel Bar</span> <span class="badge gold">premium</span><div class="mini">Check Titanium Bar + Eternal Fire/Earth/Shadow cost before posting.</div></li>
+<li class="gold"><span class="item q-common">Saronite Bar / Ore</span> <span class="badge gold">volume</span><div class="mini">Strong Wrath BS/Engineering/Jewelcrafting demand.</div></li>
+<li class="green"><span class="item q-common">Mithril / Thorium / Truesilver</span><div class="mini">Old-world profession catch-up bottlenecks.</div></li>
+<li class="purple"><span class="item q-common">Enchanting rod blanks</span><div class="mini">Single-item convenience sales can beat raw bar pricing.</div></li>
+</ul></div>
+<div class="routecard"><h3>Check before posting</h3><ul>
+<li class="red">Do not smelt every ore. JC buyers may pay more for prospecting ore.</li>
+<li class="red">Do not price Titansteel/Arcanite only from cooldown history on this server.</li>
+<li class="green">Use the separate ore and bar sections to compare value before smelting.</li>
+<li class="gold">For old-world metals, 5-stacks and 20-stacks both matter.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Average mining node worth</h2>
+<p class="small">Rough target-value estimates using this sheet’s Target prices. Real value changes with node yield, rich-node rolls, rare ore, gems, crystallized drops, and current AH supply.</p>
+<div class="table-wrap"><table><thead><tr><th>Node</th><th>Average worth</th><th>Main value source</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong>Copper Vein</strong><div class="mini">Classic</div></td>
+<td><span class="nodevalue">16s</span></td>
+<td>Copper Ore + Rough Stone</td>
+<td>Starting zones; mostly low-value catch-up mining.</td>
+</tr>
+<tr>
+<td><strong>Tin Vein</strong><div class="mini">Classic</div></td>
+<td><span class="nodevalue">31s</span></td>
+<td>Tin Ore + Coarse Stone</td>
+<td>Often worth more if Tin feeds Bronze Bars.</td>
+</tr>
+<tr>
+<td><strong>Silver Vein</strong><div class="mini">Classic rare</div></td>
+<td><span class="nodevalue">95s</span></td>
+<td>Silver Ore</td>
+<td>Rare low-level node. Bars/rods can increase value.</td>
+</tr>
+<tr>
+<td><strong>Iron Deposit</strong><div class="mini">Classic</div></td>
+<td><span class="nodevalue">45s</span></td>
+<td>Iron Ore + Heavy Stone</td>
+<td>Also feeds Steel Bar demand through Iron Bars.</td>
+</tr>
+<tr>
+<td><strong>Gold Vein</strong><div class="mini">Classic rare</div></td>
+<td><span class="nodevalue">1g 70s</span></td>
+<td>Gold Ore</td>
+<td>Rare node; compare ore vs bar demand.</td>
+</tr>
+<tr>
+<td><strong>Mithril Deposit</strong><div class="mini">Classic</div></td>
+<td><span class="nodevalue">65s</span></td>
+<td>Mithril Ore + Solid Stone</td>
+<td>Good if Engineering/BS levelers are active.</td>
+</tr>
+<tr>
+<td><strong>Truesilver Deposit</strong><div class="mini">Classic rare</div></td>
+<td><span class="nodevalue">3g 10s</span></td>
+<td>Truesilver Ore</td>
+<td>Rare node; Enchanting rod demand helps.</td>
+</tr>
+<tr>
+<td><strong>Small Thorium Vein</strong><div class="mini">Classic</div></td>
+<td><span class="nodevalue">85s</span></td>
+<td>Thorium Ore + Dense Stone</td>
+<td>Steady old-world value.</td>
+</tr>
+<tr>
+<td><strong>Rich Thorium Vein</strong><div class="mini">Classic rich</div></td>
+<td><span class="nodevalue">2g 40s</span></td>
+<td>More Thorium + Dense Stone + rare chance</td>
+<td>Best classic node because of volume and rare-gem/Arcane Crystal-style upside.</td>
+</tr>
+<tr>
+<td><strong>Dark Iron Deposit</strong><div class="mini">Classic special</div></td>
+<td><span class="nodevalue">2g 25s</span></td>
+<td>Dark Iron Ore</td>
+<td>Specialty old-world value; slower but useful.</td>
+</tr>
+<tr>
+<td><strong>Fel Iron Deposit</strong><div class="mini">Outland</div></td>
+<td><span class="nodevalue">1g 10s</span></td>
+<td>Fel Iron Ore + TBC gems</td>
+<td>Early TBC mining/prospecting value.</td>
+</tr>
+<tr>
+<td><strong>Adamantite Deposit</strong><div class="mini">Outland</div></td>
+<td><span class="nodevalue">1g 95s</span></td>
+<td>Adamantite Ore + TBC gems</td>
+<td>Good TBC prospecting/smelting node.</td>
+</tr>
+<tr>
+<td><strong>Rich Adamantite Deposit</strong><div class="mini">Outland rich</div></td>
+<td><span class="nodevalue">3g 60s</span></td>
+<td>More Adamantite + gem chance</td>
+<td>Better value than regular Adamantite when route density is good.</td>
+</tr>
+<tr>
+<td><strong>Khorium Vein</strong><div class="mini">Outland rare</div></td>
+<td><span class="nodevalue">20g</span></td>
+<td>Khorium Ore + rare gem chance</td>
+<td>Rare TBC node. Usually worth stopping for.</td>
+</tr>
+<tr>
+<td><strong>Cobalt Deposit</strong><div class="mini">Northrend</div></td>
+<td><span class="nodevalue">2g 20s</span></td>
+<td>Cobalt Ore + Northrend gems</td>
+<td>Early Northrend ore; useful but below Saronite/Titanium.</td>
+</tr>
+<tr>
+<td><strong>Rich Cobalt Deposit</strong><div class="mini">Northrend rich</div></td>
+<td><span class="nodevalue">3g 90s</span></td>
+<td>More Cobalt + gem chance</td>
+<td>Good if farming lower Northrend zones.</td>
+</tr>
+<tr>
+<td><strong>Saronite Deposit</strong><div class="mini">Northrend</div></td>
+<td><span class="nodevalue">3g 20s</span></td>
+<td>Saronite Ore + Northrend gems/crystals</td>
+<td>Strong volume node; also where Titanium often matters in routes.</td>
+</tr>
+<tr>
+<td><strong>Rich Saronite Deposit</strong><div class="mini">Northrend rich</div></td>
+<td><span class="nodevalue">6g</span></td>
+<td>More Saronite + better gem/crystal chance</td>
+<td>High-value normal farming target.</td>
+</tr>
+<tr>
+<td><strong>Titanium Vein</strong><div class="mini">Northrend rare</div></td>
+<td><span class="nodevalue">22g</span></td>
+<td>Titanium Ore + prospecting/gem upside</td>
+<td>Rare Northrend node; always worth checking on this low-pop server.</td>
+</tr></tbody></table></div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Ore vs bar rule</h3><p class="small">If Jewelcrafters are buying ore for prospecting, raw ore may beat bars. If Blacksmiths/Engineers are leveling, bars may beat ore.</p></div>
+<div class="routecard"><h3>Node value rule</h3><p class="small">Node values are route-planning estimates, not guaranteed drops. Rare nodes like Titanium and Khorium are worth stopping for even when the average looks conservative.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. Node values are rough averages using this guide’s Target prices and typical WotLK mining/prospecting behavior. Always adjust for current AH supply, guild demand, trade-chat pricing, and this server's drop/prospecting behavior.</p>
+<ul>
+<li><a href="https://www.wow-professions.com/wotlk/mining-leveling-guide-wotlk-classic">WoW-Professions WotLK Mining leveling guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/ore-deposit-best-farming-routes">Wowhead WotLK Saronite and Titanium farming guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/blacksmithing/leveling-1-450">Wowhead WotLK Blacksmithing leveling guide</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/blacksmithing-leveling-guide-wotlk-classic">WoW-Professions WotLK Blacksmithing guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=36910/titanium-ore">Wowhead WotLK Titanium Ore / prospecting comments</a></li>
+<li><a href="https://www.wowwiki-archive.fandom.com/wiki/Titanium_Ore">WoW Wiki Archive Titanium Ore prospecting overview</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Metal + Stone AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div></body></html>

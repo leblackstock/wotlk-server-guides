@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Drop Turn-In & Quest Page Items AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+
+.rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
+.rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
+.rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
+.rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
+
+.gear-note{color:#f5dfab;font-weight:800}
+
+.gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
+.gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
+.gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
+.gear-card strong{display:block;margin-bottom:2px}
+.gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
+.gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:860px){.gear-grid{grid-template-columns:1fr}}
+
+.fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
+.fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
+.gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
+.gear-intro strong{color:var(--gold2)}
+.gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
+.gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
+.gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
+.gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
+.gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
+.gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
+.gear-name strong{line-height:1.15}
+.gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.gear-bonus.gold{background:var(--gold)}
+.gear-bonus.purple{background:var(--purple)}
+.gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
+.gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
+.gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
+@media(max-width:1080px){.gear-showcase{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.gear-showcase{grid-template-columns:1fr}.gear-name{display:block}.gear-bonus{display:inline-block;margin-top:5px}}
+
+.group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
+.group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
+.warning-panel strong{color:#fff}
+.best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.best-card ul{margin:0;padding:0;list-style:none}
+.best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
+@media(max-width:980px){.best-grid{grid-template-columns:1fr}.group-list{display:block}.group-chip{margin:2px 2px 2px 0}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Drop Turn-In & Quest Page Items AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers tradeable drop-based reputation turn-ins, Darkmoon Faire drop turn-ins, and buyable quest-page items. Profession-made Darkmoon turn-ins, soulbound quest items, and normal crafting materials are excluded unless their main value here is a drop turn-in use.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Grouping rule:</strong> Similar drops are lumped together when they behave like the same market. Split them only when one item or page is clearly scarce.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+
+<section class="common"><h2>Best drop turn-ins to watch</h2>
+<p class="small">These are the main markets to check first. Prices are listed only in the detailed sections below to avoid duplicate/conflicting price rows.</p>
+<div class="best-grid">
+<div class="best-card"><h3>Premium TBC rep drops</h3><ul>
+<li><strong class="q-uncommon">Fel Armament</strong><div class="mini">Aldor premium turn-in.</div></li>
+<li><strong class="q-uncommon">Arcane Tome</strong><div class="mini">Scryer premium turn-in.</div></li>
+<li><strong class="q-common">Coilfang Armaments</strong><div class="mini">Cenarion Expedition repeatable turn-in.</div></li>
+</ul></div>
+<div class="best-card"><h3>Bulk rep drops</h3><ul>
+<li><strong class="q-common">Marks / Signets</strong><div class="mini">Aldor and Scryer repeatable drops.</div></li>
+<li><strong class="q-common">Arakkoa Feathers</strong><div class="mini">Lower City rep up to Honored.</div></li>
+<li><strong class="q-common">Unidentified Plant Parts</strong><div class="mini">Cenarion Expedition early rep.</div></li>
+</ul></div>
+<div class="best-card"><h3>Old-world completion drops</h3><ul>
+<li><strong class="q-common">Timbermaw beads / feathers</strong><div class="mini">Repeatable Timbermaw rep drops.</div></li>
+<li><strong class="q-uncommon">ZG coins / Hakkari Bijous</strong><div class="mini">Zandalar Tribe turn-ins.</div></li>
+<li><strong class="q-common">Quest pages</strong><div class="mini">Ashenvale and Green Hills missing-page markets.</div></li>
+</ul></div>
+</div>
+</section>
+
+<section class="common"><h2>Aldor / Scryer drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Aldor premium drop</strong><div class="mini">Aldor rep</div><div class="group-list"><span class="group-chip">Fel Armament</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>High-value Aldor turn-in. Singles and small stacks are safest.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Scryer premium drop</strong><div class="mini">Scryer rep</div><div class="group-list"><span class="group-chip">Arcane Tome</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>High-value Scryer turn-in. Often moves similarly to Fel Armament.</td>
+</tr>
+<tr>
+<td><strong class="q-common">High-tier marks/signets</strong><div class="mini">Aldor / Scryer rep</div><div class="group-list"><span class="group-chip">Mark of Sargeras</span><span class="group-chip">Sunfury Signet</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Good repeatable rep items. Lumped together because market behavior is similar.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Low-tier marks/signets</strong><div class="mini">Aldor / Scryer lower rep</div><div class="group-list"><span class="group-chip">Mark of Kil'jaeden</span><span class="group-chip">Firewing Signet</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Lower-tier rep drops. Useful for earlier rep stages; often cheaper than high-tier marks/signets.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Cenarion Expedition / Lower City drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Cenarion Expedition plant drops</strong><div class="mini">Cenarion Expedition rep</div><div class="group-list"><span class="group-chip">Unidentified Plant Parts</span><span class="group-chip">Uncatalogued Species</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Plant Parts are useful only through a limited rep range; Uncatalogued Species can still have completion value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Cenarion Expedition armaments</strong><div class="mini">Cenarion Expedition rep</div><div class="group-list"><span class="group-chip">Coilfang Armaments</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Repeatable rep drop after unlock behavior. Stronger when players are pushing old Cenarion rep.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Lower City feather drops</strong><div class="mini">Lower City rep</div><div class="group-list"><span class="group-chip">Arakkoa Feather</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>10 / 30 / 60</td>
+<td><span class="demand hi">High</span></td>
+<td>Tradeable Terokkar drop used for Lower City rep up to Honored. 30-stacks are clean because the repeatable uses 30.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Darkmoon Faire drop turn-ins only</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Darkmoon high-tier drop turn-ins</strong><div class="mini">Darkmoon Faire tickets</div><div class="group-list"><span class="group-chip">Evil Bat Eye</span><span class="group-chip">Glowing Scorpid Blood</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Drop-only Darkmoon items. Slow outside Faire timing but can spike when the Faire is active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Darkmoon plume drop turn-ins</strong><div class="mini">Darkmoon Faire tickets</div><div class="group-list"><span class="group-chip">Vibrant Plume</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Lower-tier drop turn-in. Note rep/turn-in caps may apply. Profession-made turn-ins are intentionally excluded.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Timbermaw Hold drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Timbermaw repeatable drops</strong><div class="mini">Timbermaw Hold rep</div><div class="group-list"><span class="group-chip">Deadwood Headdress Feather</span><span class="group-chip">Winterfall Spirit Beads</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Lumped together because both are repeatable Timbermaw rep drops. Check server rep values/quest unlocks.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Argent Dawn / Plaguelands drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Argent Dawn Plaguelands parts</strong><div class="mini">Argent Dawn / Light's Hope turn-ins</div><div class="group-list"><span class="group-chip">Bone Fragments</span><span class="group-chip">Crypt Fiend Parts</span><span class="group-chip">Core of Elements</span><span class="group-chip">Savage Frond</span><span class="group-chip">Dark Iron Scraps</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 10 / 30</td>
+<td><span class="demand med">Med</span></td>
+<td>Tradeable old-world part drops. Usually slow, but useful when players want quick turn-ins. 30-stacks fit several turn-ins.</td>
+</tr>
+</tbody></table></div></section>
+<section class="common"><h2>Zandalar Tribe / Zul'Gurub drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">ZG coin sets</strong><div class="mini">Zandalar Tribe rep</div><div class="group-list"><span class="group-chip">Zulian/Razzashi/Hakkari</span><span class="group-chip">Gurubashi/Vilebranch/Witherbark</span><span class="group-chip">Sandfury/Skullsplitter/Bloodscalp</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td>3-coin sets / singles</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Grouped as one market unless a specific coin set is obviously missing. Buyers often need exact 3-coin quest sets.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Hakkari Bijous</strong><div class="mini">Zandalar Tribe rep</div><div class="group-list"><span class="group-chip">Red</span><span class="group-chip">Blue</span><span class="group-chip">Green</span><span class="group-chip">Orange</span><span class="group-chip">Purple</span><span class="group-chip">Yellow</span><span class="group-chip">Bronze</span><span class="group-chip">Silver</span><span class="group-chip">Gold</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>All colors can be grouped unless one color is scarce. Bijous are usually higher value than individual coins.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Thorium Brotherhood / Blackrock drops</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Thorium Brotherhood early drops</strong><div class="mini">Thorium Brotherhood rep</div><div class="group-list"><span class="group-chip">Incendosaur Scale</span><span class="group-chip">Dark Iron Residue</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Early/mid Thorium Brotherhood turn-in drops. Dark Iron Residue often has a specific friendly-to-honored value window.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Blackrock / Core drops</strong><div class="mini">Thorium Brotherhood / old craft rep value</div><div class="group-list"><span class="group-chip">Fiery Core</span><span class="group-chip">Lava Core</span><span class="group-chip">Core Leather</span><span class="group-chip">Blood of the Mountain</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>These overlap with crafting mats. Include here only because old rep/craft demand can make them turn-in-value items too.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Quest page drops / buyable quest completion items</h2><div class="table-wrap"><table><thead><tr><th>Item group</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Turn-in notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Ashenvale Shredder Manual pages</strong><div class="mini">The Lost Pages</div><div class="group-list"><span class="group-chip">Pages 1–4</span><span class="group-chip">Pages 5–8</span><span class="group-chip">Pages 9–12</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>single pages / chapter groups</td>
+<td><span class="demand med">Med</span></td>
+<td>Group by chapter, but price individual missing pages higher if one page is scarce. Do not price completed chapters unless confirmed tradeable.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Green Hills of Stranglethorn pages</strong><div class="mini">STV page quests</div><div class="group-list"><span class="group-chip">Chapter I pages</span><span class="group-chip">Chapter II pages</span><span class="group-chip">Chapter III pages</span><span class="group-chip">Chapter IV pages</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>single pages / chapter groups</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Classic AH convenience market. Buyers usually need one exact page, so missing-page premiums can beat full-set math.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Other buyable quest-page drops</strong><div class="mini">Only if confirmed tradeable</div><div class="group-list"><span class="group-chip">server-confirmed page sets</span></div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>single pages</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Only add more page sets after confirming they drop tradeable and players can actually use them without a soulbound quest state.</td>
+</tr></tbody></table></div></section>
+
+<section class="common"><h2>Quest-state / server behavior warnings</h2>
+<div class="warning-panel"><strong>Do not blindly buy every old turn-in item.</strong> Some turn-ins require a prerequisite quest, a reputation range, an event being active, a commission/trinket, or a specific server behavior. Soulbound or non-tradeable items should not be priced in the main tables. Scourgestones are intentionally excluded from the price rows because they are usually soulbound/commission-based.</div>
+<div class="best-grid">
+<div class="best-card"><h3>Exclude from main pricing</h3><ul><li>Soulbound scourgestones</li><li>Quest-only drops that cannot be traded</li><li>Completed page chapters if they bind</li><li>Darkmoon profession-made turn-ins</li></ul></div>
+<div class="best-card"><h3>Check before stocking</h3><ul><li>Rep caps such as pre-Honored turn-ins</li><li>Event timing for Darkmoon Faire</li><li>Quest prerequisites</li><li>This server's tradeability rules</li></ul></div>
+<div class="best-card"><h3>Good stack logic</h3><ul><li>Singles for rare/premium drops</li><li>5s/10s for exact buyers</li><li>20s/30s for bulk turn-ins</li><li>Do not post giant 8-day walls</li></ul></div>
+</div></section>
+
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best movers</h3><ul>
+<li class="gold"><span class="item q-uncommon">Fel Armament / Arcane Tome</span> <span class="badge gold">premium rep</span><div class="mini">Usually the strongest old rep-drop items.</div></li>
+<li class="gold"><span class="item q-common">Coilfang Armaments / Arakkoa Feathers</span><div class="mini">Good TBC rep skips when old rep buyers are active.</div></li>
+<li class="green"><span class="item q-common">ZG coins / Hakkari Bijous</span><div class="mini">Can move when players chase Zandalar rep, recipes, or completion.</div></li>
+<li class="purple"><span class="item q-common">Quest pages</span><div class="mini">Single missing pages can sell better than a neat chapter/set average.</div></li>
+</ul></div>
+<div class="routecard"><h3>Posting checks</h3><ul>
+<li class="red">Do not include profession-made Darkmoon turn-ins here; those belong in the separate Darkmoon guide.</li>
+<li class="red">Do not price soulbound or quest-only items as AH goods.</li>
+<li class="green">Use grouped pricing for similar items until one item proves scarce.</li>
+<li class="gold">For pages, price the missing-page problem, not just the page material value.</li>
+</ul></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public reputation/quest references, old-world/TBC turn-in demand, and practical reposting behavior. Always adjust for current AH supply, event timing, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/tbc/guide/farming-arcane-tomes-scryer-reputation-items-burning-crusade-classic">Wowhead: Farming Scryer reputation items</a></li>
+<li><a href="https://www.wowhead.com/tbc/guide/lower-city-reputation-rewards-burning-crusade-classic-wow">Wowhead: Lower City reputation guide</a></li>
+<li><a href="https://www.wowhead.com/classic/guide/zandalar-tribe-reputation-wow-classic">Wowhead: Zandalar Tribe reputation guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/quest=7902/vibrant-plumes">Wowhead: Vibrant Plumes</a></li>
+<li><a href="https://www.wowhead.com/classic/guide/timbermaw-hold-reputation-wow-classic">Wowhead: Timbermaw Hold reputation guide</a></li>
+<li><a href="https://www.wowhead.com/classic/quest=9132/dark-iron-scraps">Wowhead: Dark Iron Scraps / Argent Dawn turn-ins</a></li>
+<li><a href="https://www.wowhead.com/classic/guide/thorium-brotherhood-reputation-wow-classic">Wowhead: Thorium Brotherhood reputation guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/quest=6504/the-lost-pages">Wowhead: The Lost Pages</a></li>
+<li><a href="https://www.wowhead.com/wotlk/quest=338/the-green-hills-of-stranglethorn">Wowhead: Green Hills of Stranglethorn</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Drop Turn-In & Quest Page Items AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
+</div></body></html>

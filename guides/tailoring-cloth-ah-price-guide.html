@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Tailoring / Cloth Materials AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
+.vendor-compact table{min-width:620px}
+.vendor-compact th,.vendor-compact td{padding:7px 9px}
+.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact .muted{color:var(--muted);font-size:12px}
+
+@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Tailoring / Cloth Materials AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Sorted with Northrend, rare, and high-value tailoring materials first.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Server cooldown note:</strong> Specialty cloth cooldowns are much shorter or nonexistent here, so price cooldown cloth from <strong>material cost + profit margin</strong>, not from cooldown scarcity alone.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Specialty cloth / rare tailoring cloth</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Spellweave</strong><div class="mini">Wrath specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">32g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">38g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">44g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">52g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td>1 / 2 / 4</td>
+<td><span class="demand hi">High</span></td>
+<td>Uses Imbued Frostweave + Eternal Fire. Usually premium because Eternal Fire is strong.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Moonshroud</strong><div class="mini">Wrath specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td>1 / 2 / 4</td>
+<td><span class="demand hi">High</span></td>
+<td>Uses Imbued Frostweave + Eternal Life. More supply possible if cooldowns are shorter/nonexistent.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Ebonweave</strong><div class="mini">Wrath specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">22g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">26g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td>1 / 2 / 4</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Uses Imbued Frostweave + Eternal Shadow. Good but often cheaper than Spellweave.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Spellcloth</strong><div class="mini">TBC specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">28g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">34g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Uses Imbued Netherweave + Primal Fire/Mana. Usually stronger than Primal Mooncloth if caster crafts are active.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Shadowcloth</strong><div class="mini">TBC specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Uses Imbued Netherweave + Primal Shadow/Fire style inputs. Slow but valuable if scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Primal Mooncloth</strong><div class="mini">TBC specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Uses Imbued Netherweave + Primal Life/Water. Price from material cost plus margin.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Mooncloth</strong><div class="mini">Classic specialty cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic specialty cloth. On this server, do not overprice only because of cooldown history.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Tailoring-relevant extra reagents</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Frozen Orb</strong><div class="mini">Wrath craft mat</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Used in high-end Wrath tailoring crafts and gloves/robes patterns. Check cross-prof sheet too.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Fire</strong><div class="mini">Wrath elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">20g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">24g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Spellweave input. Usually the strongest Eternal.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Infinite Dust</strong><div class="mini">Wrath enchanting input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 53s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 80s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Needed for Bolt of Imbued Frostweave and Wrath specialty cloth. Major tailoring bottleneck.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Life</strong><div class="mini">Wrath elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 52s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Moonshroud input. Price against Moonshroud profit.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Eternal Shadow</strong><div class="mini">Wrath elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Ebonweave input. Can be profitable when Ebonweave is scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Fire</strong><div class="mini">TBC elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Spellcloth / Shadowcloth input. Strong TBC primal.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Mana</strong><div class="mini">TBC elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Spellcloth input.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Water</strong><div class="mini">TBC elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Primal Mooncloth input.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Shadow</strong><div class="mini">TBC elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 87s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Shadowcloth input.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Primal Life</strong><div class="mini">TBC elemental input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Primal Mooncloth input.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Arcane Dust</strong><div class="mini">TBC enchanting input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Needed for Bolt of Imbued Netherweave. Also belongs to enchanting, but included here because tailoring uses it.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Knothide Leather</strong><div class="mini">TBC leather input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in some TBC tailoring leveling routes. Include here for tailoring buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Nexus Crystal</strong><div class="mini">Classic enchanting input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in some older tailoring recipes/pattern paths. Included here for complete tailoring-lane shopping.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Golden Pearl</strong><div class="mini">Classic pearl input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Used in older tailoring/crafting recipes. Scarce; do not hard-undercut.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Large Brilliant Shard</strong><div class="mini">Classic enchanting input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 38s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 64s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used in older crafted tailoring recipes. Buy exact counts.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Black Pearl</strong><div class="mini">Classic pearl input</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Older recipe bottleneck. Singles first.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Bolts / processed cloth</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Bolt of Imbued Frostweave</strong><div class="mini">Wrath processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Major input for Frostweave Bags and Wrath specialty cloth. Compare against Frostweave + Infinite Dust cost.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Frostweave</strong><div class="mini">Wrath processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 91s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Core Wrath tailoring input. Often better sold as raw cloth unless buyers need convenience.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Bolt of Imbued Netherweave</strong><div class="mini">TBC processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Uses Netherweave + Arcane Dust. Input for TBC specialty cloth and older crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Netherweave</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Bag/leveling input. Check raw Netherweave before buying.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Runecloth</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Convenience version of Runecloth. Useful for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Mageweave</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Good if raw Mageweave is scarce or overpriced.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Silk Cloth</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">23s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Convenience item. Compare to raw Silk before posting.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Woolen Cloth</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Can sell above raw Wool when buyers are leveling fast.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bolt of Linen Cloth</strong><div class="mini">Processed cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Useful convenience sale for low-level tailoring.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Cloth drops</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Frostweave Cloth</strong><div class="mini">Northrend cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main Wrath cloth. Core input for Frostweave Bags, Imbued Frostweave, and leveling 350-450.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Netherweave Cloth</strong><div class="mini">Outland cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Alt/bag/leveling cloth. Good steady mover on this low-pop server.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Felcloth</strong><div class="mini">Classic demon cloth</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Used for Mooncloth and older tailoring crafts. Singles sell better than stacks of 20.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Runecloth</strong><div class="mini">Classic cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Strong old-world cloth for leveling and rep paths. Good volume seller.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mageweave Cloth</strong><div class="mini">Classic cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Good mid-level cloth. Avoid giant walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Silk Cloth</strong><div class="mini">Classic cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Leveling cloth. Post 20s and a few 5s.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Wool Cloth</strong><div class="mini">Classic cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Common bottleneck for low-level Tailoring and other old crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Linen Cloth</strong><div class="mini">Classic cloth drop</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Low-level leveling cloth. Sells best in small stacks and 20s.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Spider silks / market-priced tailoring supplies</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Iceweb Spider Silk</strong><div class="mini">Wrath tailoring silk</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 52s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Wrath tailoring silk. Useful for some high-end tailoring crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Netherweb Spider Silk</strong><div class="mini">TBC tailoring silk</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC tailoring bottleneck. Good exact-count sale.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Ironweb Spider Silk</strong><div class="mini">Classic tailoring silk</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Late Classic tailoring input. Slow but scarce.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thick Spider's Silk</strong><div class="mini">Classic tailoring silk</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Old recipe bottleneck. Do not flood.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Spider's Silk</strong><div class="mini">Classic tailoring silk</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Early tailoring bottleneck. Singles and 2-stacks sell best.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Eternium Thread</strong><div class="mini">Vendor tailoring supply</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 72s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Wrath/TBC-era vendor supply. Needed for Frostweave Bags and many crafts. Do not overpay if vendor is nearby.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rune Thread</strong><div class="mini">Vendor tailoring supply</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Vendor supply used heavily in older tailoring. AH convenience item.</td>
+</tr>
+
+
+
+
+
+
+
+
+</tbody></table></div></section>
+
+<section class="common vendor-compact">
+<h2>Vendor-only supplies</h2>
+<p class="small">These are vendor items. Use the AH only for convenience, not scarcity pricing.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong class="q-common">Coarse Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Do not overpay.</td></tr>
+<tr><td><strong class="q-common">Fine Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Convenience only.</td></tr>
+<tr><td><strong class="q-common">Silken Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Convenience only.</td></tr>
+<tr><td><strong class="q-common">Heavy Silken Thread</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Convenience only.</td></tr>
+<tr><td><strong class="q-common">Blue / Red / Green / Gray Dye</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Group together; no need for separate price rows.</td></tr>
+<tr><td><strong class="q-common">Bleach</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Avoid trap AH prices.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best movers</h3><ul>
+<li class="gold"><span class="item q-rare">Spellweave / Moonshroud / Ebonweave</span><div class="mini">Treat as crafted-margin items on this server, not hard cooldown trophies.</div></li>
+<li class="gold"><span class="item q-common">Frostweave Cloth</span> <span class="badge gold">volume</span><div class="mini">Main Wrath cloth. Keep 5-stacks and 20-stacks available.</div></li>
+<li class="green"><span class="item q-uncommon">Bolt of Imbued Frostweave</span> <span class="badge green">core input</span><div class="mini">Compare against raw Frostweave + Infinite Dust before buying or posting.</div></li>
+<li class="purple"><span class="item q-common">Netherweave Cloth</span><div class="mini">Reliable old-expansion seller when the price is reasonable.</div></li>
+</ul></div>
+<div class="routecard"><h3>Do not overpay</h3><ul>
+<li class="red">Vendor-only supplies are listed in the compact section; do not treat them as scarce-market items.</li>
+<li class="red">Do not buy specialty cloth without checking its raw material cost first.</li>
+<li class="red">Do not flood old cloth. Small stacks sell better than giant walls.</li>
+<li class="green">For Frostweave Bags, check finished bag price before valuing Imbued Frostweave too high.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Price use</h3><p class="small"><strong>Quick</strong> = move it fast. <strong>Target</strong> = normal listing. <strong>High</strong> = empty AH or scarce supply.</p></div>
+<div class="routecard"><h3>Cooldown cloth math</h3><p class="small">Because cooldowns are short or nonexistent here, specialty cloth should usually be priced from inputs plus profit margin. If the input mats are cheap, the finished cloth should not be wildly expensive unless supply is truly empty.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public profession references, Wrath-era material demand, and practical reposting behavior. Always adjust for current AH supply, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/tailoring/leveling-1-450">Wowhead WotLK Tailoring leveling guide</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/tailoring-leveling-guide-wotlk-classic">WoW-Professions WotLK Tailoring leveling guide</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/tailoring-specializations-wotlk-classic">WoW-Professions Tailoring specializations</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=41595/spellweave">Wowhead WotLK Spellweave</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=41594/moonshroud">Wowhead WotLK Moonshroud</a></li>
+<li><a href="https://www.wowhead.com/wotlk/spell=56002/ebonweave">Wowhead WotLK Ebonweave</a></li>
+<li><a href="https://legacy-wow.com/wotlk-tailoring-guide/">Legacy WoW Tailoring material list</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Tailoring / Cloth Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div></body></html>

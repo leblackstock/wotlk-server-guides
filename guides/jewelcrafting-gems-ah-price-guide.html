@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Jewelcrafting / Gems AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Jewelcrafting / Gems AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Sorted with epic gems, metas, Dragon's Eye, and Northrend materials first.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post singles for expensive gems. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Cut-gem rule:</strong> Raw gems are the baseline. Popular cuts should sell for <strong>raw gem cost + cut premium</strong>. Do not cut every gem unless you know the market.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+</header>
+
+<section class="common"><h2>Epic Northrend gems / Dragon's Eye</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-epic">Cardinal Ruby</strong><div class="mini">Epic red gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">102g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">120g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">144g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">170g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Top raw epic gem. Strength, spell power, agility, armor pen, expertise, and parry cuts all come from this color.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Dragon's Eye</strong><div class="mini">JC token / Icy Prism gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">80g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">95g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">119g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">140g</span></div>
+</div></td>
+<td>1 / 2 / 3</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Raw Dragon's Eye can be sold. JC-only cuts are Bind on Pickup and limited to 3 equipped.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">King's Amber</strong><div class="mini">Epic yellow gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">93g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">110g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Strong demand from intellect, hit, haste, crit, defense, and resilience cuts.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Ametrine</strong><div class="mini">Epic orange gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">55g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">80g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">95g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Popular hybrid color for spell power/haste, strength/crit, hit/spell power, agility/crit, and socket bonuses.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Dreadstone</strong><div class="mini">Epic purple gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">49g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">58g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">72g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Hybrid color for spell power/spirit, strength/stamina, agility/stamina, expertise/stamina, and socket bonuses.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Majestic Zircon</strong><div class="mini">Epic blue gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">32g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">38g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Stamina, spirit, MP5, spell penetration. Stronger when tanks/PvP buyers are active.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Eye of Zul</strong><div class="mini">Epic green gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">55g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Hybrid green cuts. Usually cheaper than red/yellow/orange/purple.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">Nightmare Tear</strong><div class="mini">Prismatic unique gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">106g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">125g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Unique-equipped +10 all stats. Price from Dragon's Eye value plus cut convenience.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Meta gems / popular cut metas</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Earthsiege Diamond</strong><div class="mini">Uncut WotLK meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">32g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">38g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Base for Insightful, Austere, Relentless, Powerful, Bracing, and other Earthsiege metas.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Skyflare Diamond</strong><div class="mini">Uncut WotLK meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">11g 90s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Base for Chaotic, Ember, Swift, Revitalizing, and other Skyflare metas.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Insightful Earthsiege Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Healer meta. Strong demand from Holy Paladins and other mana users.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Austere Earthsiege Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Tank meta. Commonly wanted for stamina/armor builds.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Relentless Earthsiege Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Physical DPS meta. Strong for Ret/rogue/hunter/warrior style buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Chaotic Skyflare Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">55g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Caster DPS meta. Usually reliable if caster cuts are active.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Ember Skyflare Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">27g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">32g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Caster/healer option. Good budget meta when Insightful/Chaotic are expensive.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Powerful Earthsiege Diamond</strong><div class="mini">Popular cut meta</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">30g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">36g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Stamina/resilience style buyer demand. PvP/tank-adjacent.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Rare Northrend gems</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Scarlet Ruby</strong><div class="mini">Rare red gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">23g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">28g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Best rare-quality gem mover. Raw red gems feed many popular cuts.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Autumn's Glow</strong><div class="mini">Rare yellow gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Intellect, hit, haste, crit, defense, resilience cuts.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Monarch Topaz</strong><div class="mini">Rare orange gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">High</span></td>
+<td>Hybrid orange cuts sell well for socket bonuses.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Sky Sapphire</strong><div class="mini">Rare blue gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">11g 5s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">13g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Stamina/MP5/spirit cuts. Stronger when tanks and PvP buyers need gems.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Twilight Opal</strong><div class="mini">Rare purple gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>Med</td>
+<td><span class="demand low">1 / 2 / 5</span></td>
+<td>Purple hybrid cuts. Often slower than red/yellow/orange.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Forest Emerald</strong><div class="mini">Rare green gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Green hybrid cuts. Usually lower demand, but useful for socket activation.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Uncommon Northrend gems / Icy Prism materials</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Bloodstone</strong><div class="mini">Uncommon red gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 36s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 60s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Red uncommon. Used for leveling, cheap cuts, and some daily-style demand.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Huge Citrine</strong><div class="mini">Uncommon orange gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 19s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 40s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful for Earthsiege-related materials and leveling routes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Chalcedony</strong><div class="mini">Uncommon blue gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Icy Prism reagent. Good small-stack item.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Dark Jade</strong><div class="mini">Uncommon green gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 44s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 70s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Icy Prism reagent and Earthsiege-related material. Small stacks sell well.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Shadow Crystal</strong><div class="mini">Uncommon purple gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Icy Prism reagent. Do not dump giant stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Sun Crystal</strong><div class="mini">Uncommon yellow gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 2s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Yellow uncommon. Leveling and cheap cuts.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Prospecting ore / JC input ore</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Titanium Ore</strong><div class="mini">Best WotLK prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7g 65s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9g</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Main high-end prospecting input. Compare ore cost against epic gem/rare gem expected value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Saronite Ore</strong><div class="mini">Main WotLK prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">59s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">94s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 10s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand hi">High</span></td>
+<td>Good for uncommon/rare Northrend gems. Watch stack price carefully.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Cobalt Ore</strong><div class="mini">Early WotLK prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">72s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Useful for early Northrend gems and leveling.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Adamantite Ore</strong><div class="mini">TBC prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC rare gem source. Can spike when TBC cuts/crafts are active.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Fel Iron Ore</strong><div class="mini">TBC prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early TBC prospecting/leveling ore.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thorium Ore</strong><div class="mini">Classic prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high-end gem source. Often scarce on this low-pop server.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mithril Ore</strong><div class="mini">Classic prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Mid-level JC/prospecting ore. Compare to bar/engineering demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Iron Ore</strong><div class="mini">Classic prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">15s 30c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early/mid prospecting input. Slow but useful for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Tin Ore</strong><div class="mini">Classic prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early prospecting input. Small stacks help levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Copper Ore</strong><div class="mini">Classic prospecting ore</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td>5 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early JC/mining input. Do not flood.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Outland / TBC gems and meta bases</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-rare">Living Ruby</strong><div class="mini">TBC rare red gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Best TBC rare gem mover. Red cuts usually hold the strongest old-expansion demand.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Dawnstone</strong><div class="mini">TBC rare yellow gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Yellow TBC rare gem.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Noble Topaz</strong><div class="mini">TBC rare orange gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Hybrid TBC rare gem.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Star of Elune</strong><div class="mini">TBC rare blue gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 82s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Blue TBC rare gem.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Nightseye</strong><div class="mini">TBC rare purple gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Purple TBC rare gem. Slower but useful for old sockets.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Talasite</strong><div class="mini">TBC rare green gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Green TBC rare gem. Usually lower demand.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Blood Garnet</strong><div class="mini">TBC uncommon red gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">55s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">65s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>TBC leveling gem. Red color helps it move better than most.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Golden Draenite</strong><div class="mini">TBC uncommon yellow gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling gem.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Azure Moonstone</strong><div class="mini">TBC uncommon blue gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling gem.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Flame Spessarite</strong><div class="mini">TBC uncommon orange gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling gem.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Shadow Draenite</strong><div class="mini">TBC uncommon purple gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling gem.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Deep Peridot</strong><div class="mini">TBC uncommon green gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>TBC leveling gem. Usually weakest TBC uncommon.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Earthstorm Diamond</strong><div class="mini">TBC meta base</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Older meta base. Slower than WotLK meta diamonds.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Skyfire Diamond</strong><div class="mini">TBC meta base</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td>1 / 2</td>
+<td><span class="demand med">Med</span></td>
+<td>Older meta base. Can sell when old cuts are scarce.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Classic / old-world gems</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-uncommon">Azerothian Diamond</strong><div class="mini">Classic rare gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Classic high-end gem. Scarce and used in old recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Huge Emerald</strong><div class="mini">Classic rare gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high-end gem. Small stacks only.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Blue Sapphire</strong><div class="mini">Classic rare gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high-end gem; sometimes needed for old crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Large Opal</strong><div class="mini">Classic rare gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 98s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g 50s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic high-end gem. Can spike if AH is empty.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Star Ruby</strong><div class="mini">Classic rare gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 34s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic red gem. Good old leveling/craft material.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Aquamarine</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 49s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 75s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Mid-level classic gem. Often useful in older recipes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Citrine</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Classic mid-level gem. Useful for leveling and old crafts.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Jade</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Can bottleneck older JC leveling. Singles/2-stacks.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Moss Agate</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">68s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 25s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Often a low-level JC bottleneck. Do not undercut hard if supply is thin.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Shadowgem</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60s</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Early JC gem. Useful in leveling routes.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Tigerseye</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5s 10c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">17s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early gem. Low price, but can sell to levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Malachite</strong><div class="mini">Classic gem</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">12s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Very early gem. Keep stacks small.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Stone / crafted JC settings</h2><div class="table-wrap"><table><thead><tr><th>Mat</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-common">Dense Stone</strong><div class="mini">Classic statue/leveling stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Med</span></td>
+<td>JC statue/leveling material. Also used elsewhere, but included for JC buyers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Solid Stone</strong><div class="mini">Classic statue/leveling stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">7s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">13s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Statue/leveling material. Slow but useful.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Heavy Stone</strong><div class="mini">Classic statue/leveling stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">6s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">10s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Statue/leveling material. Small margins.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Coarse Stone</strong><div class="mini">Classic statue/leveling stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">4s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">7s 60c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">9s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Early statue/leveling material. Useful to levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Rough Stone</strong><div class="mini">Classic statue/leveling stone</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1s 70c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">3s 40c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4s</span></div>
+</div></td>
+<td>20</td>
+<td><span class="demand low">Low</span></td>
+<td>Very early JC/statue material. Avoid long walls.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Delicate Copper Wire</strong><div class="mini">Crafted JC setting</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">11s 90c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">14s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">21s 20c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25s</span></div>
+</div></td>
+<td>5 / 10 / 20</td>
+<td><span class="demand med">Med</span></td>
+<td>Copper Bar input. Used heavily in early JC.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Bronze Setting</strong><div class="mini">Crafted JC setting</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">42s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Bronze Bar input. Good convenience item for levelers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Mithril Filigree</strong><div class="mini">Crafted JC setting</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46s 80c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">76s 50c</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Mithril Bar input. Often needed in mid-level JC.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Thorium Setting</strong><div class="mini">Crafted JC setting</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">85s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">1g 28s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">1g 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">2g 12s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">2g 50s</span></div>
+</div></td>
+<td>5 / 10</td>
+<td><span class="demand med">Med</span></td>
+<td>Thorium Bar input. Convenience sale for late classic JC.</td>
+</tr></tbody></table></div></section>
+<section class="common"><h2>Cut-gem pricing rules</h2><div class="table-wrap"><table><thead><tr><th>Cut group</th><th>Quick premium</th><th>Target premium</th><th>High premium</th><th>Stacks</th><th>Demand</th><th>Notes</th></tr></thead><tbody><tr>
+<td><strong class="q-epic">High-demand epic red cuts</strong><div class="mini">Cardinal Ruby cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 45g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand vh">Very High</span></td>
+<td>Bold, Runed, Delicate, Fractured, Precise, Flashing. Red epic cuts usually have the best liquidity.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">High-demand epic yellow cuts</strong><div class="mini">King's Amber cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 15g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 30g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Brilliant, Rigid, Quick, Smooth, Thick, Mystic depending on buyer demand.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">High-demand epic orange cuts</strong><div class="mini">Ametrine cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 15g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 28g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">High</span></td>
+<td>Reckless, Potent, Veiled, Luminous, Glinting, Deadly, Inscribed style cuts.</td>
+</tr>
+<tr>
+<td><strong class="q-epic">High-demand epic blue cuts</strong><div class="mini">Majestic Zircon cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 20g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Solid, Sparkling, Stormy, Lustrous. Stamina/PvP demand matters most.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">High-demand rare cuts</strong><div class="mini">Rare-quality Northrend cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 2g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 4g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 8g</span></div>
+</div></td>
+<td>1</td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Good for cheap gear, alts, and people undergeared for epic gems.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Budget uncommon cuts</strong><div class="mini">Green-quality Northrend cuts</div></td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 20s</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 50s</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">about 85%</span></div>
+<div><span class="label">Buyout</span><span class="buyout">raw + 1g</span></div>
+</div></td>
+<td>1 / 2 / 5</td>
+<td><span class="demand med">Med</span></td>
+<td>Cheap leveling/placeholder cuts. Do not list too many.</td>
+</tr></tbody></table></div></section>
+
+<section class="common vendor-compact">
+<h2>Vendor-only JC supplies</h2>
+<p class="small">These are vendor/trainer goods. Use the AH only for convenience, not scarcity pricing.</p>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>AH rule</th><th>Notes</th></tr></thead><tbody><tr><td><strong class="q-common">Jeweler's Setting</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Most common vendor trap item. Needed often, but easy to buy from vendors.</td></tr>
+<tr><td><strong class="q-common">Simple Grinder</strong></td><td class="vendor-rule">Vendor + tiny tip</td><td class="muted">Only list for convenience if it sells on this server.</td></tr>
+<tr><td><strong class="q-common">Design/vendor-bought basics</strong></td><td class="vendor-rule">Do not price like rare drops</td><td class="muted">Vendor designs should not be treated as scarce unless the vendor is genuinely annoying to reach.</td></tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Strategy notes</h2><div class="routebox">
+<div class="routecard"><h3>Best movers</h3><ul>
+<li class="gold"><span class="item q-epic">Cardinal Ruby</span> <span class="badge gold">top gem</span><div class="mini">Usually the strongest raw/cut gem market.</div></li>
+<li class="gold"><span class="item q-rare">Dragon's Eye</span> <span class="badge gold">token value</span><div class="mini">Raw item can sell; cut JC gems are for jewelcrafters only.</div></li>
+<li class="green"><span class="item q-rare">Insightful / Austere / Relentless / Chaotic metas</span><div class="mini">Popular meta cuts deserve a real cut premium.</div></li>
+<li class="purple"><span class="item q-common">Titanium Ore</span><div class="mini">Prospecting value depends on epic gem and Dragon's Eye market.</div></li>
+</ul></div>
+<div class="routecard"><h3>Do not overcut</h3><ul>
+<li class="red">Do not cut every raw gem just because you can. Raw gems are more flexible.</li>
+<li class="red">Avoid flooding 8-day walls of the same cut gem.</li>
+<li class="green">For expensive gems, post singles first.</li>
+<li class="gold">For cheap gems, small stacks help levelers and Icy Prism buyers.</li>
+</ul></div>
+</div></section>
+
+<section class="common"><h2>Small reminders</h2><div class="routebox">
+<div class="routecard"><h3>Icy Prism check</h3><p class="small">Icy Prism uses <strong>Frozen Orb + Chalcedony + Shadow Crystal + Dark Jade</strong>. Compare material cost against the expected rare gems, epic gem chance, and Dragon's Eye chance.</p></div>
+<div class="routecard"><h3>Cut premium</h3><p class="small">For popular cuts, price from raw gem value plus a fair tip/premium. For unpopular cuts, raw gem value may be better than cutting.</p></div>
+</div></section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points, not fixed market rules. They are calibrated from public profession references, Wrath-era gem demand, and practical reposting behavior. Always adjust for current AH supply, guild demand, and trade-chat pricing.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/jewelcrafting/overview">Wowhead WotLK Jewelcrafting overview</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/jewelcrafting/gems-sockets">Wowhead WotLK gems and sockets guide</a></li>
+<li><a href="https://www.wow-professions.com/wotlk/jewelcrafting-leveling-guide-wotlk-classic">WoW-Professions WotLK Jewelcrafting leveling guide</a></li>
+<li><a href="https://www.wowhead.com/wotlk/spell=62242/icy-prism">Wowhead WotLK Icy Prism</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=42225/dragons-eye">Wowhead WotLK Dragon's Eye</a></li>
+<li><a href="https://www.wowhead.com/wotlk/items/gems">Wowhead WotLK gem list</a></li>
+<li><a href="https://wotlkdb.com/?items=3">WotLKDB gem category</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Jewelcrafting / Gems AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
+</div></body></html>
