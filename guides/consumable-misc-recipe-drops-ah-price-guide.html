@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Consumable & Misc Recipe Drops AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+
+.rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
+.rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
+.rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
+.rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
+
+.gear-note{color:#f5dfab;font-weight:800}
+
+.gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
+.gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
+.gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
+.gear-card strong{display:block;margin-bottom:2px}
+.gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
+.gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:860px){.gear-grid{grid-template-columns:1fr}}
+
+.fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
+.fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
+.gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
+.gear-intro strong{color:var(--gold2)}
+.gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
+.gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
+.gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
+.gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
+.gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
+.gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
+.gear-name strong{line-height:1.15}
+.gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.gear-bonus.gold{background:var(--gold)}
+.gear-bonus.purple{background:var(--purple)}
+.gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
+.gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
+.gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
+@media(max-width:1080px){.gear-showcase{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.gear-showcase{grid-template-columns:1fr}.gear-name{display:block}.gear-bonus{display:inline-block;margin-top:5px}}
+
+.group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
+.group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
+.warning-panel strong{color:#fff}
+.best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.best-card ul{margin:0;padding:0;list-style:none}
+.best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
+@media(max-width:980px){.best-grid{grid-template-columns:1fr}.group-list{display:block}.group-chip{margin:2px 2px 2px 0}}
+
+.recipe-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.recipe-index a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-weight:900}
+.recipe-index a span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:3px}
+.recipe-chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.recipe-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted)}
+.recipe-chip.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.recipe-chip.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.recipe-chip.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.pop{display:inline-block;min-width:72px;text-align:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;border:1px solid var(--line)}
+.pop.s{color:#111;background:var(--gold);border-color:transparent}.pop.a{color:#fff;background:rgba(202,167,255,.25);border-color:rgba(202,167,255,.45)}.pop.b{color:#bff2bf;background:rgba(142,224,142,.10);border-color:rgba(142,224,142,.35)}.pop.c{color:var(--muted);background:rgba(255,255,255,.035)}
+.no-price{min-width:122px;border:1px solid rgba(255,140,140,.28);background:rgba(255,140,140,.06);border-radius:11px;padding:8px 9px;font-weight:900;color:#ffc0c0;text-align:center}
+.source-list a{color:var(--cyan)}
+@media(max-width:980px){.recipe-index{grid-template-columns:1fr}.recipe-chiprow{display:block}.recipe-chip{margin:2px 2px 2px 0}}
+
+.specific-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.specific-note strong{color:#fff}
+.prof-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
+
+.pattern-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.pattern-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.pattern-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.pattern-card p{margin:0;color:var(--muted);font-size:13px}
+.pattern-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+.market-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.market-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.market-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.market-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.prof-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.prof-note strong{color:#fff}
+.rarity-audit{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+.rarity-audit strong{color:#fff}
+.source-list a{color:var(--cyan)}
+@media(max-width:980px){.pattern-summary{grid-template-columns:1fr}}
+
+.utility-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.utility-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.utility-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.utility-card p{margin:0;color:var(--muted);font-size:13px}
+.utility-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+.utility-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.utility-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.utility-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.utility-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.scope-note strong{color:#fff}
+.audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+.audit-note strong{color:#fff}
+.excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
+.excluded-list strong{color:#ffc0c0}
+@media(max-width:980px){.utility-summary,.excluded-list{grid-template-columns:1fr}}
+
+.misc-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.misc-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.misc-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.misc-card p{margin:0;color:var(--muted);font-size:13px}
+.misc-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+.misc-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.misc-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.misc-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.misc-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.scope-note strong{color:#fff}
+.audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+.audit-note strong{color:#fff}
+.excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
+.excluded-list strong{color:#ffc0c0}
+.source-list a{color:var(--cyan)}
+@media(max-width:980px){.misc-summary,.excluded-list{grid-template-columns:1fr}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Consumable & Misc Recipe Drops AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers specific AH-priceable <strong>Alchemy recipe drops</strong>, <strong>Cooking recipe drops</strong>, and the <strong>Book of Glyph Mastery</strong>. Gear patterns, Enchanting formulas, Jewelcrafting designs, Engineering schematics, vendor recipes, and BoP recipes belong outside this guide.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. These recipes sell as <strong>single items</strong>, not stacks. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="scope-note"><strong>Scope:</strong> This page is intentionally small. It catches the consumable/misc recipe drops that do not belong in the Gear Pattern Drops guide or the Utility Recipe Drops guide. BoP, trainer, vendor, reputation, and research-only recipes are not priced.</div>
+<div class="audit-note"><strong>BoP audit:</strong> Major Protection Potion, Mighty Protection Potion, Haste Potion, Fel Mana Potion, and similar BoP alchemy drops are intentionally excluded from AH pricing.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+
+<div class="misc-summary">
+<div class="misc-card"><h3>Alchemy</h3><div class="big">13</div><p>Sellable consumable recipe drops only; no Major/Mighty BoP recipes.</p></div>
+<div class="misc-card"><h3>Cooking</h3><div class="big">1</div><p>Only the major AH-priceable drop recipe worth its own row.</p></div>
+<div class="misc-card"><h3>Inscription</h3><div class="big">1</div><p>Book of Glyph Mastery as the major misc unlock item.</p></div>
+</div>
+</header>
+
+<section class="common"><h2>Best consumable / misc recipe drops to check first</h2>
+<p class="small">Non-priced watchlist only. Exact prices are in the sections below.</p>
+<div class="best-grid">
+<div class="best-card"><h3>Best overall</h3><ul>
+<li><strong class="q-uncommon">Book of Glyph Mastery</strong><div class="mini">Top misc recipe-drop item.</div></li>
+<li><strong class="q-common">Recipe: Savory Deviate Delight</strong><div class="mini">Top cooking recipe drop.</div></li>
+<li><strong class="q-common">Recipe: Limited Invulnerability Potion</strong><div class="mini">Strongest utility-potion recipe here.</div></li>
+</ul></div>
+<div class="best-card"><h3>Best alchemy watches</h3><ul>
+<li><strong class="q-common">Recipe: Swiftness Potion</strong><div class="mini">Recognizable movement recipe.</div></li>
+<li><strong class="q-common">Recipe: Destruction Potion</strong><div class="mini">TBC caster burst recipe.</div></li>
+<li><strong class="q-common">Recipe: Greater Shadow Protection Potion</strong><div class="mini">Most interesting Greater protection recipe.</div></li>
+</ul></div>
+<div class="best-card"><h3>Do not price here</h3><ul>
+<li><strong class="q-common">Major/Mighty Protection recipes</strong><div class="mini">BoP in WotLK-style data.</div></li>
+<li><strong class="q-common">Haste Potion recipe</strong><div class="mini">BoP in WotLK-style data.</div></li>
+<li><strong class="q-common">Vendor recipes</strong><div class="mini">Different market; exclude from drop guide.</div></li>
+</ul></div>
+</div>
+</section>
+
+<section class="common"><h2>Alchemy consumable recipe drops</h2><p class="small">This section prices sellable recipe items, not the finished potions. Major/Mighty protection recipes are excluded because they are BoP in WotLK-style data.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-common">Recipe: Limited Invulnerability Potion</strong><div class="misc-tag hot">classic utility</div></td>
+<td>PvP / utility potion recipe</td>
+<td>Classic recipe drop / fishing source</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Strongest Classic utility-potion recipe in this guide. Good for collectors, twinks, and PvP-minded alchemists.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Swiftness Potion</strong><div class="misc-tag hot">classic movement</div></td>
+<td>Movement potion recipe</td>
+<td>Classic recipe drop / fishing source</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Recognizable old movement recipe. Usually sells from twink/leveling/collector value, not raid value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Destruction Potion</strong><div class="misc-tag hot">TBC caster</div></td>
+<td>TBC caster burst potion recipe</td>
+<td>TBC world-drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">76g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">90g</span></div>
+</div></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Sellable TBC alchemy recipe. Caster burst/fun value; stronger if few alchemists know it.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Insane Strength Potion</strong><div class="misc-tag ok">TBC melee</div></td>
+<td>TBC melee burst potion recipe</td>
+<td>TBC world-drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Sellable TBC alchemy recipe. Melee niche; not as universal as Destruction Potion.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Mighty Rage Potion</strong><div class="misc-tag ok">classic rage</div></td>
+<td>Classic warrior/druid rage potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">18g 70s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">22g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Recognizable rage-potion recipe. Better if warriors/druids are active and no copy is posted.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Elixir of Giant Growth</strong><div class="misc-tag ok">classic fun</div></td>
+<td>Cosmetic/fun elixir recipe</td>
+<td>Classic Kalimdor drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Fun size-changing elixir recipe. Pairs mentally with Deviate/Fun-food markets; slow but recognizable.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Invisibility Potion</strong><div class="misc-tag ">classic utility</div></td>
+<td>Utility potion recipe</td>
+<td>Classic recipe drop / fishing source</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Utility potion recipe. Slow buyer pool, but useful to collectors and oddball farmers.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Elixir of Dream Vision</strong><div class="misc-tag ">classic niche</div></td>
+<td>Novelty/scouting elixir recipe</td>
+<td>Classic recipe drop</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">2g 55s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">3g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">8g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">10g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche novelty recipe. Rare can mean expensive, but actual use is thin; price conservatively.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Greater Fire Protection Potion</strong><div class="misc-tag ok">classic protection</div></td>
+<td>Classic protection potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Sellable Greater protection recipe. Old raid/collector value; not the same as BoP Major/Mighty versions.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Greater Frost Protection Potion</strong><div class="misc-tag ok">classic protection</div></td>
+<td>Classic protection potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Sellable Greater protection recipe. Frost version has old Sapphiron/Naxx nostalgia value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Greater Nature Protection Potion</strong><div class="misc-tag ok">classic protection</div></td>
+<td>Classic protection potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Sellable Greater protection recipe. Old AQ/Nature-prep nostalgia can help demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Greater Shadow Protection Potion</strong><div class="misc-tag hot">classic protection</div></td>
+<td>Classic protection potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Often the most interesting Greater protection recipe because Shadow protection is memorable and mats can be awkward.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Recipe: Greater Arcane Protection Potion</strong><div class="misc-tag ">classic protection</div></td>
+<td>Classic protection potion recipe</td>
+<td>Classic drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Sellable Greater protection recipe, but usually weaker demand than Shadow/Fire/Frost/Nature.</td>
+</tr></tbody></table></div>
+</section>
+<section class="common"><h2>Cooking recipe drops</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-common">Recipe: Savory Deviate Delight</strong><div class="misc-tag hot">classic famous</div></td>
+<td>Famous cosmetic/fun food recipe</td>
+<td>Classic Barrens zone-drop recipe</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><span class="demand vh">Very High</span></td>
+<td>Best cooking recipe drop. Buyers recognize the pirate/ninja fun-food market and often pay for the recipe instead of farming it.</td>
+</tr></tbody></table></div>
+</section>
+<section class="common"><h2>Inscription misc recipe drop</h2><p class="small">Book of Glyph Mastery is included here because it is a major recipe-unlock item but does not fit the Gear Pattern or Utility Recipe guide categories.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-uncommon">Book of Glyph Mastery</strong><div class="misc-tag hot">Wrath glyph book</div></td>
+<td>Glyph recipe unlock book</td>
+<td>Wrath Northrend world-drop book</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">255g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">300g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">595g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">700g</span></div>
+</div></td>
+<td><span class="demand vh">Very High</span></td>
+<td>Best misc recipe-drop item. Scribes buy these to unlock glyph recipes, so supply can disappear quickly on a low-pop AH.</td>
+</tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Excluded / check-first recipes</h2>
+<div class="excluded-list">
+<div><strong>Recipe: Haste Potion</strong><br><span class="small">BoP in WotLK item data; do not AH-price unless this server changed it.</span></div>
+<div><strong>Major Protection Potion recipes</strong><br><span class="small">BoP TBC dungeon/rep-style recipes. Excluded.</span></div>
+<div><strong>Mighty Protection Potion recipes</strong><br><span class="small">BoP Wrath drops. Excluded.</span></div>
+<div><strong>Recipe: Fel Mana Potion</strong><br><span class="small">BoP in WotLK data. Excluded.</span></div>
+<div><strong>Vendor recipes</strong><br><span class="small">Not drop recipes. Use a vendor-flip guide if needed.</span></div>
+<div><strong>Research-only glyphs</strong><br><span class="small">Not AH recipe drops. Only the book item belongs here.</span></div>
+</div>
+</section>
+
+<section class="common"><h2>Pricing rules</h2>
+<div class="routebox">
+<div class="routecard"><h3>Post style</h3><ul>
+<li class="green">Post recipes/books as singles.</li>
+<li class="gold">Use 12h/24h for most recipes; 48h only for Book of Glyph Mastery or very scarce classics.</li>
+<li class="red">Do not list multiple copies of the same slow recipe unless demand is proven.</li>
+</ul></div>
+<div class="routecard"><h3>Value logic</h3><ul>
+<li class="gold">A famous finished consumable makes the recipe easier to sell.</li>
+<li class="green">Book of Glyph Mastery is priced higher because it unlocks random glyph recipes for scribes.</li>
+<li class="red">If a recipe is BoP on this server, remove it from this guide instead of pricing it.</li>
+</ul></div>
+</div>
+</section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points for this server. This standalone guide lists specific AH-priceable consumable and misc recipe drops only. Always check current AH supply before buying or reposting.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/alchemy/recipes">Wowhead: Alchemy Profession Recipes — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/cooking/recipes">Wowhead: Cooking Profession Recipes — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/inscription/overview">Wowhead: Inscription Profession Overview — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=45912/book-of-glyph-mastery">Wowhead: Book of Glyph Mastery</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=6661/recipe-savory-deviate-delight">Wowhead: Recipe: Savory Deviate Delight</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=3395/recipe-limited-invulnerability-potion">Wowhead: Recipe: Limited Invulnerability Potion</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=22914/recipe-destruction-potion">Wowhead: Recipe: Destruction Potion</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=22903/recipe-insane-strength-potion">Wowhead: Recipe: Insane Strength Potion</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=44568/recipe-mighty-shadow-protection-potion">Wowhead: Recipe: Mighty Shadow Protection Potion</a> — BoP exclusion check</li>
+<li><a href="https://www.wowhead.com/wotlk/item=22920/recipe-major-fire-protection-potion">Wowhead: Recipe: Major Fire Protection Potion</a> — BoP exclusion check</li>
+<li><a href="https://www.wowhead.com/wotlk/item=35295/recipe-haste-potion">Wowhead: Recipe: Haste Potion</a> — BoP exclusion check</li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Consumable & Misc Recipe Drops AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
+</div></body></html>

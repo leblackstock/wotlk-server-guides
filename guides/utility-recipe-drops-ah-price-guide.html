@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Utility Recipe Drops AH Price Guide — Low Pop</title><style>
+:root{--bg:#0f1317;--panel:#171d24;--panel2:#1e2630;--text:#e8edf2;--muted:#aeb8c2;--line:#2b3541;--gold:#f0c15a;--gold2:#ffe1a0;--green:#8ee08e;--red:#ff8c8c;--purple:#caa7ff;--orange:#ffb071;--cyan:#72e3ff;--q-common:#ffffff;--q-uncommon:#1eff00;--q-rare:#0070dd;--q-epic:#a335ee}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}.wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
+header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}.sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}.note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}.p-quick{background:var(--orange)}.p-bid{background:var(--cyan)}.p-target{background:var(--gold)}.p-watch{background:var(--red)}
+.q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}.q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}.q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}.q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
+.common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}.common h2{margin:0 0 10px;font-size:20px;color:#fff}.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}tr:last-child td{border-bottom:0}td{color:var(--muted)}strong{color:#fff}.mini{color:var(--muted);font-size:13px;margin-top:2px}.small{font-size:13px;color:var(--muted)}th:nth-child(5),td:nth-child(5){min-width:92px;white-space:nowrap}
+.pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}.pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}.label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}.bid,.buyout{font-weight:900;white-space:nowrap}.pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}.pricepair.quick .bid{color:#ffc491}.pricepair.quick .buyout{color:#ffd3ad}.pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}.pricepair.high .bid{color:#d8c2ff}.pricepair.high .buyout{color:#eadcff}.pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}.pricepair.target .label{color:#e6d7aa}.pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}.pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
+.demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}.demand.vh{background:var(--green)}.demand.hi{background:var(--gold)}.demand.med{background:var(--cyan)}.demand.low{background:var(--muted)}
+.routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}.routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}.routecard h3{margin-top:0;color:#fff}ul{margin:0;padding-left:0;list-style:none}li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}.item{font-weight:800}.badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}.badge.gold{background:var(--gold)}.badge.green{background:var(--green)}.badge.purple{background:var(--purple)}
+.vendor-compact table{min-width:620px}.vendor-compact th,.vendor-compact td{padding:7px 9px}.vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}.vendor-compact .muted{color:var(--muted);font-size:12px}
+.source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:980px){.routebox{grid-template-columns:1fr}h1{font-size:24px}}@media print{body{background:#fff;color:#000}.common,header{box-shadow:none;break-inside:avoid}.wrap{padding:10px}}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+.ref-compact table{min-width:900px}
+.ref-compact th,.ref-compact td{padding:8px 9px}
+.ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
+.vendor-compact table{min-width:720px}
+@media(max-width:760px){.pricepair{min-width:104px}.ref-compact table{min-width:760px}}
+
+.ref-compact table{min-width:900px}
+
+.pricepair{max-width:150px}
+.pricepair .buyout,.pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
+
+.rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
+.rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
+.rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
+.rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
+
+.gear-note{color:#f5dfab;font-weight:800}
+
+.gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
+.gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
+.gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
+.gear-card strong{display:block;margin-bottom:2px}
+.gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
+.gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:860px){.gear-grid{grid-template-columns:1fr}}
+
+.fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
+.fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
+.gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
+.gear-intro strong{color:var(--gold2)}
+.gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
+.gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
+.gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
+.gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
+.gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
+.gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
+.gear-name strong{line-height:1.15}
+.gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.gear-bonus.gold{background:var(--gold)}
+.gear-bonus.purple{background:var(--purple)}
+.gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
+.gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
+.gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
+.gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
+.gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
+@media(max-width:1080px){.gear-showcase{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.gear-showcase{grid-template-columns:1fr}.gear-name{display:block}.gear-bonus{display:inline-block;margin-top:5px}}
+
+.group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
+.group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
+.group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
+.warning-panel strong{color:#fff}
+.best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.best-card ul{margin:0;padding:0;list-style:none}
+.best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
+@media(max-width:980px){.best-grid{grid-template-columns:1fr}.group-list{display:block}.group-chip{margin:2px 2px 2px 0}}
+
+.recipe-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.recipe-index a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-weight:900}
+.recipe-index a span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:3px}
+.recipe-chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.recipe-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted)}
+.recipe-chip.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.recipe-chip.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.recipe-chip.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.pop{display:inline-block;min-width:72px;text-align:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;border:1px solid var(--line)}
+.pop.s{color:#111;background:var(--gold);border-color:transparent}.pop.a{color:#fff;background:rgba(202,167,255,.25);border-color:rgba(202,167,255,.45)}.pop.b{color:#bff2bf;background:rgba(142,224,142,.10);border-color:rgba(142,224,142,.35)}.pop.c{color:var(--muted);background:rgba(255,255,255,.035)}
+.no-price{min-width:122px;border:1px solid rgba(255,140,140,.28);background:rgba(255,140,140,.06);border-radius:11px;padding:8px 9px;font-weight:900;color:#ffc0c0;text-align:center}
+.source-list a{color:var(--cyan)}
+@media(max-width:980px){.recipe-index{grid-template-columns:1fr}.recipe-chiprow{display:block}.recipe-chip{margin:2px 2px 2px 0}}
+
+.specific-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.specific-note strong{color:#fff}
+.prof-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
+
+.pattern-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.pattern-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.pattern-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.pattern-card p{margin:0;color:var(--muted);font-size:13px}
+.pattern-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+.market-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.market-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.market-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.market-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.prof-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.prof-note strong{color:#fff}
+.rarity-audit{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+.rarity-audit strong{color:#fff}
+.source-list a{color:var(--cyan)}
+@media(max-width:980px){.pattern-summary{grid-template-columns:1fr}}
+
+.utility-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.utility-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+.utility-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+.utility-card p{margin:0;color:var(--muted);font-size:13px}
+.utility-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+.utility-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+.utility-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+.utility-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+.utility-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
+.scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+.scope-note strong{color:#fff}
+.audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+.audit-note strong{color:#fff}
+.excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
+.excluded-list strong{color:#ffc0c0}
+@media(max-width:980px){.utility-summary,.excluded-list{grid-template-columns:1fr}}
+.site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}.site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}</style></head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<header>
+<h1>WotLK 3.3.5 Utility Recipe Drops AH Price Guide</h1>
+<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers specific AH-priceable <strong>Enchanting formulas</strong>, <strong>Jewelcrafting designs</strong>, and <strong>Engineering schematics</strong> that unlock useful services, gem cuts, enchants, scopes, reflectors, pets, or gadgets. Gear patterns, consumable recipes, glyph books, and BoP recipes belong outside this guide.</p>
+<div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Utility recipes sell as <strong>single items</strong>, not stacks. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
+<div class="scope-note"><strong>Scope:</strong> BoP recipes are ignored. Trainer, vendor, reputation, token, and research-only recipes are not priced here. For Jewelcrafting, this guide uses only the WotLK world-drop BoE designs that Wowhead lists as tradeable.</div>
+<div class="audit-note"><strong>Audit note:</strong> Removed known BoP utility drops such as <em>Formula: Enchant Gloves - Angler</em> and <em>Schematic: Jeeves</em>. Ulduar enchanting formulas are not priced here unless the server proves they are AH-tradeable.</div>
+<div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
+
+<div class="utility-summary">
+<div class="utility-card"><h3>Enchanting</h3><div class="big">16</div><p>Classic service formulas plus WotLK cloak-resistance drops.</p></div>
+<div class="utility-card"><h3>Jewelcrafting</h3><div class="big">11</div><p>Only WotLK BoE world-drop designs.</p></div>
+<div class="utility-card"><h3>Engineering</h3><div class="big">12</div><p>Sellable old schematics for gadgets, reflectors, scopes, and pets.</p></div>
+</div>
+</header>
+
+<section class="common"><h2>Best utility recipe drops to check first</h2>
+<p class="small">Non-priced watchlist only. Actual prices are in the profession sections below.</p>
+<div class="best-grid">
+<div class="best-card"><h3>Best Enchanting</h3><ul>
+<li><strong class="q-uncommon">Formula: Enchant Weapon - Crusader</strong><div class="mini">Top old weapon-enchant formula.</div></li>
+<li><strong class="q-uncommon">Formula: Enchant Weapon - Spell Power</strong><div class="mini">Premium caster service formula.</div></li>
+<li><strong class="q-uncommon">Formula: Enchant Weapon - Lifestealing</strong><div class="mini">Recognizable classic weapon formula.</div></li>
+</ul></div>
+<div class="best-card"><h3>Best Jewelcrafting</h3><ul>
+<li><strong class="q-rare">Design: Purified Twilight Opal</strong><div class="mini">Top BoE world-drop cut.</div></li>
+<li><strong class="q-rare">Design: Inscribed Monarch Topaz</strong><div class="mini">Strong melee/stat design.</div></li>
+<li><strong class="q-rare">Design: Glinting Twilight Opal</strong><div class="mini">Useful BoE purple cut.</div></li>
+</ul></div>
+<div class="best-card"><h3>Best Engineering</h3><ul>
+<li><strong class="q-uncommon">Schematic: Lifelike Mechanical Toad</strong><div class="mini">Best collector/pet schematic.</div></li>
+<li><strong class="q-uncommon">Reflector schematics</strong><div class="mini">PvP/collector utility market.</div></li>
+<li><strong class="q-common">Schematic: Flame Deflector</strong><div class="mini">Rare old gadget schematic.</div></li>
+</ul></div>
+</div>
+</section>
+
+<section class="common"><h2>Enchanting formula drops</h2><p class="small">Formula: Enchant Gloves - Angler is intentionally excluded because it is BoP. Ulduar Blade Ward / Blood Draining formulas are also not priced here unless server tradeability is confirmed.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Utility market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Crusader</strong><div class="utility-tag hot">classic premium</div></td>
+<td>Classic weapon-enchant service</td>
+<td>Classic Scarlet drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">212g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">250g</span></div>
+</div></td>
+<td><span class="demand vh">Very High</span></td>
+<td>Best old enchanting formula to watch. Twinks, collectors, and nostalgia service buyers keep demand alive.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Spell Power</strong><div class="utility-tag hot">caster service</div></td>
+<td>Caster weapon-enchant service</td>
+<td>Classic raid/drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">212g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">250g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>High-value caster service formula. Price aggressively if no enchanters are advertising it.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Healing Power</strong><div class="utility-tag hot">healer service</div></td>
+<td>Healer weapon-enchant service</td>
+<td>Classic raid/drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">170g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">200g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>Strong healer-service formula but smaller buyer pool than Spell Power.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Lifestealing</strong><div class="utility-tag hot">classic weapon</div></td>
+<td>Classic weapon-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">153g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">180g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>Recognizable old weapon formula. Usually below Crusader but still worth a premium single listing.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Chest - Greater Stats</strong><div class="utility-tag ok">classic stats</div></td>
+<td>Old chest-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">102g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">120g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Useful old service formula and collector item. Price higher only if absent from AH.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Unholy Weapon</strong><div class="utility-tag ok">classic weapon</div></td>
+<td>Classic weapon-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">11g 5s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">13g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">102g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">120g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Fun old weapon enchant. Collector/twink/service value, slow but recognizable.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Fiery Weapon</strong><div class="utility-tag ok">classic weapon</div></td>
+<td>Classic weapon-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Fun/twink formula. Faster sale than many old collector formulas.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Bracer - Greater Intellect</strong><div class="utility-tag ok">classic caster</div></td>
+<td>Old caster bracer service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Old caster bracer formula. Good if a collector or service enchanter is missing it.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Demonslaying</strong><div class="utility-tag ">classic niche</div></td>
+<td>Old weapon-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Demon-themed old weapon formula. Mostly collector/fun-service value.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Formula: Enchant Weapon - Icy Chill</strong><div class="utility-tag ">classic niche</div></td>
+<td>Old weapon-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche fun enchant. Mostly collector/twink value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Chest - Major Health</strong><div class="utility-tag ">classic chest</div></td>
+<td>Old chest-enchant service</td>
+<td>Classic drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">13g 60s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">16g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old chest formula. Slow collector/service sale.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Cloak - Superior Arcane Resistance</strong><div class="utility-tag ">Wrath resistance</div></td>
+<td>Wrath resistance cloak service</td>
+<td>Wrath Icecrown drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Wrath resistance formula. Keep one copy posted; only spikes if resistance demand appears.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Cloak - Superior Fire Resistance</strong><div class="utility-tag ">Wrath resistance</div></td>
+<td>Wrath resistance cloak service</td>
+<td>Wrath Icecrown drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche Wrath resistance formula. Do not overstock.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Cloak - Superior Frost Resistance</strong><div class="utility-tag ">Wrath resistance</div></td>
+<td>Wrath resistance cloak service</td>
+<td>Wrath Icecrown drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche Wrath resistance formula. Similar market to the other Superior Resistance cloak formulas.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Cloak - Superior Nature Resistance</strong><div class="utility-tag ">Wrath resistance</div></td>
+<td>Wrath resistance cloak service</td>
+<td>Wrath Icecrown drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche Wrath resistance formula. Price from scarcity, not steady demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Formula: Enchant Cloak - Superior Shadow Resistance</strong><div class="utility-tag ">Wrath resistance</div></td>
+<td>Wrath resistance cloak service</td>
+<td>Wrath Icecrown drop formula</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">3g 40s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">4g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche Wrath resistance formula. Slow unless a specific encounter/farm makes it relevant.</td>
+</tr></tbody></table></div>
+</section>
+<section class="common"><h2>Jewelcrafting BoE world-drop designs</h2><p class="small">This section intentionally excludes heroic boss drops, specific-mob BoP designs, reputation designs, token designs, and vendor designs.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Utility market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-rare">Design: Purified Twilight Opal</strong><div class="utility-tag hot">BoE world drop</div></td>
+<td>Popular caster/healer purple cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">59g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">70g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">148g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">175g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">382g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">450g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>Best JC world-drop design to watch. Strong because the cut has real caster/healer use.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Inscribed Monarch Topaz</strong><div class="utility-tag hot">BoE world drop</div></td>
+<td>Popular strength/crit orange cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">318g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">375g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>Strong melee design. Price higher if no jewelcrafter on the server has the cut available.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Etched Twilight Opal</strong><div class="utility-tag hot">BoE world drop</div></td>
+<td>Strength/hit purple cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">46g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">55g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">119g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">140g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">297g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">350g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>World-drop BoE design. Useful while melee buyers balance hit and sockets.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Glinting Twilight Opal</strong><div class="utility-tag hot">BoE world drop</div></td>
+<td>Agility/AP + mana/hit-style purple cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">318g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">375g</span></div>
+</div></td>
+<td><span class="demand hi">High</span></td>
+<td>World-drop BoE design. Good if hunters/rogues/shamans or collectors need the cut.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Sovereign Twilight Opal</strong><div class="utility-tag ok">BoE world drop</div></td>
+<td>Strength/stamina purple cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">93g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">110g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">233g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">275g</span></div>
+</div></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Useful to strength classes and some tank/offspec gearing. Slower than Purified/Inscribed.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Resolute Monarch Topaz</strong><div class="utility-tag ok">BoE world drop</div></td>
+<td>Expertise/defense orange cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">212g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">250g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Tank/stat-balancing niche. Price higher only if missing.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Misty Forest Emerald</strong><div class="utility-tag ok">BoE world drop</div></td>
+<td>Blue/yellow hybrid cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">191g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">225g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Niche green cut. Completion/specific-stat market.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Lightning Forest Emerald</strong><div class="utility-tag ok">BoE world drop</div></td>
+<td>Blue/yellow hybrid cut</td>
+<td>Wrath BoE world-drop design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">72g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">85g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">191g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">225g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Official BoE world-drop design. Lower practical value than top purple/orange cuts.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Beaming Earthsiege Diamond</strong><div class="utility-tag ok">BoE meta</div></td>
+<td>BoE meta design</td>
+<td>Wrath BoE world-drop meta design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">212g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">250g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Meta design. Can spike if no one can cut it.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Destructive Skyflare Diamond</strong><div class="utility-tag ok">BoE meta</div></td>
+<td>BoE meta design</td>
+<td>Wrath BoE world-drop meta design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">212g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">250g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Caster/PvP-style meta design. Slower than top rare-gem cuts but AH-sellable.</td>
+</tr>
+<tr>
+<td><strong class="q-rare">Design: Thundering Skyflare Diamond</strong><div class="utility-tag ">BoE meta</div></td>
+<td>BoE meta design</td>
+<td>Wrath BoE world-drop meta design</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">25g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">30g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">170g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">200g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche meta design. Post one copy only.</td>
+</tr></tbody></table></div>
+</section>
+<section class="common"><h2>Engineering schematic drops</h2><p class="small">Schematic: Jeeves is intentionally excluded because it is usually BoP/farm-only, not AH recipe inventory.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Specific recipe drop</th><th>Utility market</th><th>Drop/source type</th><th>Quick bid/buyout</th><th>Target bid/buyout</th><th>High bid/buyout</th><th>Demand</th><th>Pricing note</th></tr></thead>
+<tbody><tr>
+<td><strong class="q-uncommon">Schematic: Lifelike Mechanical Toad</strong><div class="utility-tag hot">collector gadget</div></td>
+<td>Collector/pet-style engineering unlock</td>
+<td>Classic world-drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">17g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">20g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">153g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">180g</span></div>
+</div></td>
+<td><span class="demand hi">Med-High</span></td>
+<td>Best old engineering schematic to watch. AH-sellable schematic; collector/pet value keeps it relevant.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Schematic: Hyper-Radiant Flame Reflector</strong><div class="utility-tag hot">reflector</div></td>
+<td>PvP reflector gadget</td>
+<td>Classic engineering drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">110g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">130g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>PvP/collector reflector schematic. Price higher if it is the only reflector on AH.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Schematic: Gyrofreeze Ice Reflector</strong><div class="utility-tag hot">reflector</div></td>
+<td>PvP reflector gadget</td>
+<td>Classic engineering drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Same reflector market family. Good collector/PvP niche.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Schematic: Ultra-Flash Shadow Reflector</strong><div class="utility-tag hot">reflector</div></td>
+<td>PvP reflector gadget</td>
+<td>Classic engineering drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">85g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">100g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Slow but recognizable old PvP schematic.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Voice Amplification Modulator</strong><div class="utility-tag ok">TBC utility</div></td>
+<td>PvP/utility neck craft</td>
+<td>TBC drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">34g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">40g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">102g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">120g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Niche anti-silence craft. Good collector/PvP utility schematic if tradeable here.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Gnomish Cloaking Device</strong><div class="utility-tag ok">classic gadget</div></td>
+<td>Invisibility gadget craft</td>
+<td>Classic Gnomeregan/Thermaplugg-style drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">10g 20s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">12g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">29g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">35g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">102g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">120g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Useful/fun engineering trinket schematic. Collector and gadget demand.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Flame Deflector</strong><div class="utility-tag ok">classic gadget</div></td>
+<td>Fire-protection gadget craft</td>
+<td>Classic Gnomeregan/Thermaplugg-style drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">38g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">45g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">127g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">150g</span></div>
+</div></td>
+<td><span class="demand med">Med</span></td>
+<td>Rare old schematic. Collector value can be surprisingly high if no copies are listed.</td>
+</tr>
+<tr>
+<td><strong class="q-uncommon">Schematic: Goblin Jumper Cables XL</strong><div class="utility-tag ">classic utility</div></td>
+<td>Utility gadget craft</td>
+<td>Classic drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 95s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">7g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">68g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">80g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Classic utility schematic. Collector/completion market.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Major Recombobulator</strong><div class="utility-tag ">classic utility</div></td>
+<td>Utility gadget craft</td>
+<td>Classic drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">6g 80s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">8g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">21g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">25g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">63g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">75g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Utility gadget schematic. Collector/completion value.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Sniper Scope</strong><div class="utility-tag ">classic scope</div></td>
+<td>Old scope craft</td>
+<td>Classic drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">4g 25s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">5g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">12g 75s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">15g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">42g 50s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">50g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old scope schematic. Sell only if no cheap competition.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Deadly Scope</strong><div class="utility-tag ">classic scope</div></td>
+<td>Old scope craft</td>
+<td>Classic drop schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Old scope schematic. Mostly collector or leveling-value sale.</td>
+</tr>
+<tr>
+<td><strong class="q-common">Schematic: Discombobulator Ray</strong><div class="utility-tag ">classic gadget</div></td>
+<td>Fun utility gadget</td>
+<td>Classic Gnomeregan-style schematic</td>
+<td><div class="pricepair quick">
+<div><span class="label">Bid</span><span class="bid">5g 10s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">6g</span></div>
+</div></td>
+<td><div class="pricepair target">
+<div><span class="label">Bid</span><span class="bid">15g 30s</span></div>
+<div><span class="label">Buyout</span><span class="buyout">18g</span></div>
+</div></td>
+<td><div class="pricepair high">
+<div><span class="label">Bid</span><span class="bid">51g</span></div>
+<div><span class="label">Buyout</span><span class="buyout">60g</span></div>
+</div></td>
+<td><span class="demand med">Low-Med</span></td>
+<td>Niche gadget schematic. Check AH before pricing high.</td>
+</tr></tbody></table></div>
+</section>
+
+<section class="common"><h2>Excluded / check-first utility recipes</h2>
+<div class="excluded-list">
+<div><strong>Formula: Enchant Gloves - Angler</strong><br><span class="small">Useful, but BoP. Do not AH-price it.</span></div>
+<div><strong>Schematic: Jeeves</strong><br><span class="small">Valuable, but usually BoP/farm-service only.</span></div>
+<div><strong>Heroic JC boss designs</strong><br><span class="small">Many are BoP. Use only the BoE world-drop list above for AH pricing.</span></div>
+<div><strong>Reputation / token designs</strong><br><span class="small">Usually BoP or purchased with profession currency. Not recipe-drop AH inventory.</span></div>
+<div><strong>Vendor recipes</strong><br><span class="small">Only price as vendor-flips in a separate guide if needed.</span></div>
+<div><strong>Ulduar enchanting formulas</strong><br><span class="small">Not priced unless this server proves they are tradeable.</span></div>
+</div>
+</section>
+
+<section class="common"><h2>Pricing rules</h2>
+<div class="routebox">
+<div class="routecard"><h3>Post style</h3><ul>
+<li class="green">Post utility recipes as singles.</li>
+<li class="gold">Use 12h/24h for normal recipes; 48h only for premium formulas/designs.</li>
+<li class="red">Do not undercut rare recipes heavily just because they sell slowly.</li>
+</ul></div>
+<div class="routecard"><h3>Value logic</h3><ul>
+<li class="gold">Useful service unlocks beat collector-only recipes.</li>
+<li class="green">BoE JC designs are valuable because buyers can directly buy/sell them.</li>
+<li class="red">If a recipe is BoP on this server, remove it from this guide instead of pricing it.</li>
+</ul></div>
+</div>
+</section>
+
+<section class="common source-list"><h2>Sources / calibration</h2>
+<p class="small">Prices are low-pop starting points for this server. This standalone guide lists specific utility recipe drops only. Always check current AH supply before buying or reposting.</p>
+<ul>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/enchanting/recipes">Wowhead: Enchanting Profession Formulas — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/jewelcrafting/recipes">Wowhead: Jewelcrafting Profession Recipes — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/guide/professions/engineering/recipes">Wowhead: Engineering Profession Recipes — WotLK Classic</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=50406/formula-enchant-gloves-angler">Wowhead: Formula: Enchant Gloves - Angler</a> — BoP exclusion check</li>
+<li><a href="https://www.wowhead.com/wotlk/item=49050/schematic-jeeves">Wowhead: Schematic: Jeeves</a> — BoP/farm-only exclusion check</li>
+<li><a href="https://www.wowhead.com/classic/guide/engineering-leveling-1-300-wow-classic">Wowhead Classic Engineering guide</a> — Lifelike Mechanical Toad AH-sellable note</li>
+<li><a href="https://www.wowhead.com/wotlk/item=16252/formula-enchant-weapon-crusader">Wowhead: Formula: Enchant Weapon - Crusader</a></li>
+<li><a href="https://www.wowhead.com/wotlk/item=16044/schematic-lifelike-mechanical-toad">Wowhead: Schematic: Lifelike Mechanical Toad</a></li>
+</ul>
+</section>
+
+<section class="common"><h2>Disclaimer</h2>
+<p class="small"><strong>Disclaimer:</strong> This is an unofficial player-made guide, not a permanent or guaranteed price list. Treat prices as starting points and always check the current AH before buying, selling, crafting, or reposting. Mistakes and outdated info are possible. Some items may be maker-only or not resellable on this server; if something cannot actually be sold or traded, please let me know so I can fix it.</p>
+</section>
+
+<footer>WotLK 3.3.5 Low-Pop Utility Recipe Drops AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
+</div></body></html>
