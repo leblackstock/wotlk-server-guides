@@ -70,54 +70,12 @@ h1 {
   font-size: 14px;
 }
 
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
+.disclaimer-note p {
+  margin: 0 0 9px;
 }
 
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 9px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  color: #111;
-}
-
-.p-quick {
-  background: var(--orange);
-}
-
-.p-bid {
-  background: var(--cyan);
-}
-
-.p-target {
-  background: var(--gold);
-}
-
-.p-watch {
-  background: var(--red);
-}
-
-.p-common {
-  background: var(--q-common);
-}
-
-.p-uncommon {
-  background: var(--q-uncommon);
-}
-
-.p-rare {
-  background: #78b7ff;
-}
-
-.p-epic {
-  background: var(--purple);
+.disclaimer-note p:last-child {
+  margin-bottom: 0;
 }
 
 .common {
