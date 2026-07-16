@@ -635,17 +635,17 @@
 
     <div class="jump-nav" aria-label="Page sections">
       <a href="#quick-start">Quick start</a>
+      <a href="#rotation">Rotation</a>
+      <a href="#cooldowns">Cooldowns</a>
       <a href="#stats">Stats &amp; caps</a>
       <a href="#talents">Talents</a>
       <a href="#glyphs">Glyphs</a>
-      <a href="#rotation">Rotation</a>
-      <a href="#cooldowns">Cooldowns</a>
+      <a href="#macros">Macros</a>
+      <a href="#addons">Addons</a>
       <a href="#gems">Gems</a>
       <a href="#enchants">Enchants</a>
       <a href="#professions">Professions</a>
       <a href="#consumables">Consumables</a>
-      <a href="#macros">Macros</a>
-      <a href="#addons">Addons</a>
       <a href="#corrections">Video corrections</a>
     </div>
   </header>
@@ -716,6 +716,127 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <section class="common" id="rotation">
+    <h2><span class="section-mark">◆</span> The 969 rotation</h2>
+
+    <p class="muted">The classic 969 system alternates one “9-slot” ability with one 6-second ability. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use <strong>1/2 Improved Judgements</strong> so Judgement also lands cleanly in the 9-second group.</p>
+
+    <div class="tag-row">
+      <span class="tag pink">9-slot: Holy Shield</span>
+      <span class="tag pink">9-slot: Judgement</span>
+      <span class="tag pink">9-slot: Consecration</span>
+      <span class="tag info">6-sec: Hammer of the Righteous</span>
+      <span class="tag info">6-sec: Shield of Righteousness</span>
+    </div>
+
+    <h3 style="margin:16px 0 4px">Clean opening sequence</h3>
+    <div class="rotation-strip" aria-label="969 rotation sequence">
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
+    </div>
+    <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
+
+    <div class="two-col" style="margin-top:12px">
+      <div class="spell-card">
+        <h3>Single-target pull</h3>
+        <ol class="priority-list">
+          <li>Use Seal of Corruption/Vengeance, Righteous Fury, Blessing of Sanctuary, Divine Plea, and Sacred Shield.</li>
+          <li>Pre-cast Holy Shield. Use Avenging Wrath if the encounter allows it and you will not need an immunity during Forbearance.</li>
+          <li>At range, use Exorcism only when you are safe to stand still; otherwise use Avenger's Shield.</li>
+          <li>Hand of Reckoning adds snap damage when you do not already have threat.</li>
+          <li>Enter 969 and keep the boss faced away from the group.</li>
+        </ol>
+      </div>
+
+      <div class="spell-card">
+        <h3>AoE / trash</h3>
+        <ol class="priority-list">
+          <li>Use Seal of Command when cleave matters more than maintaining a boss stack.</li>
+          <li>Drop Consecration where mobs will remain, not where they began their sprint.</li>
+          <li>Use Hammer of the Righteous early and tab-target when threat is uneven.</li>
+          <li>Use Holy Wrath on Undead or Demons for damage and a 3-second stun.</li>
+          <li>Save Avenger's Shield for ranged targets, runners, or snap pickup rather than firing it mindlessly on cooldown.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="note warning"><strong>Rotation macros are training wheels.</strong> A one-button castsequence cannot react to movement, silences, target swaps, missed pulls, add spawns, or the need to refresh Holy Shield early. Learn the ability groups even if you keep a helper macro.</div>
+  </section>
+
+  <section class="common" id="cooldowns">
+    <h2><span class="section-mark">◆</span> Cooldowns, seals, and utility</h2>
+
+    <div class="card-grid">
+      <div class="spell-card">
+        <h3>Divine Protection</h3>
+        <p>Your main wall: 50% damage reduction for 12 seconds. Plan it for predictable tank-busters rather than waiting until your health is already a pink smear.</p>
+        <div class="tag-row"><span class="tag safe">Primary defensive</span><span class="tag warn">Causes Forbearance</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Ardent Defender</h3>
+        <p>Passive damage reduction below 35% health plus a cheat-death effect. It is a safety net, not permission to ignore mechanics.</p>
+        <div class="tag-row"><span class="tag safe">Passive</span><span class="tag pink">Core talent</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Divine Sacrifice / Divine Guardian</h3>
+        <p>Powerful raid damage reduction. The transfer portion can kill you; the common cancel-aura macro removes the transfer while preserving the raid-wall portion on standard 3.3.5 scripting.</p>
+        <div class="tag-row"><span class="tag safe">Raid cooldown</span><span class="tag warn">Test on our server</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Lay on Hands</h3>
+        <p>Large emergency heal. Know how our server handles its mana effect and Forbearance interactions before using it beside Divine Protection.</p>
+        <div class="tag-row"><span class="tag safe">Emergency heal</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Glyph of Salvation cooldown</h3>
+        <p>Hand of Salvation on yourself gives 20% damage reduction with the glyph while also reducing threat. Best during tank swaps, transitions, or when you have a huge lead.</p>
+        <div class="tag-row"><span class="tag warn">Threat loss</span><span class="tag pink">Situational glyph</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Divine Shield</h3>
+        <p>Use a bubble-cancel to clear specific debuffs only when the encounter allows it. Divine Shield does not erase your stored threat, but enemies stop treating you as a valid attack target while immune.</p>
+        <div class="tag-row"><span class="tag warn">Tank-swap risk</span><span class="tag info">Debuff clear</span></div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:12px">
+      <div class="guide-box">
+        <h3>Seals</h3>
+        <ul class="clean-list">
+          <li><strong>Seal of Corruption / Vengeance:</strong> default single-target boss seal.</li>
+          <li><strong>Seal of Command:</strong> packs, cleave, and fast-moving trash.</li>
+          <li><strong>Seal of Wisdom:</strong> niche mana recovery when incoming healing and Sanctuary returns are low.</li>
+        </ul>
+      </div>
+
+      <div class="guide-box">
+        <h3>Judgements, blessings, and aura</h3>
+        <ul class="clean-list">
+          <li><strong>Judgement of Wisdom:</strong> common default when mana support is useful.</li>
+          <li><strong>Judgement of Light:</strong> raid healing support when another Paladin does not provide it.</li>
+          <li><strong>Blessing of Sanctuary:</strong> your normal self-buff while tanking.</li>
+          <li><strong>Devotion Aura:</strong> default physical mitigation; swap to a resistance aura when encounter damage demands it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <details>
+      <summary>Tier 10 four-piece note</summary>
+      <p>The Protection four-piece bonus turns Divine Plea activation into an additional short defensive window. If our server scripts the set correctly, treat Divine Plea as a planned cooldown as well as a mana tool; verify the exact dodge amount and duration on your character tooltip.</p>
+    </details>
   </section>
 
   <section class="common" id="stats">
@@ -938,221 +1059,6 @@
     </div>
   </section>
 
-  <section class="common" id="rotation">
-    <h2><span class="section-mark">◆</span> The 969 rotation</h2>
-
-    <p class="muted">The classic 969 system alternates one “9-slot” ability with one 6-second ability. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use <strong>1/2 Improved Judgements</strong> so Judgement also lands cleanly in the 9-second group.</p>
-
-    <div class="tag-row">
-      <span class="tag pink">9-slot: Holy Shield</span>
-      <span class="tag pink">9-slot: Judgement</span>
-      <span class="tag pink">9-slot: Consecration</span>
-      <span class="tag info">6-sec: Hammer of the Righteous</span>
-      <span class="tag info">6-sec: Shield of Righteousness</span>
-    </div>
-
-    <h3 style="margin:16px 0 4px">Clean opening sequence</h3>
-    <div class="rotation-strip" aria-label="969 rotation sequence">
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
-    </div>
-    <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
-
-    <div class="two-col" style="margin-top:12px">
-      <div class="spell-card">
-        <h3>Single-target pull</h3>
-        <ol class="priority-list">
-          <li>Use Seal of Corruption/Vengeance, Righteous Fury, Blessing of Sanctuary, Divine Plea, and Sacred Shield.</li>
-          <li>Pre-cast Holy Shield. Use Avenging Wrath if the encounter allows it and you will not need an immunity during Forbearance.</li>
-          <li>At range, use Exorcism only when you are safe to stand still; otherwise use Avenger's Shield.</li>
-          <li>Hand of Reckoning adds snap damage when you do not already have threat.</li>
-          <li>Enter 969 and keep the boss faced away from the group.</li>
-        </ol>
-      </div>
-
-      <div class="spell-card">
-        <h3>AoE / trash</h3>
-        <ol class="priority-list">
-          <li>Use Seal of Command when cleave matters more than maintaining a boss stack.</li>
-          <li>Drop Consecration where mobs will remain, not where they began their sprint.</li>
-          <li>Use Hammer of the Righteous early and tab-target when threat is uneven.</li>
-          <li>Use Holy Wrath on Undead or Demons for damage and a 3-second stun.</li>
-          <li>Save Avenger's Shield for ranged targets, runners, or snap pickup rather than firing it mindlessly on cooldown.</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="note warning"><strong>Rotation macros are training wheels.</strong> A one-button castsequence cannot react to movement, silences, target swaps, missed pulls, add spawns, or the need to refresh Holy Shield early. Learn the ability groups even if you keep a helper macro.</div>
-  </section>
-
-  <section class="common" id="cooldowns">
-    <h2><span class="section-mark">◆</span> Cooldowns, seals, and utility</h2>
-
-    <div class="card-grid">
-      <div class="spell-card">
-        <h3>Divine Protection</h3>
-        <p>Your main wall: 50% damage reduction for 12 seconds. Plan it for predictable tank-busters rather than waiting until your health is already a pink smear.</p>
-        <div class="tag-row"><span class="tag safe">Primary defensive</span><span class="tag warn">Causes Forbearance</span></div>
-      </div>
-
-      <div class="spell-card">
-        <h3>Ardent Defender</h3>
-        <p>Passive damage reduction below 35% health plus a cheat-death effect. It is a safety net, not permission to ignore mechanics.</p>
-        <div class="tag-row"><span class="tag safe">Passive</span><span class="tag pink">Core talent</span></div>
-      </div>
-
-      <div class="spell-card">
-        <h3>Divine Sacrifice / Divine Guardian</h3>
-        <p>Powerful raid damage reduction. The transfer portion can kill you; the common cancel-aura macro removes the transfer while preserving the raid-wall portion on standard 3.3.5 scripting.</p>
-        <div class="tag-row"><span class="tag safe">Raid cooldown</span><span class="tag warn">Test on our server</span></div>
-      </div>
-
-      <div class="spell-card">
-        <h3>Lay on Hands</h3>
-        <p>Large emergency heal. Know how our server handles its mana effect and Forbearance interactions before using it beside Divine Protection.</p>
-        <div class="tag-row"><span class="tag safe">Emergency heal</span></div>
-      </div>
-
-      <div class="spell-card">
-        <h3>Glyph of Salvation cooldown</h3>
-        <p>Hand of Salvation on yourself gives 20% damage reduction with the glyph while also reducing threat. Best during tank swaps, transitions, or when you have a huge lead.</p>
-        <div class="tag-row"><span class="tag warn">Threat loss</span><span class="tag pink">Situational glyph</span></div>
-      </div>
-
-      <div class="spell-card">
-        <h3>Divine Shield</h3>
-        <p>Use a bubble-cancel to clear specific debuffs only when the encounter allows it. Divine Shield does not erase your stored threat, but enemies stop treating you as a valid attack target while immune.</p>
-        <div class="tag-row"><span class="tag warn">Tank-swap risk</span><span class="tag info">Debuff clear</span></div>
-      </div>
-    </div>
-
-    <div class="two-col" style="margin-top:12px">
-      <div class="guide-box">
-        <h3>Seals</h3>
-        <ul class="clean-list">
-          <li><strong>Seal of Corruption / Vengeance:</strong> default single-target boss seal.</li>
-          <li><strong>Seal of Command:</strong> packs, cleave, and fast-moving trash.</li>
-          <li><strong>Seal of Wisdom:</strong> niche mana recovery when incoming healing and Sanctuary returns are low.</li>
-        </ul>
-      </div>
-
-      <div class="guide-box">
-        <h3>Judgements, blessings, and aura</h3>
-        <ul class="clean-list">
-          <li><strong>Judgement of Wisdom:</strong> common default when mana support is useful.</li>
-          <li><strong>Judgement of Light:</strong> raid healing support when another Paladin does not provide it.</li>
-          <li><strong>Blessing of Sanctuary:</strong> your normal self-buff while tanking.</li>
-          <li><strong>Devotion Aura:</strong> default physical mitigation; swap to a resistance aura when encounter damage demands it.</li>
-        </ul>
-      </div>
-    </div>
-
-    <details>
-      <summary>Tier 10 four-piece note</summary>
-      <p>The Protection four-piece bonus turns Divine Plea activation into an additional short defensive window. If our server scripts the set correctly, treat Divine Plea as a planned cooldown as well as a mana tool; verify the exact dodge amount and duration on your character tooltip.</p>
-    </details>
-  </section>
-
-  <section class="common" id="gems">
-    <h2><span class="section-mark">◆</span> Gems</h2>
-
-    <div class="note paladin"><strong>Simple rule:</strong> Activate the meta, reach 540 Defense, then use stamina unless a worthwhile socket bonus lets you gain useful hybrid stats cheaply.</div>
-    <p class="mini-note rarity-note"><strong>Color key:</strong> socket words use their socket color; item names use WoW quality colors such as <span class="q-rare">rare</span> and <span class="q-epic">epic</span>.</p>
-
-    <div class="table-wrap" style="margin-top:12px">
-      <table style="min-width:720px">
-        <thead><tr><th>Socket</th><th>Default</th><th>Useful alternatives</th><th>When to match</th></tr></thead>
-        <tbody>
-          <tr><td><strong class="socket-meta">Meta</strong></td><td><span class="item-name q-rare">Austere Earthsiege Diamond</span></td><td>None for general tanking</td><td>32 stamina and 2% increased armor from items.</td></tr>
-          <tr><td><strong class="socket-blue">Blue</strong></td><td><span class="item-name q-epic">Solid Majestic Zircon</span><br><span class="muted">30 stamina</span></td><td><span class="item-name q-rare">Solid Dragon's Eye</span><br><span class="muted">Jewelcrafting-only stamina gem</span></td><td>Blue is your natural stamina socket.</td></tr>
-          <tr><td><strong class="socket-yellow">Yellow</strong></td><td><span class="item-name q-epic">Enduring Eye of Zul</span><br><span class="muted">10 Defense + 15 stamina</span></td><td><span class="item-name q-epic">Vivid Eye of Zul</span><br><span class="muted">10 hit + 15 stamina</span></td><td>Use to finish Defense, improve taunt reliability, activate meta, or claim a good stamina bonus.</td></tr>
-          <tr><td><strong class="socket-red">Red</strong></td><td><span class="item-name q-epic">Shifting Dreadstone</span><br><span class="muted">10 agility + 15 stamina</span></td><td><span class="item-name q-epic">Guardian's Dreadstone</span><br><span class="muted">10 expertise + 15 stamina</span><br><span class="item-name q-epic">Sovereign Dreadstone</span><br><span class="muted">10 strength + 15 stamina</span></td><td>Match only for a useful bonus. Agility gives armor, dodge, and crit; expertise improves threat reliability.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p class="mini-note">The video's “match bonuses of six stamina or more” is a useful starting rule, not sacred law. Compare the exact survival value you gain against the stamina you give up.</p>
-  </section>
-
-  <section class="common" id="enchants">
-    <h2><span class="section-mark">◆</span> Enchants</h2>
-    <p class="mini-note rarity-note"><strong>Color key:</strong> named enchantments and attachments use the closest in-game item-quality color. Plain explanatory text remains neutral.</p>
-
-    <div class="table-wrap" style="margin-top:12px">
-      <table>
-        <thead><tr><th>Slot</th><th>General choice</th><th>Alternatives</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Head</strong></td><td><span class="item-name q-rare">Arcanum of the Stalwart Protector</span></td><td>None comparable for general tanking</td><td>37 stamina + 20 Defense rating; Argent Crusade at Revered.</td></tr>
-          <tr><td><strong>Shoulders</strong></td><td><span class="item-name q-rare">Greater Inscription of the Gladiator</span></td><td><span class="item-name q-rare">Greater Inscription of the Pinnacle</span></td><td>The PvP stamina/resilience inscription is excellent effective health and can help crit immunity. Pinnacle gives dodge + Defense and requires Sons of Hodir reputation.</td></tr>
-          <tr><td><strong>Cloak</strong></td><td><span class="item-name q-rare">225 Armor</span> or <span class="item-name q-rare">22 Agility</span></td><td><span class="item-name q-rare">16 Defense</span></td><td>Use Defense only to fix the minimum. Armor is consistent physical mitigation; agility adds armor and avoidance.</td></tr>
-          <tr><td><strong>Chest</strong></td><td><span class="item-name q-rare">10 All Stats</span></td><td><span class="item-name q-rare">275 Health</span> or <span class="item-name q-rare">22 Defense</span></td><td>Pick the option that closes a real weakness, not the one with the prettiest tooltip.</td></tr>
-          <tr><td><strong>Bracers</strong></td><td><span class="item-name q-rare">40 Stamina</span></td><td><span class="item-name q-rare">102 Stamina</span> for Leatherworkers</td><td>One of the cleanest stamina slots.</td></tr>
-          <tr><td><strong>Gloves</strong></td><td><span class="item-name q-rare">240 Armor</span></td><td><span class="item-name q-rare">Armsman</span>, <span class="item-name q-rare">Precision</span>, Engineering armor tinker</td><td><span class="item-name q-rare">Armsman</span> gives threat and parry; <span class="item-name q-rare">Precision</span> fixes hit; Engineering's armor tinker is extremely strong if available and correctly scripted.</td></tr>
-          <tr><td><strong>Belt</strong></td><td><span class="item-name q-rare">Eternal Belt Buckle</span></td><td>Engineering utility attachments</td><td>Adds an extra socket. This is not optional once affordable.</td></tr>
-          <tr><td><strong>Legs</strong></td><td><span class="item-name q-rare">Frosthide Leg Armor</span></td><td>None comparable</td><td>55 stamina + 22 agility.</td></tr>
-          <tr><td><strong>Boots</strong></td><td><span class="item-name q-rare">Tuskarr's Vitality</span></td><td><span class="item-name q-rare">22 Stamina</span>; <span class="item-name q-rare">Nitro Boosts</span></td><td>Movement speed frequently prevents more damage than 7 extra stamina. Pursuit of Justice does not stack with the movement portion.</td></tr>
-          <tr><td><strong>Weapon</strong></td><td><span class="item-name q-rare">Mongoose</span></td><td><span class="item-name q-epic">Blood Draining</span>, <span class="item-name q-rare">Accuracy</span>, <span class="item-name q-epic">Blade Ward</span></td><td><span class="item-name q-epic">Blood Draining</span> is a strong emergency-health option when correctly scripted. <span class="item-name q-rare">Mongoose</span> is a reliable all-round fallback. Do not assume every private-server proc works correctly.</td></tr>
-          <tr><td><strong>Shield</strong></td><td><span class="item-name q-rare">Titanium Plating</span></td><td><span class="item-name q-rare">20 Defense</span></td><td>Use Defense only when needed. Plating adds block value and disarm reduction.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <details>
-      <summary>Libram choices</summary>
-      <p><strong><span class="item-name q-epic">Libram of Defiance</span></strong> is an excellent practical all-purpose tank libram and has reliable uptime through Hammer of the Righteous. <strong><span class="item-name q-epic">Libram of the Eternal Tower</span></strong> can provide more stacked dodge when Shield of Righteousness uptime is maintained, but it ramps and can fall off during movement or downtime. Use Defiance confidently unless a specific set or encounter rewards the alternative.</p>
-    </details>
-  </section>
-
-  <section class="common" id="professions">
-    <h2><span class="section-mark">◆</span> Professions</h2>
-
-    <div class="three-col">
-      <div class="guide-box">
-        <h3>Best all-round pair</h3>
-        <p><strong>Engineering + Jewelcrafting</strong> is the strongest endgame utility package: movement, armor/utility tinkers, bombs, and flexible high-value gems.</p>
-        <div class="tag-row"><span class="tag safe">Mobility</span><span class="tag pink">Flexible stats</span></div>
-      </div>
-
-      <div class="guide-box">
-        <h3>Maximum simple stamina</h3>
-        <p><strong>Jewelcrafting</strong> provides three stronger gems, worth roughly 63 stamina above ordinary epic gems. <strong>Leatherworking</strong> replaces 40 stamina bracers with 102 stamina, a 62-stamina gain.</p>
-        <div class="tag-row"><span class="tag safe">Large stamina gain</span></div>
-      </div>
-
-      <div class="guide-box">
-        <h3>Good alternatives</h3>
-        <p><strong>Blacksmithing</strong> adds two sockets, typically 60 stamina. <strong>Mining</strong> supplies a flat 60 stamina. Alchemy and Enchanting offer smaller but convenient personal bonuses.</p>
-        <div class="tag-row"><span class="tag info">Easy gearing</span></div>
-      </div>
-    </div>
-
-    <p class="mini-note">The video's Jewelcrafting/Leatherworking recommendation is defensible for raw stamina. Engineering often wins in real encounters because movement and on-use utility solve problems that spreadsheet stamina cannot.</p>
-  </section>
-
-  <section class="common" id="consumables">
-    <h2><span class="section-mark">◆</span> Consumables</h2>
-    <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
-
-    <div class="table-wrap" style="margin-top:12px">
-      <table style="min-width:720px">
-        <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
-          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span> or <span class="item-name q-common">Fish Feast</span></td><td>Agility adds armor and avoidance; strength favors threat/block value; feast is convenient raid coverage.</td></tr>
-          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>None for physical survival</td><td>Pre-pot before the pull and use another later when the encounter allows. Excellent on predictable melee bursts.</td></tr>
-          <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
-          <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <section class="common" id="macros">
     <h2><span class="section-mark">◆</span> Macros: what to use, and when not to</h2>
 
@@ -1372,6 +1278,100 @@
 
   <p class="mini-note">These are direct replacements for the video's obsolete ad-link downloads. The two Paladin addons solve Paladin-specific problems; the five general addons are useful across tanks, healers, and damage dealers.</p>
 </section>
+
+  <section class="common" id="gems">
+    <h2><span class="section-mark">◆</span> Gems</h2>
+
+    <div class="note paladin"><strong>Simple rule:</strong> Activate the meta, reach 540 Defense, then use stamina unless a worthwhile socket bonus lets you gain useful hybrid stats cheaply.</div>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> socket words use their socket color; item names use WoW quality colors such as <span class="q-rare">rare</span> and <span class="q-epic">epic</span>.</p>
+
+    <div class="table-wrap" style="margin-top:12px">
+      <table style="min-width:720px">
+        <thead><tr><th>Socket</th><th>Default</th><th>Useful alternatives</th><th>When to match</th></tr></thead>
+        <tbody>
+          <tr><td><strong class="socket-meta">Meta</strong></td><td><span class="item-name q-rare">Austere Earthsiege Diamond</span></td><td>None for general tanking</td><td>32 stamina and 2% increased armor from items.</td></tr>
+          <tr><td><strong class="socket-blue">Blue</strong></td><td><span class="item-name q-epic">Solid Majestic Zircon</span><br><span class="muted">30 stamina</span></td><td><span class="item-name q-rare">Solid Dragon's Eye</span><br><span class="muted">Jewelcrafting-only stamina gem</span></td><td>Blue is your natural stamina socket.</td></tr>
+          <tr><td><strong class="socket-yellow">Yellow</strong></td><td><span class="item-name q-epic">Enduring Eye of Zul</span><br><span class="muted">10 Defense + 15 stamina</span></td><td><span class="item-name q-epic">Vivid Eye of Zul</span><br><span class="muted">10 hit + 15 stamina</span></td><td>Use to finish Defense, improve taunt reliability, activate meta, or claim a good stamina bonus.</td></tr>
+          <tr><td><strong class="socket-red">Red</strong></td><td><span class="item-name q-epic">Shifting Dreadstone</span><br><span class="muted">10 agility + 15 stamina</span></td><td><span class="item-name q-epic">Guardian's Dreadstone</span><br><span class="muted">10 expertise + 15 stamina</span><br><span class="item-name q-epic">Sovereign Dreadstone</span><br><span class="muted">10 strength + 15 stamina</span></td><td>Match only for a useful bonus. Agility gives armor, dodge, and crit; expertise improves threat reliability.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini-note">The video's “match bonuses of six stamina or more” is a useful starting rule, not sacred law. Compare the exact survival value you gain against the stamina you give up.</p>
+  </section>
+
+  <section class="common" id="enchants">
+    <h2><span class="section-mark">◆</span> Enchants</h2>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> named enchantments and attachments use the closest in-game item-quality color. Plain explanatory text remains neutral.</p>
+
+    <div class="table-wrap" style="margin-top:12px">
+      <table>
+        <thead><tr><th>Slot</th><th>General choice</th><th>Alternatives</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Head</strong></td><td><span class="item-name q-rare">Arcanum of the Stalwart Protector</span></td><td>None comparable for general tanking</td><td>37 stamina + 20 Defense rating; Argent Crusade at Revered.</td></tr>
+          <tr><td><strong>Shoulders</strong></td><td><span class="item-name q-rare">Greater Inscription of the Gladiator</span></td><td><span class="item-name q-rare">Greater Inscription of the Pinnacle</span></td><td>The PvP stamina/resilience inscription is excellent effective health and can help crit immunity. Pinnacle gives dodge + Defense and requires Sons of Hodir reputation.</td></tr>
+          <tr><td><strong>Cloak</strong></td><td><span class="item-name q-rare">225 Armor</span> or <span class="item-name q-rare">22 Agility</span></td><td><span class="item-name q-rare">16 Defense</span></td><td>Use Defense only to fix the minimum. Armor is consistent physical mitigation; agility adds armor and avoidance.</td></tr>
+          <tr><td><strong>Chest</strong></td><td><span class="item-name q-rare">10 All Stats</span></td><td><span class="item-name q-rare">275 Health</span> or <span class="item-name q-rare">22 Defense</span></td><td>Pick the option that closes a real weakness, not the one with the prettiest tooltip.</td></tr>
+          <tr><td><strong>Bracers</strong></td><td><span class="item-name q-rare">40 Stamina</span></td><td><span class="item-name q-rare">102 Stamina</span> for Leatherworkers</td><td>One of the cleanest stamina slots.</td></tr>
+          <tr><td><strong>Gloves</strong></td><td><span class="item-name q-rare">240 Armor</span></td><td><span class="item-name q-rare">Armsman</span>, <span class="item-name q-rare">Precision</span>, Engineering armor tinker</td><td><span class="item-name q-rare">Armsman</span> gives threat and parry; <span class="item-name q-rare">Precision</span> fixes hit; Engineering's armor tinker is extremely strong if available and correctly scripted.</td></tr>
+          <tr><td><strong>Belt</strong></td><td><span class="item-name q-rare">Eternal Belt Buckle</span></td><td>Engineering utility attachments</td><td>Adds an extra socket. This is not optional once affordable.</td></tr>
+          <tr><td><strong>Legs</strong></td><td><span class="item-name q-rare">Frosthide Leg Armor</span></td><td>None comparable</td><td>55 stamina + 22 agility.</td></tr>
+          <tr><td><strong>Boots</strong></td><td><span class="item-name q-rare">Tuskarr's Vitality</span></td><td><span class="item-name q-rare">22 Stamina</span>; <span class="item-name q-rare">Nitro Boosts</span></td><td>Movement speed frequently prevents more damage than 7 extra stamina. Pursuit of Justice does not stack with the movement portion.</td></tr>
+          <tr><td><strong>Weapon</strong></td><td><span class="item-name q-rare">Mongoose</span></td><td><span class="item-name q-epic">Blood Draining</span>, <span class="item-name q-rare">Accuracy</span>, <span class="item-name q-epic">Blade Ward</span></td><td><span class="item-name q-epic">Blood Draining</span> is a strong emergency-health option when correctly scripted. <span class="item-name q-rare">Mongoose</span> is a reliable all-round fallback. Do not assume every private-server proc works correctly.</td></tr>
+          <tr><td><strong>Shield</strong></td><td><span class="item-name q-rare">Titanium Plating</span></td><td><span class="item-name q-rare">20 Defense</span></td><td>Use Defense only when needed. Plating adds block value and disarm reduction.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>Libram choices</summary>
+      <p><strong><span class="item-name q-epic">Libram of Defiance</span></strong> is an excellent practical all-purpose tank libram and has reliable uptime through Hammer of the Righteous. <strong><span class="item-name q-epic">Libram of the Eternal Tower</span></strong> can provide more stacked dodge when Shield of Righteousness uptime is maintained, but it ramps and can fall off during movement or downtime. Use Defiance confidently unless a specific set or encounter rewards the alternative.</p>
+    </details>
+  </section>
+
+  <section class="common" id="professions">
+    <h2><span class="section-mark">◆</span> Professions</h2>
+
+    <div class="three-col">
+      <div class="guide-box">
+        <h3>Best all-round pair</h3>
+        <p><strong>Engineering + Jewelcrafting</strong> is the strongest endgame utility package: movement, armor/utility tinkers, bombs, and flexible high-value gems.</p>
+        <div class="tag-row"><span class="tag safe">Mobility</span><span class="tag pink">Flexible stats</span></div>
+      </div>
+
+      <div class="guide-box">
+        <h3>Maximum simple stamina</h3>
+        <p><strong>Jewelcrafting</strong> provides three stronger gems, worth roughly 63 stamina above ordinary epic gems. <strong>Leatherworking</strong> replaces 40 stamina bracers with 102 stamina, a 62-stamina gain.</p>
+        <div class="tag-row"><span class="tag safe">Large stamina gain</span></div>
+      </div>
+
+      <div class="guide-box">
+        <h3>Good alternatives</h3>
+        <p><strong>Blacksmithing</strong> adds two sockets, typically 60 stamina. <strong>Mining</strong> supplies a flat 60 stamina. Alchemy and Enchanting offer smaller but convenient personal bonuses.</p>
+        <div class="tag-row"><span class="tag info">Easy gearing</span></div>
+      </div>
+    </div>
+
+    <p class="mini-note">The video's Jewelcrafting/Leatherworking recommendation is defensible for raw stamina. Engineering often wins in real encounters because movement and on-use utility solve problems that spreadsheet stamina cannot.</p>
+  </section>
+
+  <section class="common" id="consumables">
+    <h2><span class="section-mark">◆</span> Consumables</h2>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
+
+    <div class="table-wrap" style="margin-top:12px">
+      <table style="min-width:720px">
+        <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
+          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span> or <span class="item-name q-common">Fish Feast</span></td><td>Agility adds armor and avoidance; strength favors threat/block value; feast is convenient raid coverage.</td></tr>
+          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>None for physical survival</td><td>Pre-pot before the pull and use another later when the encounter allows. Excellent on predictable melee bursts.</td></tr>
+          <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
+          <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <details class="common correction-section" id="corrections">
     <summary><span class="section-mark">◆</span> Important corrections and transcript cleanup</summary>
