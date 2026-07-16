@@ -1,4 +1,5 @@
 name: Clean Core 969 quick-start card
+# Synchronize PR to run the cleanup once.
 
 on:
   pull_request:
