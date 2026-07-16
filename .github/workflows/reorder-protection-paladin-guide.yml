@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Reorder guide sections
+      - name: Diagnose current guide structure
         shell: bash
         run: |
           set -euo pipefail
@@ -30,85 +30,56 @@ jobs:
 
           path = Path('guides/protection-paladin-pve-guide.html')
           text = path.read_text(encoding='utf-8')
-
           desired = [
               'quick-start', 'rotation', 'cooldowns', 'stats', 'talents', 'glyphs',
               'macros', 'addons', 'gems', 'enchants', 'professions', 'consumables',
               'corrections', 'sources',
           ]
 
-          markers = {
-              key: f'  <section class="common" id="{key}">'
-              for key in desired
-              if key not in {'corrections', 'sources'}
-          }
-          markers['corrections'] = '  <details class="common correction-section" id="corrections">'
+          report = []
+          report.append(f'file_bytes={len(text.encode("utf-8"))}')
+          report.append(f'footer_found={"  <footer>" in text}')
+          report.append(f'sources_heading_found={"Sources and scope" in text}')
 
-          source_heading = text.index('Sources and scope')
-          source_start = text.rfind('  <section class="common">', 0, source_heading)
-          footer_start = text.index('  <footer>')
-          if source_start < 0:
-              raise SystemExit('Sources section start not found')
-
-          starts = {key: text.index(marker) for key, marker in markers.items()}
-          starts['sources'] = source_start
-          ordered_positions = sorted((position, key) for key, position in starts.items())
-
-          blocks = {}
-          for i, (start, key) in enumerate(ordered_positions):
-              end = ordered_positions[i + 1][0] if i + 1 < len(ordered_positions) else footer_start
-              blocks[key] = text[start:end]
-
-          first_section = ordered_positions[0][0]
-          text = text[:first_section] + ''.join(blocks[key] for key in desired) + text[footer_start:]
+          for key in desired:
+              if key == 'corrections':
+                  marker = '  <details class="common correction-section" id="corrections">'
+              elif key == 'sources':
+                  heading = text.find('Sources and scope')
+                  position = text.rfind('  <section class="common">', 0, heading) if heading >= 0 else -1
+                  report.append(f'{key}={position}')
+                  continue
+              else:
+                  marker = f'  <section class="common" id="{key}">'
+              report.append(f'{key}={text.find(marker)}')
 
           nav = re.search(
-              r'(?P<open>    <div class="jump-nav" aria-label="Page sections">\n)'
-              r'(?P<body>.*?)'
-              r'(?P<close>    </div>)',
+              r'    <div class="jump-nav" aria-label="Page sections">\n(?P<body>.*?)    </div>',
               text,
               re.S,
           )
-          if not nav:
-              raise SystemExit('Jump navigation not found')
+          report.append(f'nav_found={bool(nav)}')
+          if nav:
+              hrefs = re.findall(r'href="#([^"]+)"', nav.group('body'))
+              report.append('nav_hrefs=' + ','.join(hrefs))
 
-          full_lines = re.findall(r'      <a href="#[^"]+">.*?</a>\n', nav.group('body'))
-          link_map = {
-              re.search(r'href="#([^"]+)"', line).group(1): line
-              for line in full_lines
-          }
-          nav_order = [
-              'quick-start', 'rotation', 'cooldowns', 'stats', 'talents', 'glyphs',
-              'macros', 'addons', 'gems', 'enchants', 'professions', 'consumables',
-              'corrections',
-          ]
-          text = text[:nav.start('body')] + ''.join(link_map[key] for key in nav_order) + text[nav.end('body'):]
+          top_level = re.findall(
+              r'^  <(?:section class="common"[^>]*|details class="common correction-section"[^>]*)>',
+              text,
+              re.M,
+          )
+          report.append('top_level_markers:')
+          report.extend(top_level)
 
-          # Lightweight structural checks only.
-          positions = []
-          for key in desired:
-              if key == 'sources':
-                  heading = text.index('Sources and scope')
-                  position = text.rfind('  <section class="common">', 0, heading)
-              else:
-                  position = text.index(markers[key])
-              positions.append(position)
-          if positions != sorted(positions):
-              raise SystemExit('Final section order is incorrect')
-          if not (text.index('id="quick-start"') < text.index('id="rotation"') < text.index('id="cooldowns"')):
-              raise SystemExit('Quick Start, Rotation, and Cooldowns are not in the required order')
-
-          path.write_text(text, encoding='utf-8', newline='\n')
+          Path('.tmp/reorder-diagnostic.txt').write_text('\n'.join(report) + '\n', encoding='utf-8')
           PY
 
-      - name: Commit reordered guide
+      - name: Commit diagnostic
         shell: bash
         run: |
           set -euo pipefail
-          rm -f .tmp/reorder-protection-guide-trigger.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --cached --check
-          git commit -m "Reorder Protection Paladin guide by learning path"
+          git add .tmp/reorder-diagnostic.txt
+          git commit -m "Record Protection guide reorder diagnostics"
           git push origin HEAD:${{ github.head_ref }}
