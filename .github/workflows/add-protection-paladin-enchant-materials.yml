@@ -1,0 +1,66 @@
+name: Add Protection Paladin enchant materials
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+permissions:
+  contents: write
+jobs:
+  update:
+    if: github.head_ref == 'add-protection-paladin-enchant-materials'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Add expandable material and source notes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, json
+          D=json.loads(base64.b64decode('eyJIZWFkIjogW1siQXJjYW51bSBvZiB0aGUgU3RhbHdhcnQgUHJvdGVjdG9yIiwgIk5vbmU7IHB1cmNoYXNlZCBhcyBhIGZpbmlzaGVkIGFyY2FudW0uIiwgIkFyZ2VudCBDcnVzYWRlIHF1YXJ0ZXJtYXN0ZXIgYXQgUmV2ZXJlZC4iLCAiUmVwdXRhdGlvbiBnYXRlLiIsICJoYXJkIl1dLCAiU2hvdWxkZXJzIjogW1siR3JlYXRlciBJbnNjcmlwdGlvbiBvZiB0aGUgR2xhZGlhdG9yIiwgIk5vbmU7IHB1cmNoYXNlZCBmb3IgMTAsMDAwIEhvbm9yLiIsICJGYWN0aW9uIFB2UCBhY2Nlc3NvcmllcyBxdWFydGVybWFzdGVyLiIsICJIb25vciBwdXJjaGFzZSwgbm8gcmVwdXRhdGlvbi4iLCAibWVkaXVtIl0sIFsiR3JlYXRlciBJbnNjcmlwdGlvbiBvZiB0aGUgUGlubmFjbGUiLCAiTm9uZTsgcHVyY2hhc2VkIGFzIGEgZmluaXNoZWQgaW5zY3JpcHRpb24uIiwgIlNvbnMgb2YgSG9kaXIgYXQgRXhhbHRlZC4iLCAiTG9uZyByZXB1dGF0aW9uIGdyaW5kIG9uIHN0YW5kYXJkIHJhdGVzLiIsICJoYXJkIl1dLCAiQ2xvYWsiOiBbWyJNaWdodHkgQXJtb3IiLCAiMTUgSW5maW5pdGUgRHVzdCwgMiBHcmVhdGVyIENvc21pYyBFc3NlbmNlLiIsICJGb3JtdWxhIHNvbGQgYnkgVmFuZXNzYSBTZWxsZXJzIGluIERhbGFyYW4gZm9yIERyZWFtIFNoYXJkcy4iLCAiVmVuZG9yIGZvcm11bGEuIiwgImVhc3kiXSwgWyJNYWpvciBBZ2lsaXR5IiwgIjggSW5maW5pdGUgRHVzdCwgMiBHcmVhdGVyIENvc21pYyBFc3NlbmNlLCAyIERyZWFtIFNoYXJkLiIsICJTdGFuZGFyZCBXb3RMSyBFbmNoYW50aW5nIGZvcm11bGEuIiwgIk5vIHJhaWQgb3IgcmVwdXRhdGlvbiBnYXRlLiIsICJlYXN5Il0sIFsiVGl0YW53ZWF2ZSIsICI4IEluZmluaXRlIER1c3QsIDIgVGl0YW5pdW0gQmFyLCAyIERyZWFtIFNoYXJkLiIsICJGb3JtdWxhIHNvbGQgYnkgVmFuZXNzYSBTZWxsZXJzIGluIERhbGFyYW4gZm9yIERyZWFtIFNoYXJkcy4iLCAiVmVuZG9yIGZvcm11bGEuIiwgImVhc3kiXV0sICJDaGVzdCI6IFtbIlBvd2VyZnVsIFN0YXRzIiwgIjQgRHJlYW0gU2hhcmQsIDQgQWJ5c3MgQ3J5c3RhbC4iLCAiRm9ybXVsYSBzb2xkIGJ5IFZhbmVzc2EgU2VsbGVycyBpbiBEYWxhcmFuIGZvciBEcmVhbSBTaGFyZHMuIiwgIkV4cGVuc2l2ZSwgYnV0IG5vdCBhIGRyb3AuIiwgIm1lZGl1bSJdLCBbIlN1cGVyIEhlYWx0aCIsICIyMCBJbmZpbml0ZSBEdXN0LCA0IEdyZWF0ZXIgQ29zbWljIEVzc2VuY2UuIiwgIlN0YW5kYXJkIFdvdExLIEVuY2hhbnRpbmcgcmVjaXBlLiIsICJObyByYWlkIG9yIHJlcHV0YXRpb24gZ2F0ZS4iLCAiZWFzeSJdLCBbIkdyZWF0ZXIgRGVmZW5zZSIsICIxMCBJbmZpbml0ZSBEdXN0LCAxIEV0ZXJuYWwgRWFydGguIiwgIlN0YW5kYXJkIFdvdExLIEVuY2hhbnRpbmcgcmVjaXBlLiIsICJObyBkaWZmaWN1bHQgZHJvcCBvciByZXB1dGF0aW9uIGdhdGUuIiwgImVhc3kiXV0sICJCcmFjZXJzIjogW1siTWFqb3IgU3RhbWluYSIsICI0IEdyZWF0ZXIgQ29zbWljIEVzc2VuY2UsIDEgQWJ5c3MgQ3J5c3RhbC4iLCAiRm9ybXVsYSBzb2xkIGJ5IFZhbmVzc2EgU2VsbGVycyBpbiBEYWxhcmFuIGZvciA1IEFieXNzIENyeXN0YWxzOyByZXF1aXJlcyBFbmNoYW50aW5nIDQ1MC4iLCAiQ29zdGx5IHZlbmRvciBmb3JtdWxhLCBub3QgYSBkcm9wLiIsICJtZWRpdW0iXSwgWyJGdXIgTGluaW5nIC0gU3RhbWluYSIsICIxIEFyY3RpYyBGdXIuIiwgIkxlYXRoZXJ3b3JraW5nIHBlcms7IHJlcXVpcmVzIDQwMCBMZWF0aGVyd29ya2luZyBvbiB0aGUgd2VhcmVyIGFuZCBvbmx5IHdvcmtzIG9uIHRoZSBsZWF0aGVyd29ya2Vy4oCZcyBvd24gYnJhY2Vycy4iLCAiUHJvZmVzc2lvbi1vbmx5LiIsICJoYXJkIl1dLCAiR2xvdmVzIjogW1siR2xvdmUgUmVpbmZvcmNlbWVudHMiLCAiNCBIZWF2eSBLbm90aGlkZSBMZWF0aGVyLCAzIFByaW1hbCBFYXJ0aC4iLCAiQ3JhZnRlZCBMZWF0aGVyd29ya2luZyBhcm1vciBraXQ7IHRyYWRhYmxlLiIsICJObyByZXB1dGF0aW9uIG9yIHJhcmUtZHJvcCBnYXRlLiIsICJlYXN5Il0sIFsiQXJtc21hbiIsICIyIERyZWFtIFNoYXJkLCA4IEV0ZXJuYWwgRWFydGguIiwgIkZvcm11bGEgc29sZCBieSBWYW5lc3NhIFNlbGxlcnMgaW4gRGFsYXJhbiBmb3IgRHJlYW0gU2hhcmRzLiIsICJWZW5kb3IgZm9ybXVsYS4iLCAiZWFzeSJdLCBbIlByZWNpc2lvbiIsICI0IEdyZWF0ZXIgQ29zbWljIEVzc2VuY2UuIiwgIlN0YW5kYXJkIFdvdExLIEVuY2hhbnRpbmcgcmVjaXBlLiIsICJObyBkaWZmaWN1bHQgc291cmNlLiIsICJlYXN5Il0sIFsiUmV0aWN1bGF0ZWQgQXJtb3IgV2ViYmluZyIsICI0IFNhcm9uaXRlIEJhciwgMiBFdGVybmFsIEVhcnRoLiIsICJFbmdpbmVlcmluZyB0aW5rZXI7IHJlcXVpcmVzIDQwMCBFbmdpbmVlcmluZyBvbiB0aGUgd2VhcmVyIHRvIHJlbWFpbiBhY3RpdmUuIiwgIlByb2Zlc3Npb24tb25seS4iLCAiaGFyZCJdXSwgIkJlbHQiOiBbWyJFdGVybmFsIEJlbHQgQnVja2xlIiwgIjQgU2Fyb25pdGUgQmFyLCAxIEV0ZXJuYWwgRWFydGgsIDEgRXRlcm5hbCBXYXRlciwgMSBFdGVybmFsIFNoYWRvdy4iLCAiQmxhY2tzbWl0aGluZyA0MTUgdHJhaW5lciByZWNpcGU7IGZpbmlzaGVkIGJ1Y2tsZSBpcyB0cmFkYWJsZS4iLCAiTm8gcmVwdXRhdGlvbiBvciBkcm9wIGdhdGUuIiwgImVhc3kiXV0sICJMZWdzIjogW1siRnJvc3RoaWRlIExlZyBBcm1vciIsICIyIEFyY3RpYyBGdXIsIDIgTmVydWJpYW4gQ2hpdGluLCAxIEZyb3plbiBPcmIuIiwgIkxlYXRoZXJ3b3JraW5nIHRyYWluZXIgcmVjaXBlOyBmaW5pc2hlZCBraXQgaXMgdHJhZGFibGUuIiwgIk1hdGVyaWFscyBjYW4gYmUgZXhwZW5zaXZlLCBidXQgdGhlIHJlY2lwZSBpcyBlYXN5IHRvIG9idGFpbi4iLCAibWVkaXVtIl1dLCAiQm9vdHMiOiBbWyJUdXNrYXJyJ3MgVml0YWxpdHkiLCAiMTAgSW5maW5pdGUgRHVzdCwgMiBHcmVhdGVyIENvc21pYyBFc3NlbmNlLCAyIERyZWFtIFNoYXJkLiIsICJGb3JtdWxhIHNvbGQgYnkgVmFuZXNzYSBTZWxsZXJzIGluIERhbGFyYW4gZm9yIERyZWFtIFNoYXJkcy4iLCAiVmVuZG9yIGZvcm11bGEuIiwgImVhc3kiXSwgWyJHcmVhdGVyIEZvcnRpdHVkZSIsICIzIExlc3NlciBDb3NtaWMgRXNzZW5jZSwgMyBJbmZpbml0ZSBEdXN0LiIsICJFbmNoYW50aW5nIHRyYWluZXIgcmVjaXBlLiIsICJFYXN5IHRvIG9idGFpbi4iLCAiZWFzeSJdLCBbIk5pdHJvIEJvb3N0cyIsICI2IFZvbGF0aWxlIEJsYXN0aW5nIFRyaWdnZXIsIDYgSGFuZGZ1bCBvZiBDb2JhbHQgQm9sdHMuIiwgIkVuZ2luZWVyaW5nIHRpbmtlcjsgcmVxdWlyZXMgNDAwIEVuZ2luZWVyaW5nIG9uIHRoZSB3ZWFyZXIuIiwgIlByb2Zlc3Npb24tb25seTsgdGVzdCBmYWlsdXJlIGJlaGF2aW9yIG9uIG91ciBzZXJ2ZXIuIiwgImhhcmQiXV0sICJXZWFwb24iOiBbWyJNb25nb29zZSIsICI2IFZvaWQgQ3J5c3RhbCwgMTAgTGFyZ2UgUHJpc21hdGljIFNoYXJkLCA4IEdyZWF0ZXIgUGxhbmFyIEVzc2VuY2UsIDQwIEFyY2FuZSBEdXN0LiIsICJCaW5kLW9uLXBpY2t1cCBmb3JtdWxhIGZyb20gTW9yb2VzIGluIEthcmF6aGFuLiIsICJSYXJlIG9sZC1yYWlkIGJvc3MgZHJvcDsgZmluZGluZyBhbiBlbmNoYW50ZXIgY2FuIGJlIGhhcmRlciB0aGFuIGJ1eWluZyB0aGUgbWF0ZXJpYWxzLiIsICJoYXJkIl0sIFsiQmxvb2QgRHJhaW5pbmciLCAiNCBBYnlzcyBDcnlzdGFsLCA0MCBJbmZpbml0ZSBEdXN0LCAxIFNjYXJsZXQgUnVieS4iLCAiQmluZC1vbi1waWNrdXAgVWxkdWFyIGZvcm11bGEuIiwgIlJhaWQtZHJvcCByZWNpcGUuIiwgImhhcmQiXSwgWyJBY2N1cmFjeSIsICIyMCBJbmZpbml0ZSBEdXN0LCA0IEdyZWF0ZXIgQ29zbWljIEVzc2VuY2UsIDQgRHJlYW0gU2hhcmQsIDYgQWJ5c3MgQ3J5c3RhbC4iLCAiRm9ybXVsYSBzb2xkIGJ5IFZhbmVzc2EgU2VsbGVycyBpbiBEYWxhcmFuIGZvciBEcmVhbSBTaGFyZHMuIiwgIlZlcnkgZXhwZW5zaXZlIG1hdGVyaWFscywgYnV0IG5vIHJhaWQgZHJvcC4iLCAibWVkaXVtIl0sIFsiQmxhZGUgV2FyZCIsICI0IEFieXNzIENyeXN0YWwsIDggR3JlYXRlciBDb3NtaWMgRXNzZW5jZSwgMSBUaXRhbnN0ZWVsIEJhci4iLCAiQmluZC1vbi1waWNrdXAgVWxkdWFyIGZvcm11bGEuIiwgIlJhaWQtZHJvcCByZWNpcGUuIiwgImhhcmQiXV0sICJTaGllbGQiOiBbWyJUaXRhbml1bSBQbGF0aW5nIiwgIjQgVGl0YW5pdW0gQmFyLCA0IEV0ZXJuYWwgU2hhZG93LiIsICJCbGFja3NtaXRoaW5nIDQ1MCBwbGFucyByZXF1aXJlIEhvcmRlIEV4cGVkaXRpb24gRXhhbHRlZCBvciBBbGxpYW5jZSBWYW5ndWFyZCBFeGFsdGVkOyB0aGUgZmluaXNoZWQgcGxhdGluZyBpcyB0cmFkYWJsZS4iLCAiTWFqb3IgcmVwdXRhdGlvbiBnYXRlIGZvciB0aGUgY3JhZnRlci4iLCAiaGFyZCJdLCBbIkVuY2hhbnQgU2hpZWxkIC0gRGVmZW5zZSIsICI2IEluZmluaXRlIER1c3QsIDYgRXRlcm5hbCBFYXJ0aC4iLCAiRW5jaGFudGluZyB0cmFpbmVyIHJlY2lwZS4iLCAiTm8gZGlmZmljdWx0IHNvdXJjZS4iLCAiZWFzeSJdXX0=').decode('utf-8'))
+          CSS=base64.b64decode('ICAgIC8qIEVuY2hhbnQgbWF0ZXJpYWwvc291cmNlIGV4cGFuZGVycy4gKi8KICAgIC5lbmNoYW50LWRldGFpbHN7bWFyZ2luLXRvcDo4cHg7cGFkZGluZzowO2JvcmRlcjowO2JvcmRlci1yYWRpdXM6MDtiYWNrZ3JvdW5kOnRyYW5zcGFyZW50fQogICAgLmVuY2hhbnQtZGV0YWlscz5zdW1tYXJ5e2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo2cHg7cGFkZGluZzo1cHggOHB4O2JvcmRlcjoxcHggc29saWQgcmdiYSgyNDUsMTQwLDE4NiwuMzApO2JvcmRlci1yYWRpdXM6OHB4O2JhY2tncm91bmQ6cmdiYSgyNDUsMTQwLDE4NiwuMDY1KTtjb2xvcjp2YXIoLS1wYWxhZGluLXNvZnQpO2ZvbnQtc2l6ZToxMXB4O2ZvbnQtd2VpZ2h0OjkwMDtsaW5lLWhlaWdodDoxLjI7bGlzdC1zdHlsZTpub25lfQogICAgLmVuY2hhbnQtZGV0YWlscz5zdW1tYXJ5Ojotd2Via2l0LWRldGFpbHMtbWFya2Vye2Rpc3BsYXk6bm9uZX0KICAgIC5lbmNoYW50LWRldGFpbHM+c3VtbWFyeTo6YWZ0ZXJ7Y29udGVudDoi4pa+Ijtjb2xvcjp2YXIoLS1wYWxhZGluKTtmb250LXNpemU6MTFweDt0cmFuc2l0aW9uOnRyYW5zZm9ybSAxNDBtcyBlYXNlfQogICAgLmVuY2hhbnQtZGV0YWlsc1tvcGVuXT5zdW1tYXJ5OjphZnRlcnt0cmFuc2Zvcm06cm90YXRlKDE4MGRlZyl9CiAgICAuZW5jaGFudC1kZXRhaWxzPnN1bW1hcnk6aG92ZXIsLmVuY2hhbnQtZGV0YWlscz5zdW1tYXJ5OmZvY3VzLXZpc2libGV7Ym9yZGVyLWNvbG9yOnZhcigtLXBhbGFkaW4pO2JhY2tncm91bmQ6cmdiYSgyNDUsMTQwLDE4NiwuMTEpO291dGxpbmU6bm9uZX0KICAgIC5lbmNoYW50LWRldGFpbC1ib2R5e2Rpc3BsYXk6Z3JpZDtnYXA6N3B4O21hcmdpbi10b3A6OHB4fQogICAgLmVuY2hhbnQtZGV0YWlsLWl0ZW17ZGlzcGxheTpncmlkO2dhcDozcHg7cGFkZGluZzo4cHggOXB4O2JvcmRlcjoxcHggc29saWQgcmdiYSgyNTUsMjU1LDI1NSwuMDc1KTtib3JkZXItcmFkaXVzOjlweDtiYWNrZ3JvdW5kOnJnYmEoMjU1LDI1NSwyNTUsLjAyNSk7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQtc2l6ZToxMnB4O2xpbmUtaGVpZ2h0OjEuNH0KICAgIC5lbmNoYW50LWRldGFpbC1pdGVtPnN0cm9uZ3ttYXJnaW4tYm90dG9tOjFweH0uZW5jaGFudC1kZXRhaWwtaXRlbSBie2NvbG9yOiNkN2RmZTh9CiAgICAuc291cmNlLWVhc3l7Y29sb3I6I2M4ZjZjODtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDo4MDB9LnNvdXJjZS1tZWRpdW17Y29sb3I6I2ZmZTFhMDtmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDo4MDB9LnNvdXJjZS1oYXJke2NvbG9yOiNmZmIxYjE7Zm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6ODAwfQogICAgLyogRW5kIGVuY2hhbnQgbWF0ZXJpYWwvc291cmNlIGV4cGFuZGVycy4gKi8KCg==').decode('utf-8')
+          def details(items):
+              rows=[]
+              for name,mats,source,note,level in items:
+                  rows.append(f'<div class="enchant-detail-item"><strong class="item-name q-rare">{name}</strong><span><b>Materials:</b> {mats}</span><span><b>Source:</b> {source} <em class="source-{level}">{note}</em></span></div>')
+              return '<details class="enchant-details"><summary>Materials &amp; source</summary><div class="enchant-detail-body">'+''.join(rows)+'</div></details>'
+          path=Path('guides/protection-paladin-pve-guide.html')
+          text=path.read_text(encoding='utf-8')
+          note='<p class="mini-note"><strong>Material note:</strong> Costs below use standard final-patch 3.3.5 recipes. Our server may change recipes, vendors, reputation rates, or drop rates. Crafted kits and attachments can usually be bought from another player; profession-only tinkers and linings require the profession on the character using them.</p>'
+          anchor='<p class="mini-note rarity-note"><strong>Color key:</strong> named enchantments and attachments use the closest in-game item-quality color. Plain explanatory text remains neutral.</p>'
+          if note not in text: text=text.replace(anchor,anchor+'\n    '+note,1)
+          lines=text.splitlines()
+          found=[]
+          for i,line in enumerate(lines):
+              for slot,items in D.items():
+                  marker=f'<tr><td><strong>{slot}</strong></td>'
+                  if marker in line:
+                      if 'class="enchant-details"' not in line:
+                          pos=line.rfind('</td></tr>')
+                          if pos<0: raise SystemExit(f'Row end not found: {slot}')
+                          line=line[:pos]+details(items)+line[pos:]
+                      lines[i]=line; found.append(slot); break
+          text='\n'.join(lines)+'\n'
+          if '/* Enchant material/source expanders. */' not in text:
+              css_anchor='    @media (max-width: 1040px) {'
+              if text.count(css_anchor)!=1: raise SystemExit('CSS anchor missing or duplicated')
+              text=text.replace(css_anchor,CSS+css_anchor,1)
+          text=text.replace('<stroong>Glyph of Blessing of Kings:</strong>','<strong>Glyph of Blessing of Kings:</strong>')
+          if set(found)!=set(D) or text.count('class="enchant-details"')!=11 or text.count('<summary>Materials &amp; source</summary>')!=11: raise SystemExit(f'Validation failed: {found}')
+          path.write_text(text,encoding='utf-8',newline='\n')
+          PY
+      - name: Commit guide update
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/add-protection-paladin-enchant-materials.yml .tmp/enchant-materials-trigger.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Add enchant materials and acquisition notes"
+          git push origin HEAD:${{ github.head_ref }}
