@@ -5,7 +5,7 @@ on:
     branches:
       - main
     types:
-      - opened
+      - synchronize
 
 permissions:
   contents: write
@@ -31,33 +31,7 @@ jobs:
 
           path = Path('guides/protection-paladin-pve-guide.html')
           text = path.read_text(encoding='utf-8')
-
-          block_start = re.compile(
-              r'^  <(?:section class="common"(?: id="[^"]+")?|details class="common correction-section" id="corrections")>',
-              re.M,
-          )
-          starts = [m.start() for m in block_start.finditer(text)]
           footer_start = text.index('  <footer>')
-          starts = [s for s in starts if s < footer_start]
-          if not starts:
-              raise SystemExit('No top-level guide sections found')
-
-          boundaries = starts + [footer_start]
-          blocks = {}
-          original_hashes = {}
-          for i, start in enumerate(starts):
-              block = text[start:boundaries[i + 1]]
-              id_match = re.search(r'id="([^"]+)"', block.split('\n', 1)[0])
-              if id_match:
-                  key = id_match.group(1)
-              elif 'Sources and scope' in block:
-                  key = 'sources'
-              else:
-                  raise SystemExit(f'Unrecognized top-level block: {block[:100]!r}')
-              if key in blocks:
-                  raise SystemExit(f'Duplicate section key: {key}')
-              blocks[key] = block
-              original_hashes[key] = hashlib.sha256(block.encode('utf-8')).hexdigest()
 
           desired = [
               'quick-start',
@@ -75,10 +49,42 @@ jobs:
               'corrections',
               'sources',
           ]
-          if set(blocks) != set(desired):
-              raise SystemExit(f'Section mismatch. Found {list(blocks)}, expected {desired}')
 
-          reordered = text[:starts[0]] + ''.join(blocks[key] for key in desired) + text[footer_start:]
+          markers = {
+              key: f'  <section class="common" id="{key}">' for key in desired
+              if key not in {'corrections', 'sources'}
+          }
+          markers['corrections'] = '  <details class="common correction-section" id="corrections">'
+
+          source_heading = text.index('Sources and scope')
+          source_start = text.rfind('  <section class="common">', 0, source_heading)
+          if source_start < 0:
+              raise SystemExit('Sources section start not found')
+
+          starts = {}
+          for key, marker in markers.items():
+              position = text.find(marker)
+              if position < 0:
+                  raise SystemExit(f'Section marker not found: {key}')
+              starts[key] = position
+          starts['sources'] = source_start
+
+          if len(set(starts.values())) != len(starts):
+              raise SystemExit(f'Duplicate section positions: {starts}')
+
+          current_order = [key for key, _ in sorted(starts.items(), key=lambda item: item[1])]
+          sorted_positions = sorted((position, key) for key, position in starts.items())
+
+          blocks = {}
+          original_hashes = {}
+          for index, (start, key) in enumerate(sorted_positions):
+              end = sorted_positions[index + 1][0] if index + 1 < len(sorted_positions) else footer_start
+              block = text[start:end]
+              blocks[key] = block
+              original_hashes[key] = hashlib.sha256(block.encode('utf-8')).hexdigest()
+
+          first_section = min(starts.values())
+          reordered = text[:first_section] + ''.join(blocks[key] for key in desired) + text[footer_start:]
 
           nav_match = re.search(
               r'(?P<open>    <div class="jump-nav" aria-label="Page sections">\n)'
@@ -90,11 +96,9 @@ jobs:
           if not nav_match:
               raise SystemExit('Jump navigation not found')
 
-          link_lines = re.findall(r'      <a href="#([^"]+)">.*?</a>\n', nav_match.group('body'))
-          full_lines = re.findall(r'      <a href="#[^"]+">.*?</a>\n', nav_match.group('body'))
-          if len(link_lines) != len(full_lines):
-              raise SystemExit('Could not parse jump navigation links')
-          link_map = dict(zip(link_lines, full_lines))
+          hrefs = re.findall(r'      <a href="#([^"]+)">.*?</a>\n', nav_match.group('body'))
+          lines = re.findall(r'      <a href="#[^"]+">.*?</a>\n', nav_match.group('body'))
+          link_map = dict(zip(hrefs, lines))
           nav_order = [
               'quick-start', 'rotation', 'cooldowns', 'stats', 'talents', 'glyphs',
               'macros', 'addons', 'gems', 'enchants', 'professions', 'consumables',
@@ -102,32 +106,31 @@ jobs:
           ]
           if set(link_map) != set(nav_order):
               raise SystemExit(f'Jump-nav mismatch. Found {list(link_map)}, expected {nav_order}')
-          new_nav_body = ''.join(link_map[key] for key in nav_order)
-          reordered = (
-              reordered[:nav_match.start('body')]
-              + new_nav_body
-              + reordered[nav_match.end('body'):]
-          )
 
-          # Re-extract and prove every section's contents stayed byte-for-byte unchanged.
-          new_starts = [m.start() for m in block_start.finditer(reordered)]
-          new_footer = reordered.index('  <footer>')
-          new_starts = [s for s in new_starts if s < new_footer]
-          new_boundaries = new_starts + [new_footer]
-          new_keys = []
-          for i, start in enumerate(new_starts):
-              block = reordered[start:new_boundaries[i + 1]]
-              id_match = re.search(r'id="([^"]+)"', block.split('\n', 1)[0])
-              key = id_match.group(1) if id_match else 'sources'
-              new_keys.append(key)
-              digest = hashlib.sha256(block.encode('utf-8')).hexdigest()
+          new_nav_body = ''.join(link_map[key] for key in nav_order)
+          reordered = reordered[:nav_match.start('body')] + new_nav_body + reordered[nav_match.end('body'):]
+
+          # Confirm all section blocks remain byte-for-byte unchanged.
+          verify_starts = {}
+          for key, marker in markers.items():
+              verify_starts[key] = reordered.index(marker)
+          verify_source_heading = reordered.index('Sources and scope')
+          verify_starts['sources'] = reordered.rfind('  <section class="common">', 0, verify_source_heading)
+          verify_footer = reordered.index('  <footer>')
+          verify_positions = sorted((position, key) for key, position in verify_starts.items())
+          final_order = [key for _, key in verify_positions]
+          if final_order != desired:
+              raise SystemExit(f'Final section order incorrect: {final_order}')
+
+          for index, (start, key) in enumerate(verify_positions):
+              end = verify_positions[index + 1][0] if index + 1 < len(verify_positions) else verify_footer
+              digest = hashlib.sha256(reordered[start:end].encode('utf-8')).hexdigest()
               if digest != original_hashes[key]:
                   raise SystemExit(f'Section content changed unexpectedly: {key}')
 
-          if new_keys != desired:
-              raise SystemExit(f'Final section order incorrect: {new_keys}')
-
           path.write_text(reordered, encoding='utf-8', newline='\n')
+          print('Previous order:', ' -> '.join(current_order))
+          print('New order:', ' -> '.join(desired))
           PY
 
           rm -f .tmp/reorder-protection-guide-trigger.txt
