@@ -1,0 +1,194 @@
+name: Polish Protection Paladin visual hierarchy
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    if: github.head_ref == 'polish-protection-paladin-hierarchy'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Strengthen guide hierarchy without changing the visual character
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+
+          path = Path('guides/protection-paladin-pve-guide.html')
+          text = path.read_text(encoding='utf-8')
+
+          start_marker = '    /* Visual hierarchy polish: restrained emphasis for headings and important names. */\n'
+          end_marker = '    /* End visual hierarchy polish. */\n\n'
+          if start_marker in text or end_marker in text:
+              raise SystemExit('Visual hierarchy block already exists')
+
+          css = '''    /* Visual hierarchy polish: restrained emphasis for headings and important names. */
+    .common > h2 {
+      margin-bottom: 16px;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: .01em;
+    }
+
+    .common > h2::after {
+      content: "";
+      flex: 1 1 auto;
+      height: 1px;
+      margin-left: 4px;
+      background: linear-gradient(90deg, rgba(245,140,186,.30), transparent);
+    }
+
+    .common > h3:not(.macro-section-title) {
+      margin: 18px 0 10px !important;
+      color: #f6f8fb;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: .01em;
+    }
+
+    .guide-box > h3,
+    .priority-card > h3,
+    .spell-card > h3,
+    .macro-card > h3 {
+      margin: 0 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,.085);
+      color: #f7f9fc;
+      font-size: 17px;
+      line-height: 1.3;
+      letter-spacing: .005em;
+    }
+
+    .macro-card {
+      border-color: rgba(245,140,186,.20);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    }
+
+    .macro-card > h3 {
+      padding-left: 9px;
+      border-left: 3px solid var(--paladin);
+      border-bottom-color: rgba(245,140,186,.20);
+      color: var(--paladin-soft);
+      font-size: 18px;
+    }
+
+    .macro-section-title {
+      display: flex;
+      align-items: center;
+      margin: 22px 0 10px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--paladin);
+      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(245,140,186,.12), rgba(245,140,186,0));
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: .01em;
+    }
+
+    .macro-purpose {
+      color: #c7d0da !important;
+      line-height: 1.45;
+    }
+
+    #addons .guide-box > h3 {
+      font-size: 18px;
+    }
+
+    #addons .guide-box > h3 a {
+      color: var(--paladin-soft);
+      text-decoration: none;
+    }
+
+    #addons .guide-box > h3 a:hover,
+    #addons .guide-box > h3 a:focus-visible {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-color: rgba(245,140,186,.65);
+      text-underline-offset: 3px;
+      outline: none;
+    }
+
+    th {
+      color: #d7dfe8;
+      font-weight: 900;
+    }
+
+    td:first-child > strong,
+    td:first-child .item-name {
+      color: #f6f8fb;
+    }
+
+    details > summary {
+      color: #f5f7fa;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .correction-section > summary {
+      font-size: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .common > h2 { font-size: 20px; }
+      .macro-card > h3 { font-size: 17px; }
+      .macro-section-title { font-size: 17px; }
+    }
+    /* End visual hierarchy polish. */
+
+'''
+
+          anchor = '    @media (max-width: 1040px) {'
+          if text.count(anchor) != 1:
+              raise SystemExit(f'Expected one CSS insertion anchor, found {text.count(anchor)}')
+          text = text.replace(anchor, css + anchor, 1)
+
+          if text.count('<stroong>Glyph of Blessing of Kings:</strong>') != 1:
+              raise SystemExit('Expected Glyph of Blessing of Kings typo was not found exactly once')
+          text = text.replace('<stroong>Glyph of Blessing of Kings:</strong>', '<strong>Glyph of Blessing of Kings:</strong>', 1)
+
+          checks = [
+              text.count(start_marker) == 1,
+              text.count(end_marker) == 1,
+              '.macro-card > h3' in text,
+              '.macro-section-title' in text,
+              '#addons .guide-box > h3 a' in text,
+              'td:first-child > strong' in text,
+              '<stroong>' not in text,
+          ]
+          if not all(checks):
+              raise SystemExit('Visual hierarchy validation failed')
+
+          class Parser(HTMLParser):
+              pass
+          Parser().feed(text)
+
+          path.write_text(text, encoding='utf-8', newline='\n')
+          PY
+
+      - name: Commit polished guide
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/polish-protection-paladin-hierarchy.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guides/protection-paladin-pve-guide.html .github/workflows/polish-protection-paladin-hierarchy.yml
+          git diff --cached --check
+          git commit -m "Polish Protection Paladin guide hierarchy"
+          git push origin HEAD:${{ github.head_ref }}
