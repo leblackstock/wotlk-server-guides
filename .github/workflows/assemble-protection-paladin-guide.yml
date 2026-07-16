@@ -20,9 +20,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          printf '%s\n' .tmp/protection-paladin-guide/*.b64
           cat .tmp/protection-paladin-guide/*.b64 | base64 --decode > guides/protection-paladin-pve-guide.html
           actual="$(git hash-object guides/protection-paladin-pve-guide.html)"
           expected="3e451952b5a12309251b4f72cae85c8d3c9865d1"
+          echo "actual=$actual"
+          echo "expected=$expected"
+          wc -c guides/protection-paladin-pve-guide.html
           test "$actual" = "$expected"
           rm -rf .tmp/protection-paladin-guide
           rm -f .github/workflows/assemble-protection-paladin-guide.yml
