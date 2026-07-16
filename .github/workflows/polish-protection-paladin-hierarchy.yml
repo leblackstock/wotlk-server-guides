@@ -1,4 +1,5 @@
 name: Polish Protection Paladin visual hierarchy
+# Synchronize the pull request so this one-shot workflow runs.
 
 on:
   pull_request:
