@@ -1,0 +1,101 @@
+name: Clean Core 969 quick-start card
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    if: github.head_ref == 'clean-core-969-card'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: clean-core-969-card
+      - name: Replace duplicated quick-start copy
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('guides/protection-paladin-pve-guide.html')
+          text = path.read_text(encoding='utf-8')
+
+          old = '''      <div class="summary-card rotation-card">
+        <span class="summary-label">Core 969 rotation</span>
+        <div class="summary-value">Alternate the <span style="color:var(--paladin-soft)">pink 9-second spell group</span> with the <span style="color:#bcefff">blue 6-second spell group</span>.</div>
+        <div class="cooldown-groups">
+          <div class="cooldown-group nine">
+            <span class="cooldown-label">9-second spells: Holy Shield, Judgement, Consecration</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span>
+            </div>
+          </div>
+          <div class="cooldown-group six">
+            <span class="cooldown-label">6-second spells: Hammer of the Righteous, Shield of Righteousness</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-detail"><strong>Pattern:</strong> 9 → 6 → 9 → 6. Use <strong>1/2 Improved Judgements</strong> so Judgement fits the 9-second group cleanly.</div>
+      </div>'''
+
+          new = '''      <div class="summary-card rotation-card">
+        <span class="summary-label">Core 969 rotation</span>
+        <div class="summary-value">Alternate one spell from each group: <span style="color:var(--paladin-soft)">9-second</span> → <span style="color:#bcefff">6-second</span> → repeat.</div>
+        <div class="cooldown-groups">
+          <div class="cooldown-group nine">
+            <span class="cooldown-label">9-second group</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span>
+            </div>
+          </div>
+          <div class="cooldown-group six">
+            <span class="cooldown-label">6-second group</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-detail">Use <strong>1/2 Improved Judgements</strong> so Judgement fits the 9-second group cleanly.</div>
+      </div>'''
+
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected one old Core 969 card, found {text.count(old)}')
+
+          text = text.replace(old, new)
+
+          checks = [
+              text.count('Core 969 rotation') == 1,
+              text.count('9-second group</span>') == 1,
+              text.count('6-second group</span>') == 1,
+              '9-second spells: Holy Shield, Judgement, Consecration' not in text,
+              '6-second spells: Hammer of the Righteous, Shield of Righteousness' not in text,
+              text.count('Holy Shield</span>') >= 1,
+              text.count('Hammer of the Righteous</span>') >= 1,
+          ]
+          if not all(checks):
+              raise SystemExit('Core 969 card validation failed')
+
+          path.write_text(text, encoding='utf-8', newline='\n')
+          PY
+
+          rm -f .github/workflows/clean-core-969-card.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Clean up Core 969 quick-start card"
+          git push
