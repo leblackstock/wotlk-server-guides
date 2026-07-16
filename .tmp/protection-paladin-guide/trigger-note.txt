@@ -1,0 +1,1 @@
+This temporary staging file is removed automatically after the guide is assembled and verified.
