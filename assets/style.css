@@ -205,6 +205,119 @@ h1 {
   content: "6-second group";
 }
 
+/* Protection Paladin guide: restrained visual hierarchy polish. */
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .common > h2 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .common > h2::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  margin-left: 4px;
+  background: linear-gradient(90deg, rgba(245, 140, 186, 0.30), transparent);
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .common > h3:not(.macro-section-title) {
+  margin: 18px 0 10px !important;
+  color: #f6f8fb;
+  font-size: 17px;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .guide-box > h3,
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .priority-card > h3,
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .spell-card > h3,
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-card > h3 {
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.085);
+  color: #f7f9fc;
+  font-size: 17px;
+  line-height: 1.3;
+  letter-spacing: 0.005em;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-card {
+  border-color: rgba(245, 140, 186, 0.20);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-card > h3 {
+  padding-left: 9px;
+  border-left: 3px solid var(--paladin);
+  border-bottom-color: rgba(245, 140, 186, 0.20);
+  color: var(--paladin-soft);
+  font-size: 18px;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-section-title {
+  display: flex;
+  align-items: center;
+  margin: 22px 0 10px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--paladin);
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(245, 140, 186, 0.12), rgba(245, 140, 186, 0));
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-purpose {
+  color: #c7d0da !important;
+  line-height: 1.45;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) #addons .guide-box > h3 {
+  font-size: 18px;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) #addons .guide-box > h3 a {
+  color: var(--paladin-soft);
+  text-decoration: none;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) #addons .guide-box > h3 a:hover,
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) #addons .guide-box > h3 a:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 140, 186, 0.65);
+  text-underline-offset: 3px;
+  outline: none;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) th {
+  color: #d7dfe8;
+  font-weight: 900;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) td:first-child > strong,
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) td:first-child .item-name {
+  color: #f6f8fb;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) details > summary {
+  color: #f5f7fa;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .correction-section > summary {
+  font-size: 20px;
+}
+
+/* Preserve the intended bold treatment despite the legacy typo in the guide markup. */
+body:has(#quick-start):has(#rotation):has(#macros):has(#addons) stroong {
+  color: #fff;
+  font-weight: 900;
+}
+
 footer {
   margin-top: 18px;
   color: var(--muted);
@@ -240,5 +353,14 @@ footer {
 
   .guide-card {
     min-height: 0;
+  }
+
+  body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .common > h2 {
+    font-size: 20px;
+  }
+
+  body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-card > h3,
+  body:has(#quick-start):has(#rotation):has(#macros):has(#addons) .macro-section-title {
+    font-size: 17px;
   }
 }
