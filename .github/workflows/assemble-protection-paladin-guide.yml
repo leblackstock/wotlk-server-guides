@@ -1,17 +1,16 @@
 name: Assemble Protection Paladin guide
 
 on:
-  push:
+  pull_request:
     branches:
-      - polish-protection-paladin-guide
-    paths:
-      - '.tmp/protection-paladin-guide/READY'
+      - main
 
 permissions:
   contents: write
 
 jobs:
   assemble:
+    if: github.head_ref == 'polish-protection-paladin-guide'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
