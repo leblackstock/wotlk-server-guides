@@ -1,0 +1,33 @@
+file_bytes=76563
+footer_found=True
+sources_heading_found=True
+quick-start=15986
+rotation=32738
+cooldowns=37739
+stats=20340
+talents=26310
+glyphs=29196
+macros=52244
+addons=-1
+gems=41620
+enchants=44142
+professions=48762
+consumables=50291
+corrections=70250
+sources=73746
+nav_found=True
+nav_hrefs=quick-start,stats,talents,glyphs,rotation,cooldowns,gems,enchants,professions,consumables,macros,addons,corrections
+top_level_markers:
+  <section class="common" id="quick-start">
+  <section class="common" id="stats">
+  <section class="common" id="talents">
+  <section class="common" id="glyphs">
+  <section class="common" id="rotation">
+  <section class="common" id="cooldowns">
+  <section class="common" id="gems">
+  <section class="common" id="enchants">
+  <section class="common" id="professions">
+  <section class="common" id="consumables">
+  <section class="common" id="macros">
+  <details class="common correction-section" id="corrections">
+  <section class="common">
