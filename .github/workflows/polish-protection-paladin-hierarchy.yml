@@ -1,25 +1,20 @@
 name: Polish Protection Paladin visual hierarchy
-# Synchronize the pull request so this one-shot workflow runs.
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types:
-      - opened
-      - synchronize
 
 permissions:
   contents: write
 
 jobs:
   polish:
-    if: github.head_ref == 'polish-protection-paladin-hierarchy'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
           fetch-depth: 0
 
       - name: Strengthen guide hierarchy without changing the visual character
@@ -192,4 +187,4 @@ jobs:
           git add guides/protection-paladin-pve-guide.html .github/workflows/polish-protection-paladin-hierarchy.yml
           git diff --cached --check
           git commit -m "Polish Protection Paladin guide hierarchy"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin HEAD:main
