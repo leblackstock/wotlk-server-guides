@@ -114,7 +114,7 @@
       gap: 12px;
     }
 
-    .summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 16px; }
+    .summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 16px; }
     .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -159,6 +159,84 @@
     .macro-card p {
       color: var(--muted);
       font-size: 13px;
+    }
+
+    .rotation-card {
+      grid-column: 1 / -1;
+    }
+
+    .cooldown-groups {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 9px;
+      margin: 10px 0 8px;
+    }
+
+    .cooldown-group {
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 9px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .cooldown-group.nine {
+      border-color: rgba(245,140,186,.48);
+      background: rgba(245,140,186,.075);
+    }
+
+    .cooldown-group.six {
+      border-color: rgba(114,227,255,.42);
+      background: rgba(114,227,255,.065);
+    }
+
+    .cooldown-label {
+      display: block;
+      margin-bottom: 7px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .cooldown-group.nine .cooldown-label { color: var(--paladin-soft); }
+    .cooldown-group.six .cooldown-label { color: #bcefff; }
+
+    .cooldown-spells {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 12px;
+    }
+
+    .spell-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .spell-icon,
+    .ability-icon {
+      flex: 0 0 auto;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.20);
+      background: #0c1116;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+
+    .spell-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+    }
+
+    .ability-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
     }
 
     .common h2 {
@@ -303,6 +381,46 @@
       font-weight: 900;
     }
 
+    .item-name { font-weight: 900; }
+    .q-common { color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,.10); }
+    .q-uncommon { color: #1eff00; text-shadow: 0 0 8px rgba(30,255,0,.22); }
+    .q-rare { color: #1687ff; text-shadow: 0 0 9px rgba(0,112,221,.42); }
+    .q-epic { color: #b45cff; text-shadow: 0 0 9px rgba(163,53,238,.42); }
+    .q-legendary { color: #ff8000; text-shadow: 0 0 9px rgba(255,128,0,.35); }
+    .socket-meta { color: #d7a8ff; }
+    .socket-blue { color: #45a8ff; }
+    .socket-yellow { color: #ffd43b; }
+    .socket-red { color: #ff6666; }
+    .rarity-note span { font-weight: 900; }
+
+    .correction-section { padding: 0; }
+    .correction-section > summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      list-style: none;
+    }
+    .correction-section > summary::-webkit-details-marker { display: none; }
+    .correction-section > summary::after {
+      content: "Open";
+      margin-left: auto;
+      padding: 3px 8px;
+      border: 1px solid rgba(245,140,186,.38);
+      border-radius: 999px;
+      color: var(--paladin-soft);
+      background: rgba(245,140,186,.07);
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .correction-section[open] > summary::after { content: "Close"; }
+    .correction-body { padding: 0 16px 16px; }
+
     .rotation-strip {
       display: flex;
       flex-wrap: wrap;
@@ -373,6 +491,63 @@
       outline: none;
     }
 
+    .macro-section-title {
+      margin: 18px 0 8px;
+      color: var(--paladin-soft);
+      font-size: 17px;
+    }
+
+    .macro-purpose {
+      margin: 0 0 8px;
+    }
+
+    .macro-guidance {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 9px 0;
+    }
+
+    .macro-use,
+    .macro-avoid {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 9px;
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .macro-use {
+      border-color: rgba(142,224,142,.34);
+      background: rgba(142,224,142,.055);
+    }
+
+    .macro-avoid {
+      border-color: rgba(255,140,140,.34);
+      background: rgba(255,140,140,.05);
+    }
+
+    .macro-use strong { color: #c8f6c8; }
+    .macro-avoid strong { color: #ffd0d0; }
+
+    .macro-use span,
+    .macro-avoid span {
+      display: block;
+      margin-top: 3px;
+    }
+
+    .macro-caution {
+      border-left: 4px solid var(--warn);
+      background: rgba(240,193,90,.07);
+      color: #f5dfab;
+      border-radius: 10px;
+      padding: 9px 10px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
     details {
       border: 1px solid var(--line);
       background: #121820;
@@ -427,6 +602,8 @@
 
     @media (max-width: 680px) {
       .summary-grid { grid-template-columns: 1fr; }
+      .cooldown-groups { grid-template-columns: 1fr; }
+      .macro-guidance { grid-template-columns: 1fr; }
       table { min-width: 680px; }
       .rotation-strip { gap: 5px; }
       .ability { font-size: 11px; padding: 6px 7px; }
@@ -488,14 +665,31 @@
         <div class="summary-detail">Horde uses Seal of Corruption; Alliance uses Seal of Vengeance. Build and maintain five stacks.</div>
       </div>
       <div class="summary-card">
-        <span class="summary-label">Core rotation</span>
-        <div class="summary-value">Alternate 9 and 6</div>
-        <div class="summary-detail">Holy Shield, Judgement, Consecration alternate with Hammer and Shield of Righteousness.</div>
-      </div>
-      <div class="summary-card">
         <span class="summary-label">Default majors</span>
         <div class="summary-value">Plea + Seal + Taunt</div>
         <div class="summary-detail">Glyph of Divine Plea, Seal of Vengeance, and Righteous Defense are the safe all-purpose set.</div>
+      </div>
+      <div class="summary-card rotation-card">
+        <span class="summary-label">Core 969 rotation</span>
+        <div class="summary-value">Alternate the <span style="color:var(--paladin-soft)">pink 9-second spell group</span> with the <span style="color:#bcefff">blue 6-second spell group</span>.</div>
+        <div class="cooldown-groups">
+          <div class="cooldown-group nine">
+            <span class="cooldown-label">9-second spells: Holy Shield, Judgement, Consecration</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span>
+            </div>
+          </div>
+          <div class="cooldown-group six">
+            <span class="cooldown-label">6-second spells: Hammer of the Righteous, Shield of Righteousness</span>
+            <div class="cooldown-spells">
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span>
+              <span class="spell-chip"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-detail"><strong>Pattern:</strong> 9 → 6 → 9 → 6. Use <strong>1/2 Improved Judgements</strong> so Judgement fits the 9-second group cleanly.</div>
       </div>
     </div>
 
@@ -620,7 +814,7 @@
         </tbody>
       </table>
     </div>
-    <p class="mini-note">These are taunt-reliability targets, not a demand that every general tank set reach spell-hit cap.</p>
+    <p class="mini-note">These are taunt-reliability targets, not a demand that every general tank set reach spell-hit cap. Count only actual gear, racial, raid-debuff, and glyph coverage.</p>
 
     <details>
       <summary>Advanced: the 102.4% combat table</summary>
@@ -671,7 +865,6 @@
       </div>
     </div>
 
-    <div class="note danger"><strong>Do not copy the comment claiming Protection has a free 3% hit talent.</strong> That is not a dependable 3.3.5 Protection Paladin assumption. Count actual gear, racial, raid-debuff, and glyph coverage.</div>
   </section>
 
   <section class="common" id="glyphs">
@@ -739,7 +932,7 @@
         <h3>Minor glyphs</h3>
         <p><strong>Glyph of Sense Undead:</strong> free 1% damage against Undead while tracking them. Very useful in Wrath.</p>
         <p><strong>Glyph of Lay on Hands:</strong> lowers the cooldown of a major emergency button.</p>
-        <p><strong>Glyph of Blessing of Kings:</strong> practical third minor for cheaper rebuffs.</p>
+        <p><stroong>Glyph of Blessing of Kings:</strong> practical third minor for cheaper rebuffs.</p>
         <p class="mini-note">The transcript's garbled “Glyph of the Wise” is identifiable, but it is not the best default tank minor.</p>
       </div>
     </div>
@@ -760,14 +953,14 @@
 
     <h3 style="margin:16px 0 4px">Clean opening sequence</h3>
     <div class="rotation-strip" aria-label="969 rotation sequence">
-      <span class="ability nine"><span class="num">9</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><span class="num">6</span>Hammer</span><span class="arrow">›</span>
-      <span class="ability nine"><span class="num">9</span>Judgement</span><span class="arrow">›</span>
-      <span class="ability six"><span class="num">6</span>Shield</span><span class="arrow">›</span>
-      <span class="ability nine"><span class="num">9</span>Consecration</span><span class="arrow">›</span>
-      <span class="ability six"><span class="num">6</span>Hammer</span><span class="arrow">›</span>
-      <span class="ability nine"><span class="num">9</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><span class="num">6</span>Shield</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
     </div>
     <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
 
@@ -870,15 +1063,16 @@
     <h2><span class="section-mark">◆</span> Gems</h2>
 
     <div class="note paladin"><strong>Simple rule:</strong> Activate the meta, reach 540 Defense, then use stamina unless a worthwhile socket bonus lets you gain useful hybrid stats cheaply.</div>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> socket words use their socket color; item names use WoW quality colors such as <span class="q-rare">rare</span> and <span class="q-epic">epic</span>.</p>
 
     <div class="table-wrap" style="margin-top:12px">
       <table style="min-width:720px">
         <thead><tr><th>Socket</th><th>Default</th><th>Useful alternatives</th><th>When to match</th></tr></thead>
         <tbody>
-          <tr><td><strong>Meta</strong></td><td><span class="cap">Austere Earthsiege Diamond</span></td><td>None for general tanking</td><td>32 stamina and 2% increased armor from items.</td></tr>
-          <tr><td><strong>Blue</strong></td><td>Solid Majestic Zircon<br><span class="muted">30 stamina</span></td><td>Stamina Dragon's Eyes for Jewelcrafters</td><td>Blue is your natural stamina socket.</td></tr>
-          <tr><td><strong>Yellow</strong></td><td>Enduring Eye of Zul<br><span class="muted">10 Defense + 15 stamina</span></td><td>Vivid Eye of Zul<br><span class="muted">10 hit + 15 stamina</span></td><td>Use to finish Defense, improve taunt reliability, activate meta, or claim a good stamina bonus.</td></tr>
-          <tr><td><strong>Red</strong></td><td>Shifting Dreadstone<br><span class="muted">10 agility + 15 stamina</span></td><td>Guardian's Dreadstone<br><span class="muted">10 expertise + 15 stamina</span><br>Sovereign Dreadstone<br><span class="muted">10 strength + 15 stamina</span></td><td>Match only for a useful bonus. Agility gives armor, dodge, and crit; expertise improves threat reliability.</td></tr>
+          <tr><td><strong class="socket-meta">Meta</strong></td><td><span class="item-name q-rare">Austere Earthsiege Diamond</span></td><td>None for general tanking</td><td>32 stamina and 2% increased armor from items.</td></tr>
+          <tr><td><strong class="socket-blue">Blue</strong></td><td><span class="item-name q-epic">Solid Majestic Zircon</span><br><span class="muted">30 stamina</span></td><td><span class="item-name q-rare">Solid Dragon's Eye</span><br><span class="muted">Jewelcrafting-only stamina gem</span></td><td>Blue is your natural stamina socket.</td></tr>
+          <tr><td><strong class="socket-yellow">Yellow</strong></td><td><span class="item-name q-epic">Enduring Eye of Zul</span><br><span class="muted">10 Defense + 15 stamina</span></td><td><span class="item-name q-epic">Vivid Eye of Zul</span><br><span class="muted">10 hit + 15 stamina</span></td><td>Use to finish Defense, improve taunt reliability, activate meta, or claim a good stamina bonus.</td></tr>
+          <tr><td><strong class="socket-red">Red</strong></td><td><span class="item-name q-epic">Shifting Dreadstone</span><br><span class="muted">10 agility + 15 stamina</span></td><td><span class="item-name q-epic">Guardian's Dreadstone</span><br><span class="muted">10 expertise + 15 stamina</span><br><span class="item-name q-epic">Sovereign Dreadstone</span><br><span class="muted">10 strength + 15 stamina</span></td><td>Match only for a useful bonus. Agility gives armor, dodge, and crit; expertise improves threat reliability.</td></tr>
         </tbody>
       </table>
     </div>
@@ -888,29 +1082,30 @@
 
   <section class="common" id="enchants">
     <h2><span class="section-mark">◆</span> Enchants</h2>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> named enchantments and attachments use the closest in-game item-quality color. Plain explanatory text remains neutral.</p>
 
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-top:12px">
       <table>
         <thead><tr><th>Slot</th><th>General choice</th><th>Alternatives</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td><strong>Head</strong></td><td>Arcanum of the Stalwart Protector</td><td>None comparable for general tanking</td><td>37 stamina + 20 Defense rating; Argent Crusade at Revered.</td></tr>
-          <tr><td><strong>Shoulders</strong></td><td>Greater Inscription of the Gladiator</td><td>Greater Inscription of the Pinnacle</td><td>The PvP stamina/resilience inscription is excellent effective health and can help crit immunity. Pinnacle gives dodge + Defense and requires Sons of Hodir reputation.</td></tr>
-          <tr><td><strong>Cloak</strong></td><td>225 Armor or 22 Agility</td><td>16 Defense</td><td>Use Defense only to fix the minimum. Armor is consistent physical mitigation; agility adds armor and avoidance.</td></tr>
-          <tr><td><strong>Chest</strong></td><td>10 All Stats</td><td>275 Health or 22 Defense</td><td>Pick the option that closes a real weakness, not the one with the prettiest tooltip.</td></tr>
-          <tr><td><strong>Bracers</strong></td><td>40 Stamina</td><td>102 Stamina for Leatherworkers</td><td>One of the cleanest stamina slots.</td></tr>
-          <tr><td><strong>Gloves</strong></td><td>240 Armor</td><td>Armsman, Precision, Engineering armor tinker</td><td>Armsman gives threat and parry; Precision fixes hit; Engineering's armor tinker is extremely strong if available and correctly scripted.</td></tr>
-          <tr><td><strong>Belt</strong></td><td>Eternal Belt Buckle</td><td>Engineering utility attachments</td><td>Adds an extra socket. This is not optional once affordable.</td></tr>
-          <tr><td><strong>Legs</strong></td><td>Frosthide Leg Armor</td><td>None comparable</td><td>55 stamina + 22 agility.</td></tr>
-          <tr><td><strong>Boots</strong></td><td>Tuskarr's Vitality</td><td>22 Stamina; Nitro Boosts</td><td>Movement speed frequently prevents more damage than 7 extra stamina. Pursuit of Justice does not stack with the movement portion.</td></tr>
-          <tr><td><strong>Weapon</strong></td><td>Mongoose</td><td>Blood Draining, Accuracy, Blade Ward</td><td>Blood Draining is a strong emergency-health option when correctly scripted. Mongoose is a reliable all-round fallback. Do not assume every private-server proc works correctly.</td></tr>
-          <tr><td><strong>Shield</strong></td><td>Titanium Plating</td><td>20 Defense</td><td>Use Defense only when needed. Plating adds block value and disarm reduction.</td></tr>
+          <tr><td><strong>Head</strong></td><td><span class="item-name q-rare">Arcanum of the Stalwart Protector</span></td><td>None comparable for general tanking</td><td>37 stamina + 20 Defense rating; Argent Crusade at Revered.</td></tr>
+          <tr><td><strong>Shoulders</strong></td><td><span class="item-name q-rare">Greater Inscription of the Gladiator</span></td><td><span class="item-name q-rare">Greater Inscription of the Pinnacle</span></td><td>The PvP stamina/resilience inscription is excellent effective health and can help crit immunity. Pinnacle gives dodge + Defense and requires Sons of Hodir reputation.</td></tr>
+          <tr><td><strong>Cloak</strong></td><td><span class="item-name q-rare">225 Armor</span> or <span class="item-name q-rare">22 Agility</span></td><td><span class="item-name q-rare">16 Defense</span></td><td>Use Defense only to fix the minimum. Armor is consistent physical mitigation; agility adds armor and avoidance.</td></tr>
+          <tr><td><strong>Chest</strong></td><td><span class="item-name q-rare">10 All Stats</span></td><td><span class="item-name q-rare">275 Health</span> or <span class="item-name q-rare">22 Defense</span></td><td>Pick the option that closes a real weakness, not the one with the prettiest tooltip.</td></tr>
+          <tr><td><strong>Bracers</strong></td><td><span class="item-name q-rare">40 Stamina</span></td><td><span class="item-name q-rare">102 Stamina</span> for Leatherworkers</td><td>One of the cleanest stamina slots.</td></tr>
+          <tr><td><strong>Gloves</strong></td><td><span class="item-name q-rare">240 Armor</span></td><td><span class="item-name q-rare">Armsman</span>, <span class="item-name q-rare">Precision</span>, Engineering armor tinker</td><td><span class="item-name q-rare">Armsman</span> gives threat and parry; <span class="item-name q-rare">Precision</span> fixes hit; Engineering's armor tinker is extremely strong if available and correctly scripted.</td></tr>
+          <tr><td><strong>Belt</strong></td><td><span class="item-name q-rare">Eternal Belt Buckle</span></td><td>Engineering utility attachments</td><td>Adds an extra socket. This is not optional once affordable.</td></tr>
+          <tr><td><strong>Legs</strong></td><td><span class="item-name q-rare">Frosthide Leg Armor</span></td><td>None comparable</td><td>55 stamina + 22 agility.</td></tr>
+          <tr><td><strong>Boots</strong></td><td><span class="item-name q-rare">Tuskarr's Vitality</span></td><td><span class="item-name q-rare">22 Stamina</span>; <span class="item-name q-rare">Nitro Boosts</span></td><td>Movement speed frequently prevents more damage than 7 extra stamina. Pursuit of Justice does not stack with the movement portion.</td></tr>
+          <tr><td><strong>Weapon</strong></td><td><span class="item-name q-rare">Mongoose</span></td><td><span class="item-name q-epic">Blood Draining</span>, <span class="item-name q-rare">Accuracy</span>, <span class="item-name q-epic">Blade Ward</span></td><td><span class="item-name q-epic">Blood Draining</span> is a strong emergency-health option when correctly scripted. <span class="item-name q-rare">Mongoose</span> is a reliable all-round fallback. Do not assume every private-server proc works correctly.</td></tr>
+          <tr><td><strong>Shield</strong></td><td><span class="item-name q-rare">Titanium Plating</span></td><td><span class="item-name q-rare">20 Defense</span></td><td>Use Defense only when needed. Plating adds block value and disarm reduction.</td></tr>
         </tbody>
       </table>
     </div>
 
     <details>
       <summary>Libram choices</summary>
-      <p><strong>Libram of Defiance</strong> is an excellent practical all-purpose tank libram and has reliable uptime through Hammer of the Righteous. <strong>Libram of the Eternal Tower</strong> can provide more stacked dodge when Shield of Righteousness uptime is maintained, but it ramps and can fall off during movement or downtime. Use Defiance confidently unless a specific set or encounter rewards the alternative.</p>
+      <p><strong><span class="item-name q-epic">Libram of Defiance</span></strong> is an excellent practical all-purpose tank libram and has reliable uptime through Hammer of the Righteous. <strong><span class="item-name q-epic">Libram of the Eternal Tower</span></strong> can provide more stacked dodge when Shield of Righteousness uptime is maintained, but it ramps and can fall off during movement or downtime. Use Defiance confidently unless a specific set or encounter rewards the alternative.</p>
     </details>
   </section>
 
@@ -942,38 +1137,49 @@
 
   <section class="common" id="consumables">
     <h2><span class="section-mark">◆</span> Consumables</h2>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
 
-    <div class="table-wrap">
+    <div class="table-wrap" style="margin-top:12px">
       <table style="min-width:720px">
         <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
         <tbody>
-          <tr><td><strong>Flask</strong></td><td>Flask of Stoneblood</td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
-          <tr><td><strong>Food</strong></td><td>Blackened Dragonfin</td><td>Dragonfin Filet or Fish Feast</td><td>Agility adds armor and avoidance; strength favors threat/block value; feast is convenient raid coverage.</td></tr>
-          <tr><td><strong>Armor potion</strong></td><td>Indestructible Potion</td><td>None for physical survival</td><td>Pre-pot before the pull and use another later when the encounter allows. Excellent on predictable melee bursts.</td></tr>
-          <tr><td><strong>Threat potion</strong></td><td>Potion of Speed</td><td>Indestructible Potion</td><td>Use only when snap threat is the real problem.</td></tr>
-          <tr><td><strong>Emergency</strong></td><td>Healthstone</td><td>Runic Healing Potion</td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
+          <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
+          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span> or <span class="item-name q-common">Fish Feast</span></td><td>Agility adds armor and avoidance; strength favors threat/block value; feast is convenient raid coverage.</td></tr>
+          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>None for physical survival</td><td>Pre-pot before the pull and use another later when the encounter allows. Excellent on predictable melee bursts.</td></tr>
+          <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
+          <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <section class="common" id="macros">
-    <h2><span class="section-mark">◆</span> Useful 3.3.5 macros</h2>
+    <h2><span class="section-mark">◆</span> Macros: what to use, and when not to</h2>
 
-    <div class="note warning"><strong>Spell-name warning:</strong> Macros use the exact names from the English 3.3.5 client. Horde uses <strong>Seal of Corruption</strong>; Alliance should replace it with <strong>Seal of Vengeance</strong>.</div>
+    <div class="note warning"><strong>Spell-name warning:</strong> These use the exact names from an English 3.3.5 client. Horde uses <strong>Seal of Corruption</strong>; Alliance must replace it with <strong>Seal of Vengeance</strong>. Test every macro somewhere harmless before trusting it in a raid.</div>
+    <div class="note paladin"><strong>Macro rule:</strong> Use macros to reduce targeting mistakes and bar clutter. Do not use them to surrender encounter decisions. A macro cannot see the add behind you, the tank-swap timer, or the healer currently inventing new swear words.</div>
 
-    <div class="card-grid" style="margin-top:12px">
+    <h3 class="macro-section-title">Tank-control and emergency macros</h3>
+    <div class="card-grid">
       <div class="macro-card">
         <h3>Smart taunt</h3>
-        <p>Righteous Defense on a friendly mouseover/target; Hand of Reckoning on a hostile target.</p>
+        <p class="macro-purpose">Taunts from a friendly mouseover or friendly target with Righteous Defense; uses Hand of Reckoning on a hostile target.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You need one button for friendly rescue-taunts and direct enemy taunts, especially in dungeons or add-heavy fights.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You cannot clearly see what your mouse is over. Righteous Defense may taunt multiple mobs attacking that friendly player.</span></div>
+        </div>
         <pre id="macro-taunt">#showtooltip
 /cast [@mouseover,help,nodead] Righteous Defense; [help,nodead] Righteous Defense; [harm,nodead] Hand of Reckoning</pre>
         <button class="copy-btn" data-copy="macro-taunt">Copy macro</button>
       </div>
 
       <div class="macro-card">
-        <h3>Pull: taunt + shield</h3>
-        <p>Hand of Reckoning is off the normal global cooldown on standard Wrath behavior, allowing it to pair with Avenger's Shield.</p>
+        <h3>Pull: Hand of Reckoning + Avenger's Shield</h3>
+        <p class="macro-purpose">Attempts the taunt first, then throws Avenger's Shield for a hard ranged opener.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You are intentionally starting a pull and want immediate snap threat on an unowned target.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>Another tank owns the mob, crowd control is nearby, or you need Avenger's Shield saved for a caster or runner.</span></div>
+        </div>
         <pre id="macro-pull">#showtooltip Avenger's Shield
 /cast Hand of Reckoning
 /cast Avenger's Shield</pre>
@@ -982,7 +1188,11 @@
 
       <div class="macro-card">
         <h3>Bubble / cancel bubble</h3>
-        <p>First press casts Divine Shield; second press removes it. Use only when another tank can cover the brief target drop.</p>
+        <p class="macro-purpose">First press casts Divine Shield. A later press removes it so you can resume tanking.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>A planned tank swap lets you clear a dangerous debuff, or an immunity is required and the other tank is ready.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You are the only active tank. Immune targets are skipped, so the boss can immediately hit someone else.</span></div>
+        </div>
         <pre id="macro-bubble">#showtooltip Divine Shield
 /cancelaura Divine Shield
 /cast Divine Shield</pre>
@@ -991,7 +1201,11 @@
 
       <div class="macro-card">
         <h3>Divine Sacrifice cancel</h3>
-        <p>Common raid-wall macro that immediately cancels the dangerous transfer component. Verify Divine Guardian behavior on our server.</p>
+        <p class="macro-purpose">Activates Divine Sacrifice, then removes the transfer aura while retaining Divine Guardian's raid reduction on standard 3.3.5 behavior.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>Your build includes Divine Guardian and the raid needs a planned damage-reduction cooldown.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You have not tested our server's scripting. Some cores process the aura or cancellation differently.</span></div>
+        </div>
         <pre id="macro-dsac">#showtooltip Divine Sacrifice
 /cast Divine Sacrifice
 /cancelaura Divine Sacrifice</pre>
@@ -999,56 +1213,99 @@
       </div>
 
       <div class="macro-card">
-        <h3>Self Salvation cooldown</h3>
-        <p>For Glyph of Salvation. Remember that threat is being reduced while the defensive effect is active.</p>
+        <h3>Self Salvation defensive</h3>
+        <p class="macro-purpose">For Glyph of Salvation: casts Hand of Salvation on yourself for its damage reduction.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You have a large threat lead, during a tank swap, or for a planned burst window where threat loss is acceptable.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You are establishing threat, DPS is close behind, or the glyph is not equipped.</span></div>
+        </div>
         <pre id="macro-salv">#showtooltip Hand of Salvation
 /cast [@player] Hand of Salvation</pre>
         <button class="copy-btn" data-copy="macro-salv">Copy macro</button>
       </div>
 
       <div class="macro-card">
-        <h3>Seal modifier</h3>
-        <p>Default boss seal, Shift for AoE, Alt for mana.</p>
-        <pre id="macro-seals">#showtooltip
-/cast [mod:shift] Seal of Command; [mod:alt] Seal of Wisdom; Seal of Corruption</pre>
-        <button class="copy-btn" data-copy="macro-seals">Copy macro</button>
-      </div>
-
-      <div class="macro-card">
-        <h3>Judgement modifier</h3>
-        <p>Default Wisdom, Shift for Light, Alt for Justice.</p>
-        <pre id="macro-judgement">#showtooltip
-/cast [mod:shift] Judgement of Light; [mod:alt] Judgement of Justice; Judgement of Wisdom</pre>
-        <button class="copy-btn" data-copy="macro-judgement">Copy macro</button>
-      </div>
-
-      <div class="macro-card">
         <h3>Sacred Shield mouseover</h3>
-        <p>Applies to a friendly mouseover; otherwise defaults to you.</p>
+        <p class="macro-purpose">Places Sacred Shield on a friendly mouseover; otherwise it defaults to you.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You normally self-cast but occasionally need to protect an off-tank or another assigned target without changing targets.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>Your mouse is resting over the wrong raid frame, or another paladin's stronger/assigned Sacred Shield should remain untouched.</span></div>
+        </div>
         <pre id="macro-sacred">#showtooltip Sacred Shield
 /cast [@mouseover,help,nodead][@player] Sacred Shield</pre>
         <button class="copy-btn" data-copy="macro-sacred">Copy macro</button>
       </div>
     </div>
 
-    <details>
-      <summary>Optional two-button 969 helper</summary>
-      <p>Alternate the two buttons. Leave the individual abilities on your bars so you can recover when a sequence breaks.</p>
-      <div class="two-col">
-        <div class="macro-card">
-          <h3>9-slot button</h3>
-          <pre id="macro-nine">#showtooltip
-/castsequence reset=9 Holy Shield, Judgement of Wisdom, Consecration</pre>
-          <button class="copy-btn" data-copy="macro-nine">Copy macro</button>
+    <h3 class="macro-section-title">Bar-saving modifier and setup macros</h3>
+    <div class="card-grid">
+      <div class="macro-card">
+        <h3>Judgement modifier</h3>
+        <p class="macro-purpose">Default: Light. Shift: Wisdom. Alt: Justice. This matches the modifier concept shown in the video.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>Your judgement assignment changes between groups and you can reliably remember the modifiers.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>Alt or Shift is already used for self-cast, focus-cast, paging, or another binding. Accidental Justice is not a raid strategy.</span></div>
         </div>
-        <div class="macro-card">
-          <h3>6-second button</h3>
-          <pre id="macro-six">#showtooltip
-/castsequence reset=6 Hammer of the Righteous, Shield of Righteousness</pre>
-          <button class="copy-btn" data-copy="macro-six">Copy macro</button>
-        </div>
+        <pre id="macro-judgement">#showtooltip
+/cast [mod:shift] Judgement of Wisdom; [mod:alt] Judgement of Justice; Judgement of Light</pre>
+        <button class="copy-btn" data-copy="macro-judgement">Copy macro</button>
       </div>
-      <p>The comments included a full one-button castsequence. It is omitted as a primary recommendation because it is fragile and teaches the wrong habit: following the macro instead of the encounter.</p>
+
+      <div class="macro-card">
+        <h3>Seal modifier</h3>
+        <p class="macro-purpose">Default: boss seal. Shift: Command for cleave. Alt: Wisdom for mana recovery.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You swap seals often and want the choices on one predictable key.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You are maintaining five Corruption/Vengeance stacks or modifiers are easy to press accidentally during movement.</span></div>
+        </div>
+        <pre id="macro-seals">#showtooltip
+/cast [mod:shift] Seal of Command; [mod:alt] Seal of Wisdom; Seal of Corruption</pre>
+        <button class="copy-btn" data-copy="macro-seals">Copy macro</button>
+      </div>
+
+      <div class="macro-card">
+        <h3>Three-press self-buff setup</h3>
+        <p class="macro-purpose">Cycles Righteous Fury, Blessing of Sanctuary, and the boss seal after a death or full rebuff.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You have just resurrected, changed specs, or lost your self-buffs and want a compact recovery button.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You are already buffed, PallyPower assignments require a different blessing, or you are mid-pull. Each successful step uses a global cooldown.</span></div>
+        </div>
+        <pre id="macro-buffs">#showtooltip
+/castsequence [@player] reset=10 Righteous Fury, Blessing of Sanctuary, Seal of Corruption</pre>
+        <button class="copy-btn" data-copy="macro-buffs">Copy macro</button>
+      </div>
+    </div>
+
+    <h3 class="macro-section-title">Optional two-button 969 helper</h3>
+    <div class="note warning"><strong>Training aid, not autopilot:</strong> <code>reset=9</code> and <code>reset=6</code> reset only after that many seconds without pressing the macro. They do not intelligently watch cooldowns. A failed cast, silence, movement, target swap, or missed button can desynchronize the sequence.</div>
+    <div class="two-col" style="margin-top:12px">
+      <div class="macro-card">
+        <h3>9-slot button</h3>
+        <p class="macro-purpose">Cycles Holy Shield, your assigned Judgement, and Consecration.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You are learning the alternating rhythm in forgiving content and keep the individual spells visible.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>Holy Shield must be refreshed early, Consecration should be skipped for mana or movement, or your Judgement assignment changes.</span></div>
+        </div>
+        <pre id="macro-nine">#showtooltip
+/castsequence reset=9 Holy Shield, Judgement of Wisdom, Consecration</pre>
+        <button class="copy-btn" data-copy="macro-nine">Copy macro</button>
+      </div>
+      <div class="macro-card">
+        <h3>6-second button</h3>
+        <p class="macro-purpose">Alternates Hammer of the Righteous and Shield of Righteousness.</p>
+        <div class="macro-guidance">
+          <div class="macro-use"><strong>Use when</strong><span>You want a simple rhythm helper while learning and can immediately recover with the individual abilities.</span></div>
+          <div class="macro-avoid"><strong>Do not use when</strong><span>You need a specific strike now, are target-swapping, or one ability failed to cast. The sequence advances only on successful casts.</span></div>
+        </div>
+        <pre id="macro-six">#showtooltip
+/castsequence reset=6 Hammer of the Righteous, Shield of Righteousness</pre>
+        <button class="copy-btn" data-copy="macro-six">Copy macro</button>
+      </div>
+    </div>
+
+    <details>
+      <summary>Why the full one-button rotation macro is not recommended</summary>
+      <p>The screenshots and video demonstrate fixed castsequence ideas, but a complete one-button 969 chain is brittle. It cannot react to movement, silences, add spawns, target swaps, missed pulls, an early Holy Shield refresh, or a deliberate Consecration skip. It is useful only as a training experiment in harmless content. The two-button version above is easier to diagnose and recover when reality kicks the rotation table.</p>
     </details>
   </section>
 
@@ -1087,9 +1344,9 @@
     <p class="mini-note">The original video's adf.ly download links are intentionally not reused. Find clean 3.3.5-compatible addon releases from a source you trust.</p>
   </section>
 
-  <section class="common" id="corrections">
-    <h2><span class="section-mark">◆</span> Important corrections and transcript cleanup</h2>
-
+  <details class="common correction-section" id="corrections">
+    <summary><span class="section-mark">◆</span> Important corrections and transcript cleanup</summary>
+    <div class="correction-body">
     <div class="table-wrap">
       <table>
         <thead><tr><th>Video timestamp</th><th>Caption / advice issue</th><th>Corrected reading</th></tr></thead>
@@ -1111,18 +1368,20 @@
     </div>
 
     <div class="note paladin"><strong>Unresolved audio:</strong> None that materially changes the guide. The only unrecoverable material was exact macro text displayed visually rather than spoken; safer corrected macros are provided instead.</div>
-  </section>
+    </div>
+  </details>
 
   <section class="common">
     <h2><span class="section-mark">◆</span> Sources and scope</h2>
     <ul class="source-list">
-      <li><a href="https://www.youtube.com/watch?v=LWvTeIcuto8" target="_blank" rel="noopener">Brotalnia – Protection Paladin 3.3.5 PvE Guide</a>. Used as the original outline, with its auto-captions and public comment discussion reviewed for corrections.</li>
-      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-guide" target="_blank" rel="noopener">Icy Veins – WotLK Classic Protection Paladin Guide</a>.</li>
-      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-spec-builds-talents-glyphs" target="_blank" rel="noopener">Icy Veins – Talents and Glyphs</a>.</li>
-      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-rotation-cooldowns-abilities" target="_blank" rel="noopener">Icy Veins – Rotation and Cooldowns</a>.</li>
-      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-stat-priority" target="_blank" rel="noopener">Icy Veins – Stat Priority</a>.</li>
-      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-enchants-consumables" target="_blank" rel="noopener">Icy Veins – Enchants and Consumables</a>.</li>
-      <li><a href="https://www.wowhead.com/wotlk/spell=53592/touched-by-the-light" target="_blank" rel="noopener">Wowhead – Touched by the Light (3.3.5 tooltip)</a>.</li>
+      <li><a href="https://www.youtube.com/watch?v=LWvTeIcuto8" target="_blank" rel="noopener">Brotalnia — Protection Paladin 3.3.5 PvE Guide</a>. Used as the original outline, with its auto-captions and public comment discussion reviewed for corrections.</li>
+      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-guide" target="_blank" rel="noopener">Icy Veins — WotLK Classic Protection Paladin Guide</a>.</li>
+      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-spec-builds-talents-glyphs" target="_blank" rel="noopener">Icy Veins — Talents and Glyphs</a>.</li>
+      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-rotation-cooldowns-abilities" target="_blank" rel="noopener">Icy Veins — Rotation and Cooldowns</a>.</li>
+      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-stat-priority" target="_blank" rel="noopener">Icy Veins — Stat Priority</a>.</li>
+      <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-enchants-consumables" target="_blank" rel="noopener">Icy Veins — Enchants and Consumables</a>.</li>
+      <li><a href="https://www.wowhead.com/wotlk/spell=53592/touched-by-the-light" target="_blank" rel="noopener">Wowhead WotLK — Touched by the Light</a>. Final 3.3.5 scaling is based on Strength.</li>
+      <li>Wrath-era spell icon identifiers were checked against 3.3.5 spell data. Displayed game icons are Blizzard artwork served by Wowhead's icon CDN.</li>
     </ul>
 
     <div class="note warning"><strong>Guide disclaimer:</strong> This is an unofficial player-made 3.3.5 reference, not permanent server policy. Private-server scripting and encounter tuning can change the best choice. Verify tooltips, test taunts and proc effects, and adjust for the raid composition in front of you.</div>
