@@ -1,1 +1,2 @@
 Reorder the Protection Paladin guide sections from beginner fundamentals to advanced raid preparation.
+Retry with exact section markers.
