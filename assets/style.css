@@ -180,6 +180,31 @@ h1 {
   background: var(--cyan);
 }
 
+/* Protection Paladin quick-start: show each 969 spell name once. */
+.rotation-card .summary-value {
+  display: none;
+}
+
+.rotation-card .cooldown-groups {
+  margin-top: 0;
+}
+
+.rotation-card .cooldown-label {
+  font-size: 0;
+}
+
+.rotation-card .cooldown-label::after {
+  font-size: 12px;
+}
+
+.rotation-card .cooldown-group.nine .cooldown-label::after {
+  content: "9-second group";
+}
+
+.rotation-card .cooldown-group.six .cooldown-label::after {
+  content: "6-second group";
+}
+
 footer {
   margin-top: 18px;
   color: var(--muted);
