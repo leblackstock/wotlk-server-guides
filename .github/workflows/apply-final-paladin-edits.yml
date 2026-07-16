@@ -1,0 +1,154 @@
+name: Apply final Protection Paladin edits
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.head_ref == 'polish-protection-paladin-guide'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: polish-protection-paladin-guide
+      - name: Move helper and replace addon guidance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re
+          import textwrap
+
+          path = Path('guides/protection-paladin-pve-guide.html')
+          text = path.read_text(encoding='utf-8')
+
+          macro_start = text.index('  <section class="common" id="macros">')
+          helper_marker = '    <h3 class="macro-section-title">Optional two-button 969 helper</h3>'
+          helper_start = text.index(helper_marker, macro_start)
+          macro_close = text.index('  </section>', helper_start)
+          helper_block = text[helper_start:macro_close].rstrip()
+          text = text[:helper_start] + text[macro_close:]
+          first_heading = text.index('    <h3 class="macro-section-title">', macro_start)
+          text = text[:first_heading] + helper_block + '\n\n' + text[first_heading:]
+
+          addon_start = text.index('  <section class="common" id="addons">')
+          addon_end = text.index('  <details class="common correction-section" id="corrections">', addon_start)
+          addons = textwrap.dedent('''\
+            <section class="common" id="addons">
+              <h2><span class="section-mark">◆</span> Addons</h2>
+
+              <div class="note paladin"><strong>Use the 3.3.5 version:</strong> The links below point to Wrath-compatible releases. Install one addon at a time, enable “Load out of date AddOns” only when necessary, and test it on a target dummy or easy dungeon before trusting it in a raid.</div>
+
+              <h3 style="margin:16px 0 10px">Paladin-specific addons</h3>
+              <div class="card-grid">
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/pallypower/" target="_blank" rel="noopener">PallyPower</a></h3>
+                  <p><strong>What it is for:</strong> Assigning Greater Blessings across classes, checking who is missing a Paladin buff, and quickly maintaining your own aura, seal, blessing, and Righteous Fury. In a raid, it lets Paladins coordinate assignments instead of negotiating blessings in chat.</p>
+                  <p><strong>What it is not for:</strong> It does not choose the raid's best blessing plan for you, play your character, or replace communication. Coordinated assignments work best when the other Paladins also run PallyPower, and assignments normally cannot be changed during combat.</p>
+                  <div class="tag-row"><span class="tag pink">Paladin utility</span><span class="tag safe">Strong recommendation</span></div>
+                </div>
+
+                <div class="guide-box">
+                  <h3><a href="https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html" target="_blank" rel="noopener">Protection Is Surprisingly Stupendous</a></h3>
+                  <p><strong>What it is for:</strong> A Protection Paladin 9696 training aid that shows which configured ability is available next. It can help a new tank recognize the alternating 9-second and 6-second rhythm.</p>
+                  <p><strong>What it is not for:</strong> It does not cast spells, handle taunts, track threat, warn about bosses, or know when encounter mechanics require you to break the normal rotation. It is a discontinued 2009 beta, so treat it as optional and expect that some 3.3.5 clients or private-server builds may produce errors.</p>
+                  <div class="tag-row"><span class="tag pink">Protection only</span><span class="tag warn">Old/discontinued</span><span class="tag info">Training aid</span></div>
+                </div>
+              </div>
+
+              <h3 style="margin:18px 0 10px">General tank and raid addons</h3>
+              <div class="card-grid">
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/deadly-boss-mods/" target="_blank" rel="noopener">Deadly Boss Mods</a></h3>
+                  <p><strong>What it is for:</strong> Boss ability timers, prominent warnings, sounds, and encounter-specific alerts. It helps you anticipate tank swaps, movement, dangerous casts, and other scheduled mechanics.</p>
+                  <p><strong>What it is not for:</strong> It is not a threat meter, rotation helper, or substitute for learning the fight. Timers can drift when our server uses custom scripting or different encounter timing, so react to the boss and combat log rather than obeying a bar blindly.</p>
+                  <div class="tag-row"><span class="tag safe">Essential raid tool</span><span class="tag warn">Server timing may vary</span></div>
+                </div>
+
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/omen3/" target="_blank" rel="noopener">Omen3</a></h3>
+                  <p><strong>What it is for:</strong> Showing your group's relative threat on the current enemy so you can see whether another player is approaching or passing the tank. It is especially useful during pulls, threat resets, and tank swaps.</p>
+                  <p><strong>What it is not for:</strong> It does not guarantee who a boss will attack, detect every taunt failure, or explain encounter-specific aggro rules. Immunities, fixates, threat wipes, range thresholds, and private-server combat-log behavior can all make the real target choice differ from a simple threat bar.</p>
+                  <div class="tag-row"><span class="tag safe">Tank essential</span><span class="tag info">Threat visibility</span></div>
+                </div>
+
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/omnicc/" target="_blank" rel="noopener">OmniCC</a></h3>
+                  <p><strong>What it is for:</strong> Adding readable numeric countdowns directly to action buttons, items, and abilities while they are on cooldown. It makes the 969 rhythm and defensive cooldown availability much easier to read at a glance.</p>
+                  <p><strong>What it is not for:</strong> It does not recommend the next spell, track whether Holy Shield or Divine Plea is active, or warn about boss mechanics. It only turns the normal cooldown sweep into numbers.</p>
+                  <div class="tag-row"><span class="tag safe">Simple and useful</span><span class="tag info">Cooldown numbers</span></div>
+                </div>
+
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/weakauras/" target="_blank" rel="noopener">WeakAuras</a></h3>
+                  <p><strong>What it is for:</strong> Building custom icons, bars, sounds, and warnings for buffs, debuffs, cooldowns, health, mana, and combat events. For Protection, good first trackers are Holy Shield, Divine Plea, Sacred Shield, Righteous Fury, Forbearance, taunt cooldowns, and major defensives.</p>
+                  <p><strong>What it is not for:</strong> It is not a ready-made Protection setup by itself and it does not make decisions for you. A blank installation does very little until you create or import auras, and imported packages should be reviewed rather than trusted blindly.</p>
+                  <div class="tag-row"><span class="tag pink">Highly customizable</span><span class="tag warn">Setup required</span></div>
+                </div>
+
+                <div class="guide-box">
+                  <h3><a href="https://warperia.com/addon-wotlk/ratingbuster/" target="_blank" rel="noopener">RatingBuster</a></h3>
+                  <p><strong>What it is for:</strong> Expanding item tooltips with rating conversions and easier comparisons, making old-client stats such as Defense, dodge, parry, hit, and expertise less cryptic while evaluating upgrades.</p>
+                  <p><strong>What it is not for:</strong> It is not a BiS list, simulation, or encounter-aware gearing adviser. It does not know whether you already have 540 Defense, whether a socket bonus is worthwhile, or whether survival matters more than threat for the fight in front of you.</p>
+                  <div class="tag-row"><span class="tag info">Gear comparison</span><span class="tag warn">Not a gearing verdict</span></div>
+                </div>
+              </div>
+
+              <p class="mini-note">These are direct replacements for the video's obsolete ad-link downloads. The two Paladin addons solve Paladin-specific problems; the five general addons are useful across tanks, healers, and damage dealers.</p>
+            </section>
+
+          ''')
+          text = text[:addon_start] + addons + text[addon_end:]
+          text = text.replace('Updated July 15, 2026', 'Updated July 16, 2026')
+          path.write_text(text, encoding='utf-8', newline='\n')
+
+          HTMLParser().feed(text)
+          ids = re.findall(r'\bid="([^"]+)"', text)
+          if len(ids) != len(set(ids)):
+              raise SystemExit('duplicate HTML IDs')
+          for anchor in re.findall(r'href="#([^"]+)"', text):
+              if anchor not in ids:
+                  raise SystemExit(f'broken internal anchor: {anchor}')
+          first_utility = text.index('    <h3 class="macro-section-title">Safe everyday utility macros</h3>', macro_start)
+          if text.index(helper_marker, macro_start) > first_utility:
+              raise SystemExit('two-button helper is not first in Macros')
+          if '<summary>Optional two-button 969 helper</summary>' in text:
+              raise SystemExit('two-button helper is still hidden')
+          links = [
+              'https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html',
+              'https://warperia.com/addon-wotlk/pallypower/',
+              'https://warperia.com/addon-wotlk/omen3/',
+              'https://warperia.com/addon-wotlk/omnicc/',
+              'https://warperia.com/addon-wotlk/ratingbuster/',
+              'https://warperia.com/addon-wotlk/weakauras/',
+              'https://warperia.com/addon-wotlk/deadly-boss-mods/',
+          ]
+          for link in links:
+              if link not in text:
+                  raise SystemExit(f'missing addon link: {link}')
+          if text.count('<strong>What it is for:</strong>') != 7:
+              raise SystemExit('wrong addon purpose count')
+          if text.count('<strong>What it is not for:</strong>') != 7:
+              raise SystemExit('wrong addon limitation count')
+          if '<details class="common correction-section" id="corrections">' not in text:
+              raise SystemExit('corrections section is no longer collapsed')
+          if 'free 3% hit talent' in text.lower():
+              raise SystemExit('unreliable hit-talent claim returned')
+          print('final validation passed')
+          PY
+          rm -f .github/workflows/finalize-protection-paladin-guide.yml
+          rm -f .tmp/protection-guide-diagnostic.txt
+          rmdir .tmp 2>/dev/null || true
+          rm -f .github/workflows/apply-final-paladin-edits.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Improve Paladin macro and addon guidance"
+          git push
