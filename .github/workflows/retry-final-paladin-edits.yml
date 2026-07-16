@@ -1,0 +1,44 @@
+name: Retry final Protection Paladin edits
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.head_ref == 'polish-protection-paladin-guide'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: polish-protection-paladin-guide
+      - name: Reuse validated edit script with corrected heading
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import textwrap
+
+          workflow = Path('.github/workflows/apply-final-paladin-edits.yml').read_text(encoding='utf-8')
+          marker = "          python - <<'PY'\n"
+          start = workflow.index(marker) + len(marker)
+          end = workflow.index("\n          PY", start)
+          script = textwrap.dedent(workflow[start:end])
+          script = script.replace('Safe everyday utility macros', 'Tank-control and emergency macros')
+          exec(compile(script, 'embedded-paladin-edit.py', 'exec'), {'__name__': '__main__'})
+          PY
+          rm -f .github/workflows/finalize-protection-paladin-guide.yml
+          rm -f .github/workflows/apply-final-paladin-edits.yml
+          rm -f .github/workflows/retry-final-paladin-edits.yml
+          rm -f .tmp/protection-guide-diagnostic.txt
+          rmdir .tmp 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Improve Paladin macro and addon guidance"
+          git push
