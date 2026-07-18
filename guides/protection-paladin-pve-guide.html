@@ -642,6 +642,8 @@
     <h1>WotLK 3.3.5 <span>Protection Paladin</span> PvE Tank Guide</h1>
     <p class="sub">A practical raid-and-dungeon reference for our server. Built from Brotalnia's fast-paced 3.3.5 video guide, then cleaned up, expanded, and corrected where the captions, comments, or original advice were incomplete.</p>
 
+    <div class="note paladin"><strong>Starts at level 80:</strong> This guide begins when your Paladin reaches level 80. It does not cover leveling builds or low-level dungeon progression.</div>
+
     <div class="note paladin"><strong>Read first:</strong> For raid bosses, reach <strong>540 Defense skill</strong> before optimizing anything else. After that, build enough health and armor to survive the next hit. Threat caps are useful, but dead tanks generate remarkably little threat.</div>
 
     <div class="note warning"><strong>Private-server note:</strong> Proc enchants, taunt hit rules, set bonuses, boss parry-haste, and some scripted abilities can behave differently between 3.3.5 servers. The standard values are listed here; test anything that looks suspicious on our server.</div>
@@ -651,6 +653,7 @@
       <a href="#rotation">Rotation</a>
       <a href="#cooldowns">Cooldowns</a>
       <a href="#stats">Stats &amp; caps</a>
+      <a href="#gearing-path">Gearing path</a>
       <a href="#talents">Talents</a>
       <a href="#glyphs">Glyphs</a>
       <a href="#macros">Macros</a>
@@ -659,6 +662,7 @@
       <a href="#enchants">Enchants</a>
       <a href="#professions">Professions</a>
       <a href="#consumables">Consumables</a>
+      <a href="#encounter-tuning">Encounter tuning</a>
       <a href="#corrections">Video corrections</a>
     </div>
   </header>
@@ -744,7 +748,7 @@
       <span class="tag info">6-sec: Shield of Righteousness</span>
     </div>
 
-    <h3 style="margin:16px 0 4px">Clean opening sequence</h3>
+    <h3 style="margin:16px 0 4px">Clean 969 sequence</h3>
     <div class="rotation-strip" aria-label="969 rotation sequence">
       <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
       <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
@@ -759,12 +763,13 @@
 
     <div class="two-col" style="margin-top:12px">
       <div class="spell-card">
-        <h3>Single-target pull</h3>
+        <h3>Flexible single-target pull</h3>
         <ol class="priority-list">
-          <li>Use Seal of Corruption/Vengeance, Righteous Fury, Blessing of Sanctuary, Divine Plea, and Sacred Shield.</li>
-          <li>Pre-cast Holy Shield. Use Avenging Wrath if the encounter allows it and you will not need an immunity during Forbearance.</li>
-          <li>At range, use Exorcism only when you are safe to stand still; otherwise use Avenger's Shield.</li>
-          <li>Hand of Reckoning adds snap damage when you do not already have threat.</li>
+          <li>Pre-pull: Sacred Shield, Divine Plea, Holy Shield, and a planned potion.</li>
+          <li>Pre-place Consecration only when the target will remain in it and the pull allows it.</li>
+          <li>Use Hand of Reckoning as the target becomes attackable when snap damage matters.</li>
+          <li>Use Avenging Wrath only when its 30-second lockout on major protection spells is safe.</li>
+          <li>Hold Avenger's Shield for a caster, add, silence, or pickup when the encounter needs it.</li>
           <li>Enter 969 and keep the boss faced away from the group.</li>
         </ol>
       </div>
@@ -780,6 +785,16 @@
         </ol>
       </div>
     </div>
+
+    <details>
+      <summary>Recovering 969 after movement, a missed cast, or an add pickup</summary>
+      <ul class="clean-list">
+        <li>Do not rebuild the rhythm by casting Hammer of the Righteous and Shield of Righteousness back-to-back.</li>
+        <li>Place the best available 9-slot ability between the two 6-second strikes.</li>
+        <li>Sacred Shield or Avenger's Shield can fill a gap when using them is actually useful.</li>
+        <li>Holy Shield, positioning, and encounter jobs outrank a perfect sequence.</li>
+      </ul>
+    </details>
 
     <div class="note warning"><strong>Rotation macros are training wheels.</strong> A one-button castsequence cannot react to movement, silences, target swaps, missed pulls, add spawns, or the need to refresh Holy Shield early. Learn the ability groups even if you keep a helper macro.</div>
   </section>
@@ -822,6 +837,18 @@
         <h3>Divine Shield</h3>
         <p>Use a bubble-cancel to clear specific debuffs only when the encounter allows it. Divine Shield does not erase your stored threat, but enemies stop treating you as a valid attack target while immune.</p>
         <div class="tag-row"><span class="tag warn">Tank-swap risk</span><span class="tag info">Debuff clear</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Sacred Shield</h3>
+        <p>Maintain it on yourself for a recurring absorb. It lasts 30 seconds and one Paladin can keep it on only one target at a time.</p>
+        <div class="tag-row"><span class="tag safe">Routine mitigation</span><span class="tag pink">Refresh before it expires</span></div>
+      </div>
+
+      <div class="spell-card">
+        <h3>Avenging Wrath</h3>
+        <p>A snap-threat tool, not a defensive. It prevents Divine Protection, Divine Shield, and Hand of Protection for 30 seconds, so delay it when an early emergency button may be needed.</p>
+        <div class="tag-row"><span class="tag info">Threat burst</span><span class="tag warn">30-second protection lockout</span></div>
       </div>
     </div>
 
@@ -953,6 +980,53 @@
     <details>
       <summary>Advanced: the 102.4% combat table</summary>
       <p>Against a level-83 raid boss, miss + dodge + parry + block can total 102.4% to push normal unblocked hits off the combat table while Holy Shield is active. This is useful for specialized block sets and add tanking. It is not a universal ICC gearing goal, especially under Chill of the Throne's dodge reduction.</p>
+    </details>
+  </section>
+
+  <section class="common" id="gearing-path">
+    <h2><span class="section-mark">◆</span> Level-80 gearing path</h2>
+
+    <div class="three-col">
+      <div class="guide-box">
+        <h3>Fresh level 80</h3>
+        <ul class="clean-list">
+          <li>Reach 535 Defense for heroic bosses.</li>
+          <li>Build toward 540 before raid bosses.</li>
+          <li>Use dungeons, emblems, reputation, and affordable crafted pieces.</li>
+          <li>Replace weak slots before chasing perfect hit or expertise.</li>
+        </ul>
+      </div>
+
+      <div class="guide-box">
+        <h3>Raid-ready base set</h3>
+        <ul class="clean-list">
+          <li>Keep 540 Defense without fragile temporary buffs.</li>
+          <li>Favor stamina and armor until burst damage feels stable.</li>
+          <li>Add hit or expertise when misses are causing real problems.</li>
+          <li>Carry at least one alternate trinket for physical or magic damage.</li>
+        </ul>
+      </div>
+
+      <div class="guide-box">
+        <h3>Encounter-tuned sets</h3>
+        <ul class="clean-list">
+          <li>Keep one dependable general set.</li>
+          <li>Save useful armor, stamina, hit, expertise, resistance, and block pieces.</li>
+          <li>Swap only for a known encounter job.</li>
+          <li>Recheck Defense, glyphs, and taunt reliability after every swap.</li>
+        </ul>
+      </div>
+    </div>
+
+    <details>
+      <summary>Why there is no single perfect tank set</summary>
+      <ul class="clean-list">
+        <li><strong>Armor / effective health:</strong> heavy physical damage and progression.</li>
+        <li><strong>Stamina / magic support:</strong> large magic bursts or mixed damage.</li>
+        <li><strong>Hit / taunt reliability:</strong> required pickups, taunts, stuns, or interrupts.</li>
+        <li><strong>Expertise:</strong> threat reliability; pursue the parry cap only when parry-haste is confirmed and important.</li>
+        <li><strong>Block / add set:</strong> many smaller hits where Holy Shield and block value can do meaningful work.</li>
+      </ul>
     </details>
   </section>
 
@@ -1367,6 +1441,16 @@
     </div>
 
     <p class="mini-note">The video's Jewelcrafting/Leatherworking recommendation is defensible for raw stamina. Engineering often wins in real encounters because movement and on-use utility solve problems that spreadsheet stamina cannot.</p>
+
+    <details>
+      <summary>Engineering tools worth testing on Hellscream</summary>
+      <ul class="clean-list">
+        <li><strong>Nitro Boosts:</strong> emergency movement; test failure behavior before relying on it.</li>
+        <li><strong>Reticulated Armor Webbing:</strong> strong glove armor for Engineers.</li>
+        <li><strong>Mind Amplification Dish:</strong> 45 stamina head tinker; verify whether it replaces or stacks with the normal head enchant.</li>
+        <li><strong>Saronite Bombs:</strong> optional pack or add damage when raid rules and encounter safety allow it.</li>
+      </ul>
+    </details>
   </section>
 
   <section class="common" id="consumables">
@@ -1378,13 +1462,46 @@
         <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
         <tbody>
           <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
-          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span> or <span class="item-name q-common">Fish Feast</span></td><td>Agility adds armor and avoidance; strength favors threat/block value; feast is convenient raid coverage.</td></tr>
-          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>None for physical survival</td><td>Pre-pot before the pull and use another later when the encounter allows. Excellent on predictable melee bursts.</td></tr>
+          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span>, <span class="item-name q-common">Fish Feast</span>, <span class="item-name q-common">Snapper Extreme</span>, or <span class="item-name q-common">Rhinolicious Wormsteak</span></td><td>Use agility or stamina by default. Hit or expertise food can temporarily repair a specific swap set.</td></tr>
+          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>A matching Mighty Protection Potion for a known magic burst</td><td>Pre-pot before the pull and use another later when the encounter allows. Default to armor unless the encounter clearly rewards resistance.</td></tr>
           <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
+          <tr><td><strong>Set-fixing elixirs</strong></td><td><span class="item-name q-common">Elixir of Accuracy</span> or <span class="item-name q-common">Elixir of Expertise</span></td><td>A compatible defensive guardian elixir</td><td>Use for a temporary hit or expertise gap. Flask of Stoneblood remains the normal raid default.</td></tr>
           <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
         </tbody>
       </table>
     </div>
+
+    <details>
+      <summary>Optional old-expansion physical absorbs</summary>
+      <ul class="clean-list">
+        <li><strong>Greater Rune of Warding:</strong> temporary chest effect with a chance to absorb a small physical hit.</li>
+        <li><strong>Greater Ward of Shielding:</strong> consumable shield ward that absorbs a fixed amount before breaking.</li>
+        <li>Verify that each works, stacks as expected, and is worth the inventory cost on Hellscream before stocking them.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section class="common" id="encounter-tuning">
+    <h2><span class="section-mark">◆</span> Encounter tuning</h2>
+
+    <div class="card-grid">
+      <div class="guide-box"><h3>Heavy physical damage</h3><ul class="clean-list"><li>Favor armor, stamina, an armor trinket, and Indestructible Potions.</li></ul></div>
+      <div class="guide-box"><h3>Magic or mixed burst</h3><ul class="clean-list"><li>Favor stamina, a resistance aura or on-use trinket, and planned external cooldowns.</li></ul></div>
+      <div class="guide-box"><h3>Mandatory taunts or pickups</h3><ul class="clean-list"><li>Use Glyph of Righteous Defense and add only enough hit for the required reliability.</li></ul></div>
+      <div class="guide-box"><h3>Parry-sensitive boss</h3><ul class="clean-list"><li>Build extra expertise only after confirming that the boss parry-hastes on Hellscream.</li></ul></div>
+      <div class="guide-box"><h3>Many smaller attackers</h3><ul class="clean-list"><li>Block value, Holy Shield uptime, Seal of Command, and add-control tools become more valuable.</li></ul></div>
+      <div class="guide-box"><h3>Movement-heavy fight</h3><ul class="clean-list"><li>Prioritize movement speed, hold ranged pickup tools, and accept imperfect Consecration uptime.</li></ul></div>
+    </div>
+
+    <details>
+      <summary>Hellscream checks before building a special set</summary>
+      <ul class="clean-list">
+        <li>Confirm taunt-hit behavior with combat logs.</li>
+        <li>Confirm whether the boss uses parry-haste.</li>
+        <li>Test Tier 10 bonuses, Divine Sacrifice cancellation, Nitro failures, and weapon proc enchants.</li>
+        <li>Change one variable at a time and keep the dependable general set ready.</li>
+      </ul>
+    </details>
   </section>
 
   <details class="common correction-section" id="corrections">
@@ -1424,13 +1541,15 @@
       <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-stat-priority" target="_blank" rel="noopener">Icy Veins — Stat Priority</a>.</li>
       <li><a href="https://www.icy-veins.com/wotlk-classic/protection-paladin-tank-pve-enchants-consumables" target="_blank" rel="noopener">Icy Veins — Enchants and Consumables</a>.</li>
       <li><a href="https://www.wowhead.com/wotlk/spell=53592/touched-by-the-light" target="_blank" rel="noopener">Wowhead WotLK — Touched by the Light</a>. Final 3.3.5 scaling is based on Strength.</li>
+      <li><a href="https://www.wowhead.com/wotlk/spell=53601/sacred-shield" target="_blank" rel="noopener">Wowhead WotLK — Sacred Shield</a> and <a href="https://www.wowhead.com/wotlk/spell=498/divine-protection" target="_blank" rel="noopener">Divine Protection</a>. Used to verify duration and the Avenging Wrath protection lockout.</li>
+      <li><a href="https://forum.warmane.com/showthread.php?t=458156" target="_blank" rel="noopener">Warmane forum — Protection Paladin guide and comments</a>. Used only for broadly applicable 3.3.5 ideas such as flexible openers, 969 recovery, and encounter swap sets. Warmane-specific gearing, raid assignments, and tuning were intentionally excluded.</li>
       <li>Wrath-era spell icon identifiers were checked against 3.3.5 spell data. Displayed game icons are Blizzard artwork served by Wowhead's icon CDN.</li>
     </ul>
 
     <div class="note warning"><strong>Guide disclaimer:</strong> This is an unofficial player-made 3.3.5 reference, not permanent server policy. Private-server scripting and encounter tuning can change the best choice. Verify tooltips, test taunts and proc effects, and adjust for the raid composition in front of you.</div>
   </section>
 
-  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 16, 2026</footer>
+  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 18, 2026</footer>
 </div>
 
 <script>
