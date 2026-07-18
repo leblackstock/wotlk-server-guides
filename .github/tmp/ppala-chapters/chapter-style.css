@@ -1,0 +1,31 @@
+    .chapter-divider {
+      scroll-margin-top: 16px;
+      margin: 30px 0 12px;
+      padding: 17px 19px;
+      border: 1px solid rgba(245,140,186,.28);
+      border-left: 4px solid var(--paladin);
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(245,140,186,.10), rgba(245,140,186,.025) 62%, transparent);
+    }
+
+    .chapter-divider .chapter-kicker {
+      display: block;
+      color: var(--paladin);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .chapter-divider h2 {
+      margin: 4px 0 5px;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .chapter-divider p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
