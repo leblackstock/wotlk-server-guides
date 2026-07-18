@@ -603,6 +603,38 @@
     .source-easy{color:#c8f6c8;font-style:normal;font-weight:800}.source-medium{color:#ffe1a0;font-style:normal;font-weight:800}.source-hard{color:#ffb1b1;font-style:normal;font-weight:800}
     /* End enchant material/source expanders. */
 
+    .chapter-divider {
+      scroll-margin-top: 16px;
+      margin: 30px 0 12px;
+      padding: 17px 19px;
+      border: 1px solid rgba(245,140,186,.28);
+      border-left: 4px solid var(--paladin);
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(245,140,186,.10), rgba(245,140,186,.025) 62%, transparent);
+    }
+
+    .chapter-divider .chapter-kicker {
+      display: block;
+      color: var(--paladin);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .chapter-divider h2 {
+      margin: 4px 0 5px;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .chapter-divider p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     @media (max-width: 1040px) {
       .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .three-col { grid-template-columns: 1fr; }
@@ -633,9 +665,10 @@
 <div class="wrap">
   <nav class="site-nav" aria-label="Guide navigation">
     <a href="../index.html">Guide Hub</a>
-    <a href="#quick-start">Quick Start</a>
-    <a href="#rotation">969 Rotation</a>
-    <a href="#macros">Macros</a>
+    <a href="#playing">Playing</a>
+    <a href="#setting-up">Setting up</a>
+    <a href="#gearing">Gearing</a>
+    <a href="#raiding">Raiding</a>
   </nav>
 
   <header>
@@ -648,16 +681,16 @@
 
     <div class="note warning"><strong>Private-server note:</strong> Proc enchants, taunt hit rules, set bonuses, boss parry-haste, and some scripted abilities can behave differently between 3.3.5 servers. The standard values are listed here; test anything that looks suspicious on our server.</div>
 
-    <div class="jump-nav" aria-label="Page sections">
+    <div class="jump-nav" aria-label="Topic shortcuts">
       <a href="#quick-start">Quick start</a>
       <a href="#rotation">Rotation</a>
       <a href="#cooldowns">Cooldowns</a>
-      <a href="#stats">Stats &amp; caps</a>
-      <a href="#gearing-path">Gearing path</a>
       <a href="#talents">Talents</a>
       <a href="#glyphs">Glyphs</a>
       <a href="#macros">Macros</a>
       <a href="#addons">Addons</a>
+      <a href="#stats">Stats &amp; caps</a>
+      <a href="#gearing-path">Gearing path</a>
       <a href="#gems">Gems</a>
       <a href="#enchants">Enchants</a>
       <a href="#professions">Professions</a>
@@ -667,7 +700,13 @@
     </div>
   </header>
 
-  <section class="common" id="quick-start">
+    <div class="chapter-divider" id="playing">
+    <span class="chapter-kicker">Part 1 of 4</span>
+    <h2>Playing your Tankadin</h2>
+    <p>Pulling, 969, cooldowns, seals, and moment-to-moment tank control.</p>
+  </div>
+
+<section class="common" id="quick-start">
     <h2><span class="section-mark">◆</span> Quick start</h2>
 
     <div class="summary-grid">
@@ -735,7 +774,7 @@
     </div>
   </section>
 
-  <section class="common" id="rotation">
+<section class="common" id="rotation">
     <h2><span class="section-mark">◆</span> The 969 rotation</h2>
 
     <p class="muted">The classic 969 system alternates one “9-slot” ability with one 6-second ability. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use <strong>1/2 Improved Judgements</strong> so Judgement also lands cleanly in the 9-second group.</p>
@@ -799,7 +838,7 @@
     <div class="note warning"><strong>Rotation macros are training wheels.</strong> A one-button castsequence cannot react to movement, silences, target swaps, missed pulls, add spawns, or the need to refresh Holy Shield early. Learn the ability groups even if you keep a helper macro.</div>
   </section>
 
-  <section class="common" id="cooldowns">
+<section class="common" id="cooldowns">
     <h2><span class="section-mark">◆</span> Cooldowns, seals, and utility</h2>
 
     <div class="card-grid">
@@ -879,158 +918,13 @@
     </details>
   </section>
 
-  <section class="common" id="stats">
-    <h2><span class="section-mark">◆</span> Stats, caps, and what they really mean</h2>
+  <div class="chapter-divider" id="setting-up">
+    <span class="chapter-kicker">Part 2 of 4</span>
+    <h2>Setting up your Tankadin</h2>
+    <p>Talents, glyphs, macros, and addons that shape how the character plays.</p>
+  </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Stat</th>
-            <th>Target</th>
-            <th>Priority</th>
-            <th>What it does</th>
-            <th>Important correction</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Defense</strong></td>
-            <td><span class="cap">540 raid / 535 heroic</span></td>
-            <td><span class="must">Mandatory first</span></td>
-            <td>Removes boss critical hits and also adds miss, dodge, parry, and block.</td>
-            <td>540 is a <em>minimum for crit immunity</em>, not a hard cap. Extra Defense still works.</td>
-          </tr>
-          <tr>
-            <td><strong>Stamina</strong></td>
-            <td>No cap</td>
-            <td><span class="must">Top progression stat</span></td>
-            <td>Raises your health pool and gives healers more room to react to burst, magic damage, and unlucky avoidance streaks.</td>
-            <td>Do not blindly stack it while under 540 Defense or while wearing dramatically weaker armor pieces.</td>
-          </tr>
-          <tr>
-            <td><strong>Armor</strong></td>
-            <td>75% physical reduction ceiling</td>
-            <td><span class="must">Excellent effective health</span></td>
-            <td>Reduces physical damage on every eligible hit. Particularly strong on heavy melee encounters.</td>
-            <td>The Austere meta increases armor contributed by items, not every temporary armor source.</td>
-          </tr>
-          <tr>
-            <td><strong>Expertise</strong></td>
-            <td><span class="cap">26 soft / 56 hard</span></td>
-            <td><span class="optional">Threat and reliability</span></td>
-            <td>26 expertise removes a raid boss's dodge chance. The much less practical 56 also removes parries while attacking from the front.</td>
-            <td>The video treats 26 as a complete cap. It is only the dodge soft cap. Glyph of Seal of Vengeance grants 10 expertise skill.</td>
-          </tr>
-          <tr>
-            <td><strong>Melee hit</strong></td>
-            <td><span class="cap">8% = 263 rating</span></td>
-            <td><span class="optional">Useful, not mandatory</span></td>
-            <td>Prevents melee specials such as Hammer and Shield of Righteousness from missing a level-83 boss.</td>
-            <td>Do not sacrifice major survival upgrades just to display 8%.</td>
-          </tr>
-          <tr>
-            <td><strong>Taunt / spell hit</strong></td>
-            <td>See table below</td>
-            <td><span class="optional">Encounter-dependent</span></td>
-            <td>Righteous Defense and Hand of Reckoning normally use spell-hit rules. Missing a required taunt can wipe a raid.</td>
-            <td>Some private servers script taunts differently. Test before rebuilding your entire set.</td>
-          </tr>
-          <tr>
-            <td><strong>Dodge / Parry</strong></td>
-            <td>No fixed cap</td>
-            <td>After effective health</td>
-            <td>Completely avoids eligible melee attacks. Both suffer diminishing returns.</td>
-            <td>Balance naturally through gear. Do not chase equal character-sheet percentages.</td>
-          </tr>
-          <tr>
-            <td><strong>Block</strong></td>
-            <td>Encounter-specific</td>
-            <td>Great for many small hits</td>
-            <td>Reduces a blocked hit by your block value and helps control trash, heroics, and specialized add sets.</td>
-            <td>Block does not fully avoid a large boss swing. Its value drops when hits dwarf your block value.</td>
-          </tr>
-          <tr>
-            <td><strong>Strength</strong></td>
-            <td>No cap</td>
-            <td>Threat / block value</td>
-            <td>Adds attack power and block value; Touched by the Light converts 60% of your Strength into spell power, so Strength supports both physical and spell-based threat.</td>
-            <td>Strength is useful, but it is not normally a progression survival priority over stamina and armor.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="margin:16px 0 8px">Taunt-hit targets on standard 3.3.5 behavior</h3>
-    <div class="table-wrap">
-      <table style="min-width:680px">
-        <thead>
-          <tr><th>Setup</th><th>Spell hit still needed</th><th>Approx. hit rating</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>No glyph, no raid debuff</td><td><span class="cap">17%</span></td><td>446</td><td>Usually unreasonable for a tank set.</td></tr>
-          <tr><td>Glyph of Righteous Defense only</td><td><span class="cap">9%</span></td><td>237</td><td>The glyph adds 8 percentage points to both taunts.</td></tr>
-          <tr><td>Glyph + Misery / Improved Faerie Fire</td><td><span class="cap">6%</span></td><td>158</td><td>Common raid target when a Shadow Priest or Balance Druid supplies the 3% spell-hit debuff.</td></tr>
-          <tr><td>Glyph + 3% debuff + Draenei aura</td><td><span class="cap">5%</span></td><td>132</td><td>Alliance party-only racial coverage in original Wrath rules.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="mini-note">These are taunt-reliability targets, not a demand that every general tank set reach spell-hit cap. Count only actual gear, racial, raid-debuff, and glyph coverage.</p>
-
-    <details>
-      <summary>Advanced: the 102.4% combat table</summary>
-      <p>Against a level-83 raid boss, miss + dodge + parry + block can total 102.4% to push normal unblocked hits off the combat table while Holy Shield is active. This is useful for specialized block sets and add tanking. It is not a universal ICC gearing goal, especially under Chill of the Throne's dodge reduction.</p>
-    </details>
-  </section>
-
-  <section class="common" id="gearing-path">
-    <h2><span class="section-mark">◆</span> Level-80 gearing path</h2>
-
-    <div class="three-col">
-      <div class="guide-box">
-        <h3>Fresh level 80</h3>
-        <ul class="clean-list">
-          <li>Reach 535 Defense for heroic bosses.</li>
-          <li>Build toward 540 before raid bosses.</li>
-          <li>Use dungeons, emblems, reputation, and affordable crafted pieces.</li>
-          <li>Replace weak slots before chasing perfect hit or expertise.</li>
-        </ul>
-      </div>
-
-      <div class="guide-box">
-        <h3>Raid-ready base set</h3>
-        <ul class="clean-list">
-          <li>Keep 540 Defense without fragile temporary buffs.</li>
-          <li>Favor stamina and armor until burst damage feels stable.</li>
-          <li>Add hit or expertise when misses are causing real problems.</li>
-          <li>Carry at least one alternate trinket for physical or magic damage.</li>
-        </ul>
-      </div>
-
-      <div class="guide-box">
-        <h3>Encounter-tuned sets</h3>
-        <ul class="clean-list">
-          <li>Keep one dependable general set.</li>
-          <li>Save useful armor, stamina, hit, expertise, resistance, and block pieces.</li>
-          <li>Swap only for a known encounter job.</li>
-          <li>Recheck Defense, glyphs, and taunt reliability after every swap.</li>
-        </ul>
-      </div>
-    </div>
-
-    <details>
-      <summary>Why there is no single perfect tank set</summary>
-      <ul class="clean-list">
-        <li><strong>Armor / effective health:</strong> heavy physical damage and progression.</li>
-        <li><strong>Stamina / magic support:</strong> large magic bursts or mixed damage.</li>
-        <li><strong>Hit / taunt reliability:</strong> required pickups, taunts, stuns, or interrupts.</li>
-        <li><strong>Expertise:</strong> threat reliability; pursue the parry cap only when parry-haste is confirmed and important.</li>
-        <li><strong>Block / add set:</strong> many smaller hits where Holy Shield and block value can do meaningful work.</li>
-      </ul>
-    </details>
-  </section>
-
-  <section class="common" id="talents">
+<section class="common" id="talents">
     <h2><span class="section-mark">◆</span> Talents</h2>
 
     <div class="note paladin"><strong>Recommended shape:</strong> Use a standard <strong>0/53/18-style raid build</strong>, then move the small number of flexible points based on which raid debuffs are already covered. The exact tree matters less than keeping every core survival talent and the correct 969 timing.</div>
@@ -1075,7 +969,7 @@
 
   </section>
 
-  <section class="common" id="glyphs">
+<section class="common" id="glyphs">
     <h2><span class="section-mark">◆</span> Glyphs</h2>
 
     <div class="table-wrap">
@@ -1146,7 +1040,7 @@
     </div>
   </section>
 
-  <section class="common" id="macros">
+<section class="common" id="macros">
     <h2><span class="section-mark">◆</span> Macros: what to use, and when not to</h2>
 
     <div class="note warning"><strong>Spell-name warning:</strong> These use the exact names from an English 3.3.5 client. Horde uses <strong>Seal of Corruption</strong>; Alliance must replace it with <strong>Seal of Vengeance</strong>. Test every macro somewhere harmless before trusting it in a raid.</div>
@@ -1366,7 +1260,164 @@
   <p class="mini-note">These are direct replacements for the video's obsolete ad-link downloads. The two Paladin addons solve Paladin-specific problems; the five general addons are useful across tanks, healers, and damage dealers.</p>
 </section>
 
-  <section class="common" id="gems">
+  <div class="chapter-divider" id="gearing">
+    <span class="chapter-kicker">Part 3 of 4</span>
+    <h2>Gearing your Tankadin</h2>
+    <p>Stats, progression, gems, enchants, and professions from fresh level 80 onward.</p>
+  </div>
+
+<section class="common" id="stats">
+    <h2><span class="section-mark">◆</span> Stats, caps, and what they really mean</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Stat</th>
+            <th>Target</th>
+            <th>Priority</th>
+            <th>What it does</th>
+            <th>Important correction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Defense</strong></td>
+            <td><span class="cap">540 raid / 535 heroic</span></td>
+            <td><span class="must">Mandatory first</span></td>
+            <td>Removes boss critical hits and also adds miss, dodge, parry, and block.</td>
+            <td>540 is a <em>minimum for crit immunity</em>, not a hard cap. Extra Defense still works.</td>
+          </tr>
+          <tr>
+            <td><strong>Stamina</strong></td>
+            <td>No cap</td>
+            <td><span class="must">Top progression stat</span></td>
+            <td>Raises your health pool and gives healers more room to react to burst, magic damage, and unlucky avoidance streaks.</td>
+            <td>Do not blindly stack it while under 540 Defense or while wearing dramatically weaker armor pieces.</td>
+          </tr>
+          <tr>
+            <td><strong>Armor</strong></td>
+            <td>75% physical reduction ceiling</td>
+            <td><span class="must">Excellent effective health</span></td>
+            <td>Reduces physical damage on every eligible hit. Particularly strong on heavy melee encounters.</td>
+            <td>The Austere meta increases armor contributed by items, not every temporary armor source.</td>
+          </tr>
+          <tr>
+            <td><strong>Expertise</strong></td>
+            <td><span class="cap">26 soft / 56 hard</span></td>
+            <td><span class="optional">Threat and reliability</span></td>
+            <td>26 expertise removes a raid boss's dodge chance. The much less practical 56 also removes parries while attacking from the front.</td>
+            <td>The video treats 26 as a complete cap. It is only the dodge soft cap. Glyph of Seal of Vengeance grants 10 expertise skill.</td>
+          </tr>
+          <tr>
+            <td><strong>Melee hit</strong></td>
+            <td><span class="cap">8% = 263 rating</span></td>
+            <td><span class="optional">Useful, not mandatory</span></td>
+            <td>Prevents melee specials such as Hammer and Shield of Righteousness from missing a level-83 boss.</td>
+            <td>Do not sacrifice major survival upgrades just to display 8%.</td>
+          </tr>
+          <tr>
+            <td><strong>Taunt / spell hit</strong></td>
+            <td>See table below</td>
+            <td><span class="optional">Encounter-dependent</span></td>
+            <td>Righteous Defense and Hand of Reckoning normally use spell-hit rules. Missing a required taunt can wipe a raid.</td>
+            <td>Some private servers script taunts differently. Test before rebuilding your entire set.</td>
+          </tr>
+          <tr>
+            <td><strong>Dodge / Parry</strong></td>
+            <td>No fixed cap</td>
+            <td>After effective health</td>
+            <td>Completely avoids eligible melee attacks. Both suffer diminishing returns.</td>
+            <td>Balance naturally through gear. Do not chase equal character-sheet percentages.</td>
+          </tr>
+          <tr>
+            <td><strong>Block</strong></td>
+            <td>Encounter-specific</td>
+            <td>Great for many small hits</td>
+            <td>Reduces a blocked hit by your block value and helps control trash, heroics, and specialized add sets.</td>
+            <td>Block does not fully avoid a large boss swing. Its value drops when hits dwarf your block value.</td>
+          </tr>
+          <tr>
+            <td><strong>Strength</strong></td>
+            <td>No cap</td>
+            <td>Threat / block value</td>
+            <td>Adds attack power and block value; Touched by the Light converts 60% of your Strength into spell power, so Strength supports both physical and spell-based threat.</td>
+            <td>Strength is useful, but it is not normally a progression survival priority over stamina and armor.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin:16px 0 8px">Taunt-hit targets on standard 3.3.5 behavior</h3>
+    <div class="table-wrap">
+      <table style="min-width:680px">
+        <thead>
+          <tr><th>Setup</th><th>Spell hit still needed</th><th>Approx. hit rating</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>No glyph, no raid debuff</td><td><span class="cap">17%</span></td><td>446</td><td>Usually unreasonable for a tank set.</td></tr>
+          <tr><td>Glyph of Righteous Defense only</td><td><span class="cap">9%</span></td><td>237</td><td>The glyph adds 8 percentage points to both taunts.</td></tr>
+          <tr><td>Glyph + Misery / Improved Faerie Fire</td><td><span class="cap">6%</span></td><td>158</td><td>Common raid target when a Shadow Priest or Balance Druid supplies the 3% spell-hit debuff.</td></tr>
+          <tr><td>Glyph + 3% debuff + Draenei aura</td><td><span class="cap">5%</span></td><td>132</td><td>Alliance party-only racial coverage in original Wrath rules.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mini-note">These are taunt-reliability targets, not a demand that every general tank set reach spell-hit cap. Count only actual gear, racial, raid-debuff, and glyph coverage.</p>
+
+    <details>
+      <summary>Advanced: the 102.4% combat table</summary>
+      <p>Against a level-83 raid boss, miss + dodge + parry + block can total 102.4% to push normal unblocked hits off the combat table while Holy Shield is active. This is useful for specialized block sets and add tanking. It is not a universal ICC gearing goal, especially under Chill of the Throne's dodge reduction.</p>
+    </details>
+  </section>
+
+<section class="common" id="gearing-path">
+    <h2><span class="section-mark">◆</span> Level-80 gearing path</h2>
+
+    <div class="three-col">
+      <div class="guide-box">
+        <h3>Fresh level 80</h3>
+        <ul class="clean-list">
+          <li>Reach 535 Defense for heroic bosses.</li>
+          <li>Build toward 540 before raid bosses.</li>
+          <li>Use dungeons, emblems, reputation, and affordable crafted pieces.</li>
+          <li>Replace weak slots before chasing perfect hit or expertise.</li>
+        </ul>
+      </div>
+
+      <div class="guide-box">
+        <h3>Raid-ready base set</h3>
+        <ul class="clean-list">
+          <li>Keep 540 Defense without fragile temporary buffs.</li>
+          <li>Favor stamina and armor until burst damage feels stable.</li>
+          <li>Add hit or expertise when misses are causing real problems.</li>
+          <li>Carry at least one alternate trinket for physical or magic damage.</li>
+        </ul>
+      </div>
+
+      <div class="guide-box">
+        <h3>Encounter-tuned sets</h3>
+        <ul class="clean-list">
+          <li>Keep one dependable general set.</li>
+          <li>Save useful armor, stamina, hit, expertise, resistance, and block pieces.</li>
+          <li>Swap only for a known encounter job.</li>
+          <li>Recheck Defense, glyphs, and taunt reliability after every swap.</li>
+        </ul>
+      </div>
+    </div>
+
+    <details>
+      <summary>Why there is no single perfect tank set</summary>
+      <ul class="clean-list">
+        <li><strong>Armor / effective health:</strong> heavy physical damage and progression.</li>
+        <li><strong>Stamina / magic support:</strong> large magic bursts or mixed damage.</li>
+        <li><strong>Hit / taunt reliability:</strong> required pickups, taunts, stuns, or interrupts.</li>
+        <li><strong>Expertise:</strong> threat reliability; pursue the parry cap only when parry-haste is confirmed and important.</li>
+        <li><strong>Block / add set:</strong> many smaller hits where Holy Shield and block value can do meaningful work.</li>
+      </ul>
+    </details>
+  </section>
+
+<section class="common" id="gems">
     <h2><span class="section-mark">◆</span> Gems</h2>
 
     <div class="note paladin"><strong>Simple rule:</strong> Activate the meta, reach 540 Defense, then use stamina unless a worthwhile socket bonus lets you gain useful hybrid stats cheaply.</div>
@@ -1387,7 +1438,7 @@
     <p class="mini-note">The video's “match bonuses of six stamina or more” is a useful starting rule, not sacred law. Compare the exact survival value you gain against the stamina you give up.</p>
   </section>
 
-  <section class="common" id="enchants">
+<section class="common" id="enchants">
     <h2><span class="section-mark">◆</span> Enchants</h2>
     <p class="mini-note rarity-note"><strong>Color key:</strong> named enchantments and attachments use the closest in-game item-quality color. Plain explanatory text remains neutral.</p>
     <p class="mini-note"><strong>Material note:</strong> Costs below use standard final-patch 3.3.5 recipes. Our server may change recipes, vendors, reputation rates, or drop rates. Crafted kits and attachments can usually be bought from another player; profession-only tinkers and linings require the profession on the character using them.</p>
@@ -1417,7 +1468,7 @@
     </details>
   </section>
 
-  <section class="common" id="professions">
+<section class="common" id="professions">
     <h2><span class="section-mark">◆</span> Professions</h2>
 
     <div class="three-col">
@@ -1453,7 +1504,13 @@
     </details>
   </section>
 
-  <section class="common" id="consumables">
+  <div class="chapter-divider" id="raiding">
+    <span class="chapter-kicker">Part 4 of 4</span>
+    <h2>Raiding with your Tankadin</h2>
+    <p>Consumables, swap sets, and encounter-specific adjustments for Hellscream.</p>
+  </div>
+
+<section class="common" id="consumables">
     <h2><span class="section-mark">◆</span> Consumables</h2>
     <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
 
@@ -1481,7 +1538,7 @@
     </details>
   </section>
 
-  <section class="common" id="encounter-tuning">
+<section class="common" id="encounter-tuning">
     <h2><span class="section-mark">◆</span> Encounter tuning</h2>
 
     <div class="card-grid">
@@ -1504,7 +1561,7 @@
     </details>
   </section>
 
-  <details class="common correction-section" id="corrections">
+<details class="common correction-section" id="corrections">
     <summary><span class="section-mark">◆</span> Important corrections and transcript cleanup</summary>
     <div class="correction-body">
     <div class="table-wrap">
