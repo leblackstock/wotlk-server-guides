@@ -7,6 +7,19 @@
   <title>Setting up your Tankadin | WotLK 3.3.5 Protection Paladin</title>
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/protection-paladin.css">
+  <style>
+    .icon-heading { display:flex; align-items:center; gap:9px; }
+    .title-icon { width:30px; height:30px; flex:0 0 auto; border:1px solid rgba(255,255,255,.20); border-radius:7px; object-fit:cover; background:#0c1116; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+    .icon-item { display:inline-flex; align-items:center; gap:8px; }
+    .item-icon { width:28px; height:28px; flex:0 0 auto; border:1px solid rgba(255,255,255,.18); border-radius:6px; object-fit:cover; background:#0c1116; }
+    .talent-tree-panel { margin:14px 0; padding:14px; border:1px solid rgba(245,140,186,.28); border-radius:14px; background:linear-gradient(135deg,rgba(245,140,186,.075),rgba(255,255,255,.018)); }
+    .talent-tree-heading { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+    .talent-tree-heading h3 { margin:1px 0 0; font-size:19px; }
+    .talent-embed-wrap { overflow:hidden; margin-top:12px; border:1px solid var(--line); border-radius:12px; background:#090d11; }
+    .talent-embed { display:block; width:100%; height:760px; border:0; background:#090d11; }
+    .talent-fallback { margin:9px 0 0; color:var(--muted); font-size:12px; }
+    @media (max-width:680px) { .title-icon { width:27px; height:27px; } .talent-embed { height:900px; } }
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -37,9 +50,21 @@
 
     <div class="note paladin"><strong>Recommended shape:</strong> Use a standard <strong>0/53/18-style raid build</strong>, then move the small number of flexible points based on which raid debuffs are already covered. The exact tree matters less than keeping every core survival talent and the correct 969 timing.</div>
 
+    <div class="talent-tree-panel">
+      <div class="talent-tree-heading">
+        <img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+        <div><span class="summary-label">Fully filled baseline</span><h3>0/53/18 balanced raid build</h3></div>
+      </div>
+      <p class="mini-note">Use this complete tree as the starting build. The few flex points described below can move when the raid already supplies the same debuffs or utility.</p>
+      <div class="talent-embed-wrap">
+        <iframe class="talent-embed" title="Fully filled 0/53/18 Protection Paladin talent tree" loading="lazy" src="https://www.wowhead.com/wotlk/talent-calc/embed/paladin/-05005135203102311333312321-501312012003"></iframe>
+      </div>
+      <p class="talent-fallback">Tree not loading? <a href="https://www.wowhead.com/wotlk/talent-calc/paladin/-05005135203102311333312321-501312012003" target="_blank" rel="noopener">Open the complete build in the Wowhead calculator.</a></p>
+    </div>
+
     <div class="three-col" style="margin-top:12px">
       <div class="priority-card">
-        <h3>Core survival talents</h3>
+        <h3 class="icon-heading"><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_ardentdefender.jpg" alt="" aria-hidden="true" onerror="this.remove()">Core survival talents</h3>
         <ul class="clean-list">
           <li><strong>Improved Righteous Fury</strong> for threat and damage reduction.</li>
           <li><strong>Toughness</strong>, <strong>Anticipation</strong>, and <strong>Sacred Duty</strong>.</li>
@@ -53,7 +78,7 @@
       </div>
 
       <div class="priority-card">
-        <h3>Raid utility talents</h3>
+        <h3 class="icon-heading"><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordbarrier.jpg" alt="" aria-hidden="true" onerror="this.remove()">Raid utility talents</h3>
         <ul class="clean-list">
           <li><strong>Judgements of the Just 2/2</strong> if nobody else reliably provides the 20% attack-speed slow.</li>
           <li><strong>Vindication 2/2</strong> if the raid lacks a full attack-power reduction.</li>
@@ -64,7 +89,7 @@
       </div>
 
       <div class="priority-card">
-        <h3>Threat and flex points</h3>
+        <h3 class="icon-heading"><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_crusade.jpg" alt="" aria-hidden="true" onerror="this.remove()">Threat and flex points</h3>
         <ul class="clean-list">
           <li><strong>Improved Judgements 1/2</strong> is the clean 969 choice. Two points shorten it to 8 seconds and can cause collisions.</li>
           <li><strong>Deflection</strong>, <strong>Conviction</strong>, and <strong>Crusade</strong> are the usual Retribution-side threat path.</li>
@@ -85,43 +110,43 @@
         <thead><tr><th>Glyph</th><th>Use</th><th>Recommendation</th><th>Why</th></tr></thead>
         <tbody>
           <tr>
-            <td><strong>Glyph of Divine Plea</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Divine Plea</strong></span></td>
             <td>All content</td>
             <td><span class="must">Default</span></td>
             <td>3% less damage while Divine Plea is active. Guarded by the Light lets you maintain nearly permanent uptime while attacking.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Seal of Vengeance</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Seal of Vengeance</strong></span></td>
             <td>Bosses</td>
             <td><span class="must">Default</span></td>
             <td>10 expertise while Seal of Corruption/Vengeance is active. Huge itemization value.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Righteous Defense</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_righteousfury.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Righteous Defense</strong></span></td>
             <td>Taunt-critical fights</td>
             <td><span class="must">Safest third glyph</span></td>
             <td>Adds 8% hit to Righteous Defense and Hand of Reckoning. Reliability beats a tiny threat gain when a missed taunt means disaster.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Salvation</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofsalvation.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Salvation</strong></span></td>
             <td>Planned defensive use</td>
             <td><span class="optional">Strong situational</span></td>
             <td>Turns Hand of Salvation on yourself into 20% damage reduction, but it also drains your threat. Use only with a threat lead or during a tank swap.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Judgement</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Judgement</strong></span></td>
             <td>Single-target threat</td>
             <td>Optional</td>
             <td>More Judgement damage and threat when taunt reliability is already covered.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Hammer of the Righteous</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Hammer of the Righteous</strong></span></td>
             <td>Trash / adds</td>
             <td>Optional AoE</td>
             <td>Adds another target to Hammer. Excellent for packs, nearly useless on a lone boss.</td>
           </tr>
           <tr>
-            <td><strong>Glyph of Avenger's Shield</strong></td>
+            <td><span class="icon-item"><img class="item-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_avengersshield.jpg" alt="" aria-hidden="true" onerror="this.remove()"><strong>Glyph of Avenger's Shield</strong></span></td>
             <td>Single-target snap threat</td>
             <td>Niche</td>
             <td>Doubles damage but removes the bounces. Do not use it when the bounce is your pull-control tool.</td>
