@@ -43,9 +43,9 @@ current = [
     "talents", "glyphs", "macros", "addons", "gems", "enchants",
     "professions", "consumables", "encounter-tuning",
 ]
-markers = [f'  <section class="common" id="{item}">' for item in current]
+markers = [f'<section class="common" id="{item}">' for item in current]
 positions = [text.find(marker) for marker in markers]
-end_marker = '  <details class="common correction-section" id="corrections">'
+end_marker = '<details class="common correction-section" id="corrections">'
 end_pos = text.find(end_marker)
 if any(pos < 0 for pos in positions) or end_pos < 0 or positions != sorted(positions):
     raise SystemExit("Main section markers are missing or out of order")
