@@ -1,0 +1,34 @@
+name: Group Protection Paladin guide into chapters
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  group:
+    if: github.head_ref == 'organize-protection-paladin-four-chapters'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Reorder guide
+        run: python .github/scripts/group_ppala_chapters.py
+      - name: Commit guide only
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf .github/tmp/ppala-chapters
+          rm -f .github/scripts/group_ppala_chapters.py
+          rm -f .github/workflows/group-protection-paladin-chapters.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add guides/protection-paladin-pve-guide.html .github
+          git diff --cached --check
+          git commit -m "Organize Protection Paladin guide into four chapters"
+          git push origin HEAD:${{ github.head_ref }}
