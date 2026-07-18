@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Prepare consumables, recognize encounter demands, and test Hellscream-specific behavior without importing another server’s raid meta.">
+  <meta name="description" content="Protection Paladin consumables, encounter tuning, and concise ICC, Ruby Sanctum, and Trial of the Grand Crusader tank notes for Hellscream.">
   <title>Raiding with your Tankadin | WotLK 3.3.5 Protection Paladin</title>
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/protection-paladin.css">
@@ -16,76 +16,139 @@
     <a href="protection-paladin-playing.html">Playing</a>
     <a href="protection-paladin-setting-up.html">Setting up</a>
     <a href="protection-paladin-gearing.html">Gearing</a>
+    <a href="protection-paladin-gear-targets.html">Gear targets</a>
     <a href="protection-paladin-raiding.html" aria-current="page">Raiding</a>
   </nav>
 
   <header>
     <span class="page-kicker">Protection Paladin • Level 80+</span>
     <h1>WotLK 3.3.5 <span>Raiding with your Tankadin</span></h1>
-    <p class="sub">Prepare consumables, recognize encounter demands, and test Hellscream-specific behavior without importing another server’s raid meta.</p>
+    <p class="sub">Prepare your consumables, select the right set, and know which Paladin tools matter on each raid encounter.</p>
     <div class="jump-nav" aria-label="Topics on this page">
       <a href="#consumables">Consumables</a>
       <a href="#encounter-tuning">Encounter tuning</a>
+      <a href="#raid-notes">Raid encounters</a>
     </div>
   </header>
 
   <main>
-<section class="common" id="consumables">
-    <h2><span class="section-mark">◆</span> Consumables</h2>
-    <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
+    <div class="note warning"><strong>Hellscream ICC:</strong> the zone-wide ICC buff is removed. Do not use guides that assume free health, healing, and damage from that buff when judging readiness.</div>
 
-    <div class="table-wrap" style="margin-top:12px">
-      <table style="min-width:720px">
-        <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
-          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span>, <span class="item-name q-common">Fish Feast</span>, <span class="item-name q-common">Snapper Extreme</span>, or <span class="item-name q-common">Rhinolicious Wormsteak</span></td><td>Use agility or stamina by default. Hit or expertise food can temporarily repair a specific swap set.</td></tr>
-          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>A matching Mighty Protection Potion for a known magic burst</td><td>Pre-pot before the pull and use another later when the encounter allows. Default to armor unless the encounter clearly rewards resistance.</td></tr>
-          <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
-          <tr><td><strong>Set-fixing elixirs</strong></td><td><span class="item-name q-common">Elixir of Accuracy</span> or <span class="item-name q-common">Elixir of Expertise</span></td><td>A compatible defensive guardian elixir</td><td>Use for a temporary hit or expertise gap. Flask of Stoneblood remains the normal raid default.</td></tr>
-          <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <section class="common" id="consumables">
+      <h2><span class="section-mark">◆</span> Consumables</h2>
+      <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
 
-    <details>
-      <summary>Optional old-expansion physical absorbs</summary>
-      <ul class="clean-list">
-        <li><strong>Greater Rune of Warding:</strong> temporary chest effect with a chance to absorb a small physical hit.</li>
-        <li><strong>Greater Ward of Shielding:</strong> consumable shield ward that absorbs a fixed amount before breaking.</li>
-        <li>Verify that each works, stacks as expected, and is worth the inventory cost on Hellscream before stocking them.</li>
-      </ul>
-    </details>
-  </section>
+      <div class="table-wrap" style="margin-top:12px">
+        <table style="min-width:720px">
+          <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
+            <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span>, <span class="item-name q-common">Fish Feast</span>, <span class="item-name q-common">Snapper Extreme</span>, or <span class="item-name q-common">Rhinolicious Wormsteak</span></td><td>Use agility or stamina by default. Hit or expertise food can temporarily repair a specific swap set.</td></tr>
+            <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>A matching Mighty Protection Potion for a known magic burst</td><td>Pre-pot before the pull and use another later when the encounter allows. Default to armor unless the encounter clearly rewards resistance.</td></tr>
+            <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
+            <tr><td><strong>Set-fixing elixirs</strong></td><td><span class="item-name q-common">Elixir of Accuracy</span> or <span class="item-name q-common">Elixir of Expertise</span></td><td>A compatible defensive guardian elixir</td><td>Use for a temporary hit or expertise gap. Flask of Stoneblood remains the normal raid default.</td></tr>
+            <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-<section class="common" id="encounter-tuning">
-    <h2><span class="section-mark">◆</span> Encounter tuning</h2>
+      <details>
+        <summary>Optional old-expansion physical absorbs</summary>
+        <ul class="clean-list">
+          <li><strong>Greater Rune of Warding:</strong> temporary chest effect with a chance to absorb a small physical hit.</li>
+          <li><strong>Greater Ward of Shielding:</strong> consumable shield ward that absorbs a fixed amount before breaking.</li>
+          <li>Verify that each works, stacks as expected, and is worth the inventory cost on Hellscream before stocking them.</li>
+        </ul>
+      </details>
+    </section>
 
-    <div class="card-grid">
-      <div class="guide-box"><h3>Heavy physical damage</h3><ul class="clean-list"><li>Favor armor, stamina, an armor trinket, and Indestructible Potions.</li></ul></div>
-      <div class="guide-box"><h3>Magic or mixed burst</h3><ul class="clean-list"><li>Favor stamina, a resistance aura or on-use trinket, and planned external cooldowns.</li></ul></div>
-      <div class="guide-box"><h3>Mandatory taunts or pickups</h3><ul class="clean-list"><li>Use <a href="protection-paladin-setting-up.html#glyphs">Glyph of Righteous Defense</a> and add only enough hit for the required reliability.</li></ul></div>
-      <div class="guide-box"><h3>Parry-sensitive boss</h3><ul class="clean-list"><li>Build extra expertise only after confirming that the boss parry-hastes on Hellscream.</li></ul></div>
-      <div class="guide-box"><h3>Many smaller attackers</h3><ul class="clean-list"><li>Block value, Holy Shield uptime, Seal of Command, and add-control tools become more valuable.</li></ul></div>
-      <div class="guide-box"><h3>Movement-heavy fight</h3><ul class="clean-list"><li>Prioritize movement speed, hold ranged pickup tools, and accept imperfect Consecration uptime.</li></ul></div>
-    </div>
+    <section class="common" id="encounter-tuning">
+      <h2><span class="section-mark">◆</span> Encounter tuning</h2>
+      <div class="card-grid">
+        <div class="guide-box"><h3>Heavy physical damage</h3><ul class="clean-list"><li>Favor armor, stamina, an armor trinket, and Indestructible Potions.</li></ul></div>
+        <div class="guide-box"><h3>Magic or mixed burst</h3><ul class="clean-list"><li>Favor stamina, a resistance aura or on-use trinket, and planned external cooldowns.</li></ul></div>
+        <div class="guide-box"><h3>Mandatory taunts or pickups</h3><ul class="clean-list"><li>Use <a href="protection-paladin-setting-up.html#glyphs">Glyph of Righteous Defense</a> and add only enough hit for the required reliability.</li></ul></div>
+        <div class="guide-box"><h3>Parry-sensitive boss</h3><ul class="clean-list"><li>Build extra expertise only after confirming that the boss parry-hastes on Hellscream.</li></ul></div>
+        <div class="guide-box"><h3>Many smaller attackers</h3><ul class="clean-list"><li>Block value, Holy Shield uptime, Seal of Command, and add-control tools become more valuable.</li></ul></div>
+        <div class="guide-box"><h3>Movement-heavy fight</h3><ul class="clean-list"><li>Prioritize movement speed, hold ranged pickup tools, and accept imperfect Consecration uptime.</li></ul></div>
+      </div>
+    </section>
 
-    <details>
-      <summary>Hellscream checks before building a special set</summary>
-      <ul class="clean-list">
-        <li>Confirm taunt-hit behavior with combat logs.</li>
-        <li>Confirm whether the boss uses parry-haste.</li>
-        <li>Test Tier 10 bonuses, Divine Sacrifice cancellation, Nitro failures, and weapon proc enchants.</li>
-        <li>Change one variable at a time and keep the dependable general set ready.</li>
-      </ul>
-    </details>
-  </section>
+    <section class="common" id="raid-notes">
+      <h2><span class="section-mark">◆</span> Specific raid encounter notes</h2>
+      <p class="mini-note">These are Tankadin responsibilities and useful Paladin tools, not full raid strategies. Follow the raid leader's positioning and assignment.</p>
 
-<nav class="page-pager" aria-label="Previous and next guide pages"><a href="protection-paladin-gearing.html">← Gearing your Tankadin</a><a href="protection-paladin-pve-guide.html">Back to Quick Start →</a></nav>
+      <details>
+        <summary>Icecrown Citadel: Lower Spire and Plagueworks</summary>
+        <div class="card-grid">
+          <div class="guide-box"><h3>Lord Marrowgar</h3><ul class="clean-list"><li>Stack with the other tank for Saber Lash and face him away from the raid.</li><li>Keep a ranged ability ready for Bone Spikes only when using it will not disturb boss control.</li><li>Use Divine Protection when Bone Storm ends if healers are still moving.</li></ul></div>
+          <div class="guide-box"><h3>Lady Deathwhisper</h3><ul class="clean-list"><li>Use Consecration and Hammer of the Righteous to establish add threat.</li><li>Hold Avenger's Shield for a caster, reanimated add, silence, or distant pickup.</li><li>In phase two, be ready for the assigned taunt swap.</li></ul></div>
+          <div class="guide-box"><h3>Gunship Battle</h3><ul class="clean-list"><li>If you jump, watch the opposing commander's stacking damage buff.</li><li>Use a cooldown or delay the next jump when stacks remain high.</li><li>Call the jump so healers and DPS do not arrive before the tank.</li></ul></div>
+          <div class="guide-box"><h3>Deathbringer Saurfang</h3><ul class="clean-list"><li>Swap on Rune of Blood as assigned.</li><li>Holy Wrath can stun Blood Beasts.</li><li>Peel loose beasts with ranged tools without turning or dragging the boss through the raid.</li></ul></div>
+          <div class="guide-box"><h3>Festergut</h3><ul class="clean-list"><li>Swap before Gastric Bloat becomes lethal.</li><li>Plan Divine Protection for high-Inhale periods.</li><li>Bubble-cancel a stack only when the co-tank is ready and the interaction has been tested on Hellscream.</li></ul></div>
+          <div class="guide-box"><h3>Rotface</h3><ul class="clean-list"><li>Boss tank: face Slime Spray away from the raid.</li><li>Ooze tank: use movement and ranged pickup tools.</li><li><strong>Hellscream:</strong> Small Oozes are taunt-immune. Do not build the strategy around taunting them.</li></ul></div>
+          <div class="guide-box"><h3>Professor Putricide</h3><ul class="clean-list"><li>Keep the boss positioned for ooze and gas-cloud movement.</li><li>Save ranged snap threat when assigned to an add.</li><li>In phase three, swap on Mutated Plague and use planned cooldowns as damage ramps.</li></ul></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Icecrown Citadel: Crimson Hall and Frostwing</summary>
+        <div class="card-grid">
+          <div class="guide-box"><h3>Blood Prince Council</h3><ul class="clean-list"><li>If tanking Keleseth, collect Dark Nuclei with ranged tools.</li><li>Avoid cleaving or killing the nuclei that provide Shadow Resonance.</li><li>Use a defensive while nucleus coverage is still low.</li></ul></div>
+          <div class="guide-box"><h3>Blood-Queen Lana'thel</h3><ul class="clean-list"><li>The two tanks stay close enough for Blood Mirror.</li><li>Use a defensive for dangerous paired-tank damage windows.</li><li>Do not let movement mechanics separate the tank pair.</li></ul></div>
+          <div class="guide-box"><h3>Valithria Dreamwalker</h3><ul class="clean-list"><li>Prioritize Blazing Skeletons and dangerous Zombies.</li><li>Holy Wrath is excellent against the Undead add waves.</li><li>Face Abominations away and control their death position.</li></ul></div>
+          <div class="guide-box"><h3>Sindragosa</h3><ul class="clean-list"><li>Use Frost Resistance Aura unless the raid assigns another aura.</li><li>Plan cooldowns for Frost Breath and healer movement.</li><li>Swap to control Mystic Buffet and react immediately to Blistering Cold.</li></ul></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>The Lich King</summary>
+        <ul class="clean-list">
+          <li>Know whether you are the boss tank or the add tank before the pull.</li>
+          <li>Holy Wrath is valuable for Ghouls and Shambling Horrors.</li>
+          <li>Cleanse Necrotic Plague only when assigned; an early or late cleanse can ruin add control.</li>
+          <li>Taunt Raging Spirits promptly during transitions.</li>
+          <li>When boss tanking, plan a personal or external cooldown for Soul Reaper.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Ruby Sanctum: Halion</summary>
+        <ul class="clean-list">
+          <li>Face Halion away from the raid and keep the breath direction predictable.</li>
+          <li>Plan cooldowns around Flame or Dark Breath combined with movement.</li>
+          <li>Inside tank: cutter positioning outranks perfect rotation uptime.</li>
+          <li>Add tank: Seal of Command, Hammer, Consecration, and Hand of Reckoning are strong Living Ember tools.</li>
+          <li>React to actual damage and healer movement rather than using a fixed cooldown script from another server.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Trial of the Grand Crusader: Anub'arak</summary>
+        <ul class="clean-list">
+          <li>A block-focused set can be useful when tanking Nerubian Burrowers.</li>
+          <li>Holy Wrath stuns the Burrowers and helps stabilize add waves.</li>
+          <li>Interrupt Shadow Strike reliably when assigned; carry enough hit for the job.</li>
+          <li>Use Frost patches for controlled kiting and positioning.</li>
+          <li>Do not import solo-tank or overgeared private-server strategies as the default plan.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Hellscream checks before building a special set</summary>
+        <ul class="clean-list">
+          <li>Confirm taunt-hit behavior with combat logs.</li>
+          <li>Confirm whether the boss uses parry-haste.</li>
+          <li>Test Tier 10 bonuses, Divine Sacrifice cancellation, Nitro failures, and weapon proc enchants.</li>
+          <li>Change one variable at a time and keep the dependable general set ready.</li>
+        </ul>
+      </details>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><a href="protection-paladin-gear-targets.html">← Specific gear targets</a><a href="protection-paladin-pve-guide.html">Back to Quick Start →</a></nav>
   </main>
 
-  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 18, 2026</footer>
+  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Hellscream</footer>
 </div>
-
 </body>
 </html>
