@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prepare consumables, recognize encounter demands, and test Hellscream-specific behavior without importing another server’s raid meta.">
+  <title>Raiding with your Tankadin | WotLK 3.3.5 Protection Paladin</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/protection-paladin.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="site-nav" aria-label="Tankadin guide pages">
+    <a href="../index.html">Guide Hub</a>
+    <a href="protection-paladin-pve-guide.html">Quick Start</a>
+    <a href="protection-paladin-playing.html">Playing</a>
+    <a href="protection-paladin-setting-up.html">Setting up</a>
+    <a href="protection-paladin-gearing.html">Gearing</a>
+    <a href="protection-paladin-raiding.html" aria-current="page">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Protection Paladin • Level 80+</span>
+    <h1>WotLK 3.3.5 <span>Raiding with your Tankadin</span></h1>
+    <p class="sub">Prepare consumables, recognize encounter demands, and test Hellscream-specific behavior without importing another server’s raid meta.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#consumables">Consumables</a>
+      <a href="#encounter-tuning">Encounter tuning</a>
+    </div>
+  </header>
+
+  <main>
+<section class="common" id="consumables">
+    <h2><span class="section-mark">◆</span> Consumables</h2>
+    <p class="mini-note rarity-note"><strong>Color key:</strong> consumable names use their normal item-quality color. Most Wrath food, flasks, and potions are common-quality items even when the effect is excellent.</p>
+
+    <div class="table-wrap" style="margin-top:12px">
+      <table style="min-width:720px">
+        <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Stoneblood</span></td><td>Resistance elixirs for a specific fight</td><td>1300 health and persists through death.</td></tr>
+          <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Blackened Dragonfin</span></td><td><span class="item-name q-common">Dragonfin Filet</span>, <span class="item-name q-common">Fish Feast</span>, <span class="item-name q-common">Snapper Extreme</span>, or <span class="item-name q-common">Rhinolicious Wormsteak</span></td><td>Use agility or stamina by default. Hit or expertise food can temporarily repair a specific swap set.</td></tr>
+          <tr><td><strong>Armor potion</strong></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>A matching Mighty Protection Potion for a known magic burst</td><td>Pre-pot before the pull and use another later when the encounter allows. Default to armor unless the encounter clearly rewards resistance.</td></tr>
+          <tr><td><strong>Threat potion</strong></td><td><span class="item-name q-common">Potion of Speed</span></td><td><span class="item-name q-common">Indestructible Potion</span></td><td>Use only when snap threat is the real problem.</td></tr>
+          <tr><td><strong>Set-fixing elixirs</strong></td><td><span class="item-name q-common">Elixir of Accuracy</span> or <span class="item-name q-common">Elixir of Expertise</span></td><td>A compatible defensive guardian elixir</td><td>Use for a temporary hit or expertise gap. Flask of Stoneblood remains the normal raid default.</td></tr>
+          <tr><td><strong>Emergency</strong></td><td><span class="item-name q-uncommon">Healthstone</span></td><td><span class="item-name q-common">Runic Healing Potion</span></td><td>Bind them. An unpressed consumable has an impressive zero-percent success rate.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>Optional old-expansion physical absorbs</summary>
+      <ul class="clean-list">
+        <li><strong>Greater Rune of Warding:</strong> temporary chest effect with a chance to absorb a small physical hit.</li>
+        <li><strong>Greater Ward of Shielding:</strong> consumable shield ward that absorbs a fixed amount before breaking.</li>
+        <li>Verify that each works, stacks as expected, and is worth the inventory cost on Hellscream before stocking them.</li>
+      </ul>
+    </details>
+  </section>
+
+<section class="common" id="encounter-tuning">
+    <h2><span class="section-mark">◆</span> Encounter tuning</h2>
+
+    <div class="card-grid">
+      <div class="guide-box"><h3>Heavy physical damage</h3><ul class="clean-list"><li>Favor armor, stamina, an armor trinket, and Indestructible Potions.</li></ul></div>
+      <div class="guide-box"><h3>Magic or mixed burst</h3><ul class="clean-list"><li>Favor stamina, a resistance aura or on-use trinket, and planned external cooldowns.</li></ul></div>
+      <div class="guide-box"><h3>Mandatory taunts or pickups</h3><ul class="clean-list"><li>Use Glyph of Righteous Defense and add only enough hit for the required reliability.</li></ul></div>
+      <div class="guide-box"><h3>Parry-sensitive boss</h3><ul class="clean-list"><li>Build extra expertise only after confirming that the boss parry-hastes on Hellscream.</li></ul></div>
+      <div class="guide-box"><h3>Many smaller attackers</h3><ul class="clean-list"><li>Block value, Holy Shield uptime, Seal of Command, and add-control tools become more valuable.</li></ul></div>
+      <div class="guide-box"><h3>Movement-heavy fight</h3><ul class="clean-list"><li>Prioritize movement speed, hold ranged pickup tools, and accept imperfect Consecration uptime.</li></ul></div>
+    </div>
+
+    <details>
+      <summary>Hellscream checks before building a special set</summary>
+      <ul class="clean-list">
+        <li>Confirm taunt-hit behavior with combat logs.</li>
+        <li>Confirm whether the boss uses parry-haste.</li>
+        <li>Test Tier 10 bonuses, Divine Sacrifice cancellation, Nitro failures, and weapon proc enchants.</li>
+        <li>Change one variable at a time and keep the dependable general set ready.</li>
+      </ul>
+    </details>
+  </section>
+
+<nav class="page-pager" aria-label="Previous and next guide pages"><a href="protection-paladin-gearing.html">← Gearing your Tankadin</a><a href="protection-paladin-pve-guide.html">Back to Quick Start →</a></nav>
+  </main>
+
+  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 18, 2026</footer>
+</div>
+
+</body>
+</html>
