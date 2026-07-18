@@ -1,0 +1,185 @@
+name: Add Tankadin icons and talent tree
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: write
+jobs:
+  update-guide:
+    if: github.head_ref == 'add-tankadin-icons-and-talent-tree'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Add icons and filled talent tree
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          from html.parser import HTMLParser
+
+          root = Path('.')
+          css_path = root / 'assets/protection-paladin.css'
+          quick_path = root / 'guides/protection-paladin-pve-guide.html'
+          playing_path = root / 'guides/protection-paladin-playing.html'
+          setup_path = root / 'guides/protection-paladin-setting-up.html'
+          gearing_path = root / 'guides/protection-paladin-gearing.html'
+          raiding_path = root / 'guides/protection-paladin-raiding.html'
+
+          def replace_once(text, old, new, label):
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label}: expected 1 match, found {count}')
+              return text.replace(old, new, 1)
+
+          def img(icon, cls='title-icon'):
+              return f'<img class="{cls}" src="https://wow.zamimg.com/images/wow/icons/large/{icon}.jpg" alt="" aria-hidden="true" onerror="this.remove()">'
+
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* Tankadin content icons and talent calculator. */'
+          if marker not in css:
+              css += '''\n\n/* Tankadin content icons and talent calculator. */
+          .icon-heading{display:flex;align-items:center;gap:9px}
+          .title-icon{width:30px;height:30px;flex:0 0 auto;border:1px solid rgba(255,255,255,.20);border-radius:7px;object-fit:cover;background:#0c1116;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+          .chapter-icon{width:42px;height:42px;display:block;margin:0 0 10px;border:1px solid rgba(255,255,255,.20);border-radius:10px;object-fit:cover;background:#0c1116;box-shadow:0 3px 10px rgba(0,0,0,.38)}
+          .icon-item{display:inline-flex;align-items:center;gap:8px}
+          .item-icon{width:28px;height:28px;flex:0 0 auto;border:1px solid rgba(255,255,255,.18);border-radius:6px;object-fit:cover;background:#0c1116}
+          .talent-tree-panel{margin:14px 0;padding:14px;border:1px solid rgba(245,140,186,.28);border-radius:14px;background:linear-gradient(135deg,rgba(245,140,186,.075),rgba(255,255,255,.018))}
+          .talent-tree-heading{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+          .talent-tree-heading h3{margin:1px 0 0;font-size:19px}
+          .talent-embed-wrap{overflow:hidden;margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#090d11}
+          .talent-embed{display:block;width:100%;height:760px;border:0;background:#090d11}
+          .talent-fallback{margin:9px 0 0;color:var(--muted);font-size:12px}
+          @media (max-width:680px){.title-icon{width:27px;height:27px}.chapter-icon{width:38px;height:38px}.talent-embed{height:900px}}
+          /* End Tankadin content icons and talent calculator. */\n'''
+          css_path.write_text(css, encoding='utf-8')
+
+          quick = quick_path.read_text(encoding='utf-8')
+          cards = [
+              ('1','Playing your Tankadin','ability_paladin_hammeroftherighteous'),
+              ('2','Setting up your Tankadin','spell_holy_greaterblessingofkings'),
+              ('3','Gearing your Tankadin','inv_shield_06'),
+              ('4','Raiding with your Tankadin','inv_alchemy_elixir_04'),
+          ]
+          for number, title, icon in cards:
+              old = f'<span class="chapter-number">{number}</span>\n      <h3>{title}</h3>'
+              new = f'<span class="chapter-number">{number}</span>\n      {img(icon,"chapter-icon")}\n      <h3>{title}</h3>'
+              quick = replace_once(quick, old, new, f'quick card {title}')
+          quick_path.write_text(quick, encoding='utf-8')
+
+          playing = playing_path.read_text(encoding='utf-8')
+          playing_icons = {
+              'Divine Protection':'spell_holy_divineprotection',
+              'Ardent Defender':'spell_holy_ardentdefender',
+              'Divine Sacrifice / Divine Guardian':'spell_holy_powerwordbarrier',
+              'Lay on Hands':'spell_holy_layonhands',
+              'Glyph of Salvation cooldown':'spell_holy_sealofsalvation',
+              'Divine Shield':'spell_holy_divineshield',
+              'Sacred Shield':'ability_paladin_blessedmending',
+              'Avenging Wrath':'spell_holy_avenginewrath',
+              'Seals':'spell_holy_sealofvengeance',
+              'Judgements, blessings, and aura':'ability_paladin_judgementblue',
+          }
+          for title, icon in playing_icons.items():
+              playing = replace_once(playing, f'<h3>{title}</h3>', f'<h3 class="icon-heading">{img(icon)}{title}</h3>', f'playing icon {title}')
+          playing_path.write_text(playing, encoding='utf-8')
+
+          setup = setup_path.read_text(encoding='utf-8')
+          note = '<div class="note paladin"><strong>Recommended shape:</strong> Use a standard <strong>0/53/18-style raid build</strong>, then move the small number of flexible points based on which raid debuffs are already covered. The exact tree matters less than keeping every core survival talent and the correct 969 timing.</div>'
+          tree = note + '''
+
+    <div class="talent-tree-panel">
+      <div class="talent-tree-heading">
+        <img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+        <div><span class="summary-label">Fully filled baseline</span><h3>0/53/18 balanced raid build</h3></div>
+      </div>
+      <p class="mini-note">Use this complete tree as the starting build. The few flex points described below can move when the raid already supplies the same debuffs or utility.</p>
+      <div class="talent-embed-wrap">
+        <iframe class="talent-embed" title="Fully filled 0/53/18 Protection Paladin talent tree" loading="lazy" src="https://www.wowhead.com/wotlk/talent-calc/embed/paladin/-05005135203102311333312321-501312012003"></iframe>
+      </div>
+      <p class="talent-fallback">Tree not loading? <a href="https://www.wowhead.com/wotlk/talent-calc/paladin/-05005135203102311333312321-501312012003" target="_blank" rel="noopener">Open the complete build in the Wowhead calculator.</a></p>
+    </div>'''
+          setup = replace_once(setup, note, tree, 'talent tree panel')
+          setup_icons = {
+              'Core survival talents':'spell_holy_ardentdefender',
+              'Raid utility talents':'spell_holy_powerwordbarrier',
+              'Threat and flex points':'spell_holy_crusade',
+          }
+          for title, icon in setup_icons.items():
+              setup = replace_once(setup, f'<h3>{title}</h3>', f'<h3 class="icon-heading">{img(icon)}{title}</h3>', f'setup card {title}')
+          glyph_icons = {
+              'Glyph of Divine Plea':'spell_holy_aspiration',
+              'Glyph of Seal of Vengeance':'spell_holy_sealofvengeance',
+              'Glyph of Righteous Defense':'spell_holy_righteousfury',
+              'Glyph of Salvation':'spell_holy_sealofsalvation',
+              'Glyph of Judgement':'ability_paladin_judgementblue',
+              'Glyph of Hammer of the Righteous':'ability_paladin_hammeroftherighteous',
+              "Glyph of Avenger's Shield":'spell_holy_avengersshield',
+          }
+          for title, icon in glyph_icons.items():
+              setup = replace_once(setup, f'<td><strong>{title}</strong></td>', f'<td><span class="icon-item">{img(icon,"item-icon")}<strong>{title}</strong></span></td>', f'glyph icon {title}')
+          setup_path.write_text(setup, encoding='utf-8')
+
+          gearing = gearing_path.read_text(encoding='utf-8')
+          gear_icons = {
+              'Fresh level 80':'inv_chest_plate04',
+              'Raid-ready base set':'inv_shield_06',
+              'Encounter-tuned sets':'inv_misc_gear_01',
+          }
+          for title, icon in gear_icons.items():
+              gearing = replace_once(gearing, f'<h3>{title}</h3>', f'<h3 class="icon-heading">{img(icon)}{title}</h3>', f'gearing icon {title}')
+          gearing_path.write_text(gearing, encoding='utf-8')
+
+          raiding = raiding_path.read_text(encoding='utf-8')
+          consumable_icons = {
+              '<span class="item-name q-common">Flask of Stoneblood</span>':'inv_alchemy_endlessflask_05',
+              '<span class="item-name q-common">Blackened Dragonfin</span>':'inv_misc_food_47',
+              '<span class="item-name q-common">Indestructible Potion</span>':'inv_alchemy_elixir_06',
+              '<span class="item-name q-common">Potion of Speed</span>':'inv_alchemy_elixir_04',
+              '<span class="item-name q-common">Elixir of Accuracy</span>':'inv_alchemy_elixir_01',
+              '<span class="item-name q-uncommon">Healthstone</span>':'inv_stone_04',
+          }
+          for old, icon in consumable_icons.items():
+              new = f'<span class="icon-item">{img(icon,"item-icon")}{old}</span>'
+              raiding = replace_once(raiding, old, new, f'consumable icon {old}')
+          raiding_path.write_text(raiding, encoding='utf-8')
+
+          pages = [quick_path, playing_path, setup_path, gearing_path, raiding_path]
+          class IdParser(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.ids=[]
+              def handle_starttag(self, tag, attrs):
+                  for key, value in attrs:
+                      if key == 'id' and value: self.ids.append(value)
+          for page in pages:
+              text = page.read_text(encoding='utf-8')
+              parser = IdParser(); parser.feed(text)
+              if len(parser.ids) != len(set(parser.ids)):
+                  raise SystemExit(f'duplicate IDs in {page}')
+              if text.count('<main>') != 1 or text.count('</main>') != 1:
+                  raise SystemExit(f'main wrapper mismatch in {page}')
+
+          setup = setup_path.read_text(encoding='utf-8')
+          if setup.count('class="talent-embed"') != 1 or '0/53/18 balanced raid build' not in setup:
+              raise SystemExit('talent embed validation failed')
+          if setup.count('talent-calc/embed/paladin/-05005135203102311333312321-501312012003') != 1:
+              raise SystemExit('unexpected talent build URL')
+          if quick_path.read_text(encoding='utf-8').count('class="chapter-icon"') != 4:
+              raise SystemExit('chapter icon count failed')
+          total_icons = sum(p.read_text(encoding='utf-8').count('wow.zamimg.com/images/wow/icons/large/') for p in pages)
+          if total_icons < 35:
+              raise SystemExit(f'icon count too low: {total_icons}')
+
+          workflow = Path('.github/workflows/add-tankadin-icons-and-talent-tree.yml')
+          workflow.unlink()
+          PY
+      - name: Commit polished guide pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/protection-paladin.css guides/protection-paladin-*.html .github/workflows/add-tankadin-icons-and-talent-tree.yml
+          git commit -m "Add Tankadin icons and filled talent tree"
+          git push origin HEAD:${{ github.head_ref }}
