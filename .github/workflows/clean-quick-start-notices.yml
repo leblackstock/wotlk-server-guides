@@ -109,3 +109,5 @@ jobs:
           git add guides/protection-paladin-pve-guide.html .github/workflows/clean-quick-start-notices.yml
           git commit -m "Clean up Quick Start notices"
           git push origin HEAD:${{ github.head_ref }}
+
+# synchronize trigger
