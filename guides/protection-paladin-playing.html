@@ -6,7 +6,7 @@
   <meta name="description" content="Pull cleanly, maintain the 969 rhythm, and use Paladin cooldowns, seals, and utility deliberately.">
   <title>Playing your Tankadin | WotLK 3.3.5 Protection Paladin</title>
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260720-playbook">
+  <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260720-focus">
 </head>
 <body>
 <div class="wrap">
@@ -34,7 +34,7 @@
   <main>
 <section class="common pull-playbook" id="pull-playbook">
     <h2><span class="section-mark">◆</span> Pull playbook</h2>
-    <p class="muted">Choose the card that matches the pull. Keep the listed buffs active, prepare before contact, use the correct taunt, and follow the short opening into your normal rhythm.</p>
+    <p class="muted">Choose the card that matches the pull. Click any card to open it alone in a focused view. Keep the listed buffs active, prepare before contact, use the correct taunt, and follow the short opening into your normal rhythm.</p>
 
     <div class="pull-card-grid">
       <article class="pull-card">
@@ -384,6 +384,14 @@
         </footer>
       </article>
     </div>
+
+    <dialog class="pull-focus-dialog" id="pull-focus-dialog" aria-label="Focused pull card">
+      <form class="pull-focus-toolbar" method="dialog">
+        <span>Focused pull card</span>
+        <button class="pull-focus-close" value="close">Close</button>
+      </form>
+      <div class="pull-focus-content" id="pull-focus-content"></div>
+    </dialog>
   </section>
 
 <section class="common" id="rotation">
@@ -510,6 +518,73 @@
 
   <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 20, 2026</footer>
 </div>
+
+<script>
+(() => {
+  const dialog = document.getElementById("pull-focus-dialog");
+  const content = document.getElementById("pull-focus-content");
+  const closeButton = dialog?.querySelector(".pull-focus-close");
+  const cards = [...document.querySelectorAll(".pull-card-grid > .pull-card")];
+  let sourceCard = null;
+
+  if (!dialog || !content || !closeButton || typeof dialog.showModal !== "function") return;
+
+  const openCard = (card) => {
+    sourceCard = card;
+    const copy = card.cloneNode(true);
+    copy.classList.add("is-focused-copy");
+    copy.removeAttribute("tabindex");
+    copy.removeAttribute("role");
+    copy.removeAttribute("aria-haspopup");
+    copy.removeAttribute("aria-label");
+
+    content.replaceChildren(copy);
+    const title = card.querySelector("h3")?.textContent?.trim() || "Pull";
+    dialog.setAttribute("aria-label", `${title} focused pull card`);
+    document.body.classList.add("pull-focus-open");
+    dialog.showModal();
+    dialog.scrollTop = 0;
+    closeButton.focus();
+  };
+
+  cards.forEach((card) => {
+    const title = card.querySelector("h3")?.textContent?.trim() || "pull card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute("aria-label", `Open ${title} in focused view`);
+
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      openCard(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openCard(card);
+    });
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    const outside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+    if (outside) dialog.close();
+  });
+
+  dialog.addEventListener("close", () => {
+    document.body.classList.remove("pull-focus-open");
+    content.replaceChildren();
+    sourceCard?.focus();
+    sourceCard = null;
+  });
+})();
+</script>
 
 </body>
 </html>
