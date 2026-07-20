@@ -7,6 +7,51 @@
   <title>Raiding with your Tankadin | WotLK 3.3.5 Protection Paladin</title>
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/protection-paladin.css">
+  <style>
+    #raid-notes details > summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 28px;
+      list-style: none;
+    }
+
+    #raid-notes details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #raid-notes details > summary::before {
+      content: "";
+      width: 0;
+      height: 0;
+      flex: 0 0 auto;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid #f5f7fa;
+      transform-origin: 3px 5px;
+      transition: transform 120ms ease;
+    }
+
+    #raid-notes details[open] > summary::before {
+      transform: rotate(90deg);
+    }
+
+    .raid-summary-icon {
+      display: block;
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 6px;
+      background: #0c1116;
+      box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+
+    .raid-summary-title {
+      line-height: 1.25;
+    }
+  </style>
 </head>
 <body>
 <div class="wrap">
@@ -79,7 +124,7 @@
       <p class="mini-note">These are Tankadin responsibilities and useful Paladin tools, not full raid strategies. Follow the raid leader's positioning and assignment.</p>
 
       <details>
-        <summary>🧊 Icecrown Citadel: Lower Spire and Plagueworks</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_frostarmor02.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Icecrown Citadel: Lower Spire and Plagueworks</span></summary>
         <div class="card-grid">
           <div class="guide-box"><h3>Lord Marrowgar</h3><ul class="clean-list"><li>Stack with the other tank for Saber Lash and face him away from the raid.</li><li>Keep a ranged ability ready for Bone Spikes only when using it will not disturb boss control.</li><li>Use Divine Protection when Bone Storm ends if healers are still moving.</li></ul></div>
           <div class="guide-box"><h3>Lady Deathwhisper</h3><ul class="clean-list"><li>Use Consecration and Hammer of the Righteous to establish add threat.</li><li>Hold Avenger's Shield for a caster, reanimated add, silence, or distant pickup.</li><li>In phase two, be ready for the assigned taunt swap.</li></ul></div>
@@ -92,7 +137,7 @@
       </details>
 
       <details>
-        <summary>🩸 Icecrown Citadel: Crimson Hall and Frostwing</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_bloodboil.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Icecrown Citadel: Crimson Hall and Frostwing</span></summary>
         <div class="card-grid">
           <div class="guide-box"><h3>Blood Prince Council</h3><ul class="clean-list"><li>If tanking Keleseth, collect Dark Nuclei with ranged tools.</li><li>Avoid cleaving or killing the nuclei that provide Shadow Resonance.</li><li>Use a defensive while nucleus coverage is still low.</li></ul></div>
           <div class="guide-box"><h3>Blood-Queen Lana'thel</h3><ul class="clean-list"><li>The two tanks stay close enough for Blood Mirror.</li><li>Use a defensive for dangerous paired-tank damage windows.</li><li>Do not let movement mechanics separate the tank pair.</li></ul></div>
@@ -102,7 +147,7 @@
       </details>
 
       <details>
-        <summary>👑 The Lich King</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">The Lich King</span></summary>
         <ul class="clean-list">
           <li>Know whether you are the boss tank or the add tank before the pull.</li>
           <li>Holy Wrath is valuable for Ghouls and Shambling Horrors.</li>
@@ -113,7 +158,7 @@
       </details>
 
       <details>
-        <summary>🔥 Ruby Sanctum: Halion</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_fire_fire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Ruby Sanctum: Halion</span></summary>
         <ul class="clean-list">
           <li>Face Halion away from the raid and keep the breath direction predictable.</li>
           <li>Plan cooldowns around Flame or Dark Breath combined with movement.</li>
@@ -124,7 +169,7 @@
       </details>
 
       <details>
-        <summary><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_insectswarm.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Trial of the Grand Crusader: Anub'arak</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_insectswarm.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Trial of the Grand Crusader: Anub'arak</span></summary>
         <ul class="clean-list">
           <li>A block-focused set can be useful when tanking Nerubian Burrowers.</li>
           <li>Holy Wrath stuns the Burrowers and helps stabilize add waves.</li>
@@ -135,7 +180,7 @@
       </details>
 
       <details>
-        <summary>🧪 Hellscream checks before building a special set</summary>
+        <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_wrench_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Hellscream checks before building a special set</span></summary>
         <ul class="clean-list">
           <li>Confirm taunt-hit behavior with combat logs.</li>
           <li>Confirm whether the boss uses parry-haste.</li>
