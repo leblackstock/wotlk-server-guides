@@ -467,9 +467,12 @@
       justify-content: space-between;
       gap: 12px;
       padding: 13px 14px 12px;
+      border: 0;
       border-bottom: 1px solid rgba(255,255,255,.075);
+      border-radius: 0;
       background:
         linear-gradient(135deg, rgba(245,140,186,.10), rgba(114,227,255,.025) 62%, transparent);
+      box-shadow: none;
     }
 
     .pull-card-header > div {
@@ -670,6 +673,7 @@
       border-top: 1px solid rgba(255,140,140,.28);
       background:
         linear-gradient(135deg, rgba(255,140,140,.095), rgba(240,193,90,.045));
+      text-align: left;
     }
 
     .pull-emergency h4 {
