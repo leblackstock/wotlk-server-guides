@@ -6,7 +6,7 @@
   <meta name="description" content="Pull cleanly, maintain the 969 rhythm, and use Paladin cooldowns, seals, and utility deliberately.">
   <title>Playing your Tankadin | WotLK 3.3.5 Protection Paladin</title>
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/protection-paladin.css">
+  <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260720-playbook">
 </head>
 <body>
 <div class="wrap">
@@ -25,12 +25,367 @@
     <h1>WotLK 3.3.5 <span>Playing your Tankadin</span></h1>
     <p class="sub">Pull cleanly, maintain the 969 rhythm, and use Paladin cooldowns, seals, and utility deliberately.</p>
     <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#pull-playbook">Pull playbook</a>
       <a href="#rotation">969 rotation</a>
       <a href="#cooldowns">Cooldowns, seals & utility</a>
     </div>
   </header>
 
   <main>
+<section class="common pull-playbook" id="pull-playbook">
+    <h2><span class="section-mark">◆</span> Pull playbook</h2>
+    <p class="muted">Choose the card that matches the pull. Keep the listed buffs active, prepare before contact, use the correct taunt, and follow the short opening into your normal rhythm.</p>
+
+    <div class="pull-card-grid">
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Routine dungeon pull</span>
+            <h3>Melee trash pack</h3>
+            <p>Enemies that run into melee and remain grouped.</p>
+          </div>
+          <span class="pull-type trash">Trash</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_innerrage.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Command</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / encounter aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <div class="pull-sequence">
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Plea</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_blessedmending.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sacred Shield</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              </div>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>Avenger's Shield into the pack, meet it at the stack point, and place Consecration where the mobs will remain.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>One loose enemy:</strong> Hand of Reckoning. <strong>Several attacking one ally:</strong> Righteous Defense on that ally. A clean planned pull normally needs neither.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Opening rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_avengersshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Avenger's Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+            </div>
+            <p class="pull-detail">Continue 9 → 6 and tab-target when threat is uneven.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>One enemy peels:</strong> Hand of Reckoning, then tab back after threat is secure.</li>
+            <li><strong>Several reach an ally:</strong> Righteous Defense on that player, then Hammer of the Righteous.</li>
+            <li><strong>The pack spreads:</strong> regroup at the tanking point and place the next Consecration where it ends up.</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Ranged or mixed trash</span>
+            <h3>Caster / spread pack</h3>
+            <p>Enemies that cast from range instead of stacking naturally.</p>
+          </div>
+          <span class="pull-type trash">Trash</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_innerrage.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Command</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / resistance aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <div class="pull-sequence">
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Plea</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_blessedmending.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sacred Shield</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              </div>
+              <p class="pull-detail">Choose a safe line-of-sight corner or stack point before starting.</p>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>Avenger's Shield the key caster, then use line of sight or cover to bring the ranged enemies into your stack point.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>One caster on someone else:</strong> Hand of Reckoning. <strong>Several attacking one ally:</strong> Righteous Defense. Taunting does not force a caster to move while it can still cast; use line of sight.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Opening rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_avengersshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Avenger's Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast utility">Move / line of sight</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span>
+            </div>
+            <p class="pull-detail">Build the melee cluster first, then resume 9 → 6 while controlling the outliers.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>A caster will not move:</strong> break line of sight or stun it when possible; do not chase into another pack.</li>
+            <li><strong>Several target the healer:</strong> Righteous Defense on the healer, then establish threat at the stack point.</li>
+            <li><strong>The silence fails:</strong> control the melee cluster first and use Hand of Reckoning or the next Avenger's Shield on the outlier.</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Recovery and new spawns</span>
+            <h3>Loose mob / add pickup</h3>
+            <p>A new enemy appears or an existing enemy leaves the tank.</p>
+          </div>
+          <span class="pull-type pickup">Pickup</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter seal</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <p>Keep Divine Plea, Sacred Shield, and Holy Shield maintained. Know the spawn point and save a pickup tool when adds are expected.</p>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>Taunt the correct target, meet it with a high-threat strike, then move it into the established tanking area.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>One hostile target:</strong> Hand of Reckoning directly. <strong>Up to three enemies attacking one friendly target:</strong> Righteous Defense on that player.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Pickup rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Correct taunt</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine">Best 9-slot</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+            </div>
+            <p class="pull-detail">Resume 969 without placing the two 6-second strikes back-to-back.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>The taunt misses or is immune:</strong> announce it and use Avenger's Shield, Shield, or Hammer to build threat until you can retry.</li>
+            <li><strong>Several adds split:</strong> Righteous Defense on the endangered player, then Hammer and Consecration.</li>
+            <li><strong>Your rhythm breaks:</strong> place the best available 9-slot between the two 6-second strikes.</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Single-target encounter</span>
+            <h3>Standard boss pull</h3>
+            <p>A boss that can be met and held near its starting position.</p>
+          </div>
+          <span class="pull-type boss">Boss</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / encounter aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <div class="pull-sequence">
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Plea</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_blessedmending.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sacred Shield</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              </div>
+              <p class="pull-detail">Use a planned potion. Use Avenging Wrath only when its protection-spell lockout is safe.</p>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>Hand of Reckoning as the boss becomes attackable, meet it, and turn it away from the group. Pre-place Consecration only if it will remain there.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>Hand of Reckoning</strong> directly on the boss. Use Righteous Defense only when rescuing a friendly target already being attacked.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Opening rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+            </div>
+            <p class="pull-detail">Continue 9 → 6 while maintaining Holy Shield and five seal stacks.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>DPS pulls threat:</strong> Hand of Reckoning, follow with a high-threat strike, and ask for a threat drop.</li>
+            <li><strong>The boss faces the group:</strong> fix its facing before chasing the next rotation button.</li>
+            <li><strong>Your health dives:</strong> use Divine Protection and a health consumable, then call the emergency clearly.</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Positioning pull</span>
+            <h3>Moving boss pull</h3>
+            <p>A boss that must be dragged away from its starting position.</p>
+          </div>
+          <span class="pull-type boss">Boss</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <div class="pull-sequence">
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Plea</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_blessedmending.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sacred Shield</span><span class="pull-arrow">›</span>
+                <span class="pull-cast"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span>
+              </div>
+              <p class="pull-detail">Choose the destination and path. Do not pre-place Consecration at the starting point.</p>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>Hand of Reckoning, then back or strafe along the planned route. Establish position and facing before planting Consecration.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>Hand of Reckoning</strong> directly on the boss. Righteous Defense is a rescue option if the boss has already attached to an ally.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Opening rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+            </div>
+            <p class="pull-detail">Use Consecration only after the boss reaches the intended tanking position.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>The boss stops short:</strong> re-establish control at its hitbox; do not leave Consecration behind the boss.</li>
+            <li><strong>The boss faces the group:</strong> correct position and facing before resuming the rotation.</li>
+            <li><strong>Movement breaks 969:</strong> place the best available 9-slot between the two 6-second strikes.</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article class="pull-card">
+        <header class="pull-card-header">
+          <div>
+            <span class="pull-card-kicker">Coordinated raid handoff</span>
+            <h3>Tank swap</h3>
+            <p>Taking a boss from another tank on an assigned cue.</p>
+          </div>
+          <span class="pull-type raid">Raid</span>
+        </header>
+        <div class="pull-card-body">
+          <div class="pull-block">
+            <h4>Keep active</h4>
+            <div class="pull-buffs">
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
+            </div>
+          </div>
+          <div class="pull-context-grid">
+            <div class="pull-block">
+              <h4>Before contact</h4>
+              <p>Refresh Divine Plea and Sacred Shield, move into the assigned position, and activate Holy Shield immediately before the swap.</p>
+            </div>
+            <div class="pull-block">
+              <h4>Pull</h4>
+              <p>On the swap call, Hand of Reckoning the boss, confirm that it turns to you, then settle its facing and position.</p>
+            </div>
+          </div>
+          <div class="pull-block pull-taunt">
+            <h4>Correct taunt</h4>
+            <p><strong>Hand of Reckoning</strong> is the safe boss-only swap. Righteous Defense can taunt additional enemies attacking the co-tank, so avoid it when that tank is holding adds.</p>
+          </div>
+          <div class="pull-block">
+            <h4>Opening rhythm</h4>
+            <div class="pull-sequence">
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span>
+            </div>
+            <p class="pull-detail">Confirm the swap succeeded before committing attention to the rotation.</p>
+          </div>
+        </div>
+        <footer class="pull-emergency">
+          <h4>If it goes wrong</h4>
+          <ul>
+            <li><strong>The taunt fails or is immune:</strong> call it immediately so the previous tank keeps the boss and uses a cooldown if needed.</li>
+            <li><strong>The co-tank also has adds:</strong> do not use Righteous Defense; target the boss with Hand of Reckoning.</li>
+            <li><strong>You receive the boss at low health:</strong> use Divine Protection or a health consumable and stabilize before chasing threat.</li>
+          </ul>
+        </footer>
+      </article>
+    </div>
+  </section>
+
 <section class="common" id="rotation">
     <h2><span class="section-mark">◆</span> The 969 rotation</h2>
 
@@ -56,31 +411,6 @@
       <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
     </div>
     <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
-
-    <div class="two-col" style="margin-top:12px">
-      <div class="spell-card">
-        <h3>Flexible single-target pull</h3>
-        <ol class="priority-list">
-          <li>Pre-pull: Sacred Shield, Divine Plea, Holy Shield, and a planned potion.</li>
-          <li>Pre-place Consecration only when the target will remain in it and the pull allows it.</li>
-          <li>Use Hand of Reckoning as the target becomes attackable when snap damage matters.</li>
-          <li>Use Avenging Wrath only when its 30-second lockout on major protection spells is safe.</li>
-          <li>Hold Avenger's Shield for a caster, add, silence, or pickup when the encounter needs it.</li>
-          <li>Enter 969 and keep the boss faced away from the group.</li>
-        </ol>
-      </div>
-
-      <div class="spell-card">
-        <h3>AoE / trash</h3>
-        <ol class="priority-list">
-          <li>Use Seal of Command when cleave matters more than maintaining a boss stack.</li>
-          <li>Drop Consecration where mobs will remain, not where they began their sprint.</li>
-          <li>Use Hammer of the Righteous early and tab-target when threat is uneven.</li>
-          <li>Use Holy Wrath on Undead or Demons for damage and a 3-second stun.</li>
-          <li>Save Avenger's Shield for ranged targets, runners, or snap pickup rather than firing it mindlessly on cooldown.</li>
-        </ol>
-      </div>
-    </div>
 
     <details>
       <summary>Recovering 969 after movement, a missed cast, or an add pickup</summary>
@@ -178,7 +508,7 @@
 <nav class="page-pager" aria-label="Previous and next guide pages"><a href="protection-paladin-pve-guide.html">← Quick Start</a><a href="protection-paladin-setting-up.html">Setting up your Tankadin →</a></nav>
   </main>
 
-  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 18, 2026</footer>
+  <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Updated July 20, 2026</footer>
 </div>
 
 </body>
