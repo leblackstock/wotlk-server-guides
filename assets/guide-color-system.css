@@ -23,6 +23,12 @@
   --text-muted: #aeb8c2;
   --border-default: #2b3541;
 
+  /* Global navigation stays neutral across every class and specialization. */
+  --navigation-global-accent: #c4ced9;
+  --navigation-global-soft: #edf3f8;
+  --navigation-global-deep: #394554;
+  --navigation-global-rgb: 196, 206, 217;
+
   /* Semantic status colors do not change with class or specialization. */
   --status-success: #8ee08e;
   --status-success-soft: #c8f6c8;
