@@ -29,6 +29,16 @@
   --navigation-global-deep: #394554;
   --navigation-global-rgb: 196, 206, 217;
 
+  /* Reusable mechanic pairs keep their meaning independent from class,
+     specialization, status, and item-quality colors. */
+  --mechanic-rotation-nine: #b59cff;
+  --mechanic-rotation-nine-soft: #ded5ff;
+  --mechanic-rotation-nine-rgb: 181, 156, 255;
+
+  --mechanic-rotation-six: #72e3ff;
+  --mechanic-rotation-six-soft: #bcefff;
+  --mechanic-rotation-six-rgb: 114, 227, 255;
+
   /* Semantic status colors do not change with class or specialization. */
   --status-success: #8ee08e;
   --status-success-soft: #c8f6c8;
