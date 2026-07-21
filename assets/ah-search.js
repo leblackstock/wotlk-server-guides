@@ -126,7 +126,9 @@
     const index = global.AH_SEARCH_INDEX;
     if (!input || !resultsElement || !statusElement || !index || !Array.isArray(index.items)) return;
 
-    countElement.textContent = `${index.itemCount.toLocaleString()} items across ${index.guideCount} guides`;
+    if (countElement) {
+      countElement.textContent = `${index.itemCount.toLocaleString()} items across ${index.guideCount} guides`;
+    }
     let visibleResults = [];
     let activeIndex = -1;
 
