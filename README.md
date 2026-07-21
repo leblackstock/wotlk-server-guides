@@ -7,7 +7,24 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `index.html` - main guide hub
 - `guides/` - individual self-contained HTML guide pages
 - `assets/` - shared assets for the guide hub
+- `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
 - `README.md` - maintenance notes
+
+## Update The AH Search Index
+
+The hub search reads a generated index of every item row in the AH guides. Regenerate it after adding, removing, renaming, or repricing AH items:
+
+```powershell
+python scripts/build-ah-search-index.py
+```
+
+Verify that the committed index is current:
+
+```powershell
+python scripts/build-ah-search-index.py --check
+```
+
+Search results link to the exact item row. Every AH guide therefore loads `assets/ah-search.js`, which handles the row highlight after navigation.
 
 ## Add A New Guide
 
