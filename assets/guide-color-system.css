@@ -1,0 +1,137 @@
+/*
+ * WotLK Server Guides color system
+ *
+ * This file owns reusable color decisions only. Layout and component rules
+ * belong in the shared or guide-specific stylesheets that consume these tokens.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* Foundation: shared dark-mode surfaces, text, and borders. */
+  --surface-page-deep: #0b0f13;
+  --surface-page: #0f1317;
+  --surface-section: #141a21;
+  --surface-card: #121820;
+  --surface-raised: #171d24;
+  --surface-subtle: #1e2630;
+  --surface-table-head: #1c242d;
+  --surface-code: #0c1116;
+
+  --text-primary: #e8edf2;
+  --text-strong: #ffffff;
+  --text-muted: #aeb8c2;
+  --border-default: #2b3541;
+
+  /* Semantic status colors do not change with class or specialization. */
+  --status-success: #8ee08e;
+  --status-success-soft: #c8f6c8;
+  --status-success-rgb: 142, 224, 142;
+
+  --status-warning: #f0c15a;
+  --status-warning-soft: #ffe1a0;
+  --status-warning-rgb: 240, 193, 90;
+
+  --status-danger: #ff8c8c;
+  --status-danger-soft: #ffd0d0;
+  --status-danger-rgb: 255, 140, 140;
+
+  --status-info: #72e3ff;
+  --status-info-soft: #bcefff;
+  --status-info-rgb: 114, 227, 255;
+
+  /* Wrath game data. Canonical quality colors stay separate from the
+     lightened variants used for small text on dark guide surfaces. */
+  --quality-common: #ffffff;
+  --quality-uncommon: #1eff00;
+  --quality-rare: #0070dd;
+  --quality-rare-text: #4da3ff;
+  --quality-epic: #a335ee;
+  --quality-epic-text: #c77dff;
+  --quality-legendary: #ff8000;
+
+  --socket-meta: #d7a8ff;
+  --socket-blue: #45a8ff;
+  --socket-yellow: #ffd43b;
+  --socket-red: #ff6666;
+
+  /* Paladin class identity. */
+  --class-paladin-accent: #f58cba;
+  --class-paladin-soft: #ffc1d9;
+  --class-paladin-deep: #8f315d;
+  --class-paladin-rgb: 245, 140, 186;
+  --class-paladin-deep-rgb: 143, 49, 93;
+
+  /* Paladin specialization identity. */
+  --spec-paladin-protection-accent: #6f9fe8;
+  --spec-paladin-protection-soft: #bed5ff;
+  --spec-paladin-protection-deep: #29466f;
+  --spec-paladin-protection-rgb: 111, 159, 232;
+  --spec-paladin-protection-deep-rgb: 41, 70, 111;
+
+  --spec-paladin-holy-accent: #e6be4a;
+  --spec-paladin-holy-soft: #ffe8a3;
+  --spec-paladin-holy-deep: #6d5214;
+  --spec-paladin-holy-rgb: 230, 190, 74;
+  --spec-paladin-holy-deep-rgb: 109, 82, 20;
+
+  --spec-paladin-retribution-accent: #e06b65;
+  --spec-paladin-retribution-soft: #ffb1ab;
+  --spec-paladin-retribution-deep: #732e2a;
+  --spec-paladin-retribution-rgb: 224, 107, 101;
+  --spec-paladin-retribution-deep-rgb: 115, 46, 42;
+
+  /* Safe neutral defaults for pages that do not select a class theme. */
+  --class-accent: var(--text-muted);
+  --class-accent-soft: var(--text-primary);
+  --class-accent-deep: var(--surface-subtle);
+  --class-accent-rgb: 174, 184, 194;
+  --class-accent-deep-rgb: 30, 38, 48;
+
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+  --theme-on-accent: var(--surface-page-deep);
+  --focus-ring: var(--theme-accent-soft);
+}
+
+/* Class-only Paladin pages use pink as both the class and active theme. */
+[data-guide-class="paladin"] {
+  --class-accent: var(--class-paladin-accent);
+  --class-accent-soft: var(--class-paladin-soft);
+  --class-accent-deep: var(--class-paladin-deep);
+  --class-accent-rgb: var(--class-paladin-rgb);
+  --class-accent-deep-rgb: var(--class-paladin-deep-rgb);
+
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="paladin"][data-guide-spec="protection"] {
+  --theme-accent: var(--spec-paladin-protection-accent);
+  --theme-accent-soft: var(--spec-paladin-protection-soft);
+  --theme-accent-deep: var(--spec-paladin-protection-deep);
+  --theme-accent-rgb: var(--spec-paladin-protection-rgb);
+  --theme-accent-deep-rgb: var(--spec-paladin-protection-deep-rgb);
+}
+
+[data-guide-class="paladin"][data-guide-spec="holy"] {
+  --theme-accent: var(--spec-paladin-holy-accent);
+  --theme-accent-soft: var(--spec-paladin-holy-soft);
+  --theme-accent-deep: var(--spec-paladin-holy-deep);
+  --theme-accent-rgb: var(--spec-paladin-holy-rgb);
+  --theme-accent-deep-rgb: var(--spec-paladin-holy-deep-rgb);
+}
+
+[data-guide-class="paladin"][data-guide-spec="retribution"] {
+  --theme-accent: var(--spec-paladin-retribution-accent);
+  --theme-accent-soft: var(--spec-paladin-retribution-soft);
+  --theme-accent-deep: var(--spec-paladin-retribution-deep);
+  --theme-accent-rgb: var(--spec-paladin-retribution-rgb);
+  --theme-accent-deep-rgb: var(--spec-paladin-retribution-deep-rgb);
+}
