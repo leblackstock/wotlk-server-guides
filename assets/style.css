@@ -409,6 +409,34 @@ h1 {
   text-align: center;
 }
 
+.hub-price-warning {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 8px 5px 0;
+  color: #9eabb6;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.hub-price-warning strong {
+  color: var(--gold2);
+}
+
+.hub-price-warning-icon {
+  display: inline-grid;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  place-items: center;
+  border: 1px solid rgba(240, 193, 90, 0.45);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
 .guide-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
