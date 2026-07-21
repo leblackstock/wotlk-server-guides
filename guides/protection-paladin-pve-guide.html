@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Start here after reaching level 80, learn the essentials, then choose the focused Tankadin page you need.">
   <title>Tankadin Quick Start | WotLK 3.3.5 Protection Paladin</title>
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/protection-paladin.css">
+  <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260721-protection-theme">
   <style>
     .server-behavior {
       margin-top: 12px;
-      border-color: rgba(114,227,255,.20);
-      background: rgba(114,227,255,.035);
+      border-color: rgba(var(--status-info-rgb),.20);
+      background: rgba(var(--status-info-rgb),.035);
     }
     .server-behavior > summary {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #d8f5ff;
+      color: var(--status-info-soft);
       font-size: 13px;
     }
     .server-behavior > p {
@@ -25,7 +26,7 @@
     }
   </style>
 </head>
-<body>
+<body data-guide-class="paladin" data-guide-spec="protection">
 <div class="wrap">
   <nav class="site-nav" aria-label="Tankadin guide pages">
     <a href="../index.html">Guide Hub</a>
@@ -66,7 +67,7 @@
       </div>
       <div class="summary-card rotation-card">
         <span class="summary-label">Core 969 rotation</span>
-        <div class="summary-value">Alternate the <span style="color:var(--paladin-soft)">pink 9-second spell group</span> with the <span style="color:#bcefff">blue 6-second spell group</span>.</div>
+        <div class="summary-value">Alternate the <span style="color:var(--rotation-nine-soft)">pink 9-second spell group</span> with the <span style="color:var(--rotation-six-soft)">blue 6-second spell group</span>.</div>
         <div class="cooldown-groups">
           <div class="cooldown-group nine">
             <span class="cooldown-label">9-second spells: Holy Shield, Judgement, Consecration</span>
