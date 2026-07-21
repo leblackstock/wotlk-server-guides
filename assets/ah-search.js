@@ -126,7 +126,7 @@
     const index = global.AH_SEARCH_INDEX;
     if (!input || !resultsElement || !statusElement || !index || !Array.isArray(index.items)) return;
 
-    countElement.textContent = `${index.itemCount.toLocaleString()} items · ${index.guideCount} AH guides`;
+    countElement.textContent = `${index.itemCount.toLocaleString()} items across ${index.guideCount} guides`;
     let visibleResults = [];
     let activeIndex = -1;
 
@@ -146,7 +146,8 @@
       if (normalize(query).length < 2) {
         visibleResults = [];
         resultsElement.hidden = true;
-        statusElement.textContent = query ? "Type at least 2 characters." : "Start typing an item name.";
+        statusElement.hidden = !query;
+        statusElement.textContent = query ? "Keep typing — enter at least 2 characters." : "";
         return;
       }
 
@@ -154,6 +155,7 @@
       if (!visibleResults.length) {
         resultsElement.hidden = false;
         resultsElement.append(makeElement("li", "ah-search-empty", `No AH items found for “${query}”.`));
+        statusElement.hidden = false;
         statusElement.textContent = "No matching Auction House items.";
         return;
       }
@@ -162,22 +164,32 @@
         const listItem = makeElement("li", "ah-search-result-item");
         const link = makeElement("a", "ah-search-result");
         link.href = item.href;
+        link.classList.add(`quality-${item.quality}`);
 
         const topLine = makeElement("span", "ah-search-result-top");
         topLine.append(makeElement("strong", `ah-search-item-name quality-${item.quality}`, item.name));
-        topLine.append(makeElement("span", "ah-search-target-price", `Target ${item.target}`));
+        const targetPrice = makeElement("span", "ah-search-target-price");
+        targetPrice.append(makeElement("span", "ah-search-target-label", "Target"));
+        targetPrice.append(makeElement("strong", "ah-search-target-value", item.target));
+        topLine.append(targetPrice);
         link.append(topLine);
 
-        const meta = [item.guide, item.section, item.demand !== "—" ? `${item.demand} demand` : ""]
+        const meta = [item.section, item.demand !== "—" ? `${item.demand} demand` : ""]
           .filter(Boolean)
           .join(" · ");
         link.append(makeElement("span", "ah-search-result-meta", meta));
+
+        const footer = makeElement("span", "ah-search-result-footer");
+        footer.append(makeElement("span", "ah-search-result-guide", item.guide));
+        footer.append(makeElement("span", "ah-search-result-arrow", "→"));
+        link.append(footer);
         listItem.append(link);
         resultsElement.append(listItem);
       });
 
       resultsElement.hidden = false;
-      statusElement.textContent = `Showing the ${visibleResults.length} best matches.`;
+      statusElement.hidden = false;
+      statusElement.textContent = `${visibleResults.length} best ${visibleResults.length === 1 ? "match" : "matches"}`;
     }
 
     input.addEventListener("input", render);
