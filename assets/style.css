@@ -108,8 +108,12 @@ h1 {
 
 .ah-search-section {
   position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px 16px;
   margin-top: 18px;
-  padding: 18px;
+  padding: 12px 14px;
   overflow: hidden;
   border: 1px solid rgba(114, 227, 255, 0.20);
   border-radius: 16px;
@@ -144,9 +148,9 @@ h1 {
 
 .ah-search-mark {
   display: grid;
-  flex: 0 0 42px;
-  width: 42px;
-  height: 42px;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
   place-items: center;
   border: 1px solid rgba(114, 227, 255, 0.24);
   border-radius: 12px;
@@ -156,8 +160,8 @@ h1 {
 }
 
 .ah-search-mark svg {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -195,13 +199,14 @@ h1 {
 
 .ah-search-input-wrap {
   position: relative;
-  margin-top: 13px;
+  min-width: 0;
+  margin: 0;
 }
 
 .ah-search-icon {
   position: absolute;
   top: 50%;
-  left: 17px;
+  left: 14px;
   color: #8292a0;
   line-height: 1;
   pointer-events: none;
@@ -209,8 +214,8 @@ h1 {
 }
 
 .ah-search-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -219,8 +224,8 @@ h1 {
 
 .ah-search-input {
   width: 100%;
-  min-height: 52px;
-  padding: 12px 46px 12px 48px;
+  min-height: 44px;
+  padding: 9px 42px 9px 42px;
   border: 1px solid #344251;
   border-radius: 12px;
   outline: none;
@@ -243,7 +248,8 @@ h1 {
 }
 
 .ah-search-status {
-  margin: 11px 1px 0;
+  grid-column: 1 / -1;
+  margin: 0 1px;
   color: #c4ced7;
   font-size: 11px;
   font-weight: 800;
@@ -256,10 +262,11 @@ h1 {
 }
 
 .ah-search-results {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin: 7px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -278,8 +285,8 @@ h1 {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 118px;
-  padding: 13px 14px 12px;
+  min-height: 106px;
+  padding: 11px 13px 10px;
   border: 1px solid #2a3744;
   border-radius: 12px;
   background: linear-gradient(145deg, rgba(20, 28, 36, 0.96), rgba(12, 18, 24, 0.96));
@@ -362,7 +369,7 @@ h1 {
 
 .ah-search-result-meta {
   display: block;
-  margin-top: 8px;
+  margin-top: 6px;
   color: #8f9ba7;
   font-size: 11px;
   line-height: 1.35;
@@ -374,7 +381,7 @@ h1 {
   justify-content: space-between;
   gap: 8px;
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 8px;
   color: #c7d0d8;
   font-size: 11px;
   font-weight: 800;
@@ -672,7 +679,16 @@ footer {
   }
 
   .ah-search-section {
-    padding: 15px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .ah-search-heading,
+  .ah-search-input-wrap,
+  .ah-search-status,
+  .ah-search-results {
+    grid-column: 1;
   }
 
   .guide-card {
