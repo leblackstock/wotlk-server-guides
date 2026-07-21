@@ -94,6 +94,7 @@
     [642, "Divine Shield"],
     [31850, "Ardent Defender"],
     [64205, "Divine Sacrifice"],
+    [53530, "Divine Guardian"],
     [1038, "Hand of Salvation"],
     [10278, "Hand of Protection"],
     [6940, "Hand of Sacrifice"],
