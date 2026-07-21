@@ -1179,3 +1179,27 @@
   .page-pager a:last-child { text-align: left; }
 }
 /* End multi-page Tankadin guide navigation. */
+
+    /* WotLK entity links keep the surrounding guide color and add a quiet
+       affordance for hover, keyboard focus, and mobile taps. */
+    a.wowhead-link,
+    a.wowhead-link:visited {
+      color: inherit;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(var(--class-accent-rgb),.62);
+      text-underline-offset: 3px;
+    }
+
+    a.wowhead-link:hover,
+    a.wowhead-link:focus-visible {
+      color: inherit;
+      text-decoration-style: solid;
+      text-decoration-color: var(--class-accent);
+    }
+
+    .item-name > a.wowhead-link {
+      color: inherit;
+    }
+
