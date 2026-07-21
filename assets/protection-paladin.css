@@ -73,6 +73,19 @@
       outline: none;
     }
 
+    .site-nav a.guide-hub-link {
+      border-color: rgba(var(--navigation-global-rgb), .38);
+      background: rgba(var(--navigation-global-rgb), .08);
+      color: var(--navigation-global-soft);
+    }
+
+    .site-nav a.guide-hub-link:hover,
+    .site-nav a.guide-hub-link:focus-visible {
+      border-color: var(--navigation-global-accent);
+      background: rgba(var(--navigation-global-rgb), .15);
+      color: var(--text-strong);
+    }
+
     .note.paladin {
       border-left-color: var(--theme-accent);
       background: rgba(var(--theme-accent-rgb), .08);
