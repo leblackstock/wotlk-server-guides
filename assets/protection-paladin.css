@@ -1184,7 +1184,6 @@
        affordance for hover, keyboard focus, and mobile taps. */
     a.wowhead-link,
     a.wowhead-link:visited {
-      color: inherit;
       text-decoration-line: underline;
       text-decoration-style: dotted;
       text-decoration-thickness: 1px;
@@ -1192,9 +1191,15 @@
       text-underline-offset: 3px;
     }
 
+    /* Generated prose links inherit their context. Direct item links keep the
+       quality color already assigned by q-common through q-legendary. */
+    a.wowhead-link:not(.item-name),
+    a.wowhead-link:not(.item-name):visited {
+      color: inherit;
+    }
+
     a.wowhead-link:hover,
     a.wowhead-link:focus-visible {
-      color: inherit;
       text-decoration-style: solid;
       text-decoration-color: var(--class-accent);
     }
