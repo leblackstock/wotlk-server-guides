@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Internal WotLK Guide Color System</title>
-  <link rel="stylesheet" href="../assets/guide-color-system.css">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721-v2">
   <style>
     * { box-sizing: border-box; }
 
@@ -200,7 +200,7 @@
       gap: 12px;
     }
 
-    .rule-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .rule-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .swatch-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .spec-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .status-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -454,10 +454,12 @@
     .token-chip.red { --token-color: var(--socket-red); }
 
     .mechanic-card {
-      --rotation-nine: var(--class-paladin-accent);
-      --rotation-nine-rgb: var(--class-paladin-rgb);
-      --rotation-six: var(--status-info);
-      --rotation-six-rgb: var(--status-info-rgb);
+      --rotation-nine: var(--mechanic-rotation-nine);
+      --rotation-nine-soft: var(--mechanic-rotation-nine-soft);
+      --rotation-nine-rgb: var(--mechanic-rotation-nine-rgb);
+      --rotation-six: var(--mechanic-rotation-six);
+      --rotation-six-soft: var(--mechanic-rotation-six-soft);
+      --rotation-six-rgb: var(--mechanic-rotation-six-rgb);
     }
 
     .mechanic-card h3 { margin-bottom: 10px; }
@@ -484,11 +486,17 @@
     .mechanic-tag.nine {
       --mechanic-color: var(--rotation-nine);
       --mechanic-rgb: var(--rotation-nine-rgb);
-      --mechanic-text: var(--class-paladin-soft);
+      --mechanic-text: var(--rotation-nine-soft);
     }
 
-    .mechanic-tag.six,
-    .mechanic-tag.trash {
+    .mechanic-tag.six {
+      --mechanic-color: var(--rotation-six);
+      --mechanic-rgb: var(--rotation-six-rgb);
+      --mechanic-text: var(--rotation-six-soft);
+    }
+
+    .mechanic-tag.trash,
+    .mechanic-tag.taunt {
       --mechanic-color: var(--status-info);
       --mechanic-rgb: var(--status-info-rgb);
       --mechanic-text: var(--status-info-soft);
@@ -498,6 +506,12 @@
       --mechanic-color: var(--status-warning);
       --mechanic-rgb: var(--status-warning-rgb);
       --mechanic-text: var(--status-warning-soft);
+    }
+
+    .mechanic-tag.utility {
+      --mechanic-color: var(--status-success);
+      --mechanic-rgb: var(--status-success-rgb);
+      --mechanic-text: var(--status-success-soft);
     }
 
     .mechanic-tag.boss {
@@ -510,6 +524,10 @@
       --mechanic-color: var(--quality-epic-text);
       --mechanic-rgb: 199, 125, 255;
       --mechanic-text: #e5c5ff;
+    }
+
+    .role-map-heading {
+      margin: 18px 0 7px;
     }
 
     .table-wrap {
@@ -615,12 +633,12 @@
     <header class="hero">
       <span class="kicker">Internal design reference</span>
       <h1>WotLK Guide <span>Color System</span></h1>
-      <p class="subtitle">The shared dark-mode foundation, semantic meanings, Wrath game-data colors, and Paladin specialization themes for our guide collection.</p>
+      <p class="subtitle">The production dark-mode foundation, navigation hierarchy, semantic meanings, Wrath game-data colors, Paladin specialization themes, and reusable mechanic pairs for our guide collection.</p>
       <div class="status-line">
-        <span class="pill class">Paladin foundation v1</span>
-        <span class="pill">Public migration pending</span>
+        <span class="pill class">Paladin color system v2</span>
+        <span class="pill">Protection production active</span>
       </div>
-      <div class="single-note"><strong>Scope:</strong> this is an unlinked visual specification. Public guides do not use these new tokens until they are migrated in a separate change.</div>
+      <div class="single-note"><strong>Scope:</strong> this remains an unlinked internal specification. Shared tokens and the Tankadin role mapping are live; future guide families opt in deliberately.</div>
       <nav class="jump-nav" aria-label="Color system sections">
         <a href="#rules">Rules</a>
         <a href="#foundations">Foundations</a>
@@ -638,26 +656,31 @@
       <div class="rule-grid">
         <article class="rule-card">
           <span class="rule-number">1</span>
-          <h3>Spec leads</h3>
-          <p>The active specialization colors navigation, selected states, major dividers, and page-level emphasis.</p>
+          <h3>Class frames the page</h3>
+          <p>Paladin pink owns titles, section landmarks, general links, class notes, and the dominant class-level ambience.</p>
         </article>
         <article class="rule-card">
           <span class="rule-number">2</span>
-          <h3>Class remains visible</h3>
-          <p>Paladin pink stays on class badges and small class-level markers instead of dominating every Paladin page.</p>
+          <h3>Spec signals state</h3>
+          <p>Protection blue marks the current chapter, Protection-specific controls, focus or hover state, and technical emphasis.</p>
         </article>
         <article class="rule-card">
           <span class="rule-number">3</span>
+          <h3>Navigation is tiered</h3>
+          <p>Guide Hub is neutral silver, inactive chapter links are neutral, and only the active chapter receives the spec accent.</p>
+        </article>
+        <article class="rule-card">
+          <span class="rule-number">4</span>
           <h3>Status is fixed</h3>
           <p>Success, warning, danger, and information never change when the class or specialization changes.</p>
         </article>
         <article class="rule-card">
-          <span class="rule-number">4</span>
-          <h3>Mechanics stay local</h3>
-          <p>Rotation groups, pull types, and market categories receive scoped tokens instead of borrowing status names.</p>
+          <span class="rule-number">5</span>
+          <h3>Mechanics are independent</h3>
+          <p>Rotation and pull categories use named mechanic roles rather than borrowing class, spec, status, or item-quality meaning.</p>
         </article>
         <article class="rule-card">
-          <span class="rule-number">5</span>
+          <span class="rule-number">6</span>
           <h3>Color supports labels</h3>
           <p>Text, icons, or component shape must carry the meaning. Color is never the only instruction.</p>
         </article>
@@ -711,7 +734,7 @@
           <div class="identity-copy">
             <span class="eyebrow">Class color</span>
             <h3>Paladin pink</h3>
-            <p><code>#F58CBA</code> base, <code>#FFC1D9</code> soft, <code>#8F315D</code> deep. Use it for Paladin identity, not as the automatic accent for every specialization component.</p>
+            <p><code>#F58CBA</code> base, <code>#FFC1D9</code> soft, <code>#8F315D</code> deep. In production it leads titles, section markers, general links, class notes, and the dominant ambient glow.</p>
           </div>
         </div>
       </div>
@@ -725,7 +748,7 @@
           <div class="spec-body">
             <div class="spec-stripe" role="img" aria-label="Protection steel-blue palette"><span></span><span></span><span></span></div>
             <span class="class-marker">Paladin</span>
-            <p>Steel blue suggests armor, control, and shield work. Paladin pink remains visible as the class marker.</p>
+            <p>Steel blue suggests armor, control, and shield work. Use it for active chapter state, Protection controls, technical labels, and deliberate interaction emphasis—not every border.</p>
             <button class="spec-action" type="button">Protection action</button>
           </div>
         </article>
@@ -755,6 +778,21 @@
             <button class="spec-action" type="button">Retribution action</button>
           </div>
         </article>
+      </div>
+
+      <h3 class="role-map-heading">Production hierarchy</h3>
+      <p class="intro">The live Tankadin pages use a Paladin-first, spec-second balance. Placement creates the hierarchy; the approved hex values do not need to change.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Role</th><th scope="col">Approved colors</th><th scope="col">Production use</th><th scope="col">Boundary</th></tr></thead>
+          <tbody>
+            <tr><td>Paladin class</td><td><code>#F58CBA</code> / <code>#FFC1D9</code></td><td>Titles, section markers, general links, class notes, dominant ambient glow</td><td>Not the automatic color for active spec controls</td></tr>
+            <tr><td>Protection spec</td><td><code>#6F9FE8</code> / <code>#BED5FF</code></td><td>Current chapter, Protection controls, focus/hover, priority and technical labels</td><td>Not inactive navigation or routine card framing</td></tr>
+            <tr><td>Global navigation</td><td><code>#C4CED9</code> / <code>#EDF3F8</code></td><td>Guide Hub and future site-level navigation</td><td>Never inherits a class or spec identity</td></tr>
+            <tr><td>Neutral chrome</td><td><code>#2B3541</code> / <code>#E8EDF2</code></td><td>Inactive chapter links, ordinary card borders, pager defaults</td><td>Receives an accent only on meaningful state change</td></tr>
+            <tr><td>Page ambience</td><td>Pink-led class glow + quieter blue spec glow</td><td>Background and header atmosphere</td><td>Decorative only; never carries instructions</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -788,8 +826,8 @@
     </section>
 
     <section class="section" id="mechanics">
-      <h2>Local mechanic boundaries</h2>
-      <p class="intro">These examples intentionally reuse familiar hues while retaining independent token names. They belong in the relevant guide stylesheet, not in the global status layer.</p>
+      <h2>Mechanic color boundaries</h2>
+      <p class="intro">The reusable 969 pair is formalized in the shared token sheet because it appears on multiple Tankadin pages. Pull-category aliases remain local to the Protection stylesheet. Neither layer borrows class, spec, status, or item-quality names for its meaning.</p>
       <div class="mechanic-grid">
         <article class="mechanic-card">
           <h3>969 rotation groups</h3>
@@ -797,17 +835,19 @@
             <span class="mechanic-tag nine">9-second group</span>
             <span class="mechanic-tag six">6-second group</span>
           </div>
-          <p>The visible labels and spell icons carry the instruction. The colors are a quick scanning aid.</p>
+          <p><strong>9-second:</strong> violet <code>#B59CFF</code>, soft <code>#DED5FF</code>. <strong>6-second:</strong> cyan <code>#72E3FF</code>, soft <code>#BCEFFF</code>. Visible labels and spell icons remain mandatory.</p>
         </article>
         <article class="mechanic-card">
-          <h3>Pull categories</h3>
+          <h3>Protection pull categories</h3>
           <div class="mechanic-demo">
             <span class="mechanic-tag trash">Trash</span>
             <span class="mechanic-tag pickup">Pickup</span>
             <span class="mechanic-tag boss">Boss</span>
             <span class="mechanic-tag raid">Raid</span>
+            <span class="mechanic-tag utility">Utility</span>
+            <span class="mechanic-tag taunt">Taunt</span>
           </div>
-          <p>Category labels remain mandatory even when the cards use consistent categorical colors.</p>
+          <p>Trash and taunt use cyan; pickup uses amber; boss uses Paladin pink; raid uses violet; utility uses green. These are local category mappings, and the labels carry the meaning.</p>
         </article>
       </div>
     </section>
@@ -817,12 +857,15 @@
       <p class="intro">Ratios below use <code>#1E2630</code>, the lightest shared dark surface in this foundation. Base and soft identity colors meet WCAG AA for normal text. Deep colors are backgrounds only.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th scope="col">Identity</th><th scope="col">Base</th><th scope="col">Base ratio</th><th scope="col">Soft</th><th scope="col">Soft ratio</th><th scope="col">Deep rule</th></tr></thead>
+          <thead><tr><th scope="col">Color role</th><th scope="col">Base</th><th scope="col">Base ratio</th><th scope="col">Soft</th><th scope="col">Soft ratio</th><th scope="col">Rule</th></tr></thead>
           <tbody>
-            <tr><td>Paladin class</td><td><code>#F58CBA</code></td><td class="pass">6.79:1</td><td><code>#FFC1D9</code></td><td class="pass">10.10:1</td><td class="background-only">Background only</td></tr>
-            <tr><td>Protection</td><td><code>#6F9FE8</code></td><td class="pass">5.67:1</td><td><code>#BED5FF</code></td><td class="pass">10.29:1</td><td class="background-only">Background only</td></tr>
-            <tr><td>Holy</td><td><code>#E6BE4A</code></td><td class="pass">8.60:1</td><td><code>#FFE8A3</code></td><td class="pass">12.60:1</td><td class="background-only">Background only</td></tr>
-            <tr><td>Retribution</td><td><code>#E06B65</code></td><td class="pass">4.70:1</td><td><code>#FFB1AB</code></td><td class="pass">8.82:1</td><td class="background-only">Background only</td></tr>
+            <tr><td>Paladin class</td><td><code>#F58CBA</code></td><td class="pass">6.79:1</td><td><code>#FFC1D9</code></td><td class="pass">10.10:1</td><td class="background-only">Deep is background only</td></tr>
+            <tr><td>Protection</td><td><code>#6F9FE8</code></td><td class="pass">5.67:1</td><td><code>#BED5FF</code></td><td class="pass">10.29:1</td><td class="background-only">Deep is background only</td></tr>
+            <tr><td>Global navigation</td><td><code>#C4CED9</code></td><td class="pass">9.58:1</td><td><code>#EDF3F8</code></td><td class="pass">13.65:1</td><td>Site-level navigation only</td></tr>
+            <tr><td>9-second mechanic</td><td><code>#B59CFF</code></td><td class="pass">6.66:1</td><td><code>#DED5FF</code></td><td class="pass">10.96:1</td><td>969 group only</td></tr>
+            <tr><td>6-second mechanic</td><td><code>#72E3FF</code></td><td class="pass">10.29:1</td><td><code>#BCEFFF</code></td><td class="pass">12.31:1</td><td>969 group only</td></tr>
+            <tr><td>Holy</td><td><code>#E6BE4A</code></td><td class="pass">8.60:1</td><td><code>#FFE8A3</code></td><td class="pass">12.60:1</td><td class="background-only">Deep is background only</td></tr>
+            <tr><td>Retribution</td><td><code>#E06B65</code></td><td class="pass">4.70:1</td><td><code>#FFB1AB</code></td><td class="pass">8.82:1</td><td class="background-only">Deep is background only</td></tr>
             <tr><td>Rare text</td><td><code>#4DA3FF</code></td><td class="pass">5.82:1</td><td colspan="2">Dark-mode text adaptation</td><td>Canonical color remains separate</td></tr>
             <tr><td>Epic text</td><td><code>#C77DFF</code></td><td class="pass">5.68:1</td><td colspan="2">Dark-mode text adaptation</td><td>Canonical color remains separate</td></tr>
           </tbody>
@@ -841,28 +884,27 @@
 &lt;body data-guide-class="paladin" data-guide-spec="protection"&gt;</pre>
         </article>
         <article class="implementation-card">
-          <h3>Consume aliases, not raw spec colors</h3>
-          <p>Component CSS should respond to the active theme without knowing which specialization selected it.</p>
-          <pre>.guide-link {
-  color: var(--theme-accent-soft);
-  border-color: var(--theme-accent);
-  background: rgba(var(--theme-accent-rgb), .08);
-}</pre>
+          <h3>Consume role aliases, not raw colors</h3>
+          <p>Class identity, active spec state, and global navigation are separate roles even when they appear in the same component row.</p>
+          <pre>.page-title { color: var(--class-accent); }
+.site-nav a[aria-current] { border-color: var(--theme-accent); }
+.guide-hub-link { color: var(--navigation-global-soft); }</pre>
         </article>
         <article class="implementation-card">
           <h3>Central token ownership</h3>
           <ul>
-            <li>Foundation surfaces, text, and borders</li>
+            <li>Foundation surfaces, text, borders, and global navigation</li>
             <li>Class and specialization identities</li>
             <li>Fixed semantic status meanings</li>
             <li>Item quality and socket colors</li>
+            <li>Approved reusable mechanic pairs such as 969</li>
           </ul>
         </article>
         <article class="implementation-card">
           <h3>Guide-specific ownership</h3>
           <ul>
-            <li>969 rotation groups</li>
-            <li>Pull categories and encounter categories</li>
+            <li>Local aliases that consume approved mechanic tokens</li>
+            <li>Pull categories and encounter-category mappings</li>
             <li>Auction House market and demand categories</li>
             <li>One-off data visualizations</li>
           </ul>
