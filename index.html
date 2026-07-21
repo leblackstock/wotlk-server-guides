@@ -15,17 +15,31 @@
       <p class="sub">Low-pop Auction House pricing sheets and practical gameplay references for <strong>Hellscream / Garrosh</strong>. Use these guides for posting, buying, farming, gearing, and learning server content.</p>
     </header>
 
-    <section class="common ah-search-section" aria-labelledby="ah-search-heading">
+    <section class="ah-search-section" aria-labelledby="ah-search-heading">
       <div class="ah-search-heading-row">
-        <div>
-          <h2 id="ah-search-heading">Search Auction House Items</h2>
-          <p class="ah-search-help" id="ah-search-help">Fuzzy search across the AH price sheets. Results show the normal Target Buyout and open the exact item row.</p>
+        <div class="ah-search-heading">
+          <span class="ah-search-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="10.5" cy="10.5" r="5.75"></circle>
+              <path d="m15 15 4.25 4.25"></path>
+            </svg>
+          </span>
+          <div>
+            <span class="ah-search-eyebrow">Auction House lookup</span>
+            <h2 id="ah-search-heading">Find an item and its target buyout</h2>
+            <p class="ah-search-help" id="ah-search-help">Typos are fine. Choose a match to jump straight to its exact guide row.</p>
+          </div>
         </div>
         <span class="ah-search-count" id="ah-search-count">Loading AH index…</span>
       </div>
       <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
       <div class="ah-search-input-wrap">
-        <span class="ah-search-icon" aria-hidden="true">⌕</span>
+        <span class="ah-search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="10.5" cy="10.5" r="5.75"></circle>
+            <path d="m15 15 4.25 4.25"></path>
+          </svg>
+        </span>
         <input
           id="ah-search-input"
           class="ah-search-input"
@@ -36,9 +50,9 @@
           spellcheck="false"
           aria-describedby="ah-search-help ah-search-status"
           aria-controls="ah-search-results"
-        >
+      >
       </div>
-      <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite">Start typing an item name.</p>
+      <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
       <ol class="ah-search-results" id="ah-search-results" hidden></ol>
     </section>
 
