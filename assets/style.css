@@ -139,7 +139,7 @@ h1 {
   display: flex;
   align-items: center;
   min-width: 0;
-  gap: 12px;
+  gap: 10px;
 }
 
 .ah-search-mark {
@@ -166,7 +166,7 @@ h1 {
 
 .ah-search-eyebrow {
   display: block;
-  margin-bottom: 1px;
+  margin: 0;
   color: var(--cyan);
   font-size: 10px;
   font-weight: 900;
@@ -661,15 +661,6 @@ footer {
   .guide-grid,
   .compact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .ah-search-heading-row {
-    display: block;
-  }
-
-  .ah-search-count {
-    display: inline-block;
-    margin: 9px 0 0 54px;
   }
 
   .ah-search-results {
