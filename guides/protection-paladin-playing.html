@@ -25,13 +25,52 @@
     <h1>WotLK 3.3.5 <span>Playing your Tankadin</span></h1>
     <p class="sub">Pull cleanly, maintain the 969 rhythm, and use Paladin cooldowns, seals, and utility deliberately.</p>
     <div class="jump-nav" aria-label="Topics on this page">
-      <a href="#pull-playbook">Pull playbook</a>
       <a href="#rotation">969 rotation</a>
+      <a href="#pull-playbook">Pull playbook</a>
       <a href="#cooldowns">Cooldowns, seals & utility</a>
     </div>
   </header>
 
   <main>
+<section class="common" id="rotation">
+    <h2><span class="section-mark">◆</span> The 969 rotation</h2>
+
+    <p class="muted"><strong>Pattern: 9 → 6 → 9 → 6.</strong> Cast one ability from the 9-second group, then one ability from the 6-second group, and keep alternating. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use exactly <strong>1/2 Improved Judgements</strong> to reduce Judgement from a 10-second cooldown to 9 seconds so it fits that group cleanly.</p>
+
+    <div class="tag-row">
+      <span class="tag pink">9-slot: Holy Shield</span>
+      <span class="tag pink">9-slot: Judgement</span>
+      <span class="tag pink">9-slot: Consecration</span>
+      <span class="tag info">6-sec: Hammer of the Righteous</span>
+      <span class="tag info">6-sec: Shield of Righteousness</span>
+    </div>
+
+    <h3 style="margin:16px 0 4px">Clean 969 sequence</h3>
+    <div class="rotation-strip" aria-label="969 rotation sequence">
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
+      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
+    </div>
+    <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
+
+    <details>
+      <summary>Recovering 969 after movement, a missed cast, or an add pickup</summary>
+      <ul class="clean-list">
+        <li>Do not rebuild the rhythm by casting Hammer of the Righteous and Shield of Righteousness back-to-back.</li>
+        <li>Place the best available 9-slot ability between the two 6-second strikes.</li>
+        <li>Sacred Shield or Avenger's Shield can fill a gap when using them is actually useful.</li>
+        <li>Holy Shield, positioning, and encounter jobs outrank a perfect sequence.</li>
+      </ul>
+    </details>
+
+    <div class="note paladin"><strong>Using a rotation macro?</strong> The <a href="protection-paladin-setting-up.html#macros">macros section</a> explains the optional two-button 969 helper, why it is only training wheels, and when to break the sequence.</div>
+  </section>
+
 <section class="common pull-playbook" id="pull-playbook">
     <h2><span class="section-mark">◆</span> Pull playbook</h2>
     <p class="muted">Choose the card that matches the pull. Click any card to open it alone in a focused view. Keep the listed buffs active, prepare before contact, use the correct taunt, and follow the short opening into your normal rhythm.</p>
@@ -392,45 +431,6 @@
       </form>
       <div class="pull-focus-content" id="pull-focus-content"></div>
     </dialog>
-  </section>
-
-<section class="common" id="rotation">
-    <h2><span class="section-mark">◆</span> The 969 rotation</h2>
-
-    <p class="muted"><strong>Pattern: 9 → 6 → 9 → 6.</strong> Cast one ability from the 9-second group, then one ability from the 6-second group, and keep alternating. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use exactly <strong>1/2 Improved Judgements</strong> to reduce Judgement from a 10-second cooldown to 9 seconds so it fits that group cleanly.</p>
-
-    <div class="tag-row">
-      <span class="tag pink">9-slot: Holy Shield</span>
-      <span class="tag pink">9-slot: Judgement</span>
-      <span class="tag pink">9-slot: Consecration</span>
-      <span class="tag info">6-sec: Hammer of the Righteous</span>
-      <span class="tag info">6-sec: Shield of Righteousness</span>
-    </div>
-
-    <h3 style="margin:16px 0 4px">Clean 969 sequence</h3>
-    <div class="rotation-strip" aria-label="969 rotation sequence">
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
-      <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span>
-    </div>
-    <p class="mini-note">Continue alternating whichever 9-slot ability is due with whichever 6-second strike is due. Maintaining Holy Shield and correct positioning outranks blindly finishing a memorized sequence.</p>
-
-    <details>
-      <summary>Recovering 969 after movement, a missed cast, or an add pickup</summary>
-      <ul class="clean-list">
-        <li>Do not rebuild the rhythm by casting Hammer of the Righteous and Shield of Righteousness back-to-back.</li>
-        <li>Place the best available 9-slot ability between the two 6-second strikes.</li>
-        <li>Sacred Shield or Avenger's Shield can fill a gap when using them is actually useful.</li>
-        <li>Holy Shield, positioning, and encounter jobs outrank a perfect sequence.</li>
-      </ul>
-    </details>
-
-    <div class="note warning"><strong>Rotation macros are training wheels.</strong> A one-button castsequence cannot react to movement, silences, target swaps, missed pulls, add spawns, or the need to refresh Holy Shield early. Learn the ability groups even if you keep a helper macro. <a href="protection-paladin-setting-up.html#macros">Open the macro guide.</a></div>
   </section>
 
 <section class="common" id="cooldowns">
