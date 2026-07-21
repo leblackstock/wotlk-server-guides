@@ -211,7 +211,8 @@
     }
 
     .spell-icon,
-    .ability-icon {
+    .ability-icon,
+    .utility-icon {
       flex: 0 0 auto;
       object-fit: cover;
       border: 1px solid rgba(255,255,255,.20);
@@ -229,6 +230,35 @@
       width: 24px;
       height: 24px;
       border-radius: 5px;
+    }
+
+    .utility-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+
+    .icon-heading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-list-item {
+      display: grid !important;
+      grid-template-columns: 26px minmax(0, 1fr);
+      align-items: start;
+      gap: 8px;
+    }
+
+    .icon-list-item .utility-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 5px;
+    }
+
+    .icon-list-item > span {
+      min-width: 0;
     }
 
     .common h2 {
