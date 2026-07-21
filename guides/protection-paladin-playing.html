@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721-color-system-v2">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260721-tooltip-colors-v2">
-  <script src="../assets/tankadin-tooltips.js?v=20260721-tooltip-prototype-v1" defer></script>
+  <script src="../assets/tankadin-tooltips.js?v=20260721-tooltip-labels-v2" defer></script>
 </head>
 <body data-guide-class="paladin" data-guide-spec="protection">
 <div class="wrap">
@@ -37,11 +37,11 @@
 <section class="common" id="rotation">
     <h2><span class="section-mark">◆</span> The 969 rotation</h2>
 
-    <p class="muted"><strong>Pattern: 9 → 6 → 9 → 6.</strong> Cast one ability from the 9-second group, then one ability from the 6-second group, and keep alternating. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use exactly <strong>1/2 Improved Judgements</strong> to reduce Judgement from a 10-second cooldown to 9 seconds so it fits that group cleanly.</p>
+    <p class="muted"><strong>Pattern: 9 → 6 → 9 → 6.</strong> Cast one ability from the 9-second group, then one ability from the 6-second group, and keep alternating. Holy Shield and Consecration have 8-second base cooldowns, but each occupies a 9-second slot once global cooldowns are woven between casts. Use exactly <strong>1/2 Improved Judgements</strong> to reduce your Judgement spell from a 10-second cooldown to 9 seconds so it fits that group cleanly. The examples below use <strong>Judgement of Wisdom</strong>, the common default; use the Judgement assigned to you.</p>
 
     <div class="tag-row">
       <span class="tag nine">9-slot: Holy Shield</span>
-      <span class="tag nine">9-slot: Judgement</span>
+      <span class="tag nine">9-slot: Judgement of Wisdom</span>
       <span class="tag nine">9-slot: Consecration</span>
       <span class="tag six">6-sec: Hammer of the Righteous</span>
       <span class="tag six">6-sec: Shield of Righteousness</span>
@@ -51,7 +51,7 @@
     <div class="rotation-strip" aria-label="969 rotation sequence">
       <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Holy Shield</span><span class="arrow">›</span>
       <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
-      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement</span><span class="arrow">›</span>
+      <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Judgement of Wisdom</span><span class="arrow">›</span>
       <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Shield of Righteousness</span><span class="arrow">›</span>
       <span class="ability nine"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">9s</span>Consecration</span><span class="arrow">›</span>
       <span class="ability six"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="num">6s</span>Hammer of the Righteous</span><span class="arrow">›</span>
@@ -92,9 +92,9 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_innerrage.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Command</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / encounter aura</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion Aura / assigned aura</span>
             </div>
           </div>
           <div class="pull-context-grid">
@@ -120,9 +120,9 @@
             <div class="pull-sequence">
               <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_avengersshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Avenger's Shield</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
-              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement of Wisdom</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
             </div>
             <p class="pull-detail">Continue 9 → 6 and tab-target when threat is uneven.</p>
           </div>
@@ -151,9 +151,9 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_innerrage.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Command</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / resistance aura</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion Aura / assigned resistance aura</span>
             </div>
           </div>
           <div class="pull-context-grid">
@@ -181,7 +181,7 @@
               <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_avengersshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Avenger's Shield</span><span class="pull-arrow">›</span>
               <span class="pull-cast utility">Move / line of sight</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span>
             </div>
             <p class="pull-detail">Build the melee cluster first, then resume 9 → 6 while controlling the outliers.</p>
           </div>
@@ -210,7 +210,7 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter seal</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
             </div>
@@ -232,10 +232,10 @@
           <div class="pull-block">
             <h4>Pickup rhythm</h4>
             <div class="pull-sequence">
-              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Correct taunt</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hand of Reckoning / Righteous Defense</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine">Best 9-slot</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
             </div>
             <p class="pull-detail">Resume 969 without placing the two 6-second strikes back-to-back.</p>
           </div>
@@ -243,8 +243,8 @@
         <footer class="pull-emergency">
           <h4>If it goes wrong</h4>
           <ul>
-            <li><strong>The taunt misses or is immune:</strong> announce it and use Avenger's Shield, Shield, or Hammer to build threat until you can retry.</li>
-            <li><strong>Several adds split:</strong> Righteous Defense on the endangered player, then Hammer and Consecration.</li>
+            <li><strong>The taunt misses or is immune:</strong> announce it and use Avenger's Shield, Shield of Righteousness, or Hammer of the Righteous to build threat until you can retry.</li>
+            <li><strong>Several adds split:</strong> Righteous Defense on the endangered player, then Hammer of the Righteous and Consecration.</li>
             <li><strong>Your rhythm breaks:</strong> place the best available 9-slot between the two 6-second strikes.</li>
           </ul>
         </footer>
@@ -264,9 +264,9 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion / encounter aura</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Corruption / Seal of Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Devotion Aura / assigned aura</span>
             </div>
           </div>
           <div class="pull-context-grid">
@@ -291,11 +291,11 @@
           <div class="pull-block">
             <h4>Opening rhythm</h4>
             <div class="pull-sequence">
-              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
-              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hand of Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement of Wisdom</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_innerfire.jpg" alt="" aria-hidden="true" onerror="this.remove()">Consecration</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
             </div>
             <p class="pull-detail">Continue 9 → 6 while maintaining Holy Shield and five seal stacks.</p>
           </div>
@@ -324,8 +324,8 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Corruption / Seal of Vengeance</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
             </div>
           </div>
@@ -351,11 +351,11 @@
           <div class="pull-block">
             <h4>Opening rhythm</h4>
             <div class="pull-sequence">
-              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
-              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span><span class="pull-arrow">›</span>
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hand of Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement of Wisdom</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span>
             </div>
             <p class="pull-detail">Use Consecration only after the boss reaches the intended tanking position.</p>
           </div>
@@ -384,8 +384,8 @@
             <h4>Keep active</h4>
             <div class="pull-buffs">
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealoffury.jpg" alt="" aria-hidden="true" onerror="this.remove()">Righteous Fury</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Sanctuary</span>
-              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Corruption / Vengeance</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_lightningshield.jpg" alt="" aria-hidden="true" onerror="this.remove()">Blessing of Sanctuary</span>
+              <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seal of Corruption / Seal of Vengeance</span>
               <span class="pull-buff"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_devotionaura.jpg" alt="" aria-hidden="true" onerror="this.remove()">Encounter aura</span>
             </div>
           </div>
@@ -406,11 +406,11 @@
           <div class="pull-block">
             <h4>Opening rhythm</h4>
             <div class="pull-sequence">
-              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Reckoning</span><span class="pull-arrow">›</span>
-              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield</span><span class="pull-arrow">›</span>
+              <span class="pull-cast utility"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_unyieldingfaith.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hand of Reckoning</span><span class="pull-arrow">›</span>
+              <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()">Judgement of Wisdom</span><span class="pull-arrow">›</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_shieldofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Shield of Righteousness</span><span class="pull-arrow">›</span>
               <span class="pull-cast nine"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/classic_spell_holy_blessingofprotection.jpg" alt="" aria-hidden="true" onerror="this.remove()">Holy Shield</span><span class="pull-arrow">›</span>
-              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer</span>
+              <span class="pull-cast six"><img class="pull-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_hammeroftherighteous.jpg" alt="" aria-hidden="true" onerror="this.remove()">Hammer of the Righteous</span>
             </div>
             <p class="pull-detail">Confirm the swap succeeded before committing attention to the rotation.</p>
           </div>
@@ -452,7 +452,7 @@
       </div>
 
       <div class="spell-card">
-        <h3 class="icon-heading"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordbarrier.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Sacrifice / Divine Guardian</h3>
+        <h3 class="icon-heading"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_powerwordbarrier.jpg" alt="" aria-hidden="true" onerror="this.remove()">Divine Sacrifice and Divine Guardian</h3>
         <p>Powerful raid damage reduction. The transfer portion can kill you; the common cancel-aura macro removes the transfer while preserving the raid-wall portion on standard 3.3.5 scripting.</p>
         <div class="tag-row"><span class="tag safe">Raid cooldown</span><span class="tag warn">Test on our server</span></div>
       </div>
@@ -492,9 +492,9 @@
       <div class="guide-box">
         <h3 class="icon-heading"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()">Seals</h3>
         <ul class="clean-list">
-          <li class="icon-list-item"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span><strong>Seal of Corruption / Vengeance:</strong> default single-target boss seal.</span></li>
+          <li class="icon-list-item"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_sealofvengeance.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span><strong>Seal of Corruption / Seal of Vengeance:</strong> default single-target boss seal.</span></li>
           <li class="icon-list-item"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warrior_innerrage.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span><strong>Seal of Command:</strong> packs, cleave, and fast-moving trash.</span></li>
-          <li class="icon-list-item"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_righteousnessaura.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span><strong>Seal of Wisdom:</strong> niche mana recovery when incoming healing and Sanctuary returns are low.</span></li>
+          <li class="icon-list-item"><img class="utility-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_righteousnessaura.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span><strong>Seal of Wisdom:</strong> niche mana recovery when incoming healing and Blessing of Sanctuary returns are low.</span></li>
         </ul>
       </div>
 
