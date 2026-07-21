@@ -4,12 +4,12 @@
       --paladin-soft: var(--class-accent-soft);
 
       /* Protection-specific mechanic and pull-category colors. */
-      --rotation-nine: #b59cff;
-      --rotation-nine-soft: #ded5ff;
-      --rotation-nine-rgb: 181, 156, 255;
-      --rotation-six: var(--status-info);
-      --rotation-six-soft: var(--status-info-soft);
-      --rotation-six-rgb: var(--status-info-rgb);
+      --rotation-nine: var(--mechanic-rotation-nine);
+      --rotation-nine-soft: var(--mechanic-rotation-nine-soft);
+      --rotation-nine-rgb: var(--mechanic-rotation-nine-rgb);
+      --rotation-six: var(--mechanic-rotation-six);
+      --rotation-six-soft: var(--mechanic-rotation-six-soft);
+      --rotation-six-rgb: var(--mechanic-rotation-six-rgb);
       --pull-trash: var(--status-info);
       --pull-trash-soft: var(--status-info-soft);
       --pull-trash-rgb: var(--status-info-rgb);
