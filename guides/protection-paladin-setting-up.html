@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Choose the talents, glyphs, macros, and addons that support reliable Protection Paladin play.">
   <title>Setting up your Tankadin | WotLK 3.3.5 Protection Paladin</title>
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/protection-paladin.css">
+  <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260721-protection-theme">
   <style>
     .icon-heading { display:flex; align-items:center; gap:9px; }
-    .title-icon { width:30px; height:30px; flex:0 0 auto; border:1px solid rgba(255,255,255,.20); border-radius:7px; object-fit:cover; background:#0c1116; box-shadow:0 2px 8px rgba(0,0,0,.35); }
+    .title-icon { width:30px; height:30px; flex:0 0 auto; border:1px solid rgba(255,255,255,.20); border-radius:7px; object-fit:cover; background:var(--surface-code); box-shadow:0 2px 8px rgba(0,0,0,.35); }
     .icon-item { display:inline-flex; align-items:center; gap:8px; }
-    .item-icon { width:28px; height:28px; flex:0 0 auto; border:1px solid rgba(255,255,255,.18); border-radius:6px; object-fit:cover; background:#0c1116; }
-    .talent-tree-panel { margin:14px 0; padding:14px; border:1px solid rgba(245,140,186,.28); border-radius:14px; background:linear-gradient(135deg,rgba(245,140,186,.075),rgba(255,255,255,.018)); }
+    .item-icon { width:28px; height:28px; flex:0 0 auto; border:1px solid rgba(255,255,255,.18); border-radius:6px; object-fit:cover; background:var(--surface-code); }
+    .talent-tree-panel { margin:14px 0; padding:14px; border:1px solid rgba(var(--theme-accent-rgb),.28); border-radius:14px; background:linear-gradient(135deg,rgba(var(--theme-accent-rgb),.075),rgba(255,255,255,.018)); }
     .talent-tree-heading { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
     .talent-tree-heading h3 { margin:1px 0 0; font-size:19px; }
     .talent-embed-wrap { overflow:hidden; margin-top:12px; border:1px solid var(--line); border-radius:12px; background:#090d11; }
@@ -21,7 +22,7 @@
     @media (max-width:680px) { .title-icon { width:27px; height:27px; } .talent-embed { height:900px; } }
   </style>
 </head>
-<body>
+<body data-guide-class="paladin" data-guide-spec="protection">
 <div class="wrap">
   <nav class="site-nav" aria-label="Tankadin guide pages">
     <a href="../index.html">Guide Hub</a>
@@ -342,14 +343,14 @@
       <h3><a href="https://warperia.com/addon-wotlk/pallypower/" target="_blank" rel="noopener">PallyPower</a></h3>
       <p><strong>What it is for:</strong> Assigning Greater Blessings across classes, checking who is missing a Paladin buff, and quickly maintaining your own aura, seal, blessing, and Righteous Fury. In a raid, it lets Paladins coordinate assignments instead of negotiating blessings in chat.</p>
       <p><strong>What it is not for:</strong> It does not choose the raid's best blessing plan for you, play your character, or replace communication. Coordinated assignments work best when the other Paladins also run PallyPower, and assignments normally cannot be changed during combat.</p>
-      <div class="tag-row"><span class="tag pink">Paladin utility</span><span class="tag safe">Strong recommendation</span></div>
+      <div class="tag-row"><span class="tag class">Paladin utility</span><span class="tag safe">Strong recommendation</span></div>
     </div>
 
     <div class="guide-box">
       <h3><a href="https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html" target="_blank" rel="noopener">Protection Is Surprisingly Stupendous</a></h3>
       <p><strong>What it is for:</strong> A Protection Paladin 9696 training aid that shows which configured ability is available next. It can help a new tank recognize the alternating 9-second and 6-second rhythm.</p>
       <p><strong>What it is not for:</strong> It does not cast spells, handle taunts, track threat, warn about bosses, or know when encounter mechanics require you to break the normal rotation. It is a discontinued 2009 beta, so treat it as optional and expect that some 3.3.5 clients or private-server builds may produce errors.</p>
-      <div class="tag-row"><span class="tag pink">Protection only</span><span class="tag warn">Old/discontinued</span><span class="tag info">Training aid</span></div>
+      <div class="tag-row"><span class="tag theme">Protection only</span><span class="tag warn">Old/discontinued</span><span class="tag info">Training aid</span></div>
     </div>
   </div>
 
@@ -380,7 +381,7 @@
       <h3><a href="https://warperia.com/addon-wotlk/weakauras/" target="_blank" rel="noopener">WeakAuras</a></h3>
       <p><strong>What it is for:</strong> Building custom icons, bars, sounds, and warnings for buffs, debuffs, cooldowns, health, mana, and combat events. For Protection, good first trackers are Holy Shield, Divine Plea, Sacred Shield, Righteous Fury, Forbearance, taunt cooldowns, and major defensives.</p>
       <p><strong>What it is not for:</strong> It is not a ready-made Protection setup by itself and it does not make decisions for you. A blank installation does very little until you create or import auras, and imported packages should be reviewed rather than trusted blindly.</p>
-      <div class="tag-row"><span class="tag pink">Highly customizable</span><span class="tag warn">Setup required</span></div>
+      <div class="tag-row"><span class="tag theme">Highly customizable</span><span class="tag warn">Setup required</span></div>
     </div>
 
     <div class="guide-box">
