@@ -30,12 +30,25 @@ jobs:
         run: python3 scripts/build-addon-catalog.py
 
       - name: Validate catalog and site integration
+        shell: bash
         run: |
-          python3 scripts/validate-addon-catalog.py
-          python3 scripts/build-addon-catalog.py --check
-          python3 scripts/build-ah-search-index.py --check
-          node tests/addon-search.test.js
-          git diff --check
+          set -o pipefail
+          {
+            python3 scripts/validate-addon-catalog.py
+            python3 scripts/build-addon-catalog.py --check
+            python3 scripts/build-ah-search-index.py --check
+            node tests/addon-search.test.js
+            git diff --check
+          } 2>&1 | tee /tmp/addon-validation.log
+
+      - name: Preserve failed validation log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: addon-validation-log
+          path: /tmp/addon-validation.log
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Install temporary browser test tooling
         run: |
