@@ -20,9 +20,8 @@ ITEM_TEMPLATE_URL = (
     "master/data/sql/base/db_world/item_template.sql"
 )
 
-INDEX_PREFIX = "window.AH_SEARCH_INDEX="
 LOADER_MARKER = "/* AH item tooltip loader */"
-LOADER_BLOCK = '''
+LOADER_BLOCK = r'''
 
   /* AH item tooltip loader */
   (function loadAhItemTooltips() {
@@ -63,6 +62,7 @@ ITEM_ROW = re.compile(
     r"^\((\d+),(\d+),(\d+),-?\d+,'((?:\\.|[^'])*)',\d+,(\d+),",
     re.MULTILINE,
 )
+INDEX_PAYLOAD = re.compile(r"window\.AH_SEARCH_INDEX=(\{.*\});\s*$", re.DOTALL)
 
 
 def normalize(value: str) -> str:
@@ -78,10 +78,11 @@ def unescape_mysql(value: str) -> str:
 
 
 def read_index() -> dict:
-    source = INDEX_PATH.read_text(encoding="utf-8").strip()
-    if not source.startswith(INDEX_PREFIX) or not source.endswith(";"):
+    source = INDEX_PATH.read_text(encoding="utf-8")
+    match = INDEX_PAYLOAD.search(source)
+    if not match:
         raise RuntimeError(f"Unexpected AH index wrapper in {INDEX_PATH.relative_to(ROOT)}")
-    return json.loads(source[len(INDEX_PREFIX) : -1])
+    return json.loads(match.group(1))
 
 
 def read_item_template(path: Path | None) -> str:
