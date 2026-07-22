@@ -7,7 +7,7 @@
     const current = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-search\.js(?:\?|$)/.test(script.src));
     if (!current || !current.src) return;
     const tooltipScript = document.createElement("script");
-    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260722-ah-items-v1", current.src).href;
+    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260722-ah-mobile-v2", current.src).href;
     tooltipScript.async = false;
     tooltipScript.dataset.ahItemTooltips = "true";
     document.head.appendChild(tooltipScript);
