@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - agent/addon-library-20260722
+  pull_request:
+    branches:
+      - main
+    types: [synchronize]
 
 permissions:
   contents: read
@@ -14,6 +18,8 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - name: Wait for GitHub Pages content
         shell: bash
         run: |
