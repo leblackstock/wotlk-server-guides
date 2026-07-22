@@ -37,7 +37,7 @@ jobs:
 
       - name: Commit generated assets
         run: |
-          if git diff --quiet -- assets/ah-search.js assets/ah-item-ids.js ah-tooltip-unresolved.txt; then
+          if [ -z "$(git status --porcelain -- assets/ah-search.js assets/ah-item-ids.js ah-tooltip-unresolved.txt)" ]; then
             echo "Generated assets are already current."
             exit 0
           fi
