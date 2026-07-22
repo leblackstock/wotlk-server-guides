@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install --prefix /tmp/addon-visual playwright@1.54.1
           npx --prefix /tmp/addon-visual playwright install --with-deps chromium
-      - name: Capture review screenshots
+      - name: Test and capture review screenshots
         env:
           NODE_PATH: /tmp/addon-visual/node_modules
         run: |
@@ -29,12 +29,15 @@ jobs:
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
           sleep 2
+          node tests/addon-browser-smoke.cjs
           mkdir -p /tmp/addon-screenshots
           node <<'NODE'
           const { chromium } = require('playwright');
           (async () => {
             const browser = await chromium.launch({ headless: true });
             const desktop = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+            await desktop.goto('http://127.0.0.1:4173/index.html', { waitUntil: 'networkidle' });
+            await desktop.screenshot({ path: '/tmp/addon-screenshots/desktop-guide-hub.png', fullPage: true });
             await desktop.goto('http://127.0.0.1:4173/guides/addons.html', { waitUntil: 'networkidle' });
             await desktop.screenshot({ path: '/tmp/addon-screenshots/desktop-default.png', fullPage: true });
             await desktop.goto('http://127.0.0.1:4173/guides/addons.html?class=paladin&spec=protection&role=tank', { waitUntil: 'networkidle' });
