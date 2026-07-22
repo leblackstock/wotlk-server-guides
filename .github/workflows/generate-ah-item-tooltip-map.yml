@@ -28,15 +28,36 @@ jobs:
           python-version: '3.12'
 
       - name: Generate exact item ID map
-        run: python scripts/apply-ah-item-tooltips.py
+        id: generate
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/apply-ah-item-tooltips.py 2>&1 | tee /tmp/ah-tooltip-generator.log
+
+      - name: Publish generator diagnostics
+        if: steps.generate.outcome == 'failure'
+        run: |
+          cp /tmp/ah-tooltip-generator.log ah-tooltip-generator.log
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ah-tooltip-generator.log
+          git commit -m "Record AH tooltip generator failure"
+          git push origin HEAD:agent/add-ah-item-tooltips
+
+      - name: Stop after generator failure
+        if: steps.generate.outcome == 'failure'
+        run: exit 1
 
       - name: Validate JavaScript
+        if: steps.generate.outcome == 'success'
         run: |
           node --check assets/ah-search.js
           node --check assets/ah-item-tooltips.js
           node --check assets/ah-item-ids.js
 
       - name: Commit generated assets
+        if: steps.generate.outcome == 'success'
         run: |
           if git diff --quiet -- assets/ah-search.js assets/ah-item-ids.js; then
             echo "Generated assets are already current."
