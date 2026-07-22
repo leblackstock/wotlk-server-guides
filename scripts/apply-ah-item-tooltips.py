@@ -36,7 +36,9 @@ LOADER_BLOCK = r'''
   }());
 '''
 
-# Auctionable/craftable item classes beat same-name quest or internal records.
+# Auctionable/craftable records beat same-name quest or internal records. All
+# item classes remain eligible because a few AH-guide rows are actual weapons
+# (rare fish) rather than trade goods.
 CLASS_PRIORITY = {
     7: 0,   # Trade Goods
     9: 1,   # Recipes
@@ -49,6 +51,12 @@ CLASS_PRIORITY = {
     13: 8,  # Keys
     15: 9,  # Miscellaneous
     12: 10, # Quest items
+    2: 11,  # Weapons
+    4: 12,  # Armor
+    8: 13,
+    10: 14,
+    11: 15,
+    14: 16,
 }
 ALLOWED_CLASSES = set(CLASS_PRIORITY)
 MANUAL_OVERRIDES = {
@@ -56,6 +64,13 @@ MANUAL_OVERRIDES = {
     # The Hellscream guides are Horde-first. The two Battered Hilts share a
     # display name; 50380 is the Horde quest starter.
     "battered hilt": 50380,
+}
+# Small wording differences where the guide label clearly identifies one
+# canonical WotLK item. These are not used for category or multi-item labels.
+NAME_ALIASES = {
+    "basilisk meat": "chunk o basilisk",
+    "formula enchant weapon spell power": "formula enchant weapon spellpower",
+    "formula enchant weapon unholy weapon": "formula enchant weapon unholy",
 }
 
 ITEM_ROW = re.compile(
@@ -131,15 +146,19 @@ def build_payload(index: dict, candidates: dict[str, list[tuple[int, int, int]]]
     resolved: dict[str, int] = {}
     unresolved: list[str] = []
     ambiguous = 0
+    aliases = 0
 
     for key in indexed_names:
-        matches = candidates.get(key, [])
+        lookup_key = NAME_ALIASES.get(key, key)
+        matches = candidates.get(lookup_key, [])
         if not matches:
             unresolved.append(key)
             continue
+        if lookup_key != key:
+            aliases += 1
         if len({item_id for item_id, _, _ in matches}) > 1:
             ambiguous += 1
-        resolved[key] = choose_item_id(key, matches)
+        resolved[key] = choose_item_id(lookup_key, matches)
 
     meta = {
         "version": 1,
@@ -147,6 +166,7 @@ def build_payload(index: dict, candidates: dict[str, list[tuple[int, int, int]]]
         "resolvedNames": len(resolved),
         "unresolvedLabels": len(unresolved),
         "resolvedAmbiguousNames": ambiguous,
+        "resolvedAliasNames": aliases,
         "source": "AzerothCore WotLK item_template",
     }
     return resolved, meta
