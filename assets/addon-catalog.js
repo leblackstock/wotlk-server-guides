@@ -143,9 +143,23 @@
         .map((tag) => tag.id);
     }
 
+    function isMeaningfulOption(group, id) {
+      if (group !== "specialization") return true;
+      const tag = tagMap.get(id);
+      const selectedClasses = state.filters.class || [];
+      if (selectedClasses.length === 1 && tag?.classId !== selectedClasses[0]) return false;
+      return catalog.addons.some((addon) => {
+        if ((addon.tags || []).includes(id) || (addon.scope?.specs || []).includes(id)) return true;
+        return [addon.recommendations || [], addon.customizations || []].some((records) =>
+          records.some((record) => (record.audience?.specs || []).includes(id))
+        );
+      });
+    }
+
     function groupOptions(group) {
       return allPotentialOptions(group).filter((id) => {
         if ((state.filters[group] || []).includes(id)) return true;
+        if (!isMeaningfulOption(group, id)) return false;
         return countForOption(group, id) > 0;
       });
     }

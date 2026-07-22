@@ -17,6 +17,10 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.equal(await desktop.locator(".addon-card").count(), 9, "Default catalog should show nine addons");
+    await desktop.locator("#addon-all-filters").click();
+    const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
+    assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
+    assert.match(await launchSpecs.first().textContent(), /Protection/);
     assert.equal(await desktop.locator("#addon-active-area").isHidden(), true, "Active-filter row should stay hidden with no active state");
     await noOverflow(desktop, "Desktop catalog");
 

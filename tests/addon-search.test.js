@@ -6,6 +6,10 @@ const path = require("node:path");
 const core = require("../assets/addon-search-core.js");
 const catalog = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/addons.json"), "utf8"));
 const addons = catalog.addons;
+const specializationTags = catalog.tags.filter((tag) => tag.group === "specialization");
+assert.equal(specializationTags.length, 30, "WotLK taxonomy should register thirty class-qualified specializations");
+assert.ok(specializationTags.every((tag) => tag.classId && Array.isArray(tag.roleIds) && tag.id.startsWith(`${tag.classId}-`)));
+assert.equal(catalog.tags.some((tag) => ["protection", "holy", "frost", "restoration"].includes(tag.id)), false);
 
 function state(query = "", filters = {}, sort = "smart") {
   return { query, filters, sort, addon: "" };
