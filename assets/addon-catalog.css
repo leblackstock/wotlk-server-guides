@@ -210,6 +210,14 @@ body[data-guide-section="addons"] {
   font-size: 13px;
   font-weight: 800;
 }
+.addon-context-banner strong { display: block; }
+.addon-context-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
 .addon-results-head { display: flex; justify-content: space-between; align-items: center; margin: 14px 2px 8px; }
 .addon-result-count { margin: 0; color: var(--text-muted); font-size: 13px; font-weight: 800; }
 

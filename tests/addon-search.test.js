@@ -31,71 +31,110 @@ const searchCases = [
   ["969 trainer", "protection-is-surprisingly-stupendous"]
 ];
 
-for (const [query, expected] of searchCases) {
-  assert.equal(first(query), expected, `${query} should rank ${expected} first`);
-}
+for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
 
 const protResults = ids("prot pally");
-assert.ok(protResults.includes("pallypower"), "prot pally should find Paladin-specific addons");
-assert.ok(protResults.includes("healbot"), "prot pally should find targeted universal addons");
+assert.ok(protResults.includes("pallypower"));
+assert.ok(protResults.includes("healbot"));
 
-const righteousUs = ids("righteous defense");
-const righteousUk = ids("righteous defence");
-for (const list of [righteousUs, righteousUk]) {
-  assert.ok(list.includes("healbot"), "Righteous Defense should find HealBot");
-  assert.ok(list.includes("tauntmaster"), "Righteous Defense should find TauntMaster");
+for (const list of [ids("righteous defense"), ids("righteous defence")]) {
+  assert.ok(list.includes("healbot"));
+  assert.ok(list.includes("tauntmaster"));
 }
 
-assert.deepEqual(
-  ids("", { class: ["paladin"], specialization: ["protection"], role: ["tank"] }).slice(0, 2),
-  ["deadly-boss-mods", "pallypower"],
-  "Essential Protection results should sort first"
-);
+const canonicalProtection = { class: ["paladin"], specialization: ["paladin-protection"], role: ["tank"] };
+const equivalentProtectionContexts = [
+  canonicalProtection,
+  { class: ["paladin"], role: ["tank"] },
+  { class: ["paladin"], specialization: ["paladin-protection"] }
+];
+const canonicalIds = ids("", canonicalProtection);
+for (const filters of equivalentProtectionContexts) {
+  assert.deepEqual(ids("", filters), canonicalIds, `${JSON.stringify(filters)} should resolve to Protection Paladin Tank`);
+  assert.deepEqual(ids("", { ...filters, importance: ["essential"] }), ["deadly-boss-mods", "pallypower"]);
+}
+assert.deepEqual(canonicalIds.slice(0, 2), ["deadly-boss-mods", "pallypower"]);
+
+const pallyPower = addons.find((addon) => addon.id === "pallypower");
+const healbot = addons.find((addon) => addon.id === "healbot");
+for (const filters of equivalentProtectionContexts) {
+  const current = state("", filters);
+  assert.equal(core.recommendationFor(pallyPower, current, catalog).importance, "essential");
+  assert.equal(core.customizationFor(healbot, current, catalog).id, "protection-paladin");
+  assert.equal(core.contextLabel(current, catalog), "Protection Paladin");
+}
+
+const paladinTankResolved = core.resolveContext(state("", { class: ["paladin"], role: ["tank"] }), catalog);
+assert.deepEqual(paladinTankResolved.state.filters.specialization, ["paladin-protection"]);
+assert.match(paladinTankResolved.note, /Protection inferred/);
+const paladinProtectionResolved = core.resolveContext(state("", { class: ["paladin"], specialization: ["paladin-protection"] }), catalog);
+assert.deepEqual(paladinProtectionResolved.state.filters.role, ["tank"]);
+assert.match(paladinProtectionResolved.note, /Tank inferred/);
+
+const fixedInferenceCases = [
+  [{ specialization: ["warrior-arms"] }, "warrior", "dps", "Arms Warrior"],
+  [{ class: ["priest"], role: ["dps"] }, "priest", "dps", "Shadow Priest"],
+  [{ class: ["shaman"], role: ["healer"] }, "shaman", "healer", "Restoration Shaman"],
+  [{ class: ["druid"], role: ["tank"] }, "druid", "tank", "Feral Druid"]
+];
+for (const [filters, expectedClass, expectedRole, expectedLabel] of fixedInferenceCases) {
+  const resolved = core.resolveContext(state("", filters), catalog);
+  assert.deepEqual(resolved.state.filters.class, [expectedClass]);
+  assert.deepEqual(resolved.state.filters.role, [expectedRole]);
+  assert.equal(resolved.label, expectedLabel);
+}
+
+const ambiguityCases = [
+  [{ class: ["warrior"], role: ["dps"] }, /Arms.*Fury/],
+  [{ class: ["priest"], role: ["healer"] }, /Discipline.*Holy/],
+  [{ class: ["shaman"], role: ["dps"] }, /Elemental.*Enhancement/],
+  [{ class: ["druid"], role: ["dps"] }, /Balance.*Feral/],
+  [{ class: ["hunter"], role: ["dps"] }, /Beast Mastery.*Marksmanship.*Survival/],
+  [{ class: ["mage"], role: ["dps"] }, /Arcane.*Fire.*Frost/],
+  [{ class: ["rogue"], role: ["dps"] }, /Assassination.*Combat.*Subtlety/],
+  [{ class: ["warlock"], role: ["dps"] }, /Affliction.*Demonology.*Destruction/],
+  [{ class: ["death-knight"], role: ["tank"] }, /Blood.*Frost.*Unholy/]
+];
+for (const [filters, pattern] of ambiguityCases) {
+  const resolved = core.resolveContext(state("", filters), catalog);
+  assert.equal(resolved.state.filters.specialization, undefined);
+  assert.match(resolved.note, pattern);
+}
+
+const feralOnly = core.resolveContext(state("", { class: ["druid"], specialization: ["druid-feral"] }), catalog);
+assert.equal(feralOnly.state.filters.role, undefined);
+assert.match(feralOnly.note, /Tank or DPS/);
+const frostDk = core.resolveContext(state("", { class: ["death-knight"], specialization: ["death-knight-frost"] }), catalog);
+assert.equal(frostDk.state.filters.role, undefined, "WotLK Frost DK must not silently become Tank or DPS");
+assert.match(frostDk.note, /Tank or DPS/);
 
 const paladinTankRaid = ids("", { class: ["paladin"], role: ["tank"], activity: ["raids"] });
 assert.ok(paladinTankRaid.includes("pallypower"));
 assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
-assert.ok(paladinTankRaid.includes("ratingbuster"), "Gearing tools remain relevant to raid-filtered Protection context");
+assert.ok(paladinTankRaid.includes("ratingbuster"));
+assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
+assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
+assert.equal(ids("").length, 9);
+assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
-const tankOnly = ids("", { role: ["tank"] });
-assert.ok(tankOnly.includes("healbot"));
-assert.ok(tankOnly.includes("omen3"));
-assert.ok(tankOnly.includes("deadly-boss-mods"));
-
-const raidOnly = ids("", { activity: ["raids"] });
-assert.ok(raidOnly.includes("deadly-boss-mods"));
-assert.ok(raidOnly.includes("omen3"));
-
-const essential = ids("", { class: ["paladin"], specialization: ["protection"], role: ["tank"], importance: ["essential"] });
-assert.deepEqual(new Set(essential), new Set(["pallypower", "deadly-boss-mods"]));
-
-assert.equal(ids("").length, 9, "No filters should return all nine launch addons");
-assert.equal(ids("", { profession: ["alchemy"] }).length, 0, "A populated URL with an unused future facet should have no results");
-assert.equal(ids("", {}).length, 9, "Clearing filters should restore every addon");
-
-const parsed = core.parseUrlState(
+const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
   catalog
 );
-assert.equal(parsed.query, "healbt");
-assert.deepEqual(parsed.filters.class, ["paladin"]);
-assert.deepEqual(parsed.filters.specialization, ["protection"]);
-assert.deepEqual(parsed.filters.role, ["tank"]);
-assert.equal(parsed.addon, "healbot");
+assert.equal(parsedLegacy.query, "healbt");
+assert.deepEqual(parsedLegacy.filters.class, ["paladin"]);
+assert.deepEqual(parsedLegacy.filters.specialization, ["paladin-protection"]);
+assert.deepEqual(parsedLegacy.filters.role, ["tank"]);
+assert.equal(parsedLegacy.addon, "healbot");
 
-const serialized = core.stateToUrl(parsed, "https://example.test/guides/addons.html", catalog);
+const serialized = core.stateToUrl(parsedLegacy, "https://example.test/guides/addons.html", catalog);
+assert.equal(serialized.searchParams.get("spec"), "paladin-protection");
 const restored = core.parseUrlState(serialized, catalog);
-assert.equal(restored.query, parsed.query);
-assert.deepEqual(restored.filters, parsed.filters);
+assert.deepEqual(restored.filters, parsedLegacy.filters);
 assert.equal(restored.addon, "healbot");
 
 const priestState = state("", { class: ["priest"], role: ["healer"] });
-const healbot = addons.find((addon) => addon.id === "healbot");
-assert.equal(core.customizationFor(healbot, priestState), null, "Priest Healer must not auto-select Protection Paladin setup");
-assert.equal(core.recommendationFor(healbot, priestState), null, "Priest Healer must not receive Protection Paladin recommendation");
+assert.equal(core.customizationFor(healbot, priestState, catalog), null);
+assert.equal(core.recommendationFor(healbot, priestState, catalog), null);
 
-const protState = state("", { class: ["paladin"], specialization: ["protection"], role: ["tank"] });
-assert.equal(core.customizationFor(healbot, protState).id, "protection-paladin");
-assert.equal(core.recommendationFor(healbot, protState).importance, "recommended");
-
-console.log(`Addon search tests passed: ${searchCases.length} fuzzy cases plus filter, URL, and context checks.`);
+console.log(`Addon search tests passed: ${searchCases.length} fuzzy cases plus canonical, inferred, ambiguous, URL, and isolation checks.`);

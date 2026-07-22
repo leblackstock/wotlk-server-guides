@@ -77,7 +77,12 @@
     function labelFor(group, id) {
       if (group === "importance") return importanceMap.get(id)?.label || titleCase(id);
       if (group === "purpose") return purposeMap.get(id)?.label || titleCase(id);
-      return tagMap.get(id)?.label || titleCase(id);
+      const tag = tagMap.get(id);
+      if (group === "specialization" && tag?.shortLabel) {
+        const selectedClasses = state.filters.class || [];
+        if (selectedClasses.length === 1 && selectedClasses[0] === tag.classId) return tag.shortLabel;
+      }
+      return tag?.label || titleCase(id);
     }
 
     function cloneState() {
@@ -252,7 +257,7 @@
     }
 
     function renderCard(addon) {
-      const recommendation = addon._recommendation || core.recommendationFor(addon, state);
+      const recommendation = addon._recommendation || core.recommendationFor(addon, state, catalog);
       const card = make("article", "addon-card");
       card.dataset.addonId = addon.id;
 
@@ -310,9 +315,13 @@
       empty.hidden = results.length !== 0;
       const noun = results.length === 1 ? "addon" : "addons";
       count.textContent = `${results.length} ${noun}${state.query.trim() ? ` matching “${state.query.trim()}”` : ""}`;
-      const context = core.contextLabel(state, catalog);
-      contextBanner.hidden = !context;
-      contextBanner.textContent = context ? `Showing recommendations for ${context}` : "";
+      const context = core.contextDetails(state, catalog);
+      contextBanner.hidden = !context.label;
+      contextBanner.replaceChildren();
+      if (context.label) {
+        contextBanner.append(make("strong", "", `Showing recommendations for ${context.label}`));
+        if (context.note) contextBanner.append(make("span", "addon-context-note", context.note));
+      }
     }
 
     function statusText(addon) {
@@ -351,8 +360,8 @@
 
     function renderDialog(addon) {
       dialogContent.replaceChildren();
-      const recommendation = core.recommendationFor(addon, state);
-      const customization = core.customizationFor(addon, state);
+      const recommendation = core.recommendationFor(addon, state, catalog);
+      const customization = core.customizationFor(addon, state, catalog);
       const context = core.contextLabel(state, catalog);
 
       const header = make("div", "addon-dialog-header");
