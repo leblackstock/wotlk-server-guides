@@ -1,1 +1,0 @@
-Temporary build bundle. The integration workflow removes this directory before the finished implementation is committed.

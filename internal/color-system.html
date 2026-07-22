@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Internal WotLK Guide Color System</title>
-  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721-v2">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260722-addons-v1">
   <style>
     * { box-sizing: border-box; }
 
@@ -626,6 +626,20 @@
       .identity-stripe { width: 100%; }
       h2 { font-size: 20px; }
     }
+
+    .addon-identity-demo { border-color: rgba(var(--section-addons-rgb), .40); background: linear-gradient(135deg, rgba(var(--section-addons-rgb), .10), rgba(255,255,255,.02)); }
+    .addon-identity-demo .identity-stripe span:nth-child(1) { background: var(--section-addons-accent); }
+    .addon-identity-demo .identity-stripe span:nth-child(2) { background: var(--section-addons-soft); }
+    .addon-identity-demo .identity-stripe span:nth-child(3) { background: var(--section-addons-deep); }
+    .catalog-state-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .catalog-demo-chip { padding:6px 9px; border:1px solid var(--border-default); border-radius:999px; background:rgba(255,255,255,.03); color:var(--text-muted); font-size:11px; font-weight:900; }
+    .catalog-demo-chip.selected { border-color:var(--section-addons-accent); background:rgba(var(--section-addons-rgb),.14); color:var(--section-addons-soft); }
+    .catalog-demo-chip.disabled { opacity:.42; }
+    .catalog-demo-badge { display:inline-flex; align-items:center; gap:5px; padding:4px 8px; border:1px solid var(--border-default); border-radius:999px; font-size:11px; font-weight:900; }
+    .catalog-demo-badge.essential { border-color:var(--section-addons-accent); background:var(--section-addons-accent); color:var(--surface-page-deep); }
+    .catalog-demo-badge.recommended { border-color:var(--section-addons-accent); color:var(--section-addons-soft); }
+    .catalog-demo-badge.optional { color:var(--text-primary); }
+    .catalog-demo-badge.warning { border-color:rgba(var(--status-warning-rgb),.5); color:var(--status-warning-soft); }
   </style>
 </head>
 <body data-guide-class="paladin">
@@ -913,6 +927,46 @@
     </section>
 
     <footer>Internal reference for the WotLK Server Guides repository. The repository is public; “internal” means unlinked from the public guide hub.</footer>
-  </main>
+
+    <section class="section" id="site-section-identities">
+      <h2>Site-section identities</h2>
+      <p class="intro">A site section may have a restrained identity without borrowing class, specialization, semantic-status, or item-quality meaning. The Addon Library is the first formal example.</p>
+      <div class="identity-block addon-identity-demo">
+        <div class="identity-row">
+          <div class="identity-stripe" aria-label="Addon catalog accent, soft, and deep colors"><span></span><span></span><span></span></div>
+          <div class="identity-copy">
+            <h3>Addon catalog identity</h3>
+            <p><code>--section-addons-accent: #8fa8f5</code>, <code>--section-addons-soft: #d4deff</code>, and <code>--section-addons-deep: #2d3c6b</code>. The base accent has approximately 6.61:1 contrast against <code>#1e2630</code>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rule-grid">
+        <article class="rule-card"><span class="rule-number">1</span><h3>Identity boundaries</h3><p>Section identity is separate from class/spec identity. Small class metadata accents are allowed, but class colors must not recolor the whole filter system.</p></article>
+        <article class="rule-card"><span class="rule-number">2</span><h3>Independent meanings</h3><p>Recommendation is separate from semantic status. Compatibility is separate from recommendation. An essential addon can still carry an amber version warning.</p></article>
+        <article class="rule-card"><span class="rule-number">3</span><h3>Neutral professions</h3><p>Profession tags remain neutral until a formal profession identity system exists. Do not invent a rainbow of profession or filter colors.</p></article>
+      </div>
+      <div class="implementation-card" style="margin-top:12px">
+        <h3>Filter states</h3>
+        <div class="catalog-state-row" aria-label="Filter state examples">
+          <span class="catalog-demo-chip">Unselected</span>
+          <span class="catalog-demo-chip selected">Selected ✓</span>
+          <span class="catalog-demo-chip disabled">Disabled</span>
+        </div>
+        <p>Selected filters use the section accent, while unselected filters stay neutral. Disabled choices reduce opacity but retain readable labels. Meaning never relies on color alone.</p>
+      </div>
+      <div class="implementation-card" style="margin-top:12px">
+        <h3>Recommendation, purpose, and compatibility</h3>
+        <div class="catalog-state-row" aria-label="Addon badge examples">
+          <span class="catalog-demo-badge essential">★ Essential · Core Function</span>
+          <span class="catalog-demo-badge recommended">✓ Recommended · Utility</span>
+          <span class="catalog-demo-badge optional">○ Optional · Training ◎</span>
+          <span class="catalog-demo-badge warning">! Old / verify version</span>
+        </div>
+        <p>Importance uses icons and text. Training and Aesthetic are neutral purposes, not warnings. Old or uncertain compatibility uses the semantic warning color. YouTube brand red is permitted only as a limited external-brand mark, never as a site status color.</p>
+      </div>
+      <div class="single-note"><strong>Do not create rainbow filters.</strong> The Addon Library uses one section accent, neutral metadata chips, semantic warning colors only when warranted, and written labels for every meaning.</div>
+    </section>
+
+</main>
 </body>
 </html>
