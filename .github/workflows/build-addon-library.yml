@@ -56,14 +56,27 @@ jobs:
           npx --prefix /tmp/addon-browser playwright install --with-deps chromium
 
       - name: Run desktop and mobile browser smoke tests
+        shell: bash
         env:
           NODE_PATH: /tmp/addon-browser/node_modules
         run: |
+          set -o pipefail
           python3 -m http.server 4173 >/tmp/addon-library-http.log 2>&1 &
           SERVER_PID=$!
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
           sleep 2
-          node tests/addon-browser-smoke.cjs
+          node tests/addon-browser-smoke.cjs 2>&1 | tee /tmp/addon-browser-smoke.log
+
+      - name: Preserve failed browser log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: addon-browser-log
+          path: |
+            /tmp/addon-browser-smoke.log
+            /tmp/addon-library-http.log
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Commit finished implementation to branch
         run: |
