@@ -1,11 +1,10 @@
-Unresolved unique labels: 82
+Unresolved unique labels: 76
 
 - 15 Pound Mud Snapper / 29 Pound Salmon / 32 Pound Catfish / 52 Pound Redgill / 68 Pound Grouper / 22 Pound Lobster / 92–103 Pound Mightfish | guides: Fishing + Cooking | detail: Classic held-in-off-hand trophy fish
 - Adamantite Deposit | guides: Mining + Smithing | detail: Outland
 - Aldor premium drop | guides: Drop Turn-In + Quest Page Items | detail: Aldor rep
 - Argent Dawn Plaguelands parts | guides: Drop Turn-In + Quest Page Items | detail: Argent Dawn / Light's Hope turn-ins
 - Ashenvale Shredder Manual pages | guides: Drop Turn-In + Quest Page Items | detail: The Lost Pages
-- Basilisk Meat | guides: Fishing + Cooking | detail: TBC cooking mat
 - Blackrock / Core drops | guides: Drop Turn-In + Quest Page Items | detail: Thorium Brotherhood / old craft rep value
 - Blank Parchment / basic vendor odds | guides: Engineering Materials | detail: —
 - Blue / Red / Green / Gray Dye | guides: Tailoring + Cloth | detail: —
@@ -17,7 +16,6 @@ Unresolved unique labels: 82
 - Chaos / Prisms / Undeath Deck | guides: Inscription Materials | detail: Other Northrend decks
 - Cobalt Deposit | guides: Mining + Smithing | detail: Northrend
 - Copper Vein | guides: Mining + Smithing | detail: Classic
-- Dark Herring | guides: Fishing + Cooking | detail: Rare Northrend fish
 - Dark Iron Deposit | guides: Mining + Smithing | detail: Classic special
 - Darkmoon Tier 1 animal parts | guides: Drop Turn-In + Quest Page Items | detail: 5 items → 1 ticket
 - Darkmoon Tier 2 animal parts | guides: Drop Turn-In + Quest Page Items | detail: 5 items → 4 tickets
@@ -33,8 +31,6 @@ Unresolved unique labels: 82
 - Eternal conversions | guides: Alchemy Materials | detail: Earth / Fire / Life / Shadow / Air / Water conversions
 - Fel Iron Deposit | guides: Mining + Smithing | detail: Outland
 - Firethorn | guides: Alchemy Materials, Herbalism + Herbs | detail: Northrend niche herb
-- Formula: Enchant Weapon - Spell Power | guides: Utility Recipe Drops | detail: —
-- Formula: Enchant Weapon - Unholy Weapon | guides: Utility Recipe Drops | detail: —
 - Gold Vein | guides: Mining + Smithing | detail: Classic rare
 - Green Hills of Stranglethorn pages | guides: Drop Turn-In + Quest Page Items | detail: STV page quests
 - Hakkari Bijous | guides: Drop Turn-In + Quest Page Items | detail: Zandalar Tribe rep
@@ -65,14 +61,12 @@ Unresolved unique labels: 82
 - Rich Cobalt Deposit | guides: Mining + Smithing | detail: Northrend rich
 - Rich Saronite Deposit | guides: Mining + Smithing | detail: Northrend rich
 - Rich Thorium Vein | guides: Mining + Smithing | detail: Classic rich
-- Rockhide Strongfish | guides: Fishing + Cooking | detail: Rare fish weapon / STV contest catch
 - Saronite Deposit | guides: Mining + Smithing | detail: Northrend
 - Saronite Skeleton Key | guides: Blacksmithing Materials | detail: Wrath key
 - Scraps → Leather | guides: Skinning + Leatherworking | detail: Scrap cleanup
 - Scryer premium drop | guides: Drop Turn-In + Quest Page Items | detail: Scryer rep
 - Silver Vein | guides: Mining + Smithing | detail: Classic rare
 - Small Thorium Vein | guides: Mining + Smithing | detail: Classic
-- Steelscale Crushfish | guides: Fishing + Cooking | detail: Rare fish weapon
 - Thorium Brotherhood early drops | guides: Drop Turn-In + Quest Page Items | detail: Thorium Brotherhood rep
 - Timbermaw repeatable drops | guides: Drop Turn-In + Quest Page Items | detail: Timbermaw Hold rep
 - Tin Vein | guides: Mining + Smithing | detail: Classic
