@@ -1,6 +1,19 @@
 (function (global) {
   "use strict";
 
+  /* AH item tooltip loader */
+  (function loadAhItemTooltips() {
+    if (typeof document === "undefined" || document.querySelector("script[data-ah-item-tooltips]")) return;
+    const current = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-search\.js(?:\?|$)/.test(script.src));
+    if (!current || !current.src) return;
+    const tooltipScript = document.createElement("script");
+    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260722-ah-items-v1", current.src).href;
+    tooltipScript.async = false;
+    tooltipScript.dataset.ahItemTooltips = "true";
+    document.head.appendChild(tooltipScript);
+  }());
+
+
   const MAX_RESULTS = 12;
 
   function normalize(value) {
