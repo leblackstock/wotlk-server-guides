@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - agent/addon-library-20260722
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -17,6 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Apply integration to current repository state
         run: python3 scripts/implement-addon-library.py
