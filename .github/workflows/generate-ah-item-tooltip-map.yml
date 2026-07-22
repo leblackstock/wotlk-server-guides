@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - agent/add-ah-item-tooltips
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
