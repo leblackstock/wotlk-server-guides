@@ -74,13 +74,7 @@ def normalize(value: str) -> str:
 
 
 def unescape_mysql(value: str) -> str:
-    return (
-        value.replace(r"\'", "'")
-        .replace(r"\\", "\")
-        .replace(r"\n", "\n")
-        .replace(r"\r", "\r")
-        .replace(r"\t", "\t")
-    )
+    return value.replace("\\'", "'")
 
 
 def read_index() -> dict:
