@@ -17,6 +17,10 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.equal(await desktop.locator(".addon-card").count(), 9, "Default catalog should show nine addons");
+    await desktop.locator("#addon-all-filters").click();
+    const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
+    assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
+    assert.match(await launchSpecs.first().textContent(), /Protection/);
     assert.equal(await desktop.locator("#addon-active-area").isHidden(), true, "Active-filter row should stay hidden with no active state");
     await noOverflow(desktop, "Desktop catalog");
 
@@ -24,12 +28,31 @@ async function noOverflow(page, label) {
     await desktop.waitForTimeout(80);
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "HealBot");
 
-    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=protection&role=tank`, { waitUntil: "networkidle" });
+    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.match(await desktop.locator("#addon-context-banner").textContent(), /Protection Paladin/);
     const firstTwo = await desktop.locator(".addon-card h2").evaluateAll((nodes) => nodes.slice(0, 2).map((node) => node.textContent));
     assert.deepEqual(firstTwo, ["Deadly Boss Mods", "PallyPower"]);
     assert.equal(await desktop.locator(".addon-badge-essential").count(), 2);
+
+    for (const equivalentUrl of [
+      `${base}/guides/addons.html?class=paladin&role=tank`,
+      `${base}/guides/addons.html?class=paladin&spec=paladin-protection`
+    ]) {
+      await desktop.goto(equivalentUrl, { waitUntil: "networkidle" });
+      await desktop.waitForSelector(".addon-card");
+      assert.match(await desktop.locator("#addon-context-banner").textContent(), /Showing recommendations for Protection Paladin/);
+      const equivalentFirstTwo = await desktop.locator(".addon-card h2").evaluateAll((nodes) => nodes.slice(0, 2).map((node) => node.textContent));
+      assert.deepEqual(equivalentFirstTwo, ["Deadly Boss Mods", "PallyPower"]);
+      assert.equal(await desktop.locator(".addon-badge-essential").count(), 2);
+    }
+
+    await desktop.goto(`${base}/guides/addons.html?class=warrior&role=dps`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-context-banner:not([hidden])");
+    assert.match(await desktop.locator("#addon-context-banner").textContent(), /Choose Arms or Fury/);
+
+    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector('.addon-card[data-addon-id="healbot"]');
 
     const healbotCard = desktop.locator('.addon-card[data-addon-id="healbot"]');
     const healbotDetails = healbotCard.locator(".addon-details-button");
@@ -41,7 +64,7 @@ async function noOverflow(page, label) {
     await desktop.waitForFunction(() => !document.getElementById("addon-details-dialog").open);
     assert.equal(await desktop.evaluate(() => document.activeElement?.closest(".addon-card")?.dataset.addonId), "healbot", "Focus should return to HealBot card");
 
-    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
+    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#addon-details-dialog[open]");
     assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "HealBot");
 
@@ -59,7 +82,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".addon-card").count(), 9);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
-    await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
+    await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
     await mobile.waitForSelector("#addon-details-dialog[open]");
     await noOverflow(mobile, "Mobile catalog and drawer");
     assert.equal(await mobile.locator(".addon-grid").evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), 1);

@@ -172,244 +172,488 @@
       "order": 100
     },
     {
-      "id": "protection",
-      "label": "Protection",
+      "id": "paladin-protection",
+      "label": "Protection (Paladin)",
+      "shortLabel": "Protection",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Protection.",
+      "classId": "paladin",
+      "roleIds": [
+        "tank"
+      ],
+      "description": "Targeted setup or recommendation for Protection Paladin.",
       "searchAliases": [
         "prot",
-        "tankadin"
+        "tankadin",
+        "prot pally",
+        "protection paladin"
       ],
       "order": 10
     },
     {
-      "id": "holy",
-      "label": "Holy",
+      "id": "paladin-holy",
+      "label": "Holy (Paladin)",
+      "shortLabel": "Holy",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Holy.",
-      "searchAliases": [],
+      "classId": "paladin",
+      "roleIds": [
+        "healer"
+      ],
+      "description": "Targeted setup or recommendation for Holy Paladin.",
+      "searchAliases": [
+        "holy paladin",
+        "holy pally"
+      ],
       "order": 20
     },
     {
-      "id": "retribution",
+      "id": "paladin-retribution",
       "label": "Retribution",
+      "shortLabel": "Retribution",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Retribution.",
+      "classId": "paladin",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Retribution Paladin.",
       "searchAliases": [
-        "ret"
+        "ret",
+        "ret paladin",
+        "ret pally"
       ],
       "order": 30
     },
     {
-      "id": "arms",
-      "label": "Arms",
+      "id": "warrior-protection",
+      "label": "Protection (Warrior)",
+      "shortLabel": "Protection",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Arms.",
-      "searchAliases": [],
+      "classId": "warrior",
+      "roleIds": [
+        "tank"
+      ],
+      "description": "Targeted setup or recommendation for Protection Warrior.",
+      "searchAliases": [
+        "prot warrior",
+        "protection warrior"
+      ],
       "order": 40
     },
     {
-      "id": "fury",
-      "label": "Fury",
+      "id": "warrior-arms",
+      "label": "Arms",
+      "shortLabel": "Arms",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Fury.",
-      "searchAliases": [],
+      "classId": "warrior",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Arms Warrior.",
+      "searchAliases": [
+        "arms warrior"
+      ],
       "order": 50
     },
     {
-      "id": "blood",
-      "label": "Blood",
+      "id": "warrior-fury",
+      "label": "Fury",
+      "shortLabel": "Fury",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Blood.",
-      "searchAliases": [],
+      "classId": "warrior",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Fury Warrior.",
+      "searchAliases": [
+        "fury warrior"
+      ],
       "order": 60
     },
     {
-      "id": "frost",
-      "label": "Frost",
+      "id": "death-knight-blood",
+      "label": "Blood",
+      "shortLabel": "Blood",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Frost.",
-      "searchAliases": [],
+      "classId": "death-knight",
+      "roleIds": [
+        "tank",
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Blood Death Knight.",
+      "searchAliases": [
+        "blood dk",
+        "blood death knight"
+      ],
       "order": 70
     },
     {
-      "id": "unholy",
-      "label": "Unholy",
+      "id": "death-knight-frost",
+      "label": "Frost (Death Knight)",
+      "shortLabel": "Frost",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Unholy.",
-      "searchAliases": [],
+      "classId": "death-knight",
+      "roleIds": [
+        "tank",
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Frost Death Knight.",
+      "searchAliases": [
+        "frost dk",
+        "frost death knight"
+      ],
       "order": 80
     },
     {
-      "id": "balance",
-      "label": "Balance",
+      "id": "death-knight-unholy",
+      "label": "Unholy",
+      "shortLabel": "Unholy",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Balance.",
+      "classId": "death-knight",
+      "roleIds": [
+        "tank",
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Unholy Death Knight.",
       "searchAliases": [
-        "boomkin"
+        "unholy dk",
+        "unholy death knight"
       ],
       "order": 90
     },
     {
-      "id": "feral",
-      "label": "Feral",
+      "id": "druid-balance",
+      "label": "Balance",
+      "shortLabel": "Balance",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Feral.",
-      "searchAliases": [],
+      "classId": "druid",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Balance Druid.",
+      "searchAliases": [
+        "boomkin",
+        "balance druid"
+      ],
       "order": 100
     },
     {
-      "id": "restoration",
-      "label": "Restoration",
+      "id": "druid-feral",
+      "label": "Feral",
+      "shortLabel": "Feral",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Restoration.",
+      "classId": "druid",
+      "roleIds": [
+        "tank",
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Feral Druid.",
       "searchAliases": [
-        "resto"
+        "feral druid",
+        "bear",
+        "cat"
       ],
       "order": 110
     },
     {
-      "id": "discipline",
-      "label": "Discipline",
+      "id": "druid-restoration",
+      "label": "Restoration (Druid)",
+      "shortLabel": "Restoration",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Discipline.",
+      "classId": "druid",
+      "roleIds": [
+        "healer"
+      ],
+      "description": "Targeted setup or recommendation for Restoration Druid.",
       "searchAliases": [
-        "disc"
+        "resto druid",
+        "restoration druid"
       ],
       "order": 120
     },
     {
-      "id": "shadow",
-      "label": "Shadow",
+      "id": "priest-discipline",
+      "label": "Discipline",
+      "shortLabel": "Discipline",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Shadow.",
-      "searchAliases": [],
+      "classId": "priest",
+      "roleIds": [
+        "healer"
+      ],
+      "description": "Targeted setup or recommendation for Discipline Priest.",
+      "searchAliases": [
+        "disc",
+        "disc priest",
+        "discipline priest"
+      ],
       "order": 130
     },
     {
-      "id": "elemental",
-      "label": "Elemental",
+      "id": "priest-holy",
+      "label": "Holy (Priest)",
+      "shortLabel": "Holy",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Elemental.",
+      "classId": "priest",
+      "roleIds": [
+        "healer"
+      ],
+      "description": "Targeted setup or recommendation for Holy Priest.",
       "searchAliases": [
-        "ele"
+        "holy priest"
       ],
       "order": 140
     },
     {
-      "id": "enhancement",
-      "label": "Enhancement",
+      "id": "priest-shadow",
+      "label": "Shadow",
+      "shortLabel": "Shadow",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Enhancement.",
+      "classId": "priest",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Shadow Priest.",
       "searchAliases": [
-        "enh"
+        "shadow priest",
+        "spriest"
       ],
       "order": 150
     },
     {
-      "id": "arcane",
-      "label": "Arcane",
+      "id": "shaman-elemental",
+      "label": "Elemental",
+      "shortLabel": "Elemental",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Arcane.",
-      "searchAliases": [],
+      "classId": "shaman",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Elemental Shaman.",
+      "searchAliases": [
+        "ele",
+        "elemental shaman"
+      ],
       "order": 160
     },
     {
-      "id": "fire",
-      "label": "Fire",
+      "id": "shaman-enhancement",
+      "label": "Enhancement",
+      "shortLabel": "Enhancement",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Fire.",
-      "searchAliases": [],
+      "classId": "shaman",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Enhancement Shaman.",
+      "searchAliases": [
+        "enh",
+        "enhancement shaman"
+      ],
       "order": 170
     },
     {
-      "id": "affliction",
-      "label": "Affliction",
+      "id": "shaman-restoration",
+      "label": "Restoration (Shaman)",
+      "shortLabel": "Restoration",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Affliction.",
+      "classId": "shaman",
+      "roleIds": [
+        "healer"
+      ],
+      "description": "Targeted setup or recommendation for Restoration Shaman.",
       "searchAliases": [
-        "aff"
+        "resto shaman",
+        "restoration shaman"
       ],
       "order": 180
     },
     {
-      "id": "demonology",
-      "label": "Demonology",
+      "id": "mage-arcane",
+      "label": "Arcane",
+      "shortLabel": "Arcane",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Demonology.",
+      "classId": "mage",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Arcane Mage.",
       "searchAliases": [
-        "demo"
+        "arcane mage"
       ],
       "order": 190
     },
     {
-      "id": "destruction",
-      "label": "Destruction",
+      "id": "mage-fire",
+      "label": "Fire",
+      "shortLabel": "Fire",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Destruction.",
+      "classId": "mage",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Fire Mage.",
       "searchAliases": [
-        "destro"
+        "fire mage"
       ],
       "order": 200
     },
     {
-      "id": "assassination",
-      "label": "Assassination",
+      "id": "mage-frost",
+      "label": "Frost (Mage)",
+      "shortLabel": "Frost",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Assassination.",
+      "classId": "mage",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Frost Mage.",
       "searchAliases": [
-        "mut"
+        "frost mage"
       ],
       "order": 210
     },
     {
-      "id": "combat-rogue",
-      "label": "Combat (Rogue)",
+      "id": "warlock-affliction",
+      "label": "Affliction",
+      "shortLabel": "Affliction",
       "group": "specialization",
-      "description": "Targeted Rogue Combat specialization setup or recommendation.",
-      "searchAliases": [],
+      "classId": "warlock",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Affliction Warlock.",
+      "searchAliases": [
+        "aff",
+        "affliction warlock"
+      ],
       "order": 220
     },
     {
-      "id": "subtlety",
-      "label": "Subtlety",
+      "id": "warlock-demonology",
+      "label": "Demonology",
+      "shortLabel": "Demonology",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Subtlety.",
+      "classId": "warlock",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Demonology Warlock.",
       "searchAliases": [
-        "sub"
+        "demo",
+        "demonology warlock"
       ],
       "order": 230
     },
     {
-      "id": "beast-mastery",
-      "label": "Beast Mastery",
+      "id": "warlock-destruction",
+      "label": "Destruction",
+      "shortLabel": "Destruction",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Beast Mastery.",
+      "classId": "warlock",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Destruction Warlock.",
       "searchAliases": [
-        "bm"
+        "destro",
+        "destruction warlock"
       ],
       "order": 240
     },
     {
-      "id": "marksmanship",
-      "label": "Marksmanship",
+      "id": "rogue-assassination",
+      "label": "Assassination",
+      "shortLabel": "Assassination",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Marksmanship.",
+      "classId": "rogue",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Assassination Rogue.",
       "searchAliases": [
-        "marksman",
-        "mm"
+        "mut",
+        "mutilate",
+        "assassination rogue"
       ],
       "order": 250
     },
     {
-      "id": "survival",
-      "label": "Survival",
+      "id": "rogue-combat",
+      "label": "Combat",
+      "shortLabel": "Combat",
       "group": "specialization",
-      "description": "Targeted setup or recommendation for Survival.",
+      "classId": "rogue",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Combat Rogue.",
       "searchAliases": [
-        "sv"
+        "combat rogue"
       ],
       "order": 260
+    },
+    {
+      "id": "rogue-subtlety",
+      "label": "Subtlety",
+      "shortLabel": "Subtlety",
+      "group": "specialization",
+      "classId": "rogue",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Subtlety Rogue.",
+      "searchAliases": [
+        "sub",
+        "subtlety rogue"
+      ],
+      "order": 270
+    },
+    {
+      "id": "hunter-beast-mastery",
+      "label": "Beast Mastery",
+      "shortLabel": "Beast Mastery",
+      "group": "specialization",
+      "classId": "hunter",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Beast Mastery Hunter.",
+      "searchAliases": [
+        "bm",
+        "beast mastery hunter"
+      ],
+      "order": 280
+    },
+    {
+      "id": "hunter-marksmanship",
+      "label": "Marksmanship",
+      "shortLabel": "Marksmanship",
+      "group": "specialization",
+      "classId": "hunter",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Marksmanship Hunter.",
+      "searchAliases": [
+        "marksman",
+        "mm",
+        "marksmanship hunter"
+      ],
+      "order": 290
+    },
+    {
+      "id": "hunter-survival",
+      "label": "Survival",
+      "shortLabel": "Survival",
+      "group": "specialization",
+      "classId": "hunter",
+      "roleIds": [
+        "dps"
+      ],
+      "description": "Targeted setup or recommendation for Survival Hunter.",
+      "searchAliases": [
+        "sv",
+        "survival hunter"
+      ],
+      "order": 300
     },
     {
       "id": "alchemy",
@@ -1082,7 +1326,8 @@
           "dungeons"
         ],
         "universalClasses": false,
-        "universalSpecs": false
+        "universalSpecs": false,
+        "specs": []
       },
       "recommendations": [
         {
@@ -1091,7 +1336,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1114,7 +1359,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1201,7 +1446,7 @@
       ],
       "tags": [
         "paladin",
-        "protection",
+        "paladin-protection",
         "tank",
         "combat",
         "action-bars",
@@ -1212,7 +1457,7 @@
         "not-tested-hellscream"
       ],
       "featuredTags": [
-        "protection",
+        "paladin-protection",
         "rotation-training",
         "lightweight"
       ],
@@ -1221,7 +1466,7 @@
           "paladin"
         ],
         "specs": [
-          "protection"
+          "paladin-protection"
         ],
         "roles": [
           "tank"
@@ -1240,7 +1485,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1263,7 +1508,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1388,7 +1633,8 @@
           "dungeons"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -1397,7 +1643,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1420,7 +1666,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1547,7 +1793,8 @@
           "dungeons"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -1556,7 +1803,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1579,7 +1826,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1697,7 +1944,8 @@
           "raids"
         ],
         "universalClasses": false,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -1706,7 +1954,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1729,7 +1977,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1861,7 +2109,8 @@
           "pvp"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -1870,7 +2119,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -1894,7 +2143,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2021,7 +2270,8 @@
           "leveling"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -2030,7 +2280,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2053,7 +2303,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2179,7 +2429,8 @@
           "leveling"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -2188,7 +2439,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2211,7 +2462,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2332,7 +2583,8 @@
           "leveling"
         ],
         "universalClasses": true,
-        "universalSpecs": true
+        "universalSpecs": true,
+        "specs": []
       },
       "recommendations": [
         {
@@ -2341,7 +2593,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2364,7 +2616,7 @@
               "paladin"
             ],
             "specs": [
-              "protection"
+              "paladin-protection"
             ],
             "roles": [
               "tank"
@@ -2417,5 +2669,146 @@
         }
       ]
     }
-  ]
+  ],
+  "contextResolution": {
+    "version": 1,
+    "legacySpecAliasesByClass": {
+      "paladin": {
+        "protection": "paladin-protection",
+        "holy": "paladin-holy",
+        "retribution": "paladin-retribution"
+      },
+      "warrior": {
+        "protection": "warrior-protection",
+        "arms": "warrior-arms",
+        "fury": "warrior-fury"
+      },
+      "death-knight": {
+        "blood": "death-knight-blood",
+        "frost": "death-knight-frost",
+        "unholy": "death-knight-unholy"
+      },
+      "druid": {
+        "balance": "druid-balance",
+        "feral": "druid-feral",
+        "restoration": "druid-restoration"
+      },
+      "priest": {
+        "discipline": "priest-discipline",
+        "holy": "priest-holy",
+        "shadow": "priest-shadow"
+      },
+      "shaman": {
+        "elemental": "shaman-elemental",
+        "enhancement": "shaman-enhancement",
+        "restoration": "shaman-restoration"
+      },
+      "mage": {
+        "arcane": "mage-arcane",
+        "fire": "mage-fire",
+        "frost": "mage-frost"
+      },
+      "warlock": {
+        "affliction": "warlock-affliction",
+        "demonology": "warlock-demonology",
+        "destruction": "warlock-destruction"
+      },
+      "rogue": {
+        "assassination": "rogue-assassination",
+        "combat-rogue": "rogue-combat",
+        "subtlety": "rogue-subtlety"
+      },
+      "hunter": {
+        "beast-mastery": "hunter-beast-mastery",
+        "marksmanship": "hunter-marksmanship",
+        "survival": "hunter-survival"
+      }
+    },
+    "roleToSpec": {
+      "paladin": {
+        "tank": "paladin-protection",
+        "healer": "paladin-holy",
+        "dps": "paladin-retribution"
+      },
+      "warrior": {
+        "tank": "warrior-protection"
+      },
+      "priest": {
+        "dps": "priest-shadow"
+      },
+      "shaman": {
+        "healer": "shaman-restoration"
+      },
+      "druid": {
+        "tank": "druid-feral",
+        "healer": "druid-restoration"
+      }
+    },
+    "ambiguityChoices": {
+      "warrior": {
+        "dps": [
+          "warrior-arms",
+          "warrior-fury"
+        ]
+      },
+      "priest": {
+        "healer": [
+          "priest-discipline",
+          "priest-holy"
+        ]
+      },
+      "shaman": {
+        "dps": [
+          "shaman-elemental",
+          "shaman-enhancement"
+        ]
+      },
+      "druid": {
+        "dps": [
+          "druid-balance",
+          "druid-feral"
+        ]
+      },
+      "hunter": {
+        "dps": [
+          "hunter-beast-mastery",
+          "hunter-marksmanship",
+          "hunter-survival"
+        ]
+      },
+      "mage": {
+        "dps": [
+          "mage-arcane",
+          "mage-fire",
+          "mage-frost"
+        ]
+      },
+      "rogue": {
+        "dps": [
+          "rogue-assassination",
+          "rogue-combat",
+          "rogue-subtlety"
+        ]
+      },
+      "warlock": {
+        "dps": [
+          "warlock-affliction",
+          "warlock-demonology",
+          "warlock-destruction"
+        ]
+      },
+      "death-knight": {
+        "tank": [
+          "death-knight-blood",
+          "death-knight-frost",
+          "death-knight-unholy"
+        ],
+        "dps": [
+          "death-knight-blood",
+          "death-knight-frost",
+          "death-knight-unholy"
+        ]
+      }
+    }
+  }
 }
