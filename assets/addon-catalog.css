@@ -129,6 +129,13 @@ body[data-guide-section="addons"] {
   gap: 8px;
   margin-top: 12px;
 }
+
+.addon-active-area[hidden],
+.addon-grid[hidden],
+.addon-empty[hidden],
+.addon-context-banner[hidden] {
+  display: none;
+}
 .addon-quick-label,
 .addon-active-label {
   color: var(--text-muted);
