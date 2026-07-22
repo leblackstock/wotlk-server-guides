@@ -1,0 +1,80 @@
+name: Addon Context Inference
+
+on:
+  push:
+    branches:
+      - agent/addon-context-inference
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  build-test-branch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Apply context inference migration
+        shell: bash
+        run: |
+          if grep -q '"contextResolution"' data/addons.json; then
+            echo "Context inference migration is already applied."
+          else
+            python3 scripts/apply-addon-context-inference.py
+          fi
+
+      - name: Build generated catalog data
+        run: python3 scripts/build-addon-catalog.py
+
+      - name: Validate catalog and search behavior
+        run: |
+          python3 scripts/validate-addon-catalog.py
+          python3 scripts/build-addon-catalog.py --check
+          python3 scripts/build-ah-search-index.py --check
+          node tests/addon-search.test.js
+          git diff --check
+
+      - name: Install temporary browser test tooling
+        run: |
+          npm install --prefix /tmp/addon-context-browser playwright@1.54.1
+          npx --prefix /tmp/addon-context-browser playwright install --with-deps chromium
+
+      - name: Run browser smoke tests
+        env:
+          NODE_PATH: /tmp/addon-context-browser/node_modules
+        run: |
+          python3 -m http.server 4173 >/tmp/addon-context-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          sleep 2
+          node tests/addon-browser-smoke.cjs
+
+      - name: Commit tested permanent changes
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            data/addons.json \
+            assets/addon-catalog-data.js \
+            assets/addon-search-core.js \
+            assets/addon-catalog.js \
+            assets/addon-catalog.css \
+            guides/addons.html \
+            guides/protection-paladin-setting-up.html \
+            tests/addon-search.test.js \
+            tests/addon-browser-smoke.cjs
+          if git diff --cached --quiet; then
+            echo "No permanent changes to commit."
+            exit 0
+          fi
+          git commit -m "Resolve equivalent addon class contexts"
+          git push
