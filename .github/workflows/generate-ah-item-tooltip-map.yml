@@ -1,0 +1,46 @@
+name: Generate AH item tooltip map
+
+on:
+  push:
+    branches:
+      - agent/add-ah-item-tooltips
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/add-ah-item-tooltips
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate exact item ID map
+        run: python scripts/apply-ah-item-tooltips.py
+
+      - name: Validate JavaScript
+        run: |
+          node --check assets/ah-search.js
+          node --check assets/ah-item-tooltips.js
+          node --check assets/ah-item-ids.js
+
+      - name: Commit generated assets
+        run: |
+          if git diff --quiet -- assets/ah-search.js assets/ah-item-ids.js; then
+            echo "Generated assets are already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/ah-search.js assets/ah-item-ids.js
+          git commit -m "Generate AH item tooltip map"
+          git push origin HEAD:agent/add-ah-item-tooltips
