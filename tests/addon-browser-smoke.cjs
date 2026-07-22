@@ -17,6 +17,7 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.equal(await desktop.locator(".addon-card").count(), 9, "Default catalog should show nine addons");
+    assert.equal(await desktop.locator("#addon-active-area").isHidden(), true, "Active-filter row should stay hidden with no active state");
     await noOverflow(desktop, "Desktop catalog");
 
     await desktop.locator("#addon-search-input").fill("healbt");
@@ -52,6 +53,7 @@ async function noOverflow(page, label) {
 
     await desktop.goto(`${base}/guides/addons.html?profession=alchemy`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#addon-empty:not([hidden])");
+    assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
     assert.equal(await desktop.locator(".addon-card").count(), 9);
