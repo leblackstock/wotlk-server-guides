@@ -30,6 +30,18 @@ jobs:
           else
             python3 scripts/apply-addon-context-inference.py
           fi
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("tests/addon-browser-smoke.cjs")
+          text = path.read_text(encoding="utf-8")
+          needle = '    assert.match(await desktop.locator("#addon-context-banner").textContent(), /Choose Arms or Fury/);\n'
+          return_to_paladin = '''    assert.match(await desktop.locator("#addon-context-banner").textContent(), /Choose Arms or Fury/);\n\n    await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });\n    await desktop.waitForSelector('.addon-card[data-addon-id="healbot"]');\n'''
+          if "waitForSelector('.addon-card[data-addon-id=\"healbot\"]')" not in text:
+              if needle not in text:
+                  raise SystemExit("Could not find ambiguity test anchor")
+              text = text.replace(needle, return_to_paladin, 1)
+              path.write_text(text, encoding="utf-8", newline="\n")
+          PY
 
       - name: Build generated catalog data
         run: python3 scripts/build-addon-catalog.py
