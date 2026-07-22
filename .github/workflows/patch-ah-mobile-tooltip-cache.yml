@@ -1,0 +1,49 @@
+name: Patch AH mobile tooltip cache
+
+on:
+  push:
+    branches:
+      - agent/restore-wrap-ah-mobile-tooltips
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/restore-wrap-ah-mobile-tooltips
+          fetch-depth: 0
+
+      - name: Bump tooltip runtime cache key
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("assets/ah-search.js")
+          text = path.read_text(encoding="utf-8")
+          old = "ah-item-tooltips.js?v=20260722-ah-items-v1"
+          new = "ah-item-tooltips.js?v=20260722-ah-mobile-v2"
+          if old in text:
+              path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          elif new not in text:
+              raise SystemExit("Expected tooltip loader cache key was not found")
+          PY
+
+      - name: Validate JavaScript
+        run: |
+          node --check assets/ah-search.js
+          node --check assets/ah-item-tooltips.js
+
+      - name: Commit cache-key update
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/ah-search.js
+          git commit -m "chore: refresh AH mobile tooltip cache"
+          git push origin HEAD:agent/restore-wrap-ah-mobile-tooltips
