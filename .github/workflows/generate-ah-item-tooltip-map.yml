@@ -25,7 +25,9 @@ jobs:
           python-version: '3.12'
 
       - name: Generate exact item ID map
-        run: python scripts/apply-ah-item-tooltips.py --report ah-tooltip-unresolved.txt
+        run: |
+          python scripts/apply-ah-item-tooltips.py
+          python scripts/report-ah-tooltip-unresolved.py > ah-tooltip-unresolved.txt
 
       - name: Validate JavaScript
         run: |
