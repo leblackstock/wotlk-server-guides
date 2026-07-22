@@ -1,0 +1,57 @@
+name: Verify Live Addon Contexts
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for current GitHub Pages revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://leblackstock.github.io/wotlk-server-guides/guides/addons.html"
+          for attempt in $(seq 1 48); do
+            stamp="$(date +%s)-$attempt"
+            html="$(curl --fail --silent --show-error --location --header 'Cache-Control: no-cache' "$URL?verify=$stamp" || true)"
+            if grep -q '20260722-addons-v2' <<<"$html"; then
+              echo "Live Addon Library is serving the context-inference revision."
+              exit 0
+            fi
+            echo "Attempt $attempt: waiting for GitHub Pages."
+            sleep 10
+          done
+          echo "GitHub Pages did not publish the revision in time." >&2
+          exit 1
+      - name: Install temporary browser
+        run: |
+          npm install --prefix /tmp/addon-live-context playwright@1.54.1
+          npx --prefix /tmp/addon-live-context playwright install --with-deps chromium
+      - name: Exercise live context behavior
+        env:
+          NODE_PATH: /tmp/addon-live-context/node_modules
+          ADDON_TEST_BASE: https://leblackstock.github.io/wotlk-server-guides
+        run: node tests/addon-browser-smoke.cjs
+      - name: Record verification
+        run: |
+          {
+            echo "commit=4a4edab070a9fee255baa5c5bb344e869478aeda"
+            echo "verified_at=$(date --utc --iso-8601=seconds)"
+            echo "paladin_tank=https://leblackstock.github.io/wotlk-server-guides/guides/addons.html?class=paladin&role=tank"
+            echo "paladin_protection=https://leblackstock.github.io/wotlk-server-guides/guides/addons.html?class=paladin&spec=paladin-protection"
+            echo "warrior_dps=https://leblackstock.github.io/wotlk-server-guides/guides/addons.html?class=warrior&role=dps"
+          } > /tmp/addon-context-live.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: addon-context-live-verification
+          path: /tmp/addon-context-live.txt
+          retention-days: 1
