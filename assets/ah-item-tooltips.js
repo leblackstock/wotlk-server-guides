@@ -4,6 +4,9 @@
   const scriptElement = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-item-tooltips\.js(?:\?|$)/.test(script.src));
   const scriptUrl = scriptElement && scriptElement.src ? new URL(scriptElement.src) : null;
   const ITEM_SELECTOR = "table tbody tr td:first-child strong, .ah-search-item-name";
+  const touchOnlyPointer = typeof global.matchMedia === "function" &&
+    global.matchMedia("(hover: none)").matches &&
+    global.matchMedia("(pointer: coarse)").matches;
 
   function normalize(value) {
     return String(value || "")
@@ -66,8 +69,21 @@
         text-decoration-style: solid;
         text-decoration-color: var(--gold, #f0c15a);
       }
+      @media (hover: none) and (pointer: coarse) {
+        a.ah-item-tooltip {
+          touch-action: manipulation;
+        }
+      }
     `;
     document.head.appendChild(style);
+  }
+
+  function addTooltipMetadata(link, itemId) {
+    if (touchOnlyPointer) {
+      link.removeAttribute("data-wowhead");
+      return;
+    }
+    link.setAttribute("data-wowhead", `item=${itemId}&domain=wotlk`);
   }
 
   function decorateNameNode(nameNode) {
@@ -78,7 +94,7 @@
     const existingLink = nameNode.closest("a");
     if (existingLink) {
       existingLink.classList.add("ah-item-tooltip");
-      existingLink.setAttribute("data-wowhead", `item=${itemId}&domain=wotlk`);
+      addTooltipMetadata(existingLink, itemId);
       nameNode.classList.add("ah-item-tooltip-label");
     } else {
       const link = document.createElement("a");
@@ -86,7 +102,8 @@
       link.target = "_blank";
       link.rel = "noopener";
       link.className = "ah-item-tooltip ah-item-tooltip-label";
-      link.setAttribute("data-wowhead", `item=${itemId}&domain=wotlk`);
+      link.title = touchOnlyPointer ? "Open this item on Wowhead" : "";
+      addTooltipMetadata(link, itemId);
       while (nameNode.firstChild) link.appendChild(nameNode.firstChild);
       nameNode.appendChild(link);
     }
@@ -111,6 +128,7 @@
   }
 
   function loadWowheadTooltips() {
+    if (touchOnlyPointer) return Promise.resolve();
     if (document.querySelector('script[src*="wow.zamimg.com/js/tooltips.js"]')) return Promise.resolve();
     global.whTooltips = Object.assign({}, global.whTooltips, {
       colorLinks: false,
