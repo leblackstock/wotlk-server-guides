@@ -52,6 +52,167 @@
     .raid-summary-title {
       line-height: 1.25;
     }
+
+    .raid-filter-panel {
+      margin: 14px 0 16px;
+      padding: 12px;
+      border: 1px solid rgba(var(--class-accent-rgb), .30);
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(var(--class-accent-rgb), .07), rgba(255,255,255,.025));
+    }
+
+    .raid-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+    }
+
+    .raid-filter-row + .raid-filter-row {
+      margin-top: 9px;
+    }
+
+    .raid-filter-label {
+      flex: 0 0 78px;
+      color: var(--text-strong);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .03em;
+    }
+
+    .raid-filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .raid-filter-button {
+      min-height: 32px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--surface-code);
+      color: var(--text-muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .raid-filter-button:hover,
+    .raid-filter-button:focus-visible {
+      border-color: var(--theme-accent);
+      color: var(--text-strong);
+      outline: none;
+    }
+
+    .raid-filter-button:focus-visible {
+      box-shadow: 0 0 0 2px rgba(var(--class-accent-rgb), .28);
+    }
+
+    .raid-filter-button[aria-pressed="true"] {
+      border-color: var(--class-accent);
+      background: rgba(var(--class-accent-rgb), .14);
+      color: var(--class-accent-soft);
+    }
+
+    .raid-filter-help,
+    .raid-filter-status {
+      margin: 9px 0 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .raid-filter-status {
+      color: var(--class-accent-soft);
+      font-weight: 800;
+    }
+
+    .raid-note {
+      padding: 8px 0;
+    }
+
+    .raid-note + .raid-note {
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
+
+    .raid-note[hidden] {
+      display: none !important;
+    }
+
+    .raid-note-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+
+    .raid-note-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 2px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .035em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .raid-note-size {
+      border-color: rgba(var(--class-accent-rgb), .38);
+      background: rgba(var(--class-accent-rgb), .075);
+      color: var(--class-accent-soft);
+    }
+
+    .raid-note-role {
+      border-color: rgba(var(--theme-accent-rgb), .38);
+      background: rgba(var(--theme-accent-rgb), .075);
+      color: var(--theme-accent-soft);
+    }
+
+    .raid-note-tested {
+      border-color: rgba(var(--status-success-rgb), .40);
+      background: rgba(var(--status-success-rgb), .075);
+      color: var(--status-success-soft);
+    }
+
+    .raid-note-verify {
+      border-color: rgba(var(--status-warning-rgb), .42);
+      background: rgba(var(--status-warning-rgb), .075);
+      color: var(--status-warning-soft);
+    }
+
+    .raid-note-text {
+      display: block;
+    }
+
+    .raid-filter-empty {
+      margin: 9px 0 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 560px) {
+      .raid-filter-label {
+        flex-basis: 100%;
+      }
+
+      .raid-filter-options {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+      }
+
+      .raid-filter-button {
+        justify-content: center;
+        padding-inline: 6px;
+      }
+    }
   </style>
   <script src="../assets/tankadin-tooltips.js?v=20260721-tooltip-labels-v2" defer></script>
 </head>
@@ -125,59 +286,125 @@
       <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Specific raid encounter notes</h2>
       <p class="mini-note">These are Tankadin responsibilities and useful Paladin tools, not full raid strategies. Follow the raid leader's positioning and assignment.</p>
 
+      <div class="raid-filter-panel" aria-label="Filter raid encounter notes">
+        <div class="raid-filter-row">
+          <span class="raid-filter-label" id="raid-size-filter-label">Raid size</span>
+          <div class="raid-filter-options" role="group" aria-labelledby="raid-size-filter-label">
+            <button class="raid-filter-button" type="button" data-filter-axis="size" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="raid-filter-button" type="button" data-filter-axis="size" data-filter-value="10" aria-pressed="false">10-player</button>
+            <button class="raid-filter-button" type="button" data-filter-axis="size" data-filter-value="25" aria-pressed="false">25-player</button>
+          </div>
+        </div>
+        <div class="raid-filter-row">
+          <span class="raid-filter-label" id="tank-role-filter-label">Tank role</span>
+          <div class="raid-filter-options" role="group" aria-labelledby="tank-role-filter-label">
+            <button class="raid-filter-button" type="button" data-filter-axis="role" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="raid-filter-button" type="button" data-filter-axis="role" data-filter-value="main" aria-pressed="false">Main tank</button>
+            <button class="raid-filter-button" type="button" data-filter-axis="role" data-filter-value="off" aria-pressed="false">Off-tank</button>
+          </div>
+        </div>
+        <p class="raid-filter-help">Shared and assigned-tank notes remain visible for either tank role. Encounter assignments always override these labels.</p>
+        <p class="raid-filter-status" id="raid-filter-status" aria-live="polite">Showing all raid sizes and tank roles.</p>
+      </div>
+
       <details>
         <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_frostarmor02.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Icecrown Citadel: Lower Spire and Plagueworks</span></summary>
         <div class="card-grid">
-          <div class="guide-box"><h3>Lord Marrowgar</h3><ul class="clean-list"><li>Stack with the other tank for Saber Lash and face him away from the raid.</li><li>Keep a ranged ability ready for Bone Spikes only when using it will not disturb boss control.</li><li>Use Divine Protection when Bone Storm ends if healers are still moving.</li></ul></div>
-          <div class="guide-box"><h3>Lady Deathwhisper</h3><ul class="clean-list"><li>Use Consecration and Hammer of the Righteous to establish add threat.</li><li>Hold Avenger's Shield for a caster, reanimated add, silence, or distant pickup.</li><li>In phase two, be ready for the assigned taunt swap.</li></ul></div>
-          <div class="guide-box"><h3>Gunship Battle</h3><ul class="clean-list"><li>If you jump, watch the opposing commander's stacking damage buff.</li><li>Use a cooldown or delay the next jump when stacks remain high.</li><li>Call the jump so healers and DPS do not arrive before the tank.</li></ul></div>
-          <div class="guide-box"><h3>Deathbringer Saurfang</h3><ul class="clean-list"><li>Tank swap at one stack of Rune of Blood.</li><li><strong>Hellscream ICC 10:</strong> Holy Wrath did not stun Blood Beasts in direct testing. Do not rely on it for Beast control.</li><li>Peel loose beasts with ranged tools without turning or dragging the boss through the raid.</li></ul></div>
-          <div class="guide-box"><h3>Festergut</h3><ul class="clean-list"><li>Swap before Gastric Bloat becomes lethal.</li><li>Plan Divine Protection for high-Inhale periods.</li><li>Bubble-cancel a stack only when the co-tank is ready and the interaction has been tested on Hellscream.</li></ul></div>
-          <div class="guide-box"><h3>Rotface</h3><ul class="clean-list"><li>Boss tank: face Slime Spray away from the raid.</li><li>Ooze tank: use movement and ranged pickup tools.</li><li><strong>Hellscream:</strong> Small Oozes are taunt-immune. Do not build the strategy around taunting them.</li></ul></div>
-          <div class="guide-box"><h3>Professor Putricide</h3><ul class="clean-list"><li>Keep the boss positioned for ooze and gas-cloud movement.</li><li>Save ranged snap threat when assigned to an add.</li><li>In phase three, swap on Mutated Plague and use planned cooldowns as damage ramps.</li></ul></div>
+          <div class="guide-box"><h3>Lord Marrowgar</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Stack with the other tank for Saber Lash and face him away from the raid.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">Keep a ranged ability ready for Bone Spikes only when using it will not disturb boss control.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Use Divine Protection when Bone Storm ends if healers are still moving.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Lady Deathwhisper</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Use Consecration and Hammer of the Righteous to establish add threat.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Hold Avenger's Shield for a caster, reanimated add, silence, or distant pickup.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">In phase two, be ready for the assigned taunt swap.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Gunship Battle</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">If you jump, watch the opposing commander's stacking damage buff.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Use a cooldown or delay the next jump when stacks remain high.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Call the jump so healers and DPS do not arrive before the tank.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Deathbringer Saurfang</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Tank swap at one stack of Rune of Blood.</span></li>
+            <li class="raid-note" data-raid-size="10" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10-player</span><span class="raid-note-tag raid-note-role">Shared</span><span class="raid-note-tag raid-note-tested">Hellscream tested</span></span><span class="raid-note-text">Holy Wrath did not stun Blood Beasts in direct ICC 10 testing. Do not rely on it for Beast control.</span></li>
+            <li class="raid-note" data-raid-size="25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">25-player</span><span class="raid-note-tag raid-note-role">Shared</span><span class="raid-note-tag raid-note-verify">Test on Hellscream</span></span><span class="raid-note-text">Holy Wrath has not been confirmed against Blood Beasts in ICC 25. Do not build Beast control around it until tested.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">Peel loose beasts with ranged tools without turning or dragging the boss through the raid.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Festergut</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Swap before Gastric Bloat becomes lethal.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Plan Divine Protection for high-Inhale periods.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Bubble-cancel a stack only when the co-tank is ready and the interaction has been tested on Hellscream.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Rotface</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Main tank</span></span><span class="raid-note-text">Face Slime Spray away from the raid.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Use movement and ranged pickup tools while controlling the Big Ooze.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span><span class="raid-note-tag raid-note-tested">Hellscream tested</span></span><span class="raid-note-text">Small Oozes are taunt-immune on Hellscream. Do not build the strategy around taunting them.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Professor Putricide</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Main tank</span></span><span class="raid-note-text">Keep the boss positioned for ooze and gas-cloud movement.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Save ranged snap threat when assigned to an add.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">In phase three, swap on Mutated Plague and use planned cooldowns as damage ramps.</span></li>
+          </ul></div>
         </div>
       </details>
 
       <details>
         <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_bloodboil.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Icecrown Citadel: Crimson Hall and Frostwing</span></summary>
         <div class="card-grid">
-          <div class="guide-box"><h3>Blood Prince Council</h3><ul class="clean-list"><li>If tanking Keleseth, collect Dark Nuclei with ranged tools.</li><li>Avoid cleaving or killing the nuclei that provide Shadow Resonance.</li><li>Use a defensive while nucleus coverage is still low.</li></ul></div>
-          <div class="guide-box"><h3>Blood-Queen Lana'thel</h3><ul class="clean-list"><li>The two tanks stay close enough for Blood Mirror.</li><li>Use a defensive for dangerous paired-tank damage windows.</li><li>Do not let movement mechanics separate the tank pair.</li></ul></div>
-          <div class="guide-box"><h3>Valithria Dreamwalker</h3><ul class="clean-list"><li>Prioritize Blazing Skeletons and dangerous Zombies.</li><li>Holy Wrath is excellent against the Undead add waves.</li><li>Face Abominations away and control their death position.</li></ul></div>
-          <div class="guide-box"><h3>Sindragosa</h3><ul class="clean-list"><li>Use Frost Resistance Aura unless the raid assigns another aura.</li><li>Plan cooldowns for Frost Breath and healer movement.</li><li>Swap to control Mystic Buffet and react immediately to Blistering Cold.</li></ul></div>
+          <div class="guide-box"><h3>Blood Prince Council</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">If tanking Keleseth, collect Dark Nuclei with ranged tools.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Avoid cleaving or killing the nuclei that provide Shadow Resonance.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Use a defensive while nucleus coverage is still low.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Blood-Queen Lana'thel</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Stay close enough to the other tank for Blood Mirror.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Use a defensive for dangerous paired-tank damage windows.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Do not let movement mechanics separate the tank pair.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Valithria Dreamwalker</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Prioritize Blazing Skeletons and dangerous Zombies.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Holy Wrath is excellent against the Undead add waves.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Face Abominations away and control their death position.</span></li>
+          </ul></div>
+          <div class="guide-box"><h3>Sindragosa</h3><ul class="clean-list raid-note-set">
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">Use Frost Resistance Aura unless the raid assigns another aura.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Plan cooldowns for Frost Breath and healer movement.</span></li>
+            <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Swap to control Mystic Buffet and react immediately to Blistering Cold.</span></li>
+          </ul></div>
         </div>
       </details>
 
       <details>
         <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">The Lich King</span></summary>
-        <ul class="clean-list">
-          <li>Know whether you are the boss tank or the add tank before the pull.</li>
-          <li>Holy Wrath is valuable for Ghouls and Shambling Horrors.</li>
-          <li>Cleanse Necrotic Plague only when assigned; an early or late cleanse can ruin add control.</li>
-          <li>Taunt Raging Spirits promptly during transitions.</li>
-          <li>When boss tanking, plan a personal or external cooldown for Soul Reaper.</li>
+        <ul class="clean-list raid-note-set">
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">Know whether you are the boss tank or the add tank before the pull.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Holy Wrath is valuable for Ghouls and Shambling Horrors.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Assigned tank</span></span><span class="raid-note-text">Cleanse Necrotic Plague only when assigned; an early or late cleanse can ruin add control.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Taunt Raging Spirits promptly during transitions.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="main"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Main tank</span></span><span class="raid-note-text">When boss tanking, plan a personal or external cooldown for Soul Reaper.</span></li>
         </ul>
       </details>
 
       <details>
         <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_fire_fire.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Ruby Sanctum: Halion</span></summary>
-        <ul class="clean-list">
-          <li>Face Halion away from the raid and keep the breath direction predictable.</li>
-          <li>Plan cooldowns around Flame or Dark Breath combined with movement.</li>
-          <li>Inside tank: cutter positioning outranks perfect rotation uptime.</li>
-          <li>Add tank: Seal of Command, Hammer, Consecration, and Hand of Reckoning are strong Living Ember tools.</li>
-          <li>React to actual damage and healer movement rather than using a fixed cooldown script from another server.</li>
+        <ul class="clean-list raid-note-set">
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Face Halion away from the raid and keep the breath direction predictable.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="main off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Both tanks</span></span><span class="raid-note-text">Plan cooldowns around Flame or Dark Breath combined with movement.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank / inside</span></span><span class="raid-note-text">Cutter positioning outranks perfect rotation uptime.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank / adds</span></span><span class="raid-note-text">Seal of Command, Hammer of the Righteous, Consecration, and Hand of Reckoning are strong Living Ember tools.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">React to actual damage and healer movement rather than using a fixed cooldown script from another server.</span></li>
         </ul>
       </details>
 
       <details>
         <summary><img class="raid-summary-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_insectswarm.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Trial of the Grand Crusader: Anub'arak</span></summary>
-        <ul class="clean-list">
-          <li>A block-focused set can be useful when tanking Nerubian Burrowers.</li>
-          <li>Holy Wrath stuns the Burrowers and helps stabilize add waves.</li>
-          <li>Interrupt Shadow Strike reliably when assigned; carry enough hit for the job.</li>
-          <li>Use Frost patches for controlled kiting and positioning.</li>
-          <li>Do not import solo-tank or overgeared private-server strategies as the default plan.</li>
+        <ul class="clean-list raid-note-set">
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">A block-focused set can be useful when tanking Nerubian Burrowers.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Holy Wrath stuns the Burrowers and helps stabilize add waves.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Interrupt Shadow Strike reliably when assigned; carry enough hit for the job.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="off"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Off-tank</span></span><span class="raid-note-text">Use Frost patches for controlled kiting and positioning.</span></li>
+          <li class="raid-note" data-raid-size="10 25" data-tank-role="shared"><span class="raid-note-meta"><span class="raid-note-tag raid-note-size">10 &amp; 25</span><span class="raid-note-tag raid-note-role">Shared</span></span><span class="raid-note-text">Do not import solo-tank or overgeared private-server strategies as the default plan.</span></li>
         </ul>
       </details>
 
@@ -197,5 +424,69 @@
 
   <footer>Unofficial player-made WotLK 3.3.5 guide • <span class="footer-pink">Protection Paladin</span> • Hellscream</footer>
 </div>
+  <script>
+    (function () {
+      const raidNotes = document.getElementById("raid-notes");
+      if (!raidNotes) return;
+
+      const state = { size: "all", role: "all" };
+      const buttons = Array.from(raidNotes.querySelectorAll(".raid-filter-button"));
+      const notes = Array.from(raidNotes.querySelectorAll(".raid-note"));
+      const noteSets = Array.from(raidNotes.querySelectorAll(".raid-note-set"));
+      const status = document.getElementById("raid-filter-status");
+
+      noteSets.forEach(function (noteSet) {
+        const empty = document.createElement("p");
+        empty.className = "raid-filter-empty";
+        empty.hidden = true;
+        empty.textContent = "No specific notes for this filter combination.";
+        noteSet.insertAdjacentElement("afterend", empty);
+      });
+
+      function updateFilters() {
+        let visibleCount = 0;
+
+        notes.forEach(function (note) {
+          const sizes = (note.dataset.raidSize || "10 25").split(" ");
+          const roles = (note.dataset.tankRole || "shared").split(" ");
+          const sizeMatches = state.size === "all" || sizes.includes(state.size);
+          const roleMatches = state.role === "all" || roles.includes(state.role) || roles.includes("shared");
+          const visible = sizeMatches && roleMatches;
+
+          note.hidden = !visible;
+          if (visible) visibleCount += 1;
+        });
+
+        noteSets.forEach(function (noteSet) {
+          const setNotes = Array.from(noteSet.querySelectorAll(".raid-note"));
+          const empty = noteSet.nextElementSibling;
+          if (empty && empty.classList.contains("raid-filter-empty")) {
+            empty.hidden = setNotes.some(function (note) { return !note.hidden; });
+          }
+        });
+
+        const sizeLabel = state.size === "all" ? "all raid sizes" : state.size + "-player";
+        const roleLabel = state.role === "all" ? "all tank roles" : state.role === "main" ? "main tank" : "off-tank";
+        status.textContent = "Showing " + visibleCount + " notes for " + sizeLabel + " and " + roleLabel + ".";
+      }
+
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const axis = button.dataset.filterAxis;
+          state[axis] = button.dataset.filterValue;
+
+          buttons
+            .filter(function (candidate) { return candidate.dataset.filterAxis === axis; })
+            .forEach(function (candidate) {
+              candidate.setAttribute("aria-pressed", String(candidate === button));
+            });
+
+          updateFilters();
+        });
+      });
+
+      updateFilters();
+    }());
+  </script>
 </body>
 </html>
