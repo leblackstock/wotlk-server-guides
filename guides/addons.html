@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find WotLK 3.3.5 addons by class, specialization, role, activity, interface feature, and compatibility state.">
+  <title>WotLK 3.3.5 Addon Library</title>
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260722-addons-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260722-addons-v1">
+  <link rel="stylesheet" href="../assets/addon-catalog.css?v=20260722-addons-v1">
+  <script src="../assets/addon-catalog-data.js?v=20260722-addons-v1" defer></script>
+  <script src="../assets/addon-search-core.js?v=20260722-addons-v1" defer></script>
+  <script src="../assets/addon-catalog.js?v=20260722-addons-v1" defer></script>
+</head>
+<body data-guide-section="addons">
+  <div class="wrap addon-page">
+    <nav class="addon-nav" aria-label="Site navigation">
+      <a href="../index.html">← Guide Hub</a>
+      <span aria-current="page">Addon Library</span>
+    </nav>
+
+    <header class="addon-header">
+      <span class="addon-kicker">Addons</span>
+      <h1>WotLK 3.3.5 Addon Library</h1>
+      <p class="sub">Search by what you want to improve—not just by addon name.</p>
+    </header>
+
+    <main>
+      <section class="addon-controls" aria-labelledby="addon-search-heading">
+        <div class="addon-search-row">
+          <div class="addon-search-block">
+            <label id="addon-search-heading" for="addon-search-input">Search addons</label>
+            <div class="addon-search-wrap">
+              <span aria-hidden="true">⌕</span>
+              <input id="addon-search-input" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Try healbt, prot pally, boss timer, or gear stats…" aria-describedby="addon-result-count">
+            </div>
+          </div>
+          <label class="addon-sort-label" for="addon-sort">Sort
+            <select id="addon-sort">
+              <option value="smart">Best match</option>
+              <option value="name">Addon name</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="addon-quick-row" aria-label="Quick filters">
+          <span class="addon-quick-label">Quick filters</span>
+          <div id="addon-quick-filters" class="addon-chip-row"></div>
+          <button id="addon-all-filters" class="addon-filter-toggle" type="button" aria-expanded="false" aria-controls="addon-filter-groups">All filters</button>
+        </div>
+
+        <div id="addon-filter-groups" class="addon-filter-panel" hidden></div>
+
+        <div id="addon-active-area" class="addon-active-area" hidden>
+          <span class="addon-active-label">Active</span>
+          <div id="addon-active-filters" class="addon-chip-row" aria-label="Active filters"></div>
+          <button id="addon-clear-all" class="addon-clear" type="button">Clear all</button>
+        </div>
+      </section>
+
+      <section id="addon-context-banner" class="addon-context-banner" hidden aria-live="polite"></section>
+
+      <div class="addon-results-head">
+        <p id="addon-result-count" class="addon-result-count" role="status" aria-live="polite">Loading addons…</p>
+      </div>
+
+      <section id="addon-grid" class="addon-grid" aria-label="Addon results"></section>
+
+      <section id="addon-empty" class="addon-empty" hidden>
+        <h2>No addons match that combination.</h2>
+        <p>Try removing a filter or using a broader search term.</p>
+        <button id="addon-empty-clear" type="button">Clear filters</button>
+      </section>
+
+      <noscript>
+        <section class="addon-noscript">
+          <h2>JavaScript is needed for search and filters</h2>
+          <p>The full catalog still has nine launch addons. Download links open in a new tab.</p>
+          <ul>
+            <li><a href="https://warperia.com/addon-wotlk/pallypower/" target="_blank" rel="noopener">PallyPower ↗</a></li>
+            <li><a href="https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html" target="_blank" rel="noopener">Protection Is Surprisingly Stupendous ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/deadly-boss-mods/" target="_blank" rel="noopener">Deadly Boss Mods ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/omen3/" target="_blank" rel="noopener">Omen3 ↗</a></li>
+            <li><a href="https://www.wowinterface.com/downloads/info15519-TauntMaster.html" target="_blank" rel="noopener">TauntMaster ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/healbot/" target="_blank" rel="noopener">HealBot ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/omnicc/" target="_blank" rel="noopener">OmniCC ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/weakauras/" target="_blank" rel="noopener">WeakAuras ↗</a></li>
+            <li><a href="https://warperia.com/addon-wotlk/ratingbuster/" target="_blank" rel="noopener">RatingBuster ↗</a></li>
+          </ul>
+        </section>
+      </noscript>
+
+      <aside class="addon-disclaimer" aria-label="Addon guide disclaimer">
+        <strong>Unofficial player-made guide.</strong> Addon pages, versions, and private-server behavior can change. Verify the exact 3.3.5a build, scan downloads, and test bindings in easy content before trusting them in a raid.
+      </aside>
+    </main>
+
+    <footer>Unofficial WotLK 3.3.5 addon reference. Compatibility does not mean tested on Hellscream.</footer>
+  </div>
+
+  <dialog id="addon-details-dialog" class="addon-dialog" aria-labelledby="addon-dialog-title">
+    <div class="addon-dialog-shell">
+      <button id="addon-dialog-close" class="addon-dialog-close" type="button" aria-label="Close addon details">×</button>
+      <div id="addon-dialog-content"></div>
+    </div>
+  </dialog>
+</body>
+</html>

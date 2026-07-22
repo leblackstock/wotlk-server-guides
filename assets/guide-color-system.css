@@ -29,6 +29,13 @@
   --navigation-global-deep: #394554;
   --navigation-global-rgb: 196, 206, 217;
 
+
+  /* Addon catalog site-section identity. This is not a class, status, or item-quality color. */
+  --section-addons-accent: #8fa8f5;
+  --section-addons-soft: #d4deff;
+  --section-addons-deep: #2d3c6b;
+  --section-addons-rgb: 143, 168, 245;
+
   /* Reusable mechanic pairs keep their meaning independent from class,
      specialization, status, and item-quality colors. */
   --mechanic-rotation-nine: #b59cff;
@@ -111,6 +118,17 @@
   --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
   --theme-on-accent: var(--surface-page-deep);
   --focus-ring: var(--theme-accent-soft);
+}
+
+
+/* The Addon Library uses a section identity without claiming a class or specialization. */
+[data-guide-section="addons"] {
+  --theme-accent: var(--section-addons-accent);
+  --theme-accent-soft: var(--section-addons-soft);
+  --theme-accent-deep: var(--section-addons-deep);
+  --theme-accent-rgb: var(--section-addons-rgb);
+  --theme-on-accent: var(--surface-page-deep);
+  --focus-ring: var(--section-addons-soft);
 }
 
 /* Class-only Paladin pages use pink as both the class and active theme. */

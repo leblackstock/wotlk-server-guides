@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Choose the talents, glyphs, macros, and addons that support reliable Protection Paladin play.">
   <title>Setting up your Tankadin | WotLK 3.3.5 Protection Paladin</title>
-  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260721-color-system-v2">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260722-addons-v1">
   <link rel="stylesheet" href="../assets/style.css">
   <link rel="stylesheet" href="../assets/protection-paladin.css?v=20260721-tooltip-colors-v2">
   <style>
@@ -20,6 +20,16 @@
     .talent-embed { display:block; width:100%; height:760px; border:0; background:#090d11; }
     .talent-fallback { margin:9px 0 0; color:var(--muted); font-size:12px; }
     @media (max-width:680px) { .title-icon { width:27px; height:27px; } .talent-embed { height:900px; } }
+
+    .addon-shortlist { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-top:12px; }
+    .addon-shortlist-item { display:grid; gap:5px; padding:11px; border:1px solid var(--line); border-radius:12px; background:var(--surface-card); }
+    .addon-shortlist-item h3 { margin:0; font-size:15px; }
+    .addon-shortlist-item p { margin:0; color:var(--muted); font-size:12px; }
+    .addon-rec-line { display:flex; flex-wrap:wrap; gap:6px; }
+    .addon-rec { display:inline-flex; padding:3px 7px; border:1px solid rgba(var(--theme-accent-rgb),.38); border-radius:999px; color:var(--theme-accent-soft); font-size:10px; font-weight:900; }
+    .addon-rec.optional { border-color:var(--line); color:var(--text-primary); }
+    .addon-browse-all { display:inline-flex; min-height:44px; align-items:center; margin-top:12px; padding:9px 12px; border:1px solid var(--theme-accent); border-radius:10px; background:rgba(var(--theme-accent-rgb),.09); font-weight:900; text-decoration:none; }
+    @media (max-width:680px) { .addon-shortlist { grid-template-columns:1fr; } }
   </style>
   <script src="../assets/tankadin-tooltips.js?v=20260721-tooltip-labels-v2" defer></script>
 </head>
@@ -335,80 +345,55 @@
 
 <section class="common" id="addons">
   <h2><span class="section-mark">◆</span> Addons</h2>
-
-  <div class="note paladin"><strong>Use the 3.3.5 version:</strong> The links below point to Wrath-compatible releases or the addon's historical download page. Confirm that you have the 3.3.5-era build, install one addon at a time, enable “Load out of date AddOns” only when necessary, and test it on a target dummy or easy dungeon before trusting it in a raid.</div>
-
-  <h3 style="margin:16px 0 10px">Paladin-specific addons</h3>
-  <div class="card-grid">
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/pallypower/" target="_blank" rel="noopener">PallyPower</a></h3>
-      <p><strong>What it is for:</strong> Assigning Greater Blessings across classes, checking who is missing a Paladin buff, and quickly maintaining your own aura, seal, blessing, and Righteous Fury. In a raid, it lets Paladins coordinate assignments instead of negotiating blessings in chat.</p>
-      <p><strong>What it is not for:</strong> It does not choose the raid's best blessing plan for you, play your character, or replace communication. Coordinated assignments work best when the other Paladins also run PallyPower, and assignments normally cannot be changed during combat.</p>
-      <div class="tag-row"><span class="tag class">Paladin utility</span><span class="tag safe">Strong recommendation</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html" target="_blank" rel="noopener">Protection Is Surprisingly Stupendous</a></h3>
-      <p><strong>What it is for:</strong> A Protection Paladin 9696 training aid that shows which configured ability is available next. It can help a new tank recognize the alternating 9-second and 6-second rhythm.</p>
-      <p><strong>What it is not for:</strong> It does not cast spells, handle taunts, track threat, warn about bosses, or know when encounter mechanics require you to break the normal rotation. It is a discontinued 2009 beta, so treat it as optional and expect that some 3.3.5 clients or private-server builds may produce errors.</p>
-      <div class="tag-row"><span class="tag theme">Protection only</span><span class="tag warn">Old/discontinued</span><span class="tag info">Training aid</span></div>
-    </div>
+  <div class="note paladin"><strong>Central addon catalog:</strong> The Addon Library now owns the full setup notes, limitations, compatibility warnings, and download links. The shortlist below opens each entry with Protection Paladin context already selected.</div>
+  <a class="addon-browse-all" href="addons.html?class=paladin&amp;spec=protection&amp;role=tank">Browse all Protection Paladin addons →</a>
+  <div class="addon-shortlist">
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=pallypower">PallyPower</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Essential · Core Function</span></div>
+      <p>Coordinate blessings and keep Righteous Fury, aura, seal, and self-buffs visible.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=deadly-boss-mods">Deadly Boss Mods</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Essential · Raid</span></div>
+      <p>Anticipate swaps, movement, dangerous casts, and scheduled mechanics.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=omen3">Omen3</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Recommended · Threat</span></div>
+      <p>Watch relative threat during pulls, resets, and tank swaps.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=healbot">HealBot</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Recommended · Utility / Rescue Frames</span></div>
+      <p>Use aggro-highlighted frames for Righteous Defense, Cleanse, Paladin Hands, and emergencies.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=weakauras">WeakAuras</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Recommended · Custom Tracking</span></div>
+      <p>Track Holy Shield, Divine Plea, Righteous Fury, Forbearance, taunts, and defensives.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=omnicc">OmniCC</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Recommended · Convenience</span></div>
+      <p>Read 969 timing and defensive availability directly on the action bars.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=ratingbuster">RatingBuster</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec">Recommended · Gearing</span></div>
+      <p>Make Defense, dodge, parry, hit, and expertise conversions easier to compare.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=tauntmaster">TauntMaster</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec optional">Optional · Rescue-Frame Alternative</span></div>
+      <p>Old click-to-taunt rescue buttons; verify the exact 3.3.5-era build before use.</p>
+    </article>
+    <article class="addon-shortlist-item">
+      <h3><a href="addons.html?class=paladin&amp;spec=protection&amp;role=tank#addon=protection-is-surprisingly-stupendous">Protection Is Surprisingly Stupendous</a></h3>
+      <div class="addon-rec-line"><span class="addon-rec optional">Optional · Training</span></div>
+      <p>Old 969 rhythm trainer; useful only while the rotation is becoming automatic.</p>
+    </article>
   </div>
-
-  <h3 style="margin:18px 0 10px">General tank and raid addons</h3>
-  <div class="card-grid">
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/deadly-boss-mods/" target="_blank" rel="noopener">Deadly Boss Mods</a></h3>
-      <p><strong>What it is for:</strong> Boss ability timers, prominent warnings, sounds, and encounter-specific alerts. It helps you anticipate tank swaps, movement, dangerous casts, and other scheduled mechanics.</p>
-      <p><strong>What it is not for:</strong> It is not a threat meter, rotation helper, or substitute for learning the fight. Timers can drift when our server uses custom scripting or different encounter timing, so react to the boss and combat log rather than obeying a bar blindly.</p>
-      <div class="tag-row"><span class="tag safe">Essential raid tool</span><span class="tag warn">Server timing may vary</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/omen3/" target="_blank" rel="noopener">Omen3</a></h3>
-      <p><strong>What it is for:</strong> Showing your group's relative threat on the current enemy so you can see whether another player is approaching or passing the tank. It is especially useful during pulls, threat resets, and tank swaps.</p>
-      <p><strong>What it is not for:</strong> It does not guarantee who a boss will attack, detect every taunt failure, or explain encounter-specific aggro rules. Immunities, fixates, threat wipes, range thresholds, and private-server combat-log behavior can all make the real target choice differ from a simple threat bar.</p>
-      <div class="tag-row"><span class="tag safe">Tank essential</span><span class="tag info">Threat visibility</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://www.wowinterface.com/downloads/info15519-TauntMaster.html" target="_blank" rel="noopener">TauntMaster</a></h3>
-      <p><strong>What it is for:</strong> Displaying a clickable health and threat button for each party or raid member. When someone pulls aggro, clicking that player's button can use Hand of Reckoning on their target; the Paladin binding also supports Righteous Defense and Hand of Protection.</p>
-      <p><strong>What it is not for:</strong> It does not decide whether a taunt is mechanically safe, distinguish every fixate or immunity, or replace encounter assignments. The addon is old and its download history includes post-Wrath versions, so confirm you have a working 3.3.5-era build and test every binding before using it in a raid.</p>
-      <div class="tag-row"><span class="tag theme">Click-to-taunt</span><span class="tag info">Party/raid rescue</span><span class="tag warn">Old; verify 3.3.5 build</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/healbot/" target="_blank" rel="noopener">HealBot</a></h3>
-      <p><strong>What it is for:</strong> Giving a Protection Paladin compact, clickable party and raid frames—not merely healing bars. Configure aggro highlighting so a player who pulls threat is immediately obvious, then bind <strong>Righteous Defense</strong> to a click on that player's frame. This can rescue up to three enemies attacking them without changing your boss target.</p>
-      <p><strong>Suggested Protection bindings:</strong> Start with Righteous Defense on an easy click, then use deliberate modifier-clicks for <strong>Cleanse</strong>, <strong>Hand of Freedom</strong>, <strong>Hand of Protection</strong>, <strong>Hand of Sacrifice</strong>, <strong>Hand of Salvation</strong>, <strong>Sacred Shield</strong>, and <strong>Lay on Hands</strong>. Keep dangerous or long-cooldown abilities behind Ctrl or Alt so an ordinary frame click cannot fire them accidentally.</p>
-      <p><strong>What it is not for:</strong> HealBot cannot tell whether the loose enemy is tauntable, whether Righteous Defense will grab unwanted adds, or whether using a Hand is safe. Hand of Protection can stop physical attacks and apply Forbearance; Hand of Sacrifice can redirect lethal damage into you while you are already tanking. Test the aggro indicator and every binding in easy content first.</p>
-      <div class="tag-row"><span class="tag theme">Protection-customizable</span><span class="tag safe">Righteous Defense frames</span><span class="tag info">Hands and Cleanse</span><span class="tag warn">Test bindings first</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/omnicc/" target="_blank" rel="noopener">OmniCC</a></h3>
-      <p><strong>What it is for:</strong> Adding readable numeric countdowns directly to action buttons, items, and abilities while they are on cooldown. It makes the 969 rhythm and defensive cooldown availability much easier to read at a glance.</p>
-      <p><strong>What it is not for:</strong> It does not recommend the next spell, track whether Holy Shield or Divine Plea is active, or warn about boss mechanics. It only turns the normal cooldown sweep into numbers.</p>
-      <div class="tag-row"><span class="tag safe">Simple and useful</span><span class="tag info">Cooldown numbers</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/weakauras/" target="_blank" rel="noopener">WeakAuras</a></h3>
-      <p><strong>What it is for:</strong> Building custom icons, bars, sounds, and warnings for buffs, debuffs, cooldowns, health, mana, and combat events. For Protection, good first trackers are Holy Shield, Divine Plea, Sacred Shield, Righteous Fury, Forbearance, taunt cooldowns, and major defensives.</p>
-      <p><strong>What it is not for:</strong> It is not a ready-made Protection setup by itself and it does not make decisions for you. A blank installation does very little until you create or import auras, and imported packages should be reviewed rather than trusted blindly.</p>
-      <div class="tag-row"><span class="tag theme">Highly customizable</span><span class="tag warn">Setup required</span></div>
-    </div>
-
-    <div class="guide-box">
-      <h3><a href="https://warperia.com/addon-wotlk/ratingbuster/" target="_blank" rel="noopener">RatingBuster</a></h3>
-      <p><strong>What it is for:</strong> Expanding item tooltips with rating conversions and easier comparisons, making old-client stats such as Defense, dodge, parry, hit, and expertise less cryptic while evaluating upgrades.</p>
-      <p><strong>What it is not for:</strong> It is not a BiS list, simulation, or encounter-aware gearing adviser. It does not know whether you already have 540 Defense, whether a socket bonus is worthwhile, or whether survival matters more than threat for the fight in front of you.</p>
-      <div class="tag-row"><span class="tag info">Gear comparison</span><span class="tag warn">Not a gearing verdict</span></div>
-    </div>
-  </div>
-
-  <p class="mini-note">These are direct replacements for the video's obsolete ad-link downloads. The two Paladin addons solve Paladin-specific problems; the seven general addons are useful across tanks, healers, and damage dealers.</p>
 </section>
 
 <nav class="page-pager" aria-label="Previous and next guide pages"><a href="protection-paladin-playing.html">← Playing your Tankadin</a><a href="protection-paladin-gearing.html">Building your Tankadin →</a></nav>
