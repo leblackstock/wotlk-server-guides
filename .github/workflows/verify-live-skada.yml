@@ -1,0 +1,76 @@
+name: Verify Live Skada Catalog
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for current GitHub Pages revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          data_url="https://leblackstock.github.io/wotlk-server-guides/assets/addon-catalog-data.js?run=${GITHUB_RUN_ID}"
+          page_url="https://leblackstock.github.io/wotlk-server-guides/guides/addons.html?run=${GITHUB_RUN_ID}"
+          for attempt in $(seq 1 36); do
+            curl -fsSL "$data_url" -o /tmp/addon-data.js || true
+            curl -fsSL "$page_url" -o /tmp/addons.html || true
+            if grep -Fq '"id":"skada"' /tmp/addon-data.js \
+              && grep -Fq '"downloadVersion":"1.8.87"' /tmp/addon-data.js \
+              && grep -Fq '20260723-skada-v1' /tmp/addons.html; then
+              echo "GitHub Pages is serving the Skada catalog revision."
+              exit 0
+            fi
+            echo "Attempt $attempt: waiting for GitHub Pages..."
+            sleep 10
+          done
+          echo "Timed out waiting for Skada on GitHub Pages." >&2
+          exit 1
+
+      - name: Install temporary browser
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install chromium >/dev/null
+
+      - name: Exercise live Skada behavior
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const assert = require('node:assert/strict');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+              const base = 'https://leblackstock.github.io/wotlk-server-guides/guides/addons.html';
+              await page.goto(`${base}?q=dps%20meter`, { waitUntil: 'networkidle' });
+              await page.waitForSelector('.addon-card');
+              assert.equal(await page.locator('.addon-card h2').first().textContent(), 'Skada Revisited');
+              await page.goto(`${base}?activity=raids#addon=skada`, { waitUntil: 'networkidle' });
+              await page.waitForSelector('#addon-details-dialog[open]');
+              assert.equal(await page.locator('#addon-dialog-title').textContent(), 'Skada Revisited');
+              const text = await page.locator('#addon-dialog-content').textContent();
+              assert.match(text, /1\.8\.87/);
+              assert.match(text, /many battles/);
+              assert.match(text, /No addon conflicts/);
+              assert.equal(await page.locator('a[href="https://warperia.com/addon-wotlk/skada-revisited/"]').count() > 0, true);
+              assert.equal(await page.locator('.addon-card').count(), 8);
+              console.log('Live Skada catalog verification passed.');
+            } finally {
+              await browser.close();
+            }
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
