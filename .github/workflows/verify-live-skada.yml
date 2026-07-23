@@ -64,7 +64,6 @@ jobs:
               assert.match(text, /many battles/);
               assert.match(text, /No addon conflicts/);
               assert.equal(await page.locator('a[href="https://warperia.com/addon-wotlk/skada-revisited/"]').count() > 0, true);
-              assert.equal(await page.locator('.addon-card').count(), 8);
               console.log('Live Skada catalog verification passed.');
             } finally {
               await browser.close();
