@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 11, "Default catalog should show eleven addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 12, "Default catalog should show twelve addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -32,6 +32,10 @@ async function noOverflow(page, label) {
     await desktop.waitForTimeout(80);
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Skada Revisited");
 
+    await desktop.locator("#addon-search-input").fill("chat timestamps");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Chatter");
+
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
     assert.match(await desktop.locator("#addon-context-banner").textContent(), /Leveling/);
@@ -45,6 +49,15 @@ async function noOverflow(page, label) {
     assert.match(await desktop.locator("#addon-dialog-content").textContent(), /many battles/);
     assert.match(await desktop.locator("#addon-dialog-content").textContent(), /No addon conflicts/);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/skada-revisited/"]').count() > 0, true);
+
+    await desktop.goto(`${base}/guides/addons.html?role=healer#addon=chatter`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Chatter");
+    const chatterText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(chatterText, /1\.0/);
+    assert.match(chatterText, /Use guildnotes/);
+    assert.match(chatterText, /Alt Linking/);
+    assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/chatter/"]').count() > 0, true);
 
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
@@ -97,7 +110,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 11);
+    assert.equal(await desktop.locator(".addon-card").count(), 12);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });

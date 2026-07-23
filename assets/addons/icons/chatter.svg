@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Chatter chat addon</title>
+  <desc id="desc">Two overlapping chat bubbles.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M24 29h63a10 10 0 0 1 10 10v29a10 10 0 0 1-10 10H55L36 94l4-16H24a10 10 0 0 1-10-10V39a10 10 0 0 1 10-10z" fill="#dedcd6" stroke="#414444" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M61 55h42a10 10 0 0 1 10 10v25a10 10 0 0 1-10 10H91l3 13-17-13H61a10 10 0 0 1-10-10V65a10 10 0 0 1 10-10z" fill="#cf4e17" stroke="#414444" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="68" cy="77" r="4" fill="#ebe9e3"/><circle cx="82" cy="77" r="4" fill="#ebe9e3"/><circle cx="96" cy="77" r="4" fill="#ebe9e3"/>
+</svg>

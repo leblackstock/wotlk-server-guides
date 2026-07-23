@@ -1189,6 +1189,19 @@
         "combat analysis"
       ],
       "order": 120
+    },
+    {
+      "id": "chat-enhancement",
+      "label": "Chat Enhancement",
+      "group": "feature",
+      "description": "Improves chat formatting, timestamps, links, copying, tabs, and related communication tools.",
+      "searchAliases": [
+        "chat addon",
+        "chat formatting",
+        "chat timestamps",
+        "copy chat"
+      ],
+      "order": 130
     }
   ],
   "importanceLevels": [
@@ -1301,6 +1314,12 @@
       "label": "Performance",
       "icon": "▥",
       "order": 120
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "icon": "▤",
+      "order": 130
     }
   ],
   "addons": [
@@ -2965,6 +2984,133 @@
       "icon": {
         "path": "assets/addons/icons/skada.svg",
         "alt": "Combat meter bars with a sword marker"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "chatter",
+      "name": "Chatter",
+      "aliases": [
+        "Chatter 1.0",
+        "Chatter chat addon"
+      ],
+      "searchTerms": [
+        "chat addon",
+        "chat timestamps",
+        "copy chat",
+        "chat links",
+        "chat tabs",
+        "channel colors",
+        "player names",
+        "alt linking",
+        "guild notes",
+        "chat font"
+      ],
+      "summary": "A configurable chat overhaul with timestamps, copying, links, channel styling, player names, tabs, fonts, and other quality-of-life tools.",
+      "does": [
+        "Adds timestamps, chat copying, clickable links, channel colors, player-name options, and chat formatting controls.",
+        "Provides configurable tabs, fonts, edit-box behavior, scrollback, highlights, and related chat modules.",
+        "Lets players enable only the chat modules they actually want."
+      ],
+      "doesNot": [
+        "Does not load cleanly with guild-note scanning enabled on the tested Hellscream setup.",
+        "Does not require Alt Linking; that module can be partly or fully disabled while the rest of Chatter remains usable."
+      ],
+      "generalSetup": [
+        "Install the archive so Interface\\AddOns\\Chatter\\Chatter.toc is the final path.",
+        "Type /chatter, then open Modules → Alt Linking.",
+        "Uncheck Use guildnotes, click Okay, and run /reload to prevent the confirmed login error.",
+        "If alt-name linking is not needed, uncheck Enable Alt Linking to disable the entire module instead.",
+        "Configure the remaining chat modules one at a time and check Swatter after reloading."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "chat-enhancement",
+        "beginner-friendly",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "chat-enhancement",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "dungeons",
+          "raids",
+          "pvp",
+          "leveling",
+          "daily-weekly-quests"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "optional",
+          "purposes": [
+            "communication"
+          ],
+          "summary": "Modernize and customize the old 3.3.5 chat window after applying the guild-note workaround.",
+          "reason": "Chatter adds substantial chat convenience, but the tested build needs one optional guild-note feature disabled to avoid a login error."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-23",
+        "lastReviewed": "2026-07-23",
+        "downloadVersion": "1.0",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "wrath-era",
+        "notes": [
+          "Hellscream test on July 23, 2026: Chatter loaded and its normal chat features appeared to work within a large addon setup.",
+          "Confirmed login error: Modules/AltNames.lua line 331 calls strlower on a missing guild-note value while Alt Linking scans guild notes.",
+          "Workaround: /chatter → Modules → Alt Linking → uncheck Use guildnotes → Okay → /reload.",
+          "Disabling Enable Alt Linking entirely also prevents that module from running while leaving the rest of Chatter available.",
+          "Because a confirmed error exists before applying the workaround, this is a tested-with-workaround record rather than a clean compatibility pass."
+        ]
+      },
+      "download": {
+        "url": "https://warperia.com/addon-wotlk/chatter/",
+        "source": "Warperia",
+        "notes": "Use the Wrath of the Lich King 3.3.5 download labeled 1.0."
+      },
+      "icon": {
+        "path": "assets/addons/icons/chatter.svg",
+        "alt": "Two overlapping chat bubbles"
       },
       "screenshots": [],
       "videos": [],
