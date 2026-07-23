@@ -70,6 +70,11 @@
         text-decoration-style: solid;
         text-decoration-color: var(--gold, #f0c15a);
       }
+      /* Prevent guide table rules from stretching Wowhead's outer frame table. */
+      .wowhead-tooltip > table {
+        table-layout: auto !important;
+        width: auto !important;
+      }
       @media (hover: none) and (pointer: coarse) {
         a.ah-item-tooltip {
           touch-action: manipulation;
@@ -82,27 +87,20 @@
         }
         .wowhead-tooltip-screen-inner {
           box-sizing: border-box !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: flex-start !important;
-          min-width: 0 !important;
           padding: 62px 12px 18px !important;
         }
         .wowhead-tooltip-screen-inner-box {
           box-sizing: border-box !important;
           margin: auto !important;
-          max-width: 430px !important;
-          min-width: 0 !important;
-          width: 100% !important;
-        }
-        .wowhead-tooltip-screen-inner .wowhead-tooltip {
-          box-sizing: border-box !important;
-          margin: 0 auto !important;
           max-width: calc(100vw - 24px) !important;
           min-width: 0 !important;
-          overflow: visible !important;
+          width: auto !important;
+        }
+        .wowhead-tooltip-screen-inner .wowhead-tooltip {
+          margin: 0 auto !important;
+          max-width: calc(100vw - 24px) !important;
           position: static !important;
-          width: 100% !important;
+          width: auto !important;
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip:not([data-visible="yes"]) {
           display: none !important;
@@ -111,25 +109,18 @@
           display: block !important;
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table {
-          box-sizing: border-box !important;
-          max-width: 100% !important;
-          width: 100% !important;
+          max-width: calc(100vw - 24px) !important;
+          table-layout: auto !important;
+          width: auto !important;
         }
-        .wowhead-tooltip-screen-inner .wowhead-tooltip table,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip tbody,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip tr,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip td,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip th {
-          max-width: 100% !important;
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table,
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
           white-space: normal !important;
         }
-        .wowhead-tooltip-screen-inner .wowhead-tooltip td,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip th,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip b,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip span,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip div {
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
           overflow-wrap: anywhere !important;
-          white-space: normal !important;
           word-break: normal !important;
         }
         .wowhead-tooltip-screen-caption {
