@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Quest marker</title>
+  <desc id="desc">A circular quest marker with an exclamation point over a folded map.</desc>
+  <rect width="64" height="64" rx="14" fill="#101722"/>
+  <path d="M12 17l13-5 14 5 13-5v35l-13 5-14-5-13 5z" fill="#273553" stroke="#8fa8f5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M25 12v35M39 17v35" fill="none" stroke="#d4deff" stroke-opacity=".45" stroke-width="2"/>
+  <circle cx="32" cy="29" r="15" fill="#18233a" stroke="#d4deff" stroke-width="2"/>
+  <path d="M32 18v15" stroke="#f2cf56" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="32" cy="40" r="3.6" fill="#f2cf56"/>
+</svg>
