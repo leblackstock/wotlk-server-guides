@@ -1,0 +1,74 @@
+name: Verify Live Questie Catalog
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for current GitHub Pages revision
+        shell: bash
+        run: |
+          for attempt in $(seq 1 36); do
+            HTML=$(curl -fsSL "https://leblackstock.github.io/wotlk-server-guides/guides/addons.html?cb=${GITHUB_RUN_ID}-${attempt}" || true)
+            DATA=$(curl -fsSL "https://leblackstock.github.io/wotlk-server-guides/assets/addon-catalog-data.js?cb=${GITHUB_RUN_ID}-${attempt}" || true)
+            if grep -q '20260723-questie-v1' <<<"$HTML" && grep -q '"id":"questie"' <<<"$DATA"; then
+              echo "GitHub Pages is serving the Questie revision."
+              exit 0
+            fi
+            echo "Waiting for Pages deployment, attempt ${attempt}/36..."
+            sleep 10
+          done
+          echo "Timed out waiting for the Questie Pages revision."
+          exit 1
+
+      - name: Install temporary browser
+        run: |
+          npm install --prefix /tmp/questie-live-browser playwright@1.54.1
+          npx --prefix /tmp/questie-live-browser playwright install --with-deps chromium
+
+      - name: Exercise live Questie behavior
+        env:
+          NODE_PATH: /tmp/questie-live-browser/node_modules
+        run: |
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const assert = require('node:assert/strict');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+              const base = 'https://leblackstock.github.io/wotlk-server-guides/guides/addons.html';
+              await page.goto(`${base}?activity=leveling&cb=${Date.now()}`, { waitUntil: 'networkidle' });
+              await page.waitForSelector('.addon-card[data-addon-id="questie"]');
+              assert.equal(await page.locator('.addon-card h2').first().textContent(), 'Questie');
+              assert.equal(await page.locator('.addon-card[data-addon-id="questie"] .addon-badge-essential').count(), 1);
+              assert.match(await page.locator('#addon-context-banner').textContent(), /Leveling/);
+
+              await page.goto(`${base}?activity=leveling&cb=${Date.now()}#addon=questie`, { waitUntil: 'networkidle' });
+              await page.waitForSelector('#addon-details-dialog[open]');
+              assert.equal(await page.locator('#addon-dialog-title').textContent(), 'Questie');
+              const content = await page.locator('#addon-dialog-content').textContent();
+              assert.match(content, /9\.6\.2-335/);
+              assert.match(content, /Tested on Hellscream|Hellscream test/);
+              const href = await page.locator('#addon-dialog-content a[href="https://warperia.com/addon-wotlk/questie/"]').getAttribute('href');
+              assert.equal(href, 'https://warperia.com/addon-wotlk/questie/');
+              console.log('Live Questie catalog verification passed.');
+            } finally {
+              await browser.close();
+            }
+          })().catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
