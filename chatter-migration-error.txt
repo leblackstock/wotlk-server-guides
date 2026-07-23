@@ -1,0 +1,11 @@
+/home/runner/work/wotlk-server-guides/wotlk-server-guides/scripts/apply-chatter-catalog.py:185: SyntaxWarning: invalid escape sequence '\.'
+  chatter_browser = '''    await desktop.goto(`${base}/guides/addons.html?role=healer#addon=chatter`, { waitUntil: "networkidle" });
+Traceback (most recent call last):
+  File "/home/runner/work/wotlk-server-guides/wotlk-server-guides/scripts/apply-chatter-catalog.py", line 203, in <module>
+    main()
+  File "/home/runner/work/wotlk-server-guides/wotlk-server-guides/scripts/apply-chatter-catalog.py", line 155, in main
+    unit = replace_once(unit, '  ["quest helper", "questie"]\n];', '  ["quest helper", "questie"],\n  ["chat addon", "chatter"],\n  ["chat timestamps", "chatter"]\n];', "unit search cases")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/wotlk-server-guides/wotlk-server-guides/scripts/apply-chatter-catalog.py", line 20, in replace_once
+    raise RuntimeError(f"{label}: expected one match, found {count}")
+RuntimeError: unit search cases: expected one match, found 0
