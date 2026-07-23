@@ -1,0 +1,61 @@
+name: Add Tested Chatter
+
+on:
+  push:
+    branches:
+      - agent/add-tested-chatter
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  build-test-branch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/add-tested-chatter
+
+      - name: Apply Chatter catalog migration
+        run: python scripts/apply-chatter-catalog.py
+
+      - name: Build generated catalog data
+        run: python scripts/build-addon-catalog.py
+
+      - name: Validate catalog and search behavior
+        run: |
+          python scripts/validate-addon-catalog.py
+          python scripts/build-addon-catalog.py --check
+          node tests/addon-search.test.js
+          git diff --check
+
+      - name: Install temporary browser test tooling
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install chromium >/dev/null
+
+      - name: Run browser smoke tests
+        run: |
+          python -m http.server 4173 >/tmp/addon-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          sleep 2
+          node tests/addon-browser-smoke.cjs
+
+      - name: Commit tested permanent changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/addons.json assets/addon-catalog-data.js assets/addons/icons/chatter.svg guides/addons.html scripts/validate-addon-catalog.py tests/addon-search.test.js tests/addon-browser-smoke.cjs
+          if git diff --cached --quiet; then
+            echo "No permanent changes to commit."
+          else
+            git commit -m "Add tested Chatter with guild-note workaround"
+            git push origin HEAD:agent/add-tested-chatter
+          fi
