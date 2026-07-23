@@ -36,7 +36,9 @@ const searchCases = [
   ["questi", "questie"],
   ["quest helper", "questie"],
   ["skadaa", "skada"],
-  ["dps meter", "skada"]
+  ["dps meter", "skada"],
+  ["chat addon", "chatter"],
+  ["chat timestamps", "chatter"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -122,7 +124,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 11);
+assert.equal(ids("").length, 12);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -145,6 +147,18 @@ assert.equal(skada.compatibility.downloadVersion, "1.8.87");
 assert.equal(skada.compatibility.hellscreamTested, true);
 assert.equal(skada.compatibility.hellscreamTestedDate, "2026-07-23");
 assert.ok(skada.tags.includes("tested-hellscream"));
+
+const chatter = addons.find((addon) => addon.id === "chatter");
+assert.equal(chatter.compatibility.downloadVersion, "1.0");
+assert.equal(chatter.compatibility.hellscreamTested, true);
+assert.equal(chatter.compatibility.hellscreamTestedDate, "2026-07-23");
+assert.ok(chatter.tags.includes("tested-hellscream"));
+assert.match(chatter.compatibility.notes.join(" "), /Use guildnotes/);
+assert.match(chatter.generalSetup.join(" "), /Modules.*Alt Linking/);
+assert.equal(chatter.download.url, "https://warperia.com/addon-wotlk/chatter/");
+const chatterRole = core.recommendationFor(chatter, state("", { role: ["healer"] }), catalog);
+assert.equal(chatterRole.importance, "optional");
+assert.deepEqual(chatterRole.purposes, ["communication"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
