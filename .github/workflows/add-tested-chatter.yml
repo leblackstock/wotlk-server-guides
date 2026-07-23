@@ -22,7 +22,12 @@ jobs:
           ref: agent/add-tested-chatter
 
       - name: Apply Chatter catalog migration
-        run: python scripts/apply-chatter-catalog.py
+        run: |
+          if ! python scripts/apply-chatter-catalog.py >/tmp/chatter-migration.log 2>&1; then
+            tail -n 8 /tmp/chatter-migration.log
+            exit 1
+          fi
+          cat /tmp/chatter-migration.log
 
       - name: Build generated catalog data
         run: python scripts/build-addon-catalog.py
