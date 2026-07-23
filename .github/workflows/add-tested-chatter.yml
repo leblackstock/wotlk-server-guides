@@ -35,6 +35,9 @@ jobs:
               if 'assert.match(chatterText, /1\\.0/);' in line:
                   lines[index] = '    assert.match(chatterText, /1\\\\.0/);'
                   changed = True
+              if 'browser = replace_once(browser, marker, chatter_browser + marker, "browser Chatter drawer")' in line:
+                  lines[index] = '        browser = browser.replace(marker, chatter_browser + marker, 1)'
+                  changed = True
           if not changed:
               raise SystemExit("Expected staged Chatter migration lines were not found")
           path.write_text("\n".join(lines) + "\n", encoding="utf-8")
