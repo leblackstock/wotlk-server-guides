@@ -21,6 +21,25 @@ jobs:
         with:
           ref: agent/add-tested-chatter
 
+      - name: Align staged migration with current tests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("scripts/apply-chatter-catalog.py")
+          lines = path.read_text(encoding="utf-8").splitlines()
+          changed = False
+          for index, line in enumerate(lines):
+              if 'unit = replace_once(unit' in line and 'quest helper' in line:
+                  lines[index] = '        unit = replace_once(unit, \'  ["dps meter", "skada"]\\n];\', \'  ["dps meter", "skada"],\\n  ["chat addon", "chatter"],\\n  ["chat timestamps", "chatter"]\\n];\', "unit search cases")'
+                  changed = True
+              if 'assert.match(chatterText, /1\\.0/);' in line:
+                  lines[index] = '    assert.match(chatterText, /1\\\\.0/);'
+                  changed = True
+          if not changed:
+              raise SystemExit("Expected staged Chatter migration lines were not found")
+          path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
       - name: Apply Chatter catalog migration
         run: |
           if ! python scripts/apply-chatter-catalog.py >/tmp/chatter-migration.log 2>&1; then
