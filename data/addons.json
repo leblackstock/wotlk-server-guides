@@ -1176,6 +1176,19 @@
         "quest objectives"
       ],
       "order": 120
+    },
+    {
+      "id": "combat-meter",
+      "label": "Combat Meter",
+      "group": "feature",
+      "description": "Records and analyzes damage, healing, threat, deaths, interrupts, dispels, and related combat data.",
+      "searchAliases": [
+        "damage meter",
+        "dps meter",
+        "healing meter",
+        "combat analysis"
+      ],
+      "order": 120
     }
   ],
   "importanceLevels": [
@@ -1281,6 +1294,12 @@
       "id": "leveling",
       "label": "Leveling",
       "icon": "↟",
+      "order": 120
+    },
+    {
+      "id": "performance",
+      "label": "Performance",
+      "icon": "▥",
       "order": 120
     }
   ],
@@ -2803,6 +2822,149 @@
       "icon": {
         "path": "assets/addons/icons/questie.svg",
         "alt": "Quest marker with an exclamation point"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "skada",
+      "name": "Skada Revisited",
+      "aliases": [
+        "Skada",
+        "Skada Damage Meter",
+        "Skada Revisited 1.8.87"
+      ],
+      "searchTerms": [
+        "damage meter",
+        "dps meter",
+        "healing meter",
+        "combat log",
+        "deaths",
+        "interrupts",
+        "dispels",
+        "threat meter",
+        "absorbs",
+        "damage taken"
+      ],
+      "summary": "A modular combat meter for damage, healing, threat, deaths, interrupts, dispels, mitigation, absorbs, and detailed fight review.",
+      "does": [
+        "Records damage, healing, absorbs, threat, deaths, interrupts, dispels, and other combat details.",
+        "Separates fights into segments and provides player, spell, and target breakdowns.",
+        "Supports configurable windows and modules for lightweight or detailed use."
+      ],
+      "doesNot": [
+        "Does not prove that the highest meter number came from correct encounter play.",
+        "Does not guarantee identical combat-log accuracy for every custom or unusually scripted encounter."
+      ],
+      "generalSetup": [
+        "Remove older Skada folders before installing this build; do not run two Skada versions together.",
+        "Install the archive so Interface\\AddOns\\Skada\\Skada.toc is the final path.",
+        "Open Skada settings and enable only the modules and windows you actually use.",
+        "Test fight segments, resets, threat, healing, deaths, interrupts, and report links in easy content first."
+      ],
+      "tags": [
+        "all-roles",
+        "combat",
+        "raiding",
+        "interface",
+        "dungeons",
+        "raids",
+        "pvp",
+        "combat-meter",
+        "lightweight",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "combat-meter",
+        "raids",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "dungeons",
+          "raids",
+          "pvp"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "activities": [
+              "dungeons",
+              "raids",
+              "pvp"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "performance"
+          ],
+          "summary": "Review damage, healing, threat, deaths, interrupts, dispels, and fight breakdowns.",
+          "reason": "Skada makes group performance and encounter mistakes easier to inspect without requiring a heavyweight modern meter."
+        },
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "performance"
+          ],
+          "summary": "Track the combat information most useful to your current role.",
+          "reason": "Every combat role benefits from reviewing more than raw damage, including threat, healing, deaths, mitigation, interrupts, and dispels."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-23",
+        "lastReviewed": "2026-07-23",
+        "downloadVersion": "1.8.87",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "maintained-port",
+        "notes": [
+          "Hellscream test reported July 23, 2026: Skada recorded combat successfully through many battles while a larger addon setup was enabled.",
+          "No addon conflicts were observed or reported during that use.",
+          "The exact companion-addon list and every module combination were not recorded, so compatibility with every possible setup is not claimed."
+        ]
+      },
+      "download": {
+        "url": "https://warperia.com/addon-wotlk/skada-revisited/",
+        "source": "Warperia",
+        "notes": "Use the Wrath of the Lich King 3.3.5 download labeled 1.8.87."
+      },
+      "icon": {
+        "path": "assets/addons/icons/skada.svg",
+        "alt": "Combat meter bars with a sword marker"
       },
       "screenshots": [],
       "videos": [],
