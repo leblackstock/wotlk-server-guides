@@ -1,0 +1,184 @@
+name: Fix Wowhead native tooltip layout
+
+on:
+  push:
+    branches:
+      - agent/fix-wowhead-native-layout
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/fix-wowhead-native-layout
+          fetch-depth: 0
+
+      - name: Restore native tooltip geometry
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          tooltip_path = Path("assets/ah-item-tooltips.js")
+          text = tooltip_path.read_text(encoding="utf-8")
+
+          old = '''      @media (hover: none) and (pointer: coarse) {
+                a.ah-item-tooltip {
+                  touch-action: manipulation;
+                }
+                .wowhead-tooltip-screen-inner-wrapper {
+                  bottom: 72px !important;
+                  overflow-x: hidden !important;
+                  overflow-y: auto !important;
+                  -webkit-overflow-scrolling: touch;
+                }
+                .wowhead-tooltip-screen-inner {
+                  box-sizing: border-box !important;
+                  display: flex !important;
+                  align-items: center !important;
+                  justify-content: flex-start !important;
+                  min-width: 0 !important;
+                  padding: 62px 12px 18px !important;
+                }
+                .wowhead-tooltip-screen-inner-box {
+                  box-sizing: border-box !important;
+                  margin: auto !important;
+                  max-width: 430px !important;
+                  min-width: 0 !important;
+                  width: 100% !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip {
+                  box-sizing: border-box !important;
+                  margin: 0 auto !important;
+                  max-width: calc(100vw - 24px) !important;
+                  min-width: 0 !important;
+                  overflow: visible !important;
+                  position: static !important;
+                  width: 100% !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip:not([data-visible="yes"]) {
+                  display: none !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip[data-visible="yes"] {
+                  display: block !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table {
+                  box-sizing: border-box !important;
+                  max-width: 100% !important;
+                  width: 100% !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip table,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip tbody,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip tr,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip td,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip th {
+                  max-width: 100% !important;
+                  white-space: normal !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip td,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip th,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip b,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip span,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip div {
+                  overflow-wrap: anywhere !important;
+                  white-space: normal !important;
+                  word-break: normal !important;
+                }
+                .wowhead-tooltip-screen-caption {
+                  bottom: max(7px, env(safe-area-inset-bottom)) !important;
+                  left: 9px !important;
+                  position: fixed !important;
+                  right: 9px !important;
+                }
+              }'''
+
+          new = '''      /* Keep the guide's table styles from resizing Wowhead's frame table. */
+              .wowhead-tooltip > table {
+                table-layout: auto !important;
+                width: auto !important;
+              }
+              @media (hover: none) and (pointer: coarse) {
+                a.ah-item-tooltip {
+                  touch-action: manipulation;
+                }
+                .wowhead-tooltip-screen-inner-wrapper {
+                  bottom: 72px !important;
+                  overflow-x: hidden !important;
+                  overflow-y: auto !important;
+                  -webkit-overflow-scrolling: touch;
+                }
+                .wowhead-tooltip-screen-inner {
+                  box-sizing: border-box !important;
+                  padding: 62px 12px 18px !important;
+                }
+                .wowhead-tooltip-screen-inner-box {
+                  box-sizing: border-box !important;
+                  margin: auto !important;
+                  max-width: calc(100vw - 24px) !important;
+                  min-width: 0 !important;
+                  width: auto !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip {
+                  margin: 0 auto !important;
+                  max-width: calc(100vw - 24px) !important;
+                  position: static !important;
+                  width: auto !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip:not([data-visible="yes"]) {
+                  display: none !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip[data-visible="yes"] {
+                  display: block !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table {
+                  max-width: calc(100vw - 24px) !important;
+                  table-layout: auto !important;
+                  width: auto !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
+                  white-space: normal !important;
+                }
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
+                .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
+                  overflow-wrap: anywhere !important;
+                  word-break: normal !important;
+                }
+                .wowhead-tooltip-screen-caption {
+                  bottom: max(7px, env(safe-area-inset-bottom)) !important;
+                  left: 9px !important;
+                  position: fixed !important;
+                  right: 9px !important;
+                }
+              }'''
+
+          if old not in text:
+              raise SystemExit("Expected broad tooltip layout block was not found")
+          tooltip_path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          search_path = Path("assets/ah-search.js")
+          search = search_path.read_text(encoding="utf-8")
+          old_key = "ah-item-tooltips.js?v=20260722-ah-mobile-v2"
+          new_key = "ah-item-tooltips.js?v=20260722-ah-native-v3"
+          if old_key not in search:
+              raise SystemExit("Expected tooltip cache key was not found")
+          search_path.write_text(search.replace(old_key, new_key, 1), encoding="utf-8")
+          PY
+
+      - name: Validate JavaScript
+        run: |
+          node --check assets/ah-item-tooltips.js
+          node --check assets/ah-search.js
+
+      - name: Commit focused correction
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "4189826+github-actions[bot]@users.noreply.github.com"
+          git add assets/ah-item-tooltips.js assets/ah-search.js
+          git commit -m "fix: preserve Wowhead native tooltip layout"
+          git push origin HEAD:agent/fix-wowhead-native-layout
