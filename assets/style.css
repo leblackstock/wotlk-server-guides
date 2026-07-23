@@ -47,6 +47,43 @@ header {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
+.hub-header {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  gap: 5px 22px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hub-logo {
+  display: block;
+  grid-row: 1 / span 2;
+  width: 112px;
+  height: 112px;
+  border: 1px solid rgba(114, 227, 255, 0.22);
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.34),
+    0 0 18px rgba(80, 201, 232, 0.09);
+}
+
+.hub-header-copy {
+  min-width: 0;
+}
+
+.hub-kicker {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 h1 {
   margin: 0 0 6px;
   font-size: 30px;
@@ -688,6 +725,23 @@ footer {
   header {
     border-radius: 16px;
     padding: 18px;
+  }
+
+  .hub-header {
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 12px 14px;
+  }
+
+  .hub-logo {
+    grid-row: 1;
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+  }
+
+  .hub-header .sub {
+    grid-column: 1 / -1;
   }
 
   h1 {
