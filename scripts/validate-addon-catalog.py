@@ -24,8 +24,9 @@ REQUIRED_ADDONS = {
     "weakauras",
     "ratingbuster",
     "questie",
+    "skada",
 }
-TESTED_HELLSCREAM_ADDONS = {"questie"}
+TESTED_HELLSCREAM_ADDONS = {"questie", "skada"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",

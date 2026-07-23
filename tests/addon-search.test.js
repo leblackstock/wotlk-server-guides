@@ -34,7 +34,9 @@ const searchCases = [
   ["gear stats", "ratingbuster"],
   ["969 trainer", "protection-is-surprisingly-stupendous"],
   ["questi", "questie"],
-  ["quest helper", "questie"]
+  ["quest helper", "questie"],
+  ["skadaa", "skada"],
+  ["dps meter", "skada"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -120,7 +122,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 10);
+assert.equal(ids("").length, 11);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -132,6 +134,17 @@ assert.equal(questie.compatibility.downloadVersion, "9.6.2-335");
 assert.equal(questie.compatibility.hellscreamTested, true);
 assert.equal(questie.compatibility.hellscreamTestedDate, "2026-07-23");
 assert.ok(questie.tags.includes("tested-hellscream"));
+
+const skada = addons.find((addon) => addon.id === "skada");
+assert.ok(ids("", { activity: ["raids"] }).includes("skada"));
+assert.ok(ids("", { role: ["healer"] }).includes("skada"));
+const skadaRaid = core.recommendationFor(skada, state("", { activity: ["raids"] }), catalog);
+assert.equal(skadaRaid.importance, "recommended");
+assert.deepEqual(skadaRaid.purposes, ["performance"]);
+assert.equal(skada.compatibility.downloadVersion, "1.8.87");
+assert.equal(skada.compatibility.hellscreamTested, true);
+assert.equal(skada.compatibility.hellscreamTestedDate, "2026-07-23");
+assert.ok(skada.tags.includes("tested-hellscream"));
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
