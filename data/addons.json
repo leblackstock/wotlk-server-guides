@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "catalogTitle": "WotLK 3.3.5 Addon Library",
-  "lastReviewed": "2026-07-22",
+  "lastReviewed": "2026-07-23",
   "tagGroups": [
     {
       "id": "role",
@@ -1164,6 +1164,18 @@
       "description": "The download history spans versions; confirm the archive is appropriate.",
       "searchAliases": [],
       "order": 60
+    },
+    {
+      "id": "quest-tracking",
+      "label": "Quest Tracking",
+      "group": "feature",
+      "description": "Shows quest starts, turn-ins, objectives, progress, or related map information.",
+      "searchAliases": [
+        "quest tracker",
+        "quest helper",
+        "quest objectives"
+      ],
+      "order": 120
     }
   ],
   "importanceLevels": [
@@ -1264,6 +1276,12 @@
       "label": "Custom Tracking",
       "icon": "◉",
       "order": 110
+    },
+    {
+      "id": "leveling",
+      "label": "Leveling",
+      "icon": "↟",
+      "order": 120
     }
   ],
   "addons": [
@@ -2668,6 +2686,127 @@
           "href": "guides/protection-paladin-gear-targets.html"
         }
       ]
+    },
+    {
+      "id": "questie",
+      "name": "Questie",
+      "aliases": [
+        "Questie-335",
+        "Quest Helper"
+      ],
+      "searchTerms": [
+        "quest helper",
+        "quest tracker",
+        "quest markers",
+        "quest objectives",
+        "quest givers",
+        "turn ins",
+        "leveling guide",
+        "map quests"
+      ],
+      "summary": "Shows quest givers, turn-ins, objectives, progress, and searchable quest information on the map and tracker.",
+      "does": [
+        "Shows quest start, turn-in, and objective notes on the map and minimap.",
+        "Expands quest tracking and adds useful quest, NPC, object, and party-progress tooltips.",
+        "Provides waypoints, zone quest lists, journey history, and a searchable quest database."
+      ],
+      "doesNot": [
+        "Does not guarantee accurate markers for custom, moved, or modified Hellscream quests.",
+        "Does not replace reading quest text when an objective or script behaves differently on the server."
+      ],
+      "generalSetup": [
+        "Install the 9.6.2-335 archive so Questie-335.toc sits directly inside Interface\\AddOns\\Questie-335.",
+        "Enable Questie-335 at character select and reload the interface.",
+        "Left-click the minimap button for settings and adjust map or minimap note density.",
+        "Right-click the minimap button for journey, zone quest, and search tools."
+      ],
+      "tags": [
+        "all-roles",
+        "questing",
+        "interface",
+        "map",
+        "leveling",
+        "daily-weekly-quests",
+        "quest-tracking",
+        "beginner-friendly",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "quest-tracking",
+        "leveling",
+        "map"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "leveling",
+          "daily-weekly-quests"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "activities": [
+              "leveling"
+            ]
+          },
+          "importance": "essential",
+          "purposes": [
+            "leveling"
+          ],
+          "summary": "See quest givers, turn-ins, objectives, and progress while leveling.",
+          "reason": "Questie removes much of the blind searching from standard leveling. Version 9.6.2-335 completed several Hellscream quests without Lua errors during a focused test."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-23",
+        "lastReviewed": "2026-07-23",
+        "downloadVersion": "9.6.2-335",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "maintained-port",
+        "notes": [
+          "Hellscream test on July 23, 2026: the addon loaded normally, several standard quests were completed, and Swatter recorded no Lua errors.",
+          "The test environment included only Questie and Swatter, so broader addon compatibility and conflict testing is not yet confirmed.",
+          "Custom quests, party progress sharing, and large addon combinations remain unverified."
+        ]
+      },
+      "download": {
+        "url": "https://warperia.com/addon-wotlk/questie/",
+        "source": "Warperia",
+        "notes": "Use the Wrath of the Lich King 3.3.5 download labeled 9.6.2-335."
+      },
+      "icon": {
+        "path": "assets/addons/icons/questie.svg",
+        "alt": "Quest marker with an exclamation point"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
     }
   ],
   "contextResolution": {

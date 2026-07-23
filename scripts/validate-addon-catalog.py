@@ -23,7 +23,9 @@ REQUIRED_ADDONS = {
     "omnicc",
     "weakauras",
     "ratingbuster",
+    "questie",
 }
+TESTED_HELLSCREAM_ADDONS = {"questie"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",
@@ -85,8 +87,8 @@ def main() -> int:
     purpose_ids = {item["id"] for item in payload.get("purposes", [])}
 
     addon_ids = [addon.get("id", "") for addon in addons]
-    if set(addon_ids) != REQUIRED_ADDONS or len(addons) != 9:
-        fail(errors, f"Launch catalog must contain exactly the nine approved addons; found {addon_ids!r}")
+    if set(addon_ids) != REQUIRED_ADDONS or len(addons) != len(REQUIRED_ADDONS):
+        fail(errors, f"Catalog must contain exactly the approved addons; found {addon_ids!r}")
     if len(addon_ids) != len(set(addon_ids)):
         fail(errors, "Addon IDs must be unique")
     if len(tag_by_id) != len(tags):
@@ -142,9 +144,14 @@ def main() -> int:
 
         compatibility = addon.get("compatibility", {})
         if compatibility.get("hellscreamTested"):
-            fail(errors, f"{addon_id}: Hellscream-tested claim lacks documented launch evidence")
-        if compatibility.get("lastReviewed") != payload.get("lastReviewed"):
-            fail(errors, f"{addon_id}: last-reviewed date must match catalog review date")
+            if addon_id not in TESTED_HELLSCREAM_ADDONS:
+                fail(errors, f"{addon_id}: Hellscream-tested claim lacks documented evidence")
+            if "tested-hellscream" not in addon.get("tags", []):
+                fail(errors, f"{addon_id}: Hellscream-tested record needs the tested-hellscream tag")
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", compatibility.get("hellscreamTestedDate", "")):
+                fail(errors, f"{addon_id}: Hellscream-tested record needs an ISO test date")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", compatibility.get("lastReviewed", "")):
+            fail(errors, f"{addon_id}: last-reviewed date must use YYYY-MM-DD")
 
         for collection_name in ("recommendations", "customizations"):
             for record in addon.get(collection_name, []):

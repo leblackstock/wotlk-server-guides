@@ -32,7 +32,9 @@ const searchCases = [
   ["boss timer", "deadly-boss-mods"],
   ["cooldown numbers", "omnicc"],
   ["gear stats", "ratingbuster"],
-  ["969 trainer", "protection-is-surprisingly-stupendous"]
+  ["969 trainer", "protection-is-surprisingly-stupendous"],
+  ["questi", "questie"],
+  ["quest helper", "questie"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -118,8 +120,18 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 9);
+assert.equal(ids("").length, 10);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
+
+const questie = addons.find((addon) => addon.id === "questie");
+assert.ok(ids("", { activity: ["leveling"] }).includes("questie"));
+const questieLeveling = core.recommendationFor(questie, state("", { activity: ["leveling"] }), catalog);
+assert.equal(questieLeveling.importance, "essential");
+assert.deepEqual(questieLeveling.purposes, ["leveling"]);
+assert.equal(questie.compatibility.downloadVersion, "9.6.2-335");
+assert.equal(questie.compatibility.hellscreamTested, true);
+assert.equal(questie.compatibility.hellscreamTestedDate, "2026-07-23");
+assert.ok(questie.tags.includes("tested-hellscream"));
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",

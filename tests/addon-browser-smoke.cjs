@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 9, "Default catalog should show nine addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 10, "Default catalog should show ten addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -27,6 +27,12 @@ async function noOverflow(page, label) {
     await desktop.locator("#addon-search-input").fill("healbt");
     await desktop.waitForTimeout(80);
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "HealBot");
+
+    await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
+    assert.match(await desktop.locator("#addon-context-banner").textContent(), /Leveling/);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Questie");
+    assert.equal(await desktop.locator('.addon-card[data-addon-id="questie"] .addon-badge-essential').count(), 1);
 
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
@@ -79,7 +85,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 9);
+    assert.equal(await desktop.locator(".addon-card").count(), 10);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
