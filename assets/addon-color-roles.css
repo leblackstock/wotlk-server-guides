@@ -1,0 +1,112 @@
+/*
+ * Addon Library color-role mappings.
+ *
+ * Layout remains in addon-catalog.css. This layer loads afterward and maps the
+ * live catalog components to the generic section theme plus explicit importance
+ * and compatibility roles from guide-color-system.css.
+ */
+
+body[data-guide-section="addons"] {
+  background:
+    radial-gradient(circle at 12% -10%, rgba(var(--theme-accent-rgb), .15), transparent 34rem),
+    radial-gradient(circle at 94% 3%, rgba(var(--status-info-rgb), .06), transparent 28rem),
+    linear-gradient(180deg, var(--surface-page-deep), var(--surface-page));
+}
+
+body[data-guide-section="addons"] .addon-page a { color: var(--theme-accent-soft); }
+
+body[data-guide-section="addons"] .addon-header {
+  border-color: rgba(var(--theme-accent-rgb), .34);
+  background:
+    radial-gradient(circle at 100% 0, rgba(var(--theme-accent-rgb), .17), transparent 28rem),
+    linear-gradient(135deg, var(--surface-raised), rgba(var(--theme-accent-rgb), .09) 55%, var(--surface-card));
+}
+body[data-guide-section="addons"] .addon-header::after {
+  background: linear-gradient(90deg, var(--theme-accent), transparent 70%);
+}
+body[data-guide-section="addons"] .addon-kicker { color: var(--theme-accent); }
+
+body[data-guide-section="addons"] .addon-controls {
+  border-color: rgba(var(--theme-accent-rgb), .28);
+  background: linear-gradient(145deg, var(--surface-section), rgba(var(--theme-accent-rgb), .035));
+}
+body[data-guide-section="addons"] .addon-search-wrap > span { color: var(--theme-accent); }
+body[data-guide-section="addons"] #addon-search-input:focus,
+body[data-guide-section="addons"] #addon-sort:focus {
+  border-color: var(--theme-accent);
+  box-shadow: 0 0 0 3px rgba(var(--theme-accent-rgb), .12);
+}
+
+body[data-guide-section="addons"] .addon-filter-chip[aria-pressed="true"],
+body[data-guide-section="addons"] .addon-filter-toggle[aria-expanded="true"] {
+  border-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .15);
+  color: var(--theme-accent-soft);
+}
+body[data-guide-section="addons"] .addon-clear { color: var(--theme-accent-soft); }
+body[data-guide-section="addons"] .addon-active-chip {
+  border-color: rgba(var(--theme-accent-rgb), .42);
+  background: rgba(var(--theme-accent-rgb), .08);
+  color: var(--theme-accent-soft);
+}
+body[data-guide-section="addons"] .addon-filter-count { color: var(--theme-accent); }
+
+body[data-guide-section="addons"] .addon-context-banner {
+  border-color: rgba(var(--theme-accent-rgb), .34);
+  border-left-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .075);
+  color: var(--theme-accent-soft);
+}
+
+body[data-guide-section="addons"] .addon-card:hover { border-color: rgba(var(--theme-accent-rgb), .42); }
+body[data-guide-section="addons"] .addon-icon { border-color: rgba(var(--theme-accent-rgb), .34); }
+
+body[data-guide-section="addons"] .addon-badge-essential {
+  border-color: var(--addon-importance-essential);
+  background: var(--addon-importance-essential);
+  color: var(--theme-on-accent);
+}
+body[data-guide-section="addons"] .addon-badge-recommended {
+  border-color: var(--theme-accent);
+  color: var(--addon-importance-recommended);
+}
+body[data-guide-section="addons"] .addon-badge-optional { color: var(--addon-importance-optional); }
+body[data-guide-section="addons"] .addon-badge-warning {
+  border-color: rgba(var(--status-warning-rgb), .48);
+  background: rgba(var(--status-warning-rgb), .08);
+  color: var(--status-warning-soft);
+}
+body[data-guide-section="addons"] .addon-badge-info {
+  border-color: rgba(var(--status-info-rgb), .36);
+  color: var(--status-info-soft);
+}
+
+body[data-guide-section="addons"] .addon-details-button {
+  border-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .13);
+  color: var(--theme-accent-soft);
+}
+body[data-guide-section="addons"] .addon-dialog-shell { border-left-color: rgba(var(--theme-accent-rgb), .40); }
+body[data-guide-section="addons"] .addon-dialog-download {
+  border-color: var(--theme-accent);
+  background: var(--theme-accent);
+  color: var(--theme-on-accent);
+}
+body[data-guide-section="addons"] .addon-dialog-callout {
+  border-left-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .075);
+  color: var(--theme-accent-soft);
+}
+body[data-guide-section="addons"] .addon-dialog-warning {
+  border-left-color: var(--status-warning);
+  background: rgba(var(--status-warning-rgb), .075);
+  color: var(--status-warning-soft);
+}
+body[data-guide-section="addons"] .addon-dialog summary,
+body[data-guide-section="addons"] .addon-module-list dt { color: var(--theme-accent-soft); }
+
+@media (max-width:760px) {
+  body[data-guide-section="addons"] .addon-dialog-shell {
+    border-top-color: rgba(var(--theme-accent-rgb), .40);
+  }
+}
