@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Addons and Auction House Color Standard</title>
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-section-colors-v1">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 8% -10%, rgba(var(--section-addons-rgb), .12), transparent 30rem),
+        radial-gradient(circle at 94% 0, rgba(var(--section-ah-rgb), .11), transparent 30rem),
+        linear-gradient(180deg, var(--surface-page-deep), var(--surface-page));
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    a { color: var(--navigation-global-soft); }
+    code {
+      padding: 2px 5px;
+      border: 1px solid var(--border-default);
+      border-radius: 6px;
+      background: var(--surface-code);
+      color: var(--text-primary);
+      font-size: .9em;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 18px 52px; }
+    .top-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+    .top-nav a {
+      min-height: 42px;
+      display:inline-flex;
+      align-items:center;
+      padding:8px 11px;
+      border:1px solid rgba(var(--navigation-global-rgb), .26);
+      border-radius:10px;
+      background:rgba(255,255,255,.035);
+      text-decoration:none;
+      font-size:12px;
+      font-weight:900;
+    }
+    .hero,
+    .section {
+      border: 1px solid var(--border-default);
+      border-radius: 18px;
+      background: var(--surface-section);
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    }
+    .hero {
+      position:relative;
+      overflow:hidden;
+      padding:22px;
+      background:
+        linear-gradient(110deg, rgba(var(--section-addons-rgb), .10), transparent 42%),
+        linear-gradient(250deg, rgba(var(--section-ah-rgb), .10), transparent 42%),
+        var(--surface-raised);
+    }
+    .hero::before {
+      position:absolute;
+      inset:0 0 auto;
+      height:3px;
+      background:linear-gradient(90deg, var(--section-addons-accent), var(--section-ah-accent));
+      content:"";
+    }
+    .kicker,
+    .eyebrow {
+      display:block;
+      margin-bottom:4px;
+      color:var(--navigation-global-accent);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    h1 { margin:0 0 7px; font-size:clamp(28px, 5vw, 38px); line-height:1.12; }
+    h2 { margin:0 0 10px; color:var(--text-strong); font-size:22px; }
+    h3 { margin:0 0 7px; color:var(--text-strong); font-size:16px; }
+    p { margin:0; }
+    .sub,
+    .intro,
+    .rule-card p,
+    td { color:var(--text-muted); }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .hero-actions a {
+      padding:7px 10px;
+      border:1px solid var(--border-default);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      text-decoration:none;
+      font-size:11px;
+      font-weight:900;
+    }
+    .section { margin-top:18px; padding:18px; }
+    .rule-grid,
+    .identity-grid,
+    .example-grid,
+    .token-grid { display:grid; gap:12px; }
+    .rule-grid { grid-template-columns:repeat(4, minmax(0,1fr)); }
+    .identity-grid,
+    .example-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .token-grid { grid-template-columns:repeat(4, minmax(0,1fr)); }
+    .rule-card,
+    .identity-card,
+    .example-card,
+    .token-card {
+      min-width:0;
+      padding:13px;
+      border:1px solid var(--border-default);
+      border-radius:14px;
+      background:var(--surface-card);
+    }
+    .rule-number {
+      display:inline-grid;
+      width:27px;
+      height:27px;
+      margin-bottom:9px;
+      place-items:center;
+      border-radius:50%;
+      background:var(--navigation-global-deep);
+      color:var(--navigation-global-soft);
+      font-size:11px;
+      font-weight:900;
+    }
+    .identity-card { position:relative; overflow:hidden; padding-top:18px; }
+    .identity-card::before {
+      position:absolute;
+      inset:0 0 auto;
+      height:4px;
+      background:var(--identity-accent);
+      content:"";
+    }
+    .identity-card.addons {
+      --identity-accent:var(--section-addons-accent);
+      border-color:rgba(var(--section-addons-rgb), .36);
+      background:linear-gradient(145deg, rgba(var(--section-addons-rgb), .08), var(--surface-card));
+    }
+    .identity-card.ah {
+      --identity-accent:var(--section-ah-accent);
+      border-color:rgba(var(--section-ah-rgb), .36);
+      background:linear-gradient(145deg, rgba(var(--section-ah-rgb), .08), var(--surface-card));
+    }
+    .palette { display:grid; grid-template-columns:repeat(3,1fr); height:48px; margin:10px 0; overflow:hidden; border-radius:10px; }
+    .addons .palette span:nth-child(1) { background:var(--section-addons-accent); }
+    .addons .palette span:nth-child(2) { background:var(--section-addons-soft); }
+    .addons .palette span:nth-child(3) { background:var(--section-addons-deep); }
+    .ah .palette span:nth-child(1) { background:var(--section-ah-accent); }
+    .ah .palette span:nth-child(2) { background:var(--section-ah-soft); }
+    .ah .palette span:nth-child(3) { background:var(--section-ah-deep); }
+    .use-list { margin:10px 0 0; padding-left:20px; color:var(--text-muted); }
+    .use-list li { margin:5px 0; }
+    .token-sample { height:40px; margin-bottom:9px; border-radius:9px; background:var(--sample); }
+    .token-card strong { display:block; color:var(--text-strong); }
+    .token-card span { display:block; margin-top:3px; color:var(--text-muted); font-size:11px; overflow-wrap:anywhere; }
+    .token-card.quick { --sample:var(--market-price-quick); }
+    .token-card.bid { --sample:var(--market-price-target-bid); }
+    .token-card.buyout { --sample:var(--market-price-target-buyout); }
+    .token-card.high { --sample:var(--market-price-high); }
+    .state-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:11px; }
+    .chip,
+    .badge,
+    .demand {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      min-height:32px;
+      padding:5px 9px;
+      border:1px solid var(--border-default);
+      border-radius:999px;
+      font-size:11px;
+      font-weight:900;
+    }
+    .chip.selected {
+      border-color:var(--section-addons-accent);
+      background:rgba(var(--section-addons-rgb), .14);
+      color:var(--section-addons-soft);
+    }
+    .chip.disabled { opacity:.42; }
+    .badge.essential { border-color:var(--addon-importance-essential); background:var(--addon-importance-essential); color:var(--surface-page-deep); }
+    .badge.recommended { border-color:var(--section-addons-accent); color:var(--addon-importance-recommended); }
+    .badge.optional { color:var(--addon-importance-optional); }
+    .badge.tested { border-color:rgba(var(--status-success-rgb), .42); color:var(--status-success-soft); }
+    .badge.caution { border-color:rgba(var(--status-warning-rgb), .48); background:rgba(var(--status-warning-rgb), .07); color:var(--status-warning-soft); }
+    .badge.broken { border-color:rgba(var(--status-danger-rgb), .48); background:rgba(var(--status-danger-rgb), .07); color:var(--status-danger-soft); }
+    .badge.unknown { color:var(--text-muted); }
+    .market-lane {
+      display:grid;
+      grid-template-columns:72px minmax(0,1fr);
+      gap:10px;
+      align-items:center;
+      margin-top:8px;
+      padding:9px;
+      border:1px solid var(--border-default);
+      border-radius:11px;
+      background:rgba(255,255,255,.02);
+    }
+    .market-lane strong { color:var(--lane); }
+    .market-lane.quick { --lane:var(--market-price-quick); }
+    .market-lane.bid { --lane:var(--market-price-target-bid); }
+    .market-lane.buyout { --lane:var(--market-price-target-buyout-soft); }
+    .market-lane.high { --lane:var(--market-price-high); }
+    .demand { border-color:rgba(var(--section-ah-rgb), .30); color:var(--text-primary); }
+    .demand span { color:var(--section-ah-accent); font-family:ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .callout {
+      margin-top:12px;
+      padding:11px 12px;
+      border-left:4px solid var(--status-warning);
+      border-radius:10px;
+      background:rgba(var(--status-warning-rgb), .07);
+      color:var(--status-warning-soft);
+      font-size:13px;
+    }
+    .table-wrap { margin-top:11px; overflow-x:auto; border:1px solid var(--border-default); border-radius:12px; }
+    table { width:100%; min-width:760px; border-collapse:collapse; }
+    th,
+    td { padding:10px; border-bottom:1px solid var(--border-default); text-align:left; vertical-align:top; }
+    th { background:var(--surface-table-head); color:var(--text-primary); font-size:11px; letter-spacing:.05em; text-transform:uppercase; }
+    tr:last-child td { border-bottom:0; }
+    footer { margin-top:18px; color:var(--text-muted); font-size:12px; text-align:center; }
+    @media (max-width:900px) {
+      .rule-grid,
+      .token-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width:640px) {
+      .wrap { padding:18px 12px 36px; }
+      .hero,
+      .section { padding:15px; }
+      .rule-grid,
+      .identity-grid,
+      .example-grid,
+      .token-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <nav class="top-nav" aria-label="Internal color references">
+      <a href="color-system.html">← Core color system</a>
+      <a href="#addons">Addons</a>
+      <a href="#auction-house">Auction House</a>
+      <a href="#implementation">Implementation</a>
+    </nav>
+
+    <header class="hero">
+      <span class="kicker">Internal design reference</span>
+      <h1>Addons + Auction House Color Standard</h1>
+      <p class="sub">The section identities, component meanings, market-data colors, and implementation boundaries that extend the shared WotLK guide system beyond class guides.</p>
+      <div class="hero-actions">
+        <a href="#rules">Rules</a>
+        <a href="#addons">Addon roles</a>
+        <a href="#auction-house">AH roles</a>
+        <a href="#boundaries">Boundaries</a>
+      </div>
+    </header>
+
+    <section class="section" id="rules">
+      <h2>Four color layers</h2>
+      <p class="intro">Every color decision must belong to one layer. Components may combine layers, but a color never changes meaning merely because it appears in another section.</p>
+      <div class="rule-grid" style="margin-top:12px">
+        <article class="rule-card"><span class="rule-number">1</span><h3>Foundation</h3><p>Surfaces, text, borders, table heads, and code backgrounds are shared across the entire site.</p></article>
+        <article class="rule-card"><span class="rule-number">2</span><h3>Global meaning</h3><p>Success, warning, danger, information, and site navigation keep fixed meanings everywhere.</p></article>
+        <article class="rule-card"><span class="rule-number">3</span><h3>Identity</h3><p>Addons and Auction House receive restrained section accents without borrowing class or status colors.</p></article>
+        <article class="rule-card"><span class="rule-number">4</span><h3>Local data</h3><p>Recommendation levels, price lanes, demand, and other data roles use named tokens within their domain.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="identity">
+      <h2>Section identities</h2>
+      <div class="identity-grid">
+        <article class="identity-card addons">
+          <span class="eyebrow">Site section</span>
+          <h3>Addon Library</h3>
+          <div class="palette" role="img" aria-label="Addon accent, soft, and deep colors"><span></span><span></span><span></span></div>
+          <p><code>#8FA8F5</code> accent, <code>#D4DEFF</code> soft, <code>#2D3C6B</code> deep.</p>
+          <ul class="use-list"><li>Page atmosphere and section landmarks</li><li>Selected filters and active catalog state</li><li>Primary Addon Library controls</li><li>Essential and Recommended hierarchy</li></ul>
+        </article>
+        <article class="identity-card ah">
+          <span class="eyebrow">Site section</span>
+          <h3>Auction House</h3>
+          <div class="palette" role="img" aria-label="Auction House accent, soft, and deep colors"><span></span><span></span><span></span></div>
+          <p><code>#63B7A6</code> accent, <code>#BDEBDF</code> soft, <code>#22594E</code> deep.</p>
+          <ul class="use-list"><li>AH page atmosphere and section landmarks</li><li>Search, hover, focus, and generic AH links</li><li>Guide-card framing and actions</li><li>Demand scale marks, never price lanes</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="addons">
+      <h2>Addon Library roles</h2>
+      <div class="example-grid">
+        <article class="example-card">
+          <h3>Filter states</h3>
+          <p class="intro">Filters use one section accent. Class, role, profession, and activity tags do not become a rainbow.</p>
+          <div class="state-row"><span class="chip">Unselected</span><span class="chip selected">Selected ✓</span><span class="chip disabled">Disabled</span></div>
+        </article>
+        <article class="example-card">
+          <h3>Recommendation level</h3>
+          <p class="intro">Importance is a recommendation hierarchy, not a compatibility or safety judgment.</p>
+          <div class="state-row"><span class="badge essential">★ Essential</span><span class="badge recommended">✓ Recommended</span><span class="badge optional">○ Optional</span></div>
+        </article>
+        <article class="example-card">
+          <h3>Compatibility state</h3>
+          <p class="intro">Compatibility consumes global semantic roles and can coexist with any recommendation level.</p>
+          <div class="state-row"><span class="badge tested">✓ Tested</span><span class="badge caution">! Verify version</span><span class="badge broken">× Known broken</span><span class="badge unknown">? Not tested</span></div>
+        </article>
+        <article class="example-card">
+          <h3>Purpose labels</h3>
+          <p class="intro">Training, Aesthetic, Utility, Raid, and similar purposes stay neutral labels. They explain why, not how important or safe.</p>
+          <div class="state-row"><span class="badge optional">◎ Training</span><span class="badge optional">✧ Aesthetic</span><span class="badge optional">✦ Utility</span></div>
+        </article>
+      </div>
+      <div class="callout"><strong>Boundary:</strong> an Essential addon may still carry an amber version warning. Recommendation and compatibility must never be compressed into one color.</div>
+    </section>
+
+    <section class="section" id="auction-house">
+      <h2>Auction House roles</h2>
+      <p class="intro">Ledger teal identifies the AH section. Price colors retain the existing lane meanings but now have explicit names and may not be reused as section or status colors.</p>
+      <div class="token-grid" style="margin-top:12px">
+        <article class="token-card quick"><div class="token-sample"></div><strong>Quick sale</strong><span>--market-price-quick</span></article>
+        <article class="token-card bid"><div class="token-sample"></div><strong>Target bid</strong><span>--market-price-target-bid</span></article>
+        <article class="token-card buyout"><div class="token-sample"></div><strong>Target buyout</strong><span>--market-price-target-buyout</span></article>
+        <article class="token-card high"><div class="token-sample"></div><strong>High / scarce</strong><span>--market-price-high</span></article>
+      </div>
+      <div class="example-grid" style="margin-top:12px">
+        <article class="example-card">
+          <h3>Price lanes</h3>
+          <div class="market-lane quick"><strong>Quick</strong><span>Fast-sale pricing, below the normal target.</span></div>
+          <div class="market-lane bid"><strong>Bid</strong><span>The intended auction bid within the target lane.</span></div>
+          <div class="market-lane buyout"><strong>Buyout</strong><span>The normal starting price and strongest visual priority.</span></div>
+          <div class="market-lane high"><strong>High</strong><span>Scarce-supply ceiling, not an automatic recommendation.</span></div>
+        </article>
+        <article class="example-card">
+          <h3>Demand scale</h3>
+          <p class="intro">One AH-colored scale replaces unrelated green, gold, cyan, and gray demand badges. Text and block count carry the meaning.</p>
+          <div class="state-row"><span class="demand">Very High <span>■■■■</span></span><span class="demand">High <span>■■■□</span></span><span class="demand">Medium <span>■■□□</span></span><span class="demand">Low <span>■□□□</span></span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="boundaries">
+      <h2>Meaning boundaries</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>May color</th><th>Must not color</th></tr></thead>
+          <tbody>
+            <tr><td>Addon identity</td><td>Filters, primary actions, section ambience, recommendation hierarchy</td><td>Compatibility warnings, class-wide recoloring, profession rainbows</td></tr>
+            <tr><td>AH identity</td><td>Search, generic links, guide-card hover, section ambience, demand marks</td><td>Price values, item quality, warnings</td></tr>
+            <tr><td>Status</td><td>Confirmed/safe, caution, failure risk, supporting information</td><td>Ordinary category labels or decorative variety</td></tr>
+            <tr><td>Item quality</td><td>Actual WoW item-quality names and indicators</td><td>Guide categories, profession badges, ordinary buttons</td></tr>
+            <tr><td>Market prices</td><td>Quick, target bid, target buyout, high/scarce lanes</td><td>Warnings, demand, section navigation</td></tr>
+            <tr><td>Global navigation</td><td>Guide Hub and site-level navigation</td><td>Class, spec, Addons, or AH identity inheritance</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="implementation">
+      <h2>Implementation rules</h2>
+      <div class="example-grid">
+        <article class="example-card">
+          <h3>Central token ownership</h3>
+          <p>Foundation, navigation, status, section identities, recommendation roles, market roles, class/spec identity, and WoW game-data colors live in <code>assets/guide-color-system.css</code>.</p>
+        </article>
+        <article class="example-card">
+          <h3>Component ownership</h3>
+          <p>Layout and component geometry remain in <code>addon-catalog.css</code>, <code>style.css</code>, or the AH section stylesheet. Components consume named roles rather than copying hex values.</p>
+        </article>
+        <article class="example-card">
+          <h3>Section activation</h3>
+          <p>Use <code>data-guide-section="addons"</code> or <code>data-guide-section="auction-house"</code>. Legacy AH pages are temporarily detected through their shared <code>.ah-guide-heading</code> marker.</p>
+        </article>
+        <article class="example-card">
+          <h3>Accessibility</h3>
+          <p>Every state retains text, icons, shape, or block count. Color supports meaning but never becomes the only instruction.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>Internal reference for the WotLK Server Guides repository. This page is intentionally unlinked from the public guide hub.</footer>
+  </main>
+</body>
+</html>

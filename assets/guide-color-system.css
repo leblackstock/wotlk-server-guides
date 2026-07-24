@@ -23,18 +23,45 @@
   --text-muted: #aeb8c2;
   --border-default: #2b3541;
 
-  /* Global navigation stays neutral across every class and specialization. */
+  /* Global navigation stays neutral across every class, specialization, and section. */
   --navigation-global-accent: #c4ced9;
   --navigation-global-soft: #edf3f8;
   --navigation-global-deep: #394554;
   --navigation-global-rgb: 196, 206, 217;
 
-
-  /* Addon catalog site-section identity. This is not a class, status, or item-quality color. */
+  /* Site-section identities are not class, status, item-quality, or data colors. */
   --section-addons-accent: #8fa8f5;
   --section-addons-soft: #d4deff;
   --section-addons-deep: #2d3c6b;
   --section-addons-rgb: 143, 168, 245;
+
+  --section-ah-accent: #63b7a6;
+  --section-ah-soft: #bdebdf;
+  --section-ah-deep: #22594e;
+  --section-ah-rgb: 99, 183, 166;
+
+  /* Addon recommendation and compatibility roles remain independent. */
+  --addon-importance-essential: var(--section-addons-accent);
+  --addon-importance-recommended: var(--section-addons-soft);
+  --addon-importance-optional: var(--text-muted);
+  --addon-compatibility-tested: var(--status-success);
+  --addon-compatibility-caution: var(--status-warning);
+  --addon-compatibility-broken: var(--status-danger);
+  --addon-compatibility-unknown: var(--text-muted);
+
+  /* Auction House market roles are data colors, not semantic status colors. */
+  --market-price-quick: #ffb071;
+  --market-price-quick-soft: #ffd3ad;
+  --market-price-quick-rgb: 255, 176, 113;
+  --market-price-target-bid: #72e3ff;
+  --market-price-target-bid-soft: #bcefff;
+  --market-price-target-bid-rgb: 114, 227, 255;
+  --market-price-target-buyout: #f0c15a;
+  --market-price-target-buyout-soft: #ffe1a0;
+  --market-price-target-buyout-rgb: 240, 193, 90;
+  --market-price-high: #caa7ff;
+  --market-price-high-soft: #eadcff;
+  --market-price-high-rgb: 202, 167, 255;
 
   /* Reusable mechanic pairs keep their meaning independent from class,
      specialization, status, and item-quality colors. */
@@ -46,7 +73,7 @@
   --mechanic-rotation-six-soft: #bcefff;
   --mechanic-rotation-six-rgb: 114, 227, 255;
 
-  /* Semantic status colors do not change with class or specialization. */
+  /* Semantic status colors do not change with class, specialization, or section. */
   --status-success: #8ee08e;
   --status-success-soft: #c8f6c8;
   --status-success-rgb: 142, 224, 142;
@@ -104,7 +131,7 @@
   --spec-paladin-retribution-rgb: 224, 107, 101;
   --spec-paladin-retribution-deep-rgb: 115, 46, 42;
 
-  /* Safe neutral defaults for pages that do not select a class theme. */
+  /* Safe neutral defaults for pages that do not select an identity. */
   --class-accent: var(--text-muted);
   --class-accent-soft: var(--text-primary);
   --class-accent-deep: var(--surface-subtle);
@@ -120,8 +147,7 @@
   --focus-ring: var(--theme-accent-soft);
 }
 
-
-/* The Addon Library uses a section identity without claiming a class or specialization. */
+/* Site sections use restrained identities without claiming class or status meaning. */
 [data-guide-section="addons"] {
   --theme-accent: var(--section-addons-accent);
   --theme-accent-soft: var(--section-addons-soft);
@@ -129,6 +155,16 @@
   --theme-accent-rgb: var(--section-addons-rgb);
   --theme-on-accent: var(--surface-page-deep);
   --focus-ring: var(--section-addons-soft);
+}
+
+[data-guide-section="auction-house"],
+body:has(.ah-guide-heading) {
+  --theme-accent: var(--section-ah-accent);
+  --theme-accent-soft: var(--section-ah-soft);
+  --theme-accent-deep: var(--section-ah-deep);
+  --theme-accent-rgb: var(--section-ah-rgb);
+  --theme-on-accent: var(--surface-page-deep);
+  --focus-ring: var(--section-ah-soft);
 }
 
 /* Class-only Paladin pages use pink as both the class and active theme. */
