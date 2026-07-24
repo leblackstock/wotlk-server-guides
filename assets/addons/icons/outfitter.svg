@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Outfitter</title>
+  <desc id="desc">Armor chestpiece surrounded by equipment-switch arrows.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M43 31l12-8h18l12 8 13 10-10 18-10-7v42H50V52l-10 7-10-18z" fill="#414444" stroke="#dedcd6" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M54 25c2 8 18 8 20 0" fill="none" stroke="#cf4e17" stroke-width="5" stroke-linecap="round"/>
+  <path d="M29 83c5 17 24 28 42 23" fill="none" stroke="#cf4e17" stroke-width="6" stroke-linecap="round"/>
+  <path d="M62 98l11 8-12 7" fill="none" stroke="#cf4e17" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M99 45C92 28 73 19 55 25" fill="none" stroke="#a4a9a5" stroke-width="6" stroke-linecap="round"/>
+  <path d="M64 33l-11-8 12-7" fill="none" stroke="#a4a9a5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
