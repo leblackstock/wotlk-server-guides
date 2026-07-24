@@ -387,6 +387,31 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
   .ah-guide-page-icon { width: 64px; height: 64px; border-radius: 15px; }
 }
 
+/* Mobile card selection uses one continuous card highlight. */
+@media (max-width: 760px) {
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selectable {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected {
+    border-color: rgba(var(--section-ah-rgb), .72);
+    background:
+      linear-gradient(135deg, rgba(var(--section-ah-rgb), .16), rgba(var(--section-ah-rgb), .055) 58%, var(--surface-section));
+    box-shadow:
+      inset 4px 0 var(--section-ah-accent),
+      0 0 0 2px rgba(var(--section-ah-rgb), .12),
+      0 10px 24px rgba(0,0,0,.26);
+  }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected > td {
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected > td[data-column="target"] {
+    background: rgba(var(--market-price-target-buyout-rgb), .10) !important;
+    border: 1px solid rgba(var(--market-price-target-buyout-rgb), .40) !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selectable > td { transition: none; }
   body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse { animation: none; }
