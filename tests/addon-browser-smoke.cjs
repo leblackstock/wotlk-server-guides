@@ -35,6 +35,9 @@ async function noOverflow(page, label) {
     await desktop.locator("#addon-search-input").fill("chat timestamps");
     await desktop.waitForTimeout(80);
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Chatter");
+    const chatterCard = desktop.locator('.addon-card[data-addon-id="chatter"]');
+    assert.equal(await chatterCard.locator(".addon-badge-warning").count(), 0, "Server-sensitive warning should stay out of the card headline");
+    assert.equal(await chatterCard.locator(".addon-card-tag").first().textContent(), "Chat Enhancement");
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -57,6 +60,7 @@ async function noOverflow(page, label) {
     assert.match(chatterText, /1\.0/);
     assert.match(chatterText, /Use guildnotes/);
     assert.match(chatterText, /Alt Linking/);
+    assert.match(chatterText, /Server-sensitive/);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/chatter/"]').count() > 0, true);
 
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });

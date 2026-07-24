@@ -253,9 +253,6 @@
       if (compatibility.maintenanceState === "old-unmaintained" || !compatibility.verifiedDownload) {
         return make("span", "addon-badge addon-badge-warning", "! Old / verify exact version");
       }
-      if (compatibility.serverSensitive) {
-        return make("span", "addon-badge addon-badge-warning", "! Server-sensitive behavior");
-      }
       return null;
     }
 
