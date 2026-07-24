@@ -1,0 +1,135 @@
+name: Temporary AH inline CSS cleanup
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/ah-inline-css-cleanup-trigger.txt
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move shared AH layout CSS and clean guide HTML
+        shell: bash
+        run: |
+          git switch -c agent/remove-ah-inline-css
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import re
+
+          guide_names = [
+              "mining-smithing-ah-price-guide.html",
+              "blacksmithing-materials-ah-price-guide.html",
+              "engineering-materials-ah-price-guide.html",
+              "jewelcrafting-gems-ah-price-guide.html",
+              "enchanting-mats-ah-price-guide.html",
+              "alchemy-materials-ah-price-guide.html",
+              "herbalism-herbs-ah-price-guide.html",
+              "inscription-materials-ah-price-guide.html",
+              "tailoring-cloth-ah-price-guide.html",
+              "skinning-leatherworking-materials-ah-price-guide.html",
+              "fishing-cooking-materials-ah-price-guide.html",
+              "cross-profession-materials-ah-price-guide.html",
+              "drop-turn-in-quest-page-items-ah-price-guide.html",
+              "gear-pattern-drops-ah-price-guide.html",
+              "utility-recipe-drops-ah-price-guide.html",
+              "consumable-misc-recipe-drops-ah-price-guide.html",
+          ]
+          paths = [Path("guides") / name for name in guide_names]
+          style_pattern = re.compile(r"<style>\s*(.*?)\s*</style>", re.S)
+
+          documents = {}
+          styles = []
+          for path in paths:
+              text = path.read_text(encoding="utf-8")
+              match = style_pattern.search(text)
+              if not match:
+                  raise SystemExit(f"Missing inline CSS block: {path}")
+              if len(style_pattern.findall(text)) != 1:
+                  raise SystemExit(f"Expected exactly one inline CSS block: {path}")
+              documents[path] = text
+              styles.append(match.group(1).strip())
+
+          hashes = {hashlib.sha256(style.encode("utf-8")).hexdigest() for style in styles}
+          if len(hashes) != 1:
+              raise SystemExit("The 16 AH inline CSS blocks are not identical; refusing automatic migration.")
+
+          legacy_css = re.sub(r"^:root\{[^}]+\}\s*", "", styles[0], count=1)
+          shared_path = Path("assets/ah-price-guide.css")
+          shared = shared_path.read_text(encoding="utf-8")
+          if "Shared legacy AH layout" in shared:
+              raise SystemExit("Shared legacy layout already migrated; refusing duplicate insertion.")
+          import_match = re.match(r'(@import url\([^\n]+\);\s*)', shared)
+          if not import_match:
+              raise SystemExit("Expected guide color-system import at the top of ah-price-guide.css")
+          import_line = import_match.group(1).strip()
+          semantic_css = shared[import_match.end():].lstrip()
+          combined = (
+              import_line
+              + "\n\n/* Shared legacy AH layout, migrated verbatim from the 16 guide pages. */\n"
+              + legacy_css
+              + "\n\n/* Semantic Auction House identity and interaction layer. */\n"
+              + semantic_css
+          )
+          shared_path.write_text(combined.rstrip() + "\n", encoding="utf-8")
+
+          for path, text in documents.items():
+              text, count = style_pattern.subn("", text, count=1)
+              if count != 1:
+                  raise SystemExit(f"Failed to remove inline CSS: {path}")
+              text = text.replace(
+                  '../assets/ah-guide-icons.css?v=20260724-ah-icons-v1',
+                  '../assets/ah-guide-icons.css?v=20260724-ah-shared-v2',
+                  1,
+              )
+              text, body_count = re.subn(
+                  r"<body(?:\s+data-guide-section=\"auction-house\")?>",
+                  '<body data-guide-section="auction-house">',
+                  text,
+                  count=1,
+              )
+              if body_count != 1:
+                  raise SystemExit(f"Failed to set Auction House section marker: {path}")
+              path.write_text(text, encoding="utf-8")
+
+          for path in paths:
+              text = path.read_text(encoding="utf-8")
+              if "<style" in text or "</style>" in text:
+                  raise SystemExit(f"Inline CSS remains: {path}")
+              if text.count('data-guide-section="auction-house"') != 1:
+                  raise SystemExit(f"Incorrect section marker count: {path}")
+              if "ah-guide-icons.css?v=20260724-ah-shared-v2" not in text:
+                  raise SystemExit(f"Shared stylesheet cache key not updated: {path}")
+
+          migrated = shared_path.read_text(encoding="utf-8")
+          required = [
+              "Shared legacy AH layout",
+              ".table-wrap>table",
+              ".pricepair.target",
+              ".site-nav",
+              "ah-row-selected",
+          ]
+          for needle in required:
+              if needle not in migrated:
+                  raise SystemExit(f"Shared stylesheet is missing expected rule: {needle}")
+          PY
+
+          rm -f .github/workflows/temporary-ah-inline-css-cleanup.yml
+          rm -f .github/ah-inline-css-cleanup-trigger.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/ah-price-guide.css guides .github
+          git diff --cached --check
+          git commit -m "Remove duplicated AH inline CSS"
+          git push --force-with-lease origin agent/remove-ah-inline-css
