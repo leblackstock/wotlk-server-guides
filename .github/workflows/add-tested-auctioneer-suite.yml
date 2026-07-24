@@ -22,7 +22,18 @@ jobs:
           ref: agent/add-tested-auctioneer-suite
 
       - name: Apply Auctioneer Suite catalog migration
-        run: python scripts/apply-auctioneer-suite-catalog.py
+        run: |
+          if ! python scripts/apply-auctioneer-suite-catalog.py >/tmp/auctioneer-migration.log 2>&1; then
+            tail -n 60 /tmp/auctioneer-migration.log > auctioneer-migration-error.txt
+            cat auctioneer-migration-error.txt
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add auctioneer-migration-error.txt
+            git commit -m "chore: capture Auctioneer migration failure" || true
+            git push origin HEAD:agent/add-tested-auctioneer-suite || true
+            exit 1
+          fi
+          cat /tmp/auctioneer-migration.log
 
       - name: Build generated catalog data
         run: python scripts/build-addon-catalog.py
