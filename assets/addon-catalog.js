@@ -11,7 +11,8 @@
   const COMPATIBILITY_LABELS = {
     "maintained-port": "Maintained port",
     "wrath-era": "Wrath-era build",
-    "old-unmaintained": "Old / unmaintained"
+    "old-unmaintained": "Old / unmaintained",
+    "legacy-compatible": "Legacy compatibility build"
   };
 
   function make(tag, className, text) {
@@ -369,6 +370,26 @@
       return wrapper;
     }
 
+    function renderModuleGroups(addon) {
+      if (!Array.isArray(addon.moduleGroups) || !addon.moduleGroups.length) return null;
+      const total = addon.moduleGroups.reduce((sum, group) => sum + (group.items || []).length, 0);
+      const details = make("details", "addon-module-map");
+      details.append(make("summary", "", `Suite module map (${total})`));
+      const inner = make("div", "addon-module-map-inner");
+      addon.moduleGroups.forEach((group) => {
+        const section = make("section", "addon-module-group");
+        section.append(make("h3", "", `${group.label} (${(group.items || []).length})`));
+        const list = make("dl", "addon-module-list");
+        (group.items || []).forEach((item) => {
+          list.append(make("dt", "", item.name), make("dd", "", item.description));
+        });
+        section.append(list);
+        inner.append(section);
+      });
+      details.append(inner);
+      return details;
+    }
+
     function renderDialog(addon) {
       dialogContent.replaceChildren();
       const recommendation = core.recommendationFor(addon, state, catalog);
@@ -437,6 +458,9 @@
         details.append(inner);
         dialogContent.append(details);
       }
+
+      const moduleMap = renderModuleGroups(addon);
+      if (moduleMap) dialogContent.append(moduleMap);
 
       const compatibility = make("section", "addon-dialog-section");
       compatibility.append(make("h3", "", "Compatibility and server notes"));

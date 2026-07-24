@@ -368,6 +368,14 @@ body[data-guide-section="addons"] {
 .addon-dialog summary { min-height: 44px; display: flex; align-items: center; padding: 9px 11px; color: var(--section-addons-soft); font-weight: 850; cursor: pointer; }
 .addon-dialog details > div { padding: 0 11px 11px; }
 .addon-all-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.addon-module-map-inner { display: grid; gap: 12px; }
+.addon-module-group { padding-top: 4px; }
+.addon-module-group + .addon-module-group { border-top: 1px solid var(--border-default); padding-top: 12px; }
+.addon-module-group h3 { margin: 0 0 8px; color: var(--text-strong); font-size: 14px; }
+.addon-module-list { display: grid; grid-template-columns: minmax(145px, .72fr) minmax(0, 1.8fr); margin: 0; gap: 0; }
+.addon-module-list dt, .addon-module-list dd { margin: 0; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.055); font-size: 12px; }
+.addon-module-list dt { padding-right: 12px; color: var(--section-addons-soft); font-weight: 850; overflow-wrap: anywhere; }
+.addon-module-list dd { color: var(--text-muted); }
 
 @media (max-width: 760px) {
   .addon-search-row { grid-template-columns: 1fr; }
@@ -387,6 +395,9 @@ body[data-guide-section="addons"] {
   .addon-download-link { width: 100%; }
   .addon-dialog-shell { padding: 15px; }
   .addon-dialog-meta-grid { grid-template-columns: 1fr; }
+  .addon-module-list { grid-template-columns: 1fr; }
+  .addon-module-list dt { padding-bottom: 2px; border-top: 1px solid rgba(255,255,255,.07); }
+  .addon-module-list dd { padding-top: 0; border-top: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

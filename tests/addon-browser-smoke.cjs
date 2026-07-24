@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 12, "Default catalog should show twelve addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 13, "Default catalog should show thirteen addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -38,6 +38,12 @@ async function noOverflow(page, label) {
     const chatterCard = desktop.locator('.addon-card[data-addon-id="chatter"]');
     assert.equal(await chatterCard.locator(".addon-badge-warning").count(), 0, "Server-sensitive warning should stay out of the card headline");
     assert.equal(await chatterCard.locator(".addon-card-tag").first().textContent(), "Chat Enhancement");
+
+    await desktop.locator("#addon-search-input").fill("auction house");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Auctioneer Suite");
+    const auctioneerCard = desktop.locator('.addon-card[data-addon-id="auctioneer-suite"]');
+    assert.equal(await auctioneerCard.locator(".addon-card-tag").first().textContent(), "Auction House");
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -62,6 +68,23 @@ async function noOverflow(page, label) {
     assert.match(chatterText, /Alt Linking/);
     assert.match(chatterText, /Server-sensitive/);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/chatter/"]').count() > 0, true);
+
+    await desktop.goto(`${base}/guides/addons.html?role=dps#addon=auctioneer-suite`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Auctioneer Suite");
+    const auctioneerText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(auctioneerText, /5\.9\.4961/);
+    assert.match(auctioneerText, /Load out of date AddOns/);
+    const moduleMap = desktop.locator(".addon-module-map");
+    assert.equal(await moduleMap.locator("summary").textContent(), "Suite module map (43)");
+    await moduleMap.locator("summary").click();
+    assert.equal(await moduleMap.locator(".addon-module-group").count(), 5);
+    assert.equal(await moduleMap.locator("dt").count(), 43);
+    assert.equal(await moduleMap.locator("dt", { hasText: "BeanCounter" }).count(), 1);
+    assert.equal(await moduleMap.locator("dt", { hasText: "Auc-Util-Appraiser" }).count(), 1);
+    assert.equal(await desktop.locator('a[href="https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip"]').count() > 0, true);
+    await noOverflow(desktop, "Auctioneer module drawer");
+
 
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
@@ -114,7 +137,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 12);
+    assert.equal(await desktop.locator(".addon-card").count(), 13);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });

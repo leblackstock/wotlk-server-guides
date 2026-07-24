@@ -38,7 +38,9 @@ const searchCases = [
   ["skadaa", "skada"],
   ["dps meter", "skada"],
   ["chat addon", "chatter"],
-  ["chat timestamps", "chatter"]
+  ["chat timestamps", "chatter"],
+  ["auction house", "auctioneer-suite"],
+  ["auctioneer", "auctioneer-suite"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -124,7 +126,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 12);
+assert.equal(ids("").length, 13);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -159,6 +161,19 @@ assert.equal(chatter.download.url, "https://warperia.com/addon-wotlk/chatter/");
 const chatterRole = core.recommendationFor(chatter, state("", { role: ["healer"] }), catalog);
 assert.equal(chatterRole.importance, "optional");
 assert.deepEqual(chatterRole.purposes, ["communication"]);
+
+const auctioneer = addons.find((addon) => addon.id === "auctioneer-suite");
+assert.equal(auctioneer.compatibility.downloadVersion, "5.9.4961");
+assert.equal(auctioneer.compatibility.hellscreamTested, true);
+assert.equal(auctioneer.compatibility.hellscreamTestedDate, "2026-07-24");
+assert.equal(auctioneer.download.url, "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip");
+assert.equal(auctioneer.moduleGroups.length, 5);
+assert.equal(auctioneer.moduleGroups.flatMap((group) => group.items).length, 43);
+assert.ok(auctioneer.moduleGroups.flatMap((group) => group.items).some((item) => item.name === "BeanCounter" && /transaction journal/.test(item.description)));
+assert.ok(auctioneer.moduleGroups.flatMap((group) => group.items).some((item) => item.name === "Auc-Util-Appraiser" && /Advanced posting/.test(item.description)));
+const auctioneerRole = core.recommendationFor(auctioneer, state("", { role: ["dps"] }), catalog);
+assert.equal(auctioneerRole.importance, "recommended");
+assert.deepEqual(auctioneerRole.purposes, ["economy"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
