@@ -42,7 +42,9 @@ const searchCases = [
   ["auction house", "auctioneer-suite"],
   ["auctioneer", "auctioneer-suite"],
   ["addon control", "addon-control-panel"],
-  ["acp", "addon-control-panel"]
+  ["acp", "addon-control-panel"],
+  ["bartender", "bartender4"],
+  ["action bars", "bartender4"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -128,7 +130,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 14);
+assert.equal(ids("").length, 15);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -188,6 +190,19 @@ assert.match(acp.compatibility.notes.join(" "), /not yet been tested on Hellscre
 const acpRole = core.recommendationFor(acp, state("", { role: ["dps"] }), catalog);
 assert.equal(acpRole.importance, "recommended");
 assert.deepEqual(acpRole.purposes, ["addon-management"]);
+
+const bartender4 = addons.find((addon) => addon.id === "bartender4");
+assert.equal(bartender4.compatibility.downloadVersion, "4.4.2-12-g94f3b58");
+assert.equal(bartender4.compatibility.hellscreamTested, true);
+assert.equal(bartender4.compatibility.hellscreamTestedDate, "2026-07-24");
+assert.equal(bartender4.download.url, "https://www.curseforge.com/wow/addons/bartender4/files/439962");
+assert.ok(bartender4.tags.includes("tested-hellscream"));
+assert.match(bartender4.compatibility.notes.join(" "), /No addon conflicts/);
+assert.match(bartender4.compatibility.notes.join(" "), /Vehicle action bars still need focused testing/);
+const bartenderRole = core.recommendationFor(bartender4, state("", { role: ["dps"] }), catalog);
+assert.equal(bartenderRole.importance, "recommended");
+assert.deepEqual(bartenderRole.purposes, ["action-bars"]);
+assert.match(bartenderRole.summary, /top action-bar recommendation/i);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",

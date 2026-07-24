@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 14, "Default catalog should show fourteen addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 15, "Default catalog should show fifteen addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -51,6 +51,14 @@ async function noOverflow(page, label) {
     const acpCard = desktop.locator('.addon-card[data-addon-id="addon-control-panel"]');
     assert.equal(await acpCard.locator(".addon-card-tag").first().textContent(), "Addon Management");
     assert.equal(await acpCard.locator(".addon-card-tag", { hasText: "Not Yet Tested on Hellscream" }).count(), 1);
+
+
+    await desktop.locator("#addon-search-input").fill("action bars");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Bartender4");
+    const bartenderCard = desktop.locator('.addon-card[data-addon-id="bartender4"]');
+    assert.equal(await bartenderCard.locator(".addon-card-tag").first().textContent(), "Action Bars");
+    assert.equal(await bartenderCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -103,6 +111,17 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator('a[href="https://www.curseforge.com/wow/addons/acp/files/471104"]').count() > 0, true);
     await noOverflow(desktop, "ACP details drawer");
 
+    await desktop.goto(`${base}/guides/addons.html?role=dps#addon=bartender4`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Bartender4");
+    const bartenderText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(bartenderText, /4\.4\.2-12-g94f3b58/);
+    assert.match(bartenderText, /No addon conflicts/);
+    assert.match(bartenderText, /Vehicle action bars still need focused testing/);
+    assert.match(bartenderText, /top action-bar recommendation/i);
+    assert.equal(await desktop.locator('a[href="https://www.curseforge.com/wow/addons/bartender4/files/439962"]').count() > 0, true);
+    await noOverflow(desktop, "Bartender4 details drawer");
+
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.match(await desktop.locator("#addon-context-banner").textContent(), /Protection Paladin/);
@@ -154,7 +173,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 14);
+    assert.equal(await desktop.locator(".addon-card").count(), 15);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
