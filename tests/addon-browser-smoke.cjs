@@ -190,7 +190,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 15);
+    assert.equal(await desktop.locator(".addon-card").count(), 16);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
