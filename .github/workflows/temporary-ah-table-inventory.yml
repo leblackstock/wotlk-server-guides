@@ -1,0 +1,164 @@
+name: Temporary AH table inventory
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+    paths:
+      - .github/ah-table-inventory-trigger.txt
+
+permissions:
+  contents: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Inventory Auction House table structures
+        shell: bash
+        run: |
+          git switch -C agent/ah-table-inventory
+          python - <<'PY'
+          from pathlib import Path
+          from html import unescape
+          from collections import Counter
+          import re
+
+          guide_names = [
+              "mining-smithing-ah-price-guide.html",
+              "blacksmithing-materials-ah-price-guide.html",
+              "engineering-materials-ah-price-guide.html",
+              "jewelcrafting-gems-ah-price-guide.html",
+              "enchanting-mats-ah-price-guide.html",
+              "alchemy-materials-ah-price-guide.html",
+              "herbalism-herbs-ah-price-guide.html",
+              "inscription-materials-ah-price-guide.html",
+              "tailoring-cloth-ah-price-guide.html",
+              "skinning-leatherworking-materials-ah-price-guide.html",
+              "fishing-cooking-materials-ah-price-guide.html",
+              "cross-profession-materials-ah-price-guide.html",
+              "drop-turn-in-quest-page-items-ah-price-guide.html",
+              "gear-pattern-drops-ah-price-guide.html",
+              "utility-recipe-drops-ah-price-guide.html",
+              "consumable-misc-recipe-drops-ah-price-guide.html",
+          ]
+
+          table_re = re.compile(r"<table(?P<attrs>[^>]*)>(?P<body>.*?)</table>", re.I | re.S)
+          thead_re = re.compile(r"<thead[^>]*>(.*?)</thead>", re.I | re.S)
+          row_re = re.compile(r"<tr[^>]*>(.*?)</tr>", re.I | re.S)
+          th_re = re.compile(r"<th(?P<attrs>[^>]*)>(?P<body>.*?)</th>", re.I | re.S)
+          td_re = re.compile(r"<td(?P<attrs>[^>]*)>(?P<body>.*?)</td>", re.I | re.S)
+          tag_re = re.compile(r"<[^>]+>")
+          class_re = re.compile(r'class\s*=\s*["\']([^"\']*)["\']', re.I)
+
+          def text(fragment):
+              return " ".join(unescape(tag_re.sub(" ", fragment)).split())
+
+          def classify(headers):
+              lowered = [h.casefold() for h in headers]
+              has_target = any("target" in h for h in lowered)
+              has_quick = any("quick" in h for h in lowered)
+              has_high = any("high" in h or "scarce" in h for h in lowered)
+              if has_target and has_quick and has_high:
+                  return "market"
+              if any(word in " ".join(lowered) for word in ["vendor", "reference", "source", "rule", "fixed", "value", "cost"]):
+                  return "reference"
+              return "specialty"
+
+          lines = [
+              "# Auction House table inventory",
+              "",
+              "Generated from all 16 AH guides before the universal table migration.",
+              "",
+          ]
+          signatures = Counter()
+          family_counts = Counter()
+          total_tables = 0
+          total_rows = 0
+          issues = []
+
+          for name in guide_names:
+              path = Path("guides") / name
+              html = path.read_text(encoding="utf-8")
+              tables = list(table_re.finditer(html))
+              lines.extend([f"## `{name}`", "", f"Tables: **{len(tables)}**", ""])
+              for index, match in enumerate(tables, start=1):
+                  total_tables += 1
+                  attrs = match.group("attrs")
+                  table_body = match.group("body")
+                  classes_match = class_re.search(attrs)
+                  classes = classes_match.group(1) if classes_match else ""
+                  thead_match = thead_re.search(table_body)
+                  header_fragment = thead_match.group(1) if thead_match else ""
+                  header_row = row_re.search(header_fragment)
+                  header_html = header_row.group(1) if header_row else header_fragment
+                  headers = [text(cell.group("body")) for cell in th_re.finditer(header_html)]
+                  family = classify(headers)
+                  family_counts[family] += 1
+                  signature = " | ".join(headers) if headers else "(no thead headers)"
+                  signatures[signature] += 1
+                  body_rows = []
+                  tbody_match = re.search(r"<tbody[^>]*>(.*?)</tbody>", table_body, re.I | re.S)
+                  if tbody_match:
+                      body_rows = list(row_re.finditer(tbody_match.group(1)))
+                  total_rows += len(body_rows)
+                  counts = []
+                  for row_index, row_match in enumerate(body_rows, start=1):
+                      cells = list(td_re.finditer(row_match.group(1)))
+                      counts.append(len(cells))
+                      if headers and len(cells) != len(headers):
+                          has_span = any(re.search(r"\b(?:colspan|rowspan)\s*=", c.group("attrs"), re.I) for c in cells)
+                          if not has_span:
+                              issues.append(f"{name} table {index} row {row_index}: {len(cells)} cells vs {len(headers)} headers")
+                  span_count = len(re.findall(r"\b(?:colspan|rowspan)\s*=", table_body, re.I))
+                  lines.extend([
+                      f"### Table {index}: `{family}`",
+                      "",
+                      f"- Existing classes: `{classes or '(none)'}`",
+                      f"- Headers: {signature}",
+                      f"- Body rows: {len(body_rows)}",
+                      f"- Cell counts: {sorted(set(counts)) if counts else []}",
+                      f"- Colspan/rowspan attributes: {span_count}",
+                      "",
+                  ])
+
+          lines.extend([
+              "## Summary",
+              "",
+              f"- Total tables: **{total_tables}**",
+              f"- Total body rows: **{total_rows}**",
+              f"- Market-family tables: **{family_counts['market']}**",
+              f"- Reference-family tables: **{family_counts['reference']}**",
+              f"- Specialty-family tables: **{family_counts['specialty']}**",
+              "",
+              "### Header signatures",
+              "",
+          ])
+          for signature, count in signatures.most_common():
+              lines.append(f"- **{count}×** {signature}")
+          lines.extend(["", "### Structural warnings", ""])
+          if issues:
+              lines.extend(f"- {issue}" for issue in issues)
+          else:
+              lines.append("- None detected.")
+
+          report = Path("internal/ah-table-inventory.md")
+          report.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+          PY
+
+          rm -f .github/workflows/temporary-ah-table-inventory.yml
+          rm -f .github/ah-table-inventory-trigger.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add internal/ah-table-inventory.md .github
+          git diff --cached --check
+          git commit -m "Inventory Auction House table structures"
+          git push --force origin agent/ah-table-inventory
