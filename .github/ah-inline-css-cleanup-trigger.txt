@@ -1,1 +1,1 @@
-Run the guarded Auction House inline CSS diagnostic pass.
+Run the safe shared Auction House CSS migration.
