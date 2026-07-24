@@ -1,9 +1,12 @@
 name: Temporary AH inline CSS cleanup
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - opened
+      - synchronize
     paths:
       - .github/ah-inline-css-cleanup-trigger.txt
 
@@ -16,6 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Move shared AH layout CSS and clean guide HTML
