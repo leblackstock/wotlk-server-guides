@@ -1,0 +1,79 @@
+name: Temporary AH universal table rebase
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+    paths:
+      - .github/ah-universal-rebase-trigger.txt
+
+permissions:
+  contents: write
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Refine and rebuild the universal AH table branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin agent/universal-ah-table-system
+          git branch -f source-snapshot origin/agent/universal-ah-table-system
+
+          scoped=(
+            assets/ah-guide-icons.css
+            assets/ah-price-guide.css
+            guides/mining-smithing-ah-price-guide.html
+            guides/blacksmithing-materials-ah-price-guide.html
+            guides/engineering-materials-ah-price-guide.html
+            guides/jewelcrafting-gems-ah-price-guide.html
+            guides/enchanting-mats-ah-price-guide.html
+            guides/alchemy-materials-ah-price-guide.html
+            guides/herbalism-herbs-ah-price-guide.html
+            guides/inscription-materials-ah-price-guide.html
+            guides/tailoring-cloth-ah-price-guide.html
+            guides/skinning-leatherworking-materials-ah-price-guide.html
+            guides/fishing-cooking-materials-ah-price-guide.html
+            guides/cross-profession-materials-ah-price-guide.html
+            guides/drop-turn-in-quest-page-items-ah-price-guide.html
+            guides/gear-pattern-drops-ah-price-guide.html
+            guides/utility-recipe-drops-ah-price-guide.html
+            guides/consumable-misc-recipe-drops-ah-price-guide.html
+            internal/color-system-addons-ah.html
+          )
+
+          merge_base="$(git merge-base main source-snapshot)"
+          conflicts="$(git diff --name-only "$merge_base"..main -- "${scoped[@]}")"
+          if [ -n "$conflicts" ]; then
+            echo "Scoped files changed on main after the migration branch was created:" >&2
+            echo "$conflicts" >&2
+            exit 1
+          fi
+
+          rm -f .github/workflows/temporary-ah-universal-rebase.yml
+          git add .github/workflows/temporary-ah-universal-rebase.yml
+          git commit -m "Remove temporary AH universal rebase workflow"
+          git push origin main
+          clean_main="$(git rev-parse HEAD)"
+
+          git switch -C agent/universal-ah-table-system "$clean_main"
+          git checkout source-snapshot -- "${scoped[@]}"
+
+          echo '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' | base64 -d | gzip -d > /tmp/refine-ah-css.py
+          python -m py_compile /tmp/refine-ah-css.py
+          python /tmp/refine-ah-css.py
+
+          git add "${scoped[@]}"
+          git diff --cached --check
+          git commit -m "Standardize Auction House table layouts"
+          git push --force origin agent/universal-ah-table-system
