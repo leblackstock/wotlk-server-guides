@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Choose Holy Paladin talents, glyphs, macros, HealBot bindings, raid frames, and addons.">
+  <title>Setting up your Holy Paladin | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/holy-paladin.css?v=20260724-holy-v1">
+  
+  <script src="../assets/paladin-tooltips.js?v=20260724-holy-v1" defer></script>
+  <script src="../assets/holy-paladin.js?v=20260724-holy-v1" defer></script>
+  
+</head>
+<body data-guide-class="paladin" data-guide-spec="holy">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Holy Paladin guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="holy-paladin-pve-guide.html">Quick Start</a><a href="holy-paladin-playing.html">Playing</a><a href="holy-paladin-setting-up.html" aria-current="page">Setup</a><a href="holy-paladin-gearing.html">Building</a><a href="holy-paladin-gear-targets.html">Equipping</a><a href="holy-paladin-raiding.html">Raiding</a></nav>
+  <header>
+    <span class="page-kicker">Holy Paladin • Level 80+</span>
+    <h1>WotLK 3.3.5 <span>Setting up your Holy Paladin</span></h1>
+    <p class="sub">Build the character and interface that keep assignments visible and emergency tools reachable.</p>
+    <div class="jump-nav" aria-label="Topics on this page"><a href="#talents">Talents</a><a href="#glyphs">Glyphs</a><a href="#macros">Macros</a><a href="#addons">Addons</a><a href="#sources">Sources</a></div>
+  </header>
+  <main>
+  
+<section class="common" id="talents">
+  <h2><span class="section-mark">◆</span> Talents</h2>
+  <div class="note spec"><strong>Recommended baseline:</strong> use a 51/20/0 Holy/Protection raid build that reaches Beacon of Light, Divine Sacrifice, Divine Guardian, Improved Righteous Fury, and Improved Devotion Aura.</div>
+  <div class="guide-box" style="margin-top:12px">
+    <h3>Standard 51/20/0 reference</h3>
+    <p>Use the full Imp Devotion Aura raid build in the linked talent guide. It documents the core points and the few legitimate flex choices without sending you to an unverified calculator string.</p>
+    <p><a href="https://www.wowhead.com/wotlk/guide/classes/paladin/holy/healer-talent-builds-glyphs-pve" target="_blank" rel="noopener"><strong>Open the verified Holy Paladin talent reference →</strong></a></p>
+  </div>
+
+  <div class="three-col" style="margin-top:12px">
+    <div class="priority-card">
+      <h3>Core Holy talents</h3>
+      <ul class="clean-list">
+        <li><strong>Divine Intellect</strong> and <strong>Holy Guidance</strong> make Intellect the engine of both mana and spell power.</li>
+        <li><strong>Illumination</strong> returns part of the base mana cost when healing spells crit.</li>
+        <li><strong>Light's Grace</strong> keeps Holy Light at its practical cast speed after the first cast.</li>
+        <li><strong>Judgements of the Pure</strong> supplies 15% haste for one minute after Judging.</li>
+        <li><strong>Infusion of Light</strong> turns Holy Shock crits into mobile or emergency follow-up casts.</li>
+        <li><strong>Beacon of Light</strong> defines the two-target healing pattern.</li>
+      </ul>
+    </div>
+    <div class="priority-card">
+      <h3>Protection subspec</h3>
+      <ul class="clean-list">
+        <li><strong>Improved Devotion Aura</strong> supplies armor plus a raid healing modifier when the equivalent effect is not already covered.</li>
+        <li><strong>Divine Sacrifice</strong> and <strong>Divine Guardian</strong> create a major raid cooldown and extend Sacred Shield.</li>
+        <li><strong>Improved Righteous Fury</strong> grants 6% damage reduction while Righteous Fury is active.</li>
+        <li>Turn Righteous Fury off when healer threat on newly spawned adds is dangerous.</li>
+      </ul>
+    </div>
+    <div class="priority-card">
+      <h3>Flexible points</h3>
+      <ul class="clean-list">
+        <li><strong>Blessed Hands</strong> improves Hand of Sacrifice and Hand of Salvation.</li>
+        <li><strong>Improved Lay on Hands</strong> adds a long-cooldown physical mitigation effect, but competes with stronger frequent utility.</li>
+        <li><strong>Improved Concentration Aura</strong> is niche where silence or pushback control matters.</li>
+        <li><strong>Improved Blessing of Wisdom</strong> is useful only when your raid needs you to supply it.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warning"><strong>Hellscream check:</strong> confirm the Divine Sacrifice cancel behavior and Sacred Shield duration extension before relying on private-server timing. Keep the standard build, but test the script.</div>
+</section>
+
+<section class="common" id="glyphs">
+  <h2><span class="section-mark">◆</span> Glyphs</h2>
+  <div class="table-wrap"><table><thead><tr><th>Glyph</th><th>Recommendation</th><th>Use</th><th>Why</th></tr></thead><tbody>
+    <tr><td><strong>Glyph of Holy Light</strong></td><td><span class="must">Default</span></td><td>All raid content</td><td>Adds nearby splash healing around the direct Holy Light target. The splash does not transfer through Beacon.</td></tr>
+    <tr><td><strong>Glyph of Seal of Wisdom</strong></td><td><span class="must">Default</span></td><td>All mana-sensitive content</td><td>Reduces healing spell costs while Seal of Wisdom is active.</td></tr>
+    <tr><td><strong>Glyph of Beacon of Light</strong></td><td><span class="must">Typical third</span></td><td>Stable assignments</td><td>Extends Beacon duration, saving refresh globals and mana when the same target remains assigned.</td></tr>
+    <tr><td><strong>Glyph of Divinity</strong></td><td><span class="optional">Situational</span></td><td>Very mana-tight fights</td><td>Returns mana when Lay on Hands is used, but maximum value can conflict with saving Lay on Hands as a clutch heal.</td></tr>
+    <tr><td><strong>Glyph of Flash of Light</strong></td><td><span class="optional">Niche</span></td><td>Flash-heavy assignments</td><td>Useful only when the encounter genuinely rewards sustained Flash of Light use and neither other third glyph is valuable.</td></tr>
+    <tr><td><strong>Glyph of Lay on Hands</strong></td><td><span class="must">Minor</span></td><td>Always</td><td>Reduces the long Lay on Hands cooldown.</td></tr>
+    <tr><td><strong>Glyph of Sense Undead</strong></td><td><span class="optional">Free minor</span></td><td>Undead raids</td><td>Small free damage benefit while Sense Undead is active; relevant to much of ICC.</td></tr>
+    <tr><td><strong>Glyph of the Wise</strong></td><td><span class="optional">Minor</span></td><td>Convenience</td><td>Reduces Seal of Wisdom mana cost when resealing.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="common" id="macros">
+  <h2><span class="section-mark">◆</span> Macros</h2>
+  <div class="two-col">
+    <div class="macro-card"><h3>Mouseover heal</h3><p class="macro-purpose">Replace the spell name to create Holy Light, Flash of Light, Holy Shock, or Cleanse variants.</p><code class="macro-code">#showtooltip Holy Light
+/cast [@mouseover,help,nodead][help,nodead][@player] Holy Light</code></div>
+    <div class="macro-card"><h3>Beacon assignment</h3><p class="macro-purpose">Mouseover first, then focus, then current friendly target.</p><code class="macro-code">#showtooltip Beacon of Light
+/cast [@mouseover,help,nodead][@focus,help,nodead][help,nodead] Beacon of Light</code></div>
+    <div class="macro-card"><h3>Sacred Shield assignment</h3><p class="macro-purpose">Keeps the shield on the intended tank without retargeting the boss.</p><code class="macro-code">#showtooltip Sacred Shield
+/cast [@mouseover,help,nodead][@focus,help,nodead][help,nodead] Sacred Shield</code></div>
+    <div class="macro-card"><h3>Hand of Sacrifice</h3><p class="macro-purpose">Fast external on a mouseover or focus tank.</p><code class="macro-code">#showtooltip Hand of Sacrifice
+/cast [@mouseover,help,nodead][@focus,help,nodead][help,nodead] Hand of Sacrifice</code></div>
+    <div class="macro-card"><h3>Divine Guardian cancel</h3><p class="macro-purpose">First press activates Divine Sacrifice; second press removes the transfer aura while the raid reduction remains on standard 3.3.5 behavior.</p><code class="macro-code">#showtooltip Divine Sacrifice
+/cast Divine Sacrifice
+/cancelaura Divine Sacrifice</code></div>
+    <div class="macro-card"><h3>Emergency self protection</h3><p class="macro-purpose">Use before or with Hand of Sacrifice when transferred damage would threaten you.</p><code class="macro-code">#showtooltip Divine Protection
+/cast Divine Protection</code></div>
+    <div class="macro-card"><h3>Aura Mastery reminder</h3><p class="macro-purpose">Aura Mastery boosts the aura currently active. Put the correct aura on a nearby keybind.</p><code class="macro-code">#showtooltip Aura Mastery
+/cast Aura Mastery
+/raid Aura Mastery active</code></div>
+    <div class="macro-card"><h3>Cancel Divine Shield</h3><p class="macro-purpose">Use cautiously when an immunity must end immediately.</p><code class="macro-code">/cancelaura Divine Shield</code></div>
+  </div>
+  <div class="note warning"><strong>Macro limit:</strong> macros can choose a target and cast one spell. They cannot decide who is actually in danger. Keep the brain installed.</div>
+</section>
+
+<section class="common" id="addons">
+  <h2><span class="section-mark">◆</span> Addons and interface</h2>
+  <div class="two-col">
+    <div class="guide-box">
+      <h3>Essential</h3>
+      <ul class="clean-list">
+        <li><strong>DBM:</strong> predict damage and movement instead of reacting after the health bar folds.</li>
+        <li><strong>PallyPower:</strong> coordinate blessings cleanly.</li>
+        <li><strong>Raid frames or HealBot:</strong> show health, range, Beacon, Sacred Shield, incoming heals, and dispellable debuffs.</li>
+      </ul>
+    </div>
+    <div class="guide-box">
+      <h3>Recommended</h3>
+      <ul class="clean-list">
+        <li><strong>Details or Recount:</strong> review deaths, casts, overhealing, cooldown use, and dispels rather than racing raw HPS.</li>
+        <li><strong>WeakAuras or TellMeWhen:</strong> track Beacon, Sacred Shield, Judgements of the Pure, Divine Plea, and cooldowns.</li>
+        <li><strong>Threat display:</strong> useful when Righteous Fury is active or adds spawn near healers.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:16px">Recommended two-button HealBot layout</h3>
+  <div class="table-wrap"><table><thead><tr><th>Button</th><th>No modifier</th><th>Shift</th><th>Ctrl</th><th>Alt</th></tr></thead><tbody>
+    <tr><td><strong>Left</strong></td><td>Flash of Light<br><span class="muted">Small heal</span></td><td>Holy Shock<br><span class="muted">Instant heal</span></td><td>Hand of Salvation<br><span class="muted">Reduce threat</span></td><td>Beacon of Light<br><span class="muted">Assign Beacon</span></td></tr>
+    <tr><td><strong>Right</strong></td><td>Holy Light<br><span class="muted">Large heal</span></td><td>Hand of Sacrifice<br><span class="muted">Damage transfer</span></td><td>Hand of Protection<br><span class="muted">Physical immunity</span></td><td>Sacred Shield<br><span class="muted">Tank shield</span></td></tr>
+  </tbody></table></div>
+  <p class="mini-note">Taunts are omitted because TauntMaster handles them. Cleanse is omitted because Decursive handles it. This preserves the two-button setup you already use.</p>
+  <a href="addons.html?class=paladin&spec=holy&role=healer" style="display:inline-flex;margin-top:12px;padding:9px 12px;border:1px solid var(--theme-accent);border-radius:10px;background:rgba(var(--theme-accent-rgb),.09);font-weight:900;text-decoration:none;">Browse Holy Paladin addons →</a>
+</section>
+
+<section class="common" id="sources">
+  <h2><span class="section-mark">◆</span> Sources and verification</h2>
+  <ul class="source-list">
+    <li><a href="https://www.wowhead.com/wotlk/guide/classes/paladin/holy/healer-talent-builds-glyphs-pve" target="_blank" rel="noopener">Holy Paladin talents and glyphs</a></li>
+    <li><a href="https://www.wowhead.com/wotlk/guide/classes/paladin/holy/healer-talent-builds-glyphs-pve" target="_blank" rel="noopener">Wowhead: verified 51/20/0 talents and glyphs</a></li>
+    <li><a href="https://www.wowhead.com/wotlk/spell=53530" target="_blank" rel="noopener">Divine Guardian spell data</a></li>
+  </ul>
+</section>
+
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>
