@@ -98,7 +98,7 @@
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip {
           margin: 0 auto !important;
-          max-width: calc(100vw - 24px) !important;
+          max-width: calc(100vw - 68px) !important;
           position: static !important;
           width: auto !important;
         }
@@ -109,18 +109,20 @@
           display: block !important;
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table {
-          max-width: calc(100vw - 24px) !important;
+          max-width: calc(100vw - 68px) !important;
           table-layout: auto !important;
           width: auto !important;
         }
-        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
-        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
+        .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table {
+          box-sizing: border-box !important;
+          max-width: 320px !important;
+          width: calc(100vw - 76px) !important;
           white-space: normal !important;
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table th {
           overflow-wrap: anywhere !important;
+          white-space: normal !important;
           word-break: normal !important;
         }
         .wowhead-tooltip-screen-caption {
