@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  apply-test-commit:
+  test-and-fix:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -18,12 +18,24 @@ jobs:
         with:
           ref: agent/add-outfitter
 
-      - name: Apply Outfitter migration
-        run: python scripts/apply-outfitter-catalog.py
+      - name: Fix the post-clear addon count
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("tests/addon-browser-smoke.cjs")
+          text = path.read_text(encoding="utf-8")
+          old = '    assert.equal(await desktop.locator(".addon-card").count(), 15);\n'
+          new = '    assert.equal(await desktop.locator(".addon-card").count(), 16);\n'
+          if text.count(old) != 1:
+              raise SystemExit(f"Expected one stale post-clear count, found {text.count(old)}")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          error_file = Path("tests/outfitter-browser-error.txt")
+          if error_file.exists():
+              error_file.unlink()
+          PY
 
       - name: Build and validate catalog
         run: |
-          python scripts/build-addon-catalog.py
           python scripts/validate-addon-catalog.py
           python scripts/build-addon-catalog.py --check
           node tests/addon-search.test.js
@@ -35,26 +47,19 @@ jobs:
           npm install --no-save playwright@1.55.0 >/dev/null 2>&1
           npx playwright install chromium >/dev/null
 
-      - name: Run and capture browser smoke test
+      - name: Run browser smoke tests
         run: |
           python -m http.server 4173 >/tmp/addon-server.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           sleep 2
-          set +e
-          node tests/addon-browser-smoke.cjs > /tmp/outfitter-browser.log 2>&1
-          STATUS=$?
-          set -e
-          cat /tmp/outfitter-browser.log
-          if [ "$STATUS" -ne 0 ]; then
-            cp /tmp/outfitter-browser.log tests/outfitter-browser-error.txt
-          fi
+          node tests/addon-browser-smoke.cjs
 
-      - name: Commit catalog changes and captured result
+      - name: Commit corrected test
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/addons.json assets/addon-catalog-data.js assets/addons/icons/outfitter.svg guides/addons.html scripts/validate-addon-catalog.py tests/addon-search.test.js tests/addon-browser-smoke.cjs
-          if [ -f tests/outfitter-browser-error.txt ]; then git add tests/outfitter-browser-error.txt; fi
-          git commit -m "Add tested Outfitter 5.0"
+          git add tests/addon-browser-smoke.cjs
+          git rm --ignore-unmatch tests/outfitter-browser-error.txt
+          git commit -m "Fix Outfitter catalog count test"
           git push origin HEAD:agent/add-outfitter
