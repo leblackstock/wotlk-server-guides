@@ -1,1020 +1,207 @@
-@import url("./guide-color-system.css?v=20260724-ah-shared-v3");
+@import url("./guide-color-system.css?v=20260724-ah-universal-v1");
 
-/* Shared AH base layout migrated from guide HTML. */
+/* Universal Auction House page and component system. */
+body[data-guide-section="auction-house"],
+body[data-guide-section="auction-house"] * { box-sizing: border-box; }
 
-body[data-guide-section="auction-house"], body[data-guide-section="auction-house"] *{box-sizing:border-box}
-body[data-guide-section="auction-house"]{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 12% -10%,rgba(202,167,255,.16),transparent 32rem),radial-gradient(circle at 92% 0%,rgba(142,224,142,.10),transparent 28rem),linear-gradient(180deg,#0b0f13 0%,var(--bg) 100%);color:var(--text);line-height:1.45}
-body[data-guide-section="auction-house"] .wrap{max-width:1280px;margin:0 auto;padding:28px 18px 48px}
-body[data-guide-section="auction-house"] header{border:1px solid var(--line);background:linear-gradient(135deg,#1b232d 0%,#151025 54%,#121820 100%);border-radius:18px;padding:22px;box-shadow:0 10px 28px rgba(0,0,0,.28)}
-body[data-guide-section="auction-house"] h1{margin:0 0 6px;font-size:30px;letter-spacing:.2px}
-body[data-guide-section="auction-house"] .sub{color:var(--muted);margin:0;font-size:15px;max-width:980px}
-body[data-guide-section="auction-house"] .p-quick{background:var(--orange)}
-body[data-guide-section="auction-house"] .p-bid{background:var(--cyan)}
-body[data-guide-section="auction-house"] .p-target{background:var(--gold)}
-body[data-guide-section="auction-house"] .p-watch{background:var(--purple)}
-body[data-guide-section="auction-house"] .q-common{color:var(--q-common);text-shadow:0 0 8px rgba(255,255,255,.10)}
-body[data-guide-section="auction-house"] .q-uncommon{color:var(--q-uncommon);text-shadow:0 0 8px rgba(30,255,0,.22)}
-body[data-guide-section="auction-house"] .q-rare{color:var(--q-rare);text-shadow:0 0 8px rgba(0,112,221,.35)}
-body[data-guide-section="auction-house"] .q-epic{color:var(--q-epic);text-shadow:0 0 8px rgba(163,53,238,.42)}
-body[data-guide-section="auction-house"] .common{margin-top:18px;border:1px solid var(--line);background:#141a21;border-radius:16px;padding:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18)}
-body[data-guide-section="auction-house"] .common h2{margin:0 0 10px;font-size:20px;color:#fff}
-body[data-guide-section="auction-house"] .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
-body[data-guide-section="auction-house"] .table-wrap>table{width:100%;border-collapse:collapse;min-width:1120px}
-body[data-guide-section="auction-house"] .table-wrap>table>thead>tr>th, body[data-guide-section="auction-house"] .table-wrap>table>tbody>tr>td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}
-body[data-guide-section="auction-house"] .table-wrap>table>thead>tr>th{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#1c242d}
-body[data-guide-section="auction-house"] .table-wrap>table>tbody>tr:last-child>td{border-bottom:0}
-body[data-guide-section="auction-house"] .table-wrap>table>tbody>tr>td{color:var(--muted)}
-body[data-guide-section="auction-house"] strong{color:#fff}
-body[data-guide-section="auction-house"] .mini{color:var(--muted);font-size:13px;margin-top:2px}
-body[data-guide-section="auction-house"] .small{font-size:13px;color:var(--muted)}
-body[data-guide-section="auction-house"] .pricepair{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:7px 8px;background:rgba(255,255,255,.025)}
-body[data-guide-section="auction-house"] .pricepair div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:2px 0}
-body[data-guide-section="auction-house"] .label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:900}
-body[data-guide-section="auction-house"] .bid, body[data-guide-section="auction-house"] .buyout{font-weight:900;white-space:nowrap}
-body[data-guide-section="auction-house"] .pricepair.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045)}
-body[data-guide-section="auction-house"] .pricepair.quick .bid{color:#ffc491}
-body[data-guide-section="auction-house"] .pricepair.quick .buyout{color:#ffd3ad}
-body[data-guide-section="auction-house"] .pricepair.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045)}
-body[data-guide-section="auction-house"] .pricepair.high .bid{color:#d8c2ff}
-body[data-guide-section="auction-house"] .pricepair.high .buyout{color:#eadcff}
-body[data-guide-section="auction-house"] .pricepair.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));box-shadow:0 0 0 1px rgba(240,193,90,.10),0 0 18px rgba(240,193,90,.08)}
-body[data-guide-section="auction-house"] .pricepair.target .label{color:#e6d7aa}
-body[data-guide-section="auction-house"] .pricepair.target .bid{color:var(--cyan);text-shadow:0 0 8px rgba(114,227,255,.20)}
-body[data-guide-section="auction-house"] .pricepair.target .buyout{color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.28);font-size:1.02em}
-body[data-guide-section="auction-house"] .demand{display:inline-block;color:#111;font-weight:900;border-radius:7px;padding:1px 7px;font-size:12px;white-space:nowrap}
-body[data-guide-section="auction-house"] .demand.vh{background:var(--green)}
-body[data-guide-section="auction-house"] .demand.hi{background:var(--gold)}
-body[data-guide-section="auction-house"] .demand.med{background:var(--cyan)}
-body[data-guide-section="auction-house"] .demand.low{background:var(--muted)}
-body[data-guide-section="auction-house"] .routebox{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
-body[data-guide-section="auction-house"] .routecard{border:1px solid var(--line);background:#121820;border-radius:14px;padding:14px}
-body[data-guide-section="auction-house"] .routecard h3{margin-top:0;color:#fff}
-body[data-guide-section="auction-house"] ul{margin:0;padding-left:0;list-style:none}
-body[data-guide-section="auction-house"] li{margin:8px 0;padding:10px 10px;border:1px solid transparent;border-radius:12px;background:rgba(255,255,255,.025);color:var(--muted)}
-body[data-guide-section="auction-house"] li.gold{border-color:rgba(240,193,90,.70);background:linear-gradient(90deg,rgba(240,193,90,.16),rgba(240,193,90,.03))}
-body[data-guide-section="auction-house"] li.green{border-color:rgba(142,224,142,.55);background:linear-gradient(90deg,rgba(142,224,142,.13),rgba(142,224,142,.03))}
-body[data-guide-section="auction-house"] li.purple{border-color:rgba(202,167,255,.60);background:linear-gradient(90deg,rgba(202,167,255,.13),rgba(202,167,255,.03))}
-body[data-guide-section="auction-house"] li.red{border-color:rgba(255,140,140,.55);background:linear-gradient(90deg,rgba(255,140,140,.13),rgba(255,140,140,.03))}
-body[data-guide-section="auction-house"] .item{font-weight:800}
-body[data-guide-section="auction-house"] .badge{display:inline-block;padding:2px 7px;margin-left:5px;border-radius:999px;font-size:10.5px;font-weight:900;color:#111;vertical-align:middle;letter-spacing:.03em}
-body[data-guide-section="auction-house"] .badge.gold{background:var(--gold)}
-body[data-guide-section="auction-house"] .badge.green{background:var(--green)}
-body[data-guide-section="auction-house"] .badge.purple{background:var(--purple)}
-body[data-guide-section="auction-house"] .source-list a{color:#f0c15a;text-decoration:none;border-bottom:1px dotted rgba(240,193,90,.55)}
-body[data-guide-section="auction-house"] footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
-body[data-guide-section="auction-house"] .site-nav{margin:0 0 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-body[data-guide-section="auction-house"] .site-nav a{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);color:var(--gold2);text-decoration:none;font-weight:800;font-size:13px}
-body[data-guide-section="auction-house"] .site-nav a:hover{border-color:var(--gold);background:rgba(240,193,90,.08)}
+body[data-guide-section="auction-house"] {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.45;
+}
+body[data-guide-section="auction-house"] .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 18px 48px; }
+body[data-guide-section="auction-house"] header { border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
+body[data-guide-section="auction-house"] h1 { margin: 0 0 6px; font-size: 30px; letter-spacing: .2px; }
+body[data-guide-section="auction-house"] .sub { color: var(--muted); margin: 0; font-size: 15px; max-width: 980px; }
+body[data-guide-section="auction-house"] .note { margin-top: 14px; border-left: 4px solid var(--theme-accent); background: rgba(var(--theme-accent-rgb), .075); padding: 10px 12px; border-radius: 10px; color: var(--theme-accent-soft); font-size: 14px; }
+body[data-guide-section="auction-house"] .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+body[data-guide-section="auction-house"] .pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; color: #111; }
+body[data-guide-section="auction-house"] .common { margin-top: 18px; border: 1px solid var(--line); border-radius: 16px; padding: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+body[data-guide-section="auction-house"] .common h2 { margin: 0 0 10px; font-size: 20px; color: var(--text-strong); }
+body[data-guide-section="auction-house"] strong { color: var(--text-strong); }
+body[data-guide-section="auction-house"] .mini { color: var(--muted); font-size: 13px; margin-top: 2px; }
+body[data-guide-section="auction-house"] .small { color: var(--muted); font-size: 13px; }
+body[data-guide-section="auction-house"] .routebox { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+body[data-guide-section="auction-house"] .routecard { border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+body[data-guide-section="auction-house"] .routecard h3 { margin-top: 0; color: var(--text-strong); }
+body[data-guide-section="auction-house"] ul { margin: 0; padding-left: 0; list-style: none; }
+body[data-guide-section="auction-house"] li { margin: 8px 0; padding: 10px; border: 1px solid transparent; border-radius: 12px; background: rgba(255,255,255,.025); color: var(--muted); }
+body[data-guide-section="auction-house"] li.gold { border-color: rgba(var(--market-price-target-buyout-rgb), .70); background: linear-gradient(90deg, rgba(var(--market-price-target-buyout-rgb), .16), rgba(var(--market-price-target-buyout-rgb), .03)); }
+body[data-guide-section="auction-house"] li.green { border-color: rgba(142,224,142,.55); background: linear-gradient(90deg, rgba(142,224,142,.13), rgba(142,224,142,.03)); }
+body[data-guide-section="auction-house"] li.purple { border-color: rgba(var(--market-price-high-rgb), .60); background: linear-gradient(90deg, rgba(var(--market-price-high-rgb), .13), rgba(var(--market-price-high-rgb), .03)); }
+body[data-guide-section="auction-house"] li.red { border-color: rgba(255,140,140,.55); background: linear-gradient(90deg, rgba(255,140,140,.13), rgba(255,140,140,.03)); }
+body[data-guide-section="auction-house"] .item { font-weight: 800; }
+body[data-guide-section="auction-house"] .badge { display: inline-block; padding: 2px 7px; margin-left: 5px; border-radius: 999px; font-size: 10.5px; font-weight: 900; color: #111; vertical-align: middle; letter-spacing: .03em; }
+body[data-guide-section="auction-house"] .badge.gold { background: var(--market-price-target-buyout); }
+body[data-guide-section="auction-house"] .badge.green { background: var(--status-success); }
+body[data-guide-section="auction-house"] .badge.purple { background: var(--market-price-high); }
+body[data-guide-section="auction-house"] footer { margin-top: 18px; color: var(--muted); font-size: 12px; text-align: center; }
 
-/* Guide-specific legacy rules retained for mining-smithing-ah-price-guide. */
+/* Three table families: standard market, extended market, and compact reference. */
+body[data-guide-section="auction-house"] .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+body[data-guide-section="auction-house"] table.ah-market-table,
+body[data-guide-section="auction-house"] table.ah-reference-table { width: 100%; border-collapse: collapse; }
+body[data-guide-section="auction-house"] table.ah-market-table--standard { min-width: 1120px; }
+body[data-guide-section="auction-house"] table.ah-market-table--extended { min-width: 1360px; }
+body[data-guide-section="auction-house"] table.ah-reference-table { min-width: 720px; }
+body[data-guide-section="auction-house"] table.ah-reference-table--pricing { min-width: 900px; }
+body[data-guide-section="auction-house"] table.ah-market-table th,
+body[data-guide-section="auction-house"] table.ah-market-table td,
+body[data-guide-section="auction-house"] table.ah-reference-table th,
+body[data-guide-section="auction-house"] table.ah-reference-table td { border-bottom: 1px solid var(--line); padding: 10px 9px; text-align: left; vertical-align: top; }
+body[data-guide-section="auction-house"] table.ah-market-table th,
+body[data-guide-section="auction-house"] table.ah-reference-table th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; background: var(--surface-table-head); }
+body[data-guide-section="auction-house"] table.ah-market-table tbody tr:last-child td,
+body[data-guide-section="auction-house"] table.ah-reference-table tbody tr:last-child td { border-bottom: 0; }
+body[data-guide-section="auction-house"] table.ah-market-table td,
+body[data-guide-section="auction-house"] table.ah-reference-table td { color: var(--muted); }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="item"] { min-width: 220px; }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="target"] { min-width: 142px; background: rgba(var(--market-price-target-buyout-rgb), .055); border-left: 1px solid rgba(var(--market-price-target-buyout-rgb), .24); border-right: 1px solid rgba(var(--market-price-target-buyout-rgb), .16); }
+body[data-guide-section="auction-house"] table.ah-market-table th[data-column="target"] { color: var(--market-price-target-buyout-soft); background: rgba(var(--market-price-target-buyout-rgb), .13); }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="quick"],
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="high"] { min-width: 126px; }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="stack"] { min-width: 90px; white-space: nowrap; }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="demand"] { min-width: 112px; }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="market"],
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="source"] { min-width: 150px; }
+body[data-guide-section="auction-house"] table.ah-market-table [data-column="notes"] { min-width: 280px; }
+body[data-guide-section="auction-house"] table.ah-reference-table [data-column="item"] { min-width: 190px; }
+body[data-guide-section="auction-house"] table.ah-reference-table [data-column="notes"] { min-width: 260px; }
 
-body[data-ah-guide="mining-smithing-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="mining-smithing-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .vendor-compact th, body[data-ah-guide="mining-smithing-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .nodevalue{color:var(--gold2);font-weight:900;white-space:nowrap}
+body[data-guide-section="auction-house"] .pricepair { min-width: 118px; max-width: 150px; border: 1px solid var(--line); border-radius: 11px; padding: 7px 8px; background: rgba(255,255,255,.025); }
+body[data-guide-section="auction-house"] .pricepair div { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 2px 0; }
+body[data-guide-section="auction-house"] .label { color: var(--muted); font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+body[data-guide-section="auction-house"] .bid,
+body[data-guide-section="auction-house"] .buyout { font-weight: 900; white-space: normal; text-align: right; line-height: 1.15; }
+body[data-guide-section="auction-house"] .demand { display: inline-flex; align-items: center; gap: 7px; border-radius: 7px; padding: 2px 7px; font-size: 12px; font-weight: 900; white-space: nowrap; }
+
+/* One shared summary-card, chip, and information-panel vocabulary. */
+body[data-guide-section="auction-house"] .ah-summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+body[data-guide-section="auction-house"] .ah-summary-card,
+body[data-guide-section="auction-house"] .ah-summary-grid > a { display: block; border: 1px solid var(--line); border-radius: 14px; padding: 12px; background: linear-gradient(180deg, rgba(18,24,32,.96), rgba(16,21,28,.96)); color: var(--text); text-decoration: none; }
+body[data-guide-section="auction-house"] .ah-summary-card--featured { border-color: rgba(var(--market-price-target-buyout-rgb), .45); background: linear-gradient(90deg, rgba(var(--market-price-target-buyout-rgb), .10), rgba(255,255,255,.025)); }
+body[data-guide-section="auction-house"] .ah-summary-card h3,
+body[data-guide-section="auction-house"] .ah-summary-grid > a { color: var(--text-strong); font-weight: 900; }
+body[data-guide-section="auction-house"] .ah-summary-card h3 { margin: 0 0 8px; font-size: 16px; }
+body[data-guide-section="auction-house"] .ah-summary-card p { margin: 0; color: var(--muted); font-size: 13px; }
+body[data-guide-section="auction-house"] .ah-summary-card .big { color: var(--market-price-target-buyout-soft); font-size: 22px; font-weight: 900; }
+body[data-guide-section="auction-house"] .ah-summary-grid > a span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; margin-top: 3px; }
+body[data-guide-section="auction-house"] .ah-chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+body[data-guide-section="auction-house"] .ah-chip { display: inline-block; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.035); padding: 2px 7px; font-size: 11px; font-weight: 900; color: var(--muted); }
+body[data-guide-section="auction-house"] .ah-chip--accent { color: var(--market-price-target-buyout-soft); border-color: rgba(var(--market-price-target-buyout-rgb), .35); background: rgba(var(--market-price-target-buyout-rgb), .07); }
+body[data-guide-section="auction-house"] .ah-chip--success { color: #bff2bf; border-color: rgba(142,224,142,.35); background: rgba(142,224,142,.06); }
+body[data-guide-section="auction-house"] .ah-chip--warning { color: #ffc0c0; border-color: rgba(255,140,140,.35); background: rgba(255,140,140,.06); }
+body[data-guide-section="auction-house"] .ah-chip--rare { color: var(--market-price-high-soft); border-color: rgba(var(--market-price-high-rgb), .40); background: rgba(var(--market-price-high-rgb), .08); }
+body[data-guide-section="auction-house"] .ah-info-panel { border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-top: 10px; color: var(--muted); background: rgba(255,255,255,.025); }
+body[data-guide-section="auction-house"] .ah-info-panel strong { color: var(--text-strong); }
+body[data-guide-section="auction-house"] .ah-info-panel--accent { border-color: rgba(var(--market-price-target-bid-rgb), .25); background: rgba(var(--market-price-target-bid-rgb), .055); }
+body[data-guide-section="auction-house"] .ah-info-panel--warning { border-color: rgba(255,140,140,.32); background: rgba(255,140,140,.06); color: #ffcaca; }
+body[data-guide-section="auction-house"] .ah-info-panel--rare { border-color: rgba(var(--market-price-high-rgb), .32); background: rgba(var(--market-price-high-rgb), .06); color: var(--market-price-high-soft); }
+
+@media (max-width: 1080px) {
+  body[data-guide-section="auction-house"] .ah-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 980px) {
+  body[data-guide-section="auction-house"] .routebox { grid-template-columns: 1fr; }
+  body[data-guide-section="auction-house"] h1 { font-size: 24px; }
+}
+
+/* Phone layout: every data row becomes a readable card; Item and Target stay first. */
+@media (max-width: 760px) {
+  body[data-guide-section="auction-house"] .table-wrap { overflow: visible; border: 0; background: transparent; }
+  body[data-guide-section="auction-house"] table.ah-market-table,
+  body[data-guide-section="auction-house"] table.ah-reference-table { display: block; min-width: 0 !important; width: 100%; }
+  body[data-guide-section="auction-house"] table.ah-market-table thead,
+  body[data-guide-section="auction-house"] table.ah-reference-table thead { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody,
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody { display: grid; gap: 12px; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody tr,
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 10px; border: 1px solid var(--line); border-radius: 14px; padding: 10px; background: var(--surface-section); box-shadow: 0 7px 18px rgba(0,0,0,.18); }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td,
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody td { display: block; min-width: 0 !important; border: 0 !important; padding: 7px 6px; background: transparent; box-shadow: none; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td::before,
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody td::before { content: attr(data-label); display: block; margin-bottom: 3px; color: var(--muted); font-size: 9px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td[data-column="item"],
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td[data-column="target"],
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td[data-column="notes"],
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody td[data-column="item"],
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody td[data-column="notes"] { grid-column: 1 / -1; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td[data-column="item"] { padding-bottom: 9px; font-size: 1.04rem; }
+  body[data-guide-section="auction-house"] table.ah-market-table tbody td[data-column="target"] { margin: 0 0 5px; border: 1px solid rgba(var(--market-price-target-buyout-rgb), .34) !important; border-radius: 11px; padding: 9px; background: rgba(var(--market-price-target-buyout-rgb), .085); }
+  body[data-guide-section="auction-house"] table.ah-market-table .pricepair { max-width: none; width: 100%; }
+  body[data-guide-section="auction-house"] table.ah-reference-table tbody tr { grid-template-columns: 1fr; }
+  body[data-guide-section="auction-house"] .ah-summary-grid { grid-template-columns: 1fr; }
+  body[data-guide-section="auction-house"] .ah-chip-row { display: block; }
+  body[data-guide-section="auction-house"] .ah-chip { margin: 2px 2px 2px 0; }
+}
+
+@media print {
+  body[data-guide-section="auction-house"] table.ah-market-table,
+  body[data-guide-section="auction-house"] table.ah-reference-table { min-width: 0 !important; }
+  body[data-guide-section="auction-house"] table.ah-market-table [data-column="target"] { background: #fff !important; border-color: #777 !important; }
+  body[data-guide-section="auction-house"] .ah-summary-card,
+  body[data-guide-section="auction-house"] .ah-summary-grid > a,
+  body[data-guide-section="auction-house"] .ah-info-panel { background: #fff !important; color: #000 !important; box-shadow: none; }
+}
+
+/* Shared legacy utility classes retained as universal components. */
+body[data-guide-section="auction-house"] .warn { color: #ffd08a; }
+body[data-guide-section="auction-house"] .rulebox { min-width: 118px; border: 1px solid var(--line); border-radius: 11px; padding: 8px 9px; background: rgba(255,255,255,.025); font-weight: 900; line-height: 1.15; text-align: right; white-space: normal; }
+body[data-guide-section="auction-house"] .rulebox.quick { border-color: rgba(var(--market-price-quick-rgb), .30); background: rgba(var(--market-price-quick-rgb), .045); color: var(--market-price-quick-soft); }
+body[data-guide-section="auction-house"] .rulebox.target { border-color: rgba(var(--market-price-target-buyout-rgb), .78); background: linear-gradient(90deg, rgba(var(--market-price-target-buyout-rgb), .18), rgba(var(--market-price-target-bid-rgb), .055)); color: var(--market-price-target-buyout-soft); text-shadow: 0 0 10px rgba(var(--market-price-target-buyout-rgb), .22); }
+body[data-guide-section="auction-house"] .rulebox.high { border-color: rgba(var(--market-price-high-rgb), .28); background: rgba(var(--market-price-high-rgb), .045); color: var(--market-price-high-soft); }
+body[data-guide-section="auction-house"] .low-vendor h3 { margin: 14px 0 8px; color: var(--text-strong); font-size: 16px; }
+body[data-guide-section="auction-house"] .gear-note { color: var(--market-price-target-buyout-soft); font-weight: 800; }
+body[data-guide-section="auction-house"] .gear-name { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 3px; }
+body[data-guide-section="auction-house"] .gear-type { color: var(--muted); font-size: 12px; margin-bottom: 7px; }
+body[data-guide-section="auction-house"] .gear-note-line { color: var(--muted); font-size: 12.5px; margin: 6px 0 0; }
+body[data-guide-section="auction-house"] .gear-mini-rule { margin-top: 11px; border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); font-size: 12px; }
+body[data-guide-section="auction-house"] .fishing-gear-panel { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(var(--market-price-target-bid-rgb), .08), rgba(var(--market-price-high-rgb), .06) 48%, rgba(var(--market-price-target-buyout-rgb), .04)); }
+body[data-guide-section="auction-house"] .fishing-gear-panel::before { content: ""; position: absolute; inset: -80px auto auto -80px; width: 220px; height: 220px; border-radius: 999px; background: rgba(var(--market-price-target-bid-rgb), .08); filter: blur(10px); pointer-events: none; }
+body[data-guide-section="auction-house"] .gear-intro { position: relative; }
+@media (max-width: 760px) { body[data-guide-section="auction-house"] .gear-name { display: block; } }
+
+/* Small specialty rules that do not fit the three shared component families. */
+
+body[data-guide-section="auction-house"] .p-vh{background:var(--green)}
+body[data-guide-section="auction-house"] .p-common{background:#fff}
+body[data-guide-section="auction-house"] .p-uncommon{background:#1eff00}
+body[data-guide-section="auction-house"] .p-rare{background:#78b7ff}
+body[data-guide-section="auction-house"] .p-epic{background:#caa7ff}
+body[data-guide-section="auction-house"] .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+body[data-guide-section="auction-house"] .card{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+body[data-guide-section="auction-house"] .card h2{margin:0;padding:15px 16px;background:var(--panel2);font-size:21px;border-bottom:1px solid var(--line)}
+body[data-guide-section="auction-house"] .classic h2{color:var(--purple)}
+body[data-guide-section="auction-house"] .tbc h2{color:var(--green)}
+body[data-guide-section="auction-house"] .wrath h2{color:var(--gold)}
+body[data-guide-section="auction-house"] .body{padding:15px 16px 18px}
+body[data-guide-section="auction-house"] h3{margin:12px 0 8px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+body[data-guide-section="auction-house"] p{margin:0 0 10px;color:var(--muted)}
+body[data-guide-section="auction-house"] .compact-note{font-size:14px;padding:10px 12px}
+body[data-guide-section="auction-house"] .compact-legend{margin-top:10px}
 @media(max-width:980px){
-body[data-ah-guide="mining-smithing-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="mining-smithing-ah-price-guide"] h1{font-size:24px}
+body[data-guide-section="auction-house"] .grid{grid-template-columns:1fr}
 }
-@media print{
-body[data-ah-guide="mining-smithing-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .common, body[data-ah-guide="mining-smithing-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="mining-smithing-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for blacksmithing-materials-ah-price-guide. */
-
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
+body[data-guide-section="auction-house"] .recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
+body[data-guide-section="auction-house"] .utility-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+body[data-guide-section="auction-house"] .utility-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+body[data-guide-section="auction-house"] .utility-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
+body[data-guide-section="auction-house"] .scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
+body[data-guide-section="auction-house"] .audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
+body[data-guide-section="auction-house"] .excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+body[data-guide-section="auction-house"] .excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
+body[data-guide-section="auction-house"] .misc-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+body[data-guide-section="auction-house"] .misc-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
+body[data-guide-section="auction-house"] .misc-card h3{margin:0 0 8px;color:#fff;font-size:16px}
+body[data-guide-section="auction-house"] .misc-card p{margin:0;color:var(--muted);font-size:13px}
+body[data-guide-section="auction-house"] .misc-card .big{font-size:22px;color:var(--gold2);font-weight:900}
+body[data-guide-section="auction-house"] .misc-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
+body[data-guide-section="auction-house"] .misc-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
+body[data-guide-section="auction-house"] .misc-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
 @media(max-width:980px){
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .common, body[data-ah-guide="blacksmithing-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="blacksmithing-materials-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for engineering-materials-ah-price-guide. */
-
-body[data-ah-guide="engineering-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="engineering-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="engineering-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="engineering-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="engineering-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="engineering-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .common, body[data-ah-guide="engineering-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="engineering-materials-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for jewelcrafting-gems-ah-price-guide. */
-
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .vendor-compact th, body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .common, body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="jewelcrafting-gems-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for enchanting-mats-ah-price-guide. */
-
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:12px 14px;border-radius:10px;color:#f5dfab}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .p-vh{background:var(--green)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .p-common{background:#fff}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .p-uncommon{background:#1eff00}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .p-rare{background:#78b7ff}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .p-epic{background:#caa7ff}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .warn{color:#ffd08a}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .card{border:1px solid var(--line);background:var(--panel);border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .card h2{margin:0;padding:15px 16px;background:var(--panel2);font-size:21px;border-bottom:1px solid var(--line)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .classic h2{color:var(--purple)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .tbc h2{color:var(--green)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .wrath h2{color:var(--gold)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .body{padding:15px 16px 18px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] h3{margin:12px 0 8px;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] p{margin:0 0 10px;color:var(--muted)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .badge.red{background:var(--red)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .badge.blue{background:var(--cyan)}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .compact-note{font-size:14px;padding:10px 12px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .compact-legend{margin-top:10px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .compact-legend .pill{padding:5px 9px}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] th:nth-child(5), body[data-ah-guide="enchanting-mats-ah-price-guide"] td:nth-child(5){min-width:92px;white-space:nowrap}
-@media(max-width:980px){
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .grid{grid-template-columns:1fr}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="enchanting-mats-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .card, body[data-ah-guide="enchanting-mats-ah-price-guide"] .common, body[data-ah-guide="enchanting-mats-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="enchanting-mats-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for alchemy-materials-ah-price-guide. */
-
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="alchemy-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="alchemy-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .common, body[data-ah-guide="alchemy-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="alchemy-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact th, body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="alchemy-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-
-/* Guide-specific legacy rules retained for herbalism-herbs-ah-price-guide. */
-
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="herbalism-herbs-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .vendor-compact th, body[data-ah-guide="herbalism-herbs-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="herbalism-herbs-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .common, body[data-ah-guide="herbalism-herbs-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="herbalism-herbs-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for inscription-materials-ah-price-guide. */
-
-body[data-ah-guide="inscription-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="inscription-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="inscription-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="inscription-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="inscription-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .common, body[data-ah-guide="inscription-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="inscription-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .ref-compact th, body[data-ah-guide="inscription-materials-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="inscription-materials-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="inscription-materials-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-
-/* Guide-specific legacy rules retained for tailoring-cloth-ah-price-guide. */
-
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="tailoring-cloth-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .vendor-compact th, body[data-ah-guide="tailoring-cloth-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="tailoring-cloth-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .common, body[data-ah-guide="tailoring-cloth-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="tailoring-cloth-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for skinning-leatherworking-materials-ah-price-guide. */
-
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .common, body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact th, body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="skinning-leatherworking-materials-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-
-/* Guide-specific legacy rules retained for fishing-cooking-materials-ah-price-guide. */
-
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact th, body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .common, body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact th, body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .low-vendor h3{margin:14px 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .low-vendor table.price-table{min-width:1120px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .low-vendor .table-wrap + h3{margin-top:16px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-note{color:#f5dfab;font-weight:800}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-card strong{display:block;margin-bottom:2px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-grid{grid-template-columns:1fr}
-}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-intro strong{color:var(--gold2)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-name strong{line-height:1.15}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-bonus.gold{background:var(--gold)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-bonus.purple{background:var(--purple)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
-@media(max-width:1080px){
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-showcase{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-showcase{grid-template-columns:1fr}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-name{display:block}
-body[data-ah-guide="fishing-cooking-materials-ah-price-guide"] .gear-bonus{display:inline-block;margin-top:5px}
-}
-
-/* Guide-specific legacy rules retained for cross-profession-materials-ah-price-guide. */
-
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .warn{color:#ffd08a}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="cross-profession-materials-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-@media(max-width:980px){
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="cross-profession-materials-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .common, body[data-ah-guide="cross-profession-materials-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="cross-profession-materials-ah-price-guide"] .wrap{padding:10px}
-}
-
-/* Guide-specific legacy rules retained for drop-turn-in-quest-page-items-ah-price-guide. */
-
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact th, body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .common, body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact th, body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-note{color:#f5dfab;font-weight:800}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-card strong{display:block;margin-bottom:2px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-grid{grid-template-columns:1fr}
-}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-intro strong{color:var(--gold2)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-name strong{line-height:1.15}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-bonus.gold{background:var(--gold)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-bonus.purple{background:var(--purple)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
-@media(max-width:1080px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-showcase{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-showcase{grid-template-columns:1fr}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-name{display:block}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .gear-bonus{display:inline-block;margin-top:5px}
-}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .warning-panel strong{color:#fff}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-card ul{margin:0;padding:0;list-style:none}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
-@media(max-width:980px){
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .best-grid{grid-template-columns:1fr}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-list{display:block}
-body[data-ah-guide="drop-turn-in-quest-page-items-ah-price-guide"] .group-chip{margin:2px 2px 2px 0}
-}
-
-/* Guide-specific legacy rules retained for gear-pattern-drops-ah-price-guide. */
-
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact th, body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .common, body[data-ah-guide="gear-pattern-drops-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact th, body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-note{color:#f5dfab;font-weight:800}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-card strong{display:block;margin-bottom:2px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-grid{grid-template-columns:1fr}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-intro strong{color:var(--gold2)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-name strong{line-height:1.15}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-bonus.gold{background:var(--gold)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-bonus.purple{background:var(--purple)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
-@media(max-width:1080px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-name{display:block}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .gear-bonus{display:inline-block;margin-top:5px}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .warning-panel strong{color:#fff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-card ul{margin:0;padding:0;list-style:none}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
-@media(max-width:980px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .best-grid{grid-template-columns:1fr}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-list{display:block}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .group-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-index a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-weight:900}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-index a span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:3px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chip.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chip.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chip.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pop{display:inline-block;min-width:72px;text-align:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;border:1px solid var(--line)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pop.s{color:#111;background:var(--gold);border-color:transparent}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pop.a{color:#fff;background:rgba(202,167,255,.25);border-color:rgba(202,167,255,.45)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pop.b{color:#bff2bf;background:rgba(142,224,142,.10);border-color:rgba(142,224,142,.35)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pop.c{color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .no-price{min-width:122px;border:1px solid rgba(255,140,140,.28);background:rgba(255,140,140,.06);border-radius:11px;padding:8px 9px;font-weight:900;color:#ffc0c0;text-align:center}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-index{grid-template-columns:1fr}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chiprow{display:block}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .specific-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .specific-note strong{color:#fff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .prof-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .market-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .market-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .market-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .market-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .prof-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .prof-note strong{color:#fff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rarity-audit{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .rarity-audit strong{color:#fff}
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="gear-pattern-drops-ah-price-guide"] .pattern-summary{grid-template-columns:1fr}
-}
-
-/* Guide-specific legacy rules retained for utility-recipe-drops-ah-price-guide. */
-
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact th, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .common, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact th, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-note{color:#f5dfab;font-weight:800}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-card strong{display:block;margin-bottom:2px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-grid{grid-template-columns:1fr}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-intro strong{color:var(--gold2)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-name strong{line-height:1.15}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-bonus.gold{background:var(--gold)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-bonus.purple{background:var(--purple)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
-@media(max-width:1080px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-name{display:block}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .gear-bonus{display:inline-block;margin-top:5px}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .warning-panel strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-card ul{margin:0;padding:0;list-style:none}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
-@media(max-width:980px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .best-grid{grid-template-columns:1fr}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-list{display:block}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .group-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-index a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-weight:900}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-index a span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:3px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chip.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chip.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chip.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pop{display:inline-block;min-width:72px;text-align:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;border:1px solid var(--line)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pop.s{color:#111;background:var(--gold);border-color:transparent}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pop.a{color:#fff;background:rgba(202,167,255,.25);border-color:rgba(202,167,255,.45)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pop.b{color:#bff2bf;background:rgba(142,224,142,.10);border-color:rgba(142,224,142,.35)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pop.c{color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .no-price{min-width:122px;border:1px solid rgba(255,140,140,.28);background:rgba(255,140,140,.06);border-radius:11px;padding:8px 9px;font-weight:900;color:#ffc0c0;text-align:center}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-index{grid-template-columns:1fr}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chiprow{display:block}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .specific-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .specific-note strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .prof-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .market-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .market-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .market-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .market-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .prof-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .prof-note strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rarity-audit{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .rarity-audit strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .pattern-summary{grid-template-columns:1fr}
-}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .scope-note strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .audit-note strong{color:#fff}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .excluded-list strong{color:#ffc0c0}
-@media(max-width:980px){
-body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .utility-summary, body[data-ah-guide="utility-recipe-drops-ah-price-guide"] .excluded-list{grid-template-columns:1fr}
-}
-
-/* Guide-specific legacy rules retained for consumable-misc-recipe-drops-ah-price-guide. */
-
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .note{margin-top:14px;border-left:4px solid var(--gold);background:rgba(240,193,90,.08);padding:10px 12px;border-radius:10px;color:#f5dfab;font-size:14px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;color:#111}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .table-wrap>table>thead>tr>th:nth-child(5), body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .table-wrap>table>tbody>tr>td:nth-child(5){min-width:92px;white-space:nowrap}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact table{min-width:620px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact th, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact td{padding:7px 9px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact .vendor-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact .muted{color:var(--muted);font-size:12px}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .routebox{grid-template-columns:1fr}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] h1{font-size:24px}
-}
-@media print{
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"]{background:#fff;color:#000}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .common, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] header{box-shadow:none;break-inside:avoid}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .wrap{padding:10px}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact th, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact td{padding:8px 9px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact .plain-rule{color:var(--gold2);font-weight:900;white-space:nowrap}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .vendor-compact table{min-width:720px}
-@media(max-width:760px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair{min-width:104px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact table{min-width:760px}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .ref-compact table{min-width:900px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair{max-width:150px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair .buyout, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pricepair .bid{white-space:normal;text-align:right;line-height:1.15}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rulebox{min-width:118px;border:1px solid var(--line);border-radius:11px;padding:8px 9px;background:rgba(255,255,255,.025);font-weight:900;line-height:1.15;text-align:right;white-space:normal}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rulebox.quick{border-color:rgba(255,176,113,.30);background:rgba(255,176,113,.045);color:#ffd3ad}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rulebox.target{border-color:rgba(240,193,90,.78);background:linear-gradient(90deg,rgba(240,193,90,.18),rgba(114,227,255,.055));color:var(--gold2);text-shadow:0 0 10px rgba(240,193,90,.22)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rulebox.high{border-color:rgba(202,167,255,.28);background:rgba(202,167,255,.045);color:#eadcff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-note{color:#f5dfab;font-weight:800}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-group{border:1px solid var(--line);background:#121820;border-radius:14px;padding:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-group h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);border-radius:12px;padding:10px;margin:8px 0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-card strong{display:block;margin-bottom:2px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:12px;color:var(--muted);font-weight:800}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-chip.rule{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-card p{margin:6px 0 0;color:var(--muted);font-size:13px}
-@media(max-width:860px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-grid{grid-template-columns:1fr}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .fishing-gear-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(114,227,255,.08),rgba(202,167,255,.06) 48%,rgba(240,193,90,.04));}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .fishing-gear-panel:before{content:"";position:absolute;inset:-80px auto auto -80px;width:220px;height:220px;border-radius:999px;background:rgba(114,227,255,.08);filter:blur(10px);pointer-events:none}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-intro{position:relative;border:1px solid rgba(114,227,255,.22);background:rgba(18,24,32,.72);border-radius:14px;padding:12px 14px;margin:8px 0 14px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-intro strong{color:var(--gold2)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-legend{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-legend span{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-legend .sellable{border-color:rgba(142,224,142,.35);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-legend .check{border-color:rgba(240,193,90,.35);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-legend .personal{border-color:rgba(202,167,255,.35);color:#eadcff;background:rgba(202,167,255,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-column{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:16px;padding:13px;box-shadow:0 8px 20px rgba(0,0,0,.16)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-column h3{margin:0 0 10px;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-count{font-size:11px;color:#111;background:var(--gold);padding:2px 7px;border-radius:999px;font-weight:900;white-space:nowrap}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-item{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.028);border-radius:13px;padding:10px;margin:8px 0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-item.featured{border-color:rgba(240,193,90,.45);background:linear-gradient(90deg,rgba(240,193,90,.10),rgba(255,255,255,.025))}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-name{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:3px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-name strong{line-height:1.15}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-bonus{font-size:11px;font-weight:900;color:#111;background:var(--cyan);border-radius:999px;padding:2px 7px;white-space:nowrap}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-bonus.gold{background:var(--gold)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-bonus.purple{background:var(--purple)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-type{font-size:12px;color:var(--muted);margin-bottom:7px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-tag{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-tag.rule{border-color:rgba(240,193,90,.34);color:var(--gold2);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-tag.ok{border-color:rgba(142,224,142,.32);color:#bff2bf;background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-tag.warn{border-color:rgba(255,140,140,.32);color:#ffc0c0;background:rgba(255,140,140,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-note-line{font-size:12.5px;color:var(--muted);margin:6px 0 0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-mini-rule{margin-top:11px;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:12px}
-@media(max-width:1080px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-showcase{grid-template-columns:1fr}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-name{display:block}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .gear-bonus{display:inline-block;margin-top:5px}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-list{margin-top:5px;display:flex;flex-wrap:wrap;gap:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-chip{display:inline-block;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:2px 7px;font-size:11px;color:var(--muted);font-weight:800}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-chip.gold{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-chip.green{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .warning-panel{border:1px solid rgba(255,140,140,.32);background:rgba(255,140,140,.06);border-radius:14px;padding:12px;margin-top:10px;color:#ffcaca}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .warning-panel strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-card ul{margin:0;padding:0;list-style:none}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-card li{margin:7px 0;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted)}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .best-grid{grid-template-columns:1fr}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-list{display:block}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .group-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-index a{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.025);color:var(--text);text-decoration:none;font-weight:900}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-index a span{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-top:3px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chip{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chip.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chip.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chip.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pop{display:inline-block;min-width:72px;text-align:center;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:900;border:1px solid var(--line)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pop.s{color:#111;background:var(--gold);border-color:transparent}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pop.a{color:#fff;background:rgba(202,167,255,.25);border-color:rgba(202,167,255,.45)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pop.b{color:#bff2bf;background:rgba(142,224,142,.10);border-color:rgba(142,224,142,.35)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pop.c{color:var(--muted);background:rgba(255,255,255,.035)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .no-price{min-width:122px;border:1px solid rgba(255,140,140,.28);background:rgba(255,140,140,.06);border-radius:11px;padding:8px 9px;font-weight:900;color:#ffc0c0;text-align:center}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-index{grid-template-columns:1fr}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chiprow{display:block}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-chip{margin:2px 2px 2px 0}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .specific-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .specific-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .prof-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .recipe-source{font-size:12px;color:var(--muted);margin-top:4px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .market-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .market-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .market-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .market-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .prof-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .prof-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rarity-audit{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .rarity-audit strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .pattern-summary{grid-template-columns:1fr}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .scope-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .audit-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list strong{color:#ffc0c0}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .utility-summary, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list{grid-template-columns:1fr}
-}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(18,24,32,.96),rgba(16,21,28,.96));border-radius:14px;padding:12px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-card h3{margin:0 0 8px;color:#fff;font-size:16px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-card p{margin:0;color:var(--muted);font-size:13px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-card .big{font-size:22px;color:var(--gold2);font-weight:900}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);padding:2px 7px;font-size:11px;font-weight:900;color:var(--muted);margin-top:5px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-tag.hot{color:var(--gold2);border-color:rgba(240,193,90,.35);background:rgba(240,193,90,.07)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-tag.ok{color:#bff2bf;border-color:rgba(142,224,142,.35);background:rgba(142,224,142,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-tag.warn{color:#ffc0c0;border-color:rgba(255,140,140,.35);background:rgba(255,140,140,.06)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .scope-note{border:1px solid rgba(114,227,255,.25);background:rgba(114,227,255,.055);border-radius:14px;padding:12px;margin-top:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .scope-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .audit-note{border:1px solid rgba(202,167,255,.32);background:rgba(202,167,255,.06);border-radius:14px;padding:12px;margin-top:10px;color:#eadcff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .audit-note strong{color:#fff}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list div{border:1px solid rgba(255,140,140,.25);background:rgba(255,140,140,.045);border-radius:12px;padding:10px;color:var(--muted)}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list strong{color:#ffc0c0}
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .source-list a{color:var(--cyan)}
-@media(max-width:980px){
-body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .misc-summary, body[data-ah-guide="consumable-misc-recipe-drops-ah-price-guide"] .excluded-list{grid-template-columns:1fr}
+body[data-guide-section="auction-house"] .misc-summary, body[data-guide-section="auction-house"] .excluded-list{grid-template-columns:1fr}
 }
 
 /* Semantic Auction House identity and interaction layer. */
