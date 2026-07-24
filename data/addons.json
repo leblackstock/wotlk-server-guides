@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "catalogTitle": "WotLK 3.3.5 Addon Library",
-  "lastReviewed": "2026-07-23",
+  "lastReviewed": "2026-07-24",
   "tagGroups": [
     {
       "id": "role",
@@ -1320,6 +1320,12 @@
       "label": "Communication",
       "icon": "▤",
       "order": 130
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "icon": "¤",
+      "order": 140
     }
   ],
   "addons": [
@@ -3111,6 +3117,330 @@
       "icon": {
         "path": "assets/addons/icons/chatter.svg",
         "alt": "Two overlapping chat bubbles"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "auctioneer-suite",
+      "name": "Auctioneer Suite",
+      "aliases": [
+        "Auctioneer",
+        "Auctioneer 5.9.4961",
+        "AuctioneerSuite",
+        "WhackyWallaby"
+      ],
+      "searchTerms": [
+        "auction house addon",
+        "ah scanner",
+        "market prices",
+        "price database",
+        "post auctions",
+        "appraiser",
+        "beancounter",
+        "enchantrix",
+        "informant",
+        "deal finder",
+        "sales history"
+      ],
+      "summary": "A complete auction-house toolkit for scanning, pricing, posting, deal searches, sales history, disenchant values, and detailed item information.",
+      "does": [
+        "Scans the Auction House and builds a local market-price database from observed listings.",
+        "Adds advanced posting, compact browsing, bargain searches, transaction history, and pricing statistics.",
+        "Bundles BeanCounter, Enchantrix, Informant, error reporting, and dozens of focused Auctioneer modules."
+      ],
+      "doesNot": [
+        "Does not provide live server-wide prices before the player has collected enough scans.",
+        "Does not make mixed Auctioneer versions safe; every suite folder should come from the same archive."
+      ],
+      "generalSetup": [
+        "Download the exact AuctioneerSuite-5.9.4961 archive linked below.",
+        "Extract every included folder into Interface\\AddOns; do not mix individual modules from other Auctioneer releases.",
+        "At character select, enable Load out of date AddOns so this legacy compatibility build can load on the 3.3.5a client.",
+        "Open the Auction House and collect scans over several days before trusting suggested market prices.",
+        "Preserve the WTF folder and SavedVariables when reinstalling so BeanCounter records and accumulated price history survive."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "auction-house",
+        "setup-required",
+        "advanced",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "auction-house",
+        "tested-hellscream",
+        "setup-required"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "economy"
+          ],
+          "summary": "Build a dependable local price history and gain powerful tools for buying, posting, and reviewing Auction House activity.",
+          "reason": "Auctioneer is extremely capable for players who use the Auction House regularly, but its large suite and scan-dependent pricing are unnecessary for players who rarely trade."
+        }
+      ],
+      "customizations": [],
+      "moduleGroups": [
+        {
+          "label": "Main suite components",
+          "items": [
+            {
+              "name": "Auc-Advanced",
+              "description": "The core Auctioneer engine for scans, market data, pricing APIs, posting support, and module coordination."
+            },
+            {
+              "name": "BeanCounter",
+              "description": "Keeps a transaction journal for bids, purchases, postings, sales, auction mail, and item-specific profit history."
+            },
+            {
+              "name": "Enchantrix",
+              "description": "Estimates disenchanting, milling, and prospecting values and can assist with those item-processing workflows."
+            },
+            {
+              "name": "Enchantrix-Barker",
+              "description": "Builds chat advertisements for enchant services using Enchantrix material and pricing information."
+            },
+            {
+              "name": "Informant",
+              "description": "Adds item-tooltip information such as vendor values, item level, recipe or quest uses, and known vendor sources."
+            },
+            {
+              "name": "Swatter",
+              "description": "Captures Lua errors and stack traces so addon problems can be reviewed instead of disappearing into the fog."
+            },
+            {
+              "name": "Stubby",
+              "description": "Provides the shared loader, event, and hook framework used by the Auctioneer family of addons."
+            },
+            {
+              "name": "SlideBar",
+              "description": "Provides a shared movable tray for launcher and minimap-style buttons used by suite components."
+            }
+          ]
+        },
+        {
+          "label": "Filters, matchers, and data",
+          "items": [
+            {
+              "name": "Auc-Db",
+              "description": "Internal database layer used to store and retrieve Auctioneer market information."
+            },
+            {
+              "name": "Auc-ScanData",
+              "description": "Stores and retrieves auction-house scan snapshots used by the core and statistic modules."
+            },
+            {
+              "name": "Auc-Filter-Basic",
+              "description": "Rejects invalid or unusable auction observations before they are accepted into market statistics."
+            },
+            {
+              "name": "Auc-Filter-Outlier",
+              "description": "Filters extreme price observations so unusual listings do not distort normal market calculations."
+            },
+            {
+              "name": "Auc-Match-Undercut",
+              "description": "Calculates competition-matching and undercut prices while respecting the configured minimums and limits."
+            },
+            {
+              "name": "Auc-Stat-Classic",
+              "description": "Provides the legacy Auctioneer Classic-style market-price estimate."
+            },
+            {
+              "name": "Auc-Stat-Debug",
+              "description": "Diagnostic statistic module intended for development and troubleshooting rather than normal pricing decisions."
+            }
+          ]
+        },
+        {
+          "label": "Pricing and statistics",
+          "items": [
+            {
+              "name": "Auc-Stat-Histogram",
+              "description": "Calculates median and interquartile-range values from historical prices without discarding old observations."
+            },
+            {
+              "name": "Auc-Stat-iLevel",
+              "description": "Groups items by rarity, type, and item level, which is useful for random-suffix equipment with sparse exact matches."
+            },
+            {
+              "name": "Auc-Stat-Purchased",
+              "description": "Infers likely purchase prices when auctions disappear before their expected expiration time."
+            },
+            {
+              "name": "Auc-Stat-Sales",
+              "description": "Uses BeanCounter records to report actual historical purchase and sale prices."
+            },
+            {
+              "name": "Auc-Stat-Simple",
+              "description": "Produces simple averages and 3-, 7-, and 14-day exponential moving averages."
+            },
+            {
+              "name": "Auc-Stat-StdDev",
+              "description": "Uses the latest price observations and standard deviation to exclude outliers and estimate a normalized mean."
+            },
+            {
+              "name": "Auc-Stat-WOWEcon",
+              "description": "Imports price data from the separate WOWEcon addon when that optional source is installed."
+            }
+          ]
+        },
+        {
+          "label": "Auction-house utilities",
+          "items": [
+            {
+              "name": "Auc-Util-AHWindowControl",
+              "description": "Coordinates Auctioneer tabs and controls with the Blizzard auction-house window."
+            },
+            {
+              "name": "Auc-Util-Appraiser",
+              "description": "Advanced posting interface that remembers prices, stack sizes, counts, competition settings, and batch-post queues."
+            },
+            {
+              "name": "Auc-Util-AskPrice",
+              "description": "Responds to configured chat price requests using Auctioneer's collected market data."
+            },
+            {
+              "name": "Auc-Util-AutoMagic",
+              "description": "Provides rule-based item handling and queues for vendor, disenchant, prospect, mill, and related workflows."
+            },
+            {
+              "name": "Auc-Util-CompactUI",
+              "description": "Replaces the browse list with a denser view, additional sorting, market comparisons, and price-level coloring."
+            },
+            {
+              "name": "Auc-Util-EasyBuyout",
+              "description": "Streamlines the normal auction buyout confirmation process."
+            },
+            {
+              "name": "Auc-Util-FixAH",
+              "description": "Applies compatibility fixes and workarounds for auction-house interface and API behavior."
+            },
+            {
+              "name": "Auc-Util-Glypher",
+              "description": "Analyzes glyph market and pricing opportunities for inscription sellers."
+            },
+            {
+              "name": "Auc-Util-GlypherPost",
+              "description": "Provides a specialized posting workflow for glyph inventories."
+            },
+            {
+              "name": "Auc-Util-ItemSuggest",
+              "description": "Suggests likely item names or matches while building auction-house searches."
+            },
+            {
+              "name": "Auc-Util-PriceLevel",
+              "description": "Compares and color-codes listings relative to the selected market-value statistic."
+            },
+            {
+              "name": "Auc-Util-ScanButton",
+              "description": "Adds auction-house controls for starting market scans."
+            },
+            {
+              "name": "Auc-Util-ScanFinish",
+              "description": "Handles notifications and follow-up behavior when a scan completes."
+            },
+            {
+              "name": "Auc-Util-ScanProgress",
+              "description": "Displays scan progress and current scan status."
+            },
+            {
+              "name": "Auc-Util-ScanStart",
+              "description": "Handles scan initialization, options, and start behavior."
+            },
+            {
+              "name": "Auc-Util-SearchUI",
+              "description": "Provides configurable bargain searches for resale, vendor profit, disenchanting, prospecting, and other deal types."
+            },
+            {
+              "name": "Auc-Util-SimpleAuction",
+              "description": "Provides a simpler posting tab for quickly listing singles or stacks."
+            },
+            {
+              "name": "Auc-Util-VendMarkup",
+              "description": "Calculates auction values from vendor price plus a configurable markup."
+            }
+          ]
+        },
+        {
+          "label": "Shared support libraries",
+          "items": [
+            {
+              "name": "Babylonian",
+              "description": "Shared localization and translation library used by the suite."
+            },
+            {
+              "name": "Configator",
+              "description": "Shared configuration-window and control toolkit."
+            },
+            {
+              "name": "DebugLib",
+              "description": "Shared diagnostic and debugging support library."
+            }
+          ]
+        }
+      ],
+      "compatibility": {
+        "client": "3.3.5a (enable Load out of date AddOns)",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-24",
+        "lastReviewed": "2026-07-24",
+        "downloadVersion": "5.9.4961",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "legacy-compatible",
+        "notes": [
+          "Hellscream test reported July 24, 2026: the complete Auctioneer Suite 5.9.4961 installation works well during normal use in an established large-addon setup.",
+          "No specific addon conflict or Lua error was reported during that use.",
+          "This build is intentionally loaded as an out-of-date addon on the 3.3.5a client; that warning alone does not mean the tested archive is broken.",
+          "The suite contains many optional and internal modules. The overall installation passed normal use, but every module function was not individually isolated and tested.",
+          "Install all folders from the same archive. Mixing Auctioneer, BeanCounter, Enchantrix, or utility modules from other releases can create silent data and interface problems."
+        ]
+      },
+      "download": {
+        "url": "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip",
+        "source": "Auctioneer AddOn archive (Wayback Machine)",
+        "notes": "Original AuctioneerSuite-5.9.4961.zip release archive preserved from auctioneeraddon.com."
+      },
+      "icon": {
+        "path": "assets/addons/icons/auctioneer-suite.svg",
+        "alt": "Auction gavel over stacked coins and a market chart"
       },
       "screenshots": [],
       "videos": [],

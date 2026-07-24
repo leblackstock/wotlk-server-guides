@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Auctioneer Suite</title>
+  <desc id="desc">An auction gavel above stacked coins and a rising market line.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M23 91h82" stroke="#414444" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="40" cy="91" rx="18" ry="7" fill="#cf4e17" stroke="#dedcd6" stroke-width="3"/>
+  <ellipse cx="40" cy="82" rx="18" ry="7" fill="#cf4e17" stroke="#dedcd6" stroke-width="3"/>
+  <ellipse cx="40" cy="73" rx="18" ry="7" fill="#cf4e17" stroke="#dedcd6" stroke-width="3"/>
+  <path d="M64 87l12-18 10 8 17-26" fill="none" stroke="#dedcd6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M96 51h10v10" fill="none" stroke="#dedcd6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="rotate(-35 55 42)"><rect x="28" y="32" width="50" height="17" rx="4" fill="#dedcd6" stroke="#414444" stroke-width="4"/><rect x="48" y="46" width="10" height="34" rx="4" fill="#a4a9a5" stroke="#414444" stroke-width="3"/></g>
+</svg>

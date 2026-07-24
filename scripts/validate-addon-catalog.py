@@ -26,8 +26,9 @@ REQUIRED_ADDONS = {
     "questie",
     "skada",
     "chatter",
+    "auctioneer-suite",
 }
-TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter"}
+TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",
@@ -117,6 +118,21 @@ def main() -> int:
             fail(errors, f"{addon_id}: 'doesNot' exceeds two bullets")
         if len(addon.get("generalSetup", [])) > 5:
             fail(errors, f"{addon_id}: general setup exceeds five steps")
+        module_names: list[str] = []
+        for group in addon.get("moduleGroups", []):
+            if not group.get("label", "").strip():
+                fail(errors, f"{addon_id}: module group needs a label")
+            for item in group.get("items", []):
+                name = item.get("name", "").strip()
+                description = item.get("description", "").strip()
+                if not name or not description:
+                    fail(errors, f"{addon_id}: every module needs a name and description")
+                module_names.append(name)
+        if len(module_names) != len(set(module_names)):
+            fail(errors, f"{addon_id}: module names must be unique")
+        if addon_id == "auctioneer-suite" and len(module_names) != 43:
+            fail(errors, f"{addon_id}: expected complete 43-entry module map, found {len(module_names)}")
+
         unknown_tags = sorted(set(addon.get("tags", [])) - tag_by_id.keys())
         if unknown_tags:
             fail(errors, f"{addon_id}: unknown tags {unknown_tags}")
