@@ -2,13 +2,12 @@
  * WotLK Server Guides color system
  *
  * This file owns reusable color decisions only. Layout and component rules
- * belong in the shared or guide-specific stylesheets that consume these tokens.
+ * belong in shared or guide-specific stylesheets that consume these tokens.
  */
-
 :root {
   color-scheme: dark;
 
-  /* Foundation: shared dark-mode surfaces, text, and borders. */
+  /* Foundation */
   --surface-page-deep: #0b0f13;
   --surface-page: #0f1317;
   --surface-section: #141a21;
@@ -23,13 +22,13 @@
   --text-muted: #aeb8c2;
   --border-default: #2b3541;
 
-  /* Global navigation stays neutral across every class, specialization, and section. */
+  /* Global navigation */
   --navigation-global-accent: #c4ced9;
   --navigation-global-soft: #edf3f8;
   --navigation-global-deep: #394554;
   --navigation-global-rgb: 196, 206, 217;
 
-  /* Site-section identities are not class, status, item-quality, or data colors. */
+  /* Site sections */
   --section-addons-accent: #8fa8f5;
   --section-addons-soft: #d4deff;
   --section-addons-deep: #2d3c6b;
@@ -40,7 +39,7 @@
   --section-ah-deep: #22594e;
   --section-ah-rgb: 99, 183, 166;
 
-  /* Addon recommendation and compatibility roles remain independent. */
+  /* Addon roles */
   --addon-importance-essential: var(--section-addons-accent);
   --addon-importance-recommended: var(--section-addons-soft);
   --addon-importance-optional: var(--text-muted);
@@ -49,7 +48,7 @@
   --addon-compatibility-broken: var(--status-danger);
   --addon-compatibility-unknown: var(--text-muted);
 
-  /* Auction House market roles are data colors, not semantic status colors. */
+  /* Auction House market roles */
   --market-price-quick: #ffb071;
   --market-price-quick-soft: #ffd3ad;
   --market-price-quick-rgb: 255, 176, 113;
@@ -63,35 +62,56 @@
   --market-price-high-soft: #eadcff;
   --market-price-high-rgb: 202, 167, 255;
 
-  /* Reusable mechanic pairs keep their meaning independent from class,
-     specialization, status, and item-quality colors. */
+  /* Protection mechanic pair */
   --mechanic-rotation-nine: #b59cff;
   --mechanic-rotation-nine-soft: #ded5ff;
   --mechanic-rotation-nine-rgb: 181, 156, 255;
-
   --mechanic-rotation-six: #72e3ff;
   --mechanic-rotation-six-soft: #bcefff;
   --mechanic-rotation-six-rgb: 114, 227, 255;
 
-  /* Semantic status colors do not change with class, specialization, or section. */
+  /*
+   * Holy Paladin mechanics. These are mechanic roles, not status colors.
+   * Beacon = transferred healing relationship.
+   * Direct = the target receiving the cast.
+   * Maintenance = buffs that keep the healing engine operating.
+   * Mana = resource planning and recovery.
+   */
+  --mechanic-holy-beacon: #c89cff;
+  --mechanic-holy-beacon-soft: #ead9ff;
+  --mechanic-holy-beacon-deep: #51316f;
+  --mechanic-holy-beacon-rgb: 200, 156, 255;
+
+  --mechanic-holy-direct: #72e3ff;
+  --mechanic-holy-direct-soft: #c4f3ff;
+  --mechanic-holy-direct-deep: #22566b;
+  --mechanic-holy-direct-rgb: 114, 227, 255;
+
+  --mechanic-holy-maintenance: #f4d96a;
+  --mechanic-holy-maintenance-soft: #fff0aa;
+  --mechanic-holy-maintenance-deep: #725c16;
+  --mechanic-holy-maintenance-rgb: 244, 217, 106;
+
+  --mechanic-holy-mana: #75d7b0;
+  --mechanic-holy-mana-soft: #c2f2df;
+  --mechanic-holy-mana-deep: #245b48;
+  --mechanic-holy-mana-rgb: 117, 215, 176;
+
+  /* Semantic status colors never change with class, spec, or section. */
   --status-success: #8ee08e;
   --status-success-soft: #c8f6c8;
   --status-success-rgb: 142, 224, 142;
-
   --status-warning: #f0c15a;
   --status-warning-soft: #ffe1a0;
   --status-warning-rgb: 240, 193, 90;
-
   --status-danger: #ff8c8c;
   --status-danger-soft: #ffd0d0;
   --status-danger-rgb: 255, 140, 140;
-
   --status-info: #72e3ff;
   --status-info-soft: #bcefff;
   --status-info-rgb: 114, 227, 255;
 
-  /* Wrath game data. Canonical quality colors stay separate from the
-     lightened variants used for small text on dark guide surfaces. */
+  /* Wrath item quality and socket data */
   --quality-common: #ffffff;
   --quality-uncommon: #1eff00;
   --quality-rare: #0070dd;
@@ -99,20 +119,19 @@
   --quality-epic: #a335ee;
   --quality-epic-text: #c77dff;
   --quality-legendary: #ff8000;
-
   --socket-meta: #d7a8ff;
   --socket-blue: #45a8ff;
   --socket-yellow: #ffd43b;
   --socket-red: #ff6666;
 
-  /* Paladin class identity. */
+  /* Paladin class identity */
   --class-paladin-accent: #f58cba;
   --class-paladin-soft: #ffc1d9;
   --class-paladin-deep: #8f315d;
   --class-paladin-rgb: 245, 140, 186;
   --class-paladin-deep-rgb: 143, 49, 93;
 
-  /* Paladin specialization identity. */
+  /* Paladin specialization identities */
   --spec-paladin-protection-accent: #6f9fe8;
   --spec-paladin-protection-soft: #bed5ff;
   --spec-paladin-protection-deep: #29466f;
@@ -131,13 +150,12 @@
   --spec-paladin-retribution-rgb: 224, 107, 101;
   --spec-paladin-retribution-deep-rgb: 115, 46, 42;
 
-  /* Safe neutral defaults for pages that do not select an identity. */
+  /* Safe defaults */
   --class-accent: var(--text-muted);
   --class-accent-soft: var(--text-primary);
   --class-accent-deep: var(--surface-subtle);
   --class-accent-rgb: 174, 184, 194;
   --class-accent-deep-rgb: 30, 38, 48;
-
   --theme-accent: var(--class-accent);
   --theme-accent-soft: var(--class-accent-soft);
   --theme-accent-deep: var(--class-accent-deep);
@@ -147,7 +165,6 @@
   --focus-ring: var(--theme-accent-soft);
 }
 
-/* Site sections use restrained identities without claiming class or status meaning. */
 [data-guide-section="addons"] {
   --theme-accent: var(--section-addons-accent);
   --theme-accent-soft: var(--section-addons-soft);
@@ -167,14 +184,12 @@ body:has(.ah-guide-heading) {
   --focus-ring: var(--section-ah-soft);
 }
 
-/* Class-only Paladin pages use pink as both the class and active theme. */
 [data-guide-class="paladin"] {
   --class-accent: var(--class-paladin-accent);
   --class-accent-soft: var(--class-paladin-soft);
   --class-accent-deep: var(--class-paladin-deep);
   --class-accent-rgb: var(--class-paladin-rgb);
   --class-accent-deep-rgb: var(--class-paladin-deep-rgb);
-
   --theme-accent: var(--class-accent);
   --theme-accent-soft: var(--class-accent-soft);
   --theme-accent-deep: var(--class-accent-deep);
