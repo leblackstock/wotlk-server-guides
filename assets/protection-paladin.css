@@ -389,20 +389,21 @@
       border: 1px solid var(--line);
     }
 
-    table {
+    .table-wrap > table {
       width: 100%;
       border-collapse: collapse;
       min-width: 760px;
     }
 
-    th, td {
+    .table-wrap > table > thead > tr > th,
+    .table-wrap > table > tbody > tr > td {
       border-bottom: 1px solid var(--line);
       padding: 10px 9px;
       text-align: left;
       vertical-align: top;
     }
 
-    th {
+    .table-wrap > table > thead > tr > th {
       color: var(--muted);
       font-size: 12px;
       text-transform: uppercase;
@@ -410,12 +411,12 @@
       background: var(--surface-table-head);
     }
 
-    td {
+    .table-wrap > table > tbody > tr > td {
       color: var(--muted);
       font-size: 13px;
     }
 
-    tr:last-child td { border-bottom: 0; }
+    .table-wrap > table > tbody > tr:last-child > td { border-bottom: 0; }
 
     .cap {
       color: var(--theme-accent-soft);
