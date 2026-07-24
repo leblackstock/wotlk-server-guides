@@ -1,0 +1,1 @@
+Rebuild the mobile Auction House highlight fix on clean main.
