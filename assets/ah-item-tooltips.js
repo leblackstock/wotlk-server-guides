@@ -115,8 +115,8 @@
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table {
           box-sizing: border-box !important;
-          max-width: 300px !important;
-          width: calc(100vw - 96px) !important;
+          max-width: min(300px, calc(100vw - 96px)) !important;
+          width: auto !important;
           white-space: normal !important;
         }
         .wowhead-tooltip-screen-inner .wowhead-tooltip > table > tbody > tr > td > table td,
