@@ -7,10 +7,21 @@
   <link rel="icon" href="./assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="./assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="./assets/brand/hellscream-server-logo-180.png">
-  <link rel="stylesheet" href="./assets/guide-color-system.css?v=20260722-addons-v1">
+  <link rel="stylesheet" href="./assets/guide-color-system.css?v=20260724-holy-v1">
   <link rel="stylesheet" href="./assets/style.css?v=20260723-hellscream-logo-v1">
   <link rel="stylesheet" href="./assets/addon-catalog.css?v=20260722-addons-v1">
   <link rel="stylesheet" href="./assets/ah-guide-icons.css?v=20260724-ah-icons-v1">
+  <style>
+    .class-guide-card{position:relative;overflow:hidden}
+    .class-guide-card::before{position:absolute;inset:0 auto 0 0;width:3px;content:""}
+    .class-guide-card.paladin-protection::before{background:var(--spec-paladin-protection-accent)}
+    .class-guide-card.paladin-holy::before{background:var(--spec-paladin-holy-accent)}
+    .class-guide-card.paladin-protection:hover,.class-guide-card.paladin-protection:focus-visible{border-color:rgba(var(--spec-paladin-protection-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-protection-rgb),.09)}
+    .class-guide-card.paladin-holy:hover,.class-guide-card.paladin-holy:focus-visible{border-color:rgba(var(--spec-paladin-holy-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-holy-rgb),.09)}
+    .class-guide-card .badge{background:var(--class-paladin-accent)}
+    .class-guide-card.paladin-protection .guide-action{color:var(--spec-paladin-protection-soft)}
+    .class-guide-card.paladin-holy .guide-action{color:var(--spec-paladin-holy-soft)}
+  </style>
   <script src="./assets/ah-search-index.js?v=20260721f" defer></script>
   <script src="./assets/ah-search.js?v=20260721f" defer></script>
 </head>
@@ -200,11 +211,17 @@
     <section class="common">
       <h2>Gameplay &amp; Class Guides</h2>
       <div class="guide-grid compact-grid">
-        <a class="guide-card" href="./guides/protection-paladin-pve-guide.html">
-          <span class="badge" style="background:#f58cba;">Paladin</span>
+        <a class="guide-card class-guide-card paladin-protection" href="./guides/protection-paladin-pve-guide.html">
+          <span class="badge">Paladin</span>
           <span class="guide-title">Tankadin Quick Start</span>
           <span class="guide-note">Start at level 80, learn the 969 rhythm, then continue through Playing, Setup, Building, Equipping, and Raiding.</span>
-          <span class="guide-action" style="color:#ffc1d9;">Start guide →</span>
+          <span class="guide-action">Start guide →</span>
+        </a>
+        <a class="guide-card class-guide-card paladin-holy" href="./guides/holy-paladin-pve-guide.html">
+          <span class="badge">Paladin</span>
+          <span class="guide-title">Holy Paladin Quick Start</span>
+          <span class="guide-note">Build the healing engine, master Beacon assignments, set up HealBot, gear intelligently, and prepare boss by boss.</span>
+          <span class="guide-action">Start guide →</span>
         </a>
       </div>
     </section>
