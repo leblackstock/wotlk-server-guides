@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Addon Control Panel</title>
+  <desc id="desc">A settings panel with addon rows, switches, and a confirmation check.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <rect x="24" y="27" width="80" height="72" rx="10" fill="#13181b" stroke="#dedcd6" stroke-width="4"/>
+  <path d="M34 43h28M34 63h28M34 83h28" stroke="#dedcd6" stroke-width="6" stroke-linecap="round"/>
+  <rect x="72" y="36" width="23" height="13" rx="6.5" fill="#414444" stroke="#a4a9a5" stroke-width="2"/>
+  <circle cx="88" cy="42.5" r="5" fill="#cf4e17"/>
+  <rect x="72" y="56" width="23" height="13" rx="6.5" fill="#414444" stroke="#a4a9a5" stroke-width="2"/>
+  <circle cx="79" cy="62.5" r="5" fill="#a4a9a5"/>
+  <path d="M72 82l7 7 16-19" fill="none" stroke="#cf4e17" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
