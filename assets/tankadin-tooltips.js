@@ -144,8 +144,36 @@
     [44489, "Enchant Shield - Defense", "20 Defense"]
   ];
 
+  const tableSelectorReplacements = new Map([
+    ["table", ".table-wrap > table"],
+    ["th, td", ".table-wrap > table > thead > tr > th, .table-wrap > table > tbody > tr > td"],
+    ["th", ".table-wrap > table > thead > tr > th"],
+    ["td", ".table-wrap > table > tbody > tr > td"],
+    ["tr:last-child td", ".table-wrap > table > tbody > tr:last-child > td"]
+  ]);
+
   const entities = new Map();
   const phrases = [];
+
+  function scopeTankadinTableStyles() {
+    Array.from(document.styleSheets).forEach(function (sheet) {
+      if (!sheet.href || !sheet.href.includes("/assets/protection-paladin.css")) return;
+
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch (error) {
+        return;
+      }
+
+      Array.from(rules).forEach(function (rule) {
+        if (!rule.selectorText) return;
+        const selector = rule.selectorText.replace(/\s+/g, " ").trim();
+        const replacement = tableSelectorReplacements.get(selector);
+        if (replacement) rule.selectorText = replacement;
+      });
+    });
+  }
 
   function register(type, row) {
     const entity = { type, id: row[0] };
@@ -258,6 +286,7 @@
   }
 
   function init() {
+    scopeTankadinTableStyles();
     decorateNamedItems();
     linkPhrases();
     loadWowheadTooltips();
