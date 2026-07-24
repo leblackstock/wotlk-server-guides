@@ -1,0 +1,553 @@
+name: Migrate AH shared CSS and row selection
+
+on:
+  push:
+    branches:
+      - agent/shared-ah-css-row-selection
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/shared-ah-css-row-selection
+          fetch-depth: 0
+
+      - name: Consolidate guide CSS and add row selection
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import re
+
+          guide_names = [
+              "mining-smithing-ah-price-guide.html",
+              "blacksmithing-materials-ah-price-guide.html",
+              "engineering-materials-ah-price-guide.html",
+              "jewelcrafting-gems-ah-price-guide.html",
+              "enchanting-mats-ah-price-guide.html",
+              "alchemy-materials-ah-price-guide.html",
+              "herbalism-herbs-ah-price-guide.html",
+              "inscription-materials-ah-price-guide.html",
+              "tailoring-cloth-ah-price-guide.html",
+              "skinning-leatherworking-materials-ah-price-guide.html",
+              "fishing-cooking-materials-ah-price-guide.html",
+              "cross-profession-materials-ah-price-guide.html",
+              "drop-turn-in-quest-page-items-ah-price-guide.html",
+              "gear-pattern-drops-ah-price-guide.html",
+              "utility-recipe-drops-ah-price-guide.html",
+              "consumable-misc-recipe-drops-ah-price-guide.html",
+          ]
+          guide_paths = [Path("guides") / name for name in guide_names]
+          style_pattern = re.compile(r"<style>\s*(.*?)\s*</style>", re.S)
+
+          styles = []
+          documents = {}
+          for path in guide_paths:
+              text = path.read_text(encoding="utf-8")
+              match = style_pattern.search(text)
+              if not match:
+                  raise SystemExit(f"Missing inline style block: {path}")
+              styles.append(match.group(1).strip())
+              documents[path] = text
+
+          style_hashes = {
+              hashlib.sha256(style.encode("utf-8")).hexdigest() for style in styles
+          }
+          if len(style_hashes) != 1:
+              details = [
+                  f"{path}: {hashlib.sha256(style.encode('utf-8')).hexdigest()}"
+                  for path, style in zip(guide_paths, styles)
+              ]
+              raise SystemExit("AH inline CSS blocks are not identical:\n" + "\n".join(details))
+
+          legacy_css = re.sub(r"^:root\{[^}]+\}\s*", "", styles[0], count=1)
+
+          page_overrides = r'''
+          /* Semantic Auction House section identity and shared component states. */
+          body[data-guide-section="auction-house"] {
+            --bg: var(--surface-page);
+            --panel: var(--surface-raised);
+            --panel2: var(--surface-subtle);
+            --text: var(--text-primary);
+            --muted: var(--text-muted);
+            --line: var(--border-default);
+            --gold: var(--market-price-target-buyout);
+            --gold2: var(--market-price-target-buyout-soft);
+            --green: var(--status-success);
+            --red: var(--status-danger);
+            --purple: var(--market-price-high);
+            --orange: var(--market-price-quick);
+            --cyan: var(--market-price-target-bid);
+            --q-common: var(--quality-common);
+            --q-uncommon: var(--quality-uncommon);
+            --q-rare: var(--quality-rare);
+            --q-epic: var(--quality-epic);
+            background:
+              radial-gradient(circle at 12% -10%, rgba(var(--section-ah-rgb), .16), transparent 32rem),
+              radial-gradient(circle at 92% 0, rgba(var(--section-ah-rgb), .07), transparent 28rem),
+              linear-gradient(180deg, var(--surface-page-deep), var(--surface-page));
+          }
+
+          body[data-guide-section="auction-house"] header {
+            border-color: rgba(var(--section-ah-rgb), .30);
+            background:
+              radial-gradient(circle at 100% 0, rgba(var(--section-ah-rgb), .13), transparent 28rem),
+              linear-gradient(135deg, var(--surface-raised), rgba(var(--section-ah-rgb), .06) 56%, var(--surface-card));
+          }
+
+          body[data-guide-section="auction-house"] .common,
+          body[data-guide-section="auction-house"] .routecard {
+            border-color: var(--border-default);
+            background: var(--surface-section);
+          }
+
+          body[data-guide-section="auction-house"] .table-wrap > table > thead > tr > th {
+            background: var(--surface-table-head);
+          }
+
+          body[data-guide-section="auction-house"] .site-nav a {
+            border-color: rgba(var(--navigation-global-rgb), .26);
+            color: var(--navigation-global-soft);
+          }
+
+          body[data-guide-section="auction-house"] .site-nav a:hover,
+          body[data-guide-section="auction-house"] .site-nav a:focus-visible {
+            border-color: var(--navigation-global-accent);
+            background: rgba(var(--navigation-global-rgb), .08);
+            outline: 3px solid rgba(var(--navigation-global-rgb), .18);
+            outline-offset: 2px;
+          }
+
+          body[data-guide-section="auction-house"] .note:not([style]) {
+            border-left-color: var(--theme-accent);
+            background: rgba(var(--theme-accent-rgb), .075);
+            color: var(--theme-accent-soft);
+          }
+
+          body[data-guide-section="auction-house"] .source-list a {
+            color: var(--theme-accent-soft);
+            border-bottom-color: rgba(var(--theme-accent-rgb), .52);
+          }
+
+          body[data-guide-section="auction-house"] .p-quick { background: var(--market-price-quick); }
+          body[data-guide-section="auction-house"] .p-bid { background: var(--market-price-target-bid); }
+          body[data-guide-section="auction-house"] .p-target { background: var(--market-price-target-buyout); }
+          body[data-guide-section="auction-house"] .p-watch { background: var(--market-price-high); }
+
+          body[data-guide-section="auction-house"] .pricepair.quick {
+            border-color: rgba(var(--market-price-quick-rgb), .34);
+            background: rgba(var(--market-price-quick-rgb), .05);
+          }
+          body[data-guide-section="auction-house"] .pricepair.quick .bid { color: var(--market-price-quick); }
+          body[data-guide-section="auction-house"] .pricepair.quick .buyout { color: var(--market-price-quick-soft); }
+
+          body[data-guide-section="auction-house"] .pricepair.target {
+            border-color: rgba(var(--market-price-target-buyout-rgb), .78);
+            background: linear-gradient(90deg, rgba(var(--market-price-target-buyout-rgb), .18), rgba(var(--market-price-target-bid-rgb), .055));
+            box-shadow: 0 0 0 1px rgba(var(--market-price-target-buyout-rgb), .10), 0 0 18px rgba(var(--market-price-target-buyout-rgb), .08);
+          }
+          body[data-guide-section="auction-house"] .pricepair.target .label { color: #e6d7aa; }
+          body[data-guide-section="auction-house"] .pricepair.target .bid {
+            color: var(--market-price-target-bid);
+            text-shadow: 0 0 8px rgba(var(--market-price-target-bid-rgb), .20);
+          }
+          body[data-guide-section="auction-house"] .pricepair.target .buyout {
+            color: var(--market-price-target-buyout-soft);
+            text-shadow: 0 0 10px rgba(var(--market-price-target-buyout-rgb), .28);
+          }
+
+          body[data-guide-section="auction-house"] .pricepair.high {
+            border-color: rgba(var(--market-price-high-rgb), .30);
+            background: rgba(var(--market-price-high-rgb), .05);
+          }
+          body[data-guide-section="auction-house"] .pricepair.high .bid { color: var(--market-price-high); }
+          body[data-guide-section="auction-house"] .pricepair.high .buyout { color: var(--market-price-high-soft); }
+
+          body[data-guide-section="auction-house"] .demand {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid rgba(var(--section-ah-rgb), .30);
+            background: rgba(var(--section-ah-rgb), .06);
+            color: var(--text-primary);
+          }
+          body[data-guide-section="auction-house"] .demand::after {
+            color: var(--theme-accent);
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 10px;
+            letter-spacing: .03em;
+          }
+          body[data-guide-section="auction-house"] .demand.vh::after { content: "■■■■"; }
+          body[data-guide-section="auction-house"] .demand.hi::after { content: "■■■□"; }
+          body[data-guide-section="auction-house"] .demand.med::after { content: "■■□□"; }
+          body[data-guide-section="auction-house"] .demand.low::after { content: "■□□□"; }
+
+          .ah-guide-heading {
+            display: grid;
+            grid-template-columns: 88px minmax(0, 1fr);
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+          }
+          .ah-guide-heading-copy { min-width: 0; }
+          .ah-guide-page-icon {
+            display: block;
+            width: 88px;
+            height: 88px;
+            border: 1px solid rgba(var(--section-ah-rgb), .30);
+            border-radius: 19px;
+            background: var(--surface-code);
+            box-shadow: 0 10px 22px rgba(0,0,0,.34), 0 0 18px rgba(var(--section-ah-rgb), .09);
+          }
+
+          /* Single-row selection. Search arrivals and direct row clicks share this state. */
+          .table-wrap > table > tbody > tr.ah-row-selectable {
+            cursor: pointer;
+          }
+          .table-wrap > table > tbody > tr.ah-row-selectable > td {
+            transition: background-color .14s ease, box-shadow .14s ease;
+          }
+          .table-wrap > table > tbody > tr.ah-row-selectable:hover:not(.ah-row-selected) > td {
+            background: rgba(var(--section-ah-rgb), .045);
+          }
+          .table-wrap > table > tbody > tr.ah-row-selected > td {
+            background: linear-gradient(90deg, rgba(var(--section-ah-rgb), .22), rgba(var(--section-ah-rgb), .095)) !important;
+            border-bottom-color: rgba(var(--section-ah-rgb), .52);
+          }
+          .table-wrap > table > tbody > tr.ah-row-selected > td:first-child {
+            box-shadow: inset 4px 0 var(--section-ah-accent);
+          }
+          .table-wrap > table > tbody > tr.ah-row-selected > td:last-child {
+            box-shadow: inset -1px 0 rgba(var(--section-ah-rgb), .34);
+          }
+          .table-wrap > table > tbody > tr.ah-row-pulse {
+            animation: ah-row-pulse 1.35s ease-out 1;
+          }
+          @keyframes ah-row-pulse {
+            0%, 34% { filter: brightness(1.42); }
+            100% { filter: none; }
+          }
+
+          @media (max-width: 600px) {
+            .ah-guide-heading { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
+            .ah-guide-page-icon { width: 64px; height: 64px; border-radius: 15px; }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .table-wrap > table > tbody > tr.ah-row-selectable > td { transition: none; }
+            .table-wrap > table > tbody > tr.ah-row-pulse { animation: none; }
+          }
+
+          @media print {
+            body[data-guide-section="auction-house"] {
+              --surface-page-deep: #fff;
+              --surface-page: #fff;
+              --surface-section: #fff;
+              --surface-card: #fff;
+              --surface-raised: #fff;
+              --surface-subtle: #fff;
+              --surface-table-head: #eee;
+              --surface-code: #fff;
+              --text-primary: #000;
+              --text-strong: #000;
+              --text-muted: #333;
+              --border-default: #777;
+              --section-ah-accent: #000;
+              --section-ah-soft: #000;
+              --section-ah-deep: #000;
+              --section-ah-rgb: 0, 0, 0;
+              --theme-accent: #000;
+              --theme-accent-soft: #000;
+              --theme-accent-rgb: 0, 0, 0;
+              --bg: #fff;
+              --panel: #fff;
+              --panel2: #fff;
+              --text: #000;
+              --muted: #333;
+              --line: #777;
+              background: #fff !important;
+              color: #000 !important;
+            }
+            body[data-guide-section="auction-house"] header,
+            body[data-guide-section="auction-house"] .common,
+            body[data-guide-section="auction-house"] .routecard {
+              background: #fff !important;
+              box-shadow: none;
+            }
+            body[data-guide-section="auction-house"] .demand { background: #fff; color: #000; }
+            body[data-guide-section="auction-house"] .demand::after { color: #000; }
+            .table-wrap > table > tbody > tr.ah-row-selectable { cursor: auto; }
+            .table-wrap > table > tbody > tr.ah-row-selected > td {
+              background: transparent !important;
+              box-shadow: none !important;
+            }
+          }
+          '''.strip()
+
+          shared_css = (
+              '@import url("./guide-color-system.css?v=20260724-ah-shared-v1");\n\n'
+              '/* Shared layout for all 16 Auction House price guides. */\n'
+              + legacy_css
+              + '\n\n'
+              + page_overrides
+              + '\n'
+          )
+          Path("assets/ah-price-guide.css").write_text(shared_css, encoding="utf-8", newline="\n")
+
+          hub_css = r'''@import url("./guide-color-system.css?v=20260724-ah-shared-v1");
+
+/* Auction House lookup and category cards on the Guide Hub. */
+.ah-search-section {
+  border-color: rgba(var(--section-ah-rgb), .24);
+  background:
+    radial-gradient(circle at 100% 0, rgba(var(--section-ah-rgb), .11), transparent 28rem),
+    linear-gradient(135deg, var(--surface-section), rgba(var(--section-ah-rgb), .035));
+}
+.ah-search-section::before { background: var(--section-ah-accent); }
+.ah-search-mark {
+  border-color: rgba(var(--section-ah-rgb), .30);
+  background: rgba(var(--section-ah-rgb), .10);
+  color: var(--section-ah-accent);
+}
+.ah-search-eyebrow { color: var(--section-ah-accent); }
+.ah-search-input:focus {
+  border-color: rgba(var(--section-ah-rgb), .76);
+  box-shadow: 0 0 0 3px rgba(var(--section-ah-rgb), .11), 0 8px 24px rgba(0,0,0,.18);
+}
+.ah-search-result-arrow { color: var(--section-ah-accent); }
+
+.guide-card.has-guide-icon:hover,
+.guide-card.has-guide-icon:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), .72);
+  box-shadow: 0 0 0 1px rgba(var(--section-ah-rgb), .10), 0 0 18px rgba(var(--section-ah-rgb), .08);
+}
+.guide-card.has-guide-icon .badge {
+  border: 1px solid rgba(var(--section-ah-rgb), .26);
+  background: rgba(var(--section-ah-rgb), .07);
+  color: var(--section-ah-soft);
+}
+.guide-card.has-guide-icon .guide-action { color: var(--section-ah-soft); }
+
+.guide-card.has-guide-icon {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 11px;
+  align-items: start;
+}
+.guide-card-icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: block;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(var(--section-ah-rgb), .28);
+  border-radius: 13px;
+  background: var(--surface-code);
+  box-shadow: 0 7px 16px rgba(0,0,0,.28), 0 0 13px rgba(var(--section-ah-rgb), .07);
+}
+.guide-card.has-guide-icon .badge { grid-column: 2; grid-row: 1; }
+.guide-card.has-guide-icon .guide-title { grid-column: 2; grid-row: 2; margin-top: 5px; align-self: start; }
+.guide-card.has-guide-icon .guide-note { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; }
+.guide-card.has-guide-icon .guide-action { grid-column: 1 / -1; grid-row: 4; }
+
+@media (max-width: 600px) {
+  .guide-card.has-guide-icon { grid-template-columns: 50px minmax(0, 1fr); }
+  .guide-card-icon { width: 50px; height: 50px; border-radius: 12px; }
+}
+'''
+          Path("assets/ah-guide-icons.css").write_text(hub_css, encoding="utf-8", newline="\n")
+
+          link_block = (
+              '<link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-ah-shared-v1">\n'
+              '  <link rel="stylesheet" href="../assets/ah-price-guide.css?v=20260724-ah-shared-v1">'
+          )
+          icon_link_pattern = re.compile(
+              r'<link rel="stylesheet" href="\.\./assets/ah-guide-icons\.css(?:\?[^"\s]*)?">'
+          )
+          script_pattern = re.compile(
+              r'<script src="\.\./assets/ah-search\.js(?:\?[^"\s]*)?" defer></script>'
+          )
+
+          for path, original in documents.items():
+              text, style_count = style_pattern.subn("", original, count=1)
+              if style_count != 1:
+                  raise SystemExit(f"Could not remove exactly one style block: {path}")
+              text, link_count = icon_link_pattern.subn(link_block, text, count=1)
+              if link_count != 1:
+                  raise SystemExit(f"Could not replace AH stylesheet link: {path}")
+              text, body_count = re.subn(
+                  r'<body(?:\s+data-guide-section="auction-house")?>',
+                  '<body data-guide-section="auction-house">',
+                  text,
+                  count=1,
+              )
+              if body_count != 1:
+                  raise SystemExit(f"Could not set AH body section: {path}")
+              text, script_count = script_pattern.subn(
+                  '<script src="../assets/ah-search.js?v=20260724-ah-row-select-v1" defer></script>',
+                  text,
+                  count=1,
+              )
+              if script_count != 1:
+                  raise SystemExit(f"Could not update AH search script: {path}")
+              text = re.sub(r'\n{3,}', '\n\n', text)
+              path.write_text(text, encoding="utf-8", newline="\n")
+
+          search_path = Path("assets/ah-search.js")
+          search_text = search_path.read_text(encoding="utf-8")
+          replacement = r'''function initializeRowSelection() {
+    const rows = Array.from(document.querySelectorAll(".table-wrap > table > tbody > tr"));
+    if (!rows.length) return;
+
+    let selectedRow = null;
+
+    function clearSelectedRow() {
+      if (!selectedRow) return;
+      selectedRow.classList.remove("ah-row-selected", "ah-row-pulse");
+      selectedRow.setAttribute("aria-selected", "false");
+      selectedRow = null;
+    }
+
+    function selectRow(row, options = {}) {
+      const { toggle = false, pulse = false, scroll = false } = options;
+      if (!row) return;
+      if (selectedRow === row && toggle) {
+        clearSelectedRow();
+        return;
+      }
+
+      if (selectedRow && selectedRow !== row) clearSelectedRow();
+      selectedRow = row;
+      selectedRow.classList.add("ah-row-selected");
+      selectedRow.setAttribute("aria-selected", "true");
+
+      if (pulse) {
+        selectedRow.classList.remove("ah-row-pulse");
+        void selectedRow.offsetWidth;
+        selectedRow.classList.add("ah-row-pulse");
+        selectedRow.addEventListener("animationend", () => selectedRow?.classList.remove("ah-row-pulse"), { once: true });
+      }
+
+      if (scroll) {
+        selectedRow.tabIndex = -1;
+        global.setTimeout(() => {
+          selectedRow?.focus({ preventScroll: true });
+          selectedRow?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 40);
+      }
+    }
+
+    rows.forEach((row) => {
+      row.classList.add("ah-row-selectable");
+      row.setAttribute("aria-selected", "false");
+      row.addEventListener("click", (event) => {
+        if (event.target.closest("a, button, input, select, textarea, label")) return;
+        selectRow(row, { toggle: true });
+      });
+    });
+
+    if (!global.location || !global.location.hash.startsWith("#ah-item=")) return;
+    const params = new URLSearchParams(global.location.hash.slice(1));
+    const requestedSlug = params.get("ah-item");
+    const requestedOccurrence = Math.max(1, Number.parseInt(params.get("occurrence") || "1", 10));
+    if (!requestedSlug) return;
+
+    let occurrence = 0;
+    const targetRow = rows.find((row) => {
+      const name = row.querySelector("td:first-child strong");
+      if (!name || slugify(name.textContent) !== requestedSlug) return false;
+      occurrence += 1;
+      return occurrence === requestedOccurrence;
+    });
+    selectRow(targetRow, { pulse: true, scroll: true });
+  }
+
+  '''
+          search_text, function_count = re.subn(
+              r'  function initializeRowHighlight\(\) \{.*?\n  \}\n\n  global\.AHSearchCore',
+              '  ' + replacement + 'global.AHSearchCore',
+              search_text,
+              count=1,
+              flags=re.S,
+          )
+          if function_count != 1:
+              raise SystemExit("Could not replace initializeRowHighlight")
+          search_text = search_text.replace("initializeRowHighlight();", "initializeRowSelection();")
+          if "initializeRowHighlight" in search_text:
+              raise SystemExit("Old row highlight function remains")
+          search_path.write_text(search_text, encoding="utf-8", newline="\n")
+
+          index_path = Path("index.html")
+          index_text = index_path.read_text(encoding="utf-8")
+          index_text, index_count = re.subn(
+              r'\./assets/ah-guide-icons\.css\?v=[^"\s]+',
+              './assets/ah-guide-icons.css?v=20260724-ah-shared-v1',
+              index_text,
+              count=1,
+          )
+          if index_count != 1:
+              raise SystemExit("Could not update AH hub stylesheet cache key")
+          index_path.write_text(index_text, encoding="utf-8", newline="\n")
+
+          reference_path = Path("internal/color-system-addons-ah.html")
+          reference_text = reference_path.read_text(encoding="utf-8")
+          reference_text = reference_text.replace(
+              'Layout and component geometry remain in <code>addon-catalog.css</code>, <code>style.css</code>, or the AH section stylesheet.',
+              'Layout and component geometry remain in <code>addon-catalog.css</code>, <code>style.css</code>, or <code>ah-price-guide.css</code>.',
+          )
+          reference_text = reference_text.replace(
+              'Use <code>data-guide-section="addons"</code> or <code>data-guide-section="auction-house"</code>. Legacy AH pages are temporarily detected through their shared <code>.ah-guide-heading</code> marker.',
+              'Use <code>data-guide-section="addons"</code> or <code>data-guide-section="auction-house"</code>. Every AH guide now declares its section directly and loads one shared price-guide stylesheet.',
+          )
+          reference_path.write_text(reference_text, encoding="utf-8", newline="\n")
+
+          # Static validation
+          for path in guide_paths:
+              text = path.read_text(encoding="utf-8")
+              assert "<style>" not in text, path
+              assert text.count("ah-price-guide.css?v=20260724-ah-shared-v1") == 1, path
+              assert text.count('data-guide-section="auction-house"') == 1, path
+              assert text.count("ah-search.js?v=20260724-ah-row-select-v1") == 1, path
+              assert "ah-guide-icons.css" not in text, path
+
+          search_text = search_path.read_text(encoding="utf-8")
+          for required in [
+              "initializeRowSelection",
+              "ah-row-selectable",
+              "ah-row-selected",
+              "toggle: true",
+              "initializeRowSelection();",
+          ]:
+              assert required in search_text, required
+
+          print(f"Migrated {len(guide_paths)} AH guides to shared CSS and single-row selection.")
+          PY
+
+      - name: Validate JavaScript and migration scope
+        shell: bash
+        run: |
+          node --check assets/ah-search.js
+          test -f assets/ah-price-guide.css
+          test "$(grep -RIl '<style>' guides/*-ah-price-guide.html | wc -l)" -eq 0
+          test "$(grep -Rl 'data-guide-section="auction-house"' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          test "$(grep -Rl 'ah-price-guide.css?v=20260724-ah-shared-v1' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          test "$(grep -Rl 'ah-search.js?v=20260724-ah-row-select-v1' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          git diff --check
+
+      - name: Commit migration and remove temporary workflow
+        shell: bash
+        run: |
+          rm .github/workflows/migrate-ah-shared-css.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Share AH guide CSS and add row selection"
+          git push origin HEAD:agent/shared-ah-css-row-selection
