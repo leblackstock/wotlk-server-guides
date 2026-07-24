@@ -1,0 +1,1 @@
+Run the guarded Auction House table inventory.
