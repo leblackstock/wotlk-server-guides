@@ -40,7 +40,9 @@ const searchCases = [
   ["chat addon", "chatter"],
   ["chat timestamps", "chatter"],
   ["auction house", "auctioneer-suite"],
-  ["auctioneer", "auctioneer-suite"]
+  ["auctioneer", "auctioneer-suite"],
+  ["addon control", "addon-control-panel"],
+  ["acp", "addon-control-panel"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -126,7 +128,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 13);
+assert.equal(ids("").length, 14);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -174,6 +176,18 @@ assert.ok(auctioneer.moduleGroups.flatMap((group) => group.items).some((item) =>
 const auctioneerRole = core.recommendationFor(auctioneer, state("", { role: ["dps"] }), catalog);
 assert.equal(auctioneerRole.importance, "recommended");
 assert.deepEqual(auctioneerRole.purposes, ["economy"]);
+
+
+const acp = addons.find((addon) => addon.id === "addon-control-panel");
+assert.equal(acp.compatibility.downloadVersion, "3.3.7");
+assert.equal(acp.compatibility.hellscreamTested, false);
+assert.equal(acp.compatibility.verifiedDownload, true);
+assert.ok(acp.tags.includes("not-tested-hellscream"));
+assert.equal(acp.download.url, "https://www.curseforge.com/wow/addons/acp/files/471104");
+assert.match(acp.compatibility.notes.join(" "), /not yet been tested on Hellscream/);
+const acpRole = core.recommendationFor(acp, state("", { role: ["dps"] }), catalog);
+assert.equal(acpRole.importance, "recommended");
+assert.deepEqual(acpRole.purposes, ["addon-management"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",

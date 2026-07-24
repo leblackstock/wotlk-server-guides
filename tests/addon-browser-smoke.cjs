@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 13, "Default catalog should show thirteen addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 14, "Default catalog should show fourteen addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -44,6 +44,13 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Auctioneer Suite");
     const auctioneerCard = desktop.locator('.addon-card[data-addon-id="auctioneer-suite"]');
     assert.equal(await auctioneerCard.locator(".addon-card-tag").first().textContent(), "Auction House");
+
+    await desktop.locator("#addon-search-input").fill("addon manager");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Addon Control Panel");
+    const acpCard = desktop.locator('.addon-card[data-addon-id="addon-control-panel"]');
+    assert.equal(await acpCard.locator(".addon-card-tag").first().textContent(), "Addon Management");
+    assert.equal(await acpCard.locator(".addon-card-tag", { hasText: "Not Yet Tested on Hellscream" }).count(), 1);
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -85,6 +92,16 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator('a[href="https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip"]').count() > 0, true);
     await noOverflow(desktop, "Auctioneer module drawer");
 
+
+    await desktop.goto(`${base}/guides/addons.html?role=dps#addon=addon-control-panel`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Addon Control Panel");
+    const acpText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(acpText, /3\.3\.7/);
+    assert.match(acpText, /not yet been tested on Hellscream/);
+    assert.match(acpText, /Recommended/);
+    assert.equal(await desktop.locator('a[href="https://www.curseforge.com/wow/addons/acp/files/471104"]').count() > 0, true);
+    await noOverflow(desktop, "ACP details drawer");
 
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
@@ -137,7 +154,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 13);
+    assert.equal(await desktop.locator(".addon-card").count(), 14);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });

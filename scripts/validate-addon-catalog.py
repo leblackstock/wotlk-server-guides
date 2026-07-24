@@ -27,6 +27,7 @@ REQUIRED_ADDONS = {
     "skada",
     "chatter",
     "auctioneer-suite",
+    "addon-control-panel",
 }
 TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite"}
 AUDIENCE_KEYS = {
