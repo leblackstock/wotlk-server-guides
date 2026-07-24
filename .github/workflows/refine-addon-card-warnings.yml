@@ -25,18 +25,14 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           js_path = Path("assets/addon-catalog.js")
           js = js_path.read_text(encoding="utf-8")
-          old_badge = '''      if (compatibility.serverSensitive) {
-                return make("span", "addon-badge addon-badge-warning", "! Server-sensitive behavior");
-              }
-              return null;'''
-          old_badge = old_badge.replace("                return", "        return").replace("              }", "      }").replace("              return", "      return")
-          if old_badge in js:
-              js = js.replace(old_badge, "      return null;", 1)
-          elif '"! Server-sensitive behavior"' in js:
-              raise SystemExit("Server-sensitive badge exists but expected block did not match")
+          pattern = r'\n      if \(compatibility\.serverSensitive\) \{\n        return make\("span", "addon-badge addon-badge-warning", "! Server-sensitive behavior"\);\n      \}'
+          js, count = re.subn(pattern, "", js, count=1)
+          if count == 0 and '"! Server-sensitive behavior"' in js:
+              raise SystemExit("Could not remove the server-sensitive headline badge")
           js_path.write_text(js, encoding="utf-8")
 
           html_path = Path("guides/addons.html")
@@ -58,11 +54,10 @@ jobs:
               test = test.replace(search_line, search_checks, 1)
 
           detail_line = '    assert.match(chatterText, /Alt Linking/);\n'
-          detail_check = detail_line + '    assert.match(chatterText, /Server-sensitive/);\n'
           if 'assert.match(chatterText, /Server-sensitive/);' not in test:
               if detail_line not in test:
                   raise SystemExit("Could not find Chatter details assertion")
-              test = test.replace(detail_line, detail_check, 1)
+              test = test.replace(detail_line, detail_line + '    assert.match(chatterText, /Server-sensitive/);\n', 1)
           test_path.write_text(test, encoding="utf-8")
           PY
 
