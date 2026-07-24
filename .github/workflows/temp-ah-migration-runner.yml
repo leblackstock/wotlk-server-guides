@@ -1,0 +1,62 @@
+name: Temporary AH migration runner
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types:
+      - synchronize
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: >-
+      github.event.pull_request.head.ref == 'agent/shared-ah-css-row-selection' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/shared-ah-css-row-selection
+          fetch-depth: 0
+
+      - name: Execute guarded migration from branch
+        shell: bash
+        run: |
+          python - <<'RUNNER'
+          from pathlib import Path
+          import re
+          import textwrap
+
+          workflow = Path('.github/workflows/migrate-ah-shared-css.yml').read_text(encoding='utf-8')
+          match = re.search(r"          python - <<'PY'\n(.*?)\n          PY\n", workflow, re.S)
+          if not match:
+              raise SystemExit('Could not extract embedded AH migration script')
+          code = textwrap.dedent(match.group(1))
+          exec(compile(code, 'migrate-ah-shared-css.py', 'exec'), {})
+          RUNNER
+
+      - name: Validate JavaScript and migration scope
+        shell: bash
+        run: |
+          node --check assets/ah-search.js
+          test -f assets/ah-price-guide.css
+          test "$(grep -RIl '<style>' guides/*-ah-price-guide.html | wc -l)" -eq 0
+          test "$(grep -Rl 'data-guide-section="auction-house"' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          test "$(grep -Rl 'ah-price-guide.css?v=20260724-ah-shared-v1' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          test "$(grep -Rl 'ah-search.js?v=20260724-ah-row-select-v1' guides/*-ah-price-guide.html | wc -l)" -eq 16
+          git diff --check
+
+      - name: Commit branch migration and remove branch-only automation
+        shell: bash
+        run: |
+          rm .github/workflows/migrate-ah-shared-css.yml
+          rm .github/workflows/run-ah-migration-on-pr.yml
+          rm .github/ah-migration-trigger.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Share AH guide CSS and add row selection"
+          git push origin HEAD:agent/shared-ah-css-row-selection
