@@ -1,1 +1,1 @@
-Run the guarded Auction House inline CSS cleanup from a pull request.
+Run the guarded Auction House inline CSS diagnostic pass.
