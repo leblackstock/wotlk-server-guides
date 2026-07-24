@@ -1345,6 +1345,12 @@
       "label": "Addon Management",
       "icon": "▦",
       "order": 150
+    },
+    {
+      "id": "action-bars",
+      "label": "Action Bars",
+      "icon": "▥",
+      "order": 160
     }
   ],
   "addons": [
@@ -3579,6 +3585,129 @@
       "icon": {
         "path": "assets/addons/icons/addon-control-panel.svg",
         "alt": "Addon list panel with switches and a check mark"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "bartender4",
+      "name": "Bartender4",
+      "aliases": [
+        "Bartender 4",
+        "BT4",
+        "Bartender4 4.4.2"
+      ],
+      "searchTerms": [
+        "action bar addon",
+        "best action bars",
+        "hotbar replacement",
+        "button bars",
+        "move action bars",
+        "hide action bars",
+        "bar paging",
+        "keybind mode",
+        "stance bars",
+        "pet bar",
+        "vehicle bar",
+        "possess bar"
+      ],
+      "summary": "Our highest-recommended action-bar addon for moving, resizing, paging, hiding, and configuring WoW action bars without replacing the rest of the interface.",
+      "does": [
+        "Replaces the default action-bar layout with movable and configurable bars, including bar size, scale, spacing, visibility, and paging options.",
+        "Provides quick keybinding mode and flexible layouts for class abilities, consumables, professions, mounts, and utility buttons.",
+        "Manages related bars such as pet, stance, bag, menu, and experience or reputation controls when enabled."
+      ],
+      "doesNot": [
+        "Does not replace unit frames, raid frames, cooldown tracking, or encounter alerts.",
+        "Vehicle action-bar behavior has not yet received focused Hellscream testing and should not be treated as fully verified."
+      ],
+      "generalSetup": [
+        "Download the regular Bartender4-4.4.2-12-g94f3b58.zip package from the exact CurseForge file page below, not the nolib archive.",
+        "Remove or rename an older Bartender4 folder, then install so Interface\\AddOns\\Bartender4\\Bartender4.toc is the final path.",
+        "Type /bt4 or open Interface Options → AddOns → Bartender4, unlock bars, and arrange the layout before binding buttons.",
+        "Use Bartender4 keybinding mode to bind buttons, then lock the bars and test paging, stance or pet bars, and combat visibility in easy content.",
+        "Do additional testing in several vehicle encounters before relying on vehicle buttons, exit controls, or temporary action bars."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "action-bars",
+        "beginner-friendly",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "featuredTags": [
+        "action-bars",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "action-bars"
+          ],
+          "summary": "The top action-bar recommendation for players who want a dependable, highly configurable replacement for the default bars.",
+          "reason": "Bartender4 provides broad layout and binding control without forcing a complete UI replacement, and this exact build has worked on Hellscream alongside a large addon setup."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-24",
+        "lastReviewed": "2026-07-24",
+        "downloadVersion": "4.4.2-12-g94f3b58",
+        "verifiedDownload": true,
+        "serverSensitive": false,
+        "maintenanceState": "wrath-era",
+        "notes": [
+          "Hellscream test reported July 24, 2026: Bartender4 worked during normal play with many other addons enabled.",
+          "No addon conflicts were observed or reported during that use.",
+          "The exact companion-addon list was not recorded, so compatibility with every possible addon combination is not claimed.",
+          "Vehicle action bars still need focused testing across several vehicle encounters before vehicle behavior is considered fully verified.",
+          "CurseForge lists the linked full package for WoW 3.3.5; use the regular archive rather than the nolib package."
+        ]
+      },
+      "download": {
+        "url": "https://www.curseforge.com/wow/addons/bartender4/files/439962",
+        "source": "CurseForge",
+        "notes": "Exact file page for the full Bartender4-4.4.2-12-g94f3b58.zip package supporting WoW 3.3.5."
+      },
+      "icon": {
+        "path": "assets/addons/icons/bartender4.svg",
+        "alt": "Three configurable action bars made of square ability buttons"
       },
       "screenshots": [],
       "videos": [],
