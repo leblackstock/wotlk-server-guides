@@ -1,2 +1,0 @@
-Run the temporary AH shared-CSS migration workflow.
-Triggered after the trusted main-branch runner was installed.
