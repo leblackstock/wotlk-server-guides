@@ -18,18 +18,8 @@ jobs:
         with:
           ref: agent/add-untested-acp
 
-      - name: Run embedded ACP migration
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from textwrap import dedent
-
-          workflow = Path('.github/workflows/add-untested-acp.yml').read_text(encoding='utf-8')
-          start = workflow.index("          python - <<'PY'\n") + len("          python - <<'PY'\n")
-          end = workflow.index("\n          PY", start)
-          script = dedent(workflow[start:end])
-          exec(compile(script, 'embedded-acp-migration.py', 'exec'), {'__name__': '__main__'})
-          PY
+      - name: Apply ACP catalog migration
+        run: python scripts/apply-acp-catalog.py
 
       - name: Build and validate catalog
         run: |
@@ -57,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm .github/workflows/add-untested-acp.yml .github/workflows/run-add-untested-acp-pr.yml
+          git rm .github/workflows/add-untested-acp.yml .github/workflows/run-add-untested-acp-pr.yml scripts/apply-acp-catalog.py
           git add data/addons.json assets/addon-catalog-data.js assets/addons/icons/addon-control-panel.svg guides/addons.html scripts/validate-addon-catalog.py tests/addon-search.test.js tests/addon-browser-smoke.cjs
           git commit -m "Add untested Addon Control Panel 3.3.7"
           git push origin HEAD:agent/add-untested-acp
