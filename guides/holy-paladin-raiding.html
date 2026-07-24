@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Holy Paladin consumables, healing assignments, and encounter notes for ToC, ICC, and Ruby Sanctum on Hellscream.">
+  <title>Raiding with your Holy Paladin | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/holy-paladin.css?v=20260724-holy-v1">
+  <script src="../assets/paladin-tooltips.js?v=20260724-holy-v1" defer></script>
+  <script src="../assets/holy-paladin.js?v=20260724-holy-v1" defer></script>
+</head>
+<body data-guide-class="paladin" data-guide-spec="holy">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Holy Paladin guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="holy-paladin-pve-guide.html">Quick Start</a><a href="holy-paladin-playing.html">Playing</a><a href="holy-paladin-setting-up.html">Setup</a><a href="holy-paladin-gearing.html">Building</a><a href="holy-paladin-gear-targets.html">Equipping</a><a href="holy-paladin-raiding.html" aria-current="page">Raiding</a></nav>
+  <header>
+    <span class="page-kicker">Holy Paladin • Level 80+</span>
+    <h1>WotLK 3.3.5 <span>Raiding with your Holy Paladin</span></h1>
+    <p class="sub">Prepare your consumables, understand the damage pattern, and treat Beacon, Aura Mastery, Hands, and mana windows as encounter tools.</p>
+    <div class="jump-nav" aria-label="Topics on this page"><a href="#consumables">Consumables</a><a href="#assignments">Assignments</a><a href="#raid-notes">Raid encounters</a><a href="#sources">Sources</a></div>
+  </header>
+  <main>
+    <div class="note warning"><strong>Hellscream ICC:</strong> the zone-wide ICC buff is removed. Standard guides that assume free health, healing, and damage will overstate raid readiness.</div>
+
+    <section class="common" id="consumables">
+      <h2><span class="section-mark">◆</span> Consumables</h2>
+      <div class="table-wrap">
+        <table style="min-width:760px">
+          <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Flask</strong></td><td><span class="item-name q-common">Flask of Distilled Wisdom</span></td><td><span class="item-name q-common">Flask of the Frost Wyrm</span></td><td>Intellect and mana longevity by default; spell power when mana is already comfortable.</td></tr>
+            <tr><td><strong>Food</strong></td><td><span class="item-name q-common">Imperial Manta Steak</span></td><td><span class="item-name q-common">Very Burnt Worg</span> or <span class="item-name q-common">Fish Feast</span></td><td>Haste is the practical default until your fully buffed Holy Light is near the one-second global-cooldown floor.</td></tr>
+            <tr><td><strong>Potion</strong></td><td><span class="item-name q-common">Runic Mana Injector</span></td><td>Runic Mana Potion</td><td>Use early enough that the mana actually becomes additional healing, not a souvenir after the wipe.</td></tr>
+            <tr><td><strong>Battle elixir</strong></td><td><span class="item-name q-common">Elixir of Lightning Speed</span></td><td><span class="item-name q-common">Guru's Elixir</span></td><td>Useful when repairing a haste gap or running without a flask.</td></tr>
+            <tr><td><strong>Guardian elixir</strong></td><td><span class="item-name q-common">Elixir of Mighty Thoughts</span></td><td>Encounter resistance elixir</td><td>Pairs with a battle elixir; resistance is only for a known damage school and tested strategy.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note spec"><strong>Before every pull:</strong> confirm Beacon, Sacred Shield, Judgements of the Pure, assigned aura, blessing, seal, mana potion, and the tank frame you actually intend to heal.</div>
+    </section>
+
+    <section class="common" id="assignments">
+      <h2><span class="section-mark">◆</span> Assignment rules</h2>
+      <div class="three-col">
+        <div class="guide-box"><h3>Two active tanks</h3><ul class="clean-list"><li>Beacon one tank and directly heal the other.</li><li>Reverse the pairing when one tank becomes the clear danger target.</li><li>Refresh Beacon before movement or a swap, not after it expires during the spike.</li></ul></div>
+        <div class="guide-box"><h3>One active tank</h3><ul class="clean-list"><li>Beacon the tank when you must assist the raid.</li><li>Direct-heal the tank when Beacon transfer would be mostly overheal.</li><li>Do not manufacture split healing when the encounter does not need it.</li></ul></div>
+        <div class="guide-box"><h3>Special targets</h3><ul class="clean-list"><li>Marks, debuffs, encounter NPCs, and realm-separated tanks may replace the normal pairing.</li><li>State the plan before the pull.</li><li>Use role names instead of vague “MT/OT” labels.</li></ul></div>
+      </div>
+      <details><summary>Using Divine Plea during raids</summary><ul class="clean-list"><li>Use it during low incoming damage, transitions, forced movement, or while another healer covers the tank.</li><li>Pair it with Avenging Wrath or a throughput trinket when healing cannot pause.</li><li>Cancel it if the reduced healing becomes dangerous. Mana saved during a death is economically fascinating and strategically useless.</li></ul></details>
+    </section>
+
+    <section class="common" id="raid-notes">
+      <h2><span class="section-mark">◆</span> Raid encounters</h2>
+      <p class="muted">Filters combine raid size, difficulty, and assignment. “Needs Hellscream test” marks scripting or tuning that should be confirmed in our raids before it becomes firm advice.</p>
+      <div class="filter-panel" data-holy-filters>
+        <div class="filter-row"><span class="filter-label">Raid size</span><div class="filter-options">
+          <button class="filter-button" type="button" data-filter-group="size" data-filter-value="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter-group="size" data-filter-value="10" aria-pressed="false">10-player</button>
+          <button class="filter-button" type="button" data-filter-group="size" data-filter-value="25" aria-pressed="false">25-player</button>
+        </div></div>
+        <div class="filter-row"><span class="filter-label">Difficulty</span><div class="filter-options">
+          <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="normal" aria-pressed="false">Normal</button>
+          <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="heroic" aria-pressed="false">Heroic</button>
+        </div></div>
+        <div class="filter-row"><span class="filter-label">Assignment</span><div class="filter-options filter-options--role">
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="tank" aria-pressed="false">Tank healer</button>
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="beacon" aria-pressed="false">Beacon split</button>
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="raid" aria-pressed="false">Raid support</button>
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="utility" aria-pressed="false">Utility / dispel</button>
+          <button class="filter-button" type="button" data-filter-group="role" data-filter-value="special" aria-pressed="false">Special</button>
+        </div></div>
+        <p class="filter-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <h3>Icecrown Citadel</h3>
+
+      <details class="raid-encounter" open><summary><span class="raid-summary-title">Lord Marrowgar</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Tank healer</span><span class="raid-note-tag">All modes</span></div><strong>Beacon the second tank and directly heal the current danger tank.</strong> Precast through Saber Lash windows and keep both tanks in range before Bone Storm scatters the room.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="raid utility"><div class="raid-note-meta"><span class="raid-note-tag">Raid support</span></div>During Bone Storm, move first and use Holy Shock or Infusion procs while repositioning. Do not chase a spiked player through Coldflame when another healer has the safer angle.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Lady Deathwhisper</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Add / boss tanks</span></div>Use Beacon to bridge the active add tank and boss tank during phase changes. Refresh it before the shield breaks.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Utility</span></div>Cleanse eligible magic effects promptly, avoid ghosts, and keep a fast heal ready after movement. Confirm which debuffs are assigned to Paladins on Hellscream.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Gunship Battle</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon raid"><div class="raid-note-meta"><span class="raid-note-tag">Boarding tank</span></div>Beacon the boarding tank when line of sight permits and directly heal the home-deck tank or rocket targets. Use this low-pressure fight to practice Judgement and mana recovery without standing in obvious artillery.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Deathbringer Saurfang</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Tank + Mark</span></div>Beacon the active tank and directly heal the assigned Mark of the Fallen Champion target, or reverse the pairing when tank damage spikes. Keep Beacon refreshed before additional Marks stretch the healing team.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="heroic" data-role="raid special"><div class="raid-note-meta"><span class="raid-note-tag">Heroic</span><span class="raid-note-tag raid-note-verify">Verify tuning</span></div>Heroic pressure rises sharply as Marks accumulate. Preserve Divine Illumination and throughput cooldowns for the late fight rather than spending everything on the first comfortable minute.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Festergut</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Tank swap</span></div>Beacon the non-active tank and hard-cast Holy Light on the active tank as Inhaled Blight stacks. Plan Hand of Sacrifice with your own Divine Protection for the heaviest tank window.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="raid utility"><div class="raid-note-meta"><span class="raid-note-tag">Aura Mastery</span></div>Shadow Resistance Aura plus Aura Mastery can support Pungent Blight. Confirm the raid-lead cooldown order so several Paladins do not press it at once.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Rotface</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon raid"><div class="raid-note-meta"><span class="raid-note-tag">Main tank + infected players</span></div>Keep Beacon on the tank while directly helping players with Mutated Infection. Stay positioned so ooze movement does not break range to the tank.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility"><div class="raid-note-meta"><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>Do not improvise the Infection dispel timing. Follow the server-tested raid call because early or late removal changes where the small ooze forms.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Professor Putricide</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon raid"><div class="raid-note-meta"><span class="raid-note-tag">Movement healing</span></div>Refresh Beacon and Sacred Shield before transitions and slime movement. Favor Holy Shock and Infusion procs while relocating, then resume Holy Light once planted.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="heroic" data-role="special raid"><div class="raid-note-meta"><span class="raid-note-tag">Heroic transition</span></div>Know your plague or variable assignment before the pull. Do not tunnel the tank so hard that you miss a special mechanic requiring movement or a controlled handoff.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Blood Prince Council</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Keleseth-Tank Healer</span></div>Keep Beacon on the physical tank and directly heal the Keleseth tank when assigned. Large health swings can follow poor orb coverage; use a real cast, not wishful Flash of Light confetti.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="raid utility"><div class="raid-note-meta"><span class="raid-note-tag">Vortex movement</span></div>Spread correctly, keep range on your assignment, and save instant casts for forced movement around Empowered Shock Vortex.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Blood-Queen Lana'thel</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon raid"><div class="raid-note-meta"><span class="raid-note-tag">Tank + raid pressure</span></div>Beacon the off-tank or linked tank and direct-heal the active tank while Holy Light splash assists the melee group.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Air phase</span></div>Shadow Resistance Aura plus Aura Mastery is valuable during heavy raid-wide Shadow damage. Spread before the phase and keep moving casts ready.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Valithria Dreamwalker</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="special"><div class="raid-note-meta"><span class="raid-note-tag">Portal Healer</span></div>Enter assigned portals, maintain Emerald Vigor stacks, and spend the resulting throughput directly on Valithria. Refresh Beacon and Sacred Shield only when they support the plan rather than stealing a high-stack healing global.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon raid"><div class="raid-note-meta"><span class="raid-note-tag">Outside Healer</span></div>Beacon the add tank taking the steadier damage and directly heal the danger tank or raid target. Keep Cleanse and Hands available for the outside team.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Sindragosa</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Tank healer</span></div>Beacon the inactive or tomb-side tank and directly heal the active tank. Pre-position before Blistering Cold and resume casting only after reaching safety.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Frost / caster control</span></div>Use Frost Resistance Aura with Aura Mastery for a planned burst. When Unchained Magic is active, manage Instability deliberately instead of detonating yourself beside the raid.</div>
+      </details>
+
+      <details class="raid-encounter"><summary><span class="raid-summary-title">The Lich King</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Material-Realm Tank Healer</span></div>Beacon one tank and directly heal the Soul Reaper target. Precast for Soul Reaper and coordinate Hand of Sacrifice rather than reacting after the health bar folds in half.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Transitions / dispel</span></div>Frost Resistance Aura plus Aura Mastery can support transition damage. Necrotic Plague removal must follow the raid's assigned timing and target location.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="heroic" data-role="special"><div class="raid-note-meta"><span class="raid-note-tag">Heroic special assignment</span><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>Realm assignments and encounter scripting may differ. Keep the Hellscream-specific plan collapsed in raid notes until repeated pulls confirm it.</div>
+      </details>
+
+      <h3>Trial of the Crusader</h3>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Northrend Beasts</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Impale tanks</span></div>Beacon the non-active tank and directly heal the Impale tank. Refresh before a swap and save Hand of Sacrifice for a planned high-stack window.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Movement / debuffs</span></div>Keep instant casts ready for fire, poison, and Icehowl movement. Cleanse only the debuffs assigned to you.</div>
+      </details>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Lord Jaraxxus</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="raid tank"><div class="raid-note-meta"><span class="raid-note-tag">Incinerate Flesh</span></div>Immediately direct healing into Incinerate Flesh when assigned; the absorb must be satisfied before it erupts. Beacon remains on the tank unless the raid plan says otherwise.</div>
+      </details>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Faction Champions</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Utility fight</span></div>Cleanse, Freedom, Protection, and Salvation often matter more than a perfect healing parse. Stay mobile and use line of sight rather than attempting to out-heal every enemy cooldown.</div>
+      </details>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Twin Val'kyr</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="raid beacon"><div class="raid-note-meta"><span class="raid-note-tag">Raid burst</span></div>Beacon the tank and direct Holy Light into grouped damage. Coordinate Aura Mastery with the raid's planned resistance aura and shield timing.</div>
+      </details>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Anub'arak</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Boss + Add Tank</span></div>Beacon one tank and directly heal the other while adds are active. In phase three, keep tanks safe without flooding the raid with unnecessary healing that increases Leeching Swarm returns.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="heroic" data-role="special raid"><div class="raid-note-meta"><span class="raid-note-tag">Penetrating Cold</span></div>Know your Penetrating Cold targets before the pull. Use fast, controlled heals on assigned targets while tank healing remains covered.</div>
+      </details>
+
+      <h3>Ruby Sanctum</h3>
+      <details class="raid-encounter"><summary><span class="raid-summary-title">Halion</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="tank beacon"><div class="raid-note-meta"><span class="raid-note-tag">Material-Realm / Twilight-Realm Tank Healer</span></div>Beacon the paired tank when both are healable; otherwise treat each realm as a separate assignment and keep the local tank alive first.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="utility raid"><div class="raid-note-meta"><span class="raid-note-tag">Aura Mastery</span></div>Fire Resistance Aura supports the material realm; Shadow Resistance Aura supports the twilight realm. Coordinate Aura Mastery around the realm's planned raid burst.</div>
+        <div class="raid-note" data-size="10 25" data-difficulty="heroic" data-role="special"><div class="raid-note-meta"><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>Confirm cutter timing, dispel behavior, and realm-specific damage tuning on Hellscream before converting these notes into exact second-by-second calls.</div>
+      </details>
+      <p class="raid-filter-empty" hidden>No encounter notes match all selected filters.</p>
+    </section>
+
+    <section class="common sources" id="sources">
+      <h2><span class="section-mark">◆</span> Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/guide/classes/paladin/holy/healer-overview-pve" target="_blank" rel="noopener">Wowhead: Holy Paladin PvE overview</a></li>
+        <li><a href="https://www.icy-veins.com/wotlk-classic/holy-paladin-healer-pve-guide" target="_blank" rel="noopener">Icy Veins: Holy Paladin PvE guide</a></li>
+        <li><a href="https://www.wowhead.com/wotlk/guide/raids/trial-of-the-crusader/anubarak-strategy" target="_blank" rel="noopener">Wowhead: Anub'arak strategy</a></li>
+        <li><a href="https://www.wowhead.com/wotlk/guide/raids/ruby-sanctum/halion-strategy" target="_blank" rel="noopener">Wowhead: Halion strategy</a></li>
+      </ul>
+      <div class="note warning"><strong>Private-server rule:</strong> encounter scripting, proc behavior, line of sight, dispels, and tuning can differ. Notes marked for testing stay provisional until confirmed in our raids.</div>
+    </section>
+  </main>
+  <footer>Unofficial player-made Holy Paladin guide for Hellscream. Verify live tooltips and server behavior.</footer>
+</div>
+</body>
+</html>
