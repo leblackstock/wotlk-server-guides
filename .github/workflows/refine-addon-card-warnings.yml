@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - agent/refine-addon-card-warnings
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
