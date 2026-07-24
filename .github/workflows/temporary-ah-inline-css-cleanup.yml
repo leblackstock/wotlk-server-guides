@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 jobs:
-  migrate:
+  diagnose:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,12 +22,14 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Move shared AH layout CSS and clean guide HTML
+      - name: Record AH inline CSS differences
         shell: bash
         run: |
-          git switch -c agent/remove-ah-inline-css
+          git switch -C agent/diagnose-ah-inline-css
           python - <<'PY'
           from pathlib import Path
+          from collections import defaultdict
+          import difflib
           import hashlib
           import re
 
@@ -49,91 +51,63 @@ jobs:
               "utility-recipe-drops-ah-price-guide.html",
               "consumable-misc-recipe-drops-ah-price-guide.html",
           ]
-          paths = [Path("guides") / name for name in guide_names]
-          style_pattern = re.compile(r"<style>\s*(.*?)\s*</style>", re.S)
-
-          documents = {}
-          styles = []
-          for path in paths:
+          pattern = re.compile(r"<style>\s*(.*?)\s*</style>", re.S)
+          records = []
+          for name in guide_names:
+              path = Path("guides") / name
               text = path.read_text(encoding="utf-8")
-              match = style_pattern.search(text)
+              match = pattern.search(text)
               if not match:
-                  raise SystemExit(f"Missing inline CSS block: {path}")
-              if len(style_pattern.findall(text)) != 1:
-                  raise SystemExit(f"Expected exactly one inline CSS block: {path}")
-              documents[path] = text
-              styles.append(match.group(1).strip())
+                  raise SystemExit(f"Missing inline style: {path}")
+              style = match.group(1).strip()
+              digest = hashlib.sha256(style.encode("utf-8")).hexdigest()
+              records.append((name, digest, style))
 
-          hashes = {hashlib.sha256(style.encode("utf-8")).hexdigest() for style in styles}
-          if len(hashes) != 1:
-              raise SystemExit("The 16 AH inline CSS blocks are not identical; refusing automatic migration.")
+          groups = defaultdict(list)
+          for name, digest, style in records:
+              groups[digest].append(name)
 
-          legacy_css = re.sub(r"^:root\{[^}]+\}\s*", "", styles[0], count=1)
-          shared_path = Path("assets/ah-price-guide.css")
-          shared = shared_path.read_text(encoding="utf-8")
-          if "Shared legacy AH layout" in shared:
-              raise SystemExit("Shared legacy layout already migrated; refusing duplicate insertion.")
-          import_match = re.match(r'(@import url\([^\n]+\);\s*)', shared)
-          if not import_match:
-              raise SystemExit("Expected guide color-system import at the top of ah-price-guide.css")
-          import_line = import_match.group(1).strip()
-          semantic_css = shared[import_match.end():].lstrip()
-          combined = (
-              import_line
-              + "\n\n/* Shared legacy AH layout, migrated verbatim from the 16 guide pages. */\n"
-              + legacy_css
-              + "\n\n/* Semantic Auction House identity and interaction layer. */\n"
-              + semantic_css
-          )
-          shared_path.write_text(combined.rstrip() + "\n", encoding="utf-8")
-
-          for path, text in documents.items():
-              text, count = style_pattern.subn("", text, count=1)
-              if count != 1:
-                  raise SystemExit(f"Failed to remove inline CSS: {path}")
-              text = text.replace(
-                  '../assets/ah-guide-icons.css?v=20260724-ah-icons-v1',
-                  '../assets/ah-guide-icons.css?v=20260724-ah-shared-v2',
-                  1,
-              )
-              text, body_count = re.subn(
-                  r"<body(?:\s+data-guide-section=\"auction-house\")?>",
-                  '<body data-guide-section="auction-house">',
-                  text,
-                  count=1,
-              )
-              if body_count != 1:
-                  raise SystemExit(f"Failed to set Auction House section marker: {path}")
-              path.write_text(text, encoding="utf-8")
-
-          for path in paths:
-              text = path.read_text(encoding="utf-8")
-              if "<style" in text or "</style>" in text:
-                  raise SystemExit(f"Inline CSS remains: {path}")
-              if text.count('data-guide-section="auction-house"') != 1:
-                  raise SystemExit(f"Incorrect section marker count: {path}")
-              if "ah-guide-icons.css?v=20260724-ah-shared-v2" not in text:
-                  raise SystemExit(f"Shared stylesheet cache key not updated: {path}")
-
-          migrated = shared_path.read_text(encoding="utf-8")
-          required = [
-              "Shared legacy AH layout",
-              ".table-wrap>table",
-              ".pricepair.target",
-              ".site-nav",
-              "ah-row-selected",
+          lines = [
+              "Auction House inline CSS diagnostics",
+              "====================================",
+              f"Files checked: {len(records)}",
+              f"Unique style blocks: {len(groups)}",
+              "",
           ]
-          for needle in required:
-              if needle not in migrated:
-                  raise SystemExit(f"Shared stylesheet is missing expected rule: {needle}")
+          for index, (digest, names) in enumerate(sorted(groups.items()), start=1):
+              lines.append(f"Group {index}: {digest}")
+              lines.extend(f"  - {name}" for name in names)
+              lines.append("")
+
+          baseline_name, baseline_digest, baseline = records[0]
+          lines.extend([
+              f"Baseline: {baseline_name}",
+              "",
+              "Differences from baseline",
+              "-------------------------",
+          ])
+          for name, digest, style in records[1:]:
+              if digest == baseline_digest:
+                  continue
+              lines.append("")
+              lines.append(f"### {name}")
+              lines.extend(difflib.unified_diff(
+                  baseline.splitlines(),
+                  style.splitlines(),
+                  fromfile=baseline_name,
+                  tofile=name,
+                  lineterm="",
+              ))
+
+          report = Path("internal/ah-inline-css-diagnostics.txt")
+          report.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
           PY
 
           rm -f .github/workflows/temporary-ah-inline-css-cleanup.yml
           rm -f .github/ah-inline-css-cleanup-trigger.txt
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/ah-price-guide.css guides .github
+          git add internal/ah-inline-css-diagnostics.txt .github
           git diff --cached --check
-          git commit -m "Remove duplicated AH inline CSS"
-          git push --force-with-lease origin agent/remove-ah-inline-css
+          git commit -m "Record AH inline CSS differences"
+          git push --force origin agent/diagnose-ah-inline-css
