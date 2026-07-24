@@ -1215,6 +1215,20 @@
         "acp"
       ],
       "order": 140
+    },
+    {
+      "id": "equipment-sets",
+      "label": "Equipment Sets",
+      "group": "feature",
+      "description": "Creates, switches, and optionally automates named gear and weapon sets.",
+      "searchAliases": [
+        "gear sets",
+        "equipment manager",
+        "outfits",
+        "automatic gear switching",
+        "outfitter"
+      ],
+      "order": 150
     }
   ],
   "importanceLevels": [
@@ -1351,6 +1365,12 @@
       "label": "Action Bars",
       "icon": "▥",
       "order": 160
+    },
+    {
+      "id": "equipment-sets",
+      "label": "Equipment Sets",
+      "icon": "♜",
+      "order": 170
     }
   ],
   "addons": [
@@ -3708,6 +3728,126 @@
       "icon": {
         "path": "assets/addons/icons/bartender4.svg",
         "alt": "Three configurable action bars made of square ability buttons"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "outfitter",
+      "name": "Outfitter",
+      "aliases": [
+        "Outfitter 5.0",
+        "Out Fitter"
+      ],
+      "searchTerms": [
+        "gear sets",
+        "equipment sets",
+        "equipment manager",
+        "outfit manager",
+        "automatic gear switching",
+        "switch gear hotkey",
+        "fishing outfit",
+        "pvp outfit",
+        "tank set",
+        "healing set",
+        "weapon sets"
+      ],
+      "summary": "Create named equipment sets, switch them quickly, and optionally automate outfit changes for different activities.",
+      "does": [
+        "Creates named gear and weapon sets for different roles, activities, resistance needs, professions, or cosmetic outfits.",
+        "Switches outfits from its menu or assigned controls and shows which items belong to each saved set.",
+        "Supports optional automated equip and unequip behavior for configured situations and activities."
+      ],
+      "doesNot": [
+        "Does not decide which items are best for a role or replace a stat-weight addon such as Pawn.",
+        "Cannot bypass WoW's combat equipment restrictions, so some outfit changes must wait until combat ends."
+      ],
+      "generalSetup": [
+        "Download Outfitter 5.0 from the WotLK 3.3.5 page linked below.",
+        "Remove or rename an older Outfitter folder, then install so Interface\\AddOns\\Outfitter\\Outfitter.toc is the final path.",
+        "Restart WoW completely after replacing the addon files; a reload alone may leave the old table-of-contents information cached.",
+        "Create one simple outfit, switch away and back, reload the UI, and confirm the set and item choices persist.",
+        "Test any automatic outfit rules separately in easy content before relying on them during raids, PvP, professions, or travel."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "equipment-sets",
+        "beginner-friendly",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "featuredTags": [
+        "equipment-sets",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "equipment-sets"
+          ],
+          "summary": "A strong equipment-set manager for characters that regularly switch roles, activities, weapons, profession gear, or specialized sets.",
+          "reason": "Outfitter provides faster organization and optional automation beyond basic manual gear swapping, and this exact build has worked on Hellscream alongside a large addon setup."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-24",
+        "lastReviewed": "2026-07-24",
+        "downloadVersion": "5.0",
+        "verifiedDownload": true,
+        "serverSensitive": false,
+        "maintenanceState": "wrath-era",
+        "notes": [
+          "Hellscream test reported July 24, 2026: Outfitter 5.0 worked during normal use with many other addons enabled.",
+          "No addon conflicts were noticed or reported during that use.",
+          "The exact companion-addon list was not recorded, so compatibility with every possible addon combination is not claimed.",
+          "Warperia identifies the linked archive as Outfitter 5.0 for WotLK 3.3.5; an independent archive listing identifies Outfitter_5.0.zip with Interface 30300."
+        ]
+      },
+      "download": {
+        "url": "https://warperia.com/addon-wotlk/outfitter/",
+        "source": "Warperia",
+        "notes": "Outfitter 5.0 download page for WotLK 3.3.5."
+      },
+      "icon": {
+        "path": "assets/addons/icons/outfitter.svg",
+        "alt": "Armor chestpiece with circular equipment-switch arrows"
       },
       "screenshots": [],
       "videos": [],

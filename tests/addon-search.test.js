@@ -44,7 +44,9 @@ const searchCases = [
   ["addon control", "addon-control-panel"],
   ["acp", "addon-control-panel"],
   ["bartender", "bartender4"],
-  ["action bars", "bartender4"]
+  ["action bars", "bartender4"],
+  ["outfitter", "outfitter"],
+  ["gear sets", "outfitter"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -130,7 +132,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 15);
+assert.equal(ids("").length, 16);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -203,6 +205,17 @@ const bartenderRole = core.recommendationFor(bartender4, state("", { role: ["dps
 assert.equal(bartenderRole.importance, "recommended");
 assert.deepEqual(bartenderRole.purposes, ["action-bars"]);
 assert.match(bartenderRole.summary, /top action-bar recommendation/i);
+
+const outfitter = addons.find((addon) => addon.id === "outfitter");
+assert.equal(outfitter.compatibility.downloadVersion, "5.0");
+assert.equal(outfitter.compatibility.hellscreamTested, true);
+assert.equal(outfitter.compatibility.hellscreamTestedDate, "2026-07-24");
+assert.equal(outfitter.download.url, "https://warperia.com/addon-wotlk/outfitter/");
+assert.ok(outfitter.tags.includes("tested-hellscream"));
+assert.match(outfitter.compatibility.notes.join(" "), /No addon conflicts were noticed/);
+const outfitterRole = core.recommendationFor(outfitter, state("", { role: ["healer"] }), catalog);
+assert.equal(outfitterRole.importance, "recommended");
+assert.deepEqual(outfitterRole.purposes, ["equipment-sets"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
