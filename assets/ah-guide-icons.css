@@ -1,135 +1,6 @@
-@import url("./guide-color-system.css?v=20260724-section-colors-v1");
+@import url("./ah-price-guide.css?v=20260724-ah-row-select-v1");
 
-/*
- * Shared Auction House section layer.
- *
- * The legacy AH pages still carry their original inline layout CSS. This file
- * deliberately loads after that CSS on all 16 guides, maps their old aliases to
- * the central color system, and owns the restrained AH section identity.
- */
-
-body:has(.ah-guide-heading) {
-  --bg: var(--surface-page);
-  --panel: var(--surface-raised);
-  --panel2: var(--surface-subtle);
-  --text: var(--text-primary);
-  --muted: var(--text-muted);
-  --line: var(--border-default);
-  --gold: var(--market-price-target-buyout);
-  --gold2: var(--market-price-target-buyout-soft);
-  --green: var(--status-success);
-  --red: var(--status-danger);
-  --purple: var(--market-price-high);
-  --orange: var(--market-price-quick);
-  --cyan: var(--market-price-target-bid);
-  --q-common: var(--quality-common);
-  --q-uncommon: var(--quality-uncommon);
-  --q-rare: var(--quality-rare);
-  --q-epic: var(--quality-epic);
-
-  background:
-    radial-gradient(circle at 12% -10%, rgba(var(--section-ah-rgb), .16), transparent 32rem),
-    radial-gradient(circle at 92% 0, rgba(var(--section-ah-rgb), .07), transparent 28rem),
-    linear-gradient(180deg, var(--surface-page-deep), var(--surface-page));
-}
-
-body:has(.ah-guide-heading) header {
-  border-color: rgba(var(--section-ah-rgb), .30);
-  background:
-    radial-gradient(circle at 100% 0, rgba(var(--section-ah-rgb), .13), transparent 28rem),
-    linear-gradient(135deg, var(--surface-raised), rgba(var(--section-ah-rgb), .06) 56%, var(--surface-card));
-}
-
-body:has(.ah-guide-heading) .common,
-body:has(.ah-guide-heading) .routecard {
-  border-color: var(--border-default);
-  background: var(--surface-section);
-}
-
-body:has(.ah-guide-heading) .table-wrap > table > thead > tr > th {
-  background: var(--surface-table-head);
-}
-
-body:has(.ah-guide-heading) .site-nav a {
-  border-color: rgba(var(--navigation-global-rgb), .26);
-  color: var(--navigation-global-soft);
-}
-
-body:has(.ah-guide-heading) .site-nav a:hover,
-body:has(.ah-guide-heading) .site-nav a:focus-visible {
-  border-color: var(--navigation-global-accent);
-  background: rgba(var(--navigation-global-rgb), .08);
-  outline: 3px solid rgba(var(--navigation-global-rgb), .18);
-  outline-offset: 2px;
-}
-
-body:has(.ah-guide-heading) .note:not([style]) {
-  border-left-color: var(--theme-accent);
-  background: rgba(var(--theme-accent-rgb), .075);
-  color: var(--theme-accent-soft);
-}
-
-body:has(.ah-guide-heading) .source-list a {
-  color: var(--theme-accent-soft);
-  border-bottom-color: rgba(var(--theme-accent-rgb), .52);
-}
-
-/* Market lanes retain familiar colors, but now consume named data roles. */
-body:has(.ah-guide-heading) .p-quick { background: var(--market-price-quick); }
-body:has(.ah-guide-heading) .p-bid { background: var(--market-price-target-bid); }
-body:has(.ah-guide-heading) .p-target { background: var(--market-price-target-buyout); }
-body:has(.ah-guide-heading) .p-watch { background: var(--market-price-high); }
-
-body:has(.ah-guide-heading) .pricepair.quick {
-  border-color: rgba(var(--market-price-quick-rgb), .34);
-  background: rgba(var(--market-price-quick-rgb), .05);
-}
-body:has(.ah-guide-heading) .pricepair.quick .bid { color: var(--market-price-quick); }
-body:has(.ah-guide-heading) .pricepair.quick .buyout { color: var(--market-price-quick-soft); }
-
-body:has(.ah-guide-heading) .pricepair.target {
-  border-color: rgba(var(--market-price-target-buyout-rgb), .78);
-  background: linear-gradient(90deg, rgba(var(--market-price-target-buyout-rgb), .18), rgba(var(--market-price-target-bid-rgb), .055));
-  box-shadow: 0 0 0 1px rgba(var(--market-price-target-buyout-rgb), .10), 0 0 18px rgba(var(--market-price-target-buyout-rgb), .08);
-}
-body:has(.ah-guide-heading) .pricepair.target .label { color: #e6d7aa; }
-body:has(.ah-guide-heading) .pricepair.target .bid {
-  color: var(--market-price-target-bid);
-  text-shadow: 0 0 8px rgba(var(--market-price-target-bid-rgb), .20);
-}
-body:has(.ah-guide-heading) .pricepair.target .buyout {
-  color: var(--market-price-target-buyout-soft);
-  text-shadow: 0 0 10px rgba(var(--market-price-target-buyout-rgb), .28);
-}
-
-body:has(.ah-guide-heading) .pricepair.high {
-  border-color: rgba(var(--market-price-high-rgb), .30);
-  background: rgba(var(--market-price-high-rgb), .05);
-}
-body:has(.ah-guide-heading) .pricepair.high .bid { color: var(--market-price-high); }
-body:has(.ah-guide-heading) .pricepair.high .buyout { color: var(--market-price-high-soft); }
-
-/* Demand uses one AH-colored scale. Text and block count carry the meaning. */
-body:has(.ah-guide-heading) .demand {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid rgba(var(--section-ah-rgb), .30);
-  background: rgba(var(--section-ah-rgb), .06);
-  color: var(--text-primary);
-}
-body:has(.ah-guide-heading) .demand::after {
-  color: var(--theme-accent);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  font-size: 10px;
-  letter-spacing: .03em;
-}
-body:has(.ah-guide-heading) .demand.vh::after { content: "■■■■"; }
-body:has(.ah-guide-heading) .demand.hi::after { content: "■■■□"; }
-body:has(.ah-guide-heading) .demand.med::after { content: "■■□□"; }
-body:has(.ah-guide-heading) .demand.low::after { content: "■□□□"; }
-
-/* AH lookup and guide cards use the section identity rather than a cyan/violet mix. */
+/* Auction House lookup and category cards on the Guide Hub. */
 .ah-search-section {
   border-color: rgba(var(--section-ah-rgb), .24);
   background:
@@ -161,60 +32,30 @@ body:has(.ah-guide-heading) .demand.low::after { content: "■□□□"; }
 }
 .guide-card.has-guide-icon .guide-action { color: var(--section-ah-soft); }
 
-/* Shared guide icon layouts. */
-.guide-card.has-guide-icon { display:grid; grid-template-columns:56px minmax(0,1fr); grid-template-rows:auto auto 1fr auto; column-gap:11px; align-items:start; }
-.guide-card-icon { grid-column:1; grid-row:1 / span 2; display:block; width:56px; height:56px; border:1px solid rgba(var(--section-ah-rgb),.28); border-radius:13px; background:var(--surface-code); box-shadow:0 7px 16px rgba(0,0,0,.28),0 0 13px rgba(var(--section-ah-rgb),.07); }
-.guide-card.has-guide-icon .badge { grid-column:2; grid-row:1; }
-.guide-card.has-guide-icon .guide-title { grid-column:2; grid-row:2; margin-top:5px; align-self:start; }
-.guide-card.has-guide-icon .guide-note { grid-column:1 / -1; grid-row:3; margin-top:12px; }
-.guide-card.has-guide-icon .guide-action { grid-column:1 / -1; grid-row:4; }
-.ah-guide-heading { display:grid; grid-template-columns:88px minmax(0,1fr); align-items:center; gap:16px; min-width:0; }
-.ah-guide-heading-copy { min-width:0; }
-.ah-guide-page-icon { display:block; width:88px; height:88px; border:1px solid rgba(var(--section-ah-rgb),.30); border-radius:19px; background:var(--surface-code); box-shadow:0 10px 22px rgba(0,0,0,.34),0 0 18px rgba(var(--section-ah-rgb),.09); }
-
-@media (max-width:600px) {
-  .ah-guide-heading { grid-template-columns:64px minmax(0,1fr); gap:12px; }
-  .ah-guide-page-icon { width:64px; height:64px; border-radius:15px; }
-  .guide-card.has-guide-icon { grid-template-columns:50px minmax(0,1fr); }
-  .guide-card-icon { width:50px; height:50px; border-radius:12px; }
+.guide-card.has-guide-icon {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 11px;
+  align-items: start;
 }
+.guide-card-icon {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: block;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(var(--section-ah-rgb), .28);
+  border-radius: 13px;
+  background: var(--surface-code);
+  box-shadow: 0 7px 16px rgba(0,0,0,.28), 0 0 13px rgba(var(--section-ah-rgb), .07);
+}
+.guide-card.has-guide-icon .badge { grid-column: 2; grid-row: 1; }
+.guide-card.has-guide-icon .guide-title { grid-column: 2; grid-row: 2; margin-top: 5px; align-self: start; }
+.guide-card.has-guide-icon .guide-note { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; }
+.guide-card.has-guide-icon .guide-action { grid-column: 1 / -1; grid-row: 4; }
 
-@media print {
-  body:has(.ah-guide-heading) {
-    --surface-page-deep:#fff;
-    --surface-page:#fff;
-    --surface-section:#fff;
-    --surface-card:#fff;
-    --surface-raised:#fff;
-    --surface-subtle:#fff;
-    --surface-table-head:#eee;
-    --surface-code:#fff;
-    --text-primary:#000;
-    --text-strong:#000;
-    --text-muted:#333;
-    --border-default:#777;
-    --section-ah-accent:#000;
-    --section-ah-soft:#000;
-    --section-ah-deep:#000;
-    --section-ah-rgb:0, 0, 0;
-    --theme-accent:#000;
-    --theme-accent-soft:#000;
-    --theme-accent-rgb:0, 0, 0;
-    --bg:#fff;
-    --panel:#fff;
-    --panel2:#fff;
-    --text:#000;
-    --muted:#333;
-    --line:#777;
-    background:#fff !important;
-    color:#000 !important;
-  }
-  body:has(.ah-guide-heading) header,
-  body:has(.ah-guide-heading) .common,
-  body:has(.ah-guide-heading) .routecard {
-    background:#fff !important;
-    box-shadow:none;
-  }
-  body:has(.ah-guide-heading) .demand { background:#fff; color:#000; }
-  body:has(.ah-guide-heading) .demand::after { color:#000; }
+@media (max-width: 600px) {
+  .guide-card.has-guide-icon { grid-template-columns: 50px minmax(0, 1fr); }
+  .guide-card-icon { width: 50px; height: 50px; border-radius: 12px; }
 }
