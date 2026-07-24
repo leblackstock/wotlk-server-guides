@@ -367,12 +367,22 @@
         </article>
         <article class="example-card">
           <h3>Section activation</h3>
-          <p>Use <code>data-guide-section="addons"</code> or <code>data-guide-section="auction-house"</code>. Legacy AH pages are temporarily detected through their shared <code>.ah-guide-heading</code> marker.</p>
+          <p>Use <code>data-guide-section="addons"</code> or <code>data-guide-section="auction-house"</code>. Auction House pages also use <code>data-ah-guide</code> only for genuine page-specific exceptions.</p>
         </article>
         <article class="example-card">
           <h3>Accessibility</h3>
           <p>Every state retains text, icons, shape, or block count. Color supports meaning but never becomes the only instruction.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="ah-table-system">
+      <h2>Auction House table system</h2>
+      <div class="example-grid">
+        <article class="example-card"><h3>Standard market</h3><p><code>Item → Target Price → Quick Price → High / Scarce → Stack Size → Demand → Use / Selling Notes</code>.</p></article>
+        <article class="example-card"><h3>Extended market</h3><p>Uses the same first four columns, then adds Market and Source before demand and notes for recipe and pattern drops.</p></article>
+        <article class="example-card"><h3>Compact reference</h3><p>Uses <code>ah-reference-table</code> for vendor rules, conversions, inputs, fixed values, and other non-market references.</p></article>
+        <article class="example-card"><h3>Mobile behavior</h3><p>Below 760px, rows become cards. Item and Target Price stay first and span the card width.</p></article>
       </div>
     </section>
 
