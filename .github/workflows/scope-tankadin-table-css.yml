@@ -1,0 +1,160 @@
+name: Scope Tankadin table CSS
+
+on:
+  push:
+    branches:
+      - agent/scope-tankadin-table-css
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/scope-tankadin-table-css
+          fetch-depth: 0
+
+      - name: Scope Tankadin table selectors
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          css_path = Path('assets/protection-paladin.css')
+          css = css_path.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  '''    table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 760px;
+                  }'''.replace('                  ', '      '),
+                  '''    .table-wrap > table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 760px;
+                  }'''.replace('                  ', '      '),
+                  'base table selector',
+              ),
+              (
+                  '''    th, td {
+                    border-bottom: 1px solid var(--line);
+                    padding: 10px 9px;
+                    text-align: left;
+                    vertical-align: top;
+                  }'''.replace('                  ', '      '),
+                  '''    .table-wrap > table > thead > tr > th,
+                  .table-wrap > table > tbody > tr > td {
+                    border-bottom: 1px solid var(--line);
+                    padding: 10px 9px;
+                    text-align: left;
+                    vertical-align: top;
+                  }'''.replace('                  ', '      '),
+                  'cell selector',
+              ),
+              (
+                  '''    th {
+                    color: var(--muted);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: .06em;
+                    background: var(--surface-table-head);
+                  }'''.replace('                  ', '      '),
+                  '''    .table-wrap > table > thead > tr > th {
+                    color: var(--muted);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: .06em;
+                    background: var(--surface-table-head);
+                  }'''.replace('                  ', '      '),
+                  'header selector',
+              ),
+              (
+                  '''    td {
+                    color: var(--muted);
+                    font-size: 13px;
+                  }'''.replace('                  ', '      '),
+                  '''    .table-wrap > table > tbody > tr > td {
+                    color: var(--muted);
+                    font-size: 13px;
+                  }'''.replace('                  ', '      '),
+                  'body cell selector',
+              ),
+              (
+                  '    tr:last-child td { border-bottom: 0; }',
+                  '    .table-wrap > table > tbody > tr:last-child > td { border-bottom: 0; }',
+                  'last row selector',
+              ),
+          ]
+
+          for old, new, label in replacements:
+              count = css.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly one {label}, found {count}')
+              css = css.replace(old, new, 1)
+
+          forbidden = [
+              '\n    table {',
+              '\n    th, td {',
+              '\n    th {',
+              '\n    td {',
+              '    tr:last-child td { border-bottom: 0; }',
+          ]
+          for selector in forbidden:
+              if selector in css:
+                  raise SystemExit(f'Unscoped Tankadin selector remains: {selector!r}')
+
+          required = [
+              '.table-wrap > table {',
+              '.table-wrap > table > thead > tr > th,',
+              '.table-wrap > table > tbody > tr > td {',
+              '.table-wrap > table > tbody > tr:last-child > td {',
+          ]
+          for selector in required:
+              if selector not in css:
+                  raise SystemExit(f'Scoped selector missing: {selector}')
+
+          css_path.write_text(css, encoding='utf-8', newline='')
+
+          pages = [
+              Path('guides/protection-paladin-pve-guide.html'),
+              Path('guides/protection-paladin-playing.html'),
+              Path('guides/protection-paladin-setting-up.html'),
+              Path('guides/protection-paladin-gearing.html'),
+              Path('guides/protection-paladin-gear-targets.html'),
+              Path('guides/protection-paladin-raiding.html'),
+          ]
+          old_version = '../assets/protection-paladin.css?v=20260721-tooltip-colors-v2'
+          new_version = '../assets/protection-paladin.css?v=20260724-tooltip-table-scope-v1'
+          for page in pages:
+              text = page.read_text(encoding='utf-8')
+              count = text.count(old_version)
+              if count != 1:
+                  raise SystemExit(f'{page}: expected one old stylesheet version, found {count}')
+              page.write_text(text.replace(old_version, new_version, 1), encoding='utf-8', newline='')
+
+          print('Scoped Tankadin table CSS and bumped six page cache keys')
+          PY
+
+      - name: Validate changes
+        shell: bash
+        run: |
+          git diff --check
+          test "$(git diff --name-only | wc -l)" -eq 7
+          test "$(git diff --name-only -- 'guides/protection-paladin*.html' | wc -l)" -eq 6
+          test "$(git diff --name-only -- 'assets/protection-paladin.css' | wc -l)" -eq 1
+
+      - name: Commit scoped selectors
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/protection-paladin.css guides/protection-paladin*.html
+          git commit -m "fix: scope Tankadin table styles"
+          git push origin HEAD:agent/scope-tankadin-table-css
