@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use Beacon, Sacred Shield, direct heals, mana tools, cooldowns, and Hands deliberately.">
+  <title>Playing your Holy Paladin | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/holy-paladin.css?v=20260724-holy-v1">
+  
+  <script src="../assets/paladin-tooltips.js?v=20260724-holy-v1" defer></script>
+  <script src="../assets/holy-paladin.js?v=20260724-holy-v1" defer></script>
+  
+</head>
+<body data-guide-class="paladin" data-guide-spec="holy">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Holy Paladin guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="holy-paladin-pve-guide.html">Quick Start</a><a href="holy-paladin-playing.html" aria-current="page">Playing</a><a href="holy-paladin-setting-up.html">Setup</a><a href="holy-paladin-gearing.html">Building</a><a href="holy-paladin-gear-targets.html">Equipping</a><a href="holy-paladin-raiding.html">Raiding</a></nav>
+  <header>
+    <span class="page-kicker">Holy Paladin • Level 80+</span>
+    <h1>WotLK 3.3.5 <span>Playing your Holy Paladin</span></h1>
+    <p class="sub">Maintain the healing engine, predict damage, and choose the safest cast instead of following a fake rotation.</p>
+    <div class="jump-nav" aria-label="Topics on this page"><a href="#engine">Healing engine</a><a href="#playbooks">Playbooks</a><a href="#utility">Cooldowns & utility</a><a href="#sources">Sources</a></div>
+  </header>
+  <main>
+  
+<section class="common" id="engine">
+  <h2><span class="section-mark">◆</span> The Holy Paladin healing engine</h2>
+  <p class="muted">Holy Paladin is not a fixed rotation. It is a maintenance-and-decision loop: keep the engine active, predict the next hit, choose the spell that safely covers it, and preserve enough mana for the dangerous part of the encounter.</p>
+  <div class="beacon-diagram" aria-label="Direct healing and Beacon transfer">
+    <div class="beacon-node direct"><strong>Direct-heal target</strong><span>Receives the spell, Glyph of Holy Light splash, and any eligible secondary effect.</span></div>
+    <div class="beacon-arrow" aria-hidden="true">→</div>
+    <div class="beacon-node beacon"><strong>Beacon target</strong><span>Receives the eligible direct healing copied by Beacon of Light.</span></div>
+  </div>
+  <div class="three-col">
+    <div class="priority-card"><h3>Always maintain</h3><ul class="clean-list"><li>Beacon of Light on the assigned target.</li><li>Sacred Shield on the assigned tank.</li><li>Judgements of the Pure through a safe Judgement.</li></ul></div>
+    <div class="priority-card"><h3>Choose the cast</h3><ul class="clean-list"><li>Holy Light for dangerous or sustained raid damage.</li><li>Flash of Light for genuinely low incoming damage.</li><li>Holy Shock for movement, emergency triage, or an Infusion of Light setup.</li></ul></div>
+    <div class="priority-card"><h3>Plan the mana</h3><ul class="clean-list"><li>Use Divine Plea before desperation.</li><li>Pair reduced healing with a safe damage window or compensating cooldown.</li><li>Judge and melee with Seal of Wisdom only when positioning is safe.</li></ul></div>
+  </div>
+  <div class="note warning"><strong>Beacon limitation:</strong> Beacon copies eligible direct healing from Holy Light, Flash of Light, and Holy Shock. Glyph of Holy Light splash and the Flash of Light HoT do not transfer.</div>
+</section>
+
+<section class="common" id="playbooks">
+  <h2><span class="section-mark">◆</span> Healing playbooks</h2>
+  <p class="muted">Select a card header to focus on one situation. Select it again to restore the full grid.</p>
+  <div class="heal-playbook-grid">
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Normal assignment</span><h3>Routine tank damage</h3></div><span class="heal-card-tag">Baseline</span></div>
+      <div class="heal-card-body"><h4>Keep active</h4><p>Beacon, Sacred Shield, Judgements of the Pure, assigned aura, and Seal of Wisdom.</p><h4>Normal response</h4><div class="spell-choice-strip"><span class="spell-choice maintenance">Maintain buffs</span><span class="spell-arrow">›</span><span class="spell-choice direct">Holy Light</span><span class="spell-arrow">›</span><span class="spell-choice beacon">Beacon transfer</span></div><ul><li>Pre-cast Holy Light when a predictable swing or special is due.</li><li>Cancel only when the cast is clearly unnecessary and mana is actually constrained.</li><li>Use Flash of Light during low damage rather than pretending every second is heroic Lich King.</li></ul></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Refreshing Beacon or Sacred Shield after they expire during the burst instead of before it.</p></div>
+    </article>
+
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Split assignment</span><h3>Two tanks taking damage</h3></div><span class="heal-card-tag">Beacon</span></div>
+      <div class="heal-card-body"><h4>Target plan</h4><p>Beacon one tank and cast directly on the other. Reverse only when the damage pattern or range demands it.</p><h4>Normal response</h4><div class="spell-choice-strip"><span class="spell-choice beacon">Beacon Tank A</span><span class="spell-arrow">›</span><span class="spell-choice direct">Heal Tank B</span></div><ul><li>Direct-heal the tank taking the less predictable or more urgent damage.</li><li>Use the Beacon target as your safety net, not as a reason to ignore range.</li><li>Do not swap Beacon casually; it costs mana and a global cooldown.</li></ul></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Casting repeatedly into your Beacon while the second tank receives no copied healing.</p></div>
+    </article>
+
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Tank buster</span><h3>Sudden tank spike</h3></div><span class="heal-card-tag">Emergency</span></div>
+      <div class="heal-card-body"><h4>Immediate response</h4><div class="spell-choice-strip"><span class="spell-choice direct">Holy Shock</span><span class="spell-arrow">›</span><span class="spell-choice direct">Infusion cast</span><span class="spell-arrow">›</span><span class="spell-choice maintenance">Divine Favor</span></div><ul><li>Use Divine Favor before the important heal when a guaranteed crit matters.</li><li>Use Hand of Sacrifice as a planned external, preferably with Divine Protection or Divine Shield protecting you.</li><li>Lay on Hands is a real emergency tool. Saving it for next expansion produces zero healing.</li></ul></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Stacking every cooldown after the tank is already dead.</p></div>
+    </article>
+
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Group damage</span><h3>Heavy raid-wide damage</h3></div><span class="heal-card-tag">Raid support</span></div>
+      <div class="heal-card-body"><h4>Normal response</h4><ul><li>Keep the assigned tank safe first.</li><li>Cast Holy Light into injured clustered players to exploit Glyph of Holy Light splash.</li><li>Use Aura Mastery with the resistance aura matching the incoming school, or Concentration Aura for silence/pushback problems.</li><li>Use Divine Guardian before the damage lands, then cancel Divine Sacrifice or protect yourself as Hellscream scripting requires.</li></ul></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Chasing raid bars while the assigned tank falls through the floorboards.</p></div>
+    </article>
+
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Repositioning</span><h3>Movement phase</h3></div><span class="heal-card-tag">Mobile</span></div>
+      <div class="heal-card-body"><h4>Before moving</h4><ul><li>Refresh Beacon, Sacred Shield, and Judgements of the Pure if they will expire.</li><li>Pre-cast a heal to land as movement begins.</li></ul><h4>While moving</h4><div class="spell-choice-strip"><span class="spell-choice direct">Holy Shock</span><span class="spell-arrow">›</span><span class="spell-choice direct">Instant Flash of Light</span><span class="spell-arrow">›</span><span class="spell-choice maintenance">Hands / Aura Mastery</span></div></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Finishing one heroic Holy Light while standing in a mechanic that deletes the healer.</p></div>
+    </article>
+
+    <article class="heal-card">
+      <div class="heal-card-header"><div><span class="heal-card-kicker">Resource plan</span><h3>Mana trouble</h3></div><span class="heal-card-tag">Sustain</span></div>
+      <div class="heal-card-body"><div class="mana-meter"><div class="mana-zone safe"><strong>Comfortable</strong><span>Use Holy Light as required and keep full maintenance.</span></div><div class="mana-zone plan"><strong>Plan now</strong><span>Find the next Divine Plea and potion window.</span></div><div class="mana-zone danger"><strong>Critical</strong><span>Throttle casts, call for help, and stop wasting globals.</span></div></div><ul><li>Use Divine Plea during low damage, phase transitions, immunity windows, or with compensating cooldowns.</li><li>A mana potion is usually stronger when used early enough that it prevents panic later.</li><li>Seal of Wisdom contact is powerful, but dead healers regenerate poorly.</li></ul></div>
+      <div class="heal-card-footer"><p><strong>Failure to avoid:</strong> Waiting until empty mana to begin thinking about mana.</p></div>
+    </article>
+  </div>
+</section>
+
+<section class="common" id="utility">
+  <h2><span class="section-mark">◆</span> Cooldowns, Hands, and utility</h2>
+  <div class="table-wrap"><table><thead><tr><th>Tool</th><th>Primary use</th><th>Important caution</th></tr></thead><tbody>
+    <tr><td><strong>Divine Favor</strong></td><td>Guarantee a critical heal, commonly paired with Holy Shock or a planned Holy Light.</td><td>Use before the spike, not as a postmortem.</td></tr>
+    <tr><td><strong>Divine Illumination</strong></td><td>Reduce spell costs during high-throughput healing or a planned mana-sensitive section.</td><td>Do not save it through the entire encounter.</td></tr>
+    <tr><td><strong>Aura Mastery</strong></td><td>Amplify the correct resistance aura or Concentration Aura for a known mechanic.</td><td>The aura must match the job when the button is pressed.</td></tr>
+    <tr><td><strong>Divine Guardian</strong></td><td>Raid-wide damage reduction through Divine Sacrifice.</td><td>Use a cancel macro or personal immunity according to tested server behavior.</td></tr>
+    <tr><td><strong>Hand of Sacrifice</strong></td><td>External tank cooldown.</td><td>Protect yourself from transferred damage.</td></tr>
+    <tr><td><strong>Hand of Protection</strong></td><td>Remove physical danger or protect a non-tank target.</td><td>Stops physical attacks and applies Forbearance.</td></tr>
+    <tr><td><strong>Hand of Salvation</strong></td><td>Reduce a high-threat player's threat.</td><td>Do not cast on the active tank.</td></tr>
+    <tr><td><strong>Hand of Freedom</strong></td><td>Remove or prevent movement impairments.</td><td>Bind it where it can be used instantly.</td></tr>
+    <tr><td><strong>Lay on Hands</strong></td><td>Clutch heal and, with glyph choices, possible mana utility.</td><td>Applies Forbearance and has a long cooldown.</td></tr>
+    <tr><td><strong>Cleanse</strong></td><td>Remove poison, disease, and magic effects you are assigned to dispel.</td><td>A correct dispel can outrank another heal.</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="common" id="sources">
+  <h2><span class="section-mark">◆</span> Sources and verification</h2>
+  <ul class="source-list">
+    <li><a href="https://www.wowhead.com/wotlk/guide/classes/paladin/holy/healer-rotation-cooldowns-abilities-pve" target="_blank" rel="noopener">Holy Paladin rotation, cooldowns, and abilities</a></li>
+    <li><a href="https://www.wowhead.com/wotlk/spell=53563" target="_blank" rel="noopener">Beacon of Light spell data</a></li>
+    <li><a href="https://www.wowhead.com/wotlk/spell=53601" target="_blank" rel="noopener">Sacred Shield spell data</a></li>
+    <li><a href="https://www.wowhead.com/wotlk/spell=54428" target="_blank" rel="noopener">Divine Plea spell data</a></li>
+  </ul>
+</section>
+
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>
