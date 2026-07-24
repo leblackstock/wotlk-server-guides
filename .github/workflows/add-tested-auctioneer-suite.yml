@@ -21,6 +21,25 @@ jobs:
         with:
           ref: agent/add-tested-auctioneer-suite
 
+      - name: Align migration with current browser tests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("scripts/apply-auctioneer-suite-catalog.py")
+          lines = path.read_text(encoding="utf-8").splitlines()
+          changed = 0
+          for index, line in enumerate(lines):
+              if line.strip().startswith("drawer_marker =") and "paladin-protection" in line:
+                  lines[index] = '        drawer_marker = \'    assert.equal(await desktop.locator(\\\'a[href="https://warperia.com/addon-wotlk/chatter/"]\\\').count() > 0, true);\\n\''
+                  changed += 1
+              if "browser = replace_once(browser, drawer_marker, auctioneer_drawer + drawer_marker" in line:
+                  lines[index] = '        browser = replace_once(browser, drawer_marker, drawer_marker + "\\n" + auctioneer_drawer, "browser drawer")'
+                  changed += 1
+          if changed != 2:
+              raise SystemExit(f"Expected two browser-marker edits, found {changed}")
+          path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
       - name: Apply Auctioneer Suite catalog migration
         run: |
           if ! python scripts/apply-auctioneer-suite-catalog.py >/tmp/auctioneer-migration.log 2>&1; then
