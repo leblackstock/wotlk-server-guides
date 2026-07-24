@@ -18,6 +18,19 @@ jobs:
         with:
           ref: agent/add-untested-acp
 
+      - name: Patch duplicate browser marker
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/apply-acp-catalog.py')
+          text = path.read_text(encoding='utf-8')
+          old = '    text = replace_once(text, drawer_marker, drawer_checks + drawer_marker, "browser ACP drawer")\n'
+          new = '    if drawer_marker not in text:\n        raise RuntimeError("browser ACP drawer marker not found")\n    text = text.replace(drawer_marker, drawer_checks + drawer_marker, 1)\n'
+          if old not in text:
+              raise SystemExit('Expected ACP drawer replacement line not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
       - name: Apply ACP catalog migration
         run: python scripts/apply-acp-catalog.py
 
