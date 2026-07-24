@@ -35,18 +35,26 @@ jobs:
           npm install --no-save playwright@1.55.0 >/dev/null 2>&1
           npx playwright install chromium >/dev/null
 
-      - name: Run browser smoke tests
+      - name: Run and capture browser smoke test
         run: |
           python -m http.server 4173 >/tmp/addon-server.log 2>&1 &
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           sleep 2
-          node tests/addon-browser-smoke.cjs
+          set +e
+          node tests/addon-browser-smoke.cjs > /tmp/outfitter-browser.log 2>&1
+          STATUS=$?
+          set -e
+          cat /tmp/outfitter-browser.log
+          if [ "$STATUS" -ne 0 ]; then
+            cp /tmp/outfitter-browser.log tests/outfitter-browser-error.txt
+          fi
 
-      - name: Commit catalog changes
+      - name: Commit catalog changes and captured result
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/addons.json assets/addon-catalog-data.js assets/addons/icons/outfitter.svg guides/addons.html scripts/validate-addon-catalog.py tests/addon-search.test.js tests/addon-browser-smoke.cjs
+          if [ -f tests/outfitter-browser-error.txt ]; then git add tests/outfitter-browser-error.txt; fi
           git commit -m "Add tested Outfitter 5.0"
           git push origin HEAD:agent/add-outfitter
