@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Heroic Lich King 25 Blood Death Knight tank playbooks for boss, Shambling Horror, Raging Spirit, Soul Reaper swap, Vile Spirit soak, and Frostmourne return roles.">
+  <title>Raiding with your Blood Death Knight | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <script src="../assets/death-knight-tooltips.js?v=20260725-blood-v1" defer></script>
+  <script src="../assets/blood-death-knight.js?v=20260725-blood-v1" defer></script>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Blood Death Knight guide pages">
+    <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+    <a href="blood-death-knight-pve-guide.html">Quick Start</a>
+    <a href="blood-death-knight-playing.html">Playing</a>
+    <a href="blood-death-knight-setting-up.html">Setup</a>
+    <a href="blood-death-knight-gearing.html">Building</a>
+    <a href="blood-death-knight-gear-targets.html">Equipping</a>
+    <a href="blood-death-knight-raiding.html" aria-current="page">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Blood Death Knight • Heroic Lich King 25</span>
+    <h1>WotLK 3.3.5 <span>Heroic LK25 Tank Playbook</span></h1>
+    <p class="sub">Phase and assignment rules for Hellscream with the Icecrown zone buff disabled. Choose the exact tank job before reading the cooldown call.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#consumables">Consumables</a>
+      <a href="#assignments">Assignments</a>
+      <a href="#reaper">Soul Reaper</a>
+      <a href="#raid-notes">Phase playbooks</a>
+      <a href="#tests">Hellscream tests</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="note warning"><strong>Hellscream raid caveat:</strong> standard WotLK 3.3.5 timing and mechanics are the baseline; no ICC zone buff is assumed. Exact timers, custom health/damage tuning, taunt windows, pet behavior, and scripted interactions must be confirmed on the server.</div>
+
+    <section class="common" id="consumables">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_alchemy_endlessflask_05.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Consumables</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Type</th><th>Default</th><th>Alternative</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td>Flask</td><td><a class="item-name" href="https://www.wowhead.com/wotlk/item=46379" target="_blank" rel="noopener">Flask of Stoneblood</a> (+1,300 maximum health)</td><td>Resistance elixirs only for a tested set/strategy</td><td>Health works against every lethal damage type and scales personal heals.</td></tr>
+            <tr><td>Food</td><td><a class="item-name" href="https://www.wowhead.com/wotlk/item=42999" target="_blank" rel="noopener">Blackened Dragonfin</a> (+40 Agility / +40 Stamina)</td><td><a class="item-name" href="https://www.wowhead.com/wotlk/item=43000" target="_blank" rel="noopener">Dragonfin Filet</a> for Strength; <a class="item-name" href="https://www.wowhead.com/wotlk/item=42994" target="_blank" rel="noopener">Rhinolicious Wormsteak</a> for expertise; <a class="item-name" href="https://www.wowhead.com/wotlk/item=42996" target="_blank" rel="noopener">Snapper Extreme</a> for hit; <a class="item-name" href="https://www.wowhead.com/wotlk/item=43015" target="_blank" rel="noopener">Fish Feast</a> as the weaker shared fallback</td><td>Use Stamina plus the correction that makes the whole set reliable. Agility adds armor/avoidance; Strength is mostly threat/parry.</td></tr>
+            <tr><td>Armor potion</td><td><a class="item-name" href="https://www.wowhead.com/wotlk/item=40093" target="_blank" rel="noopener">Indestructible Potion</a> (+3,500 armor for 2 min)</td><td>Second Indestructible during a late physical window</td><td>Pre-pot immediately before combat; use the in-combat potion after the cooldown. Check peak armor against 49,905.</td></tr>
+            <tr><td>Shadow potion</td><td><a href="https://www.wowhead.com/wotlk/item=40217" target="_blank" rel="noopener">Mighty Shadow Protection Potion</a> (absorbs 4,200–6,000 Shadow for 2 min)</td><td><a class="item-name" href="https://www.wowhead.com/wotlk/item=33447" target="_blank" rel="noopener">Runic Healing Potion</a> (2,700–4,500 heal)</td><td>Use only if the raid plan values Shadow coverage over the second armor potion.</td></tr>
+            <tr><td>Independent recovery</td><td>Healthstone</td><td>Heavy Frostweave Bandage when completely safe</td><td>Healthstone is separate from the potion lockout in WotLK. Bind it beside Rune Tap.</td></tr>
+            <tr><td>Utility</td><td>Saronite Bombs or Global Thermal Sapper Charge by raid policy</td><td>Free Action/Swiftness are not default LK tank tools</td><td>Never trade a defensive potion for meter padding on progression.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="assignments">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Name the assignment</h2>
+      <div class="table-wrap">
+        <table class="role-matrix">
+          <thead><tr><th>Role</th><th>Primary responsibility</th><th>Primary death pattern</th><th>Gear/cooldown emphasis</th></tr></thead>
+          <tbody>
+            <tr><td>LK boss tank</td><td>Boss position, Shadow Trap/Defile movement, Plague Siphon escalation, Soul Reaper application</td><td>Boss swing plus Infest/Shadow burst; late-P1 amplified melee</td><td>Maximum EHP, Fang/Key baseline, planned majors</td></tr>
+            <tr><td>Shambling tank</td><td>Gather ghouls/Horrors, anchor Plague jumps, face Shockwave out, survive Enrage/Frenzy</td><td>Enraged Horror melee or Shockwave while healers move</td><td>Armor + Stamina, stuns/tranq calls, pickup hit</td></tr>
+            <tr><td>Raging Spirit tank</td><td>Immediate pickup, face Soul Shriek away, survive stacked spirits at Quake</td><td>35k-range melee plus 45k heroic frontal/silence</td><td>Magic + physical mix, clean facing, AMS/IBF plan</td></tr>
+            <tr><td>Soul Reaper swap</td><td>Taunt after application and own the boss’s five-second haste window</td><td>Taunt resist or hasted melee while carrier receives 70k Shadow</td><td>Dark Command glyph, hit plan, personal/external split</td></tr>
+            <tr><td>Vile Spirit soaker</td><td>Trigger assigned spirits away from the raid without chaining explosions through players</td><td>Multiple 36k Shadow bursts inside 5 yards</td><td>Stamina, AMS, Fang, IBF/external; exact count assigned</td></tr>
+            <tr><td>Frostmourne return tank</td><td>Exit grouped room, regain control, spread for Defile, establish boss/Spirit tanking instantly</td><td>Return overlap, late Harvested Soul stack, Defile under stack</td><td>Cooldown held through interior, taunt and movement ready</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="reaper">
+      <h2>Soul Reaper: split the two threats</h2>
+      <div class="note spec"><strong>Standard heroic record:</strong> the application deals 50% weapon damage; after 5 sec the carrier takes 70,000 Shadow damage and the Lich King gains 100% attack speed for 5 sec. The boss remains tauntable.</div>
+      <div class="three-col" style="margin-top:12px">
+        <div class="guide-box"><h3>Carrier</h3><ol class="priority-list"><li>Call “Reaper on me.”</li><li>Use the assigned personal before the delayed tick.</li><li>AMS just before the Shadow tick when assigned.</li><li>Do not taunt back during the boss haste window.</li><li>Death Strike/Rune Tap after damage if still tanking another target.</li></ol></div>
+        <div class="guide-box"><h3>Swap tank</h3><ol class="priority-list"><li>Be in range with a clean path.</li><li>Taunt after Reaper is applied, before the 5-sec detonation.</li><li>Follow with Icy Touch; call a resist immediately.</li><li>Use mitigation for the hasted melee window.</li><li>Return the boss only on the agreed call.</li></ol></div>
+        <div class="guide-box"><h3>Raid support</h3><ol class="priority-list"><li>Assign one external to a named tank/window.</li><li>Do not stack every external on the carrier while the new tank eats hasted swings.</li><li>Healers pre-target both tanks.</li><li>Keep Defile movement from breaking taunt range.</li><li>Record every failure by carrier vs swap tank.</li></ol></div>
+      </div>
+      <div class="table-wrap" style="margin-top:12px">
+        <table>
+          <thead><tr><th>Example sequence</th><th>Carrier coverage</th><th>Swap-tank coverage</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Reaper 1</td><td>IBF; AMS near tick if planned</td><td>Minor personal / armor use</td><td>IBF will normally return around Reaper 5, depending on exact cadence.</td></tr>
+            <tr><td>Reaper 2</td><td>Vampiric Blood + named external</td><td>Major external or strong personal</td><td>VB improves healing and health but is not direct reduction.</td></tr>
+            <tr><td>Reaper 3</td><td>T10 Blood Tap + Fang/Key</td><td>Named external</td><td>Only valid with four tank-tier pieces and a tracked Blood Tap buff.</td></tr>
+            <tr><td>Reaper 4</td><td>Vampiric Blood + next external</td><td>Planned personal</td><td>Confirm that VB’s one-minute cooldown is actually ready.</td></tr>
+            <tr><td>Reaper 5</td><td>IBF</td><td>Next rotation layer</td><td>Reset the written sequence after Harvest Souls/phase movement if timers drift.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mini-note"><strong>This table is a worksheet, not a universal schedule.</strong> Replace it with the raid’s actual pull timer, tank order, external names, and Defile/Harvest overlaps. Exact Soul Reaper/AMS behavior is a Hellscream test.</p>
+    </section>
+
+    <section class="common" id="raid-notes">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Phase and role playbooks</h2>
+      <p class="muted">Filters combine raid size, difficulty, and assignment. The guide is intentionally densest for 25-player heroic.</p>
+      <div class="filter-panel" data-spec-filters>
+        <div class="filter-row">
+          <span class="filter-label">Raid size</span>
+          <div class="filter-options">
+            <button class="filter-button" type="button" data-filter-group="size" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="size" data-filter-value="10" aria-pressed="false">10-player</button>
+            <button class="filter-button" type="button" data-filter-group="size" data-filter-value="25" aria-pressed="false">25-player</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Difficulty</span>
+          <div class="filter-options">
+            <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="normal" aria-pressed="false">Normal</button>
+            <button class="filter-button" type="button" data-filter-group="difficulty" data-filter-value="heroic" aria-pressed="false">Heroic</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Assignment</span>
+          <div class="filter-options">
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="boss-tank" aria-pressed="false">Lich King tank</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="add-tank" aria-pressed="false">Shambling tank</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="transition-tank" aria-pressed="false">Raging Spirit tank</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="swap-tank" aria-pressed="false">Soul Reaper swap</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="spirit-soaker" aria-pressed="false">Vile Spirit soak</button>
+            <button class="filter-button" type="button" data-filter-group="role" data-filter-value="special" aria-pressed="false">Special / return</button>
+          </div>
+        </div>
+        <p class="filter-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_shadowfury.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Pull and Phase 1: 100% → 70%</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="boss-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">All modes</span><span class="raid-note-tag">LK tank</span></div>
+          <strong>Position for raid space, not personal comfort.</strong> Face LK away, keep the add pack separate, and leave a predictable lane toward the transition edge. Maintain Frost Fever and move the boss only on the raid’s trap/space call.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">25 heroic</span><span class="raid-note-tag">Shadow Trap</span></div>
+          <strong>Move the boss away from every activated Shadow Trap.</strong> Heroic traps are summoned about every 15 sec, arm after roughly 5 sec, deal Shadow damage, and knock nearby players off the platform. Never drag the boss backward through melee; strafe on the established route.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">25 heroic</span><span class="raid-note-tag">Plague Siphon</span></div>
+          <strong>Escalate cooldowns with Plague Siphon.</strong> Every Necrotic Plague jump gives LK +2% damage, which especially escalates his physical swings. Save major coverage for the high-stack end of P1; a static “use at 30% health” rule is too late.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="add-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">25 heroic</span><span class="raid-note-tag">Shambling Horror</span></div>
+          <strong>Collect three-Drudge waves and each minute Horror without turning the frontal.</strong> Horrors hit hard, cast a 150%-swing Shockwave in a 20-yard frontal about every 20 sec, Enrage for triple damage, and Frenzy below 20%. Call every Enrage for Tranq/Anesthetic and every low-health stun chain.
+        </div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="add-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Plague anchor</span><span class="raid-note-tag">Add tank</span></div>
+          <strong>Make the closest valid jump target an add, never a player.</strong> The plagued player enters the assigned 10-yard transfer point before dispel. Do not chase the player with a Horror frontal. Keep enough Drudge Ghouls alive to feed the plague.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="special">
+          <div class="raid-note-meta"><span class="raid-note-tag">Infest</span><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>
+          Heroic Infest starts around 17.7–19.8k Shadow and ramps until health exceeds 90%. AMS can reduce the hit; confirm whether the server also prevents or alters the debuff application. Do not consume AMS if it is assigned to the next tank burst.
+        </div>
+      </details>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_arcticwinds.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">First intermission: 70%</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="boss-tank add-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Movement</span><span class="raid-note-tag">Both tanks</span></div>
+          <strong>Move outside the 45-yard Remorseless Winter radius immediately.</strong> Heroic Winter deals roughly 15k Frost per second. Finish the add/plague cleanup only from the safe edge; AMS is a bridge, not permission to stay inside.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="transition-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">25 heroic</span><span class="raid-note-tag">Raging Spirit</span></div>
+          <strong>Pick up each Spirit instantly and face its 15-yard Soul Shriek cone away.</strong> Three spawn in the first intermission. Heroic Soul Shriek deals about 42.4–47.6k Shadow and silences for 5 sec; keep healers and the other tank outside the face.
+        </div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="transition-tank special">
+          <div class="raid-note-meta"><span class="raid-note-tag">Ice Sphere</span><span class="raid-note-tag">Quake</span></div>
+          <strong>Never let a Spirit pickup cross an Ice Sphere path.</strong> At the end of the minute, Quake gives about 5 sec to return to the main platform. Move the Spirit with you without rotating Soul Shriek through the raid.
+        </div>
+      </details>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_deathanddecay.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Phase 2: 70% → 40%</span></summary>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Val’kyr</span><span class="raid-note-tag">Defile</span></div>
+          <strong>Hold LK near center for the triple-Val’kyr stack, then drag him with the raid’s cleave path.</strong> As Defile approaches, preserve a clean escape lane and never rotate the boss through the stack. Defile is roughly every 35 sec; Val’kyr about every 45 sec.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank swap-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Soul Reaper</span><span class="raid-note-tag">Both tanks</span></div>
+          <strong>Execute the written carrier/swap split every ~30 sec.</strong> Carrier owns the 70k Shadow tick; swap tank owns the following five seconds of 100% boss attack speed. Call taunt success, not just the button press.
+        </div>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="transition-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Carry-over Spirit</span><span class="raid-note-tag">Transition tank</span></div>
+          <strong>Cleave a surviving Raging Spirit beside LK only with safe facing.</strong> The Spirit’s front remains more important than the cleave angle. Do not place it where a Defile move crosses its cone.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="special">
+          <div class="raid-note-meta"><span class="raid-note-tag">Timer drift</span><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>
+          Record actual Soul Reaper, Defile, and Val’kyr timestamps for three pulls. Server scripting and push timing can change overlaps; the cooldown sheet must use observed Hellscream events.
+        </div>
+      </details>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_arcticwinds.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Second intermission: 40%</span></summary>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="transition-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">25 heroic</span><span class="raid-note-tag">Four Spirits</span></div>
+          <strong>Plan ownership before four Raging Spirits exist.</strong> Alternate pickups or stack them only with explicit major coverage. Keep every Soul Shriek facing aligned away from the raid and the other tank.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank swap-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Resource reset</span><span class="raid-note-tag">P3 prep</span></div>
+          <strong>Enter P3 with the Reaper rotation executable.</strong> Build RP above 20, refresh Horn, ensure diseases can be applied, and do not spend ERW merely to finish a Spirit unless assigned.
+        </div>
+      </details>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_soulleech_3.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">Phase 3: 40% → 10%</span></summary>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="boss-tank swap-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Soul Reaper</span><span class="raid-note-tag">Defile</span></div>
+          <strong>Continue Reaper swaps while protecting Defile space.</strong> P3 removes Infest but keeps Reaper (~30 sec) and Defile (~35 sec). A correct taunt that drags LK across Defile is still a wipe; pre-position both tanks.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="spirit-soaker">
+          <div class="raid-note-meta"><span class="raid-note-tag">Vile Spirits</span><span class="raid-note-tag">Soaker</span></div>
+          <strong>Soak only the assigned wave/count.</strong> Ten spirits spawn; each heroic Spirit Burst is roughly 36k Shadow in 5 yards. Use AMS/Fang first for magic, IBF or an external for overlap, and keep explosions away from the raid. Multiple simultaneous bursts can exceed any DK cooldown.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="special">
+          <div class="raid-note-meta"><span class="raid-note-tag">Harvest Souls</span><span class="raid-note-tag">Whole raid</span></div>
+          <strong>Survive the six-second raid channel, then execute the 40-second Frostmourne room.</strong> Standard heroic Harvest Souls deals 4k Shadow per second before transport. Inside, move as one group, kill Wicked Spirits, and sidestep the bombs that fall where they die.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="special boss-tank swap-tank">
+          <div class="raid-note-meta"><span class="raid-note-tag">Return</span><span class="raid-note-tag">Tank priority</span></div>
+          <strong>Leave Frostmourne with a tank assignment, not a discussion.</strong> The return group is stacked and Defile can follow quickly: spread on control, taunt the intended target, turn it away, and call any late death. One late interior death can give LK a +500% damage stack for 15 sec.
+        </div>
+        <div class="raid-note" data-size="25" data-difficulty="heroic" data-role="special">
+          <div class="raid-note-meta"><span class="raid-note-tag">Return timing</span><span class="raid-note-tag raid-note-verify">Needs Hellscream test</span></div>
+          Confirm the exact target state, Defile timer, Vile Spirit activation, and boss threat table on Frostmourne exit. Do not assume another core’s return ordering.
+        </div>
+      </details>
+
+      <details class="raid-encounter" open>
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_122.jpg" alt="" aria-hidden="true" onerror="this.remove()"><span class="raid-summary-title">10% scripted finish</span></summary>
+        <div class="raid-note" data-size="10 25" data-difficulty="normal heroic" data-role="boss-tank add-tank transition-tank swap-tank spirit-soaker special">
+          <div class="raid-note-meta"><span class="raid-note-tag">All roles</span><span class="raid-note-tag">Victory event</span></div>
+          <strong>Fury of Frostmourne is supposed to kill the raid.</strong> At 10%, it deals 1,000,000 Shadow damage and begins the scripted finish. Do not interpret the death as a defensive failure, release, or burn irreplaceable consumables trying to live through it.
+        </div>
+      </details>
+
+      <p class="raid-filter-empty" hidden>No Lich King assignment notes match the selected filters.</p>
+    </section>
+
+    <section class="common" id="tests">
+      <h2>Hellscream live-test sheet</h2>
+      <div class="two-col">
+        <div class="guide-box">
+          <h3>Test on early pulls</h3>
+          <ul class="checklist">
+            <li>ICC zone buff truly absent from players and pets.</li>
+            <li>Actual Soul Reaper application, tick, haste, and taunt timestamps.</li>
+            <li>AMS interaction with Soul Reaper and Infest.</li>
+            <li>Dark Command and Death Grip taunt behavior in every phase/inside return.</li>
+            <li>Shadow Trap arm time, targeting, radius, and persistence.</li>
+            <li>Ghoul/Army taunts against LK, Horrors, Raging Spirits, and Vile Spirits.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>Log and update</h3>
+          <ul class="checklist">
+            <li>Nitro Boost failure modes inside ICC.</li>
+            <li>Pre-pot/in-combat potion rules and armor-cap peaks.</li>
+            <li>Vile Spirit hitbox, activation delay, burst batching, and safe soak count.</li>
+            <li>Frostmourne room duration and return threat/position.</li>
+            <li>Any custom health, armor, resistance, or damage tuning.</li>
+            <li>Any mismatch between live item/spell tooltips and standard 3.3.5 records.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="common" id="sources">
+      <h2>Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/guide/raids/icecrown-citadel/the-lich-king-strategy" target="_blank" rel="noopener">Wowhead: The Lich King strategy</a> — phase cadence, heroic values, adds, transitions, Reaper, Defile, Harvest Souls, and Vile Spirits.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=69409/soul-reaper" target="_blank" rel="noopener">Soul Reaper heroic spell record</a>.</li>
+        <li><a href="https://wotlk.evowow.com/?spell=73802" target="_blank" rel="noopener">Soul Shriek 25H spell record</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/item=40093/indestructible-potion" target="_blank" rel="noopener">Indestructible Potion</a>, <a href="https://www.wowhead.com/wotlk/item=40217/mighty-shadow-protection-potion" target="_blank" rel="noopener">Mighty Shadow Protection Potion</a>, and <a href="https://www.wowhead.com/wotlk/item=46379/flask-of-stoneblood" target="_blank" rel="noopener">Flask of Stoneblood</a>.</li>
+      </ul>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><a href="blood-death-knight-gear-targets.html">← Equipping</a><span></span></nav>
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>

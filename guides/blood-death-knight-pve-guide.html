@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The exact 43/23/5 personal-survival Blood Death Knight tank build for Heroic Lich King 25 on Hellscream without the ICC zone buff.">
+  <title>Blood Death Knight Quick Start | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <script src="../assets/death-knight-tooltips.js?v=20260725-blood-v1" defer></script>
+  <script src="../assets/blood-death-knight.js?v=20260725-blood-v1" defer></script>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Blood Death Knight guide pages">
+    <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+    <a href="blood-death-knight-pve-guide.html" aria-current="page">Quick Start</a>
+    <a href="blood-death-knight-playing.html">Playing</a>
+    <a href="blood-death-knight-setting-up.html">Setup</a>
+    <a href="blood-death-knight-gearing.html">Building</a>
+    <a href="blood-death-knight-gear-targets.html">Equipping</a>
+    <a href="blood-death-knight-raiding.html">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Blood Death Knight • Level 80 • Heroic LK25</span>
+    <h1>WotLK 3.3.5 <span>Blood DK Tank Quick Start</span></h1>
+    <p class="sub">This guide is built around a 43/23/5 Blood/Frost/Unholy personal-survival setup using a slow two-handed weapon for Heroic Lich King 25 progression without the ICC zone-wide buff.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#verdict">Verdict</a>
+      <a href="#engine">Survival engine</a>
+      <a href="#actions">Immediate actions</a>
+      <a href="#pull">Pull checklist</a>
+      <a href="#guide-pages">Guide pages</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="common" id="verdict">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_frostpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()"> The verdict</h2>
+      <div class="note spec"><strong>Best baseline:</strong> <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener"><strong>43/23/5 Blood/Frost/Unholy</strong></a>, a slow two-handed weapon, <span class="spell-name">Frost Presence</span>, and <strong>Rune of the Stoneskin Gargoyle</strong>.</div>
+      <div class="summary-grid" style="margin-top:12px">
+        <div class="summary-card">
+          <span class="summary-label">Core job</span>
+          <div class="summary-value">Do not die to the next five seconds</div>
+          <div class="summary-detail">Build effective health, plan every Soul Reaper, and preserve the resources that make the plan executable.</div>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Exact build</span>
+          <div class="summary-value">43 / 23 / 5</div>
+          <div class="summary-detail"><span class="talent-name">Will of the Necropolis</span>, 5/5 <span class="talent-name">Anticipation</span>, and 3/3 <span class="talent-name">Frigid Dreadplate</span>.</div>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Weapon model</span>
+          <div class="summary-value">Slow two-hander</div>
+          <div class="summary-detail">Higher strike damage and a large stamina budget; dual wield is not this build.</div>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Non-negotiable floor</span>
+          <div class="summary-value">540 Defense skill</div>
+          <div class="summary-detail">Remain uncrittable against a level-83 raid boss after every gear swap.</div>
+        </div>
+      </div>
+      <div class="note warning" style="margin-top:12px"><strong>Do not tank in Blood Presence.</strong> In patch 3.3.5, Blood is the talent tree; <span class="spell-name">Frost Presence</span> is the tank stance. Re-check it after every death, respec, or vehicle transition.</div>
+      <div class="two-col" style="margin-top:12px">
+        <div class="guide-box">
+          <h3>Why 43/23/5 wins here</h3>
+          <ul class="clean-list">
+            <li><span class="talent-name">Will of the Necropolis</span> reduces any damage that would take you below 35% health—and damage taken while at or below 35%—by 15% in 3.3.5.</li>
+            <li><span class="talent-name">Anticipation</span> adds 5% dodge; <span class="talent-name">Frigid Dreadplate</span> makes melee attacks 3% more likely to miss.</li>
+            <li><span class="talent-name">Improved Death Strike</span>, <span class="talent-name">Improved Rune Tap</span>, and <span class="spell-name">Vampiric Blood</span> create the strongest personal recovery package in the DK trees.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>When it is not the answer</h3>
+          <ul class="clean-list">
+            <li>Use 43/26/2 only when the 25-player roster truly lacks the 20% melee-haste raid buff. That is a raid-composition tax, not better personal survival.</li>
+            <li>Use a Morbidity/AoE off-spec for fast dungeons or dedicated trash if needed. It gives up boss durability.</li>
+            <li>Do not trade mitigation talents for parsing talents on no-buff LK progression; threat from <span class="spell-name">Icy Touch</span> is already exceptional.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="common" id="engine">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"> The survival engine</h2>
+      <p>This is a priority and reservation system, not a fixed rotation. A correct button now is one that leaves the correct button available for the next boss event.</p>
+      <div class="engine-grid">
+        <div class="engine-step mechanic-runes">
+          <strong><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"> 1. Runes</strong>
+          <p>Keep one Frost + one Unholy rune available for <span class="spell-name">Death Strike</span>. Spend Blood runes to activate <span class="talent-name">Blade Barrier</span>, but reserve a Blood rune for <span class="spell-name">Rune Tap</span> or <span class="spell-name">Vampiric Blood</span> when their window is close.</p>
+        </div>
+        <div class="engine-step mechanic-diseases">
+          <strong><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_icetouch.jpg" alt="" aria-hidden="true" onerror="this.remove()"> 2. Diseases</strong>
+          <p>Maintain <span class="spell-name">Frost Fever</span> and <span class="spell-name">Blood Plague</span>. In 3.3.5, <span class="spell-name">Death Strike</span> heals 5% maximum health per disease—not from recent damage taken.</p>
+        </div>
+        <div class="engine-step mechanic-runic-power">
+          <strong><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_iceboundfortitude.jpg" alt="" aria-hidden="true" onerror="this.remove()"> 3. Runic Power</strong>
+          <p><span class="spell-name">Icebound Fortitude</span> and <span class="spell-name">Anti-Magic Shell</span> each cost 20 RP. Keep that reserve when either may be needed; queue <span class="spell-name">Rune Strike</span> only from surplus.</p>
+        </div>
+        <div class="engine-step mechanic-minions">
+          <strong><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_animatedead.jpg" alt="" aria-hidden="true" onerror="this.remove()"> 4. Emergency life</strong>
+          <p><span class="spell-name">Raise Dead</span> into <span class="spell-name">Death Pact</span> is a real heal. <span class="spell-name">Army of the Dead</span> is assignment-only: uncontrolled ghoul taunts can ruin LK or add positioning.</p>
+        </div>
+      </div>
+      <div class="three-col" style="margin-top:12px">
+        <div class="priority-card">
+          <h3>Maintain</h3>
+          <ol class="priority-list">
+            <li><span class="spell-name">Frost Presence</span>.</li>
+            <li>540 Defense skill.</li>
+            <li><span class="talent-name">Blade Barrier</span> during active tanking.</li>
+            <li>Two diseases before a planned <span class="spell-name">Death Strike</span>.</li>
+          </ol>
+        </div>
+        <div class="priority-card">
+          <h3>Plan</h3>
+          <ol class="priority-list">
+            <li>One personal cooldown for each assigned <strong>Soul Reaper</strong>.</li>
+            <li>One named external if the personal is weak or unavailable.</li>
+            <li>A taunt handoff before the five-second Shadow detonation.</li>
+            <li>A recovery button after the burst, not all buttons before it.</li>
+          </ol>
+        </div>
+        <div class="priority-card">
+          <h3>Never improvise</h3>
+          <ol class="priority-list">
+            <li>Do not spend the last 20 RP before danger.</li>
+            <li>Do not let both Death Strike runes disappear into threat.</li>
+            <li>Do not stack every cooldown into one Reaper.</li>
+            <li>Do not use pets or Army without the raid lead’s plan.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="common" id="actions">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_icetouch.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Immediate actions</h2>
+      <div class="two-col">
+        <div class="guide-box">
+          <h3>Boss pull and threat lead</h3>
+          <p><strong>Icy Touch → Plague Strike → Death Strike → Blood Strike → Pestilence.</strong> Icy Touch in Frost Presence is the snap-threat anchor. Queue Rune Strike after a dodge/parry only when the 20-RP defensive reserve remains intact; do not burn Empower Rune Weapon on a routine pull.</p>
+        </div>
+        <div class="guide-box">
+          <h3>Multiple-target pickup</h3>
+          <p><strong>Death and Decay, if its three runes are safe → Icy Touch/Plague Strike → Pestilence → Blood Boil.</strong> Tab Icy Touch and Rune Strike into the dangerous target. Dark Command is the primary taunt; Death Grip is the backup taunt or reposition only when the target can move safely.</p>
+        </div>
+        <div class="guide-box">
+          <h3>Planned boss burst</h3>
+          <p><strong>Bank 20 RP and the required runes → use the assigned personal before impact → complete the taunt handoff → recover with Death Strike or Rune Tap.</strong> Use Vampiric Blood early enough for healers to exploit it. Chain one planned external; do not stack every wall on the same Soul Reaper.</p>
+        </div>
+        <div class="guide-box">
+          <h3>Emergency and control</h3>
+          <p><strong>Vampiric Blood → Rune Tap → Death Strike → Death Pact</strong>, adding a Healthstone or Empower Rune Weapon when needed. Mind Freeze is the free melee interrupt in this build; Strangulate is the ranged silence. Call a failed taunt or unavailable interrupt immediately.</p>
+        </div>
+      </div>
+      <div class="note danger" style="margin-top:12px"><strong>Readiness warning:</strong> 43/23/5 cannot rescue an unplanned Soul Reaper, a sub-540-Defense swap set, a missed taunt call, or a tank who spends the last runes and Runic Power before the burst.</div>
+    </section>
+
+    <section class="common" id="pull">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_wrench_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Heroic LK25 pull checklist</h2>
+      <div class="two-col">
+        <div class="guide-box">
+          <h3>Character</h3>
+          <ul class="checklist">
+            <li>43/23/5 tree and correct major glyphs.</li>
+            <li><span class="spell-name">Frost Presence</span> active; slow 2H equipped; Stoneskin Gargoyle runeforge present.</li>
+            <li>540+ Defense skill after all swaps.</li>
+            <li><span class="item-name">Flask of Stoneblood</span>, stamina food, <span class="item-name">Indestructible Potion</span>, Healthstone, and bandage ready.</li>
+            <li>Rune, Runic Power, diseases, boss swing, Soul Reaper, external cooldowns, and taunt target visible.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>Assignment</h3>
+          <ul class="checklist">
+            <li>Say the exact role: LK tank, Shambling Horror tank, Raging Spirit tank, Soul Reaper swap, Vile Spirit soaker, or Frostmourne return tank.</li>
+            <li>Know the taunt order and who owns each Soul Reaper.</li>
+            <li>Know which healer/external covers each personal-cooldown gap.</li>
+            <li>Know the first Defile movement direction and transition edge position.</li>
+            <li>Confirm whether pets or Army are banned for this pull.</li>
+          </ul>
+        </div>
+      </div>
+      <details class="server-behavior" style="margin-top:12px">
+        <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_wrench_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Server behavior on Hellscream</summary>
+        <p>Standard WotLK 3.3.5 behavior is the baseline and the Icecrown zone buff is assumed disabled. Exact Soul Reaper timing, boss taunt windows, pet taunts, potion behavior, and custom tuning are marked <strong>Needs Hellscream test</strong> in the raid page until confirmed on a live pull.</p>
+      </details>
+    </section>
+
+    <section class="common" id="guide-pages">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_classicon.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Continue the Blood DK guide</h2>
+      <div class="chapter-grid">
+        <a class="chapter-card" href="blood-death-knight-playing.html"><span class="chapter-number">1</span><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"><h3>Playing</h3><p>Runes, Death Strike, threat, cooldowns, minions, and six decision playbooks.</p><span class="chapter-topics">Priority • recovery • cooldown map</span></a>
+        <a class="chapter-card" href="blood-death-knight-setting-up.html"><span class="chapter-number">2</span><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_glyph_major_deathknight.jpg" alt="" aria-hidden="true" onerror="this.remove()"><h3>Setup</h3><p>The fully filled 43/23/5 tree, glyphs, macros, addons, keybinds, and tracking.</p><span class="chapter-topics">Talents • glyphs • interface</span></a>
+        <a class="chapter-card" href="blood-death-knight-gearing.html"><span class="chapter-number">3</span><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_62.jpg" alt="" aria-hidden="true" onerror="this.remove()"><h3>Building</h3><p>Defense, effective health, armor, hit, expertise, gems, enchants, and professions.</p><span class="chapter-topics">Caps • tradeoffs • progression path</span></a>
+        <a class="chapter-card" href="blood-death-knight-gear-targets.html"><span class="chapter-number">4</span><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_chest_plate_12.jpg" alt="" aria-hidden="true" onerror="this.remove()"><h3>Equipping</h3><p>Concrete crafted, emblem, ToC, ICC, and Ruby Sanctum targets with item links.</p><span class="chapter-topics">Weapons • tier • trinket sets</span></a>
+        <a class="chapter-card" href="blood-death-knight-raiding.html"><span class="chapter-number">5</span><img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/achievement_boss_lichking.jpg" alt="" aria-hidden="true" onerror="this.remove()"><h3>Raiding</h3><p>Heroic LK25 phases and filterable playbooks for every tank assignment.</p><span class="chapter-topics">Soul Reaper • adds • transitions</span></a>
+      </div>
+    </section>
+
+    <section class="common" id="sources">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_classicon.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/guide/classes/death-knight/blood/tank-talent-builds-glyphs-pve" target="_blank" rel="noopener">Wowhead: Blood DK tank talent builds and glyphs</a> — identifies 43/23/5 as the single-target mitigation build.</li>
+        <li><a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">Fully filled 43/23/5 calculator</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=50150/will-of-the-necropolis" target="_blank" rel="noopener">Will of the Necropolis 3.3.5 spell record</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=49998/death-strike" target="_blank" rel="noopener">Death Strike rank 5 spell record</a>.</li>
+      </ul>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><span></span><a href="blood-death-knight-playing.html">Playing →</a></nav>
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>

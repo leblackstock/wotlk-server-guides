@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How to play the 43/23/5 Blood Death Knight tank: runes, diseases, Runic Power, Death Strike, threat, cooldowns, and recovery.">
+  <title>Playing your Blood Death Knight | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <script src="../assets/death-knight-tooltips.js?v=20260725-blood-v1" defer></script>
+  <script src="../assets/blood-death-knight.js?v=20260725-blood-v1" defer></script>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Blood Death Knight guide pages">
+    <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+    <a href="blood-death-knight-pve-guide.html">Quick Start</a>
+    <a href="blood-death-knight-playing.html" aria-current="page">Playing</a>
+    <a href="blood-death-knight-setting-up.html">Setup</a>
+    <a href="blood-death-knight-gearing.html">Building</a>
+    <a href="blood-death-knight-gear-targets.html">Equipping</a>
+    <a href="blood-death-knight-raiding.html">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Blood Death Knight • Level 80</span>
+    <h1>WotLK 3.3.5 <span>Playing your Blood DK</span></h1>
+    <p class="sub">Control resources around incoming damage. Threat is a requirement; resource availability at the lethal moment is the craft.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#engine">Combat engine</a>
+      <a href="#priority">Priority</a>
+      <a href="#playbooks">Playbooks</a>
+      <a href="#cooldowns">Cooldowns</a>
+      <a href="#utility">Utility</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="common" id="engine">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Core combat engine</h2>
+      <div class="note spec"><strong>Model:</strong> prepare → maintain → absorb → recover. This is a priority with reservations, not a repeating rotation.</div>
+      <div class="engine-grid">
+        <div class="engine-step mechanic-runes"><strong>Prepare runes</strong><p>A Frost + Unholy pair is one <span class="spell-name">Death Strike</span>. A Blood rune can become <span class="spell-name">Rune Tap</span> or <span class="spell-name">Vampiric Blood</span>. Plan those costs before spending.</p></div>
+        <div class="engine-step mechanic-diseases"><strong>Maintain diseases</strong><p><span class="spell-name">Icy Touch</span> applies <span class="spell-name">Frost Fever</span>; <span class="spell-name">Plague Strike</span> applies <span class="spell-name">Blood Plague</span>. <span class="glyph-name">Glyph of Disease</span> lets <span class="spell-name">Pestilence</span> refresh both.</p></div>
+        <div class="engine-step mechanic-runic-power"><strong>Reserve RP</strong><p><span class="spell-name">Icebound Fortitude</span> and <span class="spell-name">Anti-Magic Shell</span> each cost 20 RP. Treat that reserve as locked whenever a lethal window is approaching; only the surplus belongs to <span class="spell-name">Rune Strike</span>.</p></div>
+        <div class="engine-step mechanic-minions"><strong>Keep a last resort</strong><p>Pre-summon or safely cast <span class="spell-name">Raise Dead</span> so <span class="spell-name">Death Pact</span> is executable. Minion threat must never alter the encounter’s position.</p></div>
+      </div>
+      <div class="note warning" style="margin-top:12px"><strong>Death Strike correction:</strong> in WotLK 3.3.5 it heals 5% of maximum health for each of your diseases on the target. With two diseases and 2/2 <span class="talent-name">Improved Death Strike</span>, the nominal heal is 15% maximum health before <span class="spell-name">Vampiric Blood</span> and other healing modifiers. It is not based on damage taken in the previous five seconds.</div>
+    </section>
+
+    <section class="common" id="priority">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_bloodpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Single-target priority</h2>
+      <div class="two-col">
+        <div class="priority-card">
+          <h3>Survival first</h3>
+          <ol class="priority-list">
+            <li>Be in <span class="spell-name">Frost Presence</span> and face the boss away from the raid.</li>
+            <li>Keep the 20% attack-speed reduction from <span class="talent-name">Improved Icy Touch</span> unless another assigned DK owns it.</li>
+            <li>Spend both native Blood runes often enough to keep <span class="talent-name">Blade Barrier</span> active.</li>
+            <li>Preserve two diseases and a Frost/Unholy pair for <span class="spell-name">Death Strike</span>.</li>
+            <li>Use <span class="spell-name">Rune Tap</span> after real health is missing; it is off the global cooldown.</li>
+          </ol>
+        </div>
+        <div class="priority-card">
+          <h3>Threat after safety</h3>
+          <ol class="priority-list">
+            <li><span class="spell-name">Icy Touch</span> in Frost Presence is the primary snap and single-target threat button.</li>
+            <li><span class="spell-name">Rune Strike</span> replaces the next melee after a dodge or parry. Queue it from RP surplus.</li>
+            <li><span class="spell-name">Death Strike</span> deals useful threat while returning health.</li>
+            <li>Use <span class="spell-name">Blood Strike</span> or <span class="spell-name">Pestilence</span> to spend Blood runes; choose Pestilence when diseases need refreshing.</li>
+            <li><span class="spell-name">Death Coil</span> is a low-priority RP dump. This build lacks Lichborne, so it cannot self-heal with Death Coil.</li>
+          </ol>
+        </div>
+      </div>
+      <h3>Safe pull sequence</h3>
+      <div class="ability-strip" aria-label="Example pull sequence">
+        <span class="ability-choice spell-name">Icy Touch</span><span aria-hidden="true">›</span>
+        <span class="ability-choice spell-name">Plague Strike</span><span aria-hidden="true">›</span>
+        <span class="ability-choice spell-name">Death Strike</span><span aria-hidden="true">›</span>
+        <span class="ability-choice spell-name">Blood Strike</span><span aria-hidden="true">›</span>
+        <span class="ability-choice spell-name">Pestilence</span>
+      </div>
+      <p class="mini-note">If the pull needs immediate threat, add extra Icy Touch casts with <span class="spell-name">Blood Tap</span> or <span class="spell-name">Empower Rune Weapon</span> only when that does not consume a planned survival resource. Do not open LK by exhausting every rune and the five-minute reset.</p>
+    </section>
+
+    <section class="common" id="playbooks">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Situation playbooks</h2>
+      <p class="muted">Click a header—or focus it and press Enter/Space—to isolate one playbook. Press Escape or activate it again to restore all.</p>
+      <div class="spec-playbook-grid">
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 1</span><h3>Routine boss tanking</h3></div><span class="spec-card-tag">Baseline</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>Frost Presence, two diseases, Improved Icy Touch, Blade Barrier, and a 20-RP wall reserve.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_icetouch.jpg" alt="" aria-hidden="true" onerror="this.remove()"> IT / PS</span><span>›</span><span class="ability-choice">DS</span><span>›</span><span class="ability-choice">Blood spend</span></div><p><strong>Reserve:</strong> one Frost/Unholy pair and the Blood rune needed by the next heal or cooldown. <strong>Avoid:</strong> low-priority Death Coil or extra Icy Touch when it breaks that reserve.</p><p><strong>Recover / LK25H:</strong> Death Strike after a swing, then Rune Tap if real health is still missing; this is the baseline between Soul Reapers.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> spending the entire rune bar because every button is lit.</p></div>
+        </article>
+
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 2</span><h3>Snap threat or pickup</h3></div><span class="spec-card-tag">Threat</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>Frost Presence and the RP/rune cost of the next survival event.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice spell-name">Dark Command</span><span>›</span><span class="ability-choice spell-name"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_icetouch.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Icy Touch</span><span>›</span><span class="ability-choice spell-name">Rune Strike</span></div><p><strong>Reserve:</strong> one Frost rune for Icy Touch and 20 RP if a wall is imminent. <strong>Avoid:</strong> Death Grip when forced movement would rotate a frontal or cross Defile.</p><p><strong>Recover / LK25H:</strong> call a resist, use the second taunt, and re-establish threat with Icy Touch; a Soul Reaper handoff is complete only after taunt success.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> confusing a taunt with lasting threat; follow it with Icy Touch.</p></div>
+        </article>
+
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 3</span><h3>Multiple targets</h3></div><span class="spec-card-tag">AoE</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>Your primary target’s diseases and frontal control.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice spell-name"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_deathanddecay.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Death and Decay</span><span>›</span><span class="ability-choice">IT / PS</span><span>›</span><span class="ability-choice spell-name">Pestilence</span><span>›</span><span class="ability-choice spell-name">Blood Boil</span></div><p><strong>Reserve:</strong> all three rune types for Death and Decay only when pickup control outweighs the lost Death Strike. <strong>Avoid:</strong> spending the whole bar on harmless ghouls.</p><p><strong>Recover / LK25H:</strong> tab Icy Touch/Rune Strike into the Horror or Spirit, stabilize its facing, then rebuild a Death Strike pair; this tree is intentionally weaker at repeated AoE than Morbidity.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> backing through enemies; dodge and parry do not work from behind.</p></div>
+        </article>
+
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 4</span><h3>Movement and transitions</h3></div><span class="spec-card-tag">Position</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>Boss facing, melee contact, and an escape path clear of Defile or raid cones.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice spell-name"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_frost_chainsofice.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Chains of Ice</span><span>›</span><span class="ability-choice spell-name">Death Grip</span><span>›</span><span class="ability-choice spell-name">Icy Touch</span></div><p><strong>Reserve:</strong> one Frost rune and a movement cooldown if the assignment requires it. <strong>Avoid:</strong> backpedaling through the boss or exposing the back during Quake.</p><p><strong>Recover / LK25H:</strong> restore facing and melee range before threat dumping; Nitro Boosts are powerful, but failure behavior remains a Hellscream-specific test.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> gaining a few yards while exposing your back to a boss swing.</p></div>
+        </article>
+
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 5</span><h3>Planned burst</h3></div><span class="spec-card-tag">Cooldown</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>20 RP, the required Blood rune, and a named healer/external.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_iceboundfortitude.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Personal CD</span><span>›</span><span class="ability-choice">Taunt swap</span><span>›</span><span class="ability-choice spell-name">Death Strike</span></div><p><strong>Reserve:</strong> the exact cost of IBF/AMS or Vampiric Blood plus a recovery pair. <strong>Avoid:</strong> stacking every personal and external on one event.</p><p><strong>Recover / LK25H:</strong> use IBF before impact, Vampiric Blood early enough for healer throughput, then Death Strike/Rune Tap after the Reaper tick or hasted swings.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> stacking IBF, Vampiric Blood, trinkets, and an external on one Reaper, then having nothing for the next.</p></div>
+        </article>
+
+        <article class="spec-card">
+          <div class="spec-card-header"><div><span class="spec-card-kicker">Scenario 6</span><h3>Emergency recovery</h3></div><span class="spec-card-tag">Recover</span></div>
+          <div class="spec-card-body"><h4>Maintain</h4><p>Enough awareness to call the emergency and stop threat dumping.</p><h4>Act</h4><div class="ability-strip"><span class="ability-choice spell-name">Vampiric Blood</span><span>›</span><span class="ability-choice spell-name">Rune Tap</span><span>›</span><span class="ability-choice spell-name"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Death Strike</span><span>›</span><span class="ability-choice spell-name">Death Pact</span></div><p><strong>Reserve:</strong> any runnable heal first; Empower Rune Weapon is the five-minute rebuild when the rune bar is empty. <strong>Avoid:</strong> continuing Rune Strike or Death Coil during recovery.</p><p><strong>Recover / LK25H:</strong> add a Healthstone or potion in parallel, announce the gap, and preserve the ghoul until Death Pact is required. Do not enter the next Reaper without a written replacement layer.</p></div>
+          <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> dying with Rune Tap, a ghoul, Healthstone, or ERW still available.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="common" id="cooldowns">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_iceboundfortitude.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Defensive cooldown map</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tool</th><th>Exact 3.3.5 baseline</th><th>Best use</th><th>Caution</th></tr></thead>
+          <tbody>
+            <tr><td><span class="spell-name">Icebound Fortitude</span></td><td>20 RP, 12 sec, 2 min; 30% base damage reduction plus Defense scaling</td><td>Planned Soul Reaper/fast-swing window, Horror enrage, or spirit-soak burst</td><td>Reserve 20 RP. The glyph only raises the minimum to 40%; it does not add 10% to a defense-capped tank.</td></tr>
+            <tr><td><span class="spell-name">Vampiric Blood</span></td><td>1 Blood rune, 1 min; +15% maximum health and +35% healing for 10 sec</td><td>Long healer-pressure window; pair with Rune Tap after damage</td><td>It does not heal by itself, and the temporary health is lost when it expires. Glyph extends it to 15 sec.</td></tr>
+            <tr><td><span class="spell-name">Anti-Magic Shell</span></td><td>20 RP, 5 sec, 45 sec; absorbs 75% magical damage up to 50% maximum health</td><td>Infest, Remorseless Winter clipping, Soul Reaper Shadow detonation, Vile Spirit magic burst</td><td>Does not reduce physical damage. <strong>Needs Hellscream test:</strong> exact Soul Reaper/Infest prevention behavior.</td></tr>
+            <tr><td><span class="spell-name">Rune Tap</span></td><td>1 Blood rune; 20% maximum-health heal with 3/3 Improved Rune Tap, 30 sec cooldown</td><td>Reliable off-GCD recovery after a real hit</td><td>Can fail because the needed Blood rune was spent. Pairing with Vampiric Blood increases the heal.</td></tr>
+            <tr><td><span class="spell-name">Death Pact</span></td><td>Sacrifices an active undead minion for a large self-heal</td><td>Emergency recovery when Rune Tap/Death Strike are insufficient</td><td>Requires a living pet. Summon placement and pet taunt behavior need control.</td></tr>
+            <tr><td>T10 4-piece + <span class="spell-name">Blood Tap</span></td><td>Blood Tap grants 12% all-damage reduction for 10 sec</td><td>One-minute minor wall between major cooldowns</td><td>Only exists with four tank-tier pieces; track the buff rather than assuming it fired.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="utility">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_classicon.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Utility and unavailable tools</h2>
+      <div class="two-col">
+        <div class="guide-box">
+          <h3>Available</h3>
+          <ul class="clean-list">
+            <li><span class="spell-name">Mind Freeze</span>: melee interrupt; free in this exact Frost subspec if Endless Winter is selected by the tree.</li>
+            <li><span class="spell-name">Strangulate</span>: ranged silence with a long cooldown; use for assigned caster control.</li>
+            <li><span class="spell-name">Chains of Ice</span> and <span class="spell-name">Death Grip</span>: pickups and repositioning.</li>
+            <li><span class="spell-name">Horn of Winter</span>: Strength/Agility buff and a no-target GCD when rebuilding RP.</li>
+            <li><span class="spell-name">Empower Rune Weapon</span>: resets all runes and grants 25 RP; emergency recovery or a planned threat reset.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>Not in 43/23/5</h3>
+          <ul class="clean-list">
+            <li><strong>Lichborne:</strong> no Death Coil self-healing.</li>
+            <li><strong>Anti-Magic Zone:</strong> not available.</li>
+            <li><strong>Bone Shield:</strong> not available.</li>
+            <li><strong>Mark of Blood:</strong> not selected by this exact tree; adding it means removing a point from the locked baseline.</li>
+            <li><strong>Dancing Rune Weapon:</strong> deliberately skipped; it is a damage cooldown, not a defensive.</li>
+            <li><strong>Improved Icy Talons:</strong> the 25-player raid supplies the 20% melee-haste buff.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note warning" style="margin-top:12px"><strong>Army rule:</strong> channeling <span class="spell-name">Army of the Dead</span> reduces damage taken based on dodge plus parry, but the ghouls taunt. On LK25H, use it only in a pre-approved raid plan where movement and target control are safe. Never press it ad hoc during Defile, a transition, or an add handoff.</div>
+    </section>
+
+    <section class="common" id="sources">
+      <h2>Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/spell=49998/death-strike" target="_blank" rel="noopener">Death Strike rank 5</a> and <a href="https://www.wowhead.com/wotlk/spell=62908/improved-death-strike" target="_blank" rel="noopener">Improved Death Strike</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=48792/icebound-fortitude" target="_blank" rel="noopener">Icebound Fortitude</a> and <a href="https://www.wowhead.com/wotlk/spell=48707/anti-magic-shell" target="_blank" rel="noopener">Anti-Magic Shell</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=55233/vampiric-blood" target="_blank" rel="noopener">Vampiric Blood</a>, <a href="https://www.wowhead.com/wotlk/spell=48982/rune-tap" target="_blank" rel="noopener">Rune Tap</a>, and <a href="https://www.wowhead.com/wotlk/spell=49489/improved-rune-tap" target="_blank" rel="noopener">Improved Rune Tap</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=64859/blade-barrier" target="_blank" rel="noopener">Blade Barrier</a> and <a href="https://www.wowhead.com/wotlk/spell=50034/death-rune-mastery" target="_blank" rel="noopener">Death Rune Mastery</a>.</li>
+      </ul>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><a href="blood-death-knight-pve-guide.html">← Quick Start</a><a href="blood-death-knight-setting-up.html">Setup →</a></nav>
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>

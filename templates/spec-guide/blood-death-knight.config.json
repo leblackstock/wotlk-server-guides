@@ -1,0 +1,97 @@
+{
+  "className": "Death Knight",
+  "classSlug": "death-knight",
+  "specName": "Blood Death Knight",
+  "specShortName": "Blood DK",
+  "specSlug": "blood-death-knight",
+  "specKey": "blood",
+  "role": "Heroic Lich King 25 progression tank",
+  "levelLabel": "Level 80",
+  "createClassSharedCss": false,
+  "createTooltipStarter": true,
+  "tooltipFile": "death-knight-tooltips.js",
+  "cacheKey": "20260725",
+  "guideDescription": "Personal-survival Blood tanking for Heroic Lich King 25 on Hellscream without the Icecrown zone buff.",
+  "classAccent": "#C41F3B",
+  "classAccentSoft": "#F39AAA",
+  "classAccentDeep": "#50111F",
+  "classAccentRgb": "196,31,59",
+  "specAccent": "#D94F68",
+  "specAccentSoft": "#FFB2BF",
+  "specAccentDeep": "#5C1829",
+  "specAccentRgb": "217,79,104",
+  "mechanics": [
+    {
+      "key": "runes",
+      "label": "Runes",
+      "color": "#69BFD4",
+      "soft": "#B9E7F1",
+      "deep": "#20505D",
+      "rgb": "105,191,212",
+      "use": "Keep the right rune pair ready for Death Strike and planned cooldowns."
+    },
+    {
+      "key": "runic-power",
+      "label": "Runic Power",
+      "color": "#5FC8B7",
+      "soft": "#B9F0E7",
+      "deep": "#20564D",
+      "rgb": "95,200,183",
+      "use": "Reserve enough for Icebound Fortitude while feeding Rune Strike deliberately."
+    },
+    {
+      "key": "diseases",
+      "label": "Diseases",
+      "color": "#C7B85B",
+      "soft": "#EEE2A1",
+      "deep": "#574D1D",
+      "rgb": "199,184,91",
+      "use": "Maintain Frost Fever and Blood Plague so Death Strike heals for its full two-disease amount."
+    },
+    {
+      "key": "minions",
+      "label": "Minions",
+      "color": "#A98AD8",
+      "soft": "#DDCEF5",
+      "deep": "#493669",
+      "rgb": "169,138,216",
+      "use": "Treat Raise Dead, Death Pact, and Army as controlled tools whose taunts can disrupt positioning."
+    }
+  ],
+  "icons": {
+    "class": "spell_deathknight_classicon",
+    "quickStart": "spell_deathknight_frostpresence",
+    "playing": "spell_deathknight_deathstrike",
+    "setup": "spell_deathknight_bloodpresence",
+    "building": "inv_sword_62",
+    "equipping": "inv_chest_plate_12",
+    "raiding": "achievement_boss_lichking",
+    "talent": "spell_deathknight_bloodpresence",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "43/23/5",
+    "name": "LK25H personal-survival build",
+    "summary": "Maximize single-target durability with Will of the Necropolis, 5/5 Anticipation, and 3/3 Frigid Dreadplate; the raid supplies the 20% melee-haste buff.",
+    "wowheadPath": "death-knight/005512153330030320102013-3050505000023-005"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start with the exact 43/23/5 build, survival engine, pull checklist, and progression rules for Heroic Lich King 25.",
+    "playing": "Control runes, diseases, Runic Power, self-healing, cooldowns, threat, and emergency recovery as a Blood tank.",
+    "setup": "Install the exact talent tree, glyphs, macros, addons, keybinds, and survival tracking for WotLK 3.3.5.",
+    "building": "Build effective health first, meet non-negotiable caps, and choose gems, enchants, and professions for no-buff ICC progression.",
+    "equipping": "Target verified crafted, emblem, ToC, ICC, and Ruby Sanctum upgrades with role-specific alternatives.",
+    "raiding": "Execute Heroic Lich King 25 assignments with phase, tank-role, Soul Reaper, add, transition, and spirit-soak playbooks."
+  },
+  "raidRoleFilters": [
+    { "value": "boss-tank", "label": "Lich King tank" },
+    { "value": "add-tank", "label": "Shambling tank" },
+    { "value": "transition-tank", "label": "Raging Spirit tank" },
+    { "value": "swap-tank", "label": "Soul Reaper swap" },
+    { "value": "spirit-soaker", "label": "Vile Spirit soak" },
+    { "value": "special", "label": "Special / return" }
+  ],
+  "serverNote": "Standard WotLK 3.3.5 behavior is the baseline. The ICC zone buff is assumed disabled. Exact boss timings, taunt immunity windows, pet taunts, potion behavior, and custom Hellscream tuning require a live pull test.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

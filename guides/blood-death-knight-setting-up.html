@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The exact 43/23/5 Blood Death Knight talent tree, glyphs, macros, addons, keybinds, and interface setup for Heroic LK25.">
+  <title>Setting up your Blood Death Knight | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <script src="../assets/death-knight-tooltips.js?v=20260725-blood-v1" defer></script>
+  <script src="../assets/blood-death-knight.js?v=20260725-blood-v1" defer></script>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Blood Death Knight guide pages">
+    <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+    <a href="blood-death-knight-pve-guide.html">Quick Start</a>
+    <a href="blood-death-knight-playing.html">Playing</a>
+    <a href="blood-death-knight-setting-up.html" aria-current="page">Setup</a>
+    <a href="blood-death-knight-gearing.html">Building</a>
+    <a href="blood-death-knight-gear-targets.html">Equipping</a>
+    <a href="blood-death-knight-raiding.html">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Blood Death Knight • Level 80</span>
+    <h1>WotLK 3.3.5 <span>Setting up your Blood DK</span></h1>
+    <p class="sub">Install the fully filled tree, then make every defensive, taunt, disease, and boss timer visible and reachable.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#talents">Talents</a>
+      <a href="#glyphs">Glyphs</a>
+      <a href="#macros">Macros</a>
+      <a href="#addons">Addons</a>
+      <a href="#keybinds">Keybinds</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="common" id="talents">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_bloodpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Talents: exact 43/23/5</h2>
+      <div class="note spec"><strong>Locked baseline:</strong> <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">43 Blood / 23 Frost / 5 Unholy</a>. It spends all 71 level-80 talent points.</div>
+      <div class="guide-box" style="margin-top:12px">
+        <div class="icon-heading">
+          <img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_bloodpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+          <div><span class="summary-label">Fully filled baseline</span><h3 style="margin:0">43/23/5 LK25H personal-survival build</h3></div>
+        </div>
+        <p class="mini-note">This tree assumes the 25-player raid supplies the 20% melee-haste buff. It chooses all available single-target avoidance and Blood’s low-health safety net.</p>
+        <div class="talent-embed-wrap"><iframe class="talent-embed" title="Fully filled 43/23/5 Blood Death Knight tank talent tree" loading="lazy" src="https://www.wowhead.com/wotlk/talent-calc/embed/death-knight/005512153330030320102013-3050505000023-005"></iframe></div>
+        <p class="talent-fallback">Tree not loading? <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">Open the complete build in the Wowhead calculator.</a></p>
+      </div>
+
+      <div class="three-col" style="margin-top:12px">
+        <div class="priority-card">
+          <h3>Blood: survival core</h3>
+          <ul class="clean-list">
+            <li>5/5 <span class="talent-name">Blade Barrier</span> — 5% all-damage reduction while both native Blood runes are cooling down.</li>
+            <li>3/3 <span class="talent-name">Improved Rune Tap</span> — doubles Rune Tap to 20% maximum health and reduces its cooldown to 30 sec.</li>
+            <li>3/3 <span class="talent-name">Spell Deflection</span> — parry-chance proc that reduces direct spell damage by 45%.</li>
+            <li>3/3 <span class="talent-name">Veteran of the Third War</span> — Strength, Stamina, and expertise.</li>
+            <li>2/2 <span class="talent-name">Improved Death Strike</span>, <span class="talent-name">Vampiric Blood</span>, and 3/3 <span class="talent-name">Will of the Necropolis</span>.</li>
+          </ul>
+        </div>
+        <div class="priority-card">
+          <h3>Frost: mitigation and control</h3>
+          <ul class="clean-list">
+            <li>3/3 <span class="talent-name">Improved Icy Touch</span> — 20% melee attack-speed reduction.</li>
+            <li>5/5 <span class="talent-name">Toughness</span> — 15% more armor from items and shorter movement slows.</li>
+            <li>5/5 <span class="talent-name">Black Ice</span> and 5/5 Icy Talons — threat/personal haste on the path.</li>
+            <li>2/2 Endless Winter — Strength and a no-RP <span class="spell-name">Mind Freeze</span>.</li>
+            <li>3/3 <span class="talent-name">Frigid Dreadplate</span> — 3% melee miss, not subject to dodge diminishing returns.</li>
+          </ul>
+        </div>
+        <div class="priority-card">
+          <h3>Unholy: raw avoidance</h3>
+          <ul class="clean-list">
+            <li>5/5 <span class="talent-name">Anticipation</span> adds 5% dodge.</li>
+            <li>ICC’s <span class="spell-name">Chill of the Throne</span> subtracts 20 percentage points of dodge; it does not invalidate Anticipation.</li>
+            <li>The tree does not take Virulence. Compensate taunt reliability with hit and <span class="item-name">Glyph of Dark Command</span>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:12px">
+        <div class="guide-box">
+          <h3>Selected threat points</h3>
+          <p>5/5 <span class="talent-name">Bladed Armor</span>, 1/3 <span class="talent-name">Scent of Blood</span>, 5/5 <span class="talent-name">Dark Conviction</span>, 2/2 <span class="talent-name">Two-Handed Weapon Specialization</span>, 3/3 <span class="talent-name">Bloody Vengeance</span>, 2/2 <span class="talent-name">Abomination's Might</span>, and <span class="talent-name">Hysteria</span> provide pathing, Runic Power, personal threat, and raid damage. They are not guaranteed mitigation. <span class="talent-name">Death Rune Mastery</span> converts the Frost/Unholy runes spent by a successful Death Strike into Death runes when they reactivate; after a converted rune is spent, it returns to its original type unless converted again.</p>
+        </div>
+        <div class="guide-box">
+          <h3>Deliberately skipped</h3>
+          <p>No Heart Strike, Improved Blood Presence, Mark of Blood, Bloodworms, Might of Mograine, Blood Gorged, Dancing Rune Weapon, Lichborne, Improved Icy Talons, Morbidity, Bone Shield, or Anti-Magic Zone. Those points buy passive healing, damage, AoE convenience, raid buff coverage, or different toolkits—not more reliable single-target survival than this locked build. Do not write Mark of Blood, Lichborne healing, Bone Shield, or AMZ into the cooldown plan.</p>
+        </div>
+      </div>
+      <div class="note warning" style="margin-top:12px"><strong>Flex and alternatives:</strong> the exact tree has no unspent points. Its 1/3 Scent of Blood is the lowest-impact selected point, but moving it produces a different locked tree. Use 43/26/2 only when the 25-player roster lacks both an Enhancement Shaman and a Frost DK providing the 20% melee-haste buff; it gives up avoidance to cover the raid buff. A common 53/8/10-style threat build spends deeper in Blood for Heart Strike/Might of Mograine/Blood Gorged and does not reach Frigid Dreadplate or free Mind Freeze. Neither is the best personal-survival baseline for this job.</div>
+    </section>
+
+    <section class="common" id="glyphs">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_glyph_major_deathknight.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Glyphs</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Glyph</th><th>Verdict</th><th>Exact value</th><th>LK25H reason</th></tr></thead>
+          <tbody>
+            <tr><td><span class="glyph-name">Glyph of Disease</span></td><td><span class="must">Default</span></td><td>Pestilence refreshes disease durations on the primary target.</td><td>Saves Frost/Unholy runes and guarantees two-disease Death Strikes across a long fight.</td></tr>
+            <tr><td><span class="item-name">Glyph of Vampiric Blood</span></td><td><span class="must">Default</span></td><td>Adds 5 sec, extending Vampiric Blood from 10 to 15 sec.</td><td>More coverage for Soul Reaper plus the following hasted swings and healer recovery.</td></tr>
+            <tr><td><span class="item-name">Glyph of Dark Command</span></td><td><span class="must">Progression default</span></td><td>Adds 8% hit chance to Dark Command.</td><td>Taunt failure during a five-second Soul Reaper handoff can wipe the pull.</td></tr>
+            <tr><td>Glyph of Rune Strike</td><td>Threat alternative</td><td>Adds 10% critical-strike chance to Rune Strike.</td><td>Use only when taunts are already reliable and threat is a demonstrated problem.</td></tr>
+            <tr><td>Glyph of Death Strike</td><td>Threat alternative</td><td>Increases Death Strike damage by 1% per 5 Runic Power held, up to 25%.</td><td>It does not increase the heal; the held RP is already reserved for defensives.</td></tr>
+            <tr><td>Glyph of Death and Decay</td><td>AoE alternative</td><td>Increases Death and Decay damage by 20%.</td><td>Useful in a Morbidity/trash off-spec, not an LK boss-survival glyph.</td></tr>
+            <tr><td><span class="item-name">Glyph of Icebound Fortitude</span></td><td><span class="avoid">Do not use at 540 Defense</span></td><td>Sets a 40% minimum reduction.</td><td>It does not add 10%. A raid-defense tank already scales IBF above that floor.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Minor glyphs</h3>
+      <p><span class="item-name">Glyph of Blood Tap</span> removes Blood Tap’s self-damage; <span class="item-name">Glyph of Pestilence</span> increases its radius; <span class="item-name">Glyph of Raise Dead</span> removes the reagent requirement. These three are the clean baseline. Glyph of Horn of Winter only extends duration; it does not improve the buff and is not preferred over these three.</p>
+    </section>
+
+    <section class="common" id="macros">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Macros</h2>
+      <div class="macro-grid">
+        <div class="macro-card">
+          <h3>Primary taunt: mouseover → focus → target</h3>
+          <p class="macro-purpose">Taunt the intended unit without changing the boss target.</p>
+          <code class="macro-code">#showtooltip Dark Command
+/cast [@mouseover,harm,nodead][@focus,harm,nodead][] Dark Command</code>
+        </div>
+        <div class="macro-card">
+          <h3>Backup taunt / grip</h3>
+          <p class="macro-purpose">Use as the second taunt when Dark Command resists; movement only occurs on grippable targets.</p>
+          <code class="macro-code">#showtooltip Death Grip
+/cast [@mouseover,harm,nodead][@focus,harm,nodead][] Death Grip</code>
+        </div>
+        <div class="macro-card">
+          <h3>Focus interrupt</h3>
+          <p class="macro-purpose">Interrupt an assigned add without dropping the boss target.</p>
+          <code class="macro-code">#showtooltip Mind Freeze
+/cast [@focus,harm,nodead][] Mind Freeze</code>
+        </div>
+        <div class="macro-card">
+          <h3>Emergency ghoul heal</h3>
+          <p class="macro-purpose">First press summons if needed; press again after the global cooldown to sacrifice the ghoul.</p>
+          <code class="macro-code">#showtooltip Death Pact
+/cast [nopet] Raise Dead
+/cast Death Pact</code>
+        </div>
+        <div class="macro-card">
+          <h3>Hysteria on named DPS</h3>
+          <p class="macro-purpose">Replace NAME once; never hide this raid cooldown inside a threat button.</p>
+          <code class="macro-code">#showtooltip Hysteria
+/cast [@NAME,help,nodead] Hysteria</code>
+        </div>
+        <div class="macro-card">
+          <h3>Emergency announce</h3>
+          <p class="macro-purpose">Ask for the named external while using the personal cooldown.</p>
+          <code class="macro-code">#showtooltip Icebound Fortitude
+/cast Icebound Fortitude
+/say IBF ACTIVE — NEXT EXTERNAL ON ME</code>
+        </div>
+        <div class="macro-card">
+          <h3>Manual Rune Strike queue</h3>
+          <p class="macro-purpose">Queue or cancel Rune Strike from its own bind; do not hide it inside every strike.</p>
+          <code class="macro-code">#showtooltip Rune Strike
+/cast !Rune Strike</code>
+        </div>
+        <div class="macro-card">
+          <h3>Rune Tap</h3>
+          <p class="macro-purpose">Keep the off-global heal independent so it can be timed after actual damage.</p>
+          <code class="macro-code">#showtooltip Rune Tap
+/cast Rune Tap</code>
+        </div>
+        <div class="macro-card">
+          <h3>Vampiric Blood</h3>
+          <p class="macro-purpose">Keep the maximum-health/healing cooldown separate from Rune Tap.</p>
+          <code class="macro-code">#showtooltip Vampiric Blood
+/cast Vampiric Blood</code>
+        </div>
+        <div class="macro-card">
+          <h3>Anti-Magic Shell</h3>
+          <p class="macro-purpose">Spend 20 RP on the exact magic window without coupling it to IBF.</p>
+          <code class="macro-code">#showtooltip Anti-Magic Shell
+/cast Anti-Magic Shell</code>
+        </div>
+        <div class="macro-card">
+          <h3>Blood Tap / T10 layer</h3>
+          <p class="macro-purpose">Activate the rune and, with four tank-tier pieces, the tracked 12% reduction.</p>
+          <code class="macro-code">#showtooltip Blood Tap
+/cast Blood Tap</code>
+        </div>
+        <div class="macro-card">
+          <h3>Empower Rune Weapon</h3>
+          <p class="macro-purpose">Make the five-minute rune/RP reset a deliberate standalone press.</p>
+          <code class="macro-code">#showtooltip Empower Rune Weapon
+/cast Empower Rune Weapon</code>
+        </div>
+        <div class="macro-card">
+          <h3>Pet safety</h3>
+          <p class="macro-purpose">Pull the ghoul out of an unsafe target or frontal before an encounter handoff.</p>
+          <code class="macro-code">#showtooltip Raise Dead
+/petpassive
+/petfollow</code>
+        </div>
+      </div>
+      <div class="note warning" style="margin-top:12px"><strong>Macro limits:</strong> do not macro Rune Strike into every strike; it can leave IBF or AMS unusable. Mark of Blood has no macro because it is not selected. Keep Army of the Dead off generic combat binds and pair its dedicated key with a raid-approved warning; its channel costs one rune of each type and its ghouls can taunt.</div>
+    </section>
+
+    <section class="common" id="addons">
+      <h2>Addons and interface</h2>
+      <div class="three-col">
+        <div class="guide-box">
+          <h3>Boss and threat</h3>
+          <ul class="clean-list">
+            <li><strong>DBM</strong> or the raid’s approved boss mod: Soul Reaper, Defile, transition, Harvest Souls, and Vile Spirits timers.</li>
+            <li><strong>Omen</strong>: threat lead. <strong>TauntMaster</strong> or an equivalent 3.3.5 taunt display: co-tank target, taunt cooldown, and resist/failure visibility.</li>
+            <li><strong>Details/Recount</strong>: post-pull death log, cooldown usage, and heal timing—not mid-pull meter watching.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>DK resources</h3>
+          <ul class="clean-list">
+            <li><strong>Magic Runes</strong>, <strong>Engraved</strong>, or an equivalent 3.3.5 rune display: show type, recharge, and Death-rune state.</li>
+            <li><strong>WeakAuras/TellMeWhen/NeedToKnow</strong> in a verified 3.3.5-compatible build: diseases, Blade Barrier, Vampiric Blood, IBF, AMS, Blood Tap/T10, Rune Tap, and external cooldowns.</li>
+            <li>A large 20-RP warning when IBF is ready but not castable.</li>
+            <li>A boss swing bar or combat-timer display beside Soul Reaper so the hasted-melee window is visible.</li>
+          </ul>
+        </div>
+        <div class="guide-box">
+          <h3>Raid frames</h3>
+          <ul class="clean-list">
+            <li>Show healer deaths, external cooldowns on you, Necrotic Plague, Harvest Souls, and target-of-target.</li>
+            <li>Keep the co-tank frame next to the boss frame with range, debuffs, and incoming resurrection visible.</li>
+            <li>Use clear audio for taunt resist, Soul Reaper application, and your named external.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="common" id="keybinds">
+      <h2>Keybind and tracking checklist</h2>
+      <div class="two-col">
+        <div class="guide-box">
+          <h3>One movement-hand reach</h3>
+          <p>Dark Command, Death Grip, Icy Touch, Death Strike, Rune Strike, Rune Tap, Icebound Fortitude, Anti-Magic Shell, Vampiric Blood, Healthstone, Indestructible Potion, Mind Freeze, and the external-call macro.</p>
+        </div>
+        <div class="guide-box">
+          <h3>Always visible</h3>
+          <p>Current/maximum health, incoming heals, six runes by original type, Runic Power, boss swing, diseases, Blade Barrier, all personal cooldowns, trinkets, potion/Healthstone, co-tank taunt status, and the next three encounter timers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="common" id="sources">
+      <h2>Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/guide/classes/death-knight/blood/tank-talent-builds-glyphs-pve" target="_blank" rel="noopener">Wowhead Blood tank talents and glyphs</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">Exact 43/23/5 calculator</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/spell=64267/glyph-of-disease" target="_blank" rel="noopener">Glyph of Disease</a> and <a href="https://www.wowhead.com/wotlk/item=43554/glyph-of-vampiric-blood" target="_blank" rel="noopener">Glyph of Vampiric Blood</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/item=43538/glyph-of-dark-command" target="_blank" rel="noopener">Glyph of Dark Command</a> and <a href="https://www.wowhead.com/wotlk/item=43545/glyph-of-icebound-fortitude" target="_blank" rel="noopener">Glyph of Icebound Fortitude</a>.</li>
+      </ul>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><a href="blood-death-knight-playing.html">← Playing</a><a href="blood-death-knight-gearing.html">Building →</a></nav>
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>

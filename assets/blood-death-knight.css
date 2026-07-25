@@ -1,0 +1,162 @@
+@import url("./death-knight-guide.css?v=20260725-death-knight-shared-v1");
+
+body[data-guide-spec="blood"] {
+  --spec-runes: var(--mechanic-dk-runes);
+  --spec-runes-soft: var(--mechanic-dk-runes-soft);
+  --spec-runes-rgb: var(--mechanic-dk-runes-rgb);
+  --spec-runic-power: var(--mechanic-dk-runic-power);
+  --spec-runic-power-soft: var(--mechanic-dk-runic-power-soft);
+  --spec-runic-power-rgb: var(--mechanic-dk-runic-power-rgb);
+  --spec-diseases: var(--mechanic-dk-diseases);
+  --spec-diseases-soft: var(--mechanic-dk-diseases-soft);
+  --spec-diseases-rgb: var(--mechanic-dk-diseases-rgb);
+  --spec-minions: var(--mechanic-dk-minions);
+  --spec-minions-soft: var(--mechanic-dk-minions-soft);
+  --spec-minions-rgb: var(--mechanic-dk-minions-rgb);
+}
+
+.page-kicker,
+.summary-label,
+.spec-card-kicker { color: var(--theme-accent-soft); }
+
+.combat-engine { grid-column: 1 / -1; }
+.engine-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 10px;
+}
+.engine-step {
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .025);
+}
+.engine-step strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.engine-step strong .ability-icon { width: 22px; height: 22px; margin: 0; }
+.engine-step p { margin: 0; color: var(--muted); font-size: 12px; }
+.mechanic-runes { border-color: rgba(var(--spec-runes-rgb), .42); background: rgba(var(--spec-runes-rgb), .065); }
+.mechanic-runes strong { color: var(--spec-runes-soft); }
+.mechanic-runic-power { border-color: rgba(var(--spec-runic-power-rgb), .42); background: rgba(var(--spec-runic-power-rgb), .065); }
+.mechanic-runic-power strong { color: var(--spec-runic-power-soft); }
+.mechanic-diseases { border-color: rgba(var(--spec-diseases-rgb), .42); background: rgba(var(--spec-diseases-rgb), .065); }
+.mechanic-diseases strong { color: var(--spec-diseases-soft); }
+.mechanic-minions { border-color: rgba(var(--spec-minions-rgb), .42); background: rgba(var(--spec-minions-rgb), .065); }
+.mechanic-minions strong { color: var(--spec-minions-soft); }
+
+.spec-playbook-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.spec-card { overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-card); }
+.spec-card[hidden] { display: none !important; }
+.spec-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(var(--theme-accent-rgb), .045);
+  cursor: pointer;
+}
+.spec-card-header:focus-visible { outline: 2px solid var(--theme-accent-soft); outline-offset: -3px; }
+.spec-card-kicker { font-size: 10px; font-weight: 900; text-transform: uppercase; }
+.spec-card-tag { align-self: start; padding: 3px 7px; border: 1px solid var(--line); border-radius: 999px; font-size: 9px; }
+.spec-card-body { padding: 13px; }
+.spec-card-footer {
+  padding: 10px 13px;
+  border-top: 1px solid rgba(var(--status-warning-rgb), .22);
+  background: rgba(var(--status-warning-rgb), .045);
+}
+.ability-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin: 9px 0; }
+.ability-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  border: 1px solid rgba(var(--theme-accent-rgb), .42);
+  border-radius: 10px;
+  color: var(--theme-accent-soft);
+  font-weight: 850;
+}
+.ability-choice .ability-icon { width: 22px; height: 22px; margin: 0; }
+
+.filter-panel {
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid rgba(var(--theme-accent-rgb), .30);
+  border-radius: 14px;
+  background: rgba(var(--theme-accent-rgb), .045);
+}
+.filter-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.filter-row + .filter-row { margin-top: 9px; }
+.filter-label { flex: 0 0 100px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+.filter-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.filter-button {
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface-code);
+  color: var(--text-muted);
+  cursor: pointer;
+  font: inherit;
+}
+.filter-button[aria-pressed="true"] {
+  border-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .15);
+  color: var(--theme-accent-soft);
+}
+.filter-button:focus-visible { outline: 2px solid var(--theme-accent-soft); outline-offset: 2px; }
+.raid-encounter[hidden], .raid-note[hidden], .raid-filter-empty[hidden] { display: none !important; }
+.raid-note { padding: 11px 0; }
+.raid-note + .raid-note { border-top: 1px solid rgba(255, 255, 255, .055); }
+.raid-note-meta { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; }
+.raid-note-tag {
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.raid-note-verify { border-color: rgba(var(--status-warning-rgb), .42); color: var(--status-warning-soft); }
+
+.talent-embed-wrap {
+  overflow: hidden;
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #090d11;
+}
+.talent-embed { display: block; width: 100%; height: 760px; border: 0; background: #090d11; }
+.phase-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.phase-card { padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-card); }
+.phase-card h3 { margin-top: 0; }
+.decision-line { color: var(--theme-accent-soft); font-weight: 850; }
+.source-list li + li { margin-top: 7px; }
+.pill {
+  display: inline-block;
+  margin: 2px 3px 2px 0;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.role-matrix td:first-child, .role-matrix th:first-child { white-space: nowrap; }
+.macro-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+@media (max-width: 900px) {
+  .engine-grid, .phase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec-playbook-grid, .macro-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .engine-grid, .phase-grid { grid-template-columns: 1fr; }
+  .filter-label { flex-basis: 100%; }
+  .filter-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .talent-embed { height: 900px; }
+}
