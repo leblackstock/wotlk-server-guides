@@ -1,0 +1,36 @@
+@import url("./spec-guide.css?v=20260725-spec-guide-v1");
+@import url("./death-knight-color-system.css?v=20260725-dk-color-v1");
+
+/* Shared presentation for Blood, Frost, and Unholy guide families. */
+body[data-guide-class="death-knight"] {
+  background:
+    radial-gradient(circle at 12% -10%, rgba(var(--class-accent-rgb), .15), transparent 34rem),
+    radial-gradient(circle at 94% 2%, rgba(var(--theme-accent-rgb), .10), transparent 30rem),
+    linear-gradient(180deg, var(--surface-page-deep), var(--surface-page));
+}
+
+body[data-guide-class="death-knight"] header {
+  border-color: rgba(var(--class-accent-rgb), .34);
+  background:
+    linear-gradient(135deg, var(--surface-raised), rgba(var(--class-accent-deep-rgb), .48) 46%, rgba(var(--theme-accent-deep-rgb), .34) 78%, var(--surface-card));
+}
+
+body[data-guide-class="death-knight"] h1 span {
+  color: var(--class-accent);
+}
+
+body[data-guide-class="death-knight"] a {
+  color: var(--class-accent-soft);
+}
+
+body[data-guide-class="death-knight"] .note.class {
+  border-left-color: var(--class-accent);
+  background: rgba(var(--class-accent-rgb), .08);
+  color: var(--class-accent-soft);
+}
+
+body[data-guide-class="death-knight"] .note.spec {
+  border-left-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .08);
+  color: var(--theme-accent-soft);
+}
