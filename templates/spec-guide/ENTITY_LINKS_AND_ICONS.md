@@ -26,7 +26,7 @@ The config points to a shared class registry:
 "tooltipFile": "death-knight-tooltips.js"
 ```
 
-Registry entries use one of two types:
+Registry entries use one of three types:
 
 ```json
 {
@@ -48,6 +48,14 @@ Registry entries use one of two types:
       "icon": "spell_example_icon",
       "category": "ability"
     }
+  ],
+  "skills": [
+    {
+      "id": 202,
+      "names": ["Engineering"],
+      "icon": "trade_engineering",
+      "category": "profession"
+    }
   ]
 }
 ```
@@ -58,6 +66,7 @@ The numbers above illustrate the structure only. Never copy example IDs into a r
 
 - Gear, gems, consumables, glyph items, and recipe scrolls normally use `items`.
 - Abilities, talents, buffs, debuffs, enchants, and profession effects normally use `spells`.
+- Professions and Runeforging use `skills` when the verified WotLK page is a `skill=` record.
 - Use the entity type shown by the verified WotLK Wowhead URL, not a guess based on the English name.
 - IDs must be positive integers. Zero and retail IDs are release failures.
 - Store icon filenames without `.jpg`.
@@ -117,6 +126,14 @@ An entity with a verified `icon` may be iconized without duplicating the filenam
 ```
 
 The tooltip script prepends the icon and removes it cleanly if the image fails.
+
+For a deliberately icon-rich guide, opt into compact icons on every linked entity outside headings and source lists:
+
+```html
+<body data-entity-icons="dense">
+```
+
+Dense mode is intentional, not the default. Use it only when repeated inline icons fit the guide’s visual direction and remain readable on mobile.
 
 ## Required workflow
 

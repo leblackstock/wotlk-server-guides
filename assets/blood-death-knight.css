@@ -71,11 +71,24 @@ body[data-guide-spec="blood"] {
   gap: 7px;
 }
 .spec-card-header h3 .ability-icon,
-.common > h3 .ability-icon {
+.common > h3 .ability-icon,
+.guide-box h3 .ability-icon,
+.priority-card h3 .ability-icon,
+.phase-card h3 .ability-icon,
+.macro-card h3 .ability-icon {
   width: 24px;
   height: 24px;
   margin: 0;
   vertical-align: middle;
+}
+.guide-box h3,
+.priority-card h3,
+.phase-card h3,
+.macro-card h3,
+.engine-step > strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 .spec-card-body { padding: 13px; }
 .spec-card-footer {
@@ -95,6 +108,31 @@ body[data-guide-spec="blood"] {
   font-weight: 850;
 }
 .ability-choice .ability-icon { width: 22px; height: 22px; margin: 0; }
+.wowhead-link.has-entity-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  vertical-align: middle;
+}
+.entity-link-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.ability-choice .entity-link-icon {
+  width: 22px;
+  height: 22px;
+  flex-basis: 22px;
+}
+td .entity-link-icon,
+li .entity-link-icon {
+  width: 19px;
+  height: 19px;
+  flex-basis: 19px;
+}
 
 .filter-panel {
   margin: 14px 0;
@@ -171,4 +209,11 @@ body[data-guide-spec="blood"] {
   .filter-label { flex-basis: 100%; }
   .filter-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
   .talent-embed { height: 900px; }
+  .entity-link-icon,
+  td .entity-link-icon,
+  li .entity-link-icon {
+    width: 17px;
+    height: 17px;
+    flex-basis: 17px;
+  }
 }

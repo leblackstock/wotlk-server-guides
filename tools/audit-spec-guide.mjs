@@ -98,7 +98,7 @@ function inspectMacros(html, file) {
   for (const code of codeBlocks) {
     const candidates = [];
     for (const match of code.matchAll(/#showtooltip(?:\s+([^\r\n<]+))?/gi)) if (match[1]) candidates.push(match[1].trim());
-    for (const match of code.matchAll(/^\s*\/cast(?:sequence)?\s+(?:reset=[^\s]+\s+)?(?:\[[^\]]+\]\s*)*([^;\r\n]+)/gim)) {
+    for (const match of code.matchAll(/^\s*\/cast(?:sequence)?\s+(?:reset=[^\s]+\s+)?(?:\[[^\]]*\]\s*)*([^;\r\n]+)/gim)) {
       const value = match[1].split(",")[0].trim();
       if (value) candidates.push(value);
     }
@@ -167,7 +167,9 @@ function inspectCandidateNames(html, file) {
   for (const pattern of patterns) {
     for (const match of text.matchAll(pattern)) {
       const name = match[0].trim();
-      if (!mapped(name)) warnings.push(`${rel(file)}: likely game entity "${name}" is not in the registry.`);
+      const normalized = name.toLowerCase();
+      const related = [...entityMap.keys()].some((known) => known.startsWith(normalized) || normalized.startsWith(`${known} `));
+      if (!mapped(name) && !related) warnings.push(`${rel(file)}: likely game entity "${name}" is not in the registry.`);
     }
   }
 }

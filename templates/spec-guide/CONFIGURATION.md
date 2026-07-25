@@ -62,7 +62,7 @@ Inventory all of the following while writing:
 - abilities, skills, talents, buffs, debuffs, cooldowns, and set bonuses
 - canonical names plus every alias or shortened label displayed by the guide
 
-Registry entries use `items` or `spells` based on the verified WotLK Wowhead entity type. IDs must be positive integers. Icon filenames omit `.jpg`.
+Registry entries use `items`, `spells`, or `skills` based on the verified WotLK Wowhead entity type. IDs must be positive integers. Icon filenames omit `.jpg`.
 
 See `ENTITY_LINKS_AND_ICONS.md` for the mandatory inventory, build, and audit workflow.
 
