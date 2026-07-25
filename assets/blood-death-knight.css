@@ -65,6 +65,18 @@ body[data-guide-spec="blood"] {
 .spec-card-header:focus-visible { outline: 2px solid var(--theme-accent-soft); outline-offset: -3px; }
 .spec-card-kicker { font-size: 10px; font-weight: 900; text-transform: uppercase; }
 .spec-card-tag { align-self: start; padding: 3px 7px; border: 1px solid var(--line); border-radius: 999px; font-size: 9px; }
+.spec-card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.spec-card-header h3 .ability-icon,
+.common > h3 .ability-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  vertical-align: middle;
+}
 .spec-card-body { padding: 13px; }
 .spec-card-footer {
   padding: 10px 13px;
