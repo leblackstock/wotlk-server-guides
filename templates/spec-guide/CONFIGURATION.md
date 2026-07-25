@@ -15,27 +15,56 @@ Use `spec-guide.config.example.json` as the starting point.
 
 All slug and key fields must use lower-case kebab-case.
 
-## Shared class assets
+## Shared class assets and entity registry
 
 For the first guide created for a class:
 
 ```json
 "createClassSharedCss": true,
 "createTooltipStarter": true,
+"createEntityRegistry": true,
+"createTooltipScript": true,
+"entityRegistryFile": "data/death-knight-entities.json",
 "tooltipFile": "death-knight-tooltips.js"
 ```
 
-For an additional spec of a class that already has shared CSS and tooltips:
+For an additional spec of a class that already has shared CSS, a registry, and a tooltip script:
 
 ```json
 "createClassSharedCss": false,
 "createTooltipStarter": false,
+"createEntityRegistry": false,
+"createTooltipScript": false,
+"entityRegistryFile": "data/death-knight-entities.json",
 "tooltipFile": "death-knight-tooltips.js"
 ```
 
-Then extend the existing class tooltip file deliberately instead of overwriting it.
+Then extend the existing class registry and rebuild the shared tooltip script:
+
+```powershell
+node tools/build-wowhead-tooltips.mjs data/death-knight-entities.json assets/death-knight-tooltips.js
+```
+
+`createTooltipStarter` is still required by the underlying scaffold generator. The complete wrapper immediately replaces that starter with the registry-built phrase linker.
 
 The generator refuses to overwrite existing paths unless `--force` is supplied. Treat `--force` as a demolition lever, not a convenience switch.
+
+## Entity registry requirements
+
+The class registry is the source of truth for every named game entity used by any spec of that class.
+
+Inventory all of the following while writing:
+
+- gear, weapons, armor, rings, trinkets, relics, and tier pieces
+- gems, consumables, food, flasks, elixirs, potions, and temporary items
+- glyphs and recipe items such as Plans, Patterns, Recipes, Formulae, and Designs
+- enchants and profession effects
+- abilities, skills, talents, buffs, debuffs, cooldowns, and set bonuses
+- canonical names plus every alias or shortened label displayed by the guide
+
+Registry entries use `items` or `spells` based on the verified WotLK Wowhead entity type. IDs must be positive integers. Icon filenames omit `.jpg`.
+
+See `ENTITY_LINKS_AND_ICONS.md` for the mandatory inventory, build, and audit workflow.
 
 ## Cache key
 
@@ -73,7 +102,7 @@ Do not create separate colors for every ability school. Choose concepts that rec
 
 ## Icons
 
-Icon values are Wow icon filenames without `.jpg`.
+Config icon values are Wow icon filenames without `.jpg`.
 
 Example:
 
@@ -85,7 +114,16 @@ Generated URLs use:
 
 `https://wow.zamimg.com/images/wow/icons/large/<icon>.jpg`
 
-All generated icons remove themselves when loading fails.
+All generated decorative icons use empty alt text, `aria-hidden="true"`, and remove themselves when loading fails.
+
+Entity registry entries may also carry an icon filename. The generated tooltip script can insert those icons into elements using either:
+
+```html
+<span class="ability-choice ability-name iconize-entity">Exact Ability Name</span>
+<h3 data-entity-icon="Exact Ability Name">Ability timing</h3>
+```
+
+Major section headings and raid encounter summaries are checked by the audit tool and require icons unless explicitly marked `data-icon-optional`.
 
 ## Talent build
 
@@ -118,24 +156,42 @@ Avoid generic labels when the encounter role can be named precisely.
 
 ## Generated files
 
-A normal first-spec run creates 12 files:
+A normal first-spec run creates 13 files:
 
 - six public guide pages
 - one spec stylesheet
 - one spec script
 - one class-shared stylesheet
-- one class tooltip starter
+- one class entity registry
+- one generated class tooltip script
 - one internal visual specimen
 - one implementation checklist
 
-An additional spec normally creates 10 files because it reuses the class-shared stylesheet and tooltip file.
+An additional spec normally creates ten files because it reuses the class-shared stylesheet, registry, and tooltip script.
 
 ## Safe workflow
 
 ```powershell
 Copy-Item templates/spec-guide/spec-guide.config.example.json templates/spec-guide/my-spec.config.json
-node tools/create-spec-guide.mjs templates/spec-guide/my-spec.config.json --dry-run
-node tools/create-spec-guide.mjs templates/spec-guide/my-spec.config.json
+node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.json --dry-run
+node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.json
 ```
 
-After generation, start with the internal visual specimen and implementation checklist. Do not add the Guide Hub card until the research placeholders are removed and the guide family is ready for review.
+After generation:
+
+1. Start with the internal visual specimen.
+2. Research and write the six pages.
+3. Inventory every named game entity into the class registry.
+4. Rebuild the tooltip script.
+5. Run the draft audit.
+6. Resolve all entity, icon, link, and macro warnings.
+7. Run the release audit.
+8. Add the Guide Hub card only when the guide family is review-ready.
+
+Commands:
+
+```powershell
+node tools/build-wowhead-tooltips.mjs data/death-knight-entities.json assets/death-knight-tooltips.js
+node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json
+node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json --release
+```
