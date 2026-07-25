@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blood Death Knight Visual System</title>
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="../assets/death-knight-color-system.css?v=20260725-dk-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260723-hellscream-logo-v1">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <style>
+    .swatch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .swatch{overflow:hidden;padding:0}
+    .swatch-color{height:74px;background:var(--swatch)}
+    .swatch-copy{display:grid;gap:3px;padding:12px}
+    .swatch-copy strong{color:var(--text)}
+    .swatch-copy code{color:var(--muted)}
+    .component-stack{display:grid;gap:14px}
+    .usage-list{margin:0;padding-left:1.25rem}
+    .usage-list li+li{margin-top:7px}
+  </style>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+  <div class="wrap">
+    <header>
+      <span class="page-kicker">Internal design specimen</span>
+      <h1>Blood Death Knight <span>visual system</span></h1>
+      <p class="sub">The release gate for the Death Knight class, Blood spec, resource mechanics, semantic states, and accessible component hierarchy.</p>
+      <a class="back-link" href="../guides/blood-death-knight-pve-guide.html">Open public guide →</a>
+    </header>
+
+    <main>
+      <section class="common" aria-labelledby="identity-title">
+        <h2 id="identity-title">
+          <img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_classicon.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+          Identity colors
+        </h2>
+        <p>Deep class red frames Death Knight identity. The brighter Blood rose marks the selected spec and primary action. These roles must not be swapped with mechanics or status colors.</p>
+        <div class="swatch-grid">
+          <div class="guide-box swatch" style="--swatch:var(--class-death-knight-accent)">
+            <div class="swatch-color"></div>
+            <div class="swatch-copy"><strong>Death Knight</strong><span>Class identity</span><code>#C41F3B</code></div>
+          </div>
+          <div class="guide-box swatch" style="--swatch:var(--class-death-knight-soft)">
+            <div class="swatch-color"></div>
+            <div class="swatch-copy"><strong>Death Knight soft</strong><span>Readable accent text</span><code>#F39AAA</code></div>
+          </div>
+          <div class="guide-box swatch" style="--swatch:var(--spec-death-knight-blood-accent)">
+            <div class="swatch-color"></div>
+            <div class="swatch-copy"><strong>Blood</strong><span>Spec and selected state</span><code>#D94F68</code></div>
+          </div>
+          <div class="guide-box swatch" style="--swatch:var(--spec-death-knight-blood-soft)">
+            <div class="swatch-color"></div>
+            <div class="swatch-copy"><strong>Blood soft</strong><span>Links and emphasis</span><code>#FFB2BF</code></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="common" aria-labelledby="mechanics-title">
+        <h2 id="mechanics-title">
+          <img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_deathstrike.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+          Mechanic colors
+        </h2>
+        <p>Mechanic colors teach the resource engine. Every use also carries a label, icon, or border treatment so color is never the only signal.</p>
+        <div class="engine-grid">
+          <div class="engine-step mechanic-runes">
+            <strong>Runes</strong>
+            <p>Reserve the right rune pair for Death Strike and planned cooldowns.</p>
+            <code>#69BFD4</code>
+          </div>
+          <div class="engine-step mechanic-runic-power">
+            <strong>Runic Power</strong>
+            <p>Bank enough for Icebound Fortitude before feeding Rune Strike.</p>
+            <code>#5FC8B7</code>
+          </div>
+          <div class="engine-step mechanic-diseases">
+            <strong>Diseases</strong>
+            <p>Maintain both diseases for the full two-disease Death Strike heal.</p>
+            <code>#C7B85B</code>
+          </div>
+          <div class="engine-step mechanic-minions">
+            <strong>Minions</strong>
+            <p>Use Raise Dead, Death Pact, and Army only with encounter positioning in mind.</p>
+            <code>#A98AD8</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="common" aria-labelledby="components-title">
+        <h2 id="components-title">Component hierarchy</h2>
+        <div class="component-stack">
+          <div class="summary-grid">
+            <div class="summary-card">
+              <span class="summary-label">Primary build</span>
+              <strong class="summary-value">43 / 23 / 5</strong>
+              <span class="summary-note">Large rose value, plain-language label.</span>
+            </div>
+            <div class="summary-card">
+              <span class="summary-label">Tank stance</span>
+              <strong class="summary-value">Frost Presence</strong>
+              <span class="summary-note">Never inferred from color alone.</span>
+            </div>
+          </div>
+          <div class="callout warning">
+            <strong>Needs Hellscream test</strong>
+            <p>Warning yellow is reserved for server-specific behavior requiring a live check.</p>
+          </div>
+          <div class="callout danger">
+            <strong>Do not overlap</strong>
+            <p>Danger red is reserved for raid-wipe or lethal tank-failure instructions.</p>
+          </div>
+          <div class="filter-bar" aria-label="Static filter example">
+            <span class="filter-label">Assignment:</span>
+            <button class="filter-chip active" type="button">All roles</button>
+            <button class="filter-chip" type="button">Main tank</button>
+            <button class="filter-chip" type="button">Off-tank</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="common" aria-labelledby="rules-title">
+        <h2 id="rules-title">Release rules</h2>
+        <ul class="usage-list">
+          <li>Class red identifies Death Knights; Blood rose identifies this spec and active navigation.</li>
+          <li>Cyan, teal, gold, and violet are restricted to runes, Runic Power, diseases, and minions.</li>
+          <li>Warning and danger remain global semantic states; class colors never replace them.</li>
+          <li>Normal body copy uses the shared text palette. Soft accents are links or short emphasis, not paragraph text.</li>
+          <li>Focus outlines, labels, icons, patterns, and explicit state text keep every control usable without color perception.</li>
+          <li>Desktop, mobile, print, hover, focus-visible, and forced-colors behavior are part of the final regression check.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

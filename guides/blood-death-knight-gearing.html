@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blood Death Knight tank stats, caps, effective health, gems, enchants, professions, and no-buff ICC gearing strategy.">
+  <title>Building your Blood Death Knight | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/blood-death-knight.css?v=20260725-blood-v1">
+  <script src="../assets/death-knight-tooltips.js?v=20260725-blood-v1" defer></script>
+  <script src="../assets/blood-death-knight.js?v=20260725-blood-v1" defer></script>
+</head>
+<body data-guide-class="death-knight" data-guide-spec="blood">
+<div class="wrap">
+  <nav class="site-nav" aria-label="Blood Death Knight guide pages">
+    <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+    <a href="blood-death-knight-pve-guide.html">Quick Start</a>
+    <a href="blood-death-knight-playing.html">Playing</a>
+    <a href="blood-death-knight-setting-up.html">Setup</a>
+    <a href="blood-death-knight-gearing.html" aria-current="page">Building</a>
+    <a href="blood-death-knight-gear-targets.html">Equipping</a>
+    <a href="blood-death-knight-raiding.html">Raiding</a>
+  </nav>
+
+  <header>
+    <span class="page-kicker">Blood Death Knight • Level 80</span>
+    <h1>WotLK 3.3.5 <span>Building your Blood DK</span></h1>
+    <p class="sub">For no-buff Heroic LK25, survive the worst believable burst first. Fix reliability only where failure can end the pull.</p>
+    <div class="jump-nav" aria-label="Topics on this page">
+      <a href="#stats">Stats</a>
+      <a href="#path">Gearing path</a>
+      <a href="#gems">Gems</a>
+      <a href="#enchants">Enchants</a>
+      <a href="#professions">Professions</a>
+      <a href="#sets">Swap sets</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="note spec"><strong>Ready for exact items?</strong> Open <a href="blood-death-knight-gear-targets.html"><strong>Equipping your Blood Death Knight</strong></a>.</div>
+
+    <section class="common" id="stats">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_sword_62.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Stats, caps, and tradeoffs</h2>
+      <div class="note warning"><strong>Every cap is conditional.</strong> Check character-sheet values in <span class="spell-name">Frost Presence</span>, with the actual weapon and every encounter swap equipped. A higher-item-level piece that drops below 540 Defense skill is not an upgrade.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stat</th><th>Practical target</th><th>Why</th><th>Correction</th></tr></thead>
+          <tbody>
+            <tr><td>Defense</td><td><strong>540 Defense skill minimum</strong> vs level 83</td><td>Removes the raid boss’s 5.6% melee critical-strike chance and adds avoidance; also scales IBF.</td><td>540 is Defense <em>skill</em>, not 540 Defense rating. Stoneskin Gargoyle grants 25 skill.</td></tr>
+            <tr><td>Stamina / health</td><td>Stack after mandatory floors</td><td>Raises effective health against physical, Shadow, Frost, and mixed burst; scales Death Strike, Rune Tap, Vampiric Blood, and AMS’s cap.</td><td>No-buff LK makes raw health more valuable than farm-content avoidance averages.</td></tr>
+            <tr><td>Armor</td><td>High bonus-armor set; 49,905 is the level-83 75% cap</td><td>Smooths melee, Shambling Horror hits, and the physical portion of Soul Reaper.</td><td>Armor does not reduce the Shadow detonation. Evaluate trinket/on-use peaks against the cap.</td></tr>
+            <tr><td>Melee hit</td><td>8% / 263 rating for specials</td><td>Reliability for strikes and physical abilities.</td><td><span class="spell-name">Icy Touch</span> and <span class="spell-name">Dark Command</span> use the spell-hit table, so 8% melee hit alone does not cap them.</td></tr>
+            <tr><td>Taunt / spell hit</td><td>With Dark Command glyph: 237 rating without, or 158 with, the 3% raid spell-hit debuff</td><td>Avoids a resisted Soul Reaper handoff.</td><td>This tree has 0/3 Virulence. Confirm Misery/Improved Faerie Fire uptime rather than assuming it.</td></tr>
+            <tr><td>Expertise</td><td>26 expertise / about 214 rating soft cap; 56 hard cap</td><td>26 removes boss dodge; more also reduces parry from the front.</td><td>Do not sacrifice a large effective-health budget to hard-cap 56. Threat is normally not the limiting problem.</td></tr>
+            <tr><td>Dodge</td><td>Useful, but diminished and reduced by ICC</td><td>Avoids entire melee swings and enables Rune Strike.</td><td><span class="spell-name">Chill of the Throne</span> subtracts 20 percentage points; it does not make dodge worthless.</td></tr>
+            <tr><td>Parry</td><td>Useful after Defense; compare diminishing returns</td><td>Avoids a full melee swing and enables Rune Strike.</td><td>Strength adds parry, but Strength is not a survival gemming target.</td></tr>
+            <tr><td>Strength / threat stats</td><td>Take what strong tank gear provides</td><td>Attack power, parry through Strength, and threat.</td><td>Do not gem Strength, crit, haste, or armor penetration for no-buff LK progression.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note class" style="margin-top:12px"><strong>Frost Presence baseline:</strong> +8% Stamina, +60% armor contribution from cloth/leather/mail/plate, 8% all-damage reduction, and increased threat. <strong>Rune of the Stoneskin Gargoyle:</strong> +25 Defense skill and +2% total Stamina on a two-hander.</div>
+    </section>
+
+    <section class="common" id="path">
+      <h2>Level-80 gearing path</h2>
+      <div class="phase-grid">
+        <div class="phase-card"><h3>1. Become legal</h3><p class="decision-line">540 Defense skill → tank stance → tank runeforge.</p><p>Use crafted, reputation, dungeon, and emblem pieces without caring about a fashionable set. Re-check the floor after every weapon, trinket, or tier change.</p></div>
+        <div class="phase-card"><h3>2. Build a raid base</h3><p class="decision-line">Health + armor → reliable taunt → stable threat.</p><p>Farm stamina trinkets and bonus-armor pieces. Reach enough hit that Dark Command and Icy Touch are dependable with the actual raid debuffs.</p></div>
+        <div class="phase-card"><h3>3. Build T10 control</h3><p class="decision-line">Work toward four tank-tier pieces.</p><p>T10 4-piece turns Blood Tap into a 12%-reduction, 10-second cooldown layer. Keep high-armor offsets for the fifth slot and alternate sets.</p></div>
+        <div class="phase-card"><h3>4. No-buff LK set</h3><p class="decision-line">Maximize worst-case effective health.</p><p>Use stamina/armor trinkets, a high-stamina slow 2H, and enough hit for the planned taunt model. Avoid gear that relies on stacks staying up.</p></div>
+        <div class="phase-card"><h3>5. Add-tank set</h3><p class="decision-line">Physical smoothing + control.</p><p>Favor armor and predictable on-use mitigation for Shambling Horror Enrage/Frenzy. Keep hit for pickups and do not assume a proc will be active.</p></div>
+        <div class="phase-card"><h3>6. Magic/soak set</h3><p class="decision-line">Health + magic cooldowns.</p><p>Favor stamina and Sindragosa’s resistance on-use for Shadow/Frost-heavy jobs; do not overvalue armor for pure Vile Spirit damage.</p></div>
+      </div>
+    </section>
+
+    <section class="common" id="gems">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_jewelcrafting_gem_42.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Gems</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Socket</th><th>Default</th><th>Correction gem</th><th>Rule</th></tr></thead>
+          <tbody>
+            <tr><td>Meta</td><td><span class="item-name">Austere Earthsiege Diamond</span></td><td>+32 Stamina and 2% increased armor from items</td><td>The default tank meta. Activate it with one red and two blue requirements.</td></tr>
+            <tr><td>Blue / unmatched</td><td><span class="item-name">Solid Majestic Zircon</span> (+30 Stamina)</td><td><span class="item-name">Solid Dragon's Eye</span> (+51 Stamina, Jewelcrafting)</td><td>After the meta and hard floors, straight Stamina is the progression default.</td></tr>
+            <tr><td>Red requirement</td><td><span class="item-name">Guardian's Dreadstone</span> (+10 expertise / +15 Stamina)</td><td><span class="item-name">Nightmare Tear</span> (+10 all stats, unique)</td><td>Use the smallest survival loss that activates the meta or fixes a real expertise problem.</td></tr>
+            <tr><td>Yellow correction</td><td>Vivid Eye of Zul (+10 hit / +15 Stamina)</td><td>Enduring Eye of Zul (+10 Defense / +15 Stamina)</td><td>Use only for a taunt/hit target or to restore 540 Defense after a stronger swap.</td></tr>
+            <tr><td>Socket bonus</td><td>Match meaningful Stamina bonuses</td><td>Ignore weak Strength/avoidance bonuses</td><td>Compare the total Stamina lost, not the socket color’s appearance.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="enchants">
+      <h2>Enchants and runeforge</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Slot</th><th>Progression default</th><th>Alternative / note</th></tr></thead>
+          <tbody>
+            <tr><td>Head</td><td>Arcanum of the Stalwart Protector</td><td>Mind Amplification Dish for Engineering utility if 540 Defense remains safe; misfire behavior needs a Hellscream test.</td></tr>
+            <tr><td>Shoulders</td><td>Greater Inscription of the Gladiator (+30 Stamina / +15 Resilience)</td><td>Use the Sons of Hodir tank inscription when Defense is needed. Resilience contributes to uncrittability but not avoidance.</td></tr>
+            <tr><td>Cloak</td><td>Mighty Armor (+225 Armor)</td><td>Flex Defense or Agility only to solve a set-specific floor.</td></tr>
+            <tr><td>Chest</td><td>Super Health (+275 Health)</td><td>Powerful Stats (+10 all) or Greater Defense (+22) if the whole set benefits.</td></tr>
+            <tr><td>Bracers</td><td>Major Stamina (+40 Stamina)</td><td>Leatherworking’s Fur Lining – Stamina replaces it.</td></tr>
+            <tr><td>Gloves</td><td>Reticulated Armor Webbing (+885 Armor, Engineering)</td><td>Armsman, Precision, Expertise, or glove armor according to the set’s unresolved weakness.</td></tr>
+            <tr><td>Waist</td><td>Eternal Belt Buckle</td><td>Add a +30 Stamina gem unless a cap correction is required.</td></tr>
+            <tr><td>Legs</td><td>Frosthide Leg Armor (+55 Stamina / +22 Agility)</td><td>No progression alternative.</td></tr>
+            <tr><td>Boots</td><td>Tuskarr’s Vitality (+15 Stamina and speed)</td><td>Nitro Boosts for assigned movement or Greater Fortitude (+22 Stamina). Movement usually saves more pulls than seven Stamina.</td></tr>
+            <tr><td>Weapon</td><td>Rune of the Stoneskin Gargoyle</td><td>Use Swordshattering only for a deliberately physical-avoidance set that remains uncrittable and does not need the Stamina.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="professions">
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Professions</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Profession</th><th>3.3.5 combat value</th><th>Verdict for LK25H</th></tr></thead>
+          <tbody>
+            <tr><td>Engineering</td><td>+885 passive armor glove tinker, Nitro Boosts, bombs, and utility helm enchants</td><td><span class="must">Best progression utility.</span> The movement button is uniquely powerful; test failure behavior on Hellscream.</td></tr>
+            <tr><td>Jewelcrafting</td><td>Three +51 Stamina Dragon’s Eyes: +63 Stamina over three +30 gems</td><td>Best clean passive-health pairing.</td></tr>
+            <tr><td>Leatherworking</td><td>+102 Stamina bracer lining: +62 over Major Stamina; resistance linings available</td><td>Excellent EHP and encounter flexibility.</td></tr>
+            <tr><td>Blacksmithing</td><td>Two extra sockets: +60 Stamina with epic gems</td><td>Flexible and nearly equal passive value.</td></tr>
+            <tr><td>Enchanting</td><td>Two +30 Stamina ring enchants: +60 Stamina</td><td>Simple passive alternative.</td></tr>
+            <tr><td>Mining</td><td>Toughness: +60 Stamina</td><td>Solid passive value, no active utility.</td></tr>
+            <tr><td>Alchemy</td><td>Mixology improves Flask of Stoneblood and extends duration</td><td>Good economy and EHP; weaker emergency utility than Engineering.</td></tr>
+            <tr><td>Inscription</td><td>Master’s tank shoulder inscription</td><td>Useful Defense/avoidance, but no-buff progression normally prefers the Stamina PvP inscription.</td></tr>
+            <tr><td>Herbalism</td><td>Lifeblood self-heal</td><td>A small timed heal, but weaker and less flexible than crafted profession bonuses for LK25H.</td></tr>
+            <tr><td>Skinning</td><td>Critical-strike rating</td><td>Threat only; the weakest gathering profession for personal survival.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="common" id="sets">
+      <h2>Keep three complete swap sets</h2>
+      <div class="three-col">
+        <div class="guide-box"><h3>Boss / Soul Reaper</h3><ul class="clean-list"><li>Maximum credible health.</li><li>High armor without exceeding peak cap.</li><li>Taunt reliability with the actual raid debuff.</li><li>Predictable on-use trinket plan.</li></ul></div>
+        <div class="guide-box"><h3>Shambling / physical</h3><ul class="clean-list"><li>Bonus armor and physical trinkets.</li><li>Pickup hit/expertise where inexpensive.</li><li>Stun/control coordination.</li><li>Never depend on an Organ stack during avoidance streaks.</li></ul></div>
+        <div class="guide-box"><h3>Magic / Vile Spirits</h3><ul class="clean-list"><li>Stamina and resistance on-use.</li><li>AMS timer and absorb cap visible.</li><li>Armor is secondary against pure Shadow burst.</li><li>Keep 540 Defense if melee contact is possible.</li></ul></div>
+      </div>
+      <div class="three-col" style="margin-top:12px">
+        <div class="guide-box"><h3>Physical EHP</h3><ul class="clean-list"><li>Bonus armor plus Stamina.</li><li>Check all armor procs against 49,905.</li><li>Use for LK melee or Horrors, not pure Shadow jobs.</li></ul></div>
+        <div class="guide-box"><h3>Threat / pickup</h3><ul class="clean-list"><li>Slow high-DPS two-hander.</li><li>Hit/expertise only where inexpensive.</li><li>Preserve 540 Defense and the assigned survival floor.</li></ul></div>
+        <div class="guide-box"><h3>Taunt reliability</h3><ul class="clean-list"><li>Glyph of Dark Command.</li><li>237 spell-hit rating alone or 158 with a confirmed 3% debuff.</li><li>Re-check every swap; never assume debuff uptime.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="common" id="sources">
+      <h2>Sources and verification</h2>
+      <ul class="source-list">
+        <li><a href="https://www.wowhead.com/wotlk/spell=48263/frost-presence" target="_blank" rel="noopener">Frost Presence</a> and <a href="https://www.wowhead.com/wotlk/spell=62158/rune-of-the-stoneskin-gargoyle" target="_blank" rel="noopener">Stoneskin Gargoyle</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/forums/topic/what-affects-taunt-miss-121472" target="_blank" rel="noopener">WotLK taunt hit requirements</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/forums/topic/level-80-armor-cap-50763" target="_blank" rel="noopener">Level-83 armor cap</a>.</li>
+        <li><a href="https://www.wowhead.com/wotlk/item=41380/austere-earthsiege-diamond" target="_blank" rel="noopener">Austere Earthsiege Diamond</a> and <a href="https://www.wowhead.com/wotlk/item=40119/solid-majestic-zircon" target="_blank" rel="noopener">Solid Majestic Zircon</a>.</li>
+      </ul>
+    </section>
+
+    <nav class="page-pager" aria-label="Previous and next guide pages"><a href="blood-death-knight-setting-up.html">← Setup</a><a href="blood-death-knight-gear-targets.html">Equipping →</a></nav>
+  </main>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+</div>
+</body>
+</html>
