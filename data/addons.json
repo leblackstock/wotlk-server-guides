@@ -3519,7 +3519,7 @@
       ],
       "doesNot": [
         "Does not hot-load every addon safely; most changes still require ReloadUI.",
-        "ACP 3.3.7 is not compatible with the 3.3.5a client."
+        "Does not replace addon configuration panels or repair errors inside other addons."
       ],
       "generalSetup": [
         "Download Addon Control Panel 3.3.5 from the WotLK page linked below.",
