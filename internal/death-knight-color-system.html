@@ -6,58 +6,110 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Death Knight Color System | Internal</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
-  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-paladin-combined-v2">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-dk-live-v2">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/death-knight-guide.css?v=20260725-paladin-combined-v2">
-  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-paladin-combined-v2">
+  <link rel="stylesheet" href="../assets/death-knight-guide.css?v=20260725-dk-live-v2">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-dk-live-v2">
 </head>
 <body class="color-reference-page" data-guide-class="death-knight">
 <div class="wrap">
   <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="death-knight-color-system.html" aria-current="page">Death Knight</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
   <header class="reference-header">
-    <span class="reference-kicker">Class family comparison</span>
+    <span class="reference-kicker">Combined class reference • Blood live</span>
     <h1>Death Knight <span>Color System</span></h1>
-    <p class="sub">One Death Knight identity, three specialization accents, and one shared mechanic language for runes, Runic Power, diseases, and minions.</p>
-    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#class">Class identity</a><a href="#specs">Spec comparison</a><a href="#mechanics">Shared mechanics</a><a href="#boundaries">Boundaries</a><a href="#related">Related pages</a></nav>
+    <p class="sub">The complete Death Knight reference in one place: shared class identity, Blood, Frost, and Unholy specialization colors, shared resource mechanics, and the production component rules now used by the live Blood tank guide.</p>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#class">Class identity</a><a href="#specs">Spec comparison</a><a href="#mechanics">Shared mechanics</a><a href="#blood-live">Blood live guide</a><a href="#future-specs">Frost + Unholy</a><a href="#boundaries">Boundaries</a></nav>
   </header>
   <main>
     <section class="reference-section" id="class">
       <h2>Death Knight class identity</h2>
       <div class="reference-grid">
-        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-death-knight-accent),var(--class-death-knight-deep))"></div><strong>Death Knight crimson</strong><p>Class title, broad Death Knight framing, class-wide notes, and links shared by all three specs.</p><code class="token">--class-death-knight-accent: #c41f3b</code></article>
-        <article class="reference-card"><strong>What crimson does not own</strong><p>Blood selected state, danger warnings, disease tracking, runes, Runic Power, minions, or item rarity.</p><div class="reference-note"><strong>Rule:</strong> Blood must look related to the class without making every Death Knight page look like Blood.</div></article>
+        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-death-knight-accent),var(--class-death-knight-deep))"></div><strong>Death Knight crimson</strong><p>Class title, header framing, broad Death Knight links, class-wide notes, and relationships shared by every specialization.</p><code class="token">--class-death-knight-accent: #c41f3b</code></article>
+        <article class="reference-card"><strong>Class boundary</strong><p>Crimson does not identify Blood selection, danger, disease state, runes, Runic Power, minions, or item rarity.</p><div class="reference-note"><strong>Rule:</strong> the live Blood guide must still look like a Death Knight guide before it looks like a Blood guide.</div></article>
       </div>
     </section>
+
     <section class="reference-section" id="specs">
       <h2>Specialization comparison</h2>
       <div class="spec-grid">
-        <article class="spec-card blood"><h3>Blood</h3><p>Sanguine red for Blood-only selection, mitigation emphasis, survival planning, and tank-specific controls.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Blood</span><span class="spec-deep"></span></div><code class="token">#d94f68 · --spec-death-knight-blood-accent</code></article>
-        <article class="spec-card frost"><h3>Frost</h3><p>Glacial blue for Frost selection, proc state, weapon-flow emphasis, and Frost-only controls.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Frost</span><span class="spec-deep"></span></div><code class="token">#78bce8 · --spec-death-knight-frost-accent</code></article>
-        <article class="spec-card unholy"><h3>Unholy</h3><p>Necrotic yellow-green for Unholy selection, disease-and-minion emphasis, and Unholy-only controls.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Unholy</span><span class="spec-deep"></span></div><code class="token">#9ccb58 · --spec-death-knight-unholy-accent</code></article>
+        <article class="spec-card blood"><h3>Blood</h3><p>Sanguine rose for selected navigation, active filters, survival decisions, mitigation emphasis, tank controls, and Blood-only technical guidance.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Blood</span><span class="spec-deep"></span></div><code class="token">#d94f68 · --spec-death-knight-blood-accent</code></article>
+        <article class="spec-card frost"><h3>Frost</h3><p>Glacial blue for future Frost selection, proc state, weapon-flow emphasis, and Frost-only controls.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Frost</span><span class="spec-deep"></span></div><code class="token">#78bce8 · --spec-death-knight-frost-accent</code></article>
+        <article class="spec-card unholy"><h3>Unholy</h3><p>Necrotic yellow-green for future Unholy selection, disease-and-minion emphasis, and Unholy-only controls.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Unholy</span><span class="spec-deep"></span></div><code class="token">#9ccb58 · --spec-death-knight-unholy-accent</code></article>
       </div>
+      <div class="reference-note"><strong>Implementation status:</strong> Blood is live and documented fully below. Frost and Unholy identities are approved, but their spec-specific component rules wait for their guides.</div>
     </section>
+
     <section class="reference-section" id="mechanics">
       <h2>Shared Death Knight mechanics</h2>
       <div class="mechanic-grid">
-        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runes)"></div><strong>Runes</strong><p>Availability, spending, conversion, and recovery.</p><code class="token">--mechanic-dk-runes</code></article>
-        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runic-power)"></div><strong>Runic Power</strong><p>Generation, spending, reserves, and overflow.</p><code class="token">--mechanic-dk-runic-power</code></article>
-        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-diseases)"></div><strong>Diseases</strong><p>Application, maintenance, refresh, and spread.</p><code class="token">--mechanic-dk-diseases</code></article>
-        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-minions)"></div><strong>Minions</strong><p>Ghoul, Gargoyle, Army, and pet-control relationships.</p><code class="token">--mechanic-dk-minions</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runes)"></div><strong>Runes</strong><p>Availability, spending, conversion, recovery, and reserved rune pairs.</p><code class="token">--mechanic-dk-runes</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runic-power)"></div><strong>Runic Power</strong><p>Generation, spending, emergency reserves, and overflow.</p><code class="token">--mechanic-dk-runic-power</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-diseases)"></div><strong>Diseases</strong><p>Application, maintenance, refresh, spread, and disease-dependent effects.</p><code class="token">--mechanic-dk-diseases</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-minions)"></div><strong>Minions</strong><p>Ghoul, Gargoyle, Army, Death Pact, and pet-control relationships.</p><code class="token">--mechanic-dk-minions</code></article>
       </div>
-      <div class="reference-note"><strong>Shared-language rule:</strong> a rune remains rune-blue on Blood, Frost, and Unholy pages. The active spec changes the controls around the mechanic, not the mechanic's identity.</div>
+      <div class="reference-note"><strong>Shared-language rule:</strong> rune blue, Runic Power teal, disease ochre, and minion violet retain the same meanings across Blood, Frost, and Unholy. The active specialization changes the controls around the mechanic, not the mechanic itself.</div>
     </section>
+
+    <section class="reference-section" id="blood-live">
+      <h2>Live Blood Death Knight implementation</h2>
+      <div class="reference-note"><strong>Production status:</strong> this system is now implemented across the six-page Heroic Lich King 25 Blood Death Knight tank guide. This section is the release contract for future Blood changes.</div>
+
+      <h3>Live component ownership</h3>
+      <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Live component</th><th>Color owner</th><th>Production behavior</th></tr></thead><tbody>
+        <tr><td><strong>Header and class framing</strong></td><td>Death Knight crimson</td><td>Header border and atmosphere combine class crimson with the active Blood layer; the title remains class-led.</td></tr>
+        <tr><td><strong>Selected chapter or control</strong></td><td>Blood rose</td><td>Active filters, selected state, Blood labels, summary labels, decision lines, and ability-choice borders use the Blood specialization tokens.</td></tr>
+        <tr><td><strong>Combat-engine cards</strong></td><td>Named mechanic</td><td>Runes, Runic Power, diseases, and minions each use their shared mechanic border, tint, and readable text token.</td></tr>
+        <tr><td><strong>Playbook cards</strong></td><td>Blood plus neutral chrome</td><td>Card structure stays neutral; interactive headers and focused state use Blood without repainting the whole card.</td></tr>
+        <tr><td><strong>Needs Hellscream test</strong></td><td>Global warning</td><td>Verification tags and uncertain server interactions use warning amber, never Blood rose or disease ochre.</td></tr>
+        <tr><td><strong>Lethal or wipe-risk instruction</strong></td><td>Global danger</td><td>Danger remains the site-wide failure color and is always paired with explicit wording.</td></tr>
+        <tr><td><strong>Normal copy, tables, and surfaces</strong></td><td>Foundation</td><td>Shared neutral surfaces and text preserve readability and stop crimson from flooding the page.</td></tr>
+        <tr><td><strong>Items and sockets</strong></td><td>Canonical game data</td><td>Wrath rarity and socket colors never inherit Blood or Death Knight identity.</td></tr>
+      </tbody></table></div>
+
+      <h3>Combat-engine specimen</h3>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runes)"></div><strong>Reserve runes</strong><p>Keep the correct rune pair available for Death Strike and planned cooldowns.</p></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-runic-power)"></div><strong>Bank Runic Power</strong><p>Preserve the required reserve for Icebound Fortitude before feeding Rune Strike.</p></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-diseases)"></div><strong>Maintain diseases</strong><p>Keep both diseases active for the intended two-disease Death Strike behavior.</p></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-dk-minions)"></div><strong>Plan minions</strong><p>Raise Dead, Death Pact, and Army must respect encounter timing and positioning.</p></article>
+      </div>
+
+      <h3>Live guide family</h3>
+      <div class="related-links"><a href="../guides/blood-death-knight-pve-guide.html">Quick Start</a><a href="../guides/blood-death-knight-playing.html">Playing</a><a href="../guides/blood-death-knight-setting-up.html">Setup</a><a href="../guides/blood-death-knight-gearing.html">Building</a><a href="../guides/blood-death-knight-gear-targets.html">Equipping</a><a href="../guides/blood-death-knight-raiding.html">Raiding</a></div>
+
+      <h3>Blood regression gate</h3>
+      <div class="rule-grid">
+        <article class="rule-card"><strong>Class before spec</strong><p>The page must remain recognizably Death Knight when Blood-selected elements are removed.</p></article>
+        <article class="rule-card"><strong>Blood before mechanic</strong><p>Blood identifies the active decision or control; mechanic colors explain the resource involved.</p></article>
+        <article class="rule-card"><strong>Mechanics keep labels</strong><p>Every resource color retains a text label, icon, border, position, or explicit state.</p></article>
+        <article class="rule-card"><strong>Interactive state remains visible</strong><p>Focus-visible, pressed state, card focus, and filters cannot depend on hue alone.</p></article>
+        <article class="rule-card"><strong>Responsive structure survives</strong><p>Combat-engine grids, playbooks, filters, and talent embeds remain usable on mobile.</p></article>
+        <article class="rule-card"><strong>Print removes ambience</strong><p>Labels and hierarchy survive when tinted backgrounds and glow are stripped away.</p></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="future-specs">
+      <h2>Frost and Unholy implementation boundary</h2>
+      <div class="reference-grid">
+        <article class="spec-card frost"><h3>Frost is identity-ready</h3><p>The glacial accent is approved for selected navigation and Frost-only emphasis. Do not copy Blood component choices blindly; define Frost’s recurring proc, weapon, and priority lanes when its guide is built.</p></article>
+        <article class="spec-card unholy"><h3>Unholy is identity-ready</h3><p>The necrotic accent is approved for selected navigation and Unholy-only emphasis. Shared diseases and minions keep their existing mechanic colors, while future Unholy-specific decision lanes require explicit approval.</p></article>
+      </div>
+      <div class="reference-note warning"><strong>No placeholder mechanic colors:</strong> Frost and Unholy guides should reuse shared DK mechanics first and add new semantic lanes only when recurring gameplay concepts genuinely require them.</div>
+    </section>
+
     <section class="reference-section" id="boundaries">
       <h2>Semantic boundaries</h2>
       <div class="rule-grid">
-        <article class="rule-card"><strong>Class crimson is not Blood</strong><p>Broad DK framing uses the class token. Blood selection uses the brighter spec token.</p></article>
+        <article class="rule-card"><strong>Class crimson is not Blood</strong><p>Broad DK framing uses the class token. Blood selection uses the brighter specialization token.</p></article>
         <article class="rule-card"><strong>Blood is not danger</strong><p>Danger retains the global status token and explicit failure wording.</p></article>
-        <article class="rule-card"><strong>Frost is not information</strong><p>Frost uses its named specialization tokens, not the global info color.</p></article>
-        <article class="rule-card"><strong>Unholy is not success</strong><p>The necrotic yellow-green remains labeled and structurally separate from success green.</p></article>
-        <article class="rule-card"><strong>Mechanics survive spec swaps</strong><p>Runes, Runic Power, diseases, and minions do not change color by spec.</p></article>
-        <article class="rule-card"><strong>Status and rarity stay global</strong><p>Warnings, danger, item quality, and sockets remain untouched.</p></article>
+        <article class="rule-card"><strong>Frost is not information</strong><p>Frost uses its named specialization tokens, not the global information color.</p></article>
+        <article class="rule-card"><strong>Unholy is not success</strong><p>Necrotic yellow-green remains labeled and structurally separate from success green.</p></article>
+        <article class="rule-card"><strong>Diseases are not Unholy</strong><p>The disease lane remains shared across all Death Knight specializations.</p></article>
+        <article class="rule-card"><strong>Minions are not automatically Unholy</strong><p>Ghoul, Army, and Death Pact use the shared minion language wherever they appear.</p></article>
       </div>
     </section>
-    <section class="reference-section" id="related"><h2>Related references</h2><div class="related-links"><a href="paladin-color-system.html">Compare the combined Paladin system</a><a href="color-system.html">Open core rules</a><a href="color-system-addons-ah.html">Open section roles</a></div></section>
+
+    <section class="reference-section" id="related"><h2>Related references</h2><div class="related-links"><a href="paladin-color-system.html">Compare the combined Paladin system</a><a href="color-system.html">Open core rules</a><a href="color-system-addons-ah.html">Open section roles</a><a href="../guides/blood-death-knight-pve-guide.html">Open the live Blood guide</a></div></section>
   </main>
   <nav class="reference-pager" aria-label="Previous and next color references"><a href="paladin-color-system.html">← Paladin system</a><a href="color-system-addons-ah.html">Addons and Auction House →</a></nav>
   <footer class="reference-footer">Internal design reference. Unlinked from the public Guide Hub and marked noindex.</footer>
