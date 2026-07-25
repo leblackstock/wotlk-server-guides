@@ -1,0 +1,52 @@
+name: Validate ACP Single Incompatibility Note
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/acp-single-incompatibility-note
+
+      - name: Remove duplicate ACP warning
+        run: python scripts/dedupe-acp-incompatibility-note.py
+
+      - name: Build and validate catalog
+        run: |
+          python scripts/build-addon-catalog.py
+          python scripts/validate-addon-catalog.py
+          python scripts/build-addon-catalog.py --check
+          node tests/addon-search.test.js
+          git diff --check
+
+      - name: Install browser test tooling
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install chromium >/dev/null
+
+      - name: Run browser smoke tests
+        run: |
+          python -m http.server 4173 >/tmp/addon-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          sleep 2
+          node tests/addon-browser-smoke.cjs
+
+      - name: Commit corrected data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/addons.json assets/addon-catalog-data.js
+          git commit -m "Keep one ACP incompatibility note"
+          git push origin HEAD:agent/acp-single-incompatibility-note
