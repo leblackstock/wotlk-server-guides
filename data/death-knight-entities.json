@@ -1,0 +1,1721 @@
+{
+  "schemaVersion": 1,
+  "className": "Death Knight",
+  "classSlug": "death-knight",
+  "items": [
+    {
+      "id": 41380,
+      "names": [
+        "Austere Earthsiege Diamond"
+      ],
+      "icon": "inv_jewelcrafting_shadowspirit_02",
+      "category": "gem"
+    },
+    {
+      "id": 40119,
+      "names": [
+        "Solid Majestic Zircon"
+      ],
+      "icon": "inv_jewelcrafting_gem_42",
+      "category": "gem"
+    },
+    {
+      "id": 36767,
+      "names": [
+        "Solid Dragon's Eye",
+        "Solid Dragon’s Eye"
+      ],
+      "icon": "inv_jewelcrafting_dragonseye04",
+      "category": "gem"
+    },
+    {
+      "id": 40141,
+      "names": [
+        "Guardian's Dreadstone",
+        "Guardian’s Dreadstone"
+      ],
+      "icon": "inv_jewelcrafting_gem_40",
+      "category": "gem"
+    },
+    {
+      "id": 49110,
+      "names": [
+        "Nightmare Tear"
+      ],
+      "icon": "inv_misc_gem_pearl_12",
+      "category": "gem"
+    },
+    {
+      "id": 40166,
+      "names": [
+        "Vivid Eye of Zul"
+      ],
+      "icon": "inv_jewelcrafting_gem_41",
+      "category": "gem"
+    },
+    {
+      "id": 40167,
+      "names": [
+        "Enduring Eye of Zul"
+      ],
+      "icon": "inv_jewelcrafting_gem_41",
+      "category": "gem"
+    },
+    {
+      "id": 44150,
+      "names": [
+        "Arcanum of the Stalwart Protector"
+      ],
+      "icon": "ability_warrior_swordandboard",
+      "category": "enchant-item"
+    },
+    {
+      "id": 44957,
+      "names": [
+        "Greater Inscription of the Gladiator"
+      ],
+      "icon": "inv_shoulder_61",
+      "category": "enchant-item"
+    },
+    {
+      "id": 44136,
+      "names": [
+        "Greater Inscription of the Pinnacle"
+      ],
+      "icon": "spell_holy_divinepurpose",
+      "category": "enchant-item"
+    },
+    {
+      "id": 34207,
+      "names": [
+        "Glove Reinforcements"
+      ],
+      "icon": "inv_misc_armorkit_08",
+      "category": "enchant-item"
+    },
+    {
+      "id": 41611,
+      "names": [
+        "Eternal Belt Buckle"
+      ],
+      "icon": "inv_belt_36",
+      "category": "enchant-item"
+    },
+    {
+      "id": 38373,
+      "names": [
+        "Frosthide Leg Armor"
+      ],
+      "icon": "inv_misc_armorkit_32",
+      "category": "enchant-item"
+    },
+    {
+      "id": 41118,
+      "names": [
+        "Nitro Boosts"
+      ],
+      "icon": "inv_gizmo_rocketbootextreme",
+      "category": "enchant-item"
+    },
+    {
+      "id": 49426,
+      "names": [
+        "Emblem of Frost",
+        "Emblems of Frost",
+        "Frost emblem",
+        "Frost emblems",
+        "Frost-emblem"
+      ],
+      "icon": "inv_misc_frostemblem_01",
+      "category": "currency-material"
+    },
+    {
+      "id": 47241,
+      "names": [
+        "Emblem of Triumph",
+        "Emblems of Triumph",
+        "Triumph emblem",
+        "Triumph emblems"
+      ],
+      "icon": "spell_holy_summonchampion",
+      "category": "currency-material"
+    },
+    {
+      "id": 47556,
+      "names": [
+        "Crusader Orb",
+        "Crusader Orbs"
+      ],
+      "icon": "spell_holy_rune",
+      "category": "currency-material"
+    },
+    {
+      "id": 49908,
+      "names": [
+        "Primordial Saronite"
+      ],
+      "icon": "spell_fire_felflamebreath",
+      "category": "currency-material"
+    },
+    {
+      "id": 52025,
+      "names": [
+        "Normal Vanquisher's Mark of Sanctification",
+        "Normal Vanquisher’s Mark of Sanctification"
+      ],
+      "icon": "ability_paladin_shieldofthetemplar",
+      "category": "currency-material"
+    },
+    {
+      "id": 52028,
+      "names": [
+        "Heroic Vanquisher's Mark of Sanctification",
+        "Heroic Vanquisher’s Mark of Sanctification"
+      ],
+      "icon": "ability_paladin_judgementsofthejust",
+      "category": "currency-material"
+    },
+    {
+      "id": 45805,
+      "names": [
+        "Glyph of Disease"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43554,
+      "names": [
+        "Glyph of Vampiric Blood"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43538,
+      "names": [
+        "Glyph of Dark Command"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43550,
+      "names": [
+        "Glyph of Rune Strike"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43827,
+      "names": [
+        "Glyph of Death Strike"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43542,
+      "names": [
+        "Glyph of Death and Decay"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43545,
+      "names": [
+        "Glyph of Icebound Fortitude"
+      ],
+      "icon": "inv_glyph_majordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43535,
+      "names": [
+        "Glyph of Blood Tap"
+      ],
+      "icon": "inv_glyph_minordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43672,
+      "names": [
+        "Glyph of Pestilence"
+      ],
+      "icon": "inv_glyph_minordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43673,
+      "names": [
+        "Glyph of Raise Dead"
+      ],
+      "icon": "inv_glyph_minordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 43544,
+      "names": [
+        "Glyph of Horn of Winter"
+      ],
+      "icon": "inv_glyph_minordeathknight",
+      "category": "glyph"
+    },
+    {
+      "id": 47216,
+      "names": [
+        "The Black Heart"
+      ],
+      "icon": "inv_misc_gem_bloodstone_02",
+      "category": "gear"
+    },
+    {
+      "id": 50356,
+      "names": [
+        "Corroded Skeleton Key"
+      ],
+      "icon": "inv_misc_key_15",
+      "category": "gear"
+    },
+    {
+      "id": 44188,
+      "names": [
+        "Cloak of Peaceful Resolutions"
+      ],
+      "icon": "inv_misc_cape_naxxramas_02",
+      "category": "gear"
+    },
+    {
+      "id": 36993,
+      "names": [
+        "Seal of the Pantheon"
+      ],
+      "icon": "inv_misc_armorkit_08",
+      "category": "gear"
+    },
+    {
+      "id": 47571,
+      "names": [
+        "Saronite Swordbreakers"
+      ],
+      "icon": "inv_bracer_30b",
+      "category": "currency-material"
+    },
+    {
+      "id": 45551,
+      "names": [
+        "Indestructible Plate Girdle"
+      ],
+      "icon": "inv_belt_45a",
+      "category": "gear"
+    },
+    {
+      "id": 49907,
+      "names": [
+        "Boots of Kingly Upheaval"
+      ],
+      "icon": "inv_boots_plate_12",
+      "category": "gear"
+    },
+    {
+      "id": 49904,
+      "names": [
+        "Pillars of Might"
+      ],
+      "icon": "inv_pants_plate_32",
+      "category": "gear"
+    },
+    {
+      "id": 47735,
+      "names": [
+        "Glyph of Indomitability"
+      ],
+      "icon": "inv_spiritshard_01",
+      "category": "glyph"
+    },
+    {
+      "id": 47731,
+      "names": [
+        "Clutch of Fortification"
+      ],
+      "icon": "inv_jewelry_ring_50naxxramas",
+      "category": "gear"
+    },
+    {
+      "id": 47882,
+      "names": [
+        "Eitrigg's Oath",
+        "Eitrigg’s Oath"
+      ],
+      "icon": "inv_jewelry_talisman_02",
+      "category": "gear"
+    },
+    {
+      "id": 50991,
+      "names": [
+        "Verdigris Chain Belt"
+      ],
+      "icon": "inv_belt_62",
+      "category": "gear"
+    },
+    {
+      "id": 50978,
+      "names": [
+        "Gauntlets of the Kraken"
+      ],
+      "icon": "inv_gauntlets_86",
+      "category": "gear"
+    },
+    {
+      "id": 50968,
+      "names": [
+        "Cataclysmic Chestguard"
+      ],
+      "icon": "inv_chest_plate_25",
+      "category": "gear"
+    },
+    {
+      "id": 51133,
+      "names": [
+        "Sanctified Scourgelord Faceguard"
+      ],
+      "icon": "inv_helmet_151",
+      "category": "gear"
+    },
+    {
+      "id": 51134,
+      "names": [
+        "Sanctified Scourgelord Chestguard"
+      ],
+      "icon": "inv_chest_plate_26",
+      "category": "gear"
+    },
+    {
+      "id": 51132,
+      "names": [
+        "Sanctified Scourgelord Handguards"
+      ],
+      "icon": "inv_gauntlets_87",
+      "category": "gear"
+    },
+    {
+      "id": 51131,
+      "names": [
+        "Sanctified Scourgelord Legguards"
+      ],
+      "icon": "inv_pants_plate_31",
+      "category": "gear"
+    },
+    {
+      "id": 51130,
+      "names": [
+        "Sanctified Scourgelord Pauldrons"
+      ],
+      "icon": "inv_shoulder_130",
+      "category": "gear"
+    },
+    {
+      "id": 50855,
+      "names": [
+        "Scourgelord Faceguard"
+      ],
+      "icon": "inv_helmet_151",
+      "category": "gear"
+    },
+    {
+      "id": 50798,
+      "names": [
+        "Ramaladni's Blade of Culling",
+        "Ramaladni’s Blade of Culling"
+      ],
+      "icon": "inv_axe_115",
+      "category": "gear"
+    },
+    {
+      "id": 49919,
+      "names": [
+        "Cryptmaker"
+      ],
+      "icon": "inv_mace_116",
+      "category": "gear"
+    },
+    {
+      "id": 50070,
+      "names": [
+        "Glorenzelg, High-Blade of the Silver Hand"
+      ],
+      "icon": "inv_sword_153",
+      "category": "gear"
+    },
+    {
+      "id": 50425,
+      "names": [
+        "Oathbinder, Charge of the Ranger-General"
+      ],
+      "icon": "inv_weapon_staff_109",
+      "category": "gear"
+    },
+    {
+      "id": 49623,
+      "names": [
+        "Shadowmourne"
+      ],
+      "icon": "inv_axe_113",
+      "category": "gear"
+    },
+    {
+      "id": 49986,
+      "names": [
+        "Broken Ram Skull Helm"
+      ],
+      "icon": "inv_helmet_158",
+      "category": "gear"
+    },
+    {
+      "id": 50660,
+      "names": [
+        "Boneguard Commander's Pauldrons",
+        "Boneguard Commander’s Pauldrons"
+      ],
+      "icon": "inv_shoulder_130",
+      "category": "gear"
+    },
+    {
+      "id": 50074,
+      "names": [
+        "Royal Crimson Cloak"
+      ],
+      "icon": "inv_misc_cape_18",
+      "category": "gear"
+    },
+    {
+      "id": 49960,
+      "names": [
+        "Bracers of Dark Reckoning"
+      ],
+      "icon": "inv_bracer_42",
+      "category": "gear"
+    },
+    {
+      "id": 50036,
+      "names": [
+        "Belt of Broken Bones"
+      ],
+      "icon": "inv_belt_62",
+      "category": "gear"
+    },
+    {
+      "id": 51787,
+      "names": [
+        "Scourge Fanged Stompers"
+      ],
+      "icon": "inv_boots_plate_12",
+      "category": "gear"
+    },
+    {
+      "id": 50023,
+      "names": [
+        "Bile-Encrusted Medallion"
+      ],
+      "icon": "item_icecrownnecklaceb",
+      "category": "gear"
+    },
+    {
+      "id": 50185,
+      "names": [
+        "Devium's Eternally Cold Ring",
+        "Devium’s Eternally Cold Ring"
+      ],
+      "icon": "inv_jewelry_ring_86",
+      "category": "gear"
+    },
+    {
+      "id": 50404,
+      "names": [
+        "Ashen Band of Endless Courage"
+      ],
+      "icon": "inv_jewelry_ring_84",
+      "category": "gear"
+    },
+    {
+      "id": 54564,
+      "names": [
+        "Scion's Treads",
+        "Scion’s Treads"
+      ],
+      "icon": "inv_boots_plate_12",
+      "category": "gear"
+    },
+    {
+      "id": 50361,
+      "names": [
+        "Sindragosa's Flawless Fang",
+        "Sindragosa’s Flawless Fang"
+      ],
+      "icon": "inv_jewelry_trinket_06",
+      "category": "gear"
+    },
+    {
+      "id": 50341,
+      "names": [
+        "Unidentifiable Organ"
+      ],
+      "icon": "inv_ore_feliron_01",
+      "category": "gear"
+    },
+    {
+      "id": 54571,
+      "names": [
+        "Petrified Twilight Scale"
+      ],
+      "icon": "inv_misc_rubysanctum3",
+      "category": "gear"
+    },
+    {
+      "id": 46379,
+      "names": [
+        "Flask of Stoneblood"
+      ],
+      "icon": "inv_alchemy_endlessflask_05",
+      "category": "consumable"
+    },
+    {
+      "id": 42999,
+      "names": [
+        "Blackened Dragonfin"
+      ],
+      "icon": "inv_misc_food_142_fish",
+      "category": "consumable"
+    },
+    {
+      "id": 43000,
+      "names": [
+        "Dragonfin Filet"
+      ],
+      "icon": "inv_misc_food_75",
+      "category": "consumable"
+    },
+    {
+      "id": 42994,
+      "names": [
+        "Rhinolicious Wormsteak"
+      ],
+      "icon": "inv_misc_food_47",
+      "category": "consumable"
+    },
+    {
+      "id": 42996,
+      "names": [
+        "Snapper Extreme"
+      ],
+      "icon": "inv_misc_food_129_fish",
+      "category": "gear"
+    },
+    {
+      "id": 43015,
+      "names": [
+        "Fish Feast"
+      ],
+      "icon": "inv_misc_fish_52",
+      "category": "consumable"
+    },
+    {
+      "id": 40093,
+      "names": [
+        "Indestructible Potion"
+      ],
+      "icon": "inv_alchemy_elixir_empty",
+      "category": "consumable"
+    },
+    {
+      "id": 40217,
+      "names": [
+        "Mighty Shadow Protection Potion"
+      ],
+      "icon": "inv_potion_158",
+      "category": "consumable"
+    },
+    {
+      "id": 33447,
+      "names": [
+        "Runic Healing Potion"
+      ],
+      "icon": "inv_alchemy_elixir_05",
+      "category": "consumable"
+    },
+    {
+      "id": 36892,
+      "names": [
+        "Fel Healthstone",
+        "Healthstone"
+      ],
+      "icon": "inv_stone_04",
+      "category": "consumable"
+    },
+    {
+      "id": 34722,
+      "names": [
+        "Heavy Frostweave Bandage"
+      ],
+      "icon": "inv_misc_bandage_frostweave_heavy",
+      "category": "consumable"
+    },
+    {
+      "id": 41119,
+      "names": [
+        "Saronite Bomb",
+        "Saronite Bombs"
+      ],
+      "icon": "inv_misc_enggizmos_32",
+      "category": "consumable"
+    },
+    {
+      "id": 42641,
+      "names": [
+        "Global Thermal Sapper Charge"
+      ],
+      "icon": "inv_gizmo_supersappercharge",
+      "category": "consumable"
+    },
+    {
+      "id": 5634,
+      "names": [
+        "Free Action Potion"
+      ],
+      "icon": "inv_potion_04",
+      "category": "consumable"
+    },
+    {
+      "id": 2459,
+      "names": [
+        "Swiftness Potion"
+      ],
+      "icon": "inv_potion_95",
+      "category": "consumable"
+    },
+    {
+      "id": 43237,
+      "names": [
+        "Anesthetic Poison II"
+      ],
+      "icon": "spell_nature_slowpoison",
+      "category": "consumable"
+    }
+  ],
+  "spells": [
+    {
+      "id": 48263,
+      "names": [
+        "Frost Presence"
+      ],
+      "icon": "spell_deathknight_frostpresence",
+      "category": "ability"
+    },
+    {
+      "id": 48266,
+      "names": [
+        "Blood Presence"
+      ],
+      "icon": "spell_deathknight_bloodpresence",
+      "category": "ability"
+    },
+    {
+      "id": 62158,
+      "names": [
+        "Rune of the Stoneskin Gargoyle",
+        "Stoneskin Gargoyle"
+      ],
+      "icon": "inv_sword_130",
+      "category": "ability"
+    },
+    {
+      "id": 53323,
+      "names": [
+        "Rune of Swordshattering",
+        "Swordshattering"
+      ],
+      "icon": "ability_parry",
+      "category": "ability"
+    },
+    {
+      "id": 53342,
+      "names": [
+        "Rune of Spellshattering",
+        "Spellshattering"
+      ],
+      "icon": "spell_shadow_antimagicshell",
+      "category": "ability"
+    },
+    {
+      "id": 49909,
+      "names": [
+        "Icy Touch"
+      ],
+      "icon": "spell_deathknight_icetouch",
+      "category": "ability"
+    },
+    {
+      "id": 49921,
+      "names": [
+        "Plague Strike"
+      ],
+      "icon": "spell_deathknight_empowerruneblade",
+      "category": "ability"
+    },
+    {
+      "id": 49998,
+      "names": [
+        "Death Strike"
+      ],
+      "icon": "spell_deathknight_butcher2",
+      "category": "ability"
+    },
+    {
+      "id": 49930,
+      "names": [
+        "Blood Strike"
+      ],
+      "icon": "spell_deathknight_deathstrike",
+      "category": "ability"
+    },
+    {
+      "id": 50842,
+      "names": [
+        "Pestilence"
+      ],
+      "icon": "spell_shadow_plaguecloud",
+      "category": "ability"
+    },
+    {
+      "id": 49941,
+      "names": [
+        "Blood Boil"
+      ],
+      "icon": "spell_deathknight_bloodboil",
+      "category": "ability"
+    },
+    {
+      "id": 49938,
+      "names": [
+        "Death and Decay"
+      ],
+      "icon": "spell_shadow_deathanddecay",
+      "category": "ability"
+    },
+    {
+      "id": 56815,
+      "names": [
+        "Rune Strike"
+      ],
+      "icon": "spell_deathknight_darkconviction",
+      "category": "ability"
+    },
+    {
+      "id": 49895,
+      "names": [
+        "Death Coil"
+      ],
+      "icon": "spell_shadow_deathcoil",
+      "category": "ability"
+    },
+    {
+      "id": 56222,
+      "names": [
+        "Dark Command"
+      ],
+      "icon": "spell_nature_shamanrage",
+      "category": "ability"
+    },
+    {
+      "id": 49576,
+      "names": [
+        "Death Grip"
+      ],
+      "icon": "spell_deathknight_strangulate",
+      "category": "ability"
+    },
+    {
+      "id": 45524,
+      "names": [
+        "Chains of Ice"
+      ],
+      "icon": "spell_frost_chainsofice",
+      "category": "ability"
+    },
+    {
+      "id": 47528,
+      "names": [
+        "Mind Freeze"
+      ],
+      "icon": "spell_deathknight_mindfreeze",
+      "category": "ability"
+    },
+    {
+      "id": 47476,
+      "names": [
+        "Strangulate"
+      ],
+      "icon": "spell_shadow_soulleech_3",
+      "category": "ability"
+    },
+    {
+      "id": 57623,
+      "names": [
+        "Horn of Winter"
+      ],
+      "icon": "inv_misc_horn_02",
+      "category": "ability"
+    },
+    {
+      "id": 47568,
+      "names": [
+        "Empower Rune Weapon",
+        "ERW"
+      ],
+      "icon": "inv_sword_62",
+      "category": "ability"
+    },
+    {
+      "id": 45529,
+      "names": [
+        "Blood Tap"
+      ],
+      "icon": "spell_deathknight_bloodtap",
+      "category": "ability"
+    },
+    {
+      "id": 48792,
+      "names": [
+        "Icebound Fortitude",
+        "IBF"
+      ],
+      "icon": "spell_deathknight_iceboundfortitude",
+      "category": "ability"
+    },
+    {
+      "id": 48707,
+      "names": [
+        "Anti-Magic Shell",
+        "AMS"
+      ],
+      "icon": "spell_shadow_antimagicshell",
+      "category": "ability"
+    },
+    {
+      "id": 48982,
+      "names": [
+        "Rune Tap"
+      ],
+      "icon": "spell_deathknight_runetap",
+      "category": "ability"
+    },
+    {
+      "id": 55233,
+      "names": [
+        "Vampiric Blood",
+        "VB"
+      ],
+      "icon": "spell_shadow_lifedrain",
+      "category": "ability"
+    },
+    {
+      "id": 46584,
+      "names": [
+        "Raise Dead"
+      ],
+      "icon": "spell_shadow_animatedead",
+      "category": "ability"
+    },
+    {
+      "id": 48743,
+      "names": [
+        "Death Pact"
+      ],
+      "icon": "spell_shadow_deathpact",
+      "category": "ability"
+    },
+    {
+      "id": 42650,
+      "names": [
+        "Army of the Dead"
+      ],
+      "icon": "spell_deathknight_armyofthedead",
+      "category": "ability"
+    },
+    {
+      "id": 59921,
+      "names": [
+        "Frost Fever"
+      ],
+      "icon": "spell_deathknight_frostfever",
+      "category": "ability"
+    },
+    {
+      "id": 59879,
+      "names": [
+        "Blood Plague"
+      ],
+      "icon": "spell_deathknight_bloodplague",
+      "category": "ability"
+    },
+    {
+      "id": 69127,
+      "names": [
+        "Chill of the Throne"
+      ],
+      "icon": "achievement_zone_icecrown_01",
+      "category": "ability"
+    },
+    {
+      "id": 55226,
+      "names": [
+        "Blade Barrier"
+      ],
+      "icon": "ability_upgrademoonglaive",
+      "category": "talent"
+    },
+    {
+      "id": 49393,
+      "names": [
+        "Bladed Armor"
+      ],
+      "icon": "inv_shoulder_36",
+      "category": "talent"
+    },
+    {
+      "id": 49004,
+      "names": [
+        "Scent of Blood"
+      ],
+      "icon": "ability_rogue_bloodyeye",
+      "category": "talent"
+    },
+    {
+      "id": 55108,
+      "names": [
+        "Two-Handed Weapon Specialization"
+      ],
+      "icon": "inv_sword_68",
+      "category": "talent"
+    },
+    {
+      "id": 49005,
+      "names": [
+        "Mark of Blood"
+      ],
+      "icon": "ability_hunter_rapidkilling",
+      "category": "talent"
+    },
+    {
+      "id": 49480,
+      "names": [
+        "Dark Conviction"
+      ],
+      "icon": "spell_deathknight_darkconviction",
+      "category": "talent"
+    },
+    {
+      "id": 50034,
+      "names": [
+        "Death Rune Mastery"
+      ],
+      "icon": "inv_sword_62",
+      "category": "talent"
+    },
+    {
+      "id": 49489,
+      "names": [
+        "Improved Rune Tap"
+      ],
+      "icon": "spell_deathknight_runetap",
+      "category": "talent"
+    },
+    {
+      "id": 49497,
+      "names": [
+        "Spell Deflection"
+      ],
+      "icon": "spell_deathknight_spelldeflection",
+      "category": "talent"
+    },
+    {
+      "id": 50029,
+      "names": [
+        "Veteran of the Third War"
+      ],
+      "icon": "spell_misc_warsongfocus",
+      "category": "talent"
+    },
+    {
+      "id": 49504,
+      "names": [
+        "Bloody Vengeance"
+      ],
+      "icon": "ability_backstab",
+      "category": "talent"
+    },
+    {
+      "id": 49543,
+      "names": [
+        "Bloodworms"
+      ],
+      "icon": "spell_shadow_soulleech",
+      "category": "talent"
+    },
+    {
+      "id": 53138,
+      "names": [
+        "Abomination's Might",
+        "Abomination’s Might"
+      ],
+      "icon": "ability_warrior_intensifyrage",
+      "category": "talent"
+    },
+    {
+      "id": 49016,
+      "names": [
+        "Hysteria",
+        "Unholy Frenzy"
+      ],
+      "icon": "spell_deathknight_bladedarmor",
+      "category": "talent"
+    },
+    {
+      "id": 62908,
+      "names": [
+        "Improved Death Strike"
+      ],
+      "icon": "spell_deathknight_butcher2",
+      "category": "talent"
+    },
+    {
+      "id": 50150,
+      "names": [
+        "Will of the Necropolis"
+      ],
+      "icon": "ability_creature_cursed_02",
+      "category": "talent"
+    },
+    {
+      "id": 51456,
+      "names": [
+        "Improved Icy Touch"
+      ],
+      "icon": "spell_deathknight_icetouch",
+      "category": "talent"
+    },
+    {
+      "id": 49789,
+      "names": [
+        "Toughness"
+      ],
+      "icon": "spell_holy_devotion",
+      "category": "talent"
+    },
+    {
+      "id": 49664,
+      "names": [
+        "Black Ice"
+      ],
+      "icon": "spell_shadow_darkritual",
+      "category": "talent"
+    },
+    {
+      "id": 50887,
+      "names": [
+        "Icy Talons"
+      ],
+      "icon": "spell_deathknight_icytalons",
+      "category": "talent"
+    },
+    {
+      "id": 49657,
+      "names": [
+        "Endless Winter"
+      ],
+      "icon": "spell_shadow_twilight",
+      "category": "talent"
+    },
+    {
+      "id": 51109,
+      "names": [
+        "Frigid Dreadplate"
+      ],
+      "icon": "inv_chest_mail_04",
+      "category": "talent"
+    },
+    {
+      "id": 55133,
+      "names": [
+        "Anticipation"
+      ],
+      "icon": "spell_nature_mirrorimage",
+      "category": "talent"
+    },
+    {
+      "id": 55262,
+      "names": [
+        "Heart Strike"
+      ],
+      "icon": "inv_weapon_shortblade_40",
+      "category": "talent"
+    },
+    {
+      "id": 50371,
+      "names": [
+        "Improved Blood Presence"
+      ],
+      "icon": "spell_deathknight_bloodpresence",
+      "category": "talent"
+    },
+    {
+      "id": 49534,
+      "names": [
+        "Might of Mograine"
+      ],
+      "icon": "spell_deathknight_classicon",
+      "category": "talent"
+    },
+    {
+      "id": 61158,
+      "names": [
+        "Blood Gorged"
+      ],
+      "icon": "spell_nature_reincarnation",
+      "category": "talent"
+    },
+    {
+      "id": 49028,
+      "names": [
+        "Dancing Rune Weapon"
+      ],
+      "icon": "inv_sword_07",
+      "category": "talent"
+    },
+    {
+      "id": 49039,
+      "names": [
+        "Lichborne"
+      ],
+      "icon": "spell_shadow_raisedead",
+      "category": "talent"
+    },
+    {
+      "id": 55610,
+      "names": [
+        "Improved Icy Talons"
+      ],
+      "icon": "spell_deathknight_icytalons",
+      "category": "talent"
+    },
+    {
+      "id": 49565,
+      "names": [
+        "Morbidity"
+      ],
+      "icon": "spell_shadow_deathanddecay",
+      "category": "talent"
+    },
+    {
+      "id": 49222,
+      "names": [
+        "Bone Shield"
+      ],
+      "icon": "inv_chest_leather_13",
+      "category": "talent"
+    },
+    {
+      "id": 51052,
+      "names": [
+        "Anti-Magic Zone",
+        "AMZ"
+      ],
+      "icon": "spell_deathknight_antimagiczone",
+      "category": "talent"
+    },
+    {
+      "id": 49568,
+      "names": [
+        "Virulence"
+      ],
+      "icon": "spell_shadow_burningspirit",
+      "category": "talent"
+    },
+    {
+      "id": 47672,
+      "names": [
+        "Enchant Cloak - Mighty Armor",
+        "Mighty Armor"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 60663,
+      "names": [
+        "Enchant Cloak - Major Agility",
+        "Major Agility"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 44591,
+      "names": [
+        "Enchant Cloak - Titanweave",
+        "Titanweave"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 47900,
+      "names": [
+        "Enchant Chest - Super Health",
+        "Super Health"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 60692,
+      "names": [
+        "Enchant Chest - Powerful Stats",
+        "Powerful Stats"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 47766,
+      "names": [
+        "Enchant Chest - Greater Defense",
+        "Greater Defense"
+      ],
+      "icon": "spell_holy_greaterheal",
+      "category": "profession-effect"
+    },
+    {
+      "id": 62256,
+      "names": [
+        "Enchant Bracers - Major Stamina",
+        "Major Stamina"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 57690,
+      "names": [
+        "Fur Lining - Stamina"
+      ],
+      "icon": "trade_leatherworking",
+      "category": "profession-effect"
+    },
+    {
+      "id": 63770,
+      "names": [
+        "Reticulated Armor Webbing"
+      ],
+      "icon": "trade_engineering",
+      "category": "profession-effect"
+    },
+    {
+      "id": 44625,
+      "names": [
+        "Enchant Gloves - Armsman",
+        "Armsman"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 44488,
+      "names": [
+        "Enchant Gloves - Precision",
+        "Precision"
+      ],
+      "icon": "spell_holy_greaterheal",
+      "category": "profession-effect"
+    },
+    {
+      "id": 44484,
+      "names": [
+        "Enchant Gloves - Expertise"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 47901,
+      "names": [
+        "Enchant Boots - Tuskarr's Vitality",
+        "Enchant Boots - Tuskarr’s Vitality",
+        "Tuskarr's Vitality",
+        "Tuskarr’s Vitality"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 44528,
+      "names": [
+        "Enchant Boots - Greater Fortitude",
+        "Greater Fortitude"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 67839,
+      "names": [
+        "Mind Amplification Dish"
+      ],
+      "icon": "trade_engineering",
+      "category": "ability"
+    },
+    {
+      "id": 59636,
+      "names": [
+        "Enchant Ring - Stamina"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession-effect"
+    },
+    {
+      "id": 61119,
+      "names": [
+        "Master's Inscription of the Pinnacle",
+        "Master’s Inscription of the Pinnacle"
+      ],
+      "icon": "inv_inscription_tradeskill01",
+      "category": "profession-effect"
+    },
+    {
+      "id": 55628,
+      "names": [
+        "Socket Bracer"
+      ],
+      "icon": "inv_jewelcrafting_thoriumsetting",
+      "category": "profession-effect"
+    },
+    {
+      "id": 55641,
+      "names": [
+        "Socket Gloves"
+      ],
+      "icon": "inv_gauntlets_61",
+      "category": "profession-effect"
+    },
+    {
+      "id": 53042,
+      "names": [
+        "Mixology"
+      ],
+      "icon": "inv_potion_112",
+      "category": "profession-effect"
+    },
+    {
+      "id": 53040,
+      "names": [
+        "Toughness (Mining)"
+      ],
+      "icon": "ability_golemthunderclap",
+      "category": "profession-effect"
+    },
+    {
+      "id": 55503,
+      "names": [
+        "Lifeblood"
+      ],
+      "icon": "spell_nature_wispsplodegreen",
+      "category": "profession-effect"
+    },
+    {
+      "id": 53666,
+      "names": [
+        "Master of Anatomy"
+      ],
+      "icon": "inv_misc_organ_01",
+      "category": "profession-effect"
+    },
+    {
+      "id": 19801,
+      "names": [
+        "Tranquilizing Shot"
+      ],
+      "icon": "spell_nature_drowsy",
+      "category": "ability"
+    },
+    {
+      "id": 69409,
+      "names": [
+        "Soul Reaper"
+      ],
+      "icon": "ability_rogue_shadowdance",
+      "category": "encounter"
+    },
+    {
+      "id": 74074,
+      "names": [
+        "Plague Siphon"
+      ],
+      "icon": "spell_deathknight_bloodplague",
+      "category": "encounter"
+    },
+    {
+      "id": 73529,
+      "names": [
+        "Shadow Trap"
+      ],
+      "icon": "spell_shadow_gathershadows",
+      "category": "encounter"
+    },
+    {
+      "id": 70541,
+      "names": [
+        "Infest"
+      ],
+      "icon": "ability_rogue_envelopingshadows",
+      "category": "encounter"
+    },
+    {
+      "id": 70337,
+      "names": [
+        "Necrotic Plague"
+      ],
+      "icon": "ability_creature_disease_02",
+      "category": "encounter"
+    },
+    {
+      "id": 72149,
+      "names": [
+        "Shockwave"
+      ],
+      "icon": "ability_warrior_shockwave",
+      "category": "encounter"
+    },
+    {
+      "id": 72143,
+      "names": [
+        "Enrage"
+      ],
+      "icon": "ability_warrior_rampage",
+      "category": "encounter"
+    },
+    {
+      "id": 28747,
+      "names": [
+        "Frenzy"
+      ],
+      "icon": "spell_shadow_unholyfrenzy",
+      "category": "encounter"
+    },
+    {
+      "id": 72259,
+      "names": [
+        "Remorseless Winter"
+      ],
+      "icon": "spell_frost_arcticwinds",
+      "category": "encounter"
+    },
+    {
+      "id": 72133,
+      "names": [
+        "Pain and Suffering"
+      ],
+      "icon": "ability_warlock_shadowflame",
+      "category": "encounter"
+    },
+    {
+      "id": 69103,
+      "names": [
+        "Summon Ice Sphere",
+        "Ice Sphere"
+      ],
+      "icon": "trade_engineering",
+      "category": "encounter"
+    },
+    {
+      "id": 69099,
+      "names": [
+        "Ice Pulse"
+      ],
+      "icon": "spell_ice_rune",
+      "category": "encounter"
+    },
+    {
+      "id": 69108,
+      "names": [
+        "Ice Burst"
+      ],
+      "icon": "spell_frost_frostward",
+      "category": "encounter"
+    },
+    {
+      "id": 69201,
+      "names": [
+        "Raging Spirit",
+        "Raging Spirits"
+      ],
+      "icon": "ability_warrior_endlessrage",
+      "category": "encounter"
+    },
+    {
+      "id": 69242,
+      "names": [
+        "Soul Shriek"
+      ],
+      "icon": "ability_warlock_improvedsoulleech",
+      "category": "encounter"
+    },
+    {
+      "id": 72262,
+      "names": [
+        "Quake"
+      ],
+      "icon": "spell_fire_bluehellfire",
+      "category": "encounter"
+    },
+    {
+      "id": 72762,
+      "names": [
+        "Defile"
+      ],
+      "icon": "ability_rogue_envelopingshadows",
+      "category": "encounter"
+    },
+    {
+      "id": 73654,
+      "names": [
+        "Harvest Souls"
+      ],
+      "icon": "spell_deathknight_strangulate",
+      "category": "encounter"
+    },
+    {
+      "id": 70498,
+      "names": [
+        "Vile Spirits"
+      ],
+      "icon": "inv_jewelcrafting_shadowspirit_02",
+      "category": "encounter"
+    },
+    {
+      "id": 70503,
+      "names": [
+        "Spirit Burst"
+      ],
+      "icon": "inv_jewelcrafting_shadowspirit_02",
+      "category": "encounter"
+    },
+    {
+      "id": 73028,
+      "names": [
+        "Harvested Soul"
+      ],
+      "icon": "ability_warlock_improvedsoulleech",
+      "category": "encounter"
+    },
+    {
+      "id": 72350,
+      "names": [
+        "Fury of Frostmourne"
+      ],
+      "icon": "inv_sword_122",
+      "category": "encounter"
+    }
+  ],
+  "skills": [
+    {
+      "id": 776,
+      "names": [
+        "Runeforging"
+      ],
+      "icon": "ability_parry",
+      "category": "profession"
+    },
+    {
+      "id": 202,
+      "names": [
+        "Engineering"
+      ],
+      "icon": "trade_engineering",
+      "category": "profession"
+    },
+    {
+      "id": 755,
+      "names": [
+        "Jewelcrafting"
+      ],
+      "icon": "inv_misc_gem_01",
+      "category": "profession"
+    },
+    {
+      "id": 165,
+      "names": [
+        "Leatherworking"
+      ],
+      "icon": "inv_misc_armorkit_17",
+      "category": "profession"
+    },
+    {
+      "id": 164,
+      "names": [
+        "Blacksmithing"
+      ],
+      "icon": "trade_blacksmithing",
+      "category": "profession"
+    },
+    {
+      "id": 333,
+      "names": [
+        "Enchanting"
+      ],
+      "icon": "trade_engraving",
+      "category": "profession"
+    },
+    {
+      "id": 186,
+      "names": [
+        "Mining"
+      ],
+      "icon": "trade_mining",
+      "category": "profession"
+    },
+    {
+      "id": 171,
+      "names": [
+        "Alchemy"
+      ],
+      "icon": "trade_alchemy",
+      "category": "profession"
+    },
+    {
+      "id": 773,
+      "names": [
+        "Inscription"
+      ],
+      "icon": "inv_inscription_tradeskill01",
+      "category": "profession"
+    },
+    {
+      "id": 182,
+      "names": [
+        "Herbalism"
+      ],
+      "icon": "spell_nature_naturetouchgrow",
+      "category": "profession"
+    },
+    {
+      "id": 393,
+      "names": [
+        "Skinning"
+      ],
+      "icon": "inv_misc_pelt_wolf_01",
+      "category": "profession"
+    }
+  ]
+}

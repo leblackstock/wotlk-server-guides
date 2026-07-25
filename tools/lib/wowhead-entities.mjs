@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const VALID_TYPES = new Set(["item", "spell"]);
+const TYPE_KEYS = new Map([
+  ["item", "items"],
+  ["spell", "spells"],
+  ["skill", "skills"]
+]);
 const ICON_RE = /^[a-z0-9_]+$/;
 
 export function resolveFromRoot(root, file) {
@@ -14,12 +18,12 @@ export function normalizeRegistry(raw, source = "entity registry") {
     className: String(raw.className ?? "").trim(),
     classSlug: String(raw.classSlug ?? "").trim(),
     items: [],
-    spells: []
+    spells: [],
+    skills: []
   };
 
   const problems = [];
-  for (const type of VALID_TYPES) {
-    const key = type === "item" ? "items" : "spells";
+  for (const [type, key] of TYPE_KEYS) {
     const rows = Array.isArray(raw[key]) ? raw[key] : [];
     rows.forEach((row, index) => {
       const id = Number(row.id);
@@ -70,7 +74,7 @@ export function loadRegistry(file) {
 }
 
 export function registryEntities(registry) {
-  return [...registry.items, ...registry.spells];
+  return [...registry.items, ...registry.spells, ...registry.skills];
 }
 
 export function registryNameMap(registry) {
@@ -101,13 +105,15 @@ export function buildTooltipScript(registry, options = {}) {
 
   const rows = ${js(rows)};
   const entities = new Map();
+  const entitiesByRef = new Map();
   const phrases = [];
 
   function normalize(value) {
-    return String(value || "").trim().toLowerCase().replace(/\\s+/g, " ");
+    return String(value || "").trim().toLowerCase().replace(/[’]/g, "'").replace(/\\s+/g, " ");
   }
 
   rows.forEach(function (row) {
+    entitiesByRef.set(row.type + "=" + row.id, row);
     row.names.forEach(function (name) {
       entities.set(normalize(name), row);
       phrases.push(name);
@@ -159,9 +165,9 @@ export function buildTooltipScript(registry, options = {}) {
         return;
       }
       if (node.closest("a")) return;
-      const anchor = makeAnchor(node.textContent.trim(), entity);
-      anchor.className = node.className;
-      node.textContent = "";
+      const anchor = makeAnchor("", entity);
+      node.classList.forEach(function (className) { anchor.classList.add(className); });
+      while (node.firstChild) anchor.appendChild(node.firstChild);
       node.appendChild(anchor);
     });
   }
@@ -169,7 +175,7 @@ export function buildTooltipScript(registry, options = {}) {
   function decorateExistingWowheadLinks() {
     document.querySelectorAll('a[href*="wowhead.com/wotlk/"]').forEach(function (anchor) {
       if (anchor.hasAttribute("data-wowhead")) return;
-      const match = anchor.href.match(/\\/(item|spell)=(\\d+)/);
+      const match = anchor.href.match(/\\/(item|spell|skill)=(\\d+)/);
       if (!match) return;
       decorateAnchor(anchor, { type: match[1], id: Number(match[2]) });
     });
@@ -230,6 +236,25 @@ export function buildTooltipScript(registry, options = {}) {
       image.onerror = function () { image.remove(); };
       node.prepend(image);
     });
+
+    if (document.body && document.body.dataset.entityIcons === "dense") {
+      document.querySelectorAll("a[data-wowhead].wowhead-link").forEach(function (anchor) {
+      if (anchor.querySelector(":scope > img")) return;
+      if (anchor.closest("h1,h2,h3,h4,summary,.chapter-card,.source-list,[data-no-entity-icons]")) return;
+      const match = anchor.getAttribute("data-wowhead").match(/^(item|spell|skill)=(\\d+)/);
+      if (!match) return;
+      const entity = entitiesByRef.get(match[1] + "=" + match[2]);
+      if (!entity || !entity.icon) return;
+      const image = document.createElement("img");
+      image.className = "entity-link-icon";
+      image.src = "https://wow.zamimg.com/images/wow/icons/large/" + entity.icon + ".jpg";
+      image.alt = "";
+      image.setAttribute("aria-hidden", "true");
+      image.onerror = function () { image.remove(); };
+      anchor.prepend(image);
+      anchor.classList.add("has-entity-icon");
+      });
+    }
   }
 
   function loadWowheadTooltips() {
@@ -262,6 +287,7 @@ export function createEmptyRegistry(config) {
     className: config.className,
     classSlug: config.classSlug,
     items: [],
-    spells: []
+    spells: [],
+    skills: []
   };
 }
