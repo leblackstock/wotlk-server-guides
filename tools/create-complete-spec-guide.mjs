@@ -22,7 +22,7 @@ const registryPath = path.resolve(root, registryFile);
 const tooltipPath = path.resolve(root, "assets", tooltipFile);
 const checklistPath = path.resolve(root, "internal", `${config.specSlug}-implementation-checklist.md`);
 
-const generator = spawnSync(process.execPath, [path.resolve(root, "tools/create-spec-guide.mjs"), ...args], {
+const generator = spawnSync(process.execPath, [path.resolve(root, "tools/create-spec-guide-scaffold.mjs"), ...args], {
   cwd: root,
   stdio: "inherit"
 });
