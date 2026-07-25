@@ -1,0 +1,91 @@
+{
+  "className": "Death Knight",
+  "classSlug": "death-knight",
+  "specName": "Blood Death Knight",
+  "specShortName": "Blood DK",
+  "specSlug": "blood-death-knight",
+  "specKey": "blood",
+  "role": "Tank",
+  "levelLabel": "Level 80+",
+  "guideDescription": "Tank with active mitigation, planned cooldowns, reliable threat, and encounter-specific utility.",
+  "classAccent": "#C41F3B",
+  "classAccentSoft": "#F08A9C",
+  "classAccentDeep": "#4D101C",
+  "classAccentRgb": "196,31,59",
+  "specAccent": "#D15B69",
+  "specAccentSoft": "#F2A4AE",
+  "specAccentDeep": "#581F29",
+  "specAccentRgb": "209,91,105",
+  "mechanics": [
+    {
+      "key": "survival",
+      "label": "Survival",
+      "color": "#D96B77",
+      "soft": "#F2ABB3",
+      "deep": "#5E242D",
+      "rgb": "217,107,119",
+      "use": "Defensive cooldowns, health recovery, and damage smoothing"
+    },
+    {
+      "key": "runes",
+      "label": "Runes",
+      "color": "#67B7D1",
+      "soft": "#A8DDED",
+      "deep": "#183E4A",
+      "rgb": "103,183,209",
+      "use": "Rune availability, rune spending, and recovery"
+    },
+    {
+      "key": "threat",
+      "label": "Threat",
+      "color": "#D5A64B",
+      "soft": "#EBD194",
+      "deep": "#514019",
+      "rgb": "213,166,75",
+      "use": "Threat, pickups, taunts, and offensive pressure"
+    },
+    {
+      "key": "runic-power",
+      "label": "Runic Power",
+      "color": "#78B98B",
+      "soft": "#B2DFC0",
+      "deep": "#244430",
+      "rgb": "120,185,139",
+      "use": "Runic Power generation, spending, and emergency reserves"
+    }
+  ],
+  "icons": {
+    "class": "spell_deathknight_classicon",
+    "quickStart": "spell_deathknight_bloodpresence",
+    "playing": "spell_deathknight_deathstrike",
+    "setup": "spell_deathknight_bloodpresence",
+    "building": "inv_sword_62",
+    "equipping": "inv_chest_plate_12",
+    "raiding": "achievement_boss_lichking",
+    "talent": "spell_deathknight_bloodpresence",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "43/26/2",
+    "name": "Baseline raid tank build",
+    "summary": "Use this as the fully filled starting tree. Document every legitimate flex point below the embed.",
+    "wowheadPath": "death-knight/005512153330030320102013-305050500002-02"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start here at level 80 and learn the core job, combat engine, gearing minimums, and guide path.",
+    "playing": "Use the spec's resources, rotation or priority, cooldowns, utility, and recovery tools deliberately.",
+    "setup": "Choose talents, glyphs, macros, addons, keybinds, and interface tracking.",
+    "building": "Understand stats, caps, gems, enchants, professions, and upgrade tradeoffs.",
+    "equipping": "Choose concrete dungeon, crafted, emblem, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Prepare consumables and handle encounter responsibilities by raid size, difficulty, and assignment."
+  },
+  "raidRoleFilters": [
+    { "value": "survival", "label": "Survival" },
+    { "value": "threat", "label": "Threat / pickup" },
+    { "value": "utility", "label": "Utility" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard WotLK 3.3.5 behavior is the baseline. Mark uncertain talents, threat rules, boss interactions, and custom Hellscream behavior for live testing.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}
