@@ -3496,7 +3496,7 @@
       "name": "Addon Control Panel",
       "aliases": [
         "ACP",
-        "ACP 3.3.7",
+        "ACP 3.3.5",
         "AddonControlPanel"
       ],
       "searchTerms": [
@@ -3519,14 +3519,14 @@
       ],
       "doesNot": [
         "Does not hot-load every addon safely; most changes still require ReloadUI.",
-        "Does not have a documented Hellscream test result for this exact 3.3.7 build yet."
+        "ACP 3.3.7 is not compatible with the 3.3.5a client."
       ],
       "generalSetup": [
-        "Open the exact CurseForge file page below and download ACP-3.3.7.zip, not the project's current Retail download.",
+        "Download Addon Control Panel 3.3.5 from the WotLK page linked below.",
         "Remove or rename an older ACP folder, then install so Interface\\AddOns\\ACP\\ACP.toc is the final path.",
-        "Enable Load out of date AddOns at character select if the 3.3.5a client flags the folder.",
+        "At character select, enable ACP and confirm the installed addon reports version 3.3.5.",
         "Open Escape → AddOns or type /acp and review grouped addons, dependencies, and protected entries.",
-        "Test one harmless enable/disable change and one saved set, reload, then check Swatter before relying on it."
+        "Create one saved set, toggle one harmless addon, reload the UI, and confirm both changes persist before relying on the setup."
       ],
       "tags": [
         "all-roles",
@@ -3534,12 +3534,12 @@
         "addon-management",
         "beginner-friendly",
         "verified-335-download",
-        "not-tested-hellscream"
+        "tested-hellscream"
       ],
       "featuredTags": [
         "addon-management",
         "verified-335-download",
-        "not-tested-hellscream"
+        "tested-hellscream"
       ],
       "scope": {
         "classes": [
@@ -3584,23 +3584,23 @@
       "customizations": [],
       "compatibility": {
         "client": "3.3.5a",
-        "hellscreamTested": false,
-        "lastReviewed": "2026-07-24",
-        "downloadVersion": "3.3.7",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-25",
+        "lastReviewed": "2026-07-25",
+        "downloadVersion": "3.3.5",
         "verifiedDownload": true,
         "serverSensitive": false,
         "maintenanceState": "wrath-era",
         "notes": [
-          "CurseForge lists ACP-3.3.7.zip as supporting WoW 3.3.5 and 4.0.1.",
-          "The 3.3.7 file changelog reports a fix for a self-anchoring interface error.",
-          "This exact build has not yet been tested on Hellscream, so compatibility is based on the file metadata rather than an in-game server test.",
-          "Use the linked 3.3.7 file page. The main ACP project download now targets modern clients and is not the intended archive."
+          "Hellscream test reported July 25, 2026: Addon Control Panel 3.3.5 has been extensively tested and works on the server.",
+          "ACP 3.3.7 is not compatible with the 3.3.5a client.",
+          "Warperia identifies the linked download as Addon Control Panel version 3.3.5 for WotLK 3.3.5."
         ]
       },
       "download": {
-        "url": "https://www.curseforge.com/wow/addons/acp/files/471104",
-        "source": "CurseForge",
-        "notes": "Exact file page for ACP-3.3.7.zip, listed for WoW 3.3.5 and 4.0.1."
+        "url": "https://warperia.com/addon-wotlk/addon-control-panel/",
+        "source": "Warperia",
+        "notes": "Addon Control Panel 3.3.5 download page for WotLK 3.3.5."
       },
       "icon": {
         "path": "assets/addons/icons/addon-control-panel.svg",

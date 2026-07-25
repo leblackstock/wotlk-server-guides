@@ -183,12 +183,15 @@ assert.deepEqual(auctioneerRole.purposes, ["economy"]);
 
 
 const acp = addons.find((addon) => addon.id === "addon-control-panel");
-assert.equal(acp.compatibility.downloadVersion, "3.3.7");
-assert.equal(acp.compatibility.hellscreamTested, false);
+assert.equal(acp.compatibility.downloadVersion, "3.3.5");
+assert.equal(acp.compatibility.hellscreamTested, true);
+assert.equal(acp.compatibility.hellscreamTestedDate, "2026-07-25");
 assert.equal(acp.compatibility.verifiedDownload, true);
-assert.ok(acp.tags.includes("not-tested-hellscream"));
-assert.equal(acp.download.url, "https://www.curseforge.com/wow/addons/acp/files/471104");
-assert.match(acp.compatibility.notes.join(" "), /not yet been tested on Hellscream/);
+assert.ok(acp.tags.includes("tested-hellscream"));
+assert.ok(!acp.tags.includes("not-tested-hellscream"));
+assert.equal(acp.download.url, "https://warperia.com/addon-wotlk/addon-control-panel/");
+assert.match(acp.compatibility.notes.join(" "), /extensively tested and works on the server/);
+assert.match(acp.compatibility.notes.join(" "), /ACP 3\.3\.7 is not compatible/);
 const acpRole = core.recommendationFor(acp, state("", { role: ["dps"] }), catalog);
 assert.equal(acpRole.importance, "recommended");
 assert.deepEqual(acpRole.purposes, ["addon-management"]);

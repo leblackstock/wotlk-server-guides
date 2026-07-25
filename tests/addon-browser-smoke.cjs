@@ -50,7 +50,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Addon Control Panel");
     const acpCard = desktop.locator('.addon-card[data-addon-id="addon-control-panel"]');
     assert.equal(await acpCard.locator(".addon-card-tag").first().textContent(), "Addon Management");
-    assert.equal(await acpCard.locator(".addon-card-tag", { hasText: "Not Yet Tested on Hellscream" }).count(), 1);
+    assert.equal(await acpCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
 
 
     await desktop.locator("#addon-search-input").fill("action bars");
@@ -112,10 +112,11 @@ async function noOverflow(page, label) {
     await desktop.waitForSelector("#addon-details-dialog[open]");
     assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Addon Control Panel");
     const acpText = await desktop.locator("#addon-dialog-content").textContent();
-    assert.match(acpText, /3\.3\.7/);
-    assert.match(acpText, /not yet been tested on Hellscream/);
+    assert.match(acpText, /3\.3\.5/);
+    assert.match(acpText, /extensively tested and works on the server/);
+    assert.match(acpText, /ACP 3\.3\.7 is not compatible/);
     assert.match(acpText, /Recommended/);
-    assert.equal(await desktop.locator('a[href="https://www.curseforge.com/wow/addons/acp/files/471104"]').count() > 0, true);
+    assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/addon-control-panel/"]').count() > 0, true);
     await noOverflow(desktop, "ACP details drawer");
 
     await desktop.goto(`${base}/guides/addons.html?role=dps#addon=bartender4`, { waitUntil: "networkidle" });
