@@ -6,14 +6,14 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Internal Color Reference Hub</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
-  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-color-reference-v1">
-  <link rel="stylesheet" href="../assets/death-knight-color-system.css?v=20260725-color-reference-v1">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-paladin-combined-v2">
+  <link rel="stylesheet" href="../assets/death-knight-color-system.css?v=20260725-paladin-combined-v2">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-color-reference-v1">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-paladin-combined-v2">
 </head>
 <body class="color-reference-page" data-reference-theme="core">
 <div class="wrap">
-  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html" aria-current="page">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="holy-paladin-visual-system.html">Holy detail</a><a href="death-knight-color-system.html">Death Knight</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
+  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html" aria-current="page">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="death-knight-color-system.html">Death Knight</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
   <header class="reference-header">
     <span class="reference-kicker">Internal design system • Noindex</span>
     <h1>Color Reference <span>Hub</span></h1>
@@ -25,9 +25,8 @@
       <h2>Reference directory</h2>
       <div class="reference-directory-grid">
         <a class="directory-card core" href="color-system.html"><strong>Core color system</strong><p>Foundation surfaces, text, borders, global navigation, status meanings, item quality, and sockets.</p><span class="card-status">Start here</span></a>
-        <a class="directory-card paladin" href="paladin-color-system.html"><strong>Paladin overview</strong><p>One class identity with side-by-side Protection, Holy, and Retribution specialization palettes.</p><span class="card-status">Class family</span></a>
-        <a class="directory-card holy" href="holy-paladin-visual-system.html"><strong>Holy Paladin detail</strong><p>Beacon, direct healing, maintenance, mana planning, and Holy component specimens.</p><span class="card-status">Spec deep dive</span></a>
-        <a class="directory-card dk" href="death-knight-color-system.html"><strong>Death Knight overview</strong><p>Death Knight class crimson, Blood, Frost, Unholy, and the shared rune-based mechanic language.</p><span class="card-status">Class family</span></a>
+        <a class="directory-card paladin" href="paladin-color-system.html"><strong>Paladin system</strong><p>Shared Paladin identity plus the complete Protection tank and Holy healing systems, with Retribution identity included.</p><span class="card-status">Combined class page</span></a>
+        <a class="directory-card dk" href="death-knight-color-system.html"><strong>Death Knight system</strong><p>Death Knight class crimson, Blood, Frost, Unholy, and the shared rune-based mechanic language.</p><span class="card-status">Combined class page</span></a>
         <a class="directory-card sections" href="color-system-addons-ah.html"><strong>Addons and Auction House</strong><p>Section identities, Addon recommendation roles, compatibility states, and market-price lanes.</p><span class="card-status">Site sections</span></a>
       </div>
     </section>
@@ -40,11 +39,11 @@
       <h2>Adding or revising a guide</h2>
       <div class="rule-grid">
         <article class="rule-card"><strong>1. Establish the class</strong><p>Choose one class identity that survives every specialization.</p></article>
-        <article class="rule-card"><strong>2. Compare every spec</strong><p>Approve the full class family side by side before polishing one guide.</p></article>
+        <article class="rule-card"><strong>2. Keep the class together</strong><p>Document every specialization on one class page before splitting any supporting implementation documents.</p></article>
         <article class="rule-card"><strong>3. Name mechanics</strong><p>Use two to four repeated concepts instead of coloring individual abilities.</p></article>
         <article class="rule-card"><strong>4. Protect fixed meanings</strong><p>Warning, danger, success, information, rarity, and sockets never become decoration.</p></article>
-        <article class="rule-card"><strong>5. Build a specimen</strong><p>Show cards, buttons, notes, tables, mobile behavior, and print behavior.</p></article>
-        <article class="rule-card"><strong>6. Link the reference</strong><p>Add the class or section page here and connect related deep-dive pages.</p></article>
+        <article class="rule-card"><strong>5. Build specimens</strong><p>Show cards, buttons, notes, tables, mobile behavior, and print behavior on the class page.</p></article>
+        <article class="rule-card"><strong>6. Link the reference</strong><p>Add the completed class or section page here and connect it to the core rules.</p></article>
       </div>
     </section>
     <section class="reference-section" id="fixed-meanings">
@@ -53,7 +52,7 @@
         <article class="status-card"><div class="swatch-sample" style="--swatch-color:var(--status-success)"></div><strong>Success</strong><p>Confirmed compatibility, completed requirements, safe positive state.</p><code class="token">--status-success</code></article>
         <article class="status-card"><div class="swatch-sample" style="--swatch-color:var(--status-warning)"></div><strong>Warning</strong><p>Risk, caution, provisional behavior, or a meaningful tradeoff.</p><code class="token">--status-warning</code></article>
         <article class="status-card"><div class="swatch-sample" style="--swatch-color:var(--status-danger)"></div><strong>Danger</strong><p>Failure, breakage, lethal mistakes, or destructive actions.</p><code class="token">--status-danger</code></article>
-        <article class="status-card"><div class="swatch-sample" style="--swatch-color:var(--status-info)"></div><strong>Information</strong><p>Neutral factual callouts, not a substitute for Frost or direct-healing identity.</p><code class="token">--status-info</code></article>
+        <article class="status-card"><div class="swatch-sample" style="--swatch-color:var(--status-info)"></div><strong>Information</strong><p>Neutral factual callouts, not a substitute for a specialization or mechanic identity.</p><code class="token">--status-info</code></article>
       </div>
     </section>
   </main>
