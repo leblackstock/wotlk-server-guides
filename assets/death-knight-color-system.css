@@ -1,0 +1,89 @@
+/*
+ * Death Knight class, specialization, and shared mechanic colors.
+ * Load after guide-color-system.css.
+ */
+:root {
+  /* Official class anchor, restrained for the dark guide surfaces. */
+  --class-death-knight-accent: #c41f3b;
+  --class-death-knight-soft: #f39aaa;
+  --class-death-knight-deep: #50111f;
+  --class-death-knight-rgb: 196, 31, 59;
+  --class-death-knight-deep-rgb: 80, 17, 31;
+
+  /* Specialization identities */
+  --spec-death-knight-blood-accent: #d94f68;
+  --spec-death-knight-blood-soft: #ffb2bf;
+  --spec-death-knight-blood-deep: #5c1829;
+  --spec-death-knight-blood-rgb: 217, 79, 104;
+  --spec-death-knight-blood-deep-rgb: 92, 24, 41;
+
+  --spec-death-knight-frost-accent: #78bce8;
+  --spec-death-knight-frost-soft: #cdebff;
+  --spec-death-knight-frost-deep: #24536f;
+  --spec-death-knight-frost-rgb: 120, 188, 232;
+  --spec-death-knight-frost-deep-rgb: 36, 83, 111;
+
+  --spec-death-knight-unholy-accent: #9ccb58;
+  --spec-death-knight-unholy-soft: #ddf3a8;
+  --spec-death-knight-unholy-deep: #3d5a1d;
+  --spec-death-knight-unholy-rgb: 156, 203, 88;
+  --spec-death-knight-unholy-deep-rgb: 61, 90, 29;
+
+  /* Shared DK mechanic language */
+  --mechanic-dk-runes: #69bfd4;
+  --mechanic-dk-runes-soft: #b9e7f1;
+  --mechanic-dk-runes-deep: #20505d;
+  --mechanic-dk-runes-rgb: 105, 191, 212;
+
+  --mechanic-dk-runic-power: #5fc8b7;
+  --mechanic-dk-runic-power-soft: #b9f0e7;
+  --mechanic-dk-runic-power-deep: #20564d;
+  --mechanic-dk-runic-power-rgb: 95, 200, 183;
+
+  --mechanic-dk-diseases: #c7b85b;
+  --mechanic-dk-diseases-soft: #eee2a1;
+  --mechanic-dk-diseases-deep: #574d1d;
+  --mechanic-dk-diseases-rgb: 199, 184, 91;
+
+  --mechanic-dk-minions: #a98ad8;
+  --mechanic-dk-minions-soft: #ddcef5;
+  --mechanic-dk-minions-deep: #493669;
+  --mechanic-dk-minions-rgb: 169, 138, 216;
+}
+
+[data-guide-class="death-knight"] {
+  --class-accent: var(--class-death-knight-accent);
+  --class-accent-soft: var(--class-death-knight-soft);
+  --class-accent-deep: var(--class-death-knight-deep);
+  --class-accent-rgb: var(--class-death-knight-rgb);
+  --class-accent-deep-rgb: var(--class-death-knight-deep-rgb);
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="death-knight"][data-guide-spec="blood"] {
+  --theme-accent: var(--spec-death-knight-blood-accent);
+  --theme-accent-soft: var(--spec-death-knight-blood-soft);
+  --theme-accent-deep: var(--spec-death-knight-blood-deep);
+  --theme-accent-rgb: var(--spec-death-knight-blood-rgb);
+  --theme-accent-deep-rgb: var(--spec-death-knight-blood-deep-rgb);
+}
+
+[data-guide-class="death-knight"][data-guide-spec="frost"] {
+  --theme-accent: var(--spec-death-knight-frost-accent);
+  --theme-accent-soft: var(--spec-death-knight-frost-soft);
+  --theme-accent-deep: var(--spec-death-knight-frost-deep);
+  --theme-accent-rgb: var(--spec-death-knight-frost-rgb);
+  --theme-accent-deep-rgb: var(--spec-death-knight-frost-deep-rgb);
+}
+
+[data-guide-class="death-knight"][data-guide-spec="unholy"] {
+  --theme-accent: var(--spec-death-knight-unholy-accent);
+  --theme-accent-soft: var(--spec-death-knight-unholy-soft);
+  --theme-accent-deep: var(--spec-death-knight-unholy-deep);
+  --theme-accent-rgb: var(--spec-death-knight-unholy-rgb);
+  --theme-accent-deep-rgb: var(--spec-death-knight-unholy-deep-rgb);
+}
