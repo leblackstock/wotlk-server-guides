@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Paladin Color System | Internal</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-color-reference-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/paladin-guide.css?v=20260725-color-reference-v1">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-color-reference-v1">
+</head>
+<body class="color-reference-page" data-guide-class="paladin">
+<div class="wrap">
+  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html" aria-current="page">Paladin</a><a href="holy-paladin-visual-system.html">Holy detail</a><a href="death-knight-color-system.html">Death Knight</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
+  <header class="reference-header">
+    <span class="reference-kicker">Class family comparison</span>
+    <h1>Paladin <span>Color System</span></h1>
+    <p class="sub">Paladin pink remains the shared class identity. Protection, Holy, and Retribution receive separate specialization colors so selected state never erases the family resemblance.</p>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#class">Class identity</a><a href="#specs">Spec comparison</a><a href="#mechanics">Mechanics</a><a href="#usage">Usage matrix</a><a href="#related">Related pages</a></nav>
+  </header>
+  <main>
+    <section class="reference-section" id="class">
+      <h2>Paladin class identity</h2>
+      <div class="reference-grid">
+        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-paladin-accent),var(--class-paladin-deep))"></div><strong>Paladin pink</strong><p>Class title, broad Paladin framing, class notes, and links that remain Paladin-wide.</p><code class="token">--class-paladin-accent: #f58cba</code></article>
+        <article class="reference-card"><strong>What pink does not own</strong><p>Selected spec controls, warning state, healing relationships, rotation timing, item quality, or global navigation.</p><div class="reference-note"><strong>Rule:</strong> every Paladin page should still look related when the active spec accent changes.</div></article>
+      </div>
+    </section>
+    <section class="reference-section" id="specs">
+      <h2>Specialization comparison</h2>
+      <div class="spec-grid">
+        <article class="spec-card protection"><h3>Protection</h3><p>Steel blue for selected chapters, filters, tank-specific controls, mitigation state, and Protection-only emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Protection</span><span class="spec-deep"></span></div><code class="token">#6f9fe8 · --spec-paladin-protection-accent</code></article>
+        <article class="spec-card holy"><h3>Holy</h3><p>Warm gold for selected chapters, healing controls, Holy-specific labels, focus state, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Holy</span><span class="spec-deep"></span></div><code class="token">#e6be4a · --spec-paladin-holy-accent</code></article>
+        <article class="spec-card retribution"><h3>Retribution</h3><p>Warm martial red for selected chapters, offensive controls, priority-state emphasis, and Retribution-only identity.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Retribution</span><span class="spec-deep"></span></div><code class="token">#e06b65 · --spec-paladin-retribution-accent</code></article>
+      </div>
+      <div class="reference-note"><strong>Why combine them here:</strong> reviewing all three together exposes drift immediately. A spec can be distinctive without stealing the class layer or colliding with a fixed status color.</div>
+    </section>
+    <section class="reference-section" id="mechanics">
+      <h2>Named Paladin mechanics</h2>
+      <h3>Protection timing pair</h3>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-rotation-nine)"></div><strong>9-second group</strong><p>Judgement, Holy Shield, Consecration timing lane.</p><code class="token">--mechanic-rotation-nine</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-rotation-six)"></div><strong>6-second group</strong><p>Hammer of the Righteous and Shield of Righteousness lane.</p><code class="token">--mechanic-rotation-six</code></article>
+      </div>
+      <h3>Holy healing engine</h3>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-holy-beacon)"></div><strong>Beacon</strong><p>Transferred healing and paired-target relationships.</p><code class="token">--mechanic-holy-beacon</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-holy-direct)"></div><strong>Direct healing</strong><p>The target receiving the cast.</p><code class="token">--mechanic-holy-direct</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-holy-maintenance)"></div><strong>Maintenance</strong><p>Beacon, Sacred Shield, and Judgement upkeep.</p><code class="token">--mechanic-holy-maintenance</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-holy-mana)"></div><strong>Mana</strong><p>Recovery windows, reserves, and longevity.</p><code class="token">--mechanic-holy-mana</code></article>
+      </div>
+      <div class="reference-note warning"><strong>Retribution mechanic palette:</strong> not approved yet. The specialization identity is ready, but named mechanic colors should be chosen when the Retribution guide defines its recurring decision lanes.</div>
+    </section>
+    <section class="reference-section" id="usage">
+      <h2>Usage matrix</h2>
+      <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Role</th><th>Protection page</th><th>Holy page</th><th>Retribution page</th></tr></thead><tbody><tr><td><strong>Class title and broad links</strong></td><td>Paladin pink</td><td>Paladin pink</td><td>Paladin pink</td></tr><tr><td><strong>Selected controls</strong></td><td>Protection blue</td><td>Holy gold</td><td>Retribution red</td></tr><tr><td><strong>Repeated mechanics</strong></td><td>9/6 timing pair</td><td>Beacon, direct, maintenance, mana</td><td>Define with the guide</td></tr><tr><td><strong>Warnings and danger</strong></td><td colspan="3">Use fixed status tokens, never a spec color</td></tr><tr><td><strong>Item rarity and sockets</strong></td><td colspan="3">Use canonical Wrath game-data tokens</td></tr></tbody></table></div>
+    </section>
+    <section class="reference-section" id="related"><h2>Related references</h2><div class="related-links"><a href="holy-paladin-visual-system.html">Open Holy deep dive</a><a href="color-system.html">Open core rules</a><a href="death-knight-color-system.html">Compare Death Knight family</a></div></section>
+  </main>
+  <nav class="reference-pager" aria-label="Previous and next color references"><a href="color-system.html">← Core system</a><a href="holy-paladin-visual-system.html">Holy detail →</a></nav>
+  <footer class="reference-footer">Internal design reference. Unlinked from the public Guide Hub and marked noindex.</footer>
+</div>
+</body>
+</html>
