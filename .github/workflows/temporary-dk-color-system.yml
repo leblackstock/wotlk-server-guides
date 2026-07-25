@@ -1,0 +1,265 @@
+name: Temporary Death Knight color system
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+    paths:
+      - .github/dk-color-system-trigger.txt
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/death-knight-color-system
+          fetch-depth: 0
+
+      - name: Add Death Knight class and spec color system
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          css_path = Path('assets/guide-color-system.css')
+          css = css_path.read_text(encoding='utf-8')
+
+          mechanic_anchor = '  /* Semantic status colors never change with class, spec, or section. */'
+          mechanic_block = '''  /*
+           * Death Knight shared mechanics. These remain stable across Blood,
+           * Frost, and Unholy so resource diagrams do not change dialect.
+           * Runes = rune availability and conversion.
+           * Runic Power = generation, spending, and reserves.
+           * Diseases = disease application, maintenance, and spread.
+           * Minions = ghoul, gargoyle, Army, and pet-control relationships.
+           */
+          --mechanic-dk-runes: #69bfd4;
+          --mechanic-dk-runes-soft: #b9e7f1;
+          --mechanic-dk-runes-deep: #20505d;
+          --mechanic-dk-runes-rgb: 105, 191, 212;
+
+          --mechanic-dk-runic-power: #5fc8b7;
+          --mechanic-dk-runic-power-soft: #b9f0e7;
+          --mechanic-dk-runic-power-deep: #20564d;
+          --mechanic-dk-runic-power-rgb: 95, 200, 183;
+
+          --mechanic-dk-diseases: #c7b85b;
+          --mechanic-dk-diseases-soft: #eee2a1;
+          --mechanic-dk-diseases-deep: #574d1d;
+          --mechanic-dk-diseases-rgb: 199, 184, 91;
+
+          --mechanic-dk-minions: #a98ad8;
+          --mechanic-dk-minions-soft: #ddcef5;
+          --mechanic-dk-minions-deep: #493669;
+          --mechanic-dk-minions-rgb: 169, 138, 216;
+
+'''
+          if '--mechanic-dk-runes:' not in css:
+              assert mechanic_anchor in css
+              css = css.replace(mechanic_anchor, mechanic_block + mechanic_anchor, 1)
+
+          identity_anchor = '  /* Safe defaults */'
+          identity_block = '''  /* Death Knight class identity */
+          --class-death-knight-accent: #c41f3b;
+          --class-death-knight-soft: #f39aaa;
+          --class-death-knight-deep: #50111f;
+          --class-death-knight-rgb: 196, 31, 59;
+          --class-death-knight-deep-rgb: 80, 17, 31;
+
+          /* Death Knight specialization identities */
+          --spec-death-knight-blood-accent: #d94f68;
+          --spec-death-knight-blood-soft: #ffb2bf;
+          --spec-death-knight-blood-deep: #5c1829;
+          --spec-death-knight-blood-rgb: 217, 79, 104;
+          --spec-death-knight-blood-deep-rgb: 92, 24, 41;
+
+          --spec-death-knight-frost-accent: #78bce8;
+          --spec-death-knight-frost-soft: #cdebff;
+          --spec-death-knight-frost-deep: #24536f;
+          --spec-death-knight-frost-rgb: 120, 188, 232;
+          --spec-death-knight-frost-deep-rgb: 36, 83, 111;
+
+          --spec-death-knight-unholy-accent: #9ccb58;
+          --spec-death-knight-unholy-soft: #ddf3a8;
+          --spec-death-knight-unholy-deep: #3d5a1d;
+          --spec-death-knight-unholy-rgb: 156, 203, 88;
+          --spec-death-knight-unholy-deep-rgb: 61, 90, 29;
+
+'''
+          if '--class-death-knight-accent:' not in css:
+              assert identity_anchor in css
+              css = css.replace(identity_anchor, identity_block + identity_anchor, 1)
+
+          selector_block = '''
+
+          [data-guide-class="death-knight"] {
+            --class-accent: var(--class-death-knight-accent);
+            --class-accent-soft: var(--class-death-knight-soft);
+            --class-accent-deep: var(--class-death-knight-deep);
+            --class-accent-rgb: var(--class-death-knight-rgb);
+            --class-accent-deep-rgb: var(--class-death-knight-deep-rgb);
+            --theme-accent: var(--class-accent);
+            --theme-accent-soft: var(--class-accent-soft);
+            --theme-accent-deep: var(--class-accent-deep);
+            --theme-accent-rgb: var(--class-accent-rgb);
+            --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+          }
+
+          [data-guide-class="death-knight"][data-guide-spec="blood"] {
+            --theme-accent: var(--spec-death-knight-blood-accent);
+            --theme-accent-soft: var(--spec-death-knight-blood-soft);
+            --theme-accent-deep: var(--spec-death-knight-blood-deep);
+            --theme-accent-rgb: var(--spec-death-knight-blood-rgb);
+            --theme-accent-deep-rgb: var(--spec-death-knight-blood-deep-rgb);
+          }
+
+          [data-guide-class="death-knight"][data-guide-spec="frost"] {
+            --theme-accent: var(--spec-death-knight-frost-accent);
+            --theme-accent-soft: var(--spec-death-knight-frost-soft);
+            --theme-accent-deep: var(--spec-death-knight-frost-deep);
+            --theme-accent-rgb: var(--spec-death-knight-frost-rgb);
+            --theme-accent-deep-rgb: var(--spec-death-knight-frost-deep-rgb);
+          }
+
+          [data-guide-class="death-knight"][data-guide-spec="unholy"] {
+            --theme-accent: var(--spec-death-knight-unholy-accent);
+            --theme-accent-soft: var(--spec-death-knight-unholy-soft);
+            --theme-accent-deep: var(--spec-death-knight-unholy-deep);
+            --theme-accent-rgb: var(--spec-death-knight-unholy-rgb);
+            --theme-accent-deep-rgb: var(--spec-death-knight-unholy-deep-rgb);
+          }
+'''
+          if '[data-guide-class="death-knight"] {' not in css:
+              css = css.rstrip() + selector_block + '\n'
+
+          css_path.write_text(css, encoding='utf-8')
+
+          config_path = Path('templates/spec-guide/spec-guide.config.example.json')
+          config = config_path.read_text(encoding='utf-8')
+          replacements = {
+              '"classAccentSoft": "#F08A9C"': '"classAccentSoft": "#F39AAA"',
+              '"classAccentDeep": "#4D101C"': '"classAccentDeep": "#50111F"',
+              '"specAccent": "#D15B69"': '"specAccent": "#D94F68"',
+              '"specAccentSoft": "#F2A4AE"': '"specAccentSoft": "#FFB2BF"',
+              '"specAccentDeep": "#581F29"': '"specAccentDeep": "#5C1829"',
+              '"specAccentRgb": "209,91,105"': '"specAccentRgb": "217,79,104"',
+              '"color": "#D96B77"': '"color": "#E06A7E"',
+              '"soft": "#F2ABB3"': '"soft": "#FFC0CA"',
+              '"deep": "#5E242D"': '"deep": "#641E31"',
+              '"rgb": "217,107,119"': '"rgb": "224,106,126"',
+              '"color": "#67B7D1"': '"color": "#69BFD4"',
+              '"soft": "#A8DDED"': '"soft": "#B9E7F1"',
+              '"deep": "#183E4A"': '"deep": "#20505D"',
+              '"rgb": "103,183,209"': '"rgb": "105,191,212"',
+              '"color": "#D5A64B"': '"color": "#C59A57"',
+              '"soft": "#EBD194"': '"soft": "#E8C98F"',
+              '"deep": "#514019"': '"deep": "#50401F"',
+              '"rgb": "213,166,75"': '"rgb": "197,154,87"',
+              '"color": "#78B98B"': '"color": "#5FC8B7"',
+              '"soft": "#B2DFC0"': '"soft": "#B9F0E7"',
+              '"deep": "#244430"': '"deep": "#20564D"',
+              '"rgb": "120,185,139"': '"rgb": "95,200,183"'
+          }
+          for old, new in replacements.items():
+              assert old in config, old
+              config = config.replace(old, new, 1)
+          config_path.write_text(config, encoding='utf-8')
+
+          html = '''<!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="robots" content="noindex, nofollow">
+            <title>Death Knight Color System | Internal</title>
+            <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+            <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-dk-color-v1">
+            <link rel="stylesheet" href="../assets/style.css">
+            <style>
+              body[data-guide-class="death-knight"]{background:radial-gradient(circle at 10% -8%,rgba(var(--class-death-knight-rgb),.16),transparent 34rem),radial-gradient(circle at 92% 3%,rgba(var(--mechanic-dk-runes-rgb),.08),transparent 28rem),linear-gradient(180deg,var(--surface-page-deep),var(--surface-page))}
+              header{border-color:rgba(var(--class-death-knight-rgb),.34);background:linear-gradient(135deg,var(--surface-raised),rgba(var(--class-death-knight-deep-rgb),.52) 48%,rgba(var(--mechanic-dk-runes-rgb),.08),var(--surface-card))}
+              h1 span{color:var(--class-death-knight-accent)}
+              .rule-grid,.spec-grid,.swatch-grid,.component-grid{display:grid;gap:12px}.rule-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.spec-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.swatch-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.component-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+              .rule,.spec-card,.swatch,.component{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface-card)}
+              .rule strong,.swatch strong{display:block;margin-bottom:5px}.rule p,.swatch p,.spec-card p,.component p{margin:0;color:var(--muted);font-size:12px}.token{display:block;margin-top:6px;color:var(--text-muted);font:11px Consolas,monospace;overflow-wrap:anywhere}
+              .class-swatch{height:68px;border:1px solid rgba(255,255,255,.14);border-radius:11px;background:linear-gradient(135deg,var(--class-death-knight-accent),var(--class-death-knight-deep))}
+              .spec-card{--local-accent:var(--class-death-knight-accent);--local-soft:var(--class-death-knight-soft);--local-deep:var(--class-death-knight-deep);--local-rgb:var(--class-death-knight-rgb);position:relative;overflow:hidden;border-color:rgba(var(--local-rgb),.42);background:linear-gradient(150deg,rgba(var(--local-rgb),.13),var(--surface-card) 52%)}
+              .spec-card::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--local-accent)}.spec-card.blood{--local-accent:var(--spec-death-knight-blood-accent);--local-soft:var(--spec-death-knight-blood-soft);--local-deep:var(--spec-death-knight-blood-deep);--local-rgb:var(--spec-death-knight-blood-rgb)}.spec-card.frost{--local-accent:var(--spec-death-knight-frost-accent);--local-soft:var(--spec-death-knight-frost-soft);--local-deep:var(--spec-death-knight-frost-deep);--local-rgb:var(--spec-death-knight-frost-rgb)}.spec-card.unholy{--local-accent:var(--spec-death-knight-unholy-accent);--local-soft:var(--spec-death-knight-unholy-soft);--local-deep:var(--spec-death-knight-unholy-deep);--local-rgb:var(--spec-death-knight-unholy-rgb)}
+              .spec-card h3{margin:4px 0 6px;color:var(--local-soft)}.spec-sample{display:flex;gap:7px;align-items:center;margin:13px 0}.spec-button,.spec-tag{border:1px solid rgba(var(--local-rgb),.48);background:rgba(var(--local-rgb),.13);color:var(--local-soft);font-weight:850}.spec-button{min-height:36px;padding:7px 11px;border-radius:9px}.spec-tag{padding:3px 8px;border-radius:999px;font-size:10px}.spec-deep{height:34px;flex:1;border-radius:9px;background:linear-gradient(90deg,var(--local-deep),rgba(var(--local-rgb),.18))}
+              .swatch-sample{height:54px;margin-bottom:9px;border:1px solid rgba(255,255,255,.14);border-radius:9px}.swatch.runes .swatch-sample{background:var(--mechanic-dk-runes)}.swatch.power .swatch-sample{background:var(--mechanic-dk-runic-power)}.swatch.diseases .swatch-sample{background:var(--mechanic-dk-diseases)}.swatch.minions .swatch-sample{background:var(--mechanic-dk-minions)}
+              .resource-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.resource-step{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025)}.resource-step strong{display:block;margin-bottom:5px}.resource-step.runes{border-color:rgba(var(--mechanic-dk-runes-rgb),.42);background:rgba(var(--mechanic-dk-runes-rgb),.07)}.resource-step.power{border-color:rgba(var(--mechanic-dk-runic-power-rgb),.42);background:rgba(var(--mechanic-dk-runic-power-rgb),.07)}.resource-step.diseases{border-color:rgba(var(--mechanic-dk-diseases-rgb),.42);background:rgba(var(--mechanic-dk-diseases-rgb),.07)}.resource-step.minions{border-color:rgba(var(--mechanic-dk-minions-rgb),.42);background:rgba(var(--mechanic-dk-minions-rgb),.07)}
+              .do-not{border-left:4px solid var(--status-warning);background:rgba(var(--status-warning-rgb),.07)}
+              @media(max-width:900px){.rule-grid,.spec-grid{grid-template-columns:1fr}.swatch-grid,.resource-strip,.component-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+              @media(max-width:560px){.swatch-grid,.resource-strip,.component-grid{grid-template-columns:1fr}}
+              @media print{body{background:#fff!important}.spec-card,.rule,.swatch,.component{background:#fff!important;box-shadow:none!important}}
+            </style>
+          </head>
+          <body data-guide-class="death-knight">
+            <div class="wrap">
+              <nav class="site-nav" aria-label="Internal Death Knight color reference"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="#rules" aria-current="page">DK color system</a><a href="#specs">Specs</a><a href="#mechanics">Mechanics</a></nav>
+              <header><span class="page-kicker">Internal design reference • Noindex</span><h1>Death Knight <span>Color System</span></h1><p class="sub">The production contract for one Death Knight class identity, three clearly separated specialization accents, and a shared resource language that remains stable across every DK guide.</p><div class="jump-nav"><a href="#rules">Rules</a><a href="#class">Class</a><a href="#specs">Specs</a><a href="#mechanics">Mechanics</a><a href="#components">Components</a><a href="#accessibility">Accessibility</a></div></header>
+              <main>
+                <section class="common" id="rules"><h2>◆ Hierarchy rules</h2><div class="rule-grid"><article class="rule"><strong>1. Crimson identifies the class</strong><p>The official Death Knight crimson frames titles, class notes, broad links, and shared DK identity. It is not the Blood spec state by itself.</p></article><article class="rule"><strong>2. The active spec owns controls</strong><p>Blood, Frost, or Unholy colors own selected navigation, filter state, focused cards, and specialization-specific technical emphasis.</p></article><article class="rule"><strong>3. Resources keep one language</strong><p>Runes, Runic Power, diseases, and minions use the same mechanic colors in every spec so diagrams remain learnable.</p></article><article class="rule"><strong>4. Status colors stay global</strong><p>Warning amber, danger salmon, success green, and information cyan never become DK decoration.</p></article><article class="rule"><strong>5. Schools are not a rainbow</strong><p>Do not assign a new color to every spell school or ability. Color repeated decisions and relationships, not every button.</p></article><article class="rule"><strong>6. Labels carry the meaning</strong><p>Every colored state also uses text, an icon, border, position, or pressed state. Color is reinforcement, never the only signal.</p></article></div></section>
+                <section class="common" id="class"><h2>◆ Death Knight class identity</h2><div class="component-grid"><div class="component"><div class="class-swatch" aria-label="Death Knight class crimson gradient"></div><code class="token">--class-death-knight-accent: #c41f3b</code><code class="token">--class-death-knight-soft: #f39aaa</code><code class="token">--class-death-knight-deep: #50111f</code></div><div class="component"><h3>Permitted use</h3><p>Class name, shared DK notes, broad identity, shared page framing, and links that apply to all three specs.</p><div class="note do-not"><strong>Do not:</strong> flood whole pages with red or use class crimson for danger, failed mechanics, or every damage ability.</div></div></div></section>
+                <section class="common" id="specs"><h2>◆ Specialization identities</h2><div class="spec-grid"><article class="spec-card blood"><span class="page-kicker">Tank / survival pressure</span><h3>Blood</h3><p>Sanguine crimson for active mitigation decisions, selected tank assignments, Death Strike recovery emphasis, and Blood-only controls.</p><div class="spec-sample"><button class="spec-button" type="button" aria-pressed="true">Selected Blood state</button><span class="spec-tag">Blood</span><div class="spec-deep" aria-hidden="true"></div></div><code class="token">#d94f68 · soft #ffb2bf · deep #5c1829</code></article><article class="spec-card frost"><span class="page-kicker">Weapon pressure / procs</span><h3>Frost</h3><p>Glacial blue for Frost-specific priorities, proc windows, selected dual-wield or two-hand guidance, and active Frost controls.</p><div class="spec-sample"><button class="spec-button" type="button" aria-pressed="true">Selected Frost state</button><span class="spec-tag">Frost</span><div class="spec-deep" aria-hidden="true"></div></div><code class="token">#78bce8 · soft #cdebff · deep #24536f</code></article><article class="spec-card unholy"><span class="page-kicker">Diseases / minion pressure</span><h3>Unholy</h3><p>Necrotic yellow-green for Unholy-specific priorities, transformation windows, selected disease plans, and active Unholy controls.</p><div class="spec-sample"><button class="spec-button" type="button" aria-pressed="true">Selected Unholy state</button><span class="spec-tag">Unholy</span><div class="spec-deep" aria-hidden="true"></div></div><code class="token">#9ccb58 · soft #ddf3a8 · deep #3d5a1d</code></article></div></section>
+                <section class="common" id="mechanics"><h2>◆ Shared DK mechanic palette</h2><div class="swatch-grid"><article class="swatch runes"><div class="swatch-sample"></div><strong>Runes</strong><p>Rune availability, death-rune conversion, spending order, and recovery.</p><code class="token">--mechanic-dk-runes</code></article><article class="swatch power"><div class="swatch-sample"></div><strong>Runic Power</strong><p>Generation, spending, pooling, and emergency reserves.</p><code class="token">--mechanic-dk-runic-power</code></article><article class="swatch diseases"><div class="swatch-sample"></div><strong>Diseases</strong><p>Application, maintenance, refresh, spread, and target coverage.</p><code class="token">--mechanic-dk-diseases</code></article><article class="swatch minions"><div class="swatch-sample"></div><strong>Minions</strong><p>Ghoul, Gargoyle, Army, pet control, and summoned-unit relationships.</p><code class="token">--mechanic-dk-minions</code></article></div></section>
+                <section class="common" id="components"><h2>◆ Component specimens</h2><h3>Shared resource strip</h3><div class="resource-strip"><div class="resource-step runes"><strong>Runes</strong><p>What is available now?</p></div><div class="resource-step diseases"><strong>Diseases</strong><p>What must be applied or refreshed?</p></div><div class="resource-step power"><strong>Runic Power</strong><p>Spend, pool, or reserve?</p></div><div class="resource-step minions"><strong>Minions</strong><p>Summon, empower, or control?</p></div></div><h3>Semantic boundary</h3><div class="component-grid"><div class="component"><strong>Spec color</strong><p>Selected controls, active chapter, focus, and spec-only technical emphasis.</p></div><div class="component"><strong>Mechanic color</strong><p>A repeated resource or relationship that appears across multiple pages and possibly multiple specs.</p></div><div class="component"><strong>Status color</strong><p>Success, warning, danger, or information. These meanings are site-wide and fixed.</p></div><div class="component"><strong>Game-data color</strong><p>Item quality and socket colors remain canonical and independent of DK identity.</p></div></div></section>
+                <section class="common" id="accessibility"><h2>◆ Accessibility and regression gate</h2><ul class="clean-list"><li>Blood red is differentiated from danger by softer hue, component placement, and explicit labels.</li><li>Frost blue is less cyan than the site information color and is never used for generic informational notes.</li><li>Unholy is yellow-green rather than success green; success still uses the fixed global token.</li><li>All selected controls require borders, pressed state, focus treatment, or wording in addition to color.</li><li>Dark, mobile, reduced-motion, and black-and-white print views must preserve hierarchy.</li><li>Future DK guides must consume these tokens rather than introducing raw hex values in page HTML.</li></ul><div class="note" style="border-left-color:var(--class-death-knight-accent);background:rgba(var(--class-death-knight-rgb),.08);color:var(--class-death-knight-soft)"><strong>Approval target:</strong> this page is the Death Knight visual contract for Blood, Frost, and Unholy. New DK color roles require a named semantic job before a new token is added.</div></section>
+              </main>
+              <footer>Internal production reference. Not linked from the public Guide Hub.</footer>
+            </div>
+          </body>
+          </html>
+          '''
+          Path('internal/death-knight-color-system.html').write_text(html, encoding='utf-8')
+          PY
+
+          rm -f .github/dk-color-system-trigger.txt
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          css = Path('assets/guide-color-system.css').read_text(encoding='utf-8')
+          required = [
+              '--class-death-knight-accent:',
+              '--spec-death-knight-blood-accent:',
+              '--spec-death-knight-frost-accent:',
+              '--spec-death-knight-unholy-accent:',
+              '--mechanic-dk-runes:',
+              '--mechanic-dk-runic-power:',
+              '--mechanic-dk-diseases:',
+              '--mechanic-dk-minions:',
+              '[data-guide-class="death-knight"][data-guide-spec="blood"]',
+              '[data-guide-class="death-knight"][data-guide-spec="frost"]',
+              '[data-guide-class="death-knight"][data-guide-spec="unholy"]'
+          ]
+          for token in required:
+              assert css.count(token) == 1, (token, css.count(token))
+          assert css.count('{') == css.count('}')
+
+          cfg = json.loads(Path('templates/spec-guide/spec-guide.config.example.json').read_text(encoding='utf-8'))
+          assert cfg['classAccent'] == '#C41F3B'
+          assert cfg['specAccent'] == '#D94F68'
+          assert cfg['mechanics'][1]['color'] == '#69BFD4'
+          assert cfg['mechanics'][3]['color'] == '#5FC8B7'
+
+          html = Path('internal/death-knight-color-system.html').read_text(encoding='utf-8')
+          for word in ['Blood', 'Frost', 'Unholy', 'noindex, nofollow', '--mechanic-dk-runes']:
+              assert word in html
+          assert '<script' not in html
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/guide-color-system.css templates/spec-guide/spec-guide.config.example.json internal/death-knight-color-system.html .github/dk-color-system-trigger.txt
+          git diff --cached --check
+          git commit -m "Add Death Knight class and spec color system"
+          git push origin agent/death-knight-color-system
