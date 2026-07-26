@@ -1,5 +1,46 @@
 @import url("./ah-price-guide.css?v=20260726-visible-row-blink-v7");
 
+.ah-jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+.ah-jump-nav strong {
+  margin-right: 2px;
+  color: var(--muted);
+  font-size: .82rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.ah-jump-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 9px;
+  border: 1px solid rgba(var(--section-ah-rgb), .28);
+  border-radius: 999px;
+  background: rgba(var(--section-ah-rgb), .07);
+  color: var(--section-ah-soft);
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.ah-jump-nav a:hover,
+.ah-jump-nav a:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), .72);
+  background: rgba(var(--section-ah-rgb), .14);
+  color: var(--text);
+}
+.dropped-scrolls-section h3 {
+  margin: 20px 0 8px;
+}
+
+@media print {
+  .ah-jump-nav { display: none !important; }
+}
+
 /* Auction House lookup and category cards on the Guide Hub. */
 .ah-search-section {
   border-color: rgba(var(--section-ah-rgb), .24);

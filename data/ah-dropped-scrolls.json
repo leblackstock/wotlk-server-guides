@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "catalog_defaults": {
+    "source_type": "world-drop",
+    "tradeable": true,
+    "binding": "none",
+    "stack": "1 / 5 / 10"
+  },
+  "rank_profiles": {
+    "1": {"quick_copper": 500, "target_copper": 1000, "high_copper": 2500},
+    "2": {"quick_copper": 1000, "target_copper": 2000, "high_copper": 5000},
+    "3": {"quick_copper": 2000, "target_copper": 4000, "high_copper": 10000},
+    "4": {"quick_copper": 4000, "target_copper": 7500, "high_copper": 15000},
+    "5": {"quick_copper": 7500, "target_copper": 15000, "high_copper": 30000},
+    "6": {"quick_copper": 15000, "target_copper": 25000, "high_copper": 50000},
+    "7": {"quick_copper": 20000, "target_copper": 30000, "high_copper": 60000}
+  },
+  "stat_profiles": {
+    "Agility": {"demand": "Med", "demand_class": "med", "notes": "Leveling convenience for physical damage, Hunters, and Rogues."},
+    "Intellect": {"demand": "Med", "demand_class": "med", "notes": "Leveling convenience for mana users and casters."},
+    "Protection": {"demand": "Low", "demand_class": "low", "notes": "Small armor buff with narrow demand; post only a few."},
+    "Spirit": {"demand": "Low-Med", "demand_class": "med", "notes": "Leveling regeneration convenience; usually slower than primary-stat scrolls."},
+    "Stamina": {"demand": "Med", "demand_class": "med", "notes": "General leveling and survivability convenience."},
+    "Strength": {"demand": "Med", "demand_class": "med", "notes": "Leveling convenience for Strength-based melee characters."}
+  },
+  "catalog": {
+    "scroll-agility-1": {"name": "Scroll of Agility", "item_id": 3012, "rank": 1, "stat": "Agility"},
+    "scroll-intellect-1": {"name": "Scroll of Intellect", "item_id": 955, "rank": 1, "stat": "Intellect"},
+    "scroll-protection-1": {"name": "Scroll of Protection", "item_id": 3013, "rank": 1, "stat": "Protection"},
+    "scroll-spirit-1": {"name": "Scroll of Spirit", "item_id": 1181, "rank": 1, "stat": "Spirit"},
+    "scroll-stamina-1": {"name": "Scroll of Stamina", "item_id": 1180, "rank": 1, "stat": "Stamina"},
+    "scroll-strength-1": {"name": "Scroll of Strength", "item_id": 954, "rank": 1, "stat": "Strength"},
+
+    "scroll-agility-2": {"name": "Scroll of Agility II", "item_id": 1477, "rank": 2, "stat": "Agility"},
+    "scroll-intellect-2": {"name": "Scroll of Intellect II", "item_id": 2290, "rank": 2, "stat": "Intellect"},
+    "scroll-protection-2": {"name": "Scroll of Protection II", "item_id": 1478, "rank": 2, "stat": "Protection"},
+    "scroll-spirit-2": {"name": "Scroll of Spirit II", "item_id": 1712, "rank": 2, "stat": "Spirit"},
+    "scroll-stamina-2": {"name": "Scroll of Stamina II", "item_id": 1711, "rank": 2, "stat": "Stamina"},
+    "scroll-strength-2": {"name": "Scroll of Strength II", "item_id": 2289, "rank": 2, "stat": "Strength"},
+
+    "scroll-agility-3": {"name": "Scroll of Agility III", "item_id": 4425, "rank": 3, "stat": "Agility"},
+    "scroll-intellect-3": {"name": "Scroll of Intellect III", "item_id": 4419, "rank": 3, "stat": "Intellect"},
+    "scroll-protection-3": {"name": "Scroll of Protection III", "item_id": 4421, "rank": 3, "stat": "Protection"},
+    "scroll-spirit-3": {"name": "Scroll of Spirit III", "item_id": 4424, "rank": 3, "stat": "Spirit"},
+    "scroll-stamina-3": {"name": "Scroll of Stamina III", "item_id": 4422, "rank": 3, "stat": "Stamina"},
+    "scroll-strength-3": {"name": "Scroll of Strength III", "item_id": 4426, "rank": 3, "stat": "Strength"},
+
+    "scroll-agility-4": {"name": "Scroll of Agility IV", "item_id": 10309, "rank": 4, "stat": "Agility"},
+    "scroll-intellect-4": {"name": "Scroll of Intellect IV", "item_id": 10308, "rank": 4, "stat": "Intellect"},
+    "scroll-protection-4": {"name": "Scroll of Protection IV", "item_id": 10305, "rank": 4, "stat": "Protection"},
+    "scroll-spirit-4": {"name": "Scroll of Spirit IV", "item_id": 10306, "rank": 4, "stat": "Spirit"},
+    "scroll-stamina-4": {"name": "Scroll of Stamina IV", "item_id": 10307, "rank": 4, "stat": "Stamina"},
+    "scroll-strength-4": {"name": "Scroll of Strength IV", "item_id": 10310, "rank": 4, "stat": "Strength"},
+
+    "scroll-agility-5": {"name": "Scroll of Agility V", "item_id": 27498, "rank": 5, "stat": "Agility"},
+    "scroll-intellect-5": {"name": "Scroll of Intellect V", "item_id": 27499, "rank": 5, "stat": "Intellect"},
+    "scroll-protection-5": {"name": "Scroll of Protection V", "item_id": 27500, "rank": 5, "stat": "Protection"},
+    "scroll-spirit-5": {"name": "Scroll of Spirit V", "item_id": 27501, "rank": 5, "stat": "Spirit"},
+    "scroll-stamina-5": {"name": "Scroll of Stamina V", "item_id": 27502, "rank": 5, "stat": "Stamina"},
+    "scroll-strength-5": {"name": "Scroll of Strength V", "item_id": 27503, "rank": 5, "stat": "Strength"},
+
+    "scroll-agility-6": {"name": "Scroll of Agility VI", "item_id": 33457, "rank": 6, "stat": "Agility"},
+    "scroll-intellect-6": {"name": "Scroll of Intellect VI", "item_id": 33458, "rank": 6, "stat": "Intellect"},
+    "scroll-protection-6": {"name": "Scroll of Protection VI", "item_id": 33459, "rank": 6, "stat": "Protection"},
+    "scroll-spirit-6": {"name": "Scroll of Spirit VI", "item_id": 33460, "rank": 6, "stat": "Spirit"},
+    "scroll-stamina-6": {"name": "Scroll of Stamina VI", "item_id": 33461, "rank": 6, "stat": "Stamina"},
+    "scroll-strength-6": {"name": "Scroll of Strength VI", "item_id": 33462, "rank": 6, "stat": "Strength"},
+
+    "scroll-agility-7": {"name": "Scroll of Agility VII", "item_id": 43463, "rank": 7, "stat": "Agility"},
+    "scroll-intellect-7": {"name": "Scroll of Intellect VII", "item_id": 37091, "rank": 7, "stat": "Intellect"},
+    "scroll-protection-7": {"name": "Scroll of Protection VII", "item_id": 43467, "rank": 7, "stat": "Protection"},
+    "scroll-spirit-7": {"name": "Scroll of Spirit VII", "item_id": 37097, "rank": 7, "stat": "Spirit"},
+    "scroll-stamina-7": {"name": "Scroll of Stamina VII", "item_id": 37093, "rank": 7, "stat": "Stamina"},
+    "scroll-strength-7": {"name": "Scroll of Strength VII", "item_id": 43465, "rank": 7, "stat": "Strength"}
+  },
+  "guides": {
+    "inscription-materials-ah-price-guide.html": {
+      "title": "Lower-rank droppable scrolls",
+      "description": "All six world-drop scroll types for Ranks I–VII. The five droppable Rank VIII stat scrolls are already priced in Crafted buff scrolls because Scribes can make the identical finished items.",
+      "items": [
+        "scroll-agility-1", "scroll-intellect-1", "scroll-protection-1", "scroll-spirit-1", "scroll-stamina-1", "scroll-strength-1",
+        "scroll-agility-2", "scroll-intellect-2", "scroll-protection-2", "scroll-spirit-2", "scroll-stamina-2", "scroll-strength-2",
+        "scroll-agility-3", "scroll-intellect-3", "scroll-protection-3", "scroll-spirit-3", "scroll-stamina-3", "scroll-strength-3",
+        "scroll-agility-4", "scroll-intellect-4", "scroll-protection-4", "scroll-spirit-4", "scroll-stamina-4", "scroll-strength-4",
+        "scroll-agility-5", "scroll-intellect-5", "scroll-protection-5", "scroll-spirit-5", "scroll-stamina-5", "scroll-strength-5",
+        "scroll-agility-6", "scroll-intellect-6", "scroll-protection-6", "scroll-spirit-6", "scroll-stamina-6", "scroll-strength-6",
+        "scroll-agility-7", "scroll-intellect-7", "scroll-protection-7", "scroll-spirit-7", "scroll-stamina-7", "scroll-strength-7"
+      ]
+    }
+  }
+}
