@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { spawnSync } from "node:child_process";
 import { loadRegistry, registryEntities, registryNameMap } from "./lib/wowhead-entities.mjs";
 
 const args = process.argv.slice(2);
@@ -18,6 +19,8 @@ const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
 const registryPath = path.resolve(root, config.entityRegistryFile || `data/${config.classSlug}-entities.json`);
 const tooltipFile = config.tooltipFile || `${config.classSlug}-tooltips.js`;
 const tooltipPath = path.resolve(root, "assets", tooltipFile);
+const iconDensityStatus = config.iconDensityStatus || "required";
+const iconDensityPolicyFile = config.iconDensityPolicyFile || "templates/spec-guide/icon-density-policy.json";
 const registry = loadRegistry(registryPath);
 const entityMap = registryNameMap(registry);
 const entities = registryEntities(registry);
@@ -54,10 +57,6 @@ function stripTags(value) {
 function attr(attrs, name) {
   const match = attrs.match(new RegExp(`\\b${name}=(?:"([^"]*)"|'([^']*)')`, "i"));
   return match ? (match[1] ?? match[2] ?? "") : "";
-}
-
-function hasAttr(attrs, name) {
-  return new RegExp(`\\b${name}(?:\\s*=|\\s|$)`, "i").test(attrs);
 }
 
 function mapped(name) {
@@ -138,24 +137,6 @@ function inspectIcons(html, file) {
     if (attr(attrs, "aria-hidden") !== "true") errors.push(`${rel(file)}: decorative WoW icon must use aria-hidden="true": ${src}`);
     if (!/onerror=(?:"this\.remove\(\)"|'this\.remove\(\)')/i.test(attrs)) errors.push(`${rel(file)}: WoW icon lacks onerror="this.remove()": ${src}`);
   }
-
-  const sectionHeading = /<section\b[^>]*class=(?:"[^"]*\bcommon\b[^"]*"|'[^']*\bcommon\b[^']*')[^>]*>[\s\S]*?<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi;
-  while ((match = sectionHeading.exec(html))) {
-    const attrs = match[1];
-    const body = match[2];
-    if (!/<img\b/i.test(body) && !hasAttr(attrs, "data-icon-optional")) {
-      errors.push(`${rel(file)}: major section heading lacks an icon: "${stripTags(body)}".`);
-    }
-  }
-
-  const raidSummary = /<details\b[^>]*class=(?:"[^"]*\braid-encounter\b[^"]*"|'[^']*\braid-encounter\b[^']*')[^>]*>\s*<summary\b([^>]*)>([\s\S]*?)<\/summary>/gi;
-  while ((match = raidSummary.exec(html))) {
-    const attrs = match[1];
-    const body = match[2];
-    if (!/<img\b/i.test(body) && !hasAttr(attrs, "data-icon-optional")) {
-      errors.push(`${rel(file)}: raid encounter summary lacks an icon: "${stripTags(body)}".`);
-    }
-  }
 }
 
 function inspectCandidateNames(html, file) {
@@ -187,6 +168,39 @@ function countEntityUsage(allHtml) {
   notes.push(`${used}/${entities.length} registry entities appear in the six guide pages.`);
 }
 
+function runIconDensityReleaseAudit() {
+  if (!release) return;
+  if (iconDensityStatus === "grandfathered") {
+    warnings.push(`Complexity-based icon approval is grandfathered for ${config.specName}. This exception is only for an existing baseline guide and must not be copied to a new guide.`);
+    return;
+  }
+  if (iconDensityStatus !== "required") {
+    errors.push(`Invalid iconDensityStatus "${iconDensityStatus}". New and updated guides default to "required"; only an explicitly documented existing baseline may use "grandfathered".`);
+    return;
+  }
+
+  const analyzer = path.resolve(root, "tools/analyze-guide-icon-density.mjs");
+  const result = spawnSync(process.execPath, [
+    analyzer,
+    "--config", rel(configFile),
+    "--policy", iconDensityPolicyFile,
+    "--enforce"
+  ], {
+    cwd: root,
+    stdio: "inherit"
+  });
+
+  if (result.error) {
+    errors.push(`Could not run the rendered icon-density audit: ${result.error.message}`);
+    return;
+  }
+  if (result.status !== 0) {
+    errors.push(`Complexity-based icon approval failed. Install jsdom with "npm install --no-save --no-package-lock jsdom@24" if the analyzer could not start, then correct the reported density, coverage, or concentration failures.`);
+    return;
+  }
+  notes.push("Complexity-based rendered icon approval passed as part of the release audit.");
+}
+
 let allHtml = "";
 for (const file of pages) {
   if (!fs.existsSync(file)) {
@@ -211,7 +225,7 @@ if (!fs.existsSync(tooltipPath)) {
   for (const required of ["linkPhrases", "loadWowheadTooltips", "wow.zamimg.com/js/tooltips.js", "data-wowhead", "iconizeEntities"]) {
     if (!script.includes(required)) errors.push(`${rel(tooltipPath)}: missing required generated tooltip feature: ${required}.`);
   }
-  if (/todo spell|todo item|["\']?id["\']?\s*:\s*0\b/i.test(script) && release) errors.push(`${rel(tooltipPath)}: release audit found placeholder or zero IDs.`);
+  if (/todo spell|todo item|["']?id["']?\s*:\s*0\b/i.test(script) && release) errors.push(`${rel(tooltipPath)}: release audit found placeholder or zero IDs.`);
 }
 
 if (!entities.length) {
@@ -220,6 +234,8 @@ if (!entities.length) {
 }
 
 countEntityUsage(allHtml);
+if (release && errors.length === 0) runIconDensityReleaseAudit();
+else if (release && iconDensityStatus !== "grandfathered") notes.push("Rendered icon approval was deferred because an earlier release-audit error must be fixed first.");
 
 console.log(`Spec guide audit: ${config.specName}`);
 notes.forEach((note) => console.log(`  INFO  ${note}`));
