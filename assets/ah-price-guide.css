@@ -387,7 +387,7 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
   background: rgba(var(--section-ah-rgb), .045);
 }
 body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected > td {
-  background: linear-gradient(180deg, rgba(var(--section-ah-rgb), .23), rgba(var(--section-ah-rgb), .09)) !important;
+  background: linear-gradient(180deg, rgba(var(--section-ah-rgb), .09), rgba(var(--section-ah-rgb), .23)) !important;
   border-bottom-color: rgba(var(--section-ah-rgb), .52);
 }
 body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected > td:first-child {
@@ -440,7 +440,7 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
   body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected {
     border-color: rgba(var(--section-ah-rgb), .72);
     background:
-      linear-gradient(180deg, rgba(var(--section-ah-rgb), .16), rgba(var(--section-ah-rgb), .055) 58%, var(--surface-section));
+      linear-gradient(180deg, var(--surface-section), rgba(var(--section-ah-rgb), .055) 42%, rgba(var(--section-ah-rgb), .16));
     box-shadow:
       inset 4px 0 var(--section-ah-accent),
       0 0 0 2px rgba(var(--section-ah-rgb), .12),
