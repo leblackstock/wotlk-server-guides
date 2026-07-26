@@ -29,14 +29,34 @@ jobs:
       - name: Install temporary DOM analyzer
         run: npm install --no-save --no-package-lock jsdom@24
 
-      - name: Analyze rendered guide icons
+      - name: Analyze rendered baseline
         run: |
-          node tools/analyze-guide-icon-density.mjs --out icon-density-report.json | tee icon-density-report.md
+          mkdir -p icon-density-reports
+          node tools/analyze-guide-icon-density.mjs \
+            --policy templates/spec-guide/icon-density-policy.json \
+            --out icon-density-reports/reference-families.json \
+            | tee icon-density-reports/reference-families.md
 
-      - name: Upload icon-density report
+      - name: Enforce opted-in guide configs
+        shell: bash
+        run: |
+          shopt -s nullglob
+          for config in templates/spec-guide/*.config.json; do
+            enabled=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(String(c.enforceIconDensity === true));' "$config")
+            if [[ "$enabled" != "true" ]]; then
+              continue
+            fi
+            slug=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(c.specSlug);' "$config")
+            node tools/analyze-guide-icon-density.mjs \
+              --config "$config" \
+              --policy templates/spec-guide/icon-density-policy.json \
+              --enforce \
+              --out "icon-density-reports/${slug}.json" \
+              | tee "icon-density-reports/${slug}.md"
+          done
+
+      - name: Upload icon-density reports
         uses: actions/upload-artifact@v4
         with:
           name: icon-density-report
-          path: |
-            icon-density-report.json
-            icon-density-report.md
+          path: icon-density-reports/
