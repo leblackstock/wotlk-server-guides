@@ -294,6 +294,11 @@ body[data-guide-section="addons"] {
 }
 .addon-details-button { flex: 1 1 auto; border: 1px solid var(--section-addons-accent); background: rgba(var(--section-addons-rgb), .13); color: var(--section-addons-soft); }
 .addon-download-link { border: 1px solid var(--border-default); background: rgba(255,255,255,.035); color: var(--text-primary); }
+.addon-prerequisite-link {
+  border-color: var(--section-addons-accent);
+  background: rgba(var(--section-addons-rgb), .08);
+  color: var(--section-addons-soft);
+}
 
 .addon-empty,
 .addon-noscript,

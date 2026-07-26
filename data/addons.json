@@ -4058,7 +4058,7 @@
         "Does not guarantee every custom item is already cached; a question-mark item may require closing AtlasLoot and reopening it."
       ],
       "generalSetup": [
-        "Not in the Hellscream Discord yet? Use Join the Hellscream Discord below, complete any required screening, then open the AtlasLoot download post and download AtlasLoot.7z.",
+        "Not in the Hellscream Discord yet? Use the Join the Hellscream Discord button above, complete any required screening, then return and open the AtlasLoot download post.",
         "Exit WoW completely, then remove or rename older Atlas and AtlasLoot folders so files from different releases cannot mix.",
         "Extract every included Atlas and AtlasLoot folder together into Interface\\AddOns; do not place the AtlasLoot.7z archive itself in AddOns.",
         "At character select, enable the bundled Atlas and AtlasLoot modules and confirm AtlasLoot reports the v5.11.04 base version.",
