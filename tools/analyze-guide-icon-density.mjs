@@ -226,12 +226,13 @@ function complexityLabel(score, policy) {
 
 function derivedBudget(score, rule, floorOverride = null) {
   const floor = floorOverride ?? Number(rule.floor || 0);
-  const minimum = Math.max(floor, Math.ceil(score * Number(rule.minimumRatio || 0)));
-  const preferredMin = Math.max(minimum, Math.ceil(score * Number(rule.preferredMinimumRatio ?? rule.minimumRatio ?? 0)));
-  const preferredMax = Math.max(preferredMin, Math.ceil(score * Number(rule.preferredMaximumRatio ?? rule.maximumRatio ?? 1)));
-  const calculatedMaximum = Math.ceil(score * Number(rule.maximumRatio || 1) + Number(rule.maximumPadding || 0));
   const absoluteMaximum = Number(rule.absoluteMaximum || Number.MAX_SAFE_INTEGER);
-  const maximum = Math.max(preferredMax, Math.min(absoluteMaximum, calculatedMaximum));
+  const rawMinimum = Math.max(floor, Math.ceil(score * Number(rule.minimumRatio || 0)));
+  const calculatedMaximum = Math.ceil(score * Number(rule.maximumRatio || 1) + Number(rule.maximumPadding || 0));
+  const maximum = Math.min(absoluteMaximum, Math.max(rawMinimum, calculatedMaximum));
+  const minimum = Math.min(rawMinimum, maximum);
+  const preferredMin = Math.min(maximum, Math.max(minimum, Math.ceil(score * Number(rule.preferredMinimumRatio ?? rule.minimumRatio ?? 0))));
+  const preferredMax = Math.min(maximum, Math.max(preferredMin, Math.ceil(score * Number(rule.preferredMaximumRatio ?? rule.maximumRatio ?? 1))));
   return { minimum, preferredMin, preferredMax, maximum };
 }
 
