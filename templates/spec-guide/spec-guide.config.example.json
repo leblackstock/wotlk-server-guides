@@ -16,6 +16,7 @@
   "enforceIconDensity": true,
   "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
   "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
   "cacheKey": "20260725",
   "guideDescription": "Tank with active mitigation, planned cooldowns, reliable threat, and encounter-specific utility.",
   "classAccent": "#C41F3B",
