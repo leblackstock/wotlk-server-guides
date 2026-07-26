@@ -396,12 +396,17 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
 body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selected > td:last-child {
   box-shadow: inset -1px 0 rgba(var(--section-ah-rgb), .34);
 }
-body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse {
-  animation: ah-row-pulse 1.35s ease-out 1;
+body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse > td {
+  animation: ah-row-pulse-cell 1.1s ease-out 1;
 }
-@keyframes ah-row-pulse {
-  0%, 34% { filter: brightness(1.42); }
-  100% { filter: none; }
+@keyframes ah-row-pulse-cell {
+  0%, 22% {
+    filter: brightness(1.75);
+    box-shadow: inset 0 0 24px rgba(var(--section-ah-rgb), .34);
+  }
+  100% {
+    filter: none;
+  }
 }
 
 .ah-guide-heading {
@@ -450,11 +455,31 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
     border-bottom-color: transparent !important;
     box-shadow: none !important;
   }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse {
+    animation: ah-row-pulse-card 1.1s ease-out 1;
+  }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse > td {
+    animation: none;
+  }
+  @keyframes ah-row-pulse-card {
+    0%, 22% {
+      filter: brightness(1.75);
+      box-shadow:
+        inset 4px 0 var(--section-ah-accent),
+        inset 0 0 28px rgba(var(--section-ah-rgb), .34),
+        0 0 0 2px rgba(var(--section-ah-rgb), .24),
+        0 10px 24px rgba(0,0,0,.26);
+    }
+    100% {
+      filter: none;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selectable > td { transition: none; }
-  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse { animation: none; }
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse,
+  body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-pulse > td { animation: none; }
 }
 
 @media print {
