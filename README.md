@@ -5,6 +5,7 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 ## Structure
 
 - `index.html` - main guide hub
+- `auction-house.html` - Auction House search and price-guide browser
 - `guides/` - individual self-contained HTML guide pages
 - `assets/` - shared assets for the guide hub
 - `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
@@ -12,7 +13,7 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 
 ## Update The AH Search Index
 
-The hub search reads a generated index of every item row in the AH guides. Regenerate it after adding, removing, renaming, or repricing AH items:
+The main-hub and Auction House searches read a generated index of every item row in the AH guides. The generator discovers those guides from `auction-house.html`. Regenerate it after adding, removing, renaming, or repricing AH items:
 
 ```powershell
 python scripts/build-ah-search-index.py
@@ -31,14 +32,14 @@ Search results link to the exact item row. Every AH guide therefore loads `asset
 1. Save the guide HTML in `guides/`.
 2. Use a clean lowercase kebab-case filename, such as `alchemy-materials-ah-price-guide.html`.
 3. Keep the guide self-contained unless it intentionally uses a shared asset.
-4. Add a link and short description to `index.html`.
+4. Add AH pricing guides to `auction-house.html`; add gameplay or reference guides to `index.html`.
 5. Include the standard player-made disclaimer near the bottom of the guide.
 6. Use public wording such as `our server`, `this server`, or `the server`. Avoid second-person server wording.
 
 ## Rename Files Safely
 
 1. Rename the file in `guides/` using lowercase kebab-case.
-2. Update the matching link in `index.html`.
+2. Update the matching link in `auction-house.html` or `index.html`.
 3. Search the repo for the old filename and update any remaining references.
 4. Open the hub locally and click the renamed guide link.
 
@@ -80,7 +81,7 @@ https://leblackstock.github.io/wotlk-server-guides/
 
 ## Pre-Publish Checks
 
-- Every guide link on `index.html` should open.
+- Every guide link on `index.html` and `auction-house.html` should open.
 - Every guide should have a `Guide Hub` link back to `../index.html`.
 - No public-facing page should use second-person server wording.
 - No local machine paths should appear in published files.
