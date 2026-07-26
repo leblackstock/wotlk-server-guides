@@ -182,15 +182,34 @@ Dense mode must still pass all calculated limits.
 - Verify icon filenames.
 - Decorative icons use empty alt text, `aria-hidden="true"`, and a clean failure fallback such as `onerror="this.remove()"`.
 
-## 10. Approval commands
+## 10. Permanent build and release workflow
 
-Install the temporary rendered-DOM analyzer when needed:
+New production configs use:
+
+```json
+"iconDensityStatus": "required",
+"iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+"entityIconMode": "selective",
+"allowDenseEntityIcons": false
+```
+
+The permanent rules are:
+
+- Missing `iconDensityStatus` defaults to `required`.
+- The production generator refuses to create a new guide marked `grandfathered`.
+- The ordinary draft audit does not force a final icon count while content is still changing.
+- The release audit automatically invokes this rendered analyzer with `--enforce`.
+- GitHub Actions independently analyzes every retained production config by default.
+- A new guide cannot opt out by deleting or changing one boolean.
+- A future exception requires a deliberate central workflow change in a reviewed pull request, not a self-declared config value.
+
+Install the rendered-DOM dependency when working locally:
 
 ```powershell
 npm install --no-save --no-package-lock jsdom@24
 ```
 
-Analyze one guide family:
+Run the analyzer directly while designing:
 
 ```powershell
 node tools/analyze-guide-icon-density.mjs `
@@ -198,16 +217,13 @@ node tools/analyze-guide-icon-density.mjs `
   --policy templates/spec-guide/icon-density-policy.json
 ```
 
-Enforce approval before release:
+Run the canonical release gate:
 
 ```powershell
-node tools/analyze-guide-icon-density.mjs `
-  --config templates/spec-guide/my-spec.config.json `
-  --policy templates/spec-guide/icon-density-policy.json `
-  --enforce
+node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json --release
 ```
 
-The report shows:
+That single release command runs the entity, link, macro, icon-asset, placeholder, and complexity-based rendered icon checks. The report shows:
 
 - family and page complexity tiers
 - opportunity scores and score breakdowns
@@ -216,10 +232,10 @@ The report shows:
 - location and coverage results
 - concentration failures and review notes
 
-The GitHub Actions workflow runs the same rendered analysis for retained configs with `"enforceIconDensity": true`.
-
 ## 11. Existing guides
 
-Protection Paladin, Holy Paladin, and Blood Death Knight supplied the original visual baseline. They are not silently rewritten by this policy.
+Protection Paladin, Holy Paladin, and Blood Death Knight supplied the original visual baseline. Their public pages are not silently rewritten by this policy.
 
-Future guide families must pass the opportunity-based standard. A deliberate exception requires a pull-request explanation identifying the failed threshold and why the exception improves readability.
+The retained Blood Death Knight config carries the one explicit grandfathered marker because its dense inline-icon pass predates the permanent complexity budget. That exception is documented in the config and is not accepted by the new-guide generator.
+
+Every future guide family defaults to and must pass the opportunity-based standard.

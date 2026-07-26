@@ -8,7 +8,9 @@ node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.js
 node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.json
 ```
 
-Do not use `tools/create-spec-guide.mjs` by itself for a production guide. That command creates the structural scaffold, but it does not create the verified class entity registry, rebuild the phrase-linking tooltip script, or add the mandatory entity and icon-density audit gates.
+Do not use `tools/create-spec-guide.mjs` by itself for a production guide. That compatibility command routes into the same complete production workflow, but `create-complete-spec-guide.mjs` is the canonical entrypoint.
+
+The production generator treats complexity-based icon approval as mandatory. A missing `iconDensityStatus` defaults to `required`, and the generator refuses to create a new guide marked `grandfathered`.
 
 Then follow these documents in order:
 
@@ -27,11 +29,12 @@ npm install --no-save --no-package-lock jsdom@24
 node tools/analyze-guide-icon-density.mjs --config templates/spec-guide/my-spec.config.json --policy templates/spec-guide/icon-density-policy.json
 ```
 
-Before release:
+Before release, run one canonical command:
 
 ```powershell
 node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json --release
-node tools/analyze-guide-icon-density.mjs --config templates/spec-guide/my-spec.config.json --policy templates/spec-guide/icon-density-policy.json --enforce
 ```
 
-Both release audits must pass. The visible Wowhead mouseovers and a representative spread of contextual and inline icons must still be spot-checked in a browser.
+The release audit automatically invokes and enforces the rendered complexity-based icon analysis. CI independently runs the same analyzer for every production guide config unless that exact pre-existing baseline is explicitly documented as `grandfathered`.
+
+A release cannot pass by omitting an icon-density flag. Visible Wowhead mouseovers and a representative spread of contextual and inline icons must still be spot-checked in a browser.

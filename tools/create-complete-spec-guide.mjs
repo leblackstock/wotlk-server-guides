@@ -16,6 +16,11 @@ if (!configArg) {
 const root = process.cwd();
 const configFile = path.resolve(root, configArg);
 const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
+const iconDensityStatus = config.iconDensityStatus || "required";
+if (iconDensityStatus !== "required") {
+  throw new Error("The production guide generator only accepts iconDensityStatus=\"required\". Grandfathering is reserved for a specifically documented guide that already existed before the complexity-based approval workflow.");
+}
+
 const registryFile = config.entityRegistryFile || `data/${config.classSlug}-entities.json`;
 const tooltipFile = config.tooltipFile || `${config.classSlug}-tooltips.js`;
 const policyFile = config.iconDensityPolicyFile || "templates/spec-guide/icon-density-policy.json";
@@ -33,7 +38,7 @@ if (generator.status !== 0) process.exit(generator.status ?? 1);
 if (dryRun) {
   if (!fs.existsSync(registryPath)) console.log(`[dry-run] ${registryFile}`);
   console.log(`[dry-run] rebuild assets/${tooltipFile} from ${registryFile}`);
-  console.log(`[dry-run] extend internal/${config.specSlug}-implementation-checklist.md with entity and icon-density audit gates`);
+  console.log(`[dry-run] extend internal/${config.specSlug}-implementation-checklist.md with entity and permanent icon-density audit gates`);
   process.exit(0);
 }
 
@@ -66,9 +71,9 @@ const entityChecklist = `
 - [ ] Confirm every page falls inside its calculated contextual-icon range
 - [ ] Confirm required coverage passes only for structures that actually exist
 - [ ] Confirm inline entity icons stay inside the calculated link-based allowance and below 25 per 1,000 words
-- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig}\`
-- [ ] Run \`node tools/analyze-guide-icon-density.mjs --config ${relativeConfig} --policy ${policyFile}\`
-- [ ] Run both audits in release/enforcement mode before final review
+- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig}\` during drafting
+- [ ] Run \`node tools/analyze-guide-icon-density.mjs --config ${relativeConfig} --policy ${policyFile}\` while tuning visual density
+- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig} --release\`; this automatically runs and enforces the rendered complexity-based icon audit
 `;
 if (fs.existsSync(checklistPath)) {
   const current = fs.readFileSync(checklistPath, "utf8");

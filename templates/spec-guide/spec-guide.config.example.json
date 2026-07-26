@@ -13,7 +13,7 @@
   "createTooltipScript": true,
   "entityRegistryFile": "data/death-knight-entities.json",
   "tooltipFile": "death-knight-tooltips.js",
-  "enforceIconDensity": true,
+  "iconDensityStatus": "required",
   "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
   "entityIconMode": "selective",
   "allowDenseEntityIcons": false,

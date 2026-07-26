@@ -8,7 +8,9 @@ on:
       - "assets/**"
       - "data/**"
       - "templates/spec-guide/**"
+      - "tools/audit-spec-guide.mjs"
       - "tools/analyze-guide-icon-density.mjs"
+      - "tools/create-complete-spec-guide.mjs"
       - ".github/workflows/icon-density-analysis.yml"
 
 permissions:
@@ -29,6 +31,12 @@ jobs:
       - name: Install temporary DOM analyzer
         run: npm install --no-save --no-package-lock jsdom@24
 
+      - name: Validate workflow scripts
+        run: |
+          node --check tools/audit-spec-guide.mjs
+          node --check tools/analyze-guide-icon-density.mjs
+          node --check tools/create-complete-spec-guide.mjs
+
       - name: Analyze rendered baseline
         run: |
           mkdir -p icon-density-reports
@@ -37,16 +45,24 @@ jobs:
             --out icon-density-reports/reference-families.json \
             | tee icon-density-reports/reference-families.md
 
-      - name: Enforce opted-in guide configs
+      - name: Enforce every production guide config
         shell: bash
         run: |
           shopt -s nullglob
           for config in templates/spec-guide/*.config.json; do
-            enabled=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(String(c.enforceIconDensity === true));' "$config")
-            if [[ "$enabled" != "true" ]]; then
+            status=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(c.iconDensityStatus || "required");' "$config")
+            slug=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(c.specSlug);' "$config")
+
+            if [[ "$status" == "grandfathered" ]]; then
+              echo "Skipping grandfathered baseline: $slug"
               continue
             fi
-            slug=$(node -e 'const c=require("./"+process.argv[1]); process.stdout.write(c.specSlug);' "$config")
+
+            if [[ "$status" != "required" ]]; then
+              echo "::error file=$config::iconDensityStatus must be required or the specifically approved grandfathered baseline."
+              exit 1
+            fi
+
             node tools/analyze-guide-icon-density.mjs \
               --config "$config" \
               --policy templates/spec-guide/icon-density-policy.json \
@@ -54,6 +70,9 @@ jobs:
               --out "icon-density-reports/${slug}.json" \
               | tee "icon-density-reports/${slug}.md"
           done
+
+      - name: Verify release-audit routing
+        run: node tools/audit-spec-guide.mjs templates/spec-guide/blood-death-knight.config.json --release
 
       - name: Upload icon-density reports
         uses: actions/upload-artifact@v4

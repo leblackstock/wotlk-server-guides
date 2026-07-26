@@ -49,6 +49,29 @@ node tools/build-wowhead-tooltips.mjs data/death-knight-entities.json assets/dea
 
 The generator refuses to overwrite existing paths unless `--force` is supplied. Treat `--force` as a demolition lever, not a convenience switch.
 
+## Permanent icon-density release gate
+
+Every new production config uses:
+
+```json
+"iconDensityStatus": "required",
+"iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+"entityIconMode": "selective",
+"allowDenseEntityIcons": false
+```
+
+Rules:
+
+- Omitting `iconDensityStatus` still defaults to `required`.
+- The complete production generator rejects a new config marked `grandfathered`.
+- `entityIconMode: "selective"` is the default for new guides.
+- Dense inline icons require `entityIconMode: "dense"` and `allowDenseEntityIcons: true`, and must still pass the calculated limits.
+- The complexity-based budget comes from the rendered guide’s actual sections, cards, playbooks, talent/glyph groups, encounter groups, and length. It is not assigned manually by role or class.
+- `audit-spec-guide.mjs --release` automatically runs the rendered analyzer with `--enforce`.
+- CI enforces every retained `*.config.json` by default. It does not depend on an opt-in boolean.
+
+`grandfathered` is reserved for an explicitly documented guide that already existed before this workflow became permanent. It must not be copied into a new spec config.
+
 ## Entity registry requirements
 
 The class registry is the source of truth for every named game entity used by any spec of that class.
@@ -123,7 +146,7 @@ Entity registry entries may also carry an icon filename. The generated tooltip s
 <h3 data-entity-icon="Exact Ability Name">Ability timing</h3>
 ```
 
-Major section headings and raid encounter summaries are checked by the audit tool and require icons unless explicitly marked `data-icon-optional`.
+Do not require every heading or encounter to carry an icon. The rendered complexity analyzer calculates coverage only for structures that actually exist and approves the guide from its opportunity score, per-page budgets, structure coverage, and concentration limits.
 
 ## Talent build
 
@@ -184,14 +207,17 @@ After generation:
 3. Inventory every named game entity into the class registry.
 4. Rebuild the tooltip script.
 5. Run the draft audit.
-6. Resolve all entity, icon, link, and macro warnings.
-7. Run the release audit.
-8. Add the Guide Hub card only when the guide family is review-ready.
+6. Run the standalone icon analyzer while tuning the visual system.
+7. Resolve all entity, icon, link, macro, density, coverage, and concentration warnings.
+8. Run the release audit. It automatically enforces the complexity-based rendered icon analysis.
+9. Add the Guide Hub card only when the guide family is review-ready.
 
 Commands:
 
 ```powershell
 node tools/build-wowhead-tooltips.mjs data/death-knight-entities.json assets/death-knight-tooltips.js
 node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json
+npm install --no-save --no-package-lock jsdom@24
+node tools/analyze-guide-icon-density.mjs --config templates/spec-guide/my-spec.config.json --policy templates/spec-guide/icon-density-policy.json
 node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json --release
 ```
