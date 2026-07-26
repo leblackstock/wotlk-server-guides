@@ -245,6 +245,10 @@ assert.equal(atlasLoot.compatibility.downloadVersion, "Hellscream 2026-02-05 · 
 assert.equal(atlasLoot.compatibility.hellscreamTested, true);
 assert.equal(atlasLoot.compatibility.hellscreamTestedDate, "2026-07-25");
 assert.equal(atlasLoot.download.url, "https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493");
+assert.equal(atlasLoot.prerequisiteLinks[0].url, "https://discord.gg/pe69BfNZG5");
+assert.equal(atlasLoot.prerequisiteLinks[0].label, "Join the Hellscream Discord ↗");
+assert.equal(atlasLoot.download.label, "Open the AtlasLoot Download Post ↗");
+assert.match(atlasLoot.generalSetup[0], /Join the Hellscream Discord/);
 assert.equal(atlasLoot.alternateDownloads[0].url, "https://warperia.com/addon-wotlk/atlasloot-enhanced/");
 assert.ok(atlasLoot.tags.includes("tested-hellscream"));
 assert.ok(atlasLoot.tags.includes("server-sensitive"));

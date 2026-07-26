@@ -310,12 +310,20 @@
       details.type = "button";
       details.setAttribute("aria-haspopup", "dialog");
       details.addEventListener("click", () => openDialog(addon.id, details, true));
-      const download = make("a", "addon-download-link", "Download ↗");
+      actions.append(details);
+      (addon.prerequisiteLinks || []).forEach((source) => {
+        const link = make("a", "addon-download-link", source.cardLabel || source.label || `Open ${source.source} ↗`);
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        actions.append(link);
+      });
+      const download = make("a", "addon-download-link", addon.download.cardLabel || "Download ↗");
       download.href = addon.download.url;
       download.target = "_blank";
       download.rel = "noopener";
       download.setAttribute("aria-label", `Download ${addon.name} from ${addon.download.source} (opens in a new tab)`);
-      actions.append(details, download);
+      actions.append(download);
       card.append(actions);
       return card;
     }
@@ -420,7 +428,14 @@
       dialogContent.append(badges);
 
       const actions = make("div", "addon-dialog-actions");
-      const download = make("a", "addon-dialog-download", `Download from ${addon.download.source} ↗`);
+      (addon.prerequisiteLinks || []).forEach((source) => {
+        const link = make("a", "addon-download-link", source.label || `Open ${source.source} ↗`);
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        actions.append(link);
+      });
+      const download = make("a", "addon-dialog-download", addon.download.label || `Download from ${addon.download.source} ↗`);
       download.href = addon.download.url;
       download.target = "_blank";
       download.rel = "noopener";
@@ -438,6 +453,9 @@
         actions.append(link);
       });
       dialogContent.append(actions);
+      (addon.prerequisiteLinks || []).forEach((source) => {
+        dialogContent.append(make("p", "addon-source-meta", `${source.source} · ${source.notes}`));
+      });
       dialogContent.append(make("p", "addon-source-meta", `${addon.download.source} · ${addon.compatibility.downloadVersion} · ${addon.download.notes}`));
       (addon.alternateDownloads || []).forEach((source) => {
         dialogContent.append(make("p", "addon-source-meta", `${source.source} fallback · ${source.notes}`));
