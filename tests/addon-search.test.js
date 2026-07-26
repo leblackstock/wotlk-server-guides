@@ -249,6 +249,8 @@ assert.equal(atlasLoot.prerequisiteLinks[0].url, "https://discord.gg/pe69BfNZG5"
 assert.equal(atlasLoot.prerequisiteLinks[0].label, "Join the Hellscream Discord ↗");
 assert.equal(atlasLoot.download.label, "Open the AtlasLoot Download Post ↗");
 assert.match(atlasLoot.generalSetup[0], /Join the Hellscream Discord/);
+assert.match(atlasLoot.generalSetup[0], /button above/);
+assert.doesNotMatch(atlasLoot.generalSetup[0], /below/);
 assert.equal(atlasLoot.alternateDownloads[0].url, "https://warperia.com/addon-wotlk/atlasloot-enhanced/");
 assert.ok(atlasLoot.tags.includes("tested-hellscream"));
 assert.ok(atlasLoot.tags.includes("server-sensitive"));

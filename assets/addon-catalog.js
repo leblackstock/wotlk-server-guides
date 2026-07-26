@@ -312,7 +312,7 @@
       details.addEventListener("click", () => openDialog(addon.id, details, true));
       actions.append(details);
       (addon.prerequisiteLinks || []).forEach((source) => {
-        const link = make("a", "addon-download-link", source.cardLabel || source.label || `Open ${source.source} ↗`);
+        const link = make("a", "addon-download-link addon-prerequisite-link", source.cardLabel || source.label || `Open ${source.source} ↗`);
         link.href = source.url;
         link.target = "_blank";
         link.rel = "noopener";
@@ -429,7 +429,7 @@
 
       const actions = make("div", "addon-dialog-actions");
       (addon.prerequisiteLinks || []).forEach((source) => {
-        const link = make("a", "addon-download-link", source.label || `Open ${source.source} ↗`);
+        const link = make("a", "addon-download-link addon-prerequisite-link", source.label || `Open ${source.source} ↗`);
         link.href = source.url;
         link.target = "_blank";
         link.rel = "noopener";
