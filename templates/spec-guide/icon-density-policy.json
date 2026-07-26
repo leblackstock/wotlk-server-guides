@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "family": {
+    "contextual": {
+      "min": 120,
+      "preferredMin": 125,
+      "preferredMax": 140,
+      "max": 150
+    },
+    "contextualPer1000Words": {
+      "min": 15,
+      "preferredMin": 17,
+      "preferredMax": 21,
+      "max": 23
+    },
+    "inlineEntity": {
+      "min": 0,
+      "preferredMax": 140,
+      "max": 180
+    },
+    "inlinePer1000Words": {
+      "min": 0,
+      "preferredMax": 20,
+      "max": 25
+    },
+    "maxPageContextualShare": 0.38
+  },
+  "pages": {
+    "pve-guide": { "min": 15, "max": 30 },
+    "playing": { "min": 24, "max": 45 },
+    "setting-up": { "min": 20, "max": 35 },
+    "gearing": { "min": 15, "max": 30 },
+    "gear-targets": { "min": 12, "max": 25 },
+    "raiding": { "min": 15, "max": 30 }
+  },
+  "placements": {
+    "sectionHeadings": { "min": 12, "max": 45 },
+    "chapterCards": { "min": 5, "max": 5 },
+    "engineAndSummary": { "min": 6, "max": 14 },
+    "playbooksAndActions": { "min": 15, "max": 36 },
+    "talentsAndGlyphs": { "min": 8, "max": 18 },
+    "tables": { "min": 0, "max": 30 },
+    "serverNotes": { "min": 1, "max": 3 },
+    "raidSummaries": { "min": 6, "max": 24 },
+    "cardHeadings": { "min": 8, "max": 36 },
+    "otherContextual": { "min": 0, "max": 10 }
+  },
+  "coverage": {
+    "majorSections": 0.65,
+    "chapterCards": 1,
+    "engineNodes": 0.75,
+    "playbookCards": 0.75,
+    "raidEncounters": 0.75
+  },
+  "inlinePlacement": {
+    "maxParagraphShare": 0.1
+  }
+}

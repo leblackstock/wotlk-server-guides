@@ -18,9 +18,11 @@ const configFile = path.resolve(root, configArg);
 const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
 const registryFile = config.entityRegistryFile || `data/${config.classSlug}-entities.json`;
 const tooltipFile = config.tooltipFile || `${config.classSlug}-tooltips.js`;
+const policyFile = config.iconDensityPolicyFile || "templates/spec-guide/icon-density-policy.json";
 const registryPath = path.resolve(root, registryFile);
 const tooltipPath = path.resolve(root, "assets", tooltipFile);
 const checklistPath = path.resolve(root, "internal", `${config.specSlug}-implementation-checklist.md`);
+const relativeConfig = path.relative(root, configFile).replaceAll(path.sep, "/");
 
 const generator = spawnSync(process.execPath, [path.resolve(root, "tools/create-spec-guide-scaffold.mjs"), ...args], {
   cwd: root,
@@ -31,7 +33,7 @@ if (generator.status !== 0) process.exit(generator.status ?? 1);
 if (dryRun) {
   if (!fs.existsSync(registryPath)) console.log(`[dry-run] ${registryFile}`);
   console.log(`[dry-run] rebuild assets/${tooltipFile} from ${registryFile}`);
-  console.log(`[dry-run] extend internal/${config.specSlug}-implementation-checklist.md with entity audit gates`);
+  console.log(`[dry-run] extend internal/${config.specSlug}-implementation-checklist.md with entity and icon-density audit gates`);
   process.exit(0);
 }
 
@@ -58,9 +60,14 @@ const entityChecklist = `
 - [ ] Rebuild assets/${tooltipFile} with \`node tools/build-wowhead-tooltips.mjs ${registryFile} assets/${tooltipFile}\`
 - [ ] Confirm registered phrases link in ordinary prose without manual wrappers
 - [ ] Confirm Wowhead's WotLK tooltip engine loads and mouseovers work
-- [ ] Add icons to major headings, talent panels, playbook choices, gear/consumable callouts, and raid summaries where appropriate
-- [ ] Run \`node tools/audit-spec-guide.mjs ${path.relative(root, configFile).replaceAll(path.sep, "/")}\`
-- [ ] Run the same audit with \`--release\` before final review
+- [ ] Use selective inline icons by default; dense mode requires reviewer approval
+- [ ] Add contextual icons across headings, chapter cards, engines, playbooks, talents/glyphs, Building, Equipping, and raid summaries
+- [ ] Confirm each page falls inside the budget in templates/spec-guide/ICON_DENSITY_APPROVAL.md
+- [ ] Confirm the family has 120–150 contextual icons, with 125–140 preferred
+- [ ] Confirm inline entity icons stay at or below 180 and 25 per 1,000 words
+- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig}\`
+- [ ] Run \`node tools/analyze-guide-icon-density.mjs --config ${relativeConfig} --policy ${policyFile}\`
+- [ ] Run both audits in release/enforcement mode before final review
 `;
 if (fs.existsSync(checklistPath)) {
   const current = fs.readFileSync(checklistPath, "utf8");
