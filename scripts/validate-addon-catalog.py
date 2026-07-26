@@ -158,6 +158,13 @@ def main() -> int:
         parsed = urlparse(download_url)
         if parsed.scheme != "https" or not parsed.netloc:
             fail(errors, f"{addon_id}: invalid HTTPS download URL {download_url!r}")
+        for prerequisite in addon.get("prerequisiteLinks", []):
+            prerequisite_url = prerequisite.get("url", "")
+            parsed_prerequisite = urlparse(prerequisite_url)
+            if parsed_prerequisite.scheme != "https" or not parsed_prerequisite.netloc:
+                fail(errors, f"{addon_id}: invalid prerequisite HTTPS URL {prerequisite_url!r}")
+            if not prerequisite.get("source", "").strip() or not prerequisite.get("label", "").strip() or not prerequisite.get("notes", "").strip():
+                fail(errors, f"{addon_id}: prerequisite links need source, label, and notes")
         for alternate in addon.get("alternateDownloads", []):
             alternate_url = alternate.get("url", "")
             parsed_alternate = urlparse(alternate_url)

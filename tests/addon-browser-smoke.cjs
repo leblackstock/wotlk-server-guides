@@ -177,6 +177,9 @@ async function noOverflow(page, label) {
     assert.match(atlasLootText, /Crimson Crusade reputation items/);
     assert.match(atlasLootText, /closing AtlasLoot.*reopening/i);
     assert.match(atlasLootText, /Stock AtlasLoot v5\.11\.04 fallback/);
+    assert.match(atlasLootText, /Join the Hellscream Discord/);
+    assert.match(atlasLootText, /Open the AtlasLoot Download Post/);
+    assert.equal(await desktop.locator('a[href="https://discord.gg/pe69BfNZG5"]').count() > 0, true);
     assert.equal(await desktop.locator('a[href="https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493"]').count() > 0, true);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/atlasloot-enhanced/"]').count() > 0, true);
     await noOverflow(desktop, "AtlasLoot details drawer");

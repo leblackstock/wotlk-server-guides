@@ -4058,7 +4058,7 @@
         "Does not guarantee every custom item is already cached; a question-mark item may require closing AtlasLoot and reopening it."
       ],
       "generalSetup": [
-        "Open the Hellscream Discord post below and download AtlasLoot.7z; Discord sign-in and membership in the server may be required.",
+        "Not in the Hellscream Discord yet? Use Join the Hellscream Discord below, complete any required screening, then open the AtlasLoot download post and download AtlasLoot.7z.",
         "Exit WoW completely, then remove or rename older Atlas and AtlasLoot folders so files from different releases cannot mix.",
         "Extract every included Atlas and AtlasLoot folder together into Interface\\AddOns; do not place the AtlasLoot.7z archive itself in AddOns.",
         "At character select, enable the bundled Atlas and AtlasLoot modules and confirm AtlasLoot reports the v5.11.04 base version.",
@@ -4128,7 +4128,7 @@
         "client": "3.3.5a",
         "hellscreamTested": true,
         "hellscreamTestedDate": "2026-07-25",
-        "lastReviewed": "2026-07-25",
+        "lastReviewed": "2026-07-26",
         "downloadVersion": "Hellscream 2026-02-05 · base v5.11.04",
         "verifiedDownload": true,
         "serverSensitive": true,
@@ -4140,13 +4140,16 @@
           "The February 2026 maintainer post says some Burning Crusade heroic items and Crimson Crusade reputation items remain missing, with more server content still to be added.",
           "Older maintainer guidance notes that a question-mark item may resolve after closing the AtlasLoot window and reopening it.",
           "The Discord message is the authoritative source post and may require signing in or joining the Hellscream Discord before its attachment is visible.",
-          "The inspected AtlasLoot.7z package is 13,036,815 bytes with SHA-256 c28eaa13b2c73d00f885178cae5f0eb7f4936b1e4d7c85afea5da8eceec36a73."
+          "The inspected AtlasLoot.7z package is 13,036,815 bytes with SHA-256 c28eaa13b2c73d00f885178cae5f0eb7f4936b1e4d7c85afea5da8eceec36a73.",
+          "The current official Hellscream Connect page links to Discord invite pe69BfNZG5; the guide presents that join step before the private download-post link."
         ]
       },
       "download": {
         "url": "https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493",
         "source": "Hellscream Discord",
-        "notes": "February 5, 2026 message containing the recommended AtlasLoot.7z Hellscream package; sign-in or server membership may be required."
+        "notes": "February 5, 2026 message containing the recommended AtlasLoot.7z package. Join the Hellscream Discord first if the post is inaccessible.",
+        "label": "Open the AtlasLoot Download Post ↗",
+        "cardLabel": "Open Download Post ↗"
       },
       "alternateDownloads": [
         {
@@ -4162,7 +4165,16 @@
       },
       "screenshots": [],
       "videos": [],
-      "relatedGuides": []
+      "relatedGuides": [],
+      "prerequisiteLinks": [
+        {
+          "url": "https://discord.gg/pe69BfNZG5",
+          "source": "Official Hellscream website",
+          "label": "Join the Hellscream Discord ↗",
+          "cardLabel": "Join Discord ↗",
+          "notes": "Official invite linked from the Hellscream Connect page. Join the server and complete any required screening before opening the AtlasLoot post."
+        }
+      ]
     }
   ],
   "contextResolution": {
