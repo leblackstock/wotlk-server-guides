@@ -39,6 +39,36 @@ body {
   padding: 28px 18px 48px;
 }
 
+.hub-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.hub-nav a,
+.hub-nav span {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.hub-nav a:hover,
+.hub-nav a:focus-visible {
+  border-color: rgba(114, 227, 255, 0.60);
+  color: var(--cyan);
+  outline: none;
+}
+
 header {
   border: 1px solid var(--line);
   background: linear-gradient(135deg, #1b232d 0%, #151025 54%, #121820 100%);
@@ -227,11 +257,21 @@ h1 {
 }
 
 .ah-search-count {
+  display: block;
   flex: 0 0 auto;
+  margin-top: 2px;
   color: #8f9ca8;
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
+}
+
+.ah-search-input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 
 .ah-search-input-wrap {
@@ -282,6 +322,32 @@ h1 {
   border-color: rgba(114, 227, 255, 0.72);
   background: #0d151c;
   box-shadow: 0 0 0 3px rgba(114, 227, 255, 0.10), 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.ah-hub-browse {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border: 1px solid var(--cyan);
+  border-radius: 10px;
+  background: rgba(114, 227, 255, 0.06);
+  color: #bcefff;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+}
+
+.ah-hub-browse:hover,
+.ah-hub-browse:focus-visible {
+  border-color: var(--gold2);
+  background: rgba(114, 227, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(114, 227, 255, 0.08);
+  color: #fff;
+  outline: none;
 }
 
 .ah-search-status {
@@ -706,6 +772,10 @@ footer {
   text-align: center;
 }
 
+footer a {
+  color: var(--cyan);
+}
+
 @media (max-width: 1040px) {
   .guide-grid,
   .compact-grid {
@@ -768,10 +838,19 @@ footer {
   }
 
   .ah-search-heading,
+  .ah-search-input-row,
   .ah-search-input-wrap,
   .ah-search-status,
   .ah-search-results {
     grid-column: 1;
+  }
+
+  .ah-search-input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ah-hub-browse {
+    width: 100%;
   }
 
   .guide-card {
