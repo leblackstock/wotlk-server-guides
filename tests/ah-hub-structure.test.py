@@ -64,6 +64,34 @@ def main() -> int:
         if required_id not in ah_hub.ids:
             errors.append(f"auction-house.html is missing #{required_id}")
 
+    for required_id in ("addon-hub-search-input", "addon-hub-search-status", "addon-hub-search-results", "addon-hub-browse"):
+        if required_id not in main_hub.ids:
+            errors.append(f"index.html is missing #{required_id}")
+
+    main_ah_chips = [
+        href
+        for href, classes in main_hub.links
+        if "library-hub-chip" in classes and "addons.html" not in href
+    ]
+    if len(main_ah_chips) != 4:
+        errors.append(f"Main AH search must contain four popular-guide chips; found {len(main_ah_chips)}")
+
+    ah_page_chips = [
+        href
+        for href, classes in ah_hub.links
+        if "library-hub-chip" in classes
+    ]
+    if ah_page_chips != main_ah_chips:
+        errors.append("Main and dedicated AH searches must use the same popular-guide chips")
+
+    addon_chips = [
+        href
+        for href, classes in main_hub.links
+        if "library-hub-chip" in classes and "addons.html" in href
+    ]
+    if len(addon_chips) != 4:
+        errors.append(f"Main Addon search must contain four popular-filter chips; found {len(addon_chips)}")
+
     main_ah_cards = [
         href
         for href, classes in main_hub.links
@@ -94,7 +122,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print("Auction House hub validation passed: main search entry plus 16-guide browser.")
+    print("Hub validation passed: matching AH and Addon searches, quick chips, and 16-guide AH browser.")
     return 0
 
 

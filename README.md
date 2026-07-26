@@ -9,6 +9,7 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `guides/` - individual self-contained HTML guide pages
 - `assets/` - shared assets for the guide hub
 - `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
+- `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `README.md` - maintenance notes
 
 ## Update The AH Search Index
