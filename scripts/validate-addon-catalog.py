@@ -223,6 +223,7 @@ def main() -> int:
     html_files = [
         ROOT / "guides" / "addons.html",
         ROOT / "index.html",
+        ROOT / "auction-house.html",
         ROOT / "guides" / "protection-paladin-setting-up.html",
         ROOT / "internal" / "color-system.html",
     ]
