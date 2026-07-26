@@ -36,9 +36,37 @@
 .dropped-scrolls-section h3 {
   margin: 20px 0 8px;
 }
+.ah-category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.ah-back-to-top {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 9px;
+  border: 1px solid rgba(var(--section-ah-rgb), .30);
+  border-radius: 999px;
+  background: rgba(var(--section-ah-rgb), .07);
+  color: var(--section-ah-soft);
+  font-size: .76rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+.ah-back-to-top:hover,
+.ah-back-to-top:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), .72);
+  background: rgba(var(--section-ah-rgb), .15);
+  color: var(--text);
+}
 
 @media print {
-  .ah-jump-nav { display: none !important; }
+  .ah-jump-nav,
+  .ah-back-to-top { display: none !important; }
 }
 
 /* Auction House lookup and category cards on the Guide Hub. */

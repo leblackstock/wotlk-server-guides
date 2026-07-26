@@ -59,6 +59,8 @@ class AnchorParser(HTMLParser):
         super().__init__()
         self.ids: set[str] = set()
         self.jump_targets: list[str] = []
+        self.category_headings = 0
+        self.back_to_top_targets: list[str] = []
         self.in_jump_nav = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -67,8 +69,12 @@ class AnchorParser(HTMLParser):
             self.ids.add(values["id"])
         if tag == "nav" and "ah-jump-nav" in values.get("class", "").split():
             self.in_jump_nav = True
+        if tag == "h2" and "ah-category-heading" in values.get("class", "").split():
+            self.category_headings += 1
         if tag == "a" and self.in_jump_nav and values.get("href", "").startswith("#"):
             self.jump_targets.append(values["href"][1:])
+        if tag == "a" and "ah-back-to-top" in values.get("class", "").split():
+            self.back_to_top_targets.append(values.get("href", ""))
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "nav" and self.in_jump_nav:
@@ -163,6 +169,18 @@ def main() -> int:
     missing_targets = [target for target in anchors.jump_targets if target not in anchors.ids]
     if missing_targets:
         fail(f"Jump links target missing categories: {', '.join(missing_targets)}")
+    if anchors.category_headings != 25 or anchors.back_to_top_targets != ["#top"] * 25:
+        fail("Every category heading must have one right-aligned Back to top control")
+    if "top" not in anchors.ids:
+        fail("Back to top controls need a real #top destination")
+
+    inscription_sections = {
+        entry["section"]
+        for entry in index["items"]
+        if entry["href"].startswith("./guides/inscription-materials-ah-price-guide.html#")
+    }
+    if any("Top" in section for section in inscription_sections):
+        fail("Back to top control text leaked into AH search section names")
 
     print("Dropped-scroll catalog, prices, search rows, tooltips, and jump links are valid.")
     return 0

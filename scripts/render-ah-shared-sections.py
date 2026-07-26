@@ -146,9 +146,24 @@ def load_vendor_config() -> dict:
     return config
 
 
-def render_vendor_section(template: str, item_keys: list[str], catalog: dict) -> str:
+def render_vendor_section(
+    template: str,
+    item_keys: list[str],
+    catalog: dict,
+    include_back_to_top: bool = False,
+) -> str:
     rows = "\n".join(render_vendor_row(key, catalog[key]) for key in item_keys)
-    return template.replace("{{ROWS}}", rows)
+    back_to_top = (
+        '<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a>'
+        if include_back_to_top
+        else ""
+    )
+    heading_class = ' class="ah-category-heading"' if include_back_to_top else ""
+    return (
+        template.replace("{{ROWS}}", rows)
+        .replace("{{HEADING_CLASS}}", heading_class)
+        .replace("{{BACK_TO_TOP}}", back_to_top)
+    )
 
 
 def load_crafted_config() -> dict:
@@ -297,7 +312,8 @@ def render_crafted_section(config: dict, section: dict) -> str:
     rows = "\n".join(render_crafted_row(config, key) for key in section["items"])
     return (
         f'<section class="common crafted-market-section" id="{section_id}">\n'
-        f'<h2>{title}</h2>\n'
+        f'<h2 class="ah-category-heading">{title}'
+        f'<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>\n'
         f'<p class="small">{description}</p>\n'
         f'<div class="table-wrap"><table class="ah-market-table ah-market-table--standard" '
         f'data-table-family="market"><thead><tr>'
@@ -410,6 +426,7 @@ def transform_guide(
             vendor_template,
             guide_config["items"],
             vendor_config["catalog"],
+            bool(guide_config.get("back_to_top")),
         )
         source = VENDOR_BLOCK.sub(expected, source, count=1)
     elif vendor_matches:
