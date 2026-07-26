@@ -1,58 +1,69 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "opportunities": {
+    "weights": {
+      "majorSections": 1,
+      "chapterCards": 1,
+      "engineNodes": 0.75,
+      "playbookCards": 1,
+      "talentGlyphUnits": 0.75,
+      "raidEncounters": 1,
+      "cardHeadings": 0.5,
+      "serverNotes": 1
+    },
+    "wordBlockSize": 750,
+    "wordBlockWeight": 0.75,
+    "tiers": {
+      "simpleMax": 55,
+      "standardMax": 85
+    }
+  },
   "family": {
-    "contextual": {
-      "min": 120,
-      "preferredMin": 125,
-      "preferredMax": 140,
-      "max": 150
-    },
-    "contextualPer1000Words": {
-      "min": 15,
-      "preferredMin": 17,
-      "preferredMax": 21,
-      "max": 23
-    },
-    "inlineEntity": {
-      "min": 0,
-      "preferredMax": 140,
-      "max": 180
-    },
-    "inlinePer1000Words": {
-      "min": 0,
-      "preferredMax": 20,
-      "max": 25
-    },
-    "maxPageContextualShare": 0.38
+    "floor": 28,
+    "minimumRatio": 0.62,
+    "preferredMinimumRatio": 0.75,
+    "preferredMaximumRatio": 1.05,
+    "maximumRatio": 1.25,
+    "maximumPadding": 8,
+    "absoluteMaximum": 150,
+    "warningBelowPer1000Words": 6,
+    "maximumPer1000Words": 24
   },
   "pages": {
-    "pve-guide": { "min": 15, "max": 30 },
-    "playing": { "min": 24, "max": 45 },
-    "setting-up": { "min": 20, "max": 35 },
-    "gearing": { "min": 15, "max": 30 },
-    "gear-targets": { "min": 12, "max": 25 },
-    "raiding": { "min": 15, "max": 30 }
-  },
-  "placements": {
-    "sectionHeadings": { "min": 12, "max": 45 },
-    "chapterCards": { "min": 5, "max": 5 },
-    "engineAndSummary": { "min": 6, "max": 14 },
-    "playbooksAndActions": { "min": 15, "max": 36 },
-    "talentsAndGlyphs": { "min": 8, "max": 18 },
-    "tables": { "min": 0, "max": 30 },
-    "serverNotes": { "min": 1, "max": 3 },
-    "raidSummaries": { "min": 6, "max": 24 },
-    "cardHeadings": { "min": 8, "max": 36 },
-    "otherContextual": { "min": 0, "max": 10 }
+    "smallPageWordThreshold": 350,
+    "smallPageFloor": 2,
+    "standardPageFloor": 4,
+    "minimumRatio": 0.5,
+    "preferredMinimumRatio": 0.7,
+    "preferredMaximumRatio": 1.1,
+    "maximumRatio": 1.5,
+    "maximumPadding": 3,
+    "absoluteMaximum": 45
   },
   "coverage": {
-    "majorSections": 0.65,
+    "majorSections": 0.6,
     "chapterCards": 1,
-    "engineNodes": 0.75,
-    "playbookCards": 0.75,
-    "raidEncounters": 0.75
+    "engineNodes": 0.65,
+    "playbookCards": 0.7,
+    "talentGlyphUnits": 0.6,
+    "raidEncounters": 0.7,
+    "cardHeadings": 0.55,
+    "serverNotes": 1
   },
-  "inlinePlacement": {
+  "concentration": {
+    "applyPageShareAfterContextualIcons": 20,
+    "maxPageShare": 0.45,
+    "maxTableShare": 0.35,
+    "maxOtherContextualShare": 0.15
+  },
+  "inlineEntity": {
+    "preferredLinkRatio": 0.25,
+    "hardLinkRatio": 0.45,
+    "minimumPreferredMaximum": 16,
+    "minimumHardMaximum": 24,
+    "absolutePreferredMaximum": 120,
+    "absoluteHardMaximum": 180,
+    "maximumPer1000Words": 25,
     "maxParagraphShare": 0.1
   }
 }
