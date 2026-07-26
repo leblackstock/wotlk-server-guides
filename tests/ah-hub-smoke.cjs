@@ -19,8 +19,10 @@ async function noOverflow(page, label) {
 
     assert.equal(await desktop.locator(".ah-hub-browse").getAttribute("href"), "./auction-house.html");
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 0, "AH guide cards should not remain on the main hub");
+    assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 4);
+    assert.equal(await desktop.locator(".library-hub-addons .library-hub-chip").count(), 4);
 
-    const searchBox = await desktop.locator(".ah-search-input-wrap").boundingBox();
+    const searchBox = await desktop.locator(".library-hub-ah .ah-search-input-wrap").boundingBox();
     const browseButton = await desktop.locator(".ah-hub-browse").boundingBox();
     assert.ok(searchBox && browseButton, "Search and Browse controls should be visible");
     assert.ok(Math.abs(searchBox.y - browseButton.y) <= 1, "Browse button should align with the search bar");
@@ -31,9 +33,22 @@ async function noOverflow(page, label) {
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Dark Iron Scraps/);
     await noOverflow(desktop, "Desktop main hub");
 
+    await desktop.locator("#addon-hub-search-input").fill("healbt");
+    await desktop.waitForSelector("#addon-hub-search-results .addon-hub-search-result");
+    assert.equal(await desktop.locator("#addon-hub-search-results .ah-search-item-name").first().textContent(), "HealBot");
+    assert.match(await desktop.locator("#addon-hub-search-results .addon-hub-search-result").first().getAttribute("href"), /#addon=healbot$/);
+    assert.equal(await desktop.locator("#addon-hub-browse").getAttribute("href"), "./guides/addons.html?q=healbt");
+
+    const addonSearchBox = await desktop.locator(".library-hub-addons .ah-search-input-wrap").boundingBox();
+    const addonBrowseButton = await desktop.locator("#addon-hub-browse").boundingBox();
+    assert.ok(addonSearchBox && addonBrowseButton, "Addon Search and Browse controls should be visible");
+    assert.ok(Math.abs(addonSearchBox.y - addonBrowseButton.y) <= 1, "Addon Browse button should align with the search bar");
+    assert.equal(Math.round(addonBrowseButton.height), 44, "Addon Browse button should match the search-bar height");
+
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should list all sixteen guides");
+    assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 4);
     assert.match(await desktop.locator("#ah-search-count").textContent(), /^\d+ items across 16 guides$/);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
@@ -45,7 +60,11 @@ async function noOverflow(page, label) {
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/index.html`, { waitUntil: "networkidle" });
     await mobile.waitForSelector(".ah-hub-browse");
-    assert.equal(await mobile.locator(".ah-search-input-row").evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), 1);
+    const mobileSearchRows = mobile.locator(".library-hub-search-row");
+    assert.equal(await mobileSearchRows.count(), 2);
+    for (let index = 0; index < 2; index += 1) {
+      assert.equal(await mobileSearchRows.nth(index).evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), 1);
+    }
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
