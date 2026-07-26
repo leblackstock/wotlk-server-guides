@@ -93,6 +93,8 @@ class AHGuideParser(HTMLParser):
         self.capture_target_buyout = False
         self.target_buyout_parts: list[str] = []
         self.quality = "common"
+        self.market_source = "market"
+        self.profession = ""
         self.items: list[dict[str, str | int]] = []
         self.occurrences: dict[str, int] = {}
 
@@ -106,6 +108,8 @@ class AHGuideParser(HTMLParser):
             self.in_tbody = True
         elif tag == "tr" and self.in_tbody:
             self.in_row = True
+            self.market_source = values.get("data-market-source", "market")
+            self.profession = values.get("data-profession", "")
             self.cell_index = -1
             self.cell_parts = []
             self.cell_columns = []
@@ -187,6 +191,8 @@ class AHGuideParser(HTMLParser):
                 "target": clean_text(self.target_buyout_parts) or "—",
                 "demand": demand or "—",
                 "quality": self.quality,
+                "marketSource": self.market_source,
+                "profession": self.profession,
                 "href": f"./guides/{self.filename}#{fragment}",
                 "occurrence": occurrence,
             }
