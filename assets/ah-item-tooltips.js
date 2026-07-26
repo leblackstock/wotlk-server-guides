@@ -217,7 +217,7 @@
   async function initialize() {
     if (!scriptUrl) return;
     try {
-      await loadScript(new URL("ah-item-ids.js?v=20260725-vendor-pricing-v1", scriptUrl).href, "data-ah-item-id-map");
+      await loadScript(new URL("ah-item-ids.js?v=20260725-vendor-rows-v2", scriptUrl).href, "data-ah-item-id-map");
       ensureStyles();
       decorateWithin(document);
       observeNewResults();

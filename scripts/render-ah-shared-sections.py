@@ -63,25 +63,37 @@ def source_cost(item: dict) -> str:
     )
 
 
+def target_bid(target_copper: int) -> int:
+    """Match the 85% target-bid convention used by the regular AH rows."""
+    return max(1, round(target_copper * 0.85))
+
+
 def render_row(key: str, item: dict) -> str:
     name = html.escape(item["name"])
     source_label = html.escape(item["source_label"])
-    target = format_money(int(item["target_copper"]))
+    target_copper = int(item["target_copper"])
+    bid = format_money(target_bid(target_copper))
+    target = format_money(target_copper)
     stack = html.escape(item["stack"])
     notes = html.escape(item["notes"])
+    cost = source_cost(item)
     return (
         f'        <tr data-vendor-key="{html.escape(key)}">\n'
         f'          <td data-column="item" data-label="Item">'
         f'<strong class="q-common">{name}</strong>'
         f'<div class="mini">{source_label}</div></td>\n'
-        f'          <td class="vendor-cost" data-column="source" data-label="Source / Cost">'
-        f'{source_cost(item)}</td>\n'
-        f'          <td class="vendor-post" data-column="target" data-label="Target Buyout">'
-        f'<span class="vendor-target buyout">{target}</span>'
-        f'<span class="mini">per item</span></td>\n'
-        f'          <td data-column="stack" data-label="Suggested Stack">{stack}</td>\n'
-        f'          <td class="muted" data-column="notes" data-label="Posting Notes">'
-        f'{notes}</td>\n'
+        f'          <td data-column="target" data-label="Target Price">'
+        f'<div class="pricepair target">\n'
+        f'            <div><span class="label">Bid</span>'
+        f'<span class="bid">{bid}</span></div>\n'
+        f'            <div><span class="label">Buyout</span>'
+        f'<span class="buyout">{target}</span></div>\n'
+        f'          </div></td>\n'
+        f'          <td data-column="stack" data-label="Stack Size">{stack}</td>\n'
+        f'          <td data-column="demand" data-label="Demand">'
+        f'<span class="demand low">Low</span></td>\n'
+        f'          <td data-column="notes" data-label="Use / Selling Notes">'
+        f'<strong>Source / cost:</strong> {cost}. {notes}</td>\n'
         f"        </tr>"
     )
 

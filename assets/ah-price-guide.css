@@ -95,32 +95,8 @@ body[data-guide-section="auction-house"] table.ah-market-table [data-column="sou
 body[data-guide-section="auction-house"] table.ah-market-table [data-column="notes"] { min-width: 280px; }
 body[data-guide-section="auction-house"] table.ah-reference-table [data-column="item"] { min-width: 190px; }
 body[data-guide-section="auction-house"] table.ah-reference-table [data-column="notes"] { min-width: 260px; }
-body[data-guide-section="auction-house"] table.ah-vendor-table { min-width: 940px; }
-body[data-guide-section="auction-house"] table.ah-vendor-table [data-column="source"] { min-width: 220px; }
-body[data-guide-section="auction-house"] table.ah-vendor-table [data-column="target"] {
-  min-width: 145px;
-  border-left: 1px solid rgba(var(--market-price-target-buyout-rgb), .24);
-  border-right: 1px solid rgba(var(--market-price-target-buyout-rgb), .16);
-  background: rgba(var(--market-price-target-buyout-rgb), .055);
-}
-body[data-guide-section="auction-house"] table.ah-vendor-table th[data-column="target"] {
-  color: var(--market-price-target-buyout-soft);
-  background: rgba(var(--market-price-target-buyout-rgb), .13);
-}
-body[data-guide-section="auction-house"] table.ah-vendor-table [data-column="stack"] {
-  min-width: 122px;
-  white-space: nowrap;
-}
-body[data-guide-section="auction-house"] .vendor-cost { color: var(--text-primary); }
-body[data-guide-section="auction-house"] .vendor-target {
-  display: block;
-  color: var(--market-price-target-buyout-soft);
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1.2;
-  text-align: left;
-  white-space: nowrap;
-}
+body[data-guide-section="auction-house"] table.ah-vendor-table { min-width: 820px; }
+body[data-guide-section="auction-house"] table.ah-vendor-table [data-column="notes"] { min-width: 340px; }
 
 body[data-guide-section="auction-house"] .pricepair { min-width: 118px; max-width: 150px; border: 1px solid var(--line); border-radius: 11px; padding: 7px 8px; background: rgba(255,255,255,.025); }
 body[data-guide-section="auction-house"] .pricepair div { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 2px 0; }
