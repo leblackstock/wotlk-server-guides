@@ -79,7 +79,7 @@ def main() -> int:
 
         vendor_match = re.search(
             r"<!-- AH_VENDOR_SECTION_START -->\s*"
-            r"<section class=\"common vendor-compact\" data-ah-template=\"vendor-convenience-v1\">"
+            r"<section class=\"common vendor-compact\" data-ah-template=\"vendor-convenience-v2\">"
             r"(.*?)</section>\s*<!-- AH_VENDOR_SECTION_END -->",
             source,
             re.DOTALL,
@@ -122,8 +122,14 @@ def main() -> int:
             if not row_match:
                 fail(f"{path.name}: missing row for {key}")
             row = row_match.group(1)
-            if f'<span class="vendor-target buyout">{expected_target}</span>' not in row:
+            if '<div class="pricepair target">' not in row:
+                fail(f"{path.name}: {item['name']} does not use the standard price box")
+            if f'<span class="buyout">{expected_target}</span>' not in row:
                 fail(f"{path.name}: wrong target for {item['name']}")
+            if '<span class="demand low">Low</span>' not in row:
+                fail(f"{path.name}: {item['name']} is missing the standard demand badge")
+            if "<strong>Source / cost:</strong>" not in row:
+                fail(f"{path.name}: {item['name']} is missing source cost in its notes")
 
     if used_keys != set(catalog):
         fail("Vendor catalog and guide usage do not match")
