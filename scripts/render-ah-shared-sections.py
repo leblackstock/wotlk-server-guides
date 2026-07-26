@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render canonical navigation, vendor, and crafted-market sections into AH guides."""
+"""Render canonical navigation, vendor, crafted-market, and dropped-scroll sections."""
 
 from __future__ import annotations
 
@@ -15,9 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
 VENDOR_DATA_PATH = ROOT / "data" / "ah-vendor-sections.json"
 CRAFTED_DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
+DROPPED_SCROLL_DATA_PATH = ROOT / "data" / "ah-dropped-scrolls.json"
 NAV_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "navigation.html"
 VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-section.html"
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
+DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
 
 NAV_BLOCK = re.compile(
@@ -36,6 +38,12 @@ CRAFTED_BLOCK = re.compile(
     r"<!-- AH_CRAFTED_SECTION_START -->\s*"
     r"<div class=\"ah-crafted-market\" data-ah-template=\"[^\"]+\">.*?</div>"
     r"\s*<!-- AH_CRAFTED_SECTION_END -->",
+    re.DOTALL,
+)
+DROPPED_SCROLL_BLOCK = re.compile(
+    r"<!-- AH_DROPPED_SCROLLS_START -->\s*"
+    r"<section class=\"common dropped-scrolls-section\".*?</section>"
+    r"\s*<!-- AH_DROPPED_SCROLLS_END -->",
     re.DOTALL,
 )
 LEGACY_INSCRIPTION_CRAFTED_BLOCK = re.compile(
@@ -79,6 +87,10 @@ def source_cost(item: dict) -> str:
 def target_bid(target_copper: int) -> int:
     """Match the 85% target-bid convention used by the regular AH rows."""
     return max(1, round(target_copper * 0.85))
+
+
+def anchor_slug(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", value.casefold()).strip("-")
 
 
 def render_vendor_row(key: str, item: dict) -> str:
@@ -182,6 +194,52 @@ def load_crafted_config() -> dict:
     return config
 
 
+def load_dropped_scroll_config() -> dict:
+    config = json.loads(DROPPED_SCROLL_DATA_PATH.read_text(encoding="utf-8"))
+    catalog = config.get("catalog", {})
+    rank_profiles = config.get("rank_profiles", {})
+    stat_profiles = config.get("stat_profiles", {})
+    guides = config.get("guides", {})
+    defaults = config.get("catalog_defaults", {})
+    if not catalog or not rank_profiles or not stat_profiles or not guides:
+        raise ValueError(
+            "Dropped-scroll data must define catalog, rank profiles, stat profiles, and guides"
+        )
+
+    item_ids: set[int] = set()
+    used: set[str] = set()
+    for key, item in catalog.items():
+        rank = str(item.get("rank", ""))
+        stat = item.get("stat")
+        if rank not in rank_profiles or stat not in stat_profiles:
+            raise KeyError(f"{key}: unknown dropped-scroll rank or stat profile")
+        item_id = int(item["item_id"])
+        if item_id <= 0 or item_id in item_ids:
+            raise ValueError(f"{key}: invalid or duplicate dropped-scroll item ID {item_id}")
+        item_ids.add(item_id)
+        merged = defaults | rank_profiles[rank] | stat_profiles[stat] | item
+        if (
+            merged.get("source_type") != "world-drop"
+            or not merged.get("tradeable")
+            or merged.get("binding") != "none"
+        ):
+            raise ValueError(f"{key}: scroll must be an unbound tradeable world drop")
+
+    for filename, guide in guides.items():
+        path = GUIDES_DIR / filename
+        if not path.is_file():
+            raise FileNotFoundError(f"Missing AH guide: {path.relative_to(ROOT)}")
+        for key in guide.get("items", []):
+            if key not in catalog:
+                raise KeyError(f"{filename} references unknown dropped scroll: {key}")
+            if key in used:
+                raise ValueError(f"Dropped scroll is used more than once: {key}")
+            used.add(key)
+    if used != set(catalog):
+        raise ValueError("Dropped-scroll catalog and guide usage do not match")
+    return config
+
+
 def render_price_pair(kind: str, buyout_copper: int) -> str:
     bid = format_money(target_bid(buyout_copper))
     buyout = format_money(buyout_copper)
@@ -234,10 +292,11 @@ def render_crafted_row(config: dict, key: str) -> str:
 
 def render_crafted_section(config: dict, section: dict) -> str:
     title = html.escape(section["title"])
+    section_id = html.escape(section.get("id") or anchor_slug(section["title"]))
     description = html.escape(section["description"])
     rows = "\n".join(render_crafted_row(config, key) for key in section["items"])
     return (
-        f'<section class="common crafted-market-section">\n'
+        f'<section class="common crafted-market-section" id="{section_id}">\n'
         f'<h2>{title}</h2>\n'
         f'<p class="small">{description}</p>\n'
         f'<div class="table-wrap"><table class="ah-market-table ah-market-table--standard" '
@@ -259,14 +318,84 @@ def render_crafted_market(template: str, guide: dict, config: dict) -> str:
     return template.replace("{{SECTIONS}}", sections)
 
 
+def dropped_scroll_item(config: dict, key: str) -> dict:
+    item = config["catalog"][key]
+    return (
+        config.get("catalog_defaults", {})
+        | config["rank_profiles"][str(item["rank"])]
+        | config["stat_profiles"][item["stat"]]
+        | item
+    )
+
+
+def render_dropped_scroll_row(config: dict, key: str) -> str:
+    item = dropped_scroll_item(config, key)
+    name = html.escape(item["name"])
+    rank = int(item["rank"])
+    stat = html.escape(item["stat"])
+    stack = html.escape(item["stack"])
+    demand = html.escape(item["demand"])
+    demand_class = html.escape(item["demand_class"])
+    notes = html.escape(item["notes"])
+    return (
+        f'<tr data-dropped-scroll-key="{html.escape(key)}" data-market-source="drop">'
+        f'<td data-column="item" data-label="Item"><strong class="q-common">{name}</strong>'
+        f'<div class="mini">World drop • Rank {rank} {stat} scroll</div></td>'
+        f'<td data-column="target" data-label="Target Price">'
+        f'{render_price_pair("target", int(item["target_copper"]))}</td>'
+        f'<td data-column="quick" data-label="Quick Price">'
+        f'{render_price_pair("quick", int(item["quick_copper"]))}</td>'
+        f'<td data-column="high" data-label="High / Scarce">'
+        f'{render_price_pair("high", int(item["high_copper"]))}</td>'
+        f'<td data-column="stack" data-label="Stack Size">{stack}</td>'
+        f'<td data-column="demand" data-label="Demand">'
+        f'<span class="demand {demand_class}">{demand}</span></td>'
+        f'<td data-column="notes" data-label="Use / Selling Notes">'
+        f'<strong>Source:</strong> Lower-level world drops, lockboxes, and reward containers. '
+        f"{notes}</td></tr>"
+    )
+
+
+def render_dropped_rank_table(config: dict, rank: int, item_keys: list[str]) -> str:
+    rows = "\n".join(
+        render_dropped_scroll_row(config, key)
+        for key in item_keys
+        if int(config["catalog"][key]["rank"]) == rank
+    )
+    return (
+        f'<h3>Rank {rank}</h3>\n'
+        f'<div class="table-wrap"><table class="ah-market-table ah-market-table--standard" '
+        f'data-table-family="market"><thead><tr>'
+        f'<th data-column="item">Item</th><th data-column="target">Target Price</th>'
+        f'<th data-column="quick">Quick Price</th><th data-column="high">High / Scarce</th>'
+        f'<th data-column="stack">Stack Size</th><th data-column="demand">Demand</th>'
+        f'<th data-column="notes">Use / Selling Notes</th></tr></thead>'
+        f"<tbody>{rows}</tbody></table></div>"
+    )
+
+
+def render_dropped_scroll_section(template: str, guide: dict, config: dict) -> str:
+    rank_tables = "\n".join(
+        render_dropped_rank_table(config, rank, guide["items"])
+        for rank in range(1, 8)
+    )
+    return (
+        template.replace("{{TITLE}}", html.escape(guide["title"]))
+        .replace("{{DESCRIPTION}}", html.escape(guide["description"]))
+        .replace("{{RANK_TABLES}}", rank_tables)
+    )
+
+
 def transform_guide(
     source: str,
     filename: str,
     nav_template: str,
     vendor_template: str,
     crafted_template: str,
+    dropped_scroll_template: str,
     vendor_config: dict,
     crafted_config: dict,
+    dropped_scroll_config: dict,
 ) -> str:
     source, nav_count = NAV_BLOCK.subn(nav_template, source, count=1)
     if nav_count != 1:
@@ -302,6 +431,29 @@ def transform_guide(
             raise ValueError(f"{filename}: expected one crafted-market or legacy block")
     elif crafted_matches:
         raise ValueError(f"{filename}: crafted section exists but is absent from canonical data")
+
+    dropped_guide = dropped_scroll_config["guides"].get(filename)
+    dropped_matches = len(DROPPED_SCROLL_BLOCK.findall(source))
+    if dropped_guide:
+        expected = render_dropped_scroll_section(
+            dropped_scroll_template, dropped_guide, dropped_scroll_config
+        )
+        if dropped_matches == 1:
+            source = DROPPED_SCROLL_BLOCK.sub(expected, source, count=1)
+        elif dropped_matches == 0:
+            crafted_match = CRAFTED_BLOCK.search(source)
+            if not crafted_match:
+                raise ValueError(f"{filename}: missing dropped-scroll insertion point")
+            source = (
+                source[: crafted_match.start()]
+                + expected
+                + "\n"
+                + source[crafted_match.start() :]
+            )
+        else:
+            raise ValueError(f"{filename}: expected one dropped-scroll block")
+    elif dropped_matches:
+        raise ValueError(f"{filename}: dropped-scroll section is absent from canonical data")
     return source
 
 
@@ -312,9 +464,11 @@ def main() -> int:
 
     vendor_config = load_vendor_config()
     crafted_config = load_crafted_config()
+    dropped_scroll_config = load_dropped_scroll_config()
     nav_template = NAV_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     vendor_template = VENDOR_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     crafted_template = CRAFTED_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
+    dropped_scroll_template = DROPPED_SCROLL_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     changed: list[str] = []
 
     guide_paths = sorted(GUIDES_DIR.glob(AH_GUIDE_GLOB))
@@ -329,8 +483,10 @@ def main() -> int:
             nav_template,
             vendor_template,
             crafted_template,
+            dropped_scroll_template,
             vendor_config,
             crafted_config,
+            dropped_scroll_config,
         )
         if expected == source:
             continue

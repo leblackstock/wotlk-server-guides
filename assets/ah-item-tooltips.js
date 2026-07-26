@@ -217,7 +217,7 @@
   async function initialize() {
     if (!scriptUrl) return;
     try {
-      await loadScript(new URL("ah-item-ids.js?v=20260726-crafted-market-v1", scriptUrl).href, "data-ah-item-id-map");
+      await loadScript(new URL("ah-item-ids.js?v=20260726-inscription-scrolls-v1", scriptUrl).href, "data-ah-item-id-map");
       ensureStyles();
       decorateWithin(document);
       observeNewResults();
