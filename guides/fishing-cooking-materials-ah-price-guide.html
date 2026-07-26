@@ -3,11 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Fishing + Cooking Materials AH Price Guide — Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260724-ah-mobile-select-v2">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260725-vendor-pricing-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="fishing-cooking-materials-ah-price-guide">
 <div class="wrap">
-<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<!-- AH_SHARED_NAV_START -->
+<nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
+  <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+  <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
+</nav>
+<!-- AH_SHARED_NAV_END -->
 <header>
 <div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/fishing-cooking.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Fishing + Cooking Materials AH Price Guide</h1>
 <p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers raw fish, cooking meats, eggs, clams, pearls, old-world leveling mats, quest/convenience cooking drops, rare catches, rare fishing poles/devices, vendor supplies, plus a few finished prices for major raid foods and feasts.</p></div></div>
@@ -1537,7 +1542,7 @@ Many poles, hats, lines, and daily-bag rewards are personal/BoP under normal Wot
 <div class="gear-item ah-summary-card">
 <div class="gear-name"><strong class="q-common">Bright Baubles</strong><span class="gear-bonus purple ah-chip ah-chip--rare">+75</span></div>
 <div class="gear-type">Vendor lure</div>
-<div class="gear-tags ah-chip-row"><span class="gear-tag warn ah-chip ah-chip--warning">vendor item</span><span class="gear-tag rule ah-chip ah-chip--accent">vendor + tiny tip</span><span class="demand med">Low-Med</span></div>
+<div class="gear-tags ah-chip-row"><span class="gear-tag warn ah-chip ah-chip--warning">vendor item</span><span class="gear-tag rule ah-chip ah-chip--accent">5s each</span><span class="demand med">Low-Med</span></div>
 <p class="gear-note-line">Convenience listing only. Do not price like a rare lure.</p>
 </div>
 
@@ -1552,17 +1557,69 @@ Many poles, hats, lines, and daily-bag rewards are personal/BoP under normal Wot
 </div>
 </section>
 
-<section class="common vendor-compact">
-<h2>Vendor-only cooking / fishing supplies</h2>
-<p class="small">These are vendor goods or vendor-adjacent supplies. Use the AH only for convenience, not scarcity pricing. For campfires, use the server-specific spell <strong>Basic Campfire</strong> instead of buying Flint and Tinder.</p>
-<div class="table-wrap"><table class="ah-reference-table" data-table-family="reference"><thead><tr><th data-column="item">Item / Reference</th><th data-column="reference">Reference / Rule</th><th data-column="notes">Notes</th></tr></thead><tbody>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Simple Flour</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in old recipes. Buy from vendor when possible.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Mild Spices</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in old recipes. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Hot Spices</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in old recipes. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Soothing Spices</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in old recipes. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Refreshing Spring Water</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in old recipes. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Northern Spices</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Market item, not simple vendor</td><td class="muted" data-column="notes" data-label="Notes">Listed in Northrend cooking mats because it has real AH value.</td></tr></tbody></table></div>
+<!-- AH_VENDOR_SECTION_START -->
+<section class="common vendor-compact" data-ah-template="vendor-convenience-v1">
+  <h2>Vendor &amp; convenience items</h2>
+  <p class="small"><strong>Target Buyout is per item.</strong> Source / Cost shows what anchors the price. Coin-vendor entries include a modest convenience margin; daily-currency and drop items use their own low-pop market target. Verify unusual vendor costs on this server before posting a large quantity.</p>
+  <div class="table-wrap">
+    <table class="ah-reference-table ah-vendor-table" data-table-family="reference">
+      <thead>
+        <tr>
+          <th data-column="item">Item</th>
+          <th data-column="source">Source / Cost</th>
+          <th data-column="target">Target Buyout</th>
+          <th data-column="stack">Suggested Stack</th>
+          <th data-column="notes">Posting Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-vendor-key="bright-baubles">
+          <td data-column="item" data-label="Item"><strong class="q-common">Bright Baubles</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 2s 50c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">5s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Vendor fishing lure. Convenience price only; do not treat it as scarce.</td>
+        </tr>
+        <tr data-vendor-key="simple-flour">
+          <td data-column="item" data-label="Item"><strong class="q-common">Simple Flour</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 25c per 5 (5c each)</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Cooking reagent. Vendor cost is 25c per bundle of five.</td>
+        </tr>
+        <tr data-vendor-key="mild-spices">
+          <td data-column="item" data-label="Item"><strong class="q-common">Mild Spices</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 10c per 5 (2c each)</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Cooking reagent. Vendor cost is 10c per bundle of five.</td>
+        </tr>
+        <tr data-vendor-key="hot-spices">
+          <td data-column="item" data-label="Item"><strong class="q-common">Hot Spices</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 40c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Cooking reagent. Post in recipe-sized stacks.</td>
+        </tr>
+        <tr data-vendor-key="soothing-spices">
+          <td data-column="item" data-label="Item"><strong class="q-common">Soothing Spices</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s 60c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">4s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Cooking reagent. Post in recipe-sized stacks.</td>
+        </tr>
+        <tr data-vendor-key="refreshing-spring-water">
+          <td data-column="item" data-label="Item"><strong class="q-common">Refreshing Spring Water</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 25c per 5 (5c each)</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Starter Cooking reagent. Vendor cost is 25c per bundle of five.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+<!-- AH_VENDOR_SECTION_END -->
 
 <section class="common source-list"><h2>Sources</h2>
 <ul>
@@ -1600,4 +1657,4 @@ Many poles, hats, lines, and daily-bag rewards are personal/BoP under normal Wot
 </section>
 
 <footer>WotLK 3.3.5 Low-Pop Fishing + Cooking Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
-</div><script src="../assets/ah-search.js" defer></script></body></html>
+</div><script src="../assets/ah-search.js?v=20260725-vendor-pricing-v1" defer></script></body></html>

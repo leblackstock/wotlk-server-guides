@@ -3,11 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Skinning + Leatherworking Materials AH Price Guide — Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260724-ah-mobile-select-v2">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260725-vendor-pricing-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="skinning-leatherworking-materials-ah-price-guide">
 <div class="wrap">
-<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<!-- AH_SHARED_NAV_START -->
+<nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
+  <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+  <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
+</nav>
+<!-- AH_SHARED_NAV_END -->
 <header>
 <div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/skinning-leatherworking.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Skinning + Leatherworking Materials AH Price Guide</h1>
 <p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers Skinning and Leatherworking materials, leathers, hides, scales, chitin, furs, conversion checks, vendor supplies, plus a few finished prices for major leg armors, armor kits, and drums.</p></div></div>
@@ -453,17 +458,76 @@
 <div><span class="label">Buyout</span><span class="buyout">22g</span></div>
 </div></td><td data-column="stack" data-label="Stack Size">1 / 2 / 5</td><td data-column="demand" data-label="Demand"><span class="demand hi">Med-High</span></td><td data-column="notes" data-label="Use / Selling Notes">Useful group buff when no Druid mark is available. Demand depends on raid/group habits.</td></tr></tbody></table></div></section>
 
-<section class="common vendor-compact">
-<h2>Vendor-only Leatherworking supplies</h2>
-<p class="small">These are vendor goods or vendor-adjacent supplies. Use the AH only for convenience, not scarcity pricing.</p>
-<div class="table-wrap"><table class="ah-reference-table" data-table-family="reference"><thead><tr><th data-column="item">Item / Reference</th><th data-column="reference">Reference / Rule</th><th data-column="notes">Notes</th></tr></thead><tbody><tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Eternium Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in higher Leatherworking recipes. AH is convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Rune Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Common LW tailoring-style supply. Buy from vendor when possible.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Silken Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Old LW supply. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Heavy Silken Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Old LW supply. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Fine Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Low-level supply. Do not price as rare.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Salt</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in older hide curing paths. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Deeprock Salt</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">check AH</td><td class="muted" data-column="notes" data-label="Notes">Not always vendor-cheap depending on this server's source/rules. Keep as a small-stack old-world reagent.</td></tr></tbody></table></div>
+<!-- AH_VENDOR_SECTION_START -->
+<section class="common vendor-compact" data-ah-template="vendor-convenience-v1">
+  <h2>Vendor &amp; convenience items</h2>
+  <p class="small"><strong>Target Buyout is per item.</strong> Source / Cost shows what anchors the price. Coin-vendor entries include a modest convenience margin; daily-currency and drop items use their own low-pop market target. Verify unusual vendor costs on this server before posting a large quantity.</p>
+  <div class="table-wrap">
+    <table class="ah-reference-table ah-vendor-table" data-table-family="reference">
+      <thead>
+        <tr>
+          <th data-column="item">Item</th>
+          <th data-column="source">Source / Cost</th>
+          <th data-column="target">Target Buyout</th>
+          <th data-column="stack">Suggested Stack</th>
+          <th data-column="notes">Posting Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-vendor-key="eternium-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Eternium Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 3g each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">3g 75s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">High-level Leatherworking and Tailoring supply.</td>
+        </tr>
+        <tr data-vendor-key="rune-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Rune Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 50s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">75s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Common higher-level Leatherworking and Tailoring supply.</td>
+        </tr>
+        <tr data-vendor-key="silken-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Silken Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 5s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">10s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Tailoring and Leatherworking supply.</td>
+        </tr>
+        <tr data-vendor-key="heavy-silken-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Heavy Silken Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 20s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">30s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Tailoring and Leatherworking supply.</td>
+        </tr>
+        <tr data-vendor-key="fine-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Fine Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level profession supply. Post only in useful small stacks.</td>
+        </tr>
+        <tr data-vendor-key="salt">
+          <td data-column="item" data-label="Item"><strong class="q-common">Salt</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 50c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Older hide-curing reagent. Convenience price only.</td>
+        </tr>
+        <tr data-vendor-key="deeprock-salt">
+          <td data-column="item" data-label="Item"><strong class="q-common">Deeprock Salt</strong><div class="mini">Old-world elemental drop</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Farmed drop; no fixed vendor cost</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1g</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Used for the Refined Deeprock Salt path. Price it as a slow, scarce old-world reagent.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+<!-- AH_VENDOR_SECTION_END -->
 
 <section class="common source-list"><h2>Sources</h2>
 <ul>
@@ -483,4 +547,4 @@
 </section>
 
 <footer>WotLK 3.3.5 Low-Pop Skinning + Leatherworking Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-06</footer>
-</div><script src="../assets/ah-search.js" defer></script></body></html>
+</div><script src="../assets/ah-search.js?v=20260725-vendor-pricing-v1" defer></script></body></html>

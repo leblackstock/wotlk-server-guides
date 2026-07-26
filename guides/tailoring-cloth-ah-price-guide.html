@@ -3,11 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Tailoring / Cloth Materials AH Price Guide — Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260724-ah-mobile-select-v2">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260725-vendor-pricing-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="tailoring-cloth-ah-price-guide">
 <div class="wrap">
-<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<!-- AH_SHARED_NAV_START -->
+<nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
+  <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+  <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
+</nav>
+<!-- AH_SHARED_NAV_END -->
 <header>
 <div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/tailoring.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Tailoring / Cloth Materials AH Price Guide</h1>
 <p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Sorted with Northrend, rare, and high-value tailoring materials first.</p></div></div>
@@ -499,23 +504,90 @@
 
 </tbody></table></div></section>
 
-<section class="common vendor-compact">
-<h2>Vendor-only supplies</h2>
-<p class="small">These are vendor items. Use the AH only for convenience, not scarcity pricing.</p>
-<div class="table-wrap">
-<table class="ah-reference-table" data-table-family="reference">
-<thead><tr><th data-column="item">Item / Reference</th><th data-column="reference">Reference / Rule</th><th data-column="notes">Notes</th></tr></thead>
-<tbody>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Coarse Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Do not overpay.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Fine Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Silken Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Heavy Silken Thread</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Blue / Red / Green / Gray Dye</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Group together; no need for separate price rows.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Bleach</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Avoid trap AH prices.</td></tr>
-</tbody>
-</table>
-</div>
+<!-- AH_VENDOR_SECTION_START -->
+<section class="common vendor-compact" data-ah-template="vendor-convenience-v1">
+  <h2>Vendor &amp; convenience items</h2>
+  <p class="small"><strong>Target Buyout is per item.</strong> Source / Cost shows what anchors the price. Coin-vendor entries include a modest convenience margin; daily-currency and drop items use their own low-pop market target. Verify unusual vendor costs on this server before posting a large quantity.</p>
+  <div class="table-wrap">
+    <table class="ah-reference-table ah-vendor-table" data-table-family="reference">
+      <thead>
+        <tr>
+          <th data-column="item">Item</th>
+          <th data-column="source">Source / Cost</th>
+          <th data-column="target">Target Buyout</th>
+          <th data-column="stack">Suggested Stack</th>
+          <th data-column="notes">Posting Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-vendor-key="coarse-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Coarse Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 10c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Starter Tailoring supply. One-silver convenience pricing is already generous.</td>
+        </tr>
+        <tr data-vendor-key="fine-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Fine Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level profession supply. Post only in useful small stacks.</td>
+        </tr>
+        <tr data-vendor-key="silken-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Silken Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 5s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">10s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Tailoring and Leatherworking supply.</td>
+        </tr>
+        <tr data-vendor-key="heavy-silken-thread">
+          <td data-column="item" data-label="Item"><strong class="q-common">Heavy Silken Thread</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 20s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">30s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Tailoring and Leatherworking supply.</td>
+        </tr>
+        <tr data-vendor-key="blue-dye">
+          <td data-column="item" data-label="Item"><strong class="q-common">Blue Dye</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 50c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level Tailoring dye. Keep listings small.</td>
+        </tr>
+        <tr data-vendor-key="red-dye">
+          <td data-column="item" data-label="Item"><strong class="q-common">Red Dye</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 50c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level Tailoring dye. Keep listings small.</td>
+        </tr>
+        <tr data-vendor-key="green-dye">
+          <td data-column="item" data-label="Item"><strong class="q-common">Green Dye</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Profession-leveling dye. Convenience price only.</td>
+        </tr>
+        <tr data-vendor-key="gray-dye">
+          <td data-column="item" data-label="Item"><strong class="q-common">Gray Dye</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 3s 50c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">7s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Old-world Tailoring dye. Keep listings small.</td>
+        </tr>
+        <tr data-vendor-key="bleach">
+          <td data-column="item" data-label="Item"><strong class="q-common">Bleach</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 25c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Tailoring reagent. Post only as a convenience listing.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+<!-- AH_VENDOR_SECTION_END -->
 
 <section class="common source-list"><h2>Sources</h2>
 <ul>
@@ -534,4 +606,4 @@
 </section>
 
 <footer>WotLK 3.3.5 Low-Pop Tailoring / Cloth Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
-</div><script src="../assets/ah-search.js" defer></script></body></html>
+</div><script src="../assets/ah-search.js?v=20260725-vendor-pricing-v1" defer></script></body></html>

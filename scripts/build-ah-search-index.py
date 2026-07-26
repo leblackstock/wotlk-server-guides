@@ -84,6 +84,8 @@ class AHGuideParser(HTMLParser):
         self.in_row = False
         self.cell_index = -1
         self.cell_parts: list[list[str]] = []
+        self.cell_columns: list[str] = []
+        self.current_cell_column = ""
         self.capture_name = False
         self.name_parts: list[str] = []
         self.capture_mini = False
@@ -95,6 +97,7 @@ class AHGuideParser(HTMLParser):
         self.occurrences: dict[str, int] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = attr_map(attrs)
         classes = class_names(attrs)
         if tag == "h2":
             self.capture_heading = True
@@ -105,6 +108,8 @@ class AHGuideParser(HTMLParser):
             self.in_row = True
             self.cell_index = -1
             self.cell_parts = []
+            self.cell_columns = []
+            self.current_cell_column = ""
             self.name_parts = []
             self.mini_parts = []
             self.target_buyout_parts = []
@@ -112,13 +117,20 @@ class AHGuideParser(HTMLParser):
         elif tag == "td" and self.in_row:
             self.cell_index += 1
             self.cell_parts.append([])
+            self.current_cell_column = values.get("data-column", "")
+            self.cell_columns.append(self.current_cell_column)
         elif tag == "strong" and self.in_row and self.cell_index == 0:
             quality_class = next((name for name in classes if name.startswith("q-")), "q-common")
             self.quality = quality_class.removeprefix("q-")
             self.capture_name = True
         elif tag == "div" and self.in_row and self.cell_index == 0 and "mini" in classes:
             self.capture_mini = True
-        elif tag == "span" and self.in_row and self.cell_index == 2 and "buyout" in classes:
+        elif (
+            tag == "span"
+            and self.in_row
+            and self.current_cell_column == "target"
+            and "buyout" in classes
+        ):
             self.capture_target_buyout = True
 
     def handle_endtag(self, tag: str) -> None:
@@ -163,7 +175,9 @@ class AHGuideParser(HTMLParser):
         if occurrence > 1:
             fragment += f"&occurrence={occurrence}"
 
-        demand = clean_text(self.cell_parts[5]) if len(self.cell_parts) > 5 else ""
+        demand = ""
+        if "demand" in self.cell_columns:
+            demand = clean_text(self.cell_parts[self.cell_columns.index("demand")])
         self.items.append(
             {
                 "name": name,
