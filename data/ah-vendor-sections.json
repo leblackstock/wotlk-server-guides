@@ -480,6 +480,7 @@
       ]
     },
     "inscription-materials-ah-price-guide.html": {
+      "back_to_top": true,
       "items": [
         "virtuoso-inking-set",
         "light-parchment",

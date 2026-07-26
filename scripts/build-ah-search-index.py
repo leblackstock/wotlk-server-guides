@@ -79,6 +79,7 @@ class AHGuideParser(HTMLParser):
         self.guide_title = guide_title
         self.section = "Other"
         self.capture_heading = False
+        self.capture_heading_action = False
         self.heading_parts: list[str] = []
         self.in_tbody = False
         self.in_row = False
@@ -104,6 +105,12 @@ class AHGuideParser(HTMLParser):
         if tag == "h2":
             self.capture_heading = True
             self.heading_parts = []
+        elif (
+            tag == "a"
+            and self.capture_heading
+            and "ah-back-to-top" in classes
+        ):
+            self.capture_heading_action = True
         elif tag == "tbody":
             self.in_tbody = True
         elif tag == "tr" and self.in_tbody:
@@ -140,9 +147,12 @@ class AHGuideParser(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag == "h2" and self.capture_heading:
             self.capture_heading = False
+            self.capture_heading_action = False
             heading = clean_text(self.heading_parts)
             if heading:
                 self.section = heading
+        elif tag == "a" and self.capture_heading_action:
+            self.capture_heading_action = False
         elif tag == "strong" and self.capture_name:
             self.capture_name = False
         elif tag == "div" and self.capture_mini:
@@ -156,7 +166,7 @@ class AHGuideParser(HTMLParser):
             self.in_tbody = False
 
     def handle_data(self, data: str) -> None:
-        if self.capture_heading:
+        if self.capture_heading and not self.capture_heading_action:
             self.heading_parts.append(data)
         if self.in_row and self.cell_index >= 0:
             self.cell_parts[self.cell_index].append(data)
