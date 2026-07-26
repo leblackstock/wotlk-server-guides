@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HUB_PATH = ROOT / "index.html"
+HUB_PATH = ROOT / "auction-house.html"
 OUTPUT_PATH = ROOT / "assets" / "ah-search-index.js"
 AH_GUIDE_SUFFIX = "ah-price-guide.html"
 
@@ -183,7 +183,7 @@ def build_index() -> str:
     hub_parser = HubGuideParser()
     hub_parser.feed(HUB_PATH.read_text(encoding="utf-8"))
     if not hub_parser.guides:
-        raise RuntimeError("No Auction House guide cards were found in index.html")
+        raise RuntimeError("No Auction House guide cards were found in auction-house.html")
 
     items: list[dict[str, str | int]] = []
     for filename, guide_title in hub_parser.guides.items():
