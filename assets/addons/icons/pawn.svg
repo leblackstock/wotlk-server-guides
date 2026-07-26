@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Pawn</title>
+  <desc id="desc">Two equipment cards balanced on a stat-weight scale.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M64 25v66M39 96h50M48 103h32" fill="none" stroke="#dedcd6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M29 43h70" fill="none" stroke="#cf4e17" stroke-width="6" stroke-linecap="round"/>
+  <path d="M37 43 25 69h24L37 43Zm54 0L79 69h24L91 43Z" fill="#414444" stroke="#dedcd6" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M24 70c2 10 24 10 26 0M78 70c2 10 24 10 26 0" fill="none" stroke="#cf4e17" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="64" cy="43" r="8" fill="#cf4e17" stroke="#dedcd6" stroke-width="3"/>
+</svg>

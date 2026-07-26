@@ -1229,6 +1229,20 @@
         "outfitter"
       ],
       "order": 150
+    },
+    {
+      "id": "gear-evaluation",
+      "label": "Gear Evaluation",
+      "group": "feature",
+      "description": "Scores and compares equipment using a selected set of stat weights.",
+      "searchAliases": [
+        "stat weights",
+        "item scoring",
+        "upgrade score",
+        "pawn scale",
+        "which item is better"
+      ],
+      "order": 160
     }
   ],
   "importanceLevels": [
@@ -1371,6 +1385,12 @@
       "label": "Equipment Sets",
       "icon": "♜",
       "order": 170
+    },
+    {
+      "id": "gear-evaluation",
+      "label": "Gear Evaluation",
+      "icon": "⚖",
+      "order": 180
     }
   ],
   "addons": [
@@ -3848,6 +3868,130 @@
       "icon": {
         "path": "assets/addons/icons/outfitter.svg",
         "alt": "Armor chestpiece with circular equipment-switch arrows"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "pawn",
+      "name": "Pawn",
+      "aliases": [
+        "Pawn 1.3.8",
+        "Pawn Addon"
+      ],
+      "searchTerms": [
+        "stat weights",
+        "item scoring",
+        "gear score",
+        "upgrade score",
+        "which item is better",
+        "tooltip values",
+        "gear evaluation",
+        "custom scale",
+        "pawn scale",
+        "compare gear"
+      ],
+      "summary": "Scores equipment with configurable stat weights and adds comparison values to item tooltips for quick upgrade screening.",
+      "does": [
+        "Calculates item values from the stat weights in the selected Pawn scale and adds those values to equipment tooltips.",
+        "Supports multiple named scales for different roles, specs, PvE or PvP priorities, and specialized gear sets.",
+        "Lets players inspect, copy, edit, import, export, rename, and reset scales."
+      ],
+      "doesNot": [
+        "Does not automatically understand defense, hit, expertise, haste, or other caps; linear weights can overvalue a stat after a cap is reached.",
+        "Does not prove that an item is best in slot or correctly value every proc, set bonus, socket choice, encounter need, or survivability tradeoff."
+      ],
+      "generalSetup": [
+        "Download Pawn 1.3.8 from the WotLK 3.3.5 page below and install it so Interface\\AddOns\\Pawn\\Pawn.toc is the final path.",
+        "Type /pawn and open the Scale tab. Select a scale to see which stat weights it uses and whether that scale is shown on tooltips.",
+        "For a quick text view, use /pawn list to list every scale, or /pawn list Scale Name to print every stat and weight in one exact-named scale.",
+        "To modify weights, copy the chosen built-in scale first, select the editable copy, and change the listed stat values. Use 0 for a stat you want the scale to ignore.",
+        "Use /pawn import to paste a shared scale or /pawn export Scale Name to copy one. Reload the UI, re-open Pawn, and verify the scale and tooltip values were saved."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "gear-evaluation",
+        "setup-required",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "featuredTags": [
+        "gear-evaluation",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "dungeons",
+          "raids",
+          "pvp",
+          "leveling"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "gear-evaluation"
+          ],
+          "summary": "A useful first-pass gear comparison tool when the active scale matches the character, role, and current stat needs.",
+          "reason": "Pawn makes frequent item comparisons faster and this exact build has been used on Hellscream without remembered errors, but its score should remain a screening aid rather than the final gearing decision."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-25",
+        "lastReviewed": "2026-07-25",
+        "downloadVersion": "1.3.8",
+        "verifiedDownload": true,
+        "serverSensitive": false,
+        "maintenanceState": "wrath-era",
+        "notes": [
+          "Hellscream use reported July 25, 2026: Pawn 1.3.8 has been used during normal play and no errors are remembered.",
+          "No specific addon conflict or tooltip problem is remembered, but this was not a fresh isolated compatibility test against every installed addon and tooltip source.",
+          "Warperia identifies the linked download as Pawn version 1.3.8 for WotLK 3.3.5.",
+          "Pawn scores are only as reliable as the selected scale; verify caps, special effects, set bonuses, and encounter needs separately."
+        ]
+      },
+      "download": {
+        "url": "https://warperia.com/addon-wotlk/pawn/",
+        "source": "Warperia",
+        "notes": "Pawn 1.3.8 download page for WotLK 3.3.5."
+      },
+      "icon": {
+        "path": "assets/addons/icons/pawn.svg",
+        "alt": "Two equipment cards balanced on a stat-weight scale"
       },
       "screenshots": [],
       "videos": [],

@@ -249,7 +249,7 @@ def update_browser_test() -> None:
 
 def update_html() -> None:
     text = HTML.read_text(encoding="utf-8")
-    text = re.sub(r'(?<=\\?v=)[0-9]{8}-[a-z0-9-]+', '20260725-pawn-v1', text)
+    text = re.sub(r'(\\?v=)[0-9]{8}-[a-z0-9-]+', r'\g<1>20260725-pawn-v1', text)
     text = replace_once(text, 'The catalog currently has sixteen addons.', 'The catalog currently has seventeen addons.', "noscript count")
     marker = '            <li><a href="https://warperia.com/addon-wotlk/outfitter/" target="_blank" rel="noopener">Outfitter ↗</a></li>\n'
     addition = marker + '            <li><a href="https://warperia.com/addon-wotlk/pawn/" target="_blank" rel="noopener">Pawn ↗</a></li>\n'

@@ -30,8 +30,9 @@ REQUIRED_ADDONS = {
     "addon-control-panel",
     "bartender4",
     "outfitter",
+    "pawn",
 }
-TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "addon-control-panel", "bartender4", "outfitter"}
+TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "addon-control-panel", "bartender4", "outfitter", "pawn"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",

@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 16, "Default catalog should show sixteen addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 17, "Default catalog should show seventeen addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -66,6 +66,13 @@ async function noOverflow(page, label) {
     const outfitterCard = desktop.locator('.addon-card[data-addon-id="outfitter"]');
     assert.equal(await outfitterCard.locator(".addon-card-tag").first().textContent(), "Equipment Sets");
     assert.equal(await outfitterCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
+
+    await desktop.locator("#addon-search-input").fill("stat weights");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Pawn");
+    const pawnCard = desktop.locator('.addon-card[data-addon-id="pawn"]');
+    assert.equal(await pawnCard.locator(".addon-card-tag").first().textContent(), "Gear Evaluation");
+    assert.equal(await pawnCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -140,6 +147,19 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/outfitter/"]').count() > 0, true);
     await noOverflow(desktop, "Outfitter details drawer");
 
+    await desktop.goto(`${base}/guides/addons.html?role=tank#addon=pawn`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Pawn");
+    const pawnText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(pawnText, /1\.3\.8/);
+    assert.match(pawnText, /no errors are remembered/i);
+    assert.match(pawnText, /\/pawn list Scale Name/);
+    assert.match(pawnText, /copy the chosen built-in scale/i);
+    assert.match(pawnText, /\/pawn import/);
+    assert.match(pawnText, /caps/);
+    assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/pawn/"]').count() > 0, true);
+    await noOverflow(desktop, "Pawn details drawer");
+
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.match(await desktop.locator("#addon-context-banner").textContent(), /Protection Paladin/);
@@ -191,7 +211,7 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 16);
+    assert.equal(await desktop.locator(".addon-card").count(), 17);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });

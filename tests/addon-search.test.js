@@ -46,7 +46,10 @@ const searchCases = [
   ["bartender", "bartender4"],
   ["action bars", "bartender4"],
   ["outfitter", "outfitter"],
-  ["gear sets", "outfitter"]
+  ["gear sets", "outfitter"],
+  ["pawn", "pawn"],
+  ["stat weights", "pawn"],
+  ["upgrade score", "pawn"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -132,7 +135,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 16);
+assert.equal(ids("").length, 17);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -219,6 +222,20 @@ assert.match(outfitter.compatibility.notes.join(" "), /No addon conflicts were n
 const outfitterRole = core.recommendationFor(outfitter, state("", { role: ["healer"] }), catalog);
 assert.equal(outfitterRole.importance, "recommended");
 assert.deepEqual(outfitterRole.purposes, ["equipment-sets"]);
+
+const pawn = addons.find((addon) => addon.id === "pawn");
+assert.equal(pawn.compatibility.downloadVersion, "1.3.8");
+assert.equal(pawn.compatibility.hellscreamTested, true);
+assert.equal(pawn.compatibility.hellscreamTestedDate, "2026-07-25");
+assert.equal(pawn.download.url, "https://warperia.com/addon-wotlk/pawn/");
+assert.ok(pawn.tags.includes("tested-hellscream"));
+assert.match(pawn.compatibility.notes.join(" "), /no errors are remembered/i);
+assert.match(pawn.generalSetup.join(" "), /\/pawn list Scale Name/);
+assert.match(pawn.generalSetup.join(" "), /copy the chosen built-in scale/i);
+assert.match(pawn.generalSetup.join(" "), /\/pawn import/);
+const pawnRole = core.recommendationFor(pawn, state("", { role: ["tank"] }), catalog);
+assert.equal(pawnRole.importance, "recommended");
+assert.deepEqual(pawnRole.purposes, ["gear-evaluation"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
