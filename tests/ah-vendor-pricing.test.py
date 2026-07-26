@@ -151,7 +151,6 @@ def main() -> int:
     exact_targets = {
         "goblin-machined-piston": "1,050g",
         "elementium-plated-exhaust-pipe": "1,575g",
-        "deeprock-salt": "1g",
         "rune-thread": "75s",
     }
     for key, expected in exact_targets.items():
@@ -203,6 +202,26 @@ def main() -> int:
     ]
     if len(northern_spices) != 1 or northern_spices[0]["target"] != "3g":
         fail("Northern Spices must remain one exact 3g market entry")
+
+    skinning_source = (
+        ROOT / "guides" / "skinning-leatherworking-materials-ah-price-guide.html"
+    ).read_text(encoding="utf-8")
+    vendor_block = skinning_source.split("<!-- AH_VENDOR_SECTION_START -->", 1)[1].split(
+        "<!-- AH_VENDOR_SECTION_END -->", 1
+    )[0]
+    if "Deeprock Salt" in vendor_block or 'data-vendor-key="deeprock-salt"' in skinning_source:
+        fail("Deeprock Salt must not appear in the vendor section")
+
+    deeprock_salt = [
+        entry
+        for entry in index["items"]
+        if entry["name"] == "Deeprock Salt"
+        and entry["href"].startswith(
+            "./guides/skinning-leatherworking-materials-ah-price-guide.html#"
+        )
+    ]
+    if len(deeprock_salt) != 1 or deeprock_salt[0]["target"] != "1g":
+        fail("Deeprock Salt must remain one exact 1g regular market entry")
 
     print(
         "AH vendor pricing validation passed: "

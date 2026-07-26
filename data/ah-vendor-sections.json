@@ -89,16 +89,6 @@
       "stack": "5 / 20",
       "notes": "Common Alchemy vial. Vendor cost is 25s per bundle of five."
     },
-    "deeprock-salt": {
-      "name": "Deeprock Salt",
-      "item_id": 8150,
-      "source_type": "world-drop",
-      "source_label": "Old-world elemental drop",
-      "source_cost_label": "Farmed drop; no fixed vendor cost",
-      "target_copper": 10000,
-      "stack": "1 / 5",
-      "notes": "Used for the Refined Deeprock Salt path. Price it as a slow, scarce old-world reagent."
-    },
     "elemental-flux": {
       "name": "Elemental Flux",
       "item_id": 18567,
@@ -519,8 +509,7 @@
         "silken-thread",
         "heavy-silken-thread",
         "fine-thread",
-        "salt",
-        "deeprock-salt"
+        "salt"
       ]
     },
     "tailoring-cloth-ah-price-guide.html": {
