@@ -1,146 +1,190 @@
 # Spec Guide Icon-Density Approval
 
-This is the mandatory visual-density standard for every new six-page spec guide.
+This is the mandatory visual-density standard for new spec guides.
 
-It was derived from the rendered pages of the live Protection Paladin, Holy Paladin, and Blood Death Knight guides. The analyzer executes each guide's local JavaScript before counting, so JavaScript-added icons are included.
+The goal is not to make every guide contain the same number of icons. The goal is to give each guide enough visual anchors for the amount of information and number of decisions it actually contains, without turning the page into an icon mosaic.
 
-## 1. What is counted
+The analyzer renders the pages with their local JavaScript before counting, so JavaScript-added icons are included.
 
-Icons are split into two different systems.
+## 1. Two separate icon systems
 
 ### Contextual icons
 
-These explain page structure or decisions:
+Contextual icons explain structure or decisions:
 
 - major section headings
 - Quick Start chapter cards
-- combat-engine and summary cards
-- playbook headers and ability choices
-- talent and glyph panels
-- selected table rows and callouts
-- the Hellscream server note
+- combat-engine and summary nodes
+- playbook cards and ability choices
+- talent and glyph groups
+- selected gear, consumable, and comparison rows
+- server-behavior notes
 - raid encounter summaries
+- guide, priority, phase, and macro card headings
 
-These are required for approval.
+These are required in proportion to the guide's actual complexity.
 
 ### Inline entity icons
 
-These are small icons inserted beside linked items, spells, talents, glyphs, enchants, recipes, consumables, professions, or skills.
+Inline entity icons sit beside linked items, spells, talents, glyphs, enchants, recipes, consumables, professions, or skills.
 
-They are optional. Mouseover links are mandatory, but an icon does not need to accompany every link. Dense inline icons are measured separately so hundreds of repeated item or spell icons cannot disguise weak page structure.
+They are optional. Mouseover links remain mandatory, but an icon does not need to accompany every link.
 
 Favicons, logos, images outside `<main>`, talent-calculator contents, and failed images that remove themselves are not counted.
 
-## 2. Rendered baseline
+## 2. Why the old fixed range was removed
 
-| Guide family | Words | Contextual | Inline entity | Total | Contextual per 1,000 words |
-|---|---:|---:|---:|---:|---:|
-| Protection Paladin | 9,067 | 122 | 0 | 122 | 13.5 |
-| Holy Paladin | 4,883 | 112 | 0 | 112 | 22.9 |
-| Blood Death Knight | 7,870 | 142 | 610 | 752 | 18.0 |
+The first version required 120–150 contextual icons for every six-page guide. That worked as a reaction to the three existing guide families, but it was too rigid.
 
-### What the three guides teach us
+A mechanically dense progression tank guide can naturally support many decision cards, cooldown groups, swap sets, and encounter assignments. A straightforward damage spec may have fewer meaningful decisions and fewer places where an icon improves navigation.
 
-Protection has a reasonable family total, but the distribution is lopsided. Its Playing page contains 87 contextual icons while Building contains none. A large total alone therefore cannot earn approval.
+Forcing both guides to reach the same total would either leave the complex guide under-illustrated or make the simple guide decorate ordinary prose merely to satisfy a number.
 
-Holy has the lowest contextual total, but it distributes icons across headings, healing-engine steps, playbooks, talents, glyphs, tables, professions, server notes, and raid summaries. It is the best placement model, although its Equipping page is too sparse for the new standard.
+The current standard therefore calculates the required range from **icon opportunities**, not from the class or role name and not from a fixed family total.
 
-Blood has the strongest contextual page-to-page coverage at 142 contextual icons. Its additional 610 dense inline icons make 752 total icons, which is intentionally treated as the high-water warning rather than the target.
+## 3. Icon-opportunity score
 
-The future standard therefore uses the Holy-to-Blood contextual range and a separate, much smaller inline budget.
+The analyzer counts the actual structures present in the rendered guide and applies these weights:
 
-## 3. Family approval range
-
-A full six-page guide must contain:
-
-- **120 to 150 contextual icons**
-- **125 to 140 contextual icons preferred**
-- **15 to 23 contextual icons per 1,000 words**
-- **17 to 21 per 1,000 words preferred**
-
-No page may contain more than **38%** of the family's contextual icons.
-
-This prevents both failure modes:
-
-- a guide with a few lonely icons scattered through otherwise bare pages
-- a guide that pours most of its icons into one playbook or table
-
-## 4. Page budgets
-
-| Page | Required contextual icons |
+| Structure | Opportunity points each |
 |---|---:|
-| Quick Start | 15–30 |
-| Playing | 24–45 |
-| Setup | 20–35 |
-| Building | 15–30 |
-| Equipping | 12–25 |
-| Raiding | 15–30 |
+| Major section | 1.00 |
+| Quick Start chapter card | 1.00 |
+| Combat-engine or summary node | 0.75 |
+| Playbook card | 1.00 |
+| Talent or glyph unit | 0.75 |
+| Raid encounter group | 1.00 |
+| Secondary guide/card heading | 0.50 |
+| Server-behavior note | 1.00 |
 
-A page may not borrow another page's icon allowance. For example, an overloaded Playing page cannot compensate for an empty Building or Equipping page.
+Longer guides receive a small additional allowance of **0.75 opportunity points per 750 words**. Word count is deliberately a light influence. A long paragraph does not deserve the same icon allowance as several distinct combat decisions.
 
-## 5. Placement requirements
+The score is reported as:
 
-Across the family, contextual icons must fall within these ranges:
+- **Simple:** up to 55 opportunity points
+- **Standard:** over 55 through 85
+- **Complex:** over 85
 
-| Placement | Required range |
-|---|---:|
-| Major section headings | 12–45 |
-| Quick Start chapter cards | exactly 5 |
-| Combat-engine and summary areas | 6–14 |
-| Playbooks and action choices | 15–36 |
-| Talents and glyphs | 8–18 |
-| Selected table rows | 0–30 |
-| Hellscream server notes | 1–3 |
-| Raid encounter summaries | 6–24 |
-| Guide, priority, phase, and macro card headings | 8–36 |
-| Other contextual locations | no more than 10 |
+These labels describe the guide's rendered structure. They are not manually assigned by class, specialization, role, or reputation.
 
-Minimum coverage is also required:
+## 4. Dynamic family budget
 
-- 65% of major sections have an icon
-- all five Quick Start chapter cards have an icon
-- 75% of combat-engine or summary nodes have an icon
-- 75% of playbook cards have at least one contextual icon
-- 75% of raid encounter summaries have an icon
+The contextual-icon budget is calculated from the opportunity score:
 
-Counts and coverage must both pass. Five copies of one icon in an unrelated table do not satisfy five missing encounter icons.
+- minimum: 62% of opportunity score, with a six-page floor of 28
+- preferred minimum: 75% of opportunity score
+- preferred maximum: 105% of opportunity score
+- maximum: 125% of opportunity score plus 8
+- absolute maximum: 150 contextual icons
 
-## 6. Inline entity-icon budget
+Examples:
 
-Inline icons remain optional and default to selective placement.
+| Opportunity score | Complexity | Passing range | Preferred range |
+|---:|---|---:|---:|
+| 45 | Simple | 28–65 | 34–48 |
+| 70 | Standard | 44–96 | 53–74 |
+| 100 | Complex | 62–133 | 75–105 |
 
-When inline entity icons are used:
+A concise Feral DPS guide with a score near 45 could therefore pass with roughly 30–50 well-placed contextual icons. It would not be required to imitate a progression tank guide.
 
-- preferred maximum: **140 across the family**
-- hard maximum: **180 across the family**
-- hard density maximum: **25 per 1,000 words**
-- no more than **10%** of inline icons may appear inside ordinary paragraphs
+Contextual density above **24 icons per 1,000 words** fails. Density below **6 per 1,000 words** produces a review note rather than an automatic failure, because structural coverage is the more reliable test.
+
+## 5. Dynamic page budgets
+
+Each page receives its own opportunity score and budget.
+
+For pages under 350 words:
+
+- minimum floor: 2 contextual icons
+
+For longer pages:
+
+- minimum floor: 4 contextual icons
+
+The remainder is calculated from that page's opportunities:
+
+- minimum: 50% of page opportunity score
+- preferred: 70–110%
+- maximum: 150% plus 3
+- absolute maximum: 45 icons on one page
+
+A short Setup page with only a few meaningful groups may need only a handful of icons. A large Playing page containing multiple playbooks and decision engines receives a larger allowance automatically.
+
+No page may hoard more than 45% of the family's contextual icons once the family contains at least 20 contextual icons.
+
+## 6. Coverage matters more than raw count
+
+The analyzer checks coverage only for structures that actually exist.
+
+Required coverage:
+
+- 60% of major sections
+- all Quick Start chapter cards that exist
+- 65% of combat-engine or summary nodes
+- 70% of playbook cards
+- 60% of talent and glyph units
+- 70% of raid encounter groups
+- 55% of secondary card headings
+- all server-behavior notes that exist
+
+A guide with no combat-engine diagram does not fail for lacking combat-engine icons. A guide with ten playbook cards must iconize enough of those cards to preserve visual navigation.
+
+Counts and coverage must both pass. Loading thirty icons into one gear table does not compensate for bare playbooks or encounter summaries.
+
+## 7. Concentration safeguards
+
+To prevent number-gaming:
+
+- table icons may not exceed 35% of contextual icons
+- unclassified contextual locations may not exceed 15%
+- no page may exceed the family concentration limit
+- one contextual icon is normally enough for one heading or decision unit
+- do not duplicate the same icon twice on the same visual line
+
+## 8. Inline entity-icon budget
+
+Inline icons scale with the number of eligible Wowhead-linked entity mentions.
+
+- preferred maximum: 25% of eligible entity links
+- hard maximum: 45% of eligible entity links
+- preferred allowance never needs to exceed 120
+- hard allowance never exceeds 180
+- hard density maximum: 25 per 1,000 words
+- no more than 10% may appear inside ordinary paragraphs
+
+Small guides receive a practical allowance of at least 16 preferred and 24 maximum inline icons, even when they contain few links.
 
 Prefer inline icons in:
 
-- ability strips
+- compact ability strips
 - gear and consumable tables
 - short comparison lists
 - glyph and enchant rows
-- compact decision callouts
+- decision callouts
 
-Do not iconize every ordinary prose mention. The mouseover link remains useful without turning each sentence into a row of postage stamps.
+Do not iconize every prose mention. A mouseover link remains useful without adding a picture to every sentence.
 
-The `data-entity-icons="dense"` mode requires explicit reviewer approval and must still pass these limits. Selective markers such as `.iconize-entity` and `data-entity-icon` are the default.
+`data-entity-icons="dense"` requires both:
 
-## 7. Per-component rules
+- `entityIconMode: "dense"`
+- `allowDenseEntityIcons: true`
+
+Dense mode must still pass all calculated limits.
+
+## 9. Per-component rules
 
 - One contextual icon per heading.
-- A card heading and its ability strip may each have an icon, but do not duplicate the same icon twice in the same visual line.
-- Use one icon for a category or decision point, not one for every sentence.
+- Add an icon when it improves recognition, scanning, or decision grouping.
+- Do not add an icon merely because a noun appears in the text.
 - A named item or spell may have a mouseover link without an inline icon.
-- Do not add icons to source lists, navigation, long paragraphs, warnings that already have a clear symbol, or decorative filler.
-- Repeated encounter mechanics may reuse an icon when the repeated visual language is helpful.
-- Icons still require verified filenames, empty decorative alt text, `aria-hidden="true"`, and `onerror="this.remove()"`.
+- Avoid icons in source lists, navigation, long paragraphs, or warnings that already have a clear symbol.
+- Repeated encounter mechanics may reuse an icon when consistency is useful.
+- Verify icon filenames.
+- Decorative icons use empty alt text, `aria-hidden="true"`, and a clean failure fallback such as `onerror="this.remove()"`.
 
-## 8. Approval commands
+## 10. Approval commands
 
-Install the temporary DOM analyzer when needed:
+Install the temporary rendered-DOM analyzer when needed:
 
 ```powershell
 npm install --no-save --no-package-lock jsdom@24
@@ -163,10 +207,19 @@ node tools/analyze-guide-icon-density.mjs `
   --enforce
 ```
 
-The GitHub Actions icon-density workflow runs the same rendered analysis for every retained config with `"enforceIconDensity": true`.
+The report shows:
 
-## 9. Grandfathered guides
+- family and page complexity tiers
+- opportunity scores and score breakdowns
+- calculated passing and preferred ranges
+- contextual and inline counts
+- location and coverage results
+- concentration failures and review notes
 
-Protection, Holy, and Blood supplied the baseline. They are not silently rewritten by this policy.
+The GitHub Actions workflow runs the same rendered analysis for retained configs with `"enforceIconDensity": true`.
 
-Future guide families must meet the balanced standard. A deliberate exception requires an explanation in the pull request that identifies the page, the failed threshold, and the visual reason the exception improves readability.
+## 11. Existing guides
+
+Protection Paladin, Holy Paladin, and Blood Death Knight supplied the original visual baseline. They are not silently rewritten by this policy.
+
+Future guide families must pass the opportunity-based standard. A deliberate exception requires a pull-request explanation identifying the failed threshold and why the exception improves readability.

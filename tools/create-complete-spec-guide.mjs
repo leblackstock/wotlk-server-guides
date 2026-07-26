@@ -60,11 +60,12 @@ const entityChecklist = `
 - [ ] Rebuild assets/${tooltipFile} with \`node tools/build-wowhead-tooltips.mjs ${registryFile} assets/${tooltipFile}\`
 - [ ] Confirm registered phrases link in ordinary prose without manual wrappers
 - [ ] Confirm Wowhead's WotLK tooltip engine loads and mouseovers work
-- [ ] Use selective inline icons by default; dense mode requires reviewer approval
-- [ ] Add contextual icons across headings, chapter cards, engines, playbooks, talents/glyphs, Building, Equipping, and raid summaries
-- [ ] Confirm each page falls inside the budget in templates/spec-guide/ICON_DENSITY_APPROVAL.md
-- [ ] Confirm the family has 120–150 contextual icons, with 125–140 preferred
-- [ ] Confirm inline entity icons stay at or below 180 and 25 per 1,000 words
+- [ ] Use selective inline icons by default; dense mode requires explicit config approval
+- [ ] Add contextual icons only where they improve scanning, recognition, or decision grouping
+- [ ] Confirm the analyzer's opportunity score and complexity tier match the guide's actual rendered structure
+- [ ] Confirm every page falls inside its calculated contextual-icon range
+- [ ] Confirm required coverage passes only for structures that actually exist
+- [ ] Confirm inline entity icons stay inside the calculated link-based allowance and below 25 per 1,000 words
 - [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig}\`
 - [ ] Run \`node tools/analyze-guide-icon-density.mjs --config ${relativeConfig} --policy ${policyFile}\`
 - [ ] Run both audits in release/enforcement mode before final review
