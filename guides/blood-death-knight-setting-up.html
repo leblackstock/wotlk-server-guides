@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The exact 43/23/5 Blood Death Knight talent tree, glyphs, macros, addons, keybinds, and interface setup for Heroic LK25.">
+  <meta name="description" content="A raid-geared tank’s setup audit for the exact 43/23/5 Blood Death Knight tree, glyphs, macros, keybinds, and Heroic LK25 interface.">
   <title>Setting up your Blood Death Knight | WotLK 3.3.5</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-blood-v3">
@@ -25,9 +25,9 @@
   </nav>
 
   <header>
-    <span class="page-kicker">Blood Death Knight • Level 80</span>
+    <span class="page-kicker">Blood Death Knight • Raid-geared transition</span>
     <h1>WotLK 3.3.5 <span>Setting up your Blood DK</span></h1>
-    <p class="sub">Install the fully filled tree, then make every defensive, taunt, disease, and boss timer visible and reachable.</p>
+    <p class="sub">Keep the raid interface and binds that already serve you. Respec to the complete tree, replace incompatible assumptions, and make Blood’s defensive resources and assignment calls impossible to miss.</p>
     <div class="jump-nav" aria-label="Topics on this page">
       <a href="#talents">Talents</a>
       <a href="#glyphs">Glyphs</a>
@@ -41,13 +41,13 @@
   <main>
     <section class="common" id="talents">
       <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_bloodpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Talents: exact 43/23/5</h2>
-      <div class="note spec"><strong>Locked baseline:</strong> <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">43 Blood / 23 Frost / 5 Unholy</a>. It spends all 71 level-80 talent points.</div>
+      <div class="note spec"><strong>Respec baseline:</strong> <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">43 Blood / 23 Frost / 5 Unholy</a>. This is the complete raid build, not a partial framework with flex points left over.</div>
       <div class="guide-box" style="margin-top:12px">
         <div class="icon-heading">
           <img class="title-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_deathknight_bloodpresence.jpg" alt="" aria-hidden="true" onerror="this.remove()">
           <div><span class="summary-label">Fully filled baseline</span><h3 style="margin:0">43/23/5 LK25H personal-survival build</h3></div>
         </div>
-        <p class="mini-note">This tree assumes the 25-player raid supplies the 20% melee-haste buff. It chooses all available single-target avoidance and Blood’s low-health safety net.</p>
+        <p class="mini-note">Before you respec, confirm that the 25-player roster supplies the 20% melee-haste buff. With that coverage secured, this tree takes the available single-target avoidance and Blood’s low-health safety net.</p>
         <div class="talent-embed-wrap"><iframe class="talent-embed" title="Fully filled 43/23/5 Blood Death Knight tank talent tree" loading="lazy" src="https://www.wowhead.com/wotlk/talent-calc/embed/death-knight/005512153330030320102013-3050505000023-005"></iframe></div>
         <p class="talent-fallback">Tree not loading? <a href="https://www.wowhead.com/wotlk/talent-calc/death-knight/005512153330030320102013-3050505000023-005" target="_blank" rel="noopener">Open the complete build in the Wowhead calculator.</a></p>
       </div>
@@ -90,7 +90,7 @@
         </div>
         <div class="guide-box">
           <h3 data-entity-icon="Heart Strike">Deliberately skipped</h3>
-          <p>No Heart Strike, Improved Blood Presence, Mark of Blood, Bloodworms, Might of Mograine, Blood Gorged, Dancing Rune Weapon, Lichborne, Improved Icy Talons, Morbidity, Bone Shield, or Anti-Magic Zone. Those points buy passive healing, damage, AoE convenience, raid buff coverage, or different toolkits—not more reliable single-target survival than this locked build. Do not write Mark of Blood, Lichborne healing, Bone Shield, or AMZ into the cooldown plan.</p>
+          <p>No Heart Strike, Improved Blood Presence, Mark of Blood, Bloodworms, Might of Mograine, Blood Gorged, Dancing Rune Weapon, Lichborne, Improved Icy Talons, Morbidity, Bone Shield, or Anti-Magic Zone. Those points buy passive healing, damage, AoE convenience, raid buff coverage, or different toolkits—not more reliable single-target survival than this locked build. When you and the raid leader write the cooldown sheet, exclude Mark of Blood, Lichborne healing, Bone Shield, and AMZ; this character cannot supply them.</p>
         </div>
       </div>
       <div class="note warning" style="margin-top:12px"><strong>Flex and alternatives:</strong> the exact tree has no unspent points. Its 1/3 Scent of Blood is the lowest-impact selected point, but moving it produces a different locked tree. Use 43/26/2 only when the 25-player roster lacks both an Enhancement Shaman and a Frost DK providing the 20% melee-haste buff; it gives up avoidance to cover the raid buff. A common 53/8/10-style threat build spends deeper in Blood for Heart Strike/Might of Mograine/Blood Gorged and does not reach Frigid Dreadplate or free Mind Freeze. Neither is the best personal-survival baseline for this job.</div>
@@ -118,6 +118,7 @@
 
     <section class="common" id="macros">
       <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Macros</h2>
+      <div class="note class"><strong>Audit before replacing.</strong> Keep an existing raid macro when it preserves target control, exposes failures, and leaves every defensive on its own decision. Use the examples below to repair gaps, not to erase a setup you already execute reliably.</div>
       <div class="macro-grid">
         <div class="macro-card">
           <h3 data-entity-icon="Dark Command">Primary taunt: mouseover → focus → target</h3>
@@ -201,11 +202,12 @@
 /petfollow</code>
         </div>
       </div>
-      <div class="note warning" style="margin-top:12px"><strong>Macro limits:</strong> do not macro Rune Strike into every strike; it can leave IBF or AMS unusable. Mark of Blood has no macro because it is not selected. Keep Army of the Dead off generic combat binds and pair its dedicated key with a raid-approved warning; its channel costs one rune of each type and its ghouls can taunt.</div>
+      <div class="note warning" style="margin-top:12px"><strong>Player macro limits:</strong> keep Rune Strike out of every-strike macros because an automatic queue can leave IBF or AMS unusable. Do not retain a Mark of Blood macro from another build; the talent is not selected. Keep Army of the Dead off generic combat binds and pair its dedicated key with the raid leader’s approved warning, because its channel costs one rune of each type and its ghouls can taunt.</div>
     </section>
 
     <section class="common" id="addons">
-      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_spyglass_03.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Addons and interface</h2>
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_spyglass_03.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Audit your raid interface</h2>
+      <p>You do not need a new UI because you changed specs. Your existing UI passes this audit when it exposes the information below early enough for you to act; the named addons are examples, not requirements.</p>
       <div class="three-col">
         <div class="guide-box">
           <h3 data-entity-icon="Soul Reaper">Boss and threat</h3>
@@ -236,7 +238,7 @@
     </section>
 
     <section class="common" id="keybinds">
-      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Keybind and tracking checklist</h2>
+      <h2><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_note_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Final bind and tracking audit</h2>
       <div class="two-col">
         <div class="guide-box">
           <h3 data-entity-icon="Dark Command">One movement-hand reach</h3>
