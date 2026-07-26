@@ -21,6 +21,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
+AH_STYLESHEET_VERSION = "20260726-global-top-links-v1"
 
 NAV_BLOCK = re.compile(
     r"(?:<!-- AH_SHARED_NAV_START -->\s*)?"
@@ -150,19 +151,60 @@ def render_vendor_section(
     template: str,
     item_keys: list[str],
     catalog: dict,
-    include_back_to_top: bool = False,
 ) -> str:
     rows = "\n".join(render_vendor_row(key, catalog[key]) for key in item_keys)
-    back_to_top = (
-        '<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a>'
-        if include_back_to_top
-        else ""
+    return template.replace("{{ROWS}}", rows)
+
+
+def decorate_category_headings(source: str, filename: str) -> str:
+    """Give every AH category one consistent, right-aligned back-to-top control."""
+    source, wrap_count = re.subn(
+        r'<div class="wrap"(?: id="top")?>',
+        '<div class="wrap" id="top">',
+        source,
+        count=1,
     )
-    heading_class = ' class="ah-category-heading"' if include_back_to_top else ""
-    return (
-        template.replace("{{ROWS}}", rows)
-        .replace("{{HEADING_CLASS}}", heading_class)
-        .replace("{{BACK_TO_TOP}}", back_to_top)
+    if wrap_count != 1:
+        raise ValueError(f"{filename}: expected exactly one page wrapper")
+
+    def decorate(match: re.Match[str]) -> str:
+        attributes, content = match.groups()
+        content = re.sub(
+            r'<a class="ah-back-to-top"[^>]*>.*?</a>\s*$',
+            "",
+            content,
+            flags=re.DOTALL,
+        )
+        if 'class="' in attributes:
+            attributes = re.sub(
+                r'class="([^"]*)"',
+                lambda class_match: (
+                    f'class="{class_match.group(1)} ah-category-heading"'
+                    if "ah-category-heading" not in class_match.group(1).split()
+                    else class_match.group(0)
+                ),
+                attributes,
+                count=1,
+            )
+        else:
+            attributes += ' class="ah-category-heading"'
+        return (
+            f"<h2{attributes}>{content}"
+            '<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a>'
+            "</h2>"
+        )
+
+    source, heading_count = re.subn(
+        r"<h2([^>]*)>(.*?)</h2>", decorate, source, flags=re.DOTALL
+    )
+    if heading_count == 0:
+        raise ValueError(f"{filename}: expected at least one category heading")
+
+    return re.sub(
+        r"ah-guide-icons\.css\?v=[^\"\s]+",
+        f"ah-guide-icons.css?v={AH_STYLESHEET_VERSION}",
+        source,
+        count=1,
     )
 
 
@@ -426,7 +468,6 @@ def transform_guide(
             vendor_template,
             guide_config["items"],
             vendor_config["catalog"],
-            bool(guide_config.get("back_to_top")),
         )
         source = VENDOR_BLOCK.sub(expected, source, count=1)
     elif vendor_matches:
@@ -471,7 +512,7 @@ def transform_guide(
             raise ValueError(f"{filename}: expected one dropped-scroll block")
     elif dropped_matches:
         raise ValueError(f"{filename}: dropped-scroll section is absent from canonical data")
-    return source
+    return decorate_category_headings(source, filename)
 
 
 def main() -> int:

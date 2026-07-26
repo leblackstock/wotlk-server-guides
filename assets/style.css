@@ -161,6 +161,37 @@ h1 {
   color: #fff;
 }
 
+.guide-category-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-back-to-top {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 34px;
+  margin-left: auto;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.guide-back-to-top:hover,
+.guide-back-to-top:focus-visible {
+  border-color: rgba(114, 227, 255, 0.60);
+  color: var(--cyan);
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -955,6 +986,12 @@ footer {
 
 footer a {
   color: var(--cyan);
+}
+
+@media print {
+  .guide-back-to-top {
+    display: none;
+  }
 }
 
 @media (max-width: 1040px) {
