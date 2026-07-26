@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 17, "Default catalog should show seventeen addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 18, "Default catalog should show eighteen addons");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -73,6 +73,13 @@ async function noOverflow(page, label) {
     const pawnCard = desktop.locator('.addon-card[data-addon-id="pawn"]');
     assert.equal(await pawnCard.locator(".addon-card-tag").first().textContent(), "Gear Evaluation");
     assert.equal(await pawnCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
+
+    await desktop.locator("#addon-search-input").fill("custom loot");
+    await desktop.waitForTimeout(80);
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "AtlasLoot Enhanced for Hellscream");
+    const atlasLootCard = desktop.locator('.addon-card[data-addon-id="atlasloot-hellscream"]');
+    assert.equal(await atlasLootCard.locator(".addon-card-tag").first().textContent(), "Loot Database & Maps");
+    assert.equal(await atlasLootCard.locator(".addon-card-tag", { hasText: "Tested on Hellscream" }).count(), 1);
 
     await desktop.goto(`${base}/guides/addons.html?activity=leveling`, { waitUntil: "networkidle" });
     await desktop.waitForSelector('.addon-card[data-addon-id="questie"]');
@@ -160,6 +167,20 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/pawn/"]').count() > 0, true);
     await noOverflow(desktop, "Pawn details drawer");
 
+    await desktop.goto(`${base}/guides/addons.html?activity=raids#addon=atlasloot-hellscream`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "AtlasLoot Enhanced for Hellscream");
+    const atlasLootText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(atlasLootText, /v5\.11\.04/);
+    assert.match(atlasLootText, /February 5, 2026/);
+    assert.match(atlasLootText, /Burning Crusade heroic items/);
+    assert.match(atlasLootText, /Crimson Crusade reputation items/);
+    assert.match(atlasLootText, /closing AtlasLoot.*reopening/i);
+    assert.match(atlasLootText, /Stock AtlasLoot v5\.11\.04 fallback/);
+    assert.equal(await desktop.locator('a[href="https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493"]').count() > 0, true);
+    assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/atlasloot-enhanced/"]').count() > 0, true);
+    await noOverflow(desktop, "AtlasLoot details drawer");
+
     await desktop.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.match(await desktop.locator("#addon-context-banner").textContent(), /Protection Paladin/);
@@ -211,13 +232,18 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 17);
+    assert.equal(await desktop.locator(".addon-card").count(), 18);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
     await mobile.waitForSelector("#addon-details-dialog[open]");
     await noOverflow(mobile, "Mobile catalog and drawer");
     assert.equal(await mobile.locator(".addon-grid").evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), 1);
+
+    await mobile.goto(`${base}/guides/addons.html?activity=raids#addon=atlasloot-hellscream`, { waitUntil: "networkidle" });
+    await mobile.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await mobile.locator("#addon-dialog-title").textContent(), "AtlasLoot Enhanced for Hellscream");
+    await noOverflow(mobile, "Mobile AtlasLoot drawer");
 
     console.log("Addon browser smoke tests passed at desktop and mobile widths.");
   } finally {

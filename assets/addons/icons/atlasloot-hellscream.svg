@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">AtlasLoot Enhanced for Hellscream</title>
+  <desc id="desc">An open loot chest over a folded dungeon map with a Hellscream ember.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M22 80 45 65l22 12 38-22v42L68 112 44 99 22 111Z" fill="#414444" stroke="#dedcd6" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M45 65v34M67 77v35M22 80l22 12 23-15 20 11 18-10" fill="none" stroke="#a4a9a5" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M31 43h66v34H31Z" fill="#6b3b1d" stroke="#dedcd6" stroke-width="4"/>
+  <path d="M35 43c0-15 12-25 29-25s29 10 29 25Z" fill="#cf4e17" stroke="#dedcd6" stroke-width="4"/>
+  <path d="M31 56h66" stroke="#cf4e17" stroke-width="5"/>
+  <rect x="57" y="52" width="14" height="18" rx="3" fill="#dedcd6" stroke="#171b20" stroke-width="3"/>
+  <path d="M64 23c9 8 11 15 4 22 1-7-4-9-7-13-5 7-8 13-2 20-14-7-14-20 5-29Z" fill="#ff8a3d" stroke="#dedcd6" stroke-width="2"/>
+</svg>

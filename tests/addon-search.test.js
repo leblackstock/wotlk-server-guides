@@ -49,7 +49,10 @@ const searchCases = [
   ["gear sets", "outfitter"],
   ["pawn", "pawn"],
   ["stat weights", "pawn"],
-  ["upgrade score", "pawn"]
+  ["upgrade score", "pawn"],
+  ["atlas loot", "atlasloot-hellscream"],
+  ["custom loot", "atlasloot-hellscream"],
+  ["dungeon maps", "atlasloot-hellscream"]
 ];
 
 for (const [query, expected] of searchCases) assert.equal(first(query), expected, `${query} should rank ${expected} first`);
@@ -135,7 +138,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 17);
+assert.equal(ids("").length, 18);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -236,6 +239,21 @@ assert.match(pawn.generalSetup.join(" "), /\/pawn import/);
 const pawnRole = core.recommendationFor(pawn, state("", { role: ["tank"] }), catalog);
 assert.equal(pawnRole.importance, "recommended");
 assert.deepEqual(pawnRole.purposes, ["gear-evaluation"]);
+
+const atlasLoot = addons.find((addon) => addon.id === "atlasloot-hellscream");
+assert.equal(atlasLoot.compatibility.downloadVersion, "Hellscream 2026-02-05 · base v5.11.04");
+assert.equal(atlasLoot.compatibility.hellscreamTested, true);
+assert.equal(atlasLoot.compatibility.hellscreamTestedDate, "2026-07-25");
+assert.equal(atlasLoot.download.url, "https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493");
+assert.equal(atlasLoot.alternateDownloads[0].url, "https://warperia.com/addon-wotlk/atlasloot-enhanced/");
+assert.ok(atlasLoot.tags.includes("tested-hellscream"));
+assert.ok(atlasLoot.tags.includes("server-sensitive"));
+assert.match(atlasLoot.compatibility.notes.join(" "), /Burning Crusade heroic items/);
+assert.match(atlasLoot.compatibility.notes.join(" "), /Crimson Crusade reputation items/);
+assert.match(atlasLoot.generalSetup.join(" "), /install.*together|every included/i);
+const atlasLootRole = core.recommendationFor(atlasLoot, state("", { role: ["dps"] }), catalog);
+assert.equal(atlasLootRole.importance, "recommended");
+assert.deepEqual(atlasLootRole.purposes, ["loot-reference"]);
 
 const parsedLegacy = core.parseUrlState(
   "https://example.test/guides/addons.html?q=healbt&class=paladin&spec=protection&role=tank#import=ignored&addon=healbot",
