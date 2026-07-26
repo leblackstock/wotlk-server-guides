@@ -9,8 +9,8 @@
   <link rel="apple-touch-icon" href="./assets/brand/hellscream-server-logo-180.png">
   <link rel="stylesheet" href="./assets/guide-color-system.css?v=20260724-holy-v1">
   <link rel="stylesheet" href="./assets/death-knight-color-system.css?v=20260725-dk-v1">
-  <link rel="stylesheet" href="./assets/style.css?v=20260725-ah-hub-v1">
-  <link rel="stylesheet" href="./assets/addon-catalog.css?v=20260722-addons-v1">
+  <link rel="stylesheet" href="./assets/style.css?v=20260725-search-parity-v1">
+  <link rel="stylesheet" href="./assets/addon-catalog.css?v=20260725-search-parity-v1">
   <style>
     .class-guide-card{position:relative;overflow:hidden}
     .class-guide-card::before{position:absolute;inset:0 auto 0 0;width:3px;content:""}
@@ -28,6 +28,9 @@
   </style>
   <script src="./assets/ah-search-index.js?v=20260725-ah-hub-v1" defer></script>
   <script src="./assets/ah-search.js?v=20260721f" defer></script>
+  <script src="./assets/addon-catalog-data.js?v=20260725-acp335-v1" defer></script>
+  <script src="./assets/addon-search-core.js?v=20260725-acp335-v1" defer></script>
+  <script src="./assets/addon-hub-search.js?v=20260725-search-parity-v1" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -46,41 +49,48 @@
       <p class="sub">Low-pop Auction House pricing sheets and practical gameplay references for <strong>Hellscream / Garrosh</strong>. Use these guides for posting, buying, farming, gearing, and learning server content.</p>
     </header>
 
-    <section class="common ah-search-section" aria-label="Auction House lookup">
-      <div class="ah-search-heading">
-        <span class="ah-search-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
-            <circle cx="10.5" cy="10.5" r="5.75"></circle>
-            <path d="m15 15 4.25 4.25"></path>
-          </svg>
-        </span>
-        <span class="ah-search-eyebrow">Auction House lookup</span>
-      </div>
-      <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
-      <div class="ah-search-input-row">
-        <div class="ah-search-input-wrap">
-          <span class="ah-search-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="19" height="19" focusable="false">
-              <circle cx="10.5" cy="10.5" r="5.75"></circle>
-              <path d="m15 15 4.25 4.25"></path>
-            </svg>
-          </span>
-          <input
-            id="ah-search-input"
-            class="ah-search-input"
-            type="search"
-            placeholder="Try Flask of Mojo, Monarch Topaz, or Frozen Orb…"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-            aria-describedby="ah-search-status"
-            aria-controls="ah-search-results"
-          >
+    <section class="common library-hub-section library-hub-ah" aria-labelledby="ah-library-heading">
+      <h2>Auction House</h2>
+      <div class="library-hub-panel">
+        <div class="library-hub-copy">
+          <span class="library-hub-eyebrow">Low-pop price guides</span>
+          <span class="library-hub-title" id="ah-library-heading">Auction House Library</span>
+          <span class="library-hub-note">Search exact item prices or jump into the most-used material guides.</span>
+          <span class="library-hub-count" id="ah-search-count"></span>
         </div>
-        <a class="ah-hub-browse" href="./auction-house.html">Browse AH guides →</a>
+        <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
+        <div class="library-hub-search-row">
+          <div class="ah-search-input-wrap">
+            <span class="ah-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="19" height="19" focusable="false">
+                <circle cx="10.5" cy="10.5" r="5.75"></circle>
+                <path d="m15 15 4.25 4.25"></path>
+              </svg>
+            </span>
+            <input
+              id="ah-search-input"
+              class="ah-search-input"
+              type="search"
+              placeholder="Try Flask of Mojo, Monarch Topaz, or Frozen Orb…"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-describedby="ah-search-status"
+              aria-controls="ah-search-results"
+            >
+          </div>
+          <a class="library-hub-action ah-hub-browse" href="./auction-house.html">Browse AH guides →</a>
+        </div>
+        <nav class="library-hub-chips" aria-label="Popular Auction House guides">
+          <span class="library-hub-chip-label">Popular</span>
+          <a class="library-hub-chip" href="./guides/mining-smithing-ah-price-guide.html">Ore / Bars</a>
+          <a class="library-hub-chip" href="./guides/jewelcrafting-gems-ah-price-guide.html">Gems</a>
+          <a class="library-hub-chip" href="./guides/herbalism-herbs-ah-price-guide.html">Herbs</a>
+          <a class="library-hub-chip" href="./guides/drop-turn-in-quest-page-items-ah-price-guide.html">Turn-Ins</a>
+        </nav>
+        <p class="ah-search-status library-hub-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
+        <ol class="ah-search-results library-hub-results" id="ah-search-results" hidden></ol>
       </div>
-      <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
-      <ol class="ah-search-results" id="ah-search-results" hidden></ol>
     </section>
 
     <aside class="hub-price-warning" aria-label="Price guide notice">
@@ -88,22 +98,48 @@
       <span><strong>Price note:</strong> These are suggested starting prices, not live AH data. Check the current Auction House before buying or posting.</span>
     </aside>
 
-    <section class="common addon-hub-section">
+    <section class="common library-hub-section library-hub-addons" aria-labelledby="addon-library-heading">
       <h2>Addons</h2>
-      <a class="addon-hub-card" href="./guides/addons.html">
-        <span class="addon-hub-copy">
-          <span class="addon-hub-eyebrow">WotLK 3.3.5</span>
-          <span class="addon-hub-title">Addon Library</span>
-          <span class="addon-hub-note">Find compatible 3.3.5 addons by class, role, activity, or interface feature.</span>
-          <span class="addon-hub-chips" aria-hidden="true">
-            <span class="addon-hub-chip">Tank</span>
-            <span class="addon-hub-chip">Paladin</span>
-            <span class="addon-hub-chip">Raid</span>
-            <span class="addon-hub-chip">UI</span>
-          </span>
-        </span>
-        <span class="addon-hub-action">Browse addons →</span>
-      </a>
+      <div class="library-hub-panel">
+        <div class="library-hub-copy">
+          <span class="library-hub-eyebrow">WotLK 3.3.5</span>
+          <span class="library-hub-title" id="addon-library-heading">Addon Library</span>
+          <span class="library-hub-note">Search compatible addons by name, class, role, activity, or interface feature.</span>
+          <span class="library-hub-count">16 reviewed addons</span>
+        </div>
+        <label class="visually-hidden" for="addon-hub-search-input">Search the Addon Library</label>
+        <div class="library-hub-search-row">
+          <div class="ah-search-input-wrap">
+            <span class="ah-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="19" height="19" focusable="false">
+                <circle cx="10.5" cy="10.5" r="5.75"></circle>
+                <path d="m15 15 4.25 4.25"></path>
+              </svg>
+            </span>
+            <input
+              id="addon-hub-search-input"
+              class="ah-search-input"
+              type="search"
+              placeholder="Try HealBot, boss timers, action bars, or DPS meters…"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-describedby="addon-hub-search-status"
+              aria-controls="addon-hub-search-results"
+            >
+          </div>
+          <a class="library-hub-action addon-hub-action" id="addon-hub-browse" href="./guides/addons.html">Browse addons →</a>
+        </div>
+        <nav class="library-hub-chips" aria-label="Popular Addon Library filters">
+          <span class="library-hub-chip-label">Popular</span>
+          <a class="library-hub-chip" href="./guides/addons.html?role=tank">Tank</a>
+          <a class="library-hub-chip" href="./guides/addons.html?class=paladin">Paladin</a>
+          <a class="library-hub-chip" href="./guides/addons.html?activity=raids">Raid</a>
+          <a class="library-hub-chip" href="./guides/addons.html?primary-use=interface">UI</a>
+        </nav>
+        <p class="ah-search-status library-hub-status" id="addon-hub-search-status" role="status" aria-live="polite" hidden></p>
+        <ol class="ah-search-results library-hub-results" id="addon-hub-search-results" hidden></ol>
+      </div>
     </section>
 
     <section class="common">
