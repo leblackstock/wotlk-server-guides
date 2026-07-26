@@ -277,7 +277,7 @@
       row.setAttribute("aria-selected", "false");
       row.addEventListener("click", (event) => {
         if (event.target instanceof Element && event.target.closest("a, button, input, select, textarea, label")) return;
-        selectRow(row, { toggle: true });
+        selectRow(row, { toggle: true, pulse: true });
       });
     });
 
