@@ -31,8 +31,9 @@ REQUIRED_ADDONS = {
     "bartender4",
     "outfitter",
     "pawn",
+    "atlasloot-hellscream",
 }
-TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "addon-control-panel", "bartender4", "outfitter", "pawn"}
+TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "addon-control-panel", "bartender4", "outfitter", "pawn", "atlasloot-hellscream"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",
@@ -157,6 +158,13 @@ def main() -> int:
         parsed = urlparse(download_url)
         if parsed.scheme != "https" or not parsed.netloc:
             fail(errors, f"{addon_id}: invalid HTTPS download URL {download_url!r}")
+        for alternate in addon.get("alternateDownloads", []):
+            alternate_url = alternate.get("url", "")
+            parsed_alternate = urlparse(alternate_url)
+            if parsed_alternate.scheme != "https" or not parsed_alternate.netloc:
+                fail(errors, f"{addon_id}: invalid alternate HTTPS download URL {alternate_url!r}")
+            if not alternate.get("source", "").strip() or not alternate.get("label", "").strip() or not alternate.get("notes", "").strip():
+                fail(errors, f"{addon_id}: alternate downloads need source, label, and notes")
         icon = addon.get("icon", {})
         icon_path = ROOT / icon.get("path", "")
         if not icon_path.is_file():

@@ -1243,6 +1243,21 @@
         "which item is better"
       ],
       "order": 160
+    },
+    {
+      "id": "loot-database",
+      "label": "Loot Database & Maps",
+      "group": "feature",
+      "description": "Browses boss loot, custom server rewards, collections, and instance maps from inside the game.",
+      "searchAliases": [
+        "atlas loot",
+        "loot tables",
+        "boss drops",
+        "dungeon maps",
+        "custom loot",
+        "where does item drop"
+      ],
+      "order": 170
     }
   ],
   "importanceLevels": [
@@ -1391,6 +1406,12 @@
       "label": "Gear Evaluation",
       "icon": "⚖",
       "order": 180
+    },
+    {
+      "id": "loot-reference",
+      "label": "Loot Database & Dungeon Maps",
+      "icon": "▧",
+      "order": 190
     }
   ],
   "addons": [
@@ -3992,6 +4013,152 @@
       "icon": {
         "path": "assets/addons/icons/pawn.svg",
         "alt": "Two equipment cards balanced on a stat-weight scale"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
+      "id": "atlasloot-hellscream",
+      "name": "AtlasLoot Enhanced for Hellscream",
+      "aliases": [
+        "AtlasLoot",
+        "Atlas Loot",
+        "AtlasLoot Enhanced",
+        "AtlasLoot for Hellscream",
+        "AtlasLoot v5.11.04"
+      ],
+      "searchTerms": [
+        "atlas loot",
+        "boss loot",
+        "loot tables",
+        "boss drops",
+        "dungeon maps",
+        "instance maps",
+        "custom loot",
+        "hellscream content",
+        "heroic ragefire chasm",
+        "heroic shadowfang keep",
+        "heroic stockade",
+        "heroic sunken temple",
+        "heroic zul farrak",
+        "heroic zul gurub",
+        "bumble",
+        "crimson crusade",
+        "where does item drop"
+      ],
+      "summary": "The recommended Hellscream loot and map reference, combining AtlasLoot v5.11.04 with server-specific loot tables, custom content, and Atlas maps.",
+      "does": [
+        "Browses dungeon, raid, profession, PvP, faction, collection, and boss loot tables without visiting each source in person.",
+        "Adds Hellscream-specific custom-content menus and loot records while bundling compatible Atlas instance maps and supporting modules.",
+        "Provides item filtering, wishlists, source browsing, and a quick reference for planning upgrades and farming routes."
+      ],
+      "doesNot": [
+        "Does not provide a complete live database; the February 2026 post says some Burning Crusade heroic and Crimson Crusade reputation items are still missing.",
+        "Does not guarantee every custom item is already cached; a question-mark item may require closing AtlasLoot and reopening it."
+      ],
+      "generalSetup": [
+        "Open the Hellscream Discord post below and download AtlasLoot.7z; Discord sign-in and membership in the server may be required.",
+        "Exit WoW completely, then remove or rename older Atlas and AtlasLoot folders so files from different releases cannot mix.",
+        "Extract every included Atlas and AtlasLoot folder together into Interface\\AddOns; do not place the AtlasLoot.7z archive itself in AddOns.",
+        "At character select, enable the bundled Atlas and AtlasLoot modules and confirm AtlasLoot reports the v5.11.04 base version.",
+        "Open AtlasLoot with /atlasloot or /al, confirm Hellscream Content and Atlas maps appear, then test a custom loot page before relying on it."
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "loot-database",
+        "setup-required",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "loot-database",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "dungeons",
+          "raids",
+          "pvp",
+          "leveling"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "recommended",
+          "purposes": [
+            "loot-reference"
+          ],
+          "summary": "The recommended loot database and dungeon-map package for Hellscream because it includes server-specific content absent from the stock release.",
+          "reason": "The custom package keeps the familiar AtlasLoot and Atlas workflow while adding Hellscream loot tables and custom-content menus. Use it as a planning reference, but keep the documented coverage gaps in mind."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-07-25",
+        "lastReviewed": "2026-07-25",
+        "downloadVersion": "Hellscream 2026-02-05 · base v5.11.04",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "server-custom",
+        "notes": [
+          "Hellscream use confirmed July 25, 2026: this custom package works during normal play with no remembered errors or addon conflicts.",
+          "The recommended package is the Hellscream-specific build posted February 5, 2026, based on AtlasLoot Enhanced v5.11.04; it should not be confused with the stock public release.",
+          "Install all folders from the same package together. Mixing Atlas, AtlasLoot, or data modules from another release can produce missing menus, stale loot, or silent errors.",
+          "The February 2026 maintainer post says some Burning Crusade heroic items and Crimson Crusade reputation items remain missing, with more server content still to be added.",
+          "Older maintainer guidance notes that a question-mark item may resolve after closing the AtlasLoot window and reopening it.",
+          "The Discord message is the authoritative source post and may require signing in or joining the Hellscream Discord before its attachment is visible.",
+          "The inspected AtlasLoot.7z package is 13,036,815 bytes with SHA-256 c28eaa13b2c73d00f885178cae5f0eb7f4936b1e4d7c85afea5da8eceec36a73."
+        ]
+      },
+      "download": {
+        "url": "https://discord.com/channels/608456284643262504/1328533521983340574/1469088948956434493",
+        "source": "Hellscream Discord",
+        "notes": "February 5, 2026 message containing the recommended AtlasLoot.7z Hellscream package; sign-in or server membership may be required."
+      },
+      "alternateDownloads": [
+        {
+          "url": "https://warperia.com/addon-wotlk/atlasloot-enhanced/",
+          "source": "Warperia",
+          "label": "Stock AtlasLoot v5.11.04 fallback ↗",
+          "notes": "WotLK 3.3.5 fallback only. It does not include Hellscream custom loot tables, custom-content menus, or the server-matched Atlas package."
+        }
+      ],
+      "icon": {
+        "path": "assets/addons/icons/atlasloot-hellscream.svg",
+        "alt": "Open loot chest over a folded dungeon map with a Hellscream ember"
       },
       "screenshots": [],
       "videos": [],

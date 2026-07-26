@@ -12,7 +12,8 @@
     "maintained-port": "Maintained port",
     "wrath-era": "Wrath-era build",
     "old-unmaintained": "Old / unmaintained",
-    "legacy-compatible": "Legacy compatibility build"
+    "legacy-compatible": "Legacy compatibility build",
+    "server-custom": "Server-custom Hellscream build"
   };
 
   function make(tag, className, text) {
@@ -424,6 +425,13 @@
       download.target = "_blank";
       download.rel = "noopener";
       actions.append(download);
+      (addon.alternateDownloads || []).forEach((source) => {
+        const link = make("a", "addon-download-link", source.label || `Alternate download from ${source.source} ↗`);
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        actions.append(link);
+      });
       (addon.relatedGuides || []).forEach((guide) => {
         const link = make("a", "addon-download-link", guide.label);
         link.href = `../${guide.href}`;
@@ -431,6 +439,9 @@
       });
       dialogContent.append(actions);
       dialogContent.append(make("p", "addon-source-meta", `${addon.download.source} · ${addon.compatibility.downloadVersion} · ${addon.download.notes}`));
+      (addon.alternateDownloads || []).forEach((source) => {
+        dialogContent.append(make("p", "addon-source-meta", `${source.source} fallback · ${source.notes}`));
+      });
 
       if (recommendation) {
         const importance = importanceMap.get(recommendation.importance)?.label || titleCase(recommendation.importance);
