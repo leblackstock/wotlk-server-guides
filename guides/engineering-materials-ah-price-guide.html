@@ -3,11 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Engineering Materials AH Price Guide — Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260724-ah-mobile-select-v2">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260725-vendor-pricing-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="engineering-materials-ah-price-guide">
 <div class="wrap">
-<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<!-- AH_SHARED_NAV_START -->
+<nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
+  <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+  <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
+</nav>
+<!-- AH_SHARED_NAV_END -->
 <header>
 <div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/engineering.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Engineering Materials AH Price Guide</h1>
 <p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Focused on Engineering parts, raw inputs, explosives, ammo, powders, mount parts, and practical catch-up materials.</p></div></div>
@@ -747,16 +752,62 @@
 <div><span class="label">Buyout</span><span class="buyout">350g</span></div>
 </div></td><td data-column="stack" data-label="Stack Size">1</td><td data-column="demand" data-label="Demand"><span class="demand med">Med</span></td><td data-column="notes" data-label="Use / Selling Notes">Mount component if tradeable/available on this server. Price depends heavily on supply.</td></tr></tbody></table></div></section>
 
-<section class="common vendor-compact">
-<h2>Vendor-only / expensive vendor Engineering supplies</h2>
-<p class="small">These are vendor goods or mostly vendor-value items. Use the AH only for convenience, not scarcity pricing.</p>
-<div class="table-wrap"><table class="ah-reference-table" data-table-family="reference"><thead><tr><th data-column="item">Item / Reference</th><th data-column="reference">Reference / Rule</th><th data-column="notes">Notes</th></tr></thead><tbody><tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Goblin-machined Piston</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny margin</td><td class="muted" data-column="notes" data-label="Notes">Bought from a vendor for Mechano-hog / Mekgineer's Chopper. Do not price as a rare drop.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Elementium-plated Exhaust Pipe</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny margin</td><td class="muted" data-column="notes" data-label="Notes">Bought from a vendor for Mechano-hog / Mekgineer's Chopper. Convenience resale only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Weak Flux</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Needed in early tube/bar paths. AH convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Heavy Stock</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Ammo ingredient. Do not price like a rare mat.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Simple Wood</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in some early Engineering recipes. Convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Blank Parchment / basic vendor odds</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Only list if people actually buy convenience stacks.</td></tr></tbody></table></div>
+<!-- AH_VENDOR_SECTION_START -->
+<section class="common vendor-compact" data-ah-template="vendor-convenience-v1">
+  <h2>Vendor &amp; convenience items</h2>
+  <p class="small"><strong>Target Buyout is per item.</strong> Source / Cost shows what anchors the price. Coin-vendor entries include a modest convenience margin; daily-currency and drop items use their own low-pop market target. Verify unusual vendor costs on this server before posting a large quantity.</p>
+  <div class="table-wrap">
+    <table class="ah-reference-table ah-vendor-table" data-table-family="reference">
+      <thead>
+        <tr>
+          <th data-column="item">Item</th>
+          <th data-column="source">Source / Cost</th>
+          <th data-column="target">Target Buyout</th>
+          <th data-column="stack">Suggested Stack</th>
+          <th data-column="notes">Posting Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-vendor-key="goblin-machined-piston">
+          <td data-column="item" data-label="Item"><strong class="q-common">Goblin-machined Piston</strong><div class="mini">Roxi Ramrocket mount component</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1,000g each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1,050g</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 8</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">The 1,050g target is a 5% convenience margin over the normal 1,000g vendor cost.</td>
+        </tr>
+        <tr data-vendor-key="elementium-plated-exhaust-pipe">
+          <td data-column="item" data-label="Item"><strong class="q-common">Elementium-plated Exhaust Pipe</strong><div class="mini">Roxi Ramrocket mount component</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1,500g each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1,575g</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">The 1,575g target is a 5% convenience margin over the normal 1,500g vendor cost.</td>
+        </tr>
+        <tr data-vendor-key="weak-flux">
+          <td data-column="item" data-label="Item"><strong class="q-common">Weak Flux</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level Blacksmithing and Engineering supply.</td>
+        </tr>
+        <tr data-vendor-key="heavy-stock">
+          <td data-column="item" data-label="Item"><strong class="q-common">Heavy Stock</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 20s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">30s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Engineering ammunition reagent. Convenience pricing only.</td>
+        </tr>
+        <tr data-vendor-key="simple-wood">
+          <td data-column="item" data-label="Item"><strong class="q-common">Simple Wood</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 38c each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">1s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Early Engineering reagent. Do not use scarcity pricing.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+<!-- AH_VENDOR_SECTION_END -->
 
 <section class="common source-list"><h2>Sources</h2>
 <ul>
@@ -774,4 +825,4 @@
 </section>
 
 <footer>WotLK 3.3.5 Low-Pop Engineering Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
-</div><script src="../assets/ah-search.js" defer></script></body></html>
+</div><script src="../assets/ah-search.js?v=20260725-vendor-pricing-v1" defer></script></body></html>

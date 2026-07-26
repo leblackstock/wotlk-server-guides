@@ -1,0 +1,540 @@
+{
+  "version": 1,
+  "source": {
+    "name": "AzerothCore WotLK item_template",
+    "repository": "azerothcore/azerothcore-wotlk",
+    "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
+    "verified_build": 12340
+  },
+  "pricing_policy": {
+    "unit": "per item",
+    "description": "Coin-vendor items use the normal 3.3.5 vendor cost plus a rounded convenience margin. Token and drop items use an explicit low-pop market target instead.",
+    "server_note": "Hellscream may customize vendor availability or cost, so verify unusual values in game before posting a large quantity."
+  },
+  "catalog": {
+    "bleach": {
+      "name": "Bleach",
+      "item_id": 2324,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "1 / 5",
+      "notes": "Tailoring reagent. Post only as a convenience listing."
+    },
+    "blue-dye": {
+      "name": "Blue Dye",
+      "item_id": 6260,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 50,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "1 / 5",
+      "notes": "Low-level Tailoring dye. Keep listings small."
+    },
+    "bright-baubles": {
+      "name": "Bright Baubles",
+      "item_id": 6532,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 250,
+      "vendor_buy_count": 1,
+      "target_copper": 500,
+      "stack": "1 / 5",
+      "notes": "Vendor fishing lure. Convenience price only; do not treat it as scarce."
+    },
+    "coal": {
+      "name": "Coal",
+      "item_id": 3857,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 500,
+      "vendor_buy_count": 1,
+      "target_copper": 1000,
+      "stack": "1 / 5 / 20",
+      "notes": "Needed for Steel Bar. Buyers can obtain it cheaply from profession-supply vendors."
+    },
+    "coarse-thread": {
+      "name": "Coarse Thread",
+      "item_id": 2320,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 10,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Starter Tailoring supply. One-silver convenience pricing is already generous."
+    },
+    "common-parchment": {
+      "name": "Common Parchment",
+      "item_id": 10648,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 125,
+      "vendor_buy_count": 1,
+      "target_copper": 300,
+      "stack": "5 / 20",
+      "notes": "Inscription supply. Post small convenience stacks."
+    },
+    "crystal-vial": {
+      "name": "Crystal Vial",
+      "item_id": 8925,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 2500,
+      "vendor_buy_count": 5,
+      "target_copper": 1000,
+      "stack": "5 / 20",
+      "notes": "Common Alchemy vial. Vendor cost is 25s per bundle of five."
+    },
+    "deeprock-salt": {
+      "name": "Deeprock Salt",
+      "item_id": 8150,
+      "source_type": "world-drop",
+      "source_label": "Old-world elemental drop",
+      "source_cost_label": "Farmed drop; no fixed vendor cost",
+      "target_copper": 10000,
+      "stack": "1 / 5",
+      "notes": "Used for the Refined Deeprock Salt path. Price it as a slow, scarce old-world reagent."
+    },
+    "elemental-flux": {
+      "name": "Elemental Flux",
+      "item_id": 18567,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 150000,
+      "vendor_buy_count": 1,
+      "target_copper": 180000,
+      "stack": "1 / 5",
+      "notes": "High-level Blacksmithing supply. The 18g target covers convenience without pretending it is rare."
+    },
+    "elementium-plated-exhaust-pipe": {
+      "name": "Elementium-plated Exhaust Pipe",
+      "item_id": 44500,
+      "source_type": "coin-vendor",
+      "source_label": "Roxi Ramrocket mount component",
+      "vendor_cost_copper": 15000000,
+      "vendor_buy_count": 1,
+      "target_copper": 15750000,
+      "stack": "1",
+      "notes": "The 1,575g target is a 5% convenience margin over the normal 1,500g vendor cost."
+    },
+    "empty-vial": {
+      "name": "Empty Vial",
+      "item_id": 3371,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 20,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Starter Alchemy vial. Vendor cost is 20c per bundle of five."
+    },
+    "enchanted-vial": {
+      "name": "Enchanted Vial",
+      "item_id": 40411,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 50000,
+      "vendor_buy_count": 5,
+      "target_copper": 12500,
+      "stack": "5 / 20",
+      "notes": "Flask vial. Vendor cost is 5g per bundle of five."
+    },
+    "eternium-thread": {
+      "name": "Eternium Thread",
+      "item_id": 38426,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 30000,
+      "vendor_buy_count": 1,
+      "target_copper": 37500,
+      "stack": "1 / 5",
+      "notes": "High-level Leatherworking and Tailoring supply."
+    },
+    "fine-thread": {
+      "name": "Fine Thread",
+      "item_id": 2321,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 100,
+      "vendor_buy_count": 1,
+      "target_copper": 200,
+      "stack": "5 / 20",
+      "notes": "Low-level profession supply. Post only in useful small stacks."
+    },
+    "goblin-machined-piston": {
+      "name": "Goblin-machined Piston",
+      "item_id": 44501,
+      "source_type": "coin-vendor",
+      "source_label": "Roxi Ramrocket mount component",
+      "vendor_cost_copper": 10000000,
+      "vendor_buy_count": 1,
+      "target_copper": 10500000,
+      "stack": "1 / 8",
+      "notes": "The 1,050g target is a 5% convenience margin over the normal 1,000g vendor cost."
+    },
+    "gray-dye": {
+      "name": "Gray Dye",
+      "item_id": 4340,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 350,
+      "vendor_buy_count": 1,
+      "target_copper": 700,
+      "stack": "1 / 5",
+      "notes": "Old-world Tailoring dye. Keep listings small."
+    },
+    "green-dye": {
+      "name": "Green Dye",
+      "item_id": 2605,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 100,
+      "vendor_buy_count": 1,
+      "target_copper": 200,
+      "stack": "1 / 5",
+      "notes": "Profession-leveling dye. Convenience price only."
+    },
+    "heavy-parchment": {
+      "name": "Heavy Parchment",
+      "item_id": 39501,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 1250,
+      "vendor_buy_count": 1,
+      "target_copper": 2000,
+      "stack": "5 / 20",
+      "notes": "Inscription supply. Do not use scarcity pricing."
+    },
+    "heavy-silken-thread": {
+      "name": "Heavy Silken Thread",
+      "item_id": 8343,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 2000,
+      "vendor_buy_count": 1,
+      "target_copper": 3000,
+      "stack": "5 / 20",
+      "notes": "Old-world Tailoring and Leatherworking supply."
+    },
+    "heavy-stock": {
+      "name": "Heavy Stock",
+      "item_id": 4400,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 2000,
+      "vendor_buy_count": 1,
+      "target_copper": 3000,
+      "stack": "5 / 20",
+      "notes": "Engineering ammunition reagent. Convenience pricing only."
+    },
+    "hot-spices": {
+      "name": "Hot Spices",
+      "item_id": 2692,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 40,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Old-world Cooking reagent. Post in recipe-sized stacks."
+    },
+    "imbued-vial": {
+      "name": "Imbued Vial",
+      "item_id": 18256,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 20000,
+      "vendor_buy_count": 5,
+      "target_copper": 6000,
+      "stack": "5 / 20",
+      "notes": "Higher-level Alchemy vial. Vendor cost is 2g per bundle of five."
+    },
+    "jewelers-kit": {
+      "name": "Jeweler's Kit",
+      "item_id": 20815,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor tool",
+      "vendor_cost_copper": 800,
+      "vendor_buy_count": 1,
+      "target_copper": 1600,
+      "stack": "1",
+      "notes": "Required Jewelcrafting tool. List singly."
+    },
+    "leaded-vial": {
+      "name": "Leaded Vial",
+      "item_id": 3372,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 200,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Old-world Alchemy vial. Vendor cost is 2s per bundle of five."
+    },
+    "light-parchment": {
+      "name": "Light Parchment",
+      "item_id": 39354,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 15,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Glyph and scroll supply. One-silver convenience pricing is sufficient."
+    },
+    "mild-spices": {
+      "name": "Mild Spices",
+      "item_id": 2678,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 10,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Old-world Cooking reagent. Vendor cost is 10c per bundle of five."
+    },
+    "red-dye": {
+      "name": "Red Dye",
+      "item_id": 2604,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 50,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "1 / 5",
+      "notes": "Low-level Tailoring dye. Keep listings small."
+    },
+    "refreshing-spring-water": {
+      "name": "Refreshing Spring Water",
+      "item_id": 159,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Starter Cooking reagent. Vendor cost is 25c per bundle of five."
+    },
+    "resilient-parchment": {
+      "name": "Resilient Parchment",
+      "item_id": 39502,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 5000,
+      "vendor_buy_count": 1,
+      "target_copper": 7500,
+      "stack": "1 / 5 / 10",
+      "notes": "Darkmoon Card of the North reagent. Use the fixed convenience price, not scarcity tiers."
+    },
+    "rune-thread": {
+      "name": "Rune Thread",
+      "item_id": 14341,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 5000,
+      "vendor_buy_count": 1,
+      "target_copper": 7500,
+      "stack": "1 / 5 / 20",
+      "notes": "Common higher-level Leatherworking and Tailoring supply."
+    },
+    "salt": {
+      "name": "Salt",
+      "item_id": 4289,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 50,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Older hide-curing reagent. Convenience price only."
+    },
+    "silken-thread": {
+      "name": "Silken Thread",
+      "item_id": 4291,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 500,
+      "vendor_buy_count": 1,
+      "target_copper": 1000,
+      "stack": "5 / 20",
+      "notes": "Old-world Tailoring and Leatherworking supply."
+    },
+    "simple-flour": {
+      "name": "Simple Flour",
+      "item_id": 30817,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Old-world Cooking reagent. Vendor cost is 25c per bundle of five."
+    },
+    "simple-grinder": {
+      "name": "Simple Grinder",
+      "item_id": 20824,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor tool",
+      "vendor_cost_copper": 25000,
+      "vendor_buy_count": 1,
+      "target_copper": 30000,
+      "stack": "1",
+      "notes": "Jewelcrafting tool. Only list one at a time for convenience."
+    },
+    "simple-wood": {
+      "name": "Simple Wood",
+      "item_id": 4470,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 38,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Early Engineering reagent. Do not use scarcity pricing."
+    },
+    "soothing-spices": {
+      "name": "Soothing Spices",
+      "item_id": 3713,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 160,
+      "vendor_buy_count": 1,
+      "target_copper": 400,
+      "stack": "5 / 20",
+      "notes": "Old-world Cooking reagent. Post in recipe-sized stacks."
+    },
+    "strong-flux": {
+      "name": "Strong Flux",
+      "item_id": 3466,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 2000,
+      "vendor_buy_count": 1,
+      "target_copper": 3000,
+      "stack": "1 / 5 / 20",
+      "notes": "Blacksmithing supply. The target is a convenience price, not a scarce-material price."
+    },
+    "virtuoso-inking-set": {
+      "name": "Virtuoso Inking Set",
+      "item_id": 39505,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor tool",
+      "vendor_cost_copper": 750,
+      "vendor_buy_count": 1,
+      "target_copper": 1500,
+      "stack": "1",
+      "notes": "Required Inscription tool. List singly."
+    },
+    "weak-flux": {
+      "name": "Weak Flux",
+      "item_id": 2880,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 100,
+      "vendor_buy_count": 1,
+      "target_copper": 200,
+      "stack": "1 / 5 / 20",
+      "notes": "Low-level Blacksmithing and Engineering supply."
+    }
+  },
+  "guides": {
+    "alchemy-materials-ah-price-guide.html": {
+      "items": [
+        "crystal-vial",
+        "imbued-vial",
+        "enchanted-vial",
+        "leaded-vial",
+        "empty-vial"
+      ]
+    },
+    "blacksmithing-materials-ah-price-guide.html": {
+      "items": [
+        "coal",
+        "weak-flux",
+        "strong-flux",
+        "elemental-flux",
+        "green-dye"
+      ]
+    },
+    "engineering-materials-ah-price-guide.html": {
+      "items": [
+        "goblin-machined-piston",
+        "elementium-plated-exhaust-pipe",
+        "weak-flux",
+        "heavy-stock",
+        "simple-wood"
+      ]
+    },
+    "fishing-cooking-materials-ah-price-guide.html": {
+      "items": [
+        "bright-baubles",
+        "simple-flour",
+        "mild-spices",
+        "hot-spices",
+        "soothing-spices",
+        "refreshing-spring-water"
+      ]
+    },
+    "herbalism-herbs-ah-price-guide.html": {
+      "items": [
+        "crystal-vial",
+        "imbued-vial",
+        "enchanted-vial",
+        "virtuoso-inking-set",
+        "light-parchment",
+        "resilient-parchment"
+      ]
+    },
+    "inscription-materials-ah-price-guide.html": {
+      "items": [
+        "virtuoso-inking-set",
+        "light-parchment",
+        "common-parchment",
+        "heavy-parchment",
+        "resilient-parchment"
+      ]
+    },
+    "jewelcrafting-gems-ah-price-guide.html": {
+      "items": [
+        "jewelers-kit",
+        "simple-grinder"
+      ]
+    },
+    "mining-smithing-ah-price-guide.html": {
+      "items": [
+        "coal",
+        "weak-flux",
+        "strong-flux",
+        "elemental-flux"
+      ]
+    },
+    "skinning-leatherworking-materials-ah-price-guide.html": {
+      "items": [
+        "eternium-thread",
+        "rune-thread",
+        "silken-thread",
+        "heavy-silken-thread",
+        "fine-thread",
+        "salt",
+        "deeprock-salt"
+      ]
+    },
+    "tailoring-cloth-ah-price-guide.html": {
+      "items": [
+        "coarse-thread",
+        "fine-thread",
+        "silken-thread",
+        "heavy-silken-thread",
+        "blue-dye",
+        "red-dye",
+        "green-dye",
+        "gray-dye",
+        "bleach"
+      ]
+    }
+  }
+}

@@ -3,11 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Blacksmithing Materials AH Price Guide — Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260724-ah-mobile-select-v2">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260725-vendor-pricing-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="blacksmithing-materials-ah-price-guide">
 <div class="wrap">
-<nav class="site-nav" aria-label="Guide navigation"><a href="../index.html">Guide Hub</a></nav>
+<!-- AH_SHARED_NAV_START -->
+<nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
+  <a class="guide-hub-link" href="../index.html">Guide Hub</a>
+  <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
+</nav>
+<!-- AH_SHARED_NAV_END -->
 <header>
 <div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/blacksmithing.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Blacksmithing Materials AH Price Guide</h1>
 <p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Covers Blacksmithing materials, utility BS outputs, rod blanks, stones, and practical cross-profession inputs.</p></div></div>
@@ -857,15 +862,62 @@
 <div><span class="label">Buyout</span><span class="buyout">1g 20s</span></div>
 </div></td><td data-column="stack" data-label="Stack Size">1 / 2 / 5</td><td data-column="demand" data-label="Demand"><span class="demand med">Med</span></td><td data-column="notes" data-label="Use / Selling Notes">Used in some old weapon/gear crafts. Include only as practical overlap.</td></tr></tbody></table></div></section>
 
-<section class="common vendor-compact">
-<h2>Vendor-only Blacksmithing supplies</h2>
-<p class="small">These are vendor goods. Use the AH only for convenience, not scarcity pricing.</p>
-<div class="table-wrap"><table class="ah-reference-table" data-table-family="reference"><thead><tr><th data-column="item">Item / Reference</th><th data-column="reference">Reference / Rule</th><th data-column="notes">Notes</th></tr></thead><tbody><tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Coal</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Needed for Steel Bar. Do not pay rare-market prices.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Weak Flux</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Low-level Blacksmithing supply. AH is convenience only.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Strong Flux</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Blacksmithing supply. Buy from vendor when possible.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Elemental Flux</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Higher-level Blacksmithing supply. Avoid trap prices.</td></tr>
-<tr><td data-column="item" data-label="Item / Reference"><strong class="q-common">Green Dye</strong></td><td class="vendor-rule" data-column="reference" data-label="Reference / Rule">Vendor + tiny tip</td><td class="muted" data-column="notes" data-label="Notes">Used in some old BS leveling paths. Convenience only.</td></tr></tbody></table></div>
+<!-- AH_VENDOR_SECTION_START -->
+<section class="common vendor-compact" data-ah-template="vendor-convenience-v1">
+  <h2>Vendor &amp; convenience items</h2>
+  <p class="small"><strong>Target Buyout is per item.</strong> Source / Cost shows what anchors the price. Coin-vendor entries include a modest convenience margin; daily-currency and drop items use their own low-pop market target. Verify unusual vendor costs on this server before posting a large quantity.</p>
+  <div class="table-wrap">
+    <table class="ah-reference-table ah-vendor-table" data-table-family="reference">
+      <thead>
+        <tr>
+          <th data-column="item">Item</th>
+          <th data-column="source">Source / Cost</th>
+          <th data-column="target">Target Buyout</th>
+          <th data-column="stack">Suggested Stack</th>
+          <th data-column="notes">Posting Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-vendor-key="coal">
+          <td data-column="item" data-label="Item"><strong class="q-common">Coal</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 5s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">10s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Needed for Steel Bar. Buyers can obtain it cheaply from profession-supply vendors.</td>
+        </tr>
+        <tr data-vendor-key="weak-flux">
+          <td data-column="item" data-label="Item"><strong class="q-common">Weak Flux</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Low-level Blacksmithing and Engineering supply.</td>
+        </tr>
+        <tr data-vendor-key="strong-flux">
+          <td data-column="item" data-label="Item"><strong class="q-common">Strong Flux</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 20s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">30s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5 / 20</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Blacksmithing supply. The target is a convenience price, not a scarce-material price.</td>
+        </tr>
+        <tr data-vendor-key="elemental-flux">
+          <td data-column="item" data-label="Item"><strong class="q-common">Elemental Flux</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 15g each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">18g</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">High-level Blacksmithing supply. The 18g target covers convenience without pretending it is rare.</td>
+        </tr>
+        <tr data-vendor-key="green-dye">
+          <td data-column="item" data-label="Item"><strong class="q-common">Green Dye</strong><div class="mini">Unlimited coin vendor</div></td>
+          <td class="vendor-cost" data-column="source" data-label="Source / Cost">Vendor: 1s each</td>
+          <td class="vendor-post" data-column="target" data-label="Target Buyout"><span class="vendor-target buyout">2s</span><span class="mini">per item</span></td>
+          <td data-column="stack" data-label="Suggested Stack">1 / 5</td>
+          <td class="muted" data-column="notes" data-label="Posting Notes">Profession-leveling dye. Convenience price only.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
+<!-- AH_VENDOR_SECTION_END -->
 
 <section class="common source-list"><h2>Sources</h2>
 <ul>
@@ -883,4 +935,4 @@
 </section>
 
 <footer>WotLK 3.3.5 Low-Pop Blacksmithing Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-07-05</footer>
-</div><script src="../assets/ah-search.js" defer></script></body></html>
+</div><script src="../assets/ah-search.js?v=20260725-vendor-pricing-v1" defer></script></body></html>

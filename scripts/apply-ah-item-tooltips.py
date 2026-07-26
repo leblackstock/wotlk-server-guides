@@ -29,7 +29,7 @@ LOADER_BLOCK = r'''
     const current = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-search\.js(?:\?|$)/.test(script.src));
     if (!current || !current.src) return;
     const tooltipScript = document.createElement("script");
-    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260722-ah-items-v1", current.src).href;
+    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260725-vendor-pricing-v1", current.src).href;
     tooltipScript.async = false;
     tooltipScript.dataset.ahItemTooltips = "true";
     document.head.appendChild(tooltipScript);
@@ -64,6 +64,9 @@ MANUAL_OVERRIDES = {
     # The Hellscream guides are Horde-first. The two Battered Hilts share a
     # display name; 50380 is the Horde quest starter.
     "battered hilt": 50380,
+    # 24288 is an internal same-name epic record. The profession reagent sold
+    # by trade-supply vendors is the common item 14341.
+    "rune thread": 14341,
 }
 # Small wording differences where the guide label clearly identifies one
 # canonical WotLK item. These are not used for category or multi-item labels.

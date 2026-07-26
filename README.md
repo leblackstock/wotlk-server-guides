@@ -9,8 +9,35 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `guides/` - individual self-contained HTML guide pages
 - `assets/` - shared assets for the guide hub
 - `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
+- `data/ah-vendor-sections.json` - canonical vendor/source costs and suggested AH buyouts
+- `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
+- `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `README.md` - maintenance notes
+
+## Update Vendor & Convenience Prices
+
+Vendor and fixed-source items use one canonical catalog so duplicate entries stay
+identical across guides. Edit `data/ah-vendor-sections.json`, then render the
+shared navigation and pricing sections:
+
+```powershell
+python scripts/render-ah-shared-sections.py
+python scripts/build-ah-search-index.py
+```
+
+Verify that both generated layers are current:
+
+```powershell
+python scripts/render-ah-shared-sections.py --check
+python scripts/build-ah-search-index.py --check
+python tests/ah-vendor-pricing.test.py
+```
+
+The recorded vendor costs come from the AzerothCore WotLK `item_template`
+baseline identified in the data file. Hellscream may customize availability or
+cost, so unusual values should still be checked in game before repricing large
+quantities.
 
 ## Update The AH Search Index
 
@@ -83,7 +110,7 @@ https://leblackstock.github.io/wotlk-server-guides/
 ## Pre-Publish Checks
 
 - Every guide link on `index.html` and `auction-house.html` should open.
-- Every guide should have a `Guide Hub` link back to `../index.html`.
+- Every AH guide should have the canonical `Guide Hub` and `AH Hub` buttons.
 - No public-facing page should use second-person server wording.
 - No local machine paths should appear in published files.
 - Filenames should stay clean, lowercase, and Discord-friendly.
