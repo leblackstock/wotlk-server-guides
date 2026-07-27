@@ -4064,6 +4064,14 @@
         "At character select, enable the bundled Atlas and AtlasLoot modules and confirm AtlasLoot reports the v5.11.04 base version.",
         "Open AtlasLoot with /atlasloot or /al, confirm Hellscream Content and Atlas maps appear, then test a custom loot page before relying on it."
       ],
+      "troubleshootingLinks": [
+        {
+          "prompt": "If you don't see the new content but you're sure you have the Hellscream version,",
+          "url": "https://discord.com/channels/608456284643262504/1328533521983340574/1531021573593628944",
+          "label": "click this link ↗",
+          "source": "Hellscream Discord troubleshooting post"
+        }
+      ],
       "tags": [
         "all-roles",
         "interface",
