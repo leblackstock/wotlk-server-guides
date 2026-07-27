@@ -31,6 +31,8 @@ async function noOverflow(page, label) {
     await desktop.locator("#ah-search-input").fill("Dark Iron Scraps");
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Dark Iron Scraps/);
+    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
+    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-value").count(), 2);
     await noOverflow(desktop, "Desktop main hub");
 
     await desktop.locator("#addon-hub-search-input").fill("healbt");
@@ -54,6 +56,7 @@ async function noOverflow(page, label) {
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Sanguine Hibiscus/);
+    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
     assert.match(await desktop.locator(".ah-search-result").first().getAttribute("href"), /^\.\/guides\//);
     await noOverflow(desktop, "Desktop Auction House hub");
 
