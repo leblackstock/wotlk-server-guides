@@ -8,11 +8,11 @@
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
-  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-shadow-priest-v1">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-shadow-priest-v2-color-icons">
   <link rel="stylesheet" href="../assets/style.css?v=20260726-global-top-links-v1">
-  <link rel="stylesheet" href="../assets/shadow-priest.css?v=20260726-shadow-priest-v1">
-  <script src="../assets/priest-tooltips.js?v=20260726-shadow-priest-v1" defer></script>
-  <script src="../assets/shadow-priest.js?v=20260726-shadow-priest-v1" defer></script>
+  <link rel="stylesheet" href="../assets/shadow-priest.css?v=20260726-shadow-priest-v2-color-icons">
+  <script src="../assets/priest-tooltips.js?v=20260726-shadow-priest-v2-color-icons" defer></script>
+  <script src="../assets/shadow-priest.js?v=20260726-shadow-priest-v2-color-icons" defer></script>
 </head>
 <body data-guide-class="priest" data-guide-spec="shadow">
   <div class="wrap" id="top">
@@ -33,7 +33,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>The durable Shadow Word: Pain application waits until Shadow Weaving reaches five stacks.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Flay</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Shadow Word: Pain</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Vampiric Touch">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Devouring Plague">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Blast">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Flay">Mind Flay</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Shadow Word: Pain">Shadow Word: Pain</span></div>
       <ul class="clean-list"><li>Pain and Suffering updates spell power on refresh but preserves important initial-state effects including the Shadow Weaving state.</li><li>Do not rebuild the opener after every short mechanic; only reapply when Pain actually falls.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> casting Shadow Word: Pain at four stacks and carrying an 8% Shadow Weaving bonus through the entire refresh chain.</p></div>
@@ -45,7 +45,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>Refresh Vampiric Touch and Devouring Plague after their final tick, not several seconds early.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Flay</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Vampiric Touch">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Devouring Plague">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Blast">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Flay">Mind Flay</span></div>
       <ul class="clean-list"><li>Begin the cast early enough for the new Vampiric Touch to land after expiration.</li><li>Use Mind Flay as elastic filler; preserve higher-priority cooldowns.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> clipping repeated final ticks because the timer tracks cast start instead of aura expiration.</p></div>
@@ -57,7 +57,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>Choose one, two, or three ticks based on the next DoT or cooldown, then break only after the intended tick lands.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Mind Flay</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Vampiric Touch</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Mind Flay">Mind Flay</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Blast">Mind Blast</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Vampiric Touch">Vampiric Touch</span></div>
       <ul class="clean-list"><li>Latency and the 3.3.5 client change how close the next cast can be queued.</li><li>A visible tick bar is more reliable than guessing from the animation.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> mashing the next spell and repeatedly losing a tick without gaining a faster high-priority cast.</p></div>
@@ -69,7 +69,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>DoT only targets that will live long enough; direct damage wins on short-lived priority adds.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Mind Sear</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Vampiric Touch">Vampiric Touch</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Devouring Plague">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mind Sear">Mind Sear</span></div>
       <ul class="clean-list"><li>Vampiric Touch on several durable targets can be excellent.</li><li>Devouring Plague is limited to one target; put it where the full duration matters.</li><li>Mind Sear needs enough nearby targets and a safe channel.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> spending three globals on an add that dies before the second tick.</p></div>
@@ -81,7 +81,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>Move during global cooldowns, refresh only legitimately due DoTs, and use Shadow Word: Death when its recoil is safe.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Shadow Word: Death</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Power Word: Shield</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Devouring Plague">Devouring Plague</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Shadow Word: Death">Shadow Word: Death</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Power Word: Shield">Power Word: Shield</span></div>
       <ul class="clean-list"><li>Do not clip a healthy DoT simply to have something to press.</li><li>Fade removes movement-impairing effects only with Improved Shadowform.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> standing still for one more Mind Flay tick and dropping the encounter mechanic on the raid.</p></div>
@@ -93,7 +93,7 @@
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>Dispersion is a 90% damage-reduction and mana tool, not immunity; schedule it where lost casts buy survival or assignment value.</p>
-      <div class="ability-strip"><span class="ability-choice ability-name">Shadowfiend</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Dispersion</span><span class="ability-arrow">›</span><span class="ability-choice ability-name">Hymn of Hope</span></div>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Shadowfiend">Shadowfiend</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Dispersion">Dispersion</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Hymn of Hope">Hymn of Hope</span></div>
       <ul class="clean-list"><li>Use Shadowfiend on a target it can reach and survive.</li><li>Dispersion can cover movement or a planned soak while restoring mana.</li><li>Hymn of Hope needs a safe channel and raid awareness.</li></ul>
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> treating Dispersion as immunity and discovering the mechanic still applies, knocks back, or kills through its remaining damage.</p></div>

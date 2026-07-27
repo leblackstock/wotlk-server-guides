@@ -67,8 +67,9 @@ Rules:
 - `entityIconMode: "selective"` is the default for new guides.
 - Dense inline icons require `entityIconMode: "dense"` and `allowDenseEntityIcons: true`, and must still pass the calculated limits.
 - The complexity-based budget comes from the rendered guide’s actual sections, cards, playbooks, talent/glyph groups, encounter groups, and length. It is not assigned manually by role or class.
-- `audit-spec-guide.mjs --release` automatically runs the rendered analyzer with `--enforce`.
+- `audit-spec-guide.mjs --release` automatically runs the rendered density analyzer with `--enforce`, then runs `audit-playbook-ability-icons.mjs`.
 - CI enforces every retained `*.config.json` by default. It does not depend on an opt-in boolean.
+- Playbook ability/action chips are a separate 100% coverage gate. Icon-density grandfathering never exempts them.
 
 `grandfathered` is reserved for an explicitly documented guide that already existed before this workflow became permanent. It must not be copied into a new spec config.
 
@@ -142,7 +143,7 @@ All generated decorative icons use empty alt text, `aria-hidden="true"`, and rem
 Entity registry entries may also carry an icon filename. The generated tooltip script can insert those icons into elements using either:
 
 ```html
-<span class="ability-choice ability-name iconize-entity">Exact Ability Name</span>
+<span class="ability-choice ability-name" data-entity-icon="Exact Ability Name">Exact Ability Name</span>
 <h3 data-entity-icon="Exact Ability Name">Ability timing</h3>
 ```
 

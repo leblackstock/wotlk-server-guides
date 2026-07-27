@@ -131,6 +131,14 @@ A guide with no combat-engine diagram does not fail for lacking combat-engine ic
 
 Counts and coverage must both pass. Loading thirty icons into one gear table does not compensate for bare playbooks or encounter summaries.
 
+### Playbook ability chips: 100% required
+
+The percentage-based playbook-card coverage above applies to contextual card anchors. It does not permit bare action chips.
+
+The density analyzer reports these mandatory action icons separately and excludes them from the optional contextual/inline density budget. After that regular density audit passes, `audit-playbook-ability-icons.mjs` renders the Playing page with its local tooltip/icon scripts and checks every direct `.spec-playbook-grid .spec-card .ability-strip > .ability-choice`. Every chip must contain its own verified WoW icon. One icon in the card heading, or one icon elsewhere in the action row, does not satisfy this gate.
+
+This gate applies to every production config, including a guide whose overall icon-density baseline is explicitly grandfathered.
+
 ## 7. Concentration safeguards
 
 To prevent number-gaming:

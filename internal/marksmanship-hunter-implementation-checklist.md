@@ -7,6 +7,7 @@
 - [x] Extend assets/hunter-tooltips.js with verified IDs
 - [x] Add the Guide Hub card to index.html
 - [x] Check all navigation, pagers, anchors, icons, filters, keyboard controls, mobile, and print
+- [x] Confirm every ability/action chip in every spec playbook card renders its own verified WoW icon
 - [x] Run node --check assets/marksmanship-hunter.js
 - [x] Run node --check assets/hunter-tooltips.js
 - [x] Mark uncertain private-server behavior as Needs Hellscream test

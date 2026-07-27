@@ -72,6 +72,10 @@ function uniqueElements(rootNode, selector) {
   return Array.from(new Set(Array.from(rootNode.querySelectorAll(selector))));
 }
 
+function isMandatoryPlaybookActionIcon(icon) {
+  return Boolean(icon.closest(".spec-playbook-grid .spec-card .ability-strip > .ability-choice"));
+}
+
 function countStructures(main) {
   const structures = {};
   for (const [key, selector] of Object.entries(structureSelectors)) {
@@ -79,10 +83,12 @@ function countStructures(main) {
     structures[key] = {
       total: nodes.length,
       withAnyIcon: nodes.filter((node) => node.querySelector("img")).length,
-      withContextualIcon: nodes.filter((node) => node.querySelector("img:not(.entity-link-icon)")).length
+      withContextualIcon: nodes.filter((node) => Array.from(node.querySelectorAll("img")).some((img) =>
+        !img.classList.contains("entity-link-icon") && !isMandatoryPlaybookActionIcon(img)
+      )).length
     };
   }
-  const inline = Array.from(main.querySelectorAll("img.entity-link-icon"));
+  const inline = Array.from(main.querySelectorAll("img.entity-link-icon")).filter((img) => !isMandatoryPlaybookActionIcon(img));
   structures.inlineInParagraphs = inline.filter((img) => img.closest("p")).length;
   structures.inlineInListsOrTables = inline.filter((img) => img.closest("li,td,th,table")).length;
   return structures;
@@ -90,8 +96,10 @@ function countStructures(main) {
 
 function classifyIcons(main) {
   const all = Array.from(main.querySelectorAll("img"));
-  const inline = all.filter((img) => img.classList.contains("entity-link-icon"));
-  const contextual = all.filter((img) => !img.classList.contains("entity-link-icon"));
+  const mandatoryPlaybookAction = all.filter(isMandatoryPlaybookActionIcon);
+  const mandatoryPlaybookActionSet = new Set(mandatoryPlaybookAction);
+  const inline = all.filter((img) => img.classList.contains("entity-link-icon") && !mandatoryPlaybookActionSet.has(img));
+  const contextual = all.filter((img) => !img.classList.contains("entity-link-icon") && !mandatoryPlaybookActionSet.has(img));
   const assigned = new Set();
   const locations = {};
 
@@ -116,6 +124,7 @@ function classifyIcons(main) {
     total: all.length,
     contextual: contextual.length,
     inlineEntity: inline.length,
+    mandatoryPlaybookAction: mandatoryPlaybookAction.length,
     locations,
     classCounts,
     structures: countStructures(main)
@@ -258,6 +267,7 @@ async function analyzeFamily(family, policy) {
   const words = pages.reduce((sum, page) => sum + page.words, 0);
   const contextual = pages.reduce((sum, page) => sum + page.contextual, 0);
   const inlineEntity = pages.reduce((sum, page) => sum + page.inlineEntity, 0);
+  const mandatoryPlaybookAction = pages.reduce((sum, page) => sum + page.mandatoryPlaybookAction, 0);
   const locations = Object.fromEntries([...locationSelectors.map(([key]) => key), "otherContextual"].map((key) => [key, sumLocation(pages, key)]));
   const structures = {};
   for (const key of Object.keys(structureSelectors)) {
@@ -291,9 +301,10 @@ async function analyzeFamily(family, policy) {
     pages,
     totals: {
       words,
-      total: contextual + inlineEntity,
+      total: contextual + inlineEntity + mandatoryPlaybookAction,
       contextual,
       inlineEntity,
+      mandatoryPlaybookAction,
       entityLinkCount,
       contextualPer1000Words: Number(((contextual / Math.max(words, 1)) * 1000).toFixed(1)),
       inlinePer1000Words: Number(((inlineEntity / Math.max(words, 1)) * 1000).toFixed(1)),
@@ -379,7 +390,7 @@ const policy = loadPolicy();
 const selectedFamilies = configFile ? [familyFromConfig(configFile)] : BASELINE_FAMILIES;
 const report = {
   generatedAt: new Date().toISOString(),
-  methodology: "Rendered DOM after local guide icon scripts; derives each guide's contextual icon budget from its actual icon-worthy structures and separates optional inline entity icons.",
+  methodology: "Rendered DOM after local guide icon scripts; derives each guide's contextual icon budget from its actual icon-worthy structures, separates optional inline entity icons, and reports mandatory playbook-action icons outside the density budget for the dedicated 100% post-density gate.",
   policyFile: fs.existsSync(path.resolve(root, policyFile)) ? policyFile : null,
   families: []
 };
@@ -401,17 +412,17 @@ function markdown(data) {
     "",
     "## Family totals",
     "",
-    "| Guide family | Complexity | Opportunity score | Words | Contextual | Required contextual range | Inline | Inline maximum | Approval |",
-    "|---|---|---:|---:|---:|---:|---:|---:|---|"
+    "| Guide family | Complexity | Opportunity score | Words | Contextual | Required contextual range | Inline | Inline maximum | Playbook actions | Approval |",
+    "|---|---|---:|---:|---:|---:|---:|---:|---:|---|"
   ];
   for (const family of data.families) {
     const t = family.totals;
-    lines.push(`| ${family.label} | ${t.complexity} | ${t.opportunityScore} | ${t.words} | ${t.contextual} | ${budgetText(t.contextualBudget)} | ${t.inlineEntity} | ${t.inlineBudget.hardMax} | ${family.approval.passed ? "Pass" : "Needs work"} |`);
+    lines.push(`| ${family.label} | ${t.complexity} | ${t.opportunityScore} | ${t.words} | ${t.contextual} | ${budgetText(t.contextualBudget)} | ${t.inlineEntity} | ${t.inlineBudget.hardMax} | ${t.mandatoryPlaybookAction} | ${family.approval.passed ? "Pass" : "Needs work"} |`);
   }
   for (const family of data.families) {
-    lines.push("", `## ${family.label} by page`, "", "| Page | Complexity | Opportunity score | Words | Contextual | Required range | Inline |", "|---|---|---:|---:|---:|---:|---:|");
+    lines.push("", `## ${family.label} by page`, "", "| Page | Complexity | Opportunity score | Words | Contextual | Required range | Inline | Playbook actions |", "|---|---|---:|---:|---:|---:|---:|---:|");
     for (const page of family.pages) {
-      lines.push(`| ${page.page} | ${page.complexity} | ${page.opportunityScore} | ${page.words} | ${page.contextual} | ${budgetText(page.contextualBudget)} | ${page.inlineEntity} |`);
+      lines.push(`| ${page.page} | ${page.complexity} | ${page.opportunityScore} | ${page.words} | ${page.contextual} | ${budgetText(page.contextualBudget)} | ${page.inlineEntity} | ${page.mandatoryPlaybookAction} |`);
     }
     lines.push("", "Placement totals:", "");
     for (const [key, value] of Object.entries(family.totals.locations)) lines.push(`- ${key}: ${value}`);

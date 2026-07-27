@@ -11,7 +11,7 @@ const esc = (value) => String(value)
 const icon = (name, className = "spell-icon") =>
   `<img class="${className}" src="https://wow.zamimg.com/images/wow/icons/large/${esc(name)}.jpg" alt="" aria-hidden="true" onerror="this.remove()">`;
 const entity = (name, className = "ability-name", withIcon = false) =>
-  `<span class="${className}${withIcon ? " iconize-entity" : ""}">${esc(name)}</span>`;
+  `<span class="${className}"${withIcon ? ` data-entity-icon="${esc(name)}"` : ""}>${esc(name)}</span>`;
 const item = (name, quality = "q-epic", withIcon = false) =>
   entity(name, `item-name ${quality}`, withIcon);
 const list = (items, className = "clean-list") =>
@@ -90,7 +90,7 @@ function playbookCard(card) {
     <div class="spec-card-body">
       <h4>Decision</h4>
       <p>${card.decision}</p>
-      <div class="ability-strip">${card.actions.map((action, index) => `${index ? '<span class="ability-arrow">›</span>' : ""}${entity(action, "ability-choice ability-name")}`).join("")}</div>
+      <div class="ability-strip">${card.actions.map((action, index) => `${index ? '<span class="ability-arrow">›</span>' : ""}${entity(action, "ability-choice ability-name", true)}`).join("")}</div>
       ${list(card.rules)}
     </div>
     <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> ${card.failure}</p></div>
@@ -203,7 +203,7 @@ const holyPriest = {
   slug: "holy-priest",
   specKey: "priest-holy",
   tooltipFile: "priest-tooltips.js",
-  cacheKey: "20260726-holy-priest-v1",
+  cacheKey: "20260726-holy-priest-v2-color-icons",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. Hellscream may alter sources, tuning, cooldown resets, or encounter scripting; uncertain interactions are labeled for live testing.",
   icons: {
     class: "inv_staff_30",
@@ -544,7 +544,7 @@ const shadowPriest = {
   slug: "shadow-priest",
   specKey: "shadow",
   tooltipFile: "priest-tooltips.js",
-  cacheKey: "20260726-shadow-priest-v1",
+  cacheKey: "20260726-shadow-priest-v2-color-icons",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. Shadow Word: Pain snapshot details, channel timing, boss immunities, and custom encounter scripting should be verified on Hellscream when observed behavior differs.",
   icons: {
     class: "inv_staff_30",
@@ -885,7 +885,7 @@ const marksmanshipHunter = {
   slug: "marksmanship-hunter",
   specKey: "marksmanship",
   tooltipFile: "hunter-tooltips.js",
-  cacheKey: "20260726-marksman-v1",
+  cacheKey: "20260726-marksman-v2-color-icons",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. The later WotLK Classic Trap Launcher: Explosive Trap spell is not assumed; traps are placed at the hunter's feet unless Hellscream explicitly adds a custom launcher.",
   icons: {
     class: "inv_weapon_bow_07",

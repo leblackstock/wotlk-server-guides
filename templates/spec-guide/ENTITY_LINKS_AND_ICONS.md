@@ -121,7 +121,7 @@ Do not decorate every sentence. Icons should identify an action, category, encou
 An entity with a verified `icon` may be iconized without duplicating the filename in HTML:
 
 ```html
-<span class="ability-choice ability-name iconize-entity">Death Strike</span>
+<span class="ability-choice ability-name" data-entity-icon="Death Strike">Death Strike</span>
 <h3 data-entity-icon="Death Strike">Death Strike timing</h3>
 ```
 
@@ -179,6 +179,7 @@ Do not hand-edit a generated tooltip script. Update the registry and rebuild it.
 
 ```powershell
 node tools/audit-spec-guide.mjs templates/spec-guide/my-spec.config.json
+node tools/audit-playbook-ability-icons.mjs templates/spec-guide/my-spec.config.json
 ```
 
 The audit checks:

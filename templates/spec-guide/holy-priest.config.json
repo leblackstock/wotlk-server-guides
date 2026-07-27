@@ -18,16 +18,16 @@
   "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
   "entityIconMode": "selective",
   "allowDenseEntityIcons": false,
-  "cacheKey": "20260726-holy-priest-v1",
+  "cacheKey": "20260726-holy-priest-v2-color-icons",
   "guideDescription": "A fresh-level-80 path into Holy Priest dungeon and raid healing on Hellscream.",
   "classAccent": "#E7E8EA",
   "classAccentSoft": "#FFFFFF",
   "classAccentDeep": "#40444D",
   "classAccentRgb": "231,232,234",
-  "specAccent": "#E7C65C",
-  "specAccentSoft": "#FFF0AE",
-  "specAccentDeep": "#6A5516",
-  "specAccentRgb": "231,198,92",
+  "specAccent": "#F2DC8A",
+  "specAccentSoft": "#FFF5C9",
+  "specAccentDeep": "#6A5B28",
+  "specAccentRgb": "242,220,138",
   "mechanics": [
     {
       "key": "triage",
@@ -50,10 +50,10 @@
     {
       "key": "prayer",
       "label": "Prayer",
-      "color": "#E7C65C",
-      "soft": "#FFF0AE",
-      "deep": "#6A5516",
-      "rgb": "231,198,92",
+      "color": "#F2DC8A",
+      "soft": "#FFF5C9",
+      "deep": "#6A5B28",
+      "rgb": "242,220,138",
       "use": "Use Prayer of Mending and Circle of Healing where several injured players create real value."
     },
     {

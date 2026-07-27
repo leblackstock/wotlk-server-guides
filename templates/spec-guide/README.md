@@ -94,6 +94,7 @@ Required sections:
 - core rotation, priority, healing engine, or resource loop
 - preparation and maintenance effects
 - focused playbook cards for common situations
+- a verified WoW icon inside every ability/action chip in those playbook cards
 - movement and target-switch recovery
 - cooldowns and utility
 - mistakes to avoid
