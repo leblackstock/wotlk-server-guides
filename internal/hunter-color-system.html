@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Hunter Color System | Internal</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-priest-hunter-color-v2">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-dk-live-v2">
+  <link rel="stylesheet" href="../assets/priest-hunter-color-reference.css?v=20260726-priest-hunter-color-v2">
+</head>
+<body class="color-reference-page" data-guide-class="hunter">
+<div class="wrap">
+  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="death-knight-color-system.html">Death Knight</a><a href="priest-color-system.html">Priest</a><a href="hunter-color-system.html" aria-current="page">Hunter</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
+  <header class="reference-header">
+    <span class="reference-kicker">Combined class reference • Marksmanship live</span>
+    <h1>Hunter <span>Color System</span></h1>
+    <p class="sub">The complete Hunter family reference: shared Hunter green, Beast Mastery tawny bronze, Marksmanship precision steel, Survival ember orange, and the production mechanic language used by the live Marksmanship guide.</p>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#class">Class identity</a><a href="#audit">Palette audit</a><a href="#specs">Spec comparison</a><a href="#marksmanship-live">Marksmanship live</a><a href="#future-specs">Beast Mastery + Survival</a><a href="#matrix">Usage matrix</a></nav>
+  </header>
+  <main>
+    <section class="reference-section" id="class">
+      <h2>Hunter class identity</h2>
+      <div class="reference-grid">
+        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-hunter-accent),var(--class-hunter-deep))"></div><strong>Hunter green</strong><p>Class titles, broad Hunter framing, class-wide utility, pet and ranged relationships shared by multiple specs, and general Hunter links.</p><code class="token">--class-hunter-accent: #aad372</code></article>
+        <article class="reference-card"><strong>Class boundary</strong><p>Hunter green does not identify Sting state, Beast Mastery selection, success, trap danger, item quality, or socket data.</p><div class="reference-note"><strong>Rule:</strong> every Hunter page should remain visibly related to the class even when its selected specialization changes.</div></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="audit">
+      <h2>Palette audit</h2>
+      <div class="palette-audit-grid">
+        <article class="palette-audit-card"><strong>Hunter green retained</strong><p>The class green is readable, recognizable, and already separates cleanly from the dark foundation.</p><span class="audit-status">Retained</span></article>
+        <article class="palette-audit-card replaced"><strong>Marksmanship tan rejected</strong><p>The old tan-gold collided with Holy specs, warning amber, and Auction House price lanes. Precision steel now communicates aim and distance without borrowing those meanings.</p><span class="audit-status">Replaced</span></article>
+        <article class="palette-audit-card"><strong>Beast Mastery added</strong><p>Tawny bronze suggests hide, fur, and animal partnership while staying separate from warning amber and Survival fire.</p><span class="audit-status">New</span></article>
+        <article class="palette-audit-card"><strong>Survival added</strong><p>Ember orange supports traps, explosives, and tactical fieldcraft without becoming the global danger red.</p><span class="audit-status">New</span></article>
+      </div>
+      <div class="reference-note"><strong>Readability gate:</strong> every approved Hunter spec accent exceeds a 6:1 contrast ratio against the primary card surface. Color remains paired with labels, borders, position, and wording.</div>
+    </section>
+
+    <section class="reference-section" id="specs">
+      <h2>Specialization comparison</h2>
+      <div class="spec-grid">
+        <article class="spec-card beast-mastery"><h3>Beast Mastery</h3><p>Tawny bronze for selected navigation, pet-command controls, animal partnership, Beast Mastery-only labels, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Beast Mastery</span><span class="spec-deep"></span></div><code class="token">#b88f5e · --spec-hunter-beast-mastery-accent</code></article>
+        <article class="spec-card marksmanship"><h3>Marksmanship</h3><p>Precision steel blue for selected navigation, ranged-weapon controls, shot-priority state, and Marksmanship-only technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Marksmanship</span><span class="spec-deep"></span></div><code class="token">#78a9d4 · --spec-hunter-marksmanship-accent</code></article>
+        <article class="spec-card survival"><h3>Survival</h3><p>Ember orange for selected navigation, trap and explosive framing, tactical controls, and Survival-only technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Survival</span><span class="spec-deep"></span></div><code class="token">#df7d4f · --spec-hunter-survival-accent</code></article>
+      </div>
+      <div class="reference-note"><strong>Implementation status:</strong> Marksmanship is live and documented fully below. Beast Mastery and Survival identities are approved, while their recurring mechanic lanes wait for their guides.</div>
+    </section>
+
+    <section class="reference-section" id="marksmanship-live">
+      <h2>Live Marksmanship Hunter system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-marksmanship-sting)"></div><strong>Sting</strong><p>Serpent Sting application, Chimera Shot refresh timing, target transfer, and uptime.</p><code class="token">--mechanic-marksmanship-sting</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-marksmanship-shots)"></div><strong>Shot priority</strong><p>Kill Shot, Chimera Shot, Aimed Shot, Steady Shot, cooldown protection, and weapon flow.</p><code class="token">--mechanic-marksmanship-shots</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-marksmanship-movement)"></div><strong>Movement</strong><p>Instant-shot globals, Auto Shot preservation, stutter-stepping, and positioning windows.</p><code class="token">--mechanic-marksmanship-movement</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-marksmanship-pet)"></div><strong>Pet and utility</strong><p>Wolf survival, cooldown control, Misdirection, Tranquilizing Shot, traps, and assignments.</p><code class="token">--mechanic-marksmanship-pet</code></article>
+      </div>
+      <div class="reference-note"><strong>Marksmanship contract:</strong> precision steel identifies Marksmanship state and the central shot lane. Olive, cyan, and mint separate Sting, movement, and pet or utility decisions.</div>
+      <div class="related-links"><a href="../guides/marksmanship-hunter-pve-guide.html">Open Marksmanship guide</a><a href="../guides/marksmanship-hunter-playing.html">Open Marksmanship playing page</a></div>
+    </section>
+
+    <section class="reference-section" id="future-specs">
+      <h2>Beast Mastery and Survival implementation boundary</h2>
+      <div class="reference-grid">
+        <article class="spec-card beast-mastery"><h3>Beast Mastery is identity-ready</h3><p>Tawny bronze is approved for selected navigation and Beast Mastery-only emphasis. The future guide must decide whether pet command, burst windows, and owner-pet synchronization need separate mechanic lanes.</p></article>
+        <article class="spec-card survival"><h3>Survival is identity-ready</h3><p>Ember orange is approved for selected navigation and Survival-only emphasis. The future guide must define recurring trap, Lock and Load, Explosive Shot, and movement lanes instead of coloring individual abilities ad hoc.</p></article>
+      </div>
+      <div class="reference-note warning"><strong>No placeholder mechanics:</strong> reuse class, spec, status, and existing named mechanic roles first. Add a new lane only when the guide teaches that concept repeatedly.</div>
+    </section>
+
+    <section class="reference-section" id="boundaries">
+      <h2>Semantic boundaries</h2>
+      <div class="rule-grid">
+        <article class="rule-card"><strong>Hunter green is not Sting</strong><p>Class framing uses the Hunter token. Sting uses its more olive named mechanic token.</p></article>
+        <article class="rule-card"><strong>Hunter green is not success</strong><p>Confirmed positive state retains the global success token and explicit wording.</p></article>
+        <article class="rule-card"><strong>Beast Mastery is not warning</strong><p>Tawny bronze remains earthier and darker than warning amber, with labels carrying spec identity.</p></article>
+        <article class="rule-card"><strong>Marksmanship is not information</strong><p>Precision steel uses named specialization tokens rather than global information cyan.</p></article>
+        <article class="rule-card"><strong>Survival is not danger</strong><p>Ember orange never replaces the global danger role or lethal-error wording.</p></article>
+        <article class="rule-card"><strong>Pet does not always mean Beast Mastery</strong><p>Pet mechanics may appear in every Hunter spec and must retain their own labels and context.</p></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="matrix">
+      <h2>Hunter usage matrix</h2>
+      <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Role</th><th>Beast Mastery</th><th>Marksmanship</th><th>Survival</th></tr></thead><tbody>
+        <tr><td><strong>Class title and broad links</strong></td><td>Hunter green</td><td>Hunter green</td><td>Hunter green</td></tr>
+        <tr><td><strong>Selected controls</strong></td><td>Tawny bronze</td><td>Precision steel</td><td>Ember orange</td></tr>
+        <tr><td><strong>Repeated mechanics</strong></td><td>Define with the guide</td><td>Sting, Shots, Movement, Pet and utility</td><td>Define with the guide</td></tr>
+        <tr><td><strong>Warnings and danger</strong></td><td colspan="3">Use fixed status tokens, never a class or specialization color</td></tr>
+        <tr><td><strong>Item rarity and sockets</strong></td><td colspan="3">Use canonical Wrath game-data tokens</td></tr>
+      </tbody></table></div>
+      <div class="related-links"><a href="color-system.html">Open core rules</a><a href="priest-color-system.html">Compare Priest family</a><a href="color-system-addons-ah.html">Review section semantics</a></div>
+    </section>
+  </main>
+  <nav class="reference-pager" aria-label="Previous and next color references"><a href="priest-color-system.html">← Priest system</a><a href="color-system-addons-ah.html">Addons and Auction House →</a></nav>
+  <footer class="reference-footer">Internal design reference. Marksmanship is live; Beast Mastery and Survival are identity-ready.</footer>
+</div>
+</body>
+</html>
