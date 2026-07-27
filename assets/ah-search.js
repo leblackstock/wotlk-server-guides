@@ -183,8 +183,13 @@
         const topLine = makeElement("span", "ah-search-result-top");
         topLine.append(makeElement("strong", `ah-search-item-name quality-${item.quality}`, item.name));
         const targetPrice = makeElement("span", "ah-search-target-price");
-        targetPrice.append(makeElement("span", "ah-search-target-label", "Target"));
-        targetPrice.append(makeElement("strong", "ah-search-target-value", item.target));
+        const targetBid = makeElement("span", "ah-search-target-part ah-search-target-bid");
+        targetBid.append(makeElement("span", "ah-search-target-label", "Target Bid"));
+        targetBid.append(makeElement("strong", "ah-search-target-value", item.targetBid || "—"));
+        const targetBuyout = makeElement("span", "ah-search-target-part ah-search-target-buyout");
+        targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
+        targetBuyout.append(makeElement("strong", "ah-search-target-value", item.target));
+        targetPrice.append(targetBid, targetBuyout);
         topLine.append(targetPrice);
         link.append(topLine);
 

@@ -91,6 +91,8 @@ class AHGuideParser(HTMLParser):
         self.name_parts: list[str] = []
         self.capture_mini = False
         self.mini_parts: list[str] = []
+        self.capture_target_bid = False
+        self.target_bid_parts: list[str] = []
         self.capture_target_buyout = False
         self.target_buyout_parts: list[str] = []
         self.quality = "common"
@@ -123,6 +125,7 @@ class AHGuideParser(HTMLParser):
             self.current_cell_column = ""
             self.name_parts = []
             self.mini_parts = []
+            self.target_bid_parts = []
             self.target_buyout_parts = []
             self.quality = "common"
         elif tag == "td" and self.in_row:
@@ -136,6 +139,13 @@ class AHGuideParser(HTMLParser):
             self.capture_name = True
         elif tag == "div" and self.in_row and self.cell_index == 0 and "mini" in classes:
             self.capture_mini = True
+        elif (
+            tag == "span"
+            and self.in_row
+            and self.current_cell_column == "target"
+            and "bid" in classes
+        ):
+            self.capture_target_bid = True
         elif (
             tag == "span"
             and self.in_row
@@ -157,6 +167,8 @@ class AHGuideParser(HTMLParser):
             self.capture_name = False
         elif tag == "div" and self.capture_mini:
             self.capture_mini = False
+        elif tag == "span" and self.capture_target_bid:
+            self.capture_target_bid = False
         elif tag == "span" and self.capture_target_buyout:
             self.capture_target_buyout = False
         elif tag == "tr" and self.in_row:
@@ -174,6 +186,8 @@ class AHGuideParser(HTMLParser):
             self.name_parts.append(data)
         if self.capture_mini:
             self.mini_parts.append(data)
+        if self.capture_target_bid:
+            self.target_bid_parts.append(data)
         if self.capture_target_buyout:
             self.target_buyout_parts.append(data)
 
@@ -198,6 +212,7 @@ class AHGuideParser(HTMLParser):
                 "detail": clean_text(self.mini_parts),
                 "guide": self.guide_title,
                 "section": self.section,
+                "targetBid": clean_text(self.target_bid_parts) or "—",
                 "target": clean_text(self.target_buyout_parts) or "—",
                 "demand": demand or "—",
                 "quality": self.quality,
@@ -228,7 +243,7 @@ def build_index() -> str:
 
     items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guide"]).casefold()))
     payload = {
-        "version": 1,
+        "version": 2,
         "guideCount": len(hub_parser.guides),
         "itemCount": len(items),
         "items": items,
