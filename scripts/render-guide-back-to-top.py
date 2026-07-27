@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
 STYLE_VERSION = "20260726-global-top-links-v1"
+EXPECTED_LONG_GUIDES = 35
 
 
 def transform(source: str, filename: str) -> str:
@@ -75,8 +76,10 @@ def main() -> int:
         for path in GUIDES_DIR.glob("*.html")
         if 'class="jump-nav"' in path.read_text(encoding="utf-8")
     )
-    if len(paths) != 17:
-        raise ValueError(f"Expected 17 long guides with jump navigation, found {len(paths)}")
+    if len(paths) != EXPECTED_LONG_GUIDES:
+        raise ValueError(
+            f"Expected {EXPECTED_LONG_GUIDES} long guides with jump navigation, found {len(paths)}"
+        )
 
     changed: list[str] = []
     for path in paths:

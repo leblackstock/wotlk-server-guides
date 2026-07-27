@@ -1,0 +1,103 @@
+{
+  "className": "Hunter",
+  "classSlug": "hunter",
+  "specName": "Marksmanship Hunter",
+  "specShortName": "Marksman Hunter",
+  "specSlug": "marksmanship-hunter",
+  "specKey": "marksmanship",
+  "role": "Ranged physical damage",
+  "levelLabel": "Fresh level 80",
+  "createClassSharedCss": true,
+  "createTooltipStarter": true,
+  "createEntityRegistry": true,
+  "createTooltipScript": true,
+  "entityRegistryFile": "data/hunter-entities.json",
+  "tooltipFile": "hunter-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260726-marksman-v1",
+  "guideDescription": "A fresh-level-80 path into Marksmanship Hunter dungeon and raid damage on Hellscream.",
+  "classAccent": "#AAD372",
+  "classAccentSoft": "#DDF2BE",
+  "classAccentDeep": "#405A28",
+  "classAccentRgb": "170,211,114",
+  "specAccent": "#D3A65C",
+  "specAccentSoft": "#F2D49E",
+  "specAccentDeep": "#65471D",
+  "specAccentRgb": "211,166,92",
+  "mechanics": [
+    {
+      "key": "sting",
+      "label": "Sting",
+      "color": "#8BCB72",
+      "soft": "#D2F0C4",
+      "deep": "#355B29",
+      "rgb": "139,203,114",
+      "use": "Apply Serpent Sting once, then protect it with timely Chimera Shot refreshes."
+    },
+    {
+      "key": "shots",
+      "label": "Shot priority",
+      "color": "#D3A65C",
+      "soft": "#F2D49E",
+      "deep": "#65471D",
+      "rgb": "211,166,92",
+      "use": "Protect Kill Shot, Chimera Shot, and Aimed Shot cooldowns before filling with Steady Shot."
+    },
+    {
+      "key": "movement",
+      "label": "Movement",
+      "color": "#72D7E8",
+      "soft": "#C5F2F8",
+      "deep": "#245966",
+      "rgb": "114,215,232",
+      "use": "Move during instant-shot globals and stop long enough for Auto Shot and Steady Shot."
+    },
+    {
+      "key": "pet",
+      "label": "Pet & utility",
+      "color": "#78CFA8",
+      "soft": "#C8F1DE",
+      "deep": "#275A46",
+      "rgb": "120,207,168",
+      "use": "Keep the wolf alive, control its cooldowns, and use Misdirection, traps, and interrupts as assignments."
+    }
+  ],
+  "icons": {
+    "class": "inv_weapon_bow_07",
+    "quickStart": "ability_hunter_chimerashot2",
+    "playing": "ability_hunter_focusedaim",
+    "setup": "ability_hunter_mastermarksman",
+    "building": "ability_hunter_lockandload",
+    "equipping": "inv_chest_chain_13",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_hunter_chimerashot2",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_03"
+  },
+  "talent": {
+    "points": "7/57/7",
+    "name": "Fresh-80 Careful Aim raid build",
+    "summary": "Start with Focused Aim while gear is short on hit, then move only the points your actual character sheet no longer needs.",
+    "wowheadPath": "hunter/502-035335131030013233035031051-5000002"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with the hit cap, Agility-first gearing rule, shot priority, pet checklist, and complete guide path.",
+    "playing": "Run the original 3.3.5a shot priority, preserve Auto Shot uptime, use Readiness correctly, move cleanly, and control the pet.",
+    "setup": "Install the 7/57/7 build, glyphs, shot macros, Misdirection tools, pet talents, addons, and tracking.",
+    "building": "Cap hit, remain Agility-first while fresh, understand Armor Penetration thresholds, and choose gems, enchants, and professions.",
+    "equipping": "Target practical crafted, dungeon, emblem, ToC, ICC, and Ruby Sanctum upgrades with weapon, trinket, and tier priorities.",
+    "raiding": "Deliver ranged damage, Misdirection, Tranquilizing Shot, interrupts, traps, kiting, and add assignments by size and difficulty."
+  },
+  "raidRoleFilters": [
+    { "value": "boss-damage", "label": "Boss damage" },
+    { "value": "add-control", "label": "Adds / control" },
+    { "value": "utility", "label": "Misdirect / tranq" },
+    { "value": "interrupt", "label": "Interrupt" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. The later WotLK Classic Trap Launcher: Explosive Trap spell is not assumed; traps are placed at the hunter's feet unless Hellscream explicitly adds a custom launcher.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

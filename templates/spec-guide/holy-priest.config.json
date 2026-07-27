@@ -1,0 +1,104 @@
+{
+  "className": "Priest",
+  "classSlug": "priest",
+  "specName": "Holy Priest",
+  "specShortName": "Holy Priest",
+  "specSlug": "holy-priest",
+  "specKey": "priest-holy",
+  "role": "Flexible raid healer",
+  "levelLabel": "Fresh level 80",
+  "createClassSharedCss": true,
+  "createTooltipStarter": true,
+  "createEntityRegistry": true,
+  "createTooltipScript": true,
+  "entityRegistryFile": "data/priest-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "priest-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260726-holy-priest-v1",
+  "guideDescription": "A fresh-level-80 path into Holy Priest dungeon and raid healing on Hellscream.",
+  "classAccent": "#E7E8EA",
+  "classAccentSoft": "#FFFFFF",
+  "classAccentDeep": "#40444D",
+  "classAccentRgb": "231,232,234",
+  "specAccent": "#E7C65C",
+  "specAccentSoft": "#FFF0AE",
+  "specAccentDeep": "#6A5516",
+  "specAccentRgb": "231,198,92",
+  "mechanics": [
+    {
+      "key": "triage",
+      "label": "Triage",
+      "color": "#72D7E8",
+      "soft": "#C5F2F8",
+      "deep": "#245966",
+      "rgb": "114,215,232",
+      "use": "Choose the smallest heal that safely answers the next damage event."
+    },
+    {
+      "key": "serendipity",
+      "label": "Serendipity",
+      "color": "#BE9AF0",
+      "soft": "#E8D8FF",
+      "deep": "#503370",
+      "rgb": "190,154,240",
+      "use": "Build stacks with Flash Heal or Binding Heal and spend them on Prayer of Healing or Greater Heal."
+    },
+    {
+      "key": "prayer",
+      "label": "Prayer",
+      "color": "#E7C65C",
+      "soft": "#FFF0AE",
+      "deep": "#6A5516",
+      "rgb": "231,198,92",
+      "use": "Use Prayer of Mending and Circle of Healing where several injured players create real value."
+    },
+    {
+      "key": "mana",
+      "label": "Mana",
+      "color": "#78CFA8",
+      "soft": "#C8F1DE",
+      "deep": "#275A46",
+      "rgb": "120,207,168",
+      "use": "Plan Shadowfiend, Hymn of Hope, Inner Focus, and spell selection before the bar becomes a crisis."
+    }
+  ],
+  "icons": {
+    "class": "inv_staff_30",
+    "quickStart": "spell_holy_guardianspirit",
+    "playing": "spell_holy_circleofrenewal",
+    "setup": "spell_holy_blessedrecovery",
+    "building": "spell_holy_holyprotection",
+    "equipping": "inv_chest_cloth_18",
+    "raiding": "achievement_boss_lichking",
+    "talent": "spell_holy_guardianspirit",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "18/53/0",
+    "name": "Standard fresh-80 Holy raid build",
+    "summary": "Start with the mana-stable standard build, then move flexible points only after the raid composition and personal spell usage justify it.",
+    "wowheadPath": "priest/05032031103-234501032002151530000331351"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with the healing engine, first gearing rules, pull checklist, and a clear route through the complete guide.",
+    "playing": "Turn Prayer of Mending, Circle of Healing, Serendipity, Renew, cooldowns, and mana tools into a deliberate healing priority.",
+    "setup": "Install the 18/53/0 build, glyphs, mouseover macros, HealBot bindings, addons, and information tracking.",
+    "building": "Build enough mana to stay active, then balance haste, spell power, crit, spirit, gems, enchants, and professions.",
+    "equipping": "Target practical crafted, dungeon, emblem, ToC, ICC, and Ruby Sanctum upgrades from a fresh level 80 starting point.",
+    "raiding": "Handle raid healing, tank support, dispels, movement, recovery cooldowns, and encounter assignments by size and difficulty."
+  },
+  "raidRoleFilters": [
+    { "value": "raid-healing", "label": "Raid healing" },
+    { "value": "tank-support", "label": "Tank support" },
+    { "value": "utility", "label": "Dispel / utility" },
+    { "value": "cooldown", "label": "Cooldown" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Hellscream may alter sources, tuning, cooldown resets, or encounter scripting; uncertain interactions are labeled for live testing.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

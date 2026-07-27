@@ -7,7 +7,7 @@
   <link rel="icon" href="./assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="./assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="./assets/brand/hellscream-server-logo-180.png">
-  <link rel="stylesheet" href="./assets/guide-color-system.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="./assets/guide-color-system.css?v=20260726-priest-hunter-v1">
   <link rel="stylesheet" href="./assets/death-knight-color-system.css?v=20260725-dk-v1">
   <link rel="stylesheet" href="./assets/style.css?v=20260726-ah-card-bids-v1">
   <link rel="stylesheet" href="./assets/addon-catalog.css?v=20260725-search-parity-v1">
@@ -17,14 +17,25 @@
     .class-guide-card.paladin-protection::before{background:var(--spec-paladin-protection-accent)}
     .class-guide-card.paladin-holy::before{background:var(--spec-paladin-holy-accent)}
     .class-guide-card.death-knight-blood::before{background:var(--spec-death-knight-blood-accent)}
+    .class-guide-card.priest-holy::before{background:var(--spec-priest-holy-accent)}
+    .class-guide-card.priest-shadow::before{background:var(--spec-priest-shadow-accent)}
+    .class-guide-card.hunter-marksmanship::before{background:var(--spec-hunter-marksmanship-accent)}
     .class-guide-card.paladin-protection:hover,.class-guide-card.paladin-protection:focus-visible{border-color:rgba(var(--spec-paladin-protection-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-protection-rgb),.09)}
     .class-guide-card.paladin-holy:hover,.class-guide-card.paladin-holy:focus-visible{border-color:rgba(var(--spec-paladin-holy-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-holy-rgb),.09)}
     .class-guide-card.death-knight-blood:hover,.class-guide-card.death-knight-blood:focus-visible{border-color:rgba(var(--spec-death-knight-blood-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-death-knight-blood-rgb),.09)}
+    .class-guide-card.priest-holy:hover,.class-guide-card.priest-holy:focus-visible{border-color:rgba(var(--spec-priest-holy-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-priest-holy-rgb),.09)}
+    .class-guide-card.priest-shadow:hover,.class-guide-card.priest-shadow:focus-visible{border-color:rgba(var(--spec-priest-shadow-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-priest-shadow-rgb),.09)}
+    .class-guide-card.hunter-marksmanship:hover,.class-guide-card.hunter-marksmanship:focus-visible{border-color:rgba(var(--spec-hunter-marksmanship-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-hunter-marksmanship-rgb),.09)}
     .class-guide-card.paladin-protection .badge,.class-guide-card.paladin-holy .badge{background:var(--class-paladin-accent)}
     .class-guide-card.death-knight-blood .badge{background:var(--class-death-knight-accent)}
+    .class-guide-card.priest-holy .badge,.class-guide-card.priest-shadow .badge{background:var(--class-priest-accent);color:var(--surface-page-deep)}
+    .class-guide-card.hunter-marksmanship .badge{background:var(--class-hunter-accent);color:var(--surface-page-deep)}
     .class-guide-card.paladin-protection .guide-action{color:var(--spec-paladin-protection-soft)}
     .class-guide-card.paladin-holy .guide-action{color:var(--spec-paladin-holy-soft)}
     .class-guide-card.death-knight-blood .guide-action{color:var(--spec-death-knight-blood-soft)}
+    .class-guide-card.priest-holy .guide-action{color:var(--spec-priest-holy-soft)}
+    .class-guide-card.priest-shadow .guide-action{color:var(--spec-priest-shadow-soft)}
+    .class-guide-card.hunter-marksmanship .guide-action{color:var(--spec-hunter-marksmanship-soft)}
   </style>
   <script src="./assets/ah-search-index.js?v=20260726-ah-card-bids-v1" defer></script>
   <script src="./assets/ah-search.js?v=20260726-ah-card-bids-v1" defer></script>
@@ -161,6 +172,24 @@
           <span class="badge">Death Knight</span>
           <span class="guide-title">Blood Death Knight — Heroic LK25</span>
           <span class="guide-note">Use the exact 43/23/5 survival build, set up the tanking engine, gear deliberately, and execute every Lich King assignment.</span>
+          <span class="guide-action">Start guide →</span>
+        </a>
+        <a class="guide-card class-guide-card priest-holy" href="./guides/holy-priest-pve-guide.html">
+          <span class="badge">Priest</span>
+          <span class="guide-title">Holy Priest Quick Start</span>
+          <span class="guide-note">Start from fresh 80, build a mana-stable healing engine, set up mouseovers, gear by stage, and prepare every raid assignment.</span>
+          <span class="guide-action">Start guide →</span>
+        </a>
+        <a class="guide-card class-guide-card priest-shadow" href="./guides/shadow-priest-pve-guide.html">
+          <span class="badge">Priest</span>
+          <span class="guide-title">Shadow Priest Quick Start</span>
+          <span class="guide-note">Reach the real hit target, execute the five-stack opener, manage DoTs and channels, gear intelligently, and handle raid utility.</span>
+          <span class="guide-action">Start guide →</span>
+        </a>
+        <a class="guide-card class-guide-card hunter-marksmanship" href="./guides/marksmanship-hunter-pve-guide.html">
+          <span class="badge">Hunter</span>
+          <span class="guide-title">Marksmanship Hunter Quick Start</span>
+          <span class="guide-note">Cap hit, stay Agility-first while fresh, master the shot priority and wolf, then progress through original-3.3.5 raid jobs.</span>
           <span class="guide-action">Start guide →</span>
         </a>
       </div>

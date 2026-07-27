@@ -163,9 +163,10 @@ function countEntityUsage(allHtml) {
       return sum + (allHtml.match(new RegExp(escaped, "gi")) || []).length;
     }, 0);
     if (count) used += 1;
-    else warnings.push(`Entity registry: unused ${entity.type}=${entity.id} (${entity.names.join(" / ")}).`);
+    else if (!config.sharedEntityRegistry) warnings.push(`Entity registry: unused ${entity.type}=${entity.id} (${entity.names.join(" / ")}).`);
   }
   notes.push(`${used}/${entities.length} registry entities appear in the six guide pages.`);
+  if (config.sharedEntityRegistry) notes.push("Unused-entity warnings are suppressed because this registry is shared by multiple specializations.");
 }
 
 function runIconDensityReleaseAudit() {

@@ -23,7 +23,7 @@ paths = sorted(
     for path in GUIDES_DIR.glob("*.html")
     if 'class="jump-nav"' in path.read_text(encoding="utf-8")
 )
-assert len(paths) == 17
+assert len(paths) == 35
 
 for path in paths:
     source = path.read_text(encoding="utf-8")

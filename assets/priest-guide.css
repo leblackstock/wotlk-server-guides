@@ -1,0 +1,3 @@
+@import url("./spec-guide.css?v=20260726-holy-priest-v1-spec-guide-v1");
+/* Shared Priest guide presentation. */
+body[data-guide-class="priest"]{background:radial-gradient(circle at 12% -10%,rgba(var(--class-accent-rgb),.14),transparent 34rem),radial-gradient(circle at 94% 2%,rgba(var(--theme-accent-rgb),.11),transparent 30rem),linear-gradient(180deg,var(--surface-page-deep),var(--surface-page))}body[data-guide-class="priest"] header{background:linear-gradient(135deg,var(--surface-raised),rgba(var(--class-accent-deep-rgb),.42) 46%,rgba(var(--theme-accent-deep-rgb),.34) 78%,var(--surface-card));border-color:rgba(var(--class-accent-rgb),.32)}body[data-guide-class="priest"] h1 span{color:var(--class-accent)}body[data-guide-class="priest"] a{color:var(--class-accent-soft)}
