@@ -1,0 +1,104 @@
+{
+  "className": "Priest",
+  "classSlug": "priest",
+  "specName": "Shadow Priest",
+  "specShortName": "Shadow Priest",
+  "specSlug": "shadow-priest",
+  "specKey": "shadow",
+  "role": "Ranged damage and raid support",
+  "levelLabel": "Fresh level 80",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/priest-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "priest-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260726-shadow-priest-v1",
+  "guideDescription": "A fresh-level-80 path into Shadow Priest dungeon and raid damage on Hellscream.",
+  "classAccent": "#E7E8EA",
+  "classAccentSoft": "#FFFFFF",
+  "classAccentDeep": "#40444D",
+  "classAccentRgb": "231,232,234",
+  "specAccent": "#A77BE8",
+  "specAccentSoft": "#DDC8FF",
+  "specAccentDeep": "#49306F",
+  "specAccentRgb": "167,123,232",
+  "mechanics": [
+    {
+      "key": "dots",
+      "label": "DoTs",
+      "color": "#B878E5",
+      "soft": "#E4C5FA",
+      "deep": "#4B2867",
+      "rgb": "184,120,229",
+      "use": "Maintain Vampiric Touch and Devouring Plague without clipping their final ticks."
+    },
+    {
+      "key": "weaving",
+      "label": "Shadow Weaving",
+      "color": "#D06AAE",
+      "soft": "#F2BEDD",
+      "deep": "#612548",
+      "rgb": "208,106,174",
+      "use": "Reach five Shadow Weaving stacks before the lasting Shadow Word: Pain application."
+    },
+    {
+      "key": "channel",
+      "label": "Channel",
+      "color": "#72D7E8",
+      "soft": "#C5F2F8",
+      "deep": "#245966",
+      "rgb": "114,215,232",
+      "use": "Fit Mind Flay ticks between higher-priority spells and break channels deliberately."
+    },
+    {
+      "key": "mana",
+      "label": "Mana & support",
+      "color": "#78CFA8",
+      "soft": "#C8F1DE",
+      "deep": "#275A46",
+      "rgb": "120,207,168",
+      "use": "Use Shadowfiend, Dispersion, Replenishment, and Hymn of Hope without wrecking the damage plan."
+    }
+  ],
+  "icons": {
+    "class": "inv_staff_30",
+    "quickStart": "spell_shadow_shadowform",
+    "playing": "spell_shadow_siphonmana",
+    "setup": "spell_shadow_twilight",
+    "building": "spell_shadow_shadowpower",
+    "equipping": "inv_chest_cloth_38",
+    "raiding": "achievement_boss_lichking",
+    "talent": "spell_shadow_dispersion",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_04"
+  },
+  "talent": {
+    "points": "14/0/57",
+    "name": "Standard Shadow raid build",
+    "summary": "The baseline covers every core damage and mana talent while leaving only narrow utility choices around pushback, range, and Silence.",
+    "wowheadPath": "priest/05032031--325023051223010223152301351"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with the hit target, five-stack opener, DoT rules, raid utility, and guide path.",
+    "playing": "Execute the Shadow priority, preserve DoT value, channel Mind Flay cleanly, move without going idle, and recover mana.",
+    "setup": "Install the 14/0/57 build, glyphs, macros, dot tracking, addons, and keybinds for original WotLK 3.3.5a.",
+    "building": "Reach the boss spell-hit target, then compare spell power, haste, crit, spirit, gems, enchants, and professions honestly.",
+    "equipping": "Target practical crafted, dungeon, emblem, ToC, ICC, and Ruby Sanctum upgrades without blindly copying a final-tier BiS list.",
+    "raiding": "Apply damage, Replenishment, Dispersion soaks, Mass Dispel, add control, and encounter assignments by size and difficulty."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "multi-dot", "label": "Adds / multi-DoT" },
+    { "value": "utility", "label": "Utility / dispel" },
+    { "value": "soak", "label": "Dispersion soak" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Shadow Word: Pain snapshot details, channel timing, boss immunities, and custom encounter scripting should be verified on Hellscream when observed behavior differs.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

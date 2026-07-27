@@ -150,6 +150,77 @@
   --spec-paladin-retribution-rgb: 224, 107, 101;
   --spec-paladin-retribution-deep-rgb: 115, 46, 42;
 
+  /* Priest class and specialization identities */
+  --class-priest-accent: #e7e8ea;
+  --class-priest-soft: #ffffff;
+  --class-priest-deep: #40444d;
+  --class-priest-rgb: 231, 232, 234;
+  --class-priest-deep-rgb: 64, 68, 77;
+
+  --spec-priest-holy-accent: #e7c65c;
+  --spec-priest-holy-soft: #fff0ae;
+  --spec-priest-holy-deep: #6a5516;
+  --spec-priest-holy-rgb: 231, 198, 92;
+  --spec-priest-holy-deep-rgb: 106, 85, 22;
+
+  --spec-priest-shadow-accent: #a77be8;
+  --spec-priest-shadow-soft: #ddc8ff;
+  --spec-priest-shadow-deep: #49306f;
+  --spec-priest-shadow-rgb: 167, 123, 232;
+  --spec-priest-shadow-deep-rgb: 73, 48, 111;
+
+  --mechanic-priest-holy-triage: #72d7e8;
+  --mechanic-priest-holy-triage-soft: #c5f2f8;
+  --mechanic-priest-holy-triage-rgb: 114, 215, 232;
+  --mechanic-priest-holy-serendipity: #be9af0;
+  --mechanic-priest-holy-serendipity-soft: #e8d8ff;
+  --mechanic-priest-holy-serendipity-rgb: 190, 154, 240;
+  --mechanic-priest-holy-prayer: #e7c65c;
+  --mechanic-priest-holy-prayer-soft: #fff0ae;
+  --mechanic-priest-holy-prayer-rgb: 231, 198, 92;
+  --mechanic-priest-holy-mana: #78cfa8;
+  --mechanic-priest-holy-mana-soft: #c8f1de;
+  --mechanic-priest-holy-mana-rgb: 120, 207, 168;
+
+  --mechanic-shadow-dots: #b878e5;
+  --mechanic-shadow-dots-soft: #e4c5fa;
+  --mechanic-shadow-dots-rgb: 184, 120, 229;
+  --mechanic-shadow-weaving: #d06aae;
+  --mechanic-shadow-weaving-soft: #f2bedd;
+  --mechanic-shadow-weaving-rgb: 208, 106, 174;
+  --mechanic-shadow-channel: #72d7e8;
+  --mechanic-shadow-channel-soft: #c5f2f8;
+  --mechanic-shadow-channel-rgb: 114, 215, 232;
+  --mechanic-shadow-mana: #78cfa8;
+  --mechanic-shadow-mana-soft: #c8f1de;
+  --mechanic-shadow-mana-rgb: 120, 207, 168;
+
+  /* Hunter class and Marksmanship identities */
+  --class-hunter-accent: #aad372;
+  --class-hunter-soft: #ddf2be;
+  --class-hunter-deep: #405a28;
+  --class-hunter-rgb: 170, 211, 114;
+  --class-hunter-deep-rgb: 64, 90, 40;
+
+  --spec-hunter-marksmanship-accent: #d3a65c;
+  --spec-hunter-marksmanship-soft: #f2d49e;
+  --spec-hunter-marksmanship-deep: #65471d;
+  --spec-hunter-marksmanship-rgb: 211, 166, 92;
+  --spec-hunter-marksmanship-deep-rgb: 101, 71, 29;
+
+  --mechanic-marksmanship-sting: #8bcb72;
+  --mechanic-marksmanship-sting-soft: #d2f0c4;
+  --mechanic-marksmanship-sting-rgb: 139, 203, 114;
+  --mechanic-marksmanship-shots: #d3a65c;
+  --mechanic-marksmanship-shots-soft: #f2d49e;
+  --mechanic-marksmanship-shots-rgb: 211, 166, 92;
+  --mechanic-marksmanship-movement: #72d7e8;
+  --mechanic-marksmanship-movement-soft: #c5f2f8;
+  --mechanic-marksmanship-movement-rgb: 114, 215, 232;
+  --mechanic-marksmanship-pet: #78cfa8;
+  --mechanic-marksmanship-pet-soft: #c8f1de;
+  --mechanic-marksmanship-pet-rgb: 120, 207, 168;
+
   /* Safe defaults */
   --class-accent: var(--text-muted);
   --class-accent-soft: var(--text-primary);
@@ -219,4 +290,54 @@ body:has(.ah-guide-heading) {
   --theme-accent-deep: var(--spec-paladin-retribution-deep);
   --theme-accent-rgb: var(--spec-paladin-retribution-rgb);
   --theme-accent-deep-rgb: var(--spec-paladin-retribution-deep-rgb);
+}
+
+[data-guide-class="priest"] {
+  --class-accent: var(--class-priest-accent);
+  --class-accent-soft: var(--class-priest-soft);
+  --class-accent-deep: var(--class-priest-deep);
+  --class-accent-rgb: var(--class-priest-rgb);
+  --class-accent-deep-rgb: var(--class-priest-deep-rgb);
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="priest"][data-guide-spec="priest-holy"] {
+  --theme-accent: var(--spec-priest-holy-accent);
+  --theme-accent-soft: var(--spec-priest-holy-soft);
+  --theme-accent-deep: var(--spec-priest-holy-deep);
+  --theme-accent-rgb: var(--spec-priest-holy-rgb);
+  --theme-accent-deep-rgb: var(--spec-priest-holy-deep-rgb);
+}
+
+[data-guide-class="priest"][data-guide-spec="shadow"] {
+  --theme-accent: var(--spec-priest-shadow-accent);
+  --theme-accent-soft: var(--spec-priest-shadow-soft);
+  --theme-accent-deep: var(--spec-priest-shadow-deep);
+  --theme-accent-rgb: var(--spec-priest-shadow-rgb);
+  --theme-accent-deep-rgb: var(--spec-priest-shadow-deep-rgb);
+}
+
+[data-guide-class="hunter"] {
+  --class-accent: var(--class-hunter-accent);
+  --class-accent-soft: var(--class-hunter-soft);
+  --class-accent-deep: var(--class-hunter-deep);
+  --class-accent-rgb: var(--class-hunter-rgb);
+  --class-accent-deep-rgb: var(--class-hunter-deep-rgb);
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="hunter"][data-guide-spec="marksmanship"] {
+  --theme-accent: var(--spec-hunter-marksmanship-accent);
+  --theme-accent-soft: var(--spec-hunter-marksmanship-soft);
+  --theme-accent-deep: var(--spec-hunter-marksmanship-deep);
+  --theme-accent-rgb: var(--spec-hunter-marksmanship-rgb);
+  --theme-accent-deep-rgb: var(--spec-hunter-marksmanship-deep-rgb);
 }

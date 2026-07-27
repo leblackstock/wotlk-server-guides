@@ -237,6 +237,67 @@ details > :last-child { margin-bottom: 12px; }
   line-height: 1.45;
 }
 
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.spec-card-header:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -3px;
+}
+
+.spec-card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 3px 0 0;
+}
+
+.ability-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ability-choice .ability-icon,
+.spec-card-header .ability-icon {
+  margin-right: 0;
+}
+
+.raid-encounter-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.raid-encounter {
+  padding: 12px 13px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface-card);
+}
+
+.raid-encounter h3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.entity-link-icon {
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: .35em;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: .25em;
+  vertical-align: -.2em;
+}
+
+.wowhead-link.has-entity-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
 .page-pager {
   display: flex;
   justify-content: space-between;
@@ -265,7 +326,7 @@ footer { margin-top: 18px; color: var(--muted); font-size: 12px; text-align: cen
 }
 
 @media (max-width: 680px) {
-  .summary-grid, .two-col, .card-grid, .chapter-grid { grid-template-columns: 1fr; }
+  .summary-grid, .two-col, .card-grid, .chapter-grid, .macro-grid { grid-template-columns: 1fr; }
   .site-nav { gap: 6px; }
   .site-nav a { flex: 1 1 auto; justify-content: center; font-size: 12px; }
   .table-wrap { margin-inline: -6px; }
