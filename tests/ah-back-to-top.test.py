@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -13,7 +14,7 @@ GUIDES_DIR = ROOT / "guides"
 
 
 subprocess.run(
-    ["python3", "scripts/render-ah-shared-sections.py", "--check"],
+    [sys.executable, "scripts/render-ah-shared-sections.py", "--check"],
     cwd=ROOT,
     check=True,
 )

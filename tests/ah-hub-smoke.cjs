@@ -31,7 +31,7 @@ async function noOverflow(page, label) {
     await desktop.locator("#ah-search-input").fill("Dark Iron Scraps");
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Dark Iron Scraps/);
-    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
+    assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
     assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-value").count(), 2);
     await noOverflow(desktop, "Desktop main hub");
 
@@ -51,12 +51,12 @@ async function noOverflow(page, label) {
     await desktop.waitForURL(`${base}/auction-house.html`);
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should list all sixteen guides");
     assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 4);
-    assert.match(await desktop.locator("#ah-search-count").textContent(), /^\d+ items across 16 guides$/);
+    assert.match(await desktop.locator("#ah-search-count").textContent(), /^[\d,]+ items across 16 guides$/);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Sanguine Hibiscus/);
-    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
+    assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
     assert.match(await desktop.locator(".ah-search-result").first().getAttribute("href"), /^\.\/guides\//);
     await noOverflow(desktop, "Desktop Auction House hub");
 

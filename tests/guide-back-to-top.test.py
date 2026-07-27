@@ -3,8 +3,9 @@
 
 from __future__ import annotations
 
-import subprocess
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -13,7 +14,7 @@ GUIDES_DIR = ROOT / "guides"
 
 
 subprocess.run(
-    ["python3", "scripts/render-guide-back-to-top.py", "--check"],
+    [sys.executable, "scripts/render-guide-back-to-top.py", "--check"],
     cwd=ROOT,
     check=True,
 )

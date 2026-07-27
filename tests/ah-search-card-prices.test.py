@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -14,7 +15,7 @@ SEARCH_SCRIPT_PATH = ROOT / "assets" / "ah-search.js"
 
 
 subprocess.run(
-    ["python3", "scripts/build-ah-search-index.py", "--check"],
+    [sys.executable, "scripts/build-ah-search-index.py", "--check"],
     cwd=ROOT,
     check=True,
 )

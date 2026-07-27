@@ -21,7 +21,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
-AH_STYLESHEET_VERSION = "20260726-global-top-links-v1"
+AH_STYLESHEET_VERSION = "20260727-shared-item-links-v1"
 
 NAV_BLOCK = re.compile(
     r"(?:<!-- AH_SHARED_NAV_START -->\s*)?"
