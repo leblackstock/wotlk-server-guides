@@ -361,6 +361,23 @@
       return section;
     }
 
+    function troubleshootingSection(items) {
+      if (!items || !items.length) return null;
+      const section = make("section", "addon-dialog-section");
+      section.append(make("h3", "", "Troubleshooting"));
+      items.forEach((source) => {
+        const callout = make("p", "addon-dialog-callout addon-dialog-warning");
+        if (source.prompt) callout.append(document.createTextNode(`${source.prompt} `));
+        const link = make("a", "", source.label || "Open troubleshooting post ↗");
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+        callout.append(link);
+        section.append(callout);
+      });
+      return section;
+    }
+
     function renderCustomization(record, heading) {
       const wrapper = make("div", "addon-dialog-section");
       wrapper.append(make("h3", "", heading || record.title));
@@ -472,9 +489,11 @@
       const does = dialogSection("What it does", addon.does, false);
       const doesNot = dialogSection("What it does not do", addon.doesNot, false);
       const setup = dialogSection("General setup", addon.generalSetup, true);
+      const troubleshooting = troubleshootingSection(addon.troubleshootingLinks);
       if (does) dialogContent.append(does);
       if (doesNot) dialogContent.append(doesNot);
       if (setup) dialogContent.append(setup);
+      if (troubleshooting) dialogContent.append(troubleshooting);
 
       if (customization) dialogContent.append(renderCustomization(customization, customization.title));
       const otherCustomizations = (addon.customizations || []).filter((record) => record !== customization);
