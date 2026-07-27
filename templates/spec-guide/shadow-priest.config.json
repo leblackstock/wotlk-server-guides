@@ -18,7 +18,7 @@
   "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
   "entityIconMode": "selective",
   "allowDenseEntityIcons": false,
-  "cacheKey": "20260726-shadow-priest-v1",
+  "cacheKey": "20260726-shadow-priest-v2-color-icons",
   "guideDescription": "A fresh-level-80 path into Shadow Priest dungeon and raid damage on Hellscream.",
   "classAccent": "#E7E8EA",
   "classAccentSoft": "#FFFFFF",

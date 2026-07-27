@@ -10,6 +10,9 @@ on:
       - "templates/spec-guide/**"
       - "tools/audit-spec-guide.mjs"
       - "tools/analyze-guide-icon-density.mjs"
+      - "tools/audit-playbook-ability-icons.mjs"
+      - "tools/render-fresh-80-spec-guides.mjs"
+      - "tools/create-spec-guide-scaffold.mjs"
       - "tools/create-complete-spec-guide.mjs"
       - ".github/workflows/icon-density-analysis.yml"
 
@@ -35,6 +38,9 @@ jobs:
         run: |
           node --check tools/audit-spec-guide.mjs
           node --check tools/analyze-guide-icon-density.mjs
+          node --check tools/audit-playbook-ability-icons.mjs
+          node --check tools/render-fresh-80-spec-guides.mjs
+          node --check tools/create-spec-guide-scaffold.mjs
           node --check tools/create-complete-spec-guide.mjs
 
       - name: Analyze rendered baseline
@@ -69,6 +75,14 @@ jobs:
               --enforce \
               --out "icon-density-reports/${slug}.json" \
               | tee "icon-density-reports/${slug}.md"
+          done
+
+      - name: Enforce playbook ability icons after density approval
+        shell: bash
+        run: |
+          shopt -s nullglob
+          for config in templates/spec-guide/*.config.json; do
+            node tools/audit-playbook-ability-icons.mjs "$config"
           done
 
       - name: Verify release-audit routing

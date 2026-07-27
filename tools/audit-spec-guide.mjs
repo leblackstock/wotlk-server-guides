@@ -202,6 +202,28 @@ function runIconDensityReleaseAudit() {
   notes.push("Complexity-based rendered icon approval passed as part of the release audit.");
 }
 
+function runPlaybookAbilityIconReleaseAudit() {
+  if (!release) return;
+  const analyzer = path.resolve(root, "tools/audit-playbook-ability-icons.mjs");
+  const result = spawnSync(process.execPath, [
+    analyzer,
+    rel(configFile)
+  ], {
+    cwd: root,
+    stdio: "inherit"
+  });
+
+  if (result.error) {
+    errors.push(`Could not run the rendered playbook ability-icon audit: ${result.error.message}`);
+    return;
+  }
+  if (result.status !== 0) {
+    errors.push(`Playbook ability-icon approval failed. Install jsdom with "npm install --no-save --no-package-lock jsdom@24" if the analyzer could not start, then add a verified icon to every ability/action chip.`);
+    return;
+  }
+  notes.push("Every ability/action chip in the spec playbook cards has a rendered WoW icon.");
+}
+
 let allHtml = "";
 for (const file of pages) {
   if (!fs.existsSync(file)) {
@@ -235,8 +257,14 @@ if (!entities.length) {
 }
 
 countEntityUsage(allHtml);
-if (release && errors.length === 0) runIconDensityReleaseAudit();
-else if (release && iconDensityStatus !== "grandfathered") notes.push("Rendered icon approval was deferred because an earlier release-audit error must be fixed first.");
+if (release && errors.length === 0) {
+  runIconDensityReleaseAudit();
+  if (errors.length === 0) runPlaybookAbilityIconReleaseAudit();
+  else notes.push("Playbook ability-icon approval was deferred until the regular rendered icon-density audit passes.");
+} else if (release) {
+  if (iconDensityStatus !== "grandfathered") notes.push("Rendered icon approval was deferred because an earlier release-audit error must be fixed first.");
+  notes.push("Playbook ability-icon approval was deferred because an earlier release-audit error must be fixed first.");
+}
 
 console.log(`Spec guide audit: ${config.specName}`);
 notes.forEach((note) => console.log(`  INFO  ${note}`));

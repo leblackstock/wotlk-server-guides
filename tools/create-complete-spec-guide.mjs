@@ -71,9 +71,11 @@ const entityChecklist = `
 - [ ] Confirm every page falls inside its calculated contextual-icon range
 - [ ] Confirm required coverage passes only for structures that actually exist
 - [ ] Confirm inline entity icons stay inside the calculated link-based allowance and below 25 per 1,000 words
+- [ ] Confirm every ability/action chip in every spec playbook card renders its own verified WoW icon
 - [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig}\` during drafting
 - [ ] Run \`node tools/analyze-guide-icon-density.mjs --config ${relativeConfig} --policy ${policyFile}\` while tuning visual density
-- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig} --release\`; this automatically runs and enforces the rendered complexity-based icon audit
+- [ ] Run \`node tools/audit-playbook-ability-icons.mjs ${relativeConfig}\` after the regular icon-density audit
+- [ ] Run \`node tools/audit-spec-guide.mjs ${relativeConfig} --release\`; this automatically enforces icon density first and playbook ability icons second
 `;
 if (fs.existsSync(checklistPath)) {
   const current = fs.readFileSync(checklistPath, "utf8");
