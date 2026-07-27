@@ -1,0 +1,129 @@
+/*
+ * Priest and Hunter additions for the internal color-reference site.
+ * Production color tokens remain owned by guide-color-system.css.
+ */
+body.color-reference-page[data-guide-class="priest"] {
+  --reference-accent: var(--class-priest-accent);
+  --reference-soft: var(--class-priest-soft);
+  --reference-deep: var(--class-priest-deep);
+  --reference-rgb: var(--class-priest-rgb);
+}
+
+body.color-reference-page[data-guide-class="hunter"] {
+  --reference-accent: var(--class-hunter-accent);
+  --reference-soft: var(--class-hunter-soft);
+  --reference-deep: var(--class-hunter-deep);
+  --reference-rgb: var(--class-hunter-rgb);
+}
+
+.directory-card.priest {
+  --card-accent: var(--class-priest-accent);
+  --card-soft: var(--class-priest-soft);
+  --card-rgb: var(--class-priest-rgb);
+}
+
+.directory-card.hunter {
+  --card-accent: var(--class-hunter-accent);
+  --card-soft: var(--class-hunter-soft);
+  --card-rgb: var(--class-hunter-rgb);
+}
+
+.spec-card.discipline {
+  --local-accent: var(--spec-priest-discipline-accent);
+  --local-soft: var(--spec-priest-discipline-soft);
+  --local-deep: var(--spec-priest-discipline-deep);
+  --local-rgb: var(--spec-priest-discipline-rgb);
+}
+
+.spec-card.priest-holy {
+  --local-accent: var(--spec-priest-holy-accent);
+  --local-soft: var(--spec-priest-holy-soft);
+  --local-deep: var(--spec-priest-holy-deep);
+  --local-rgb: var(--spec-priest-holy-rgb);
+}
+
+.spec-card.shadow {
+  --local-accent: var(--spec-priest-shadow-accent);
+  --local-soft: var(--spec-priest-shadow-soft);
+  --local-deep: var(--spec-priest-shadow-deep);
+  --local-rgb: var(--spec-priest-shadow-rgb);
+}
+
+.spec-card.beast-mastery {
+  --local-accent: var(--spec-hunter-beast-mastery-accent);
+  --local-soft: var(--spec-hunter-beast-mastery-soft);
+  --local-deep: var(--spec-hunter-beast-mastery-deep);
+  --local-rgb: var(--spec-hunter-beast-mastery-rgb);
+}
+
+.spec-card.marksmanship {
+  --local-accent: var(--spec-hunter-marksmanship-accent);
+  --local-soft: var(--spec-hunter-marksmanship-soft);
+  --local-deep: var(--spec-hunter-marksmanship-deep);
+  --local-rgb: var(--spec-hunter-marksmanship-rgb);
+}
+
+.spec-card.survival {
+  --local-accent: var(--spec-hunter-survival-accent);
+  --local-soft: var(--spec-hunter-survival-soft);
+  --local-deep: var(--spec-hunter-survival-deep);
+  --local-rgb: var(--spec-hunter-survival-rgb);
+}
+
+.palette-audit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.palette-audit-card {
+  padding: 14px;
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  background: var(--surface-card);
+}
+
+.palette-audit-card strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-strong);
+}
+
+.palette-audit-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.palette-audit-card .audit-status {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 3px 7px;
+  border: 1px solid rgba(var(--reference-rgb), .30);
+  border-radius: 999px;
+  color: var(--reference-soft);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.palette-audit-card.replaced {
+  border-color: rgba(var(--status-warning-rgb), .34);
+}
+
+.palette-audit-card.replaced .audit-status {
+  border-color: rgba(var(--status-warning-rgb), .42);
+  color: var(--status-warning-soft);
+}
+
+@media (max-width: 960px) {
+  .palette-audit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .palette-audit-grid {
+    grid-template-columns: 1fr;
+  }
+}

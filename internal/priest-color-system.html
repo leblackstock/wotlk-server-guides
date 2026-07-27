@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Priest Color System | Internal</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-priest-hunter-color-v2">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-dk-live-v2">
+  <link rel="stylesheet" href="../assets/priest-hunter-color-reference.css?v=20260726-priest-hunter-color-v2">
+</head>
+<body class="color-reference-page" data-guide-class="priest">
+<div class="wrap">
+  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="death-knight-color-system.html">Death Knight</a><a href="priest-color-system.html" aria-current="page">Priest</a><a href="hunter-color-system.html">Hunter</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
+  <header class="reference-header">
+    <span class="reference-kicker">Combined class reference • Holy and Shadow live</span>
+    <h1>Priest <span>Color System</span></h1>
+    <p class="sub">The complete Priest family reference: shared silver class identity, Discipline warding indigo, Holy celestial gold, Shadow void violet, and the production mechanic languages used by the live Holy and Shadow guides.</p>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#class">Class identity</a><a href="#audit">Palette audit</a><a href="#specs">Spec comparison</a><a href="#holy-live">Holy live</a><a href="#shadow-live">Shadow live</a><a href="#discipline">Discipline</a><a href="#matrix">Usage matrix</a></nav>
+  </header>
+  <main>
+    <section class="reference-section" id="class">
+      <h2>Priest class identity</h2>
+      <div class="reference-grid">
+        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-priest-accent),var(--class-priest-deep))"></div><strong>Priest silver</strong><p>Class titles, broad Priest framing, class-wide utility, shared healing or shadow relationships, and links that remain relevant across all three specializations.</p><code class="token">--class-priest-accent: #e7e8ea</code></article>
+        <article class="reference-card"><strong>Class boundary</strong><p>Silver does not identify a selected specialization, a healing lane, a DoT state, warning, information, item rarity, or socket data.</p><div class="reference-note"><strong>Rule:</strong> every Priest guide should remain recognizably Priest before its specialization color enters the page.</div></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="audit">
+      <h2>Palette audit</h2>
+      <div class="palette-audit-grid">
+        <article class="palette-audit-card"><strong>Priest silver retained</strong><p>The near-white class color is readable, faithful to the class, and leaves room for all three specs to separate cleanly.</p><span class="audit-status">Retained</span></article>
+        <article class="palette-audit-card"><strong>Shadow violet retained</strong><p>The existing violet is distinct from epic-item purple, remains readable on dark surfaces, and already supports the live Shadow guide well.</p><span class="audit-status">Retained</span></article>
+        <article class="palette-audit-card replaced"><strong>Holy gold rebuilt</strong><p>The previous gold sat too close to Holy Paladin and warning amber. The new ivory-gold is lighter, calmer, and more Priest-specific.</p><span class="audit-status">Replaced</span></article>
+        <article class="palette-audit-card"><strong>Discipline added</strong><p>Warding indigo suggests shields and prevention without becoming generic information blue or copying Protection Paladin.</p><span class="audit-status">New</span></article>
+      </div>
+      <div class="reference-note"><strong>Readability gate:</strong> every approved Priest spec accent exceeds a 5.5:1 contrast ratio against the primary card surface. Labels, borders, position, and wording still carry the meaning.</div>
+    </section>
+
+    <section class="reference-section" id="specs">
+      <h2>Specialization comparison</h2>
+      <div class="spec-grid">
+        <article class="spec-card discipline"><h3>Discipline</h3><p>Warding indigo for selected navigation, absorb and prevention framing, cooldown controls, and Discipline-only technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Discipline</span><span class="spec-deep"></span></div><code class="token">#7f89df · --spec-priest-discipline-accent</code></article>
+        <article class="spec-card priest-holy"><h3>Holy</h3><p>Celestial ivory-gold for selected navigation, healing controls, Holy-only labels, focus state, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Holy</span><span class="spec-deep"></span></div><code class="token">#f2dc8a · --spec-priest-holy-accent</code></article>
+        <article class="spec-card shadow"><h3>Shadow</h3><p>Void violet for selected navigation, damage controls, Shadow-only labels, priority state, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Shadow</span><span class="spec-deep"></span></div><code class="token">#a77be8 · --spec-priest-shadow-accent</code></article>
+      </div>
+      <div class="reference-note"><strong>Implementation status:</strong> Holy and Shadow are live and documented fully below. Discipline identity is approved, while its recurring mechanic lanes wait for the Discipline guide.</div>
+    </section>
+
+    <section class="reference-section" id="holy-live">
+      <h2>Live Holy Priest system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-priest-holy-triage)"></div><strong>Triage</strong><p>Fast target assessment and the smallest safe heal that lands before the next damage.</p><code class="token">--mechanic-priest-holy-triage</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-priest-holy-serendipity)"></div><strong>Serendipity</strong><p>Building and spending Serendipity stacks through the intended spell relationships.</p><code class="token">--mechanic-priest-holy-serendipity</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-priest-holy-prayer)"></div><strong>Prayer healing</strong><p>Prayer of Mending, Circle of Healing, and group-healing decisions for clustered damage.</p><code class="token">--mechanic-priest-holy-prayer</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-priest-holy-mana)"></div><strong>Mana planning</strong><p>Inner Focus, Shadowfiend, Hymn of Hope, lower-cost fillers, and recovery timing.</p><code class="token">--mechanic-priest-holy-mana</code></article>
+      </div>
+      <div class="reference-note"><strong>Holy contract:</strong> ivory-gold identifies the Holy decision. Cyan, lavender, ivory-gold, and mint explain what the healing engine is doing inside that decision.</div>
+      <div class="related-links"><a href="../guides/holy-priest-pve-guide.html">Open Holy Priest guide</a><a href="../guides/holy-priest-playing.html">Open Holy playing page</a></div>
+    </section>
+
+    <section class="reference-section" id="shadow-live">
+      <h2>Live Shadow Priest system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-shadow-dots)"></div><strong>DoTs</strong><p>Application, refresh timing, uptime, target transfer, and damage-over-time relationships.</p><code class="token">--mechanic-shadow-dots</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-shadow-weaving)"></div><strong>Shadow Weaving</strong><p>Building the five-stack opener and preserving the correct ramp state.</p><code class="token">--mechanic-shadow-weaving</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-shadow-channel)"></div><strong>Channel control</strong><p>Mind Flay clipping, movement windows, and preserving higher-priority casts.</p><code class="token">--mechanic-shadow-channel</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-shadow-mana)"></div><strong>Mana and utility</strong><p>Shadowfiend, Dispersion, Replenishment, Hymn support, and planned recovery.</p><code class="token">--mechanic-shadow-mana</code></article>
+      </div>
+      <div class="reference-note"><strong>Shadow contract:</strong> void violet identifies Shadow state. Orchid, magenta, cyan, and mint explain the damage engine without repainting warnings or game data.</div>
+      <div class="related-links"><a href="../guides/shadow-priest-pve-guide.html">Open Shadow Priest guide</a><a href="../guides/shadow-priest-playing.html">Open Shadow playing page</a></div>
+    </section>
+
+    <section class="reference-section" id="discipline">
+      <h2>Discipline implementation boundary</h2>
+      <div class="reference-grid">
+        <article class="spec-card discipline"><h3>Identity-ready</h3><p>Warding indigo is approved for Discipline-selected navigation, filters, controls, focus state, and Discipline-only technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Discipline</span><span class="spec-deep"></span></div></article>
+        <article class="reference-card"><strong>Mechanic palette pending</strong><p>Do not color every shield, heal, or cooldown separately. Define two to four repeated lanes only after the Discipline guide establishes its actual teaching model.</p><div class="reference-note warning"><strong>Boundary:</strong> Discipline indigo is not global information blue and not the Addon section accent.</div></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="boundaries">
+      <h2>Semantic boundaries</h2>
+      <div class="rule-grid">
+        <article class="rule-card"><strong>Silver is class, not Common quality</strong><p>Priest framing uses class tokens. Item quality keeps canonical game-data colors.</p></article>
+        <article class="rule-card"><strong>Discipline is not information</strong><p>Warding indigo uses named specialization tokens and explicit labels.</p></article>
+        <article class="rule-card"><strong>Holy is not warning</strong><p>Ivory-gold remains paler and quieter than warning amber, and warnings always use explicit status styling.</p></article>
+        <article class="rule-card"><strong>Shadow is not epic rarity</strong><p>Void violet never recolors item links or replaces the canonical epic color.</p></article>
+        <article class="rule-card"><strong>Mechanics remain named</strong><p>Triage, Serendipity, Prayer, DoTs, Weaving, Channel, and Mana keep labels or icons.</p></article>
+        <article class="rule-card"><strong>Print keeps structure</strong><p>Headings, labels, borders, and order survive when ambience and tinted backgrounds disappear.</p></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="matrix">
+      <h2>Priest usage matrix</h2>
+      <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Role</th><th>Discipline</th><th>Holy</th><th>Shadow</th></tr></thead><tbody>
+        <tr><td><strong>Class title and broad links</strong></td><td>Priest silver</td><td>Priest silver</td><td>Priest silver</td></tr>
+        <tr><td><strong>Selected controls</strong></td><td>Warding indigo</td><td>Celestial ivory-gold</td><td>Void violet</td></tr>
+        <tr><td><strong>Repeated mechanics</strong></td><td>Define with the guide</td><td>Triage, Serendipity, Prayer, Mana</td><td>DoTs, Weaving, Channel, Mana</td></tr>
+        <tr><td><strong>Warnings and danger</strong></td><td colspan="3">Use fixed status tokens, never a class or specialization color</td></tr>
+        <tr><td><strong>Item rarity and sockets</strong></td><td colspan="3">Use canonical Wrath game-data tokens</td></tr>
+      </tbody></table></div>
+      <div class="related-links"><a href="color-system.html">Open core rules</a><a href="hunter-color-system.html">Compare Hunter family</a><a href="paladin-color-system.html">Compare Paladin healing system</a></div>
+    </section>
+  </main>
+  <nav class="reference-pager" aria-label="Previous and next color references"><a href="death-knight-color-system.html">← Death Knight system</a><a href="hunter-color-system.html">Hunter system →</a></nav>
+  <footer class="reference-footer">Internal design reference. Holy and Shadow are live; Discipline is identity-ready.</footer>
+</div>
+</body>
+</html>
