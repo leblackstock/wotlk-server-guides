@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "catalog_defaults": {
     "profession": "Inscription",
     "crafted": true,
@@ -170,6 +170,26 @@
       "profession": "Engineering",
       "quality": "common",
       "materials": "Current live cost of the matching stones or motes; add a small convenience margin"
+    },
+    "alchemy-flask": {
+      "profession": "Alchemy",
+      "quality": "common",
+      "materials": "Current live cost of the matching herbs, Frost Lotus, and Enchanted Vial; price per finished flask"
+    },
+    "alchemy-potion": {
+      "profession": "Alchemy",
+      "quality": "common",
+      "materials": "Current live cost of the matching herbs, oils, and Crystal Vial; price per finished potion"
+    },
+    "alchemy-oil": {
+      "profession": "Alchemy",
+      "quality": "common",
+      "materials": "Current live cost of Pygmy Suckerfish; account for the recipe's variable oil yield"
+    },
+    "alchemy-transmute": {
+      "profession": "Alchemy",
+      "quality": "uncommon",
+      "materials": "Current live cost of the required Primals; add only a convenience margin because cooldown scarcity may not apply"
     }
   },
   "catalog": {
@@ -324,7 +344,20 @@
     "eng-solid-blasting-powder": {"name":"Solid Blasting Powder","item_id":10505,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":2500,"target_copper":4000,"high_copper":7000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Solid Stone. Useful for Engineering levelers."},
     "eng-heavy-blasting-powder": {"name":"Heavy Blasting Powder","item_id":4377,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":1800,"target_copper":3000,"high_copper":5000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Heavy Stone. Good small-stack item."},
     "eng-coarse-blasting-powder": {"name":"Coarse Blasting Powder","item_id":4364,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":1000,"target_copper":1800,"high_copper":3000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Coarse Stone. Early Engineering bottleneck."},
-    "eng-rough-blasting-powder": {"name":"Rough Blasting Powder","item_id":4357,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":400,"target_copper":700,"high_copper":1200,"stack":"5 / 10 / 20","demand":"Low-Med","demand_class":"med","notes":"Made from Rough Stone. Early Engineering item; small stacks only."}
+    "eng-rough-blasting-powder": {"name":"Rough Blasting Powder","item_id":4357,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":400,"target_copper":700,"high_copper":1200,"stack":"5 / 10 / 20","demand":"Low-Med","demand_class":"med","notes":"Made from Rough Stone. Early Engineering item; small stacks only."},
+
+    "alch-flask-frost-wyrm": {"name":"Flask of the Frost Wyrm","item_id":46376,"profile":"alchemy-flask","detail":"Caster/healer flask","quick_copper":140000,"target_copper":220000,"high_copper":350000,"stack":"1 / 2 / 5","demand":"Very High","demand_class":"vh","notes":"Major raid flask. Price from Frost Lotus + Lichbloom/Icethorn + vial cost."},
+    "alch-flask-endless-rage": {"name":"Flask of Endless Rage","item_id":46377,"profile":"alchemy-flask","detail":"Physical DPS flask","quick_copper":140000,"target_copper":220000,"high_copper":350000,"stack":"1 / 2 / 5","demand":"Very High","demand_class":"vh","notes":"Major raid flask. Usually moves with raid schedule and Frost Lotus price."},
+    "alch-flask-stoneblood": {"name":"Flask of Stoneblood","item_id":46379,"profile":"alchemy-flask","detail":"Tank flask","quick_copper":120000,"target_copper":200000,"high_copper":320000,"stack":"1 / 2 / 5","demand":"High","demand_class":"hi","notes":"Tank raid flask. Demand can be smaller but steady."},
+    "alch-flask-pure-mojo": {"name":"Flask of Pure Mojo","item_id":46378,"profile":"alchemy-flask","detail":"Mana/regen flask","quick_copper":100000,"target_copper":160000,"high_copper":260000,"stack":"1 / 2 / 5","demand":"Med-High","demand_class":"hi","notes":"Healer/caster utility flask. Often slower than Frost Wyrm."},
+    "alch-potion-speed": {"name":"Potion of Speed","item_id":40211,"profile":"alchemy-potion","detail":"Burst DPS potion","quick_copper":25000,"quick_bid_copper":21200,"target_copper":40000,"high_copper":70000,"stack":"5 / 10 / 20","demand":"Very High","demand_class":"vh","notes":"Common raid pre-pot/combat potion. Price from herbs + demand, not just mat cost."},
+    "alch-potion-wild-magic": {"name":"Potion of Wild Magic","item_id":40212,"profile":"alchemy-potion","detail":"Caster burst potion","quick_copper":25000,"quick_bid_copper":21200,"target_copper":40000,"high_copper":70000,"stack":"5 / 10 / 20","demand":"Very High","demand_class":"vh","notes":"Common caster/healer burst potion. Strong raid-night demand."},
+    "alch-indestructible-potion": {"name":"Indestructible Potion","item_id":40093,"profile":"alchemy-potion","detail":"Tank armor potion","quick_copper":20000,"target_copper":35000,"target_bid_copper":29800,"high_copper":60000,"stack":"5 / 10 / 20","demand":"High","demand_class":"hi","notes":"Tank pre-pot/combat utility. Smaller buyer pool but meaningful demand."},
+    "alch-runic-healing-potion": {"name":"Runic Healing Potion","item_id":33447,"profile":"alchemy-potion","detail":"Healing potion","quick_copper":8000,"target_copper":13000,"target_bid_copper":11000,"high_copper":22500,"high_bid_copper":19100,"stack":"5 / 20","demand":"High","demand_class":"hi","notes":"General utility potion. High competition possible."},
+    "alch-runic-mana-potion": {"name":"Runic Mana Potion","item_id":33448,"profile":"alchemy-potion","detail":"Mana potion","quick_copper":8000,"target_copper":13000,"target_bid_copper":11000,"high_copper":22500,"high_bid_copper":19100,"stack":"5 / 20","demand":"High","demand_class":"hi","notes":"General mana potion. Good small stacks."},
+    "alch-crazy-alchemists-potion": {"name":"Crazy Alchemist's Potion","item_id":40077,"profile":"alchemy-potion","detail":"Alchemist-only utility","quick_copper":10000,"target_copper":17500,"target_bid_copper":14900,"high_copper":30000,"stack":"5 / 10","demand":"Med","demand_class":"med","notes":"Only useful to Alchemists. Do not overbuild."},
+    "alch-pygmy-oil": {"name":"Pygmy Oil","item_id":40195,"profile":"alchemy-oil","detail":"Alchemy oil input","quick_copper":15000,"quick_bid_copper":12800,"target_copper":22500,"target_bid_copper":19100,"high_copper":37500,"high_bid_copper":31900,"stack":"1 / 5 / 10","demand":"High","demand_class":"hi","notes":"Made from Pygmy Suckerfish. Check oil vs fish value before converting."},
+    "alch-primal-might": {"name":"Primal Might","item_id":23571,"profile":"alchemy-transmute","detail":"TBC transmute reagent","quick_copper":350000,"target_copper":500000,"high_copper":800000,"stack":"1 / 2","demand":"Med","demand_class":"med","notes":"Important older Alchemy transmute product. Cooldown scarcity may not apply on this server."}
   },
   "guides": {
     "inscription-materials-ah-price-guide.html": {
@@ -368,6 +401,22 @@
         {"title": "Outland crafted Engineering parts", "description": "Tradeable Burning Crusade components commonly needed for Engineering leveling and older recipes.", "items": ["eng-fel-iron-casing", "eng-handful-of-fel-iron-bolts", "eng-elemental-blasting-powder", "eng-adamantite-frame", "eng-khorium-power-core", "eng-felsteel-stabilizer", "eng-hardened-adamantite-tube"]},
         {"title": "Classic crafted Engineering parts", "description": "Tradeable Classic components used by levelers, quests, gadgets, and legacy recipes.", "items": ["eng-thorium-widget", "eng-thorium-tube", "eng-truesilver-transformer", "eng-mithril-tube", "eng-mithril-casing", "eng-unstable-trigger", "eng-gyrochronatom", "eng-iron-strut", "eng-bronze-framework", "eng-whirring-bronze-gizmo", "eng-bronze-tube", "eng-silver-contact", "eng-copper-modulator", "eng-copper-tube", "eng-handful-of-copper-bolts", "eng-fused-wiring"]},
         {"title": "Blasting powders", "description": "Tradeable blasting powders made from matching stone tiers or elemental reagents.", "items": ["eng-dense-blasting-powder", "eng-solid-blasting-powder", "eng-heavy-blasting-powder", "eng-coarse-blasting-powder", "eng-rough-blasting-powder"]}
+      ]
+    },
+    "alchemy-materials-ah-price-guide.html": {
+      "intro_title": "Commonly crafted Alchemy items",
+      "intro_description": "Every row below is an actual tradeable Alchemy output that can be posted on the Auction House. Prices are per finished item or listed stack. Check the current AH, live reagent cost, and any server-specific potion, flask, transmute, or proc behavior before crafting a batch.",
+      "legacy_section_titles": [
+        "Major finished flasks / potions"
+      ],
+      "legacy_row_removals": {
+        "Northrend herbs / Alchemy materials": ["Pygmy Oil"],
+        "Outland / TBC Alchemy materials": ["Primal Might"]
+      },
+      "sections": [
+        {"title": "Crafted Wrath flasks", "description": "Tradeable raid flasks made by Alchemists. Price from the current herb, Frost Lotus, vial, and specialization-proc economics rather than a fixed margin alone.", "items": ["alch-flask-frost-wyrm", "alch-flask-endless-rage", "alch-flask-stoneblood", "alch-flask-pure-mojo"]},
+        {"title": "Crafted Wrath potions", "description": "Tradeable combat and recovery potions. Raid-night demand, profession requirements, and this server's potion rules can materially change sell-through.", "items": ["alch-potion-speed", "alch-potion-wild-magic", "alch-indestructible-potion", "alch-runic-healing-potion", "alch-runic-mana-potion", "alch-crazy-alchemists-potion"]},
+        {"title": "Crafted oils and transmuted materials", "description": "Tradeable intermediate Alchemy outputs. Compare the finished item directly with its inputs before converting.", "items": ["alch-pygmy-oil", "alch-primal-might"]}
       ]
     }
   }
