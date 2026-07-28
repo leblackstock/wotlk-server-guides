@@ -119,6 +119,7 @@ async function noOverflow(page, label) {
     assert.match(auctioneerText, /Load out of date AddOns/);
     const depositGuide = desktop.locator(".addon-configuration-guide");
     assert.equal(await depositGuide.locator("summary").textContent(), "Hellscream deposit-rate correction (10% rate, 1c minimum)");
+    assert.equal(await depositGuide.evaluate((node) => node.closest("section.addon-dialog-section")?.querySelector(":scope > h3")?.textContent), "Troubleshooting");
     assert.equal(await depositGuide.evaluate((node) => node.open), false);
     await depositGuide.locator("summary").click();
     assert.match(await depositGuide.textContent(), /HELLSCREAM_DEPOSIT_DIVISOR = 10/);
