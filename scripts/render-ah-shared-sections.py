@@ -373,7 +373,42 @@ def render_crafted_market(template: str, guide: dict, config: dict) -> str:
         render_crafted_section(config, section)
         for section in guide["sections"]
     )
-    return template.replace("{{SECTIONS}}", sections)
+    return (
+        template.replace("{{INTRO_TITLE}}", html.escape(guide["intro_title"]))
+        .replace(
+            "{{INTRO_DESCRIPTION}}",
+            html.escape(guide["intro_description"]),
+        )
+        .replace("{{SECTIONS}}", sections)
+    )
+
+
+def replace_legacy_crafted_sections(
+    source: str,
+    expected: str,
+    filename: str,
+    titles: list[str],
+) -> str:
+    matches: list[re.Match[str]] = []
+    for title in titles:
+        pattern = re.compile(
+            r'<section class="common"><h2 class="ah-category-heading">'
+            + re.escape(html.escape(title))
+            + r'<a class="ah-back-to-top".*?</section>',
+            re.DOTALL,
+        )
+        title_matches = list(pattern.finditer(source))
+        if len(title_matches) != 1:
+            raise ValueError(
+                f"{filename}: expected one legacy crafted section for {title}"
+            )
+        matches.extend(title_matches)
+
+    first_start = min(match.start() for match in matches)
+    for match in sorted(matches, key=lambda current: current.start(), reverse=True):
+        replacement = expected if match.start() == first_start else ""
+        source = source[: match.start()] + replacement + source[match.end() :]
+    return source
 
 
 def dropped_scroll_item(config: dict, key: str) -> dict:
@@ -485,6 +520,13 @@ def transform_guide(
             and len(LEGACY_INSCRIPTION_CRAFTED_BLOCK.findall(source)) == 1
         ):
             source = LEGACY_INSCRIPTION_CRAFTED_BLOCK.sub(expected, source, count=1)
+        elif crafted_matches == 0 and crafted_guide.get("legacy_section_titles"):
+            source = replace_legacy_crafted_sections(
+                source,
+                expected,
+                filename,
+                crafted_guide["legacy_section_titles"],
+            )
         else:
             raise ValueError(f"{filename}: expected one crafted-market or legacy block")
     elif crafted_matches:
