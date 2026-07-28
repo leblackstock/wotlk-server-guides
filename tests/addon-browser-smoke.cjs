@@ -93,6 +93,9 @@ async function noOverflow(page, label) {
     assert.match(await desktop.locator("#addon-dialog-content").textContent(), /1\.8\.87/);
     assert.match(await desktop.locator("#addon-dialog-content").textContent(), /many battles/);
     assert.match(await desktop.locator("#addon-dialog-content").textContent(), /No addon conflicts/);
+    const skadaNotes = desktop.locator(".addon-compatibility-notes");
+    assert.equal(await skadaNotes.evaluate((node) => node.open), false);
+    assert.equal(await skadaNotes.locator(".addon-compatibility-note").first().isVisible(), false);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/skada-revisited/"]').count() > 0, true);
 
     await desktop.goto(`${base}/guides/addons.html?role=healer#addon=chatter`, { waitUntil: "networkidle" });
@@ -103,6 +106,9 @@ async function noOverflow(page, label) {
     assert.match(chatterText, /Use guildnotes/);
     assert.match(chatterText, /Alt Linking/);
     assert.match(chatterText, /Server-sensitive/);
+    assert.equal(await desktop.locator(".addon-important-note").isVisible(), true);
+    assert.match(await desktop.locator(".addon-important-note").textContent(), /Use guildnotes/);
+    assert.equal(await desktop.locator(".addon-compatibility-notes").evaluate((node) => node.open), false);
     assert.equal(await desktop.locator('a[href="https://warperia.com/addon-wotlk/chatter/"]').count() > 0, true);
 
     await desktop.goto(`${base}/guides/addons.html?role=dps#addon=auctioneer-suite`, { waitUntil: "networkidle" });
@@ -111,6 +117,16 @@ async function noOverflow(page, label) {
     const auctioneerText = await desktop.locator("#addon-dialog-content").textContent();
     assert.match(auctioneerText, /5\.9\.4961/);
     assert.match(auctioneerText, /Load out of date AddOns/);
+    const depositGuide = desktop.locator(".addon-configuration-guide");
+    assert.equal(await depositGuide.locator("summary").textContent(), "Hellscream deposit-rate correction (10% rate, 1c minimum)");
+    assert.equal(await depositGuide.evaluate((node) => node.open), false);
+    await depositGuide.locator("summary").click();
+    assert.match(await depositGuide.textContent(), /HELLSCREAM_DEPOSIT_DIVISOR = 10/);
+    assert.match(await depositGuide.textContent(), /MINIMUM_DEPOSIT = 1/);
+    assert.match(await depositGuide.textContent(), /D:\\Hellscream WoW\\launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost\.lua/);
+    const auctioneerNotes = desktop.locator(".addon-compatibility-notes");
+    assert.equal(await auctioneerNotes.locator("summary").textContent(), "Additional compatibility notes (5)");
+    assert.equal(await auctioneerNotes.evaluate((node) => node.open), false);
     const moduleMap = desktop.locator(".addon-module-map");
     assert.equal(await moduleMap.locator("summary").textContent(), "Suite module map (43)");
     await moduleMap.locator("summary").click();
@@ -187,6 +203,9 @@ async function noOverflow(page, label) {
     assert.equal(await joinDiscord.count(), 1);
     assert.equal(await downloadPost.count(), 1);
     assert.equal(await stockFallback.count(), 1);
+    assert.equal(await desktop.locator(".addon-important-note").isVisible(), true);
+    assert.match(await desktop.locator(".addon-important-note").textContent(), /same Hellscream package/);
+    assert.equal(await desktop.locator(".addon-compatibility-notes").evaluate((node) => node.open), false);
     const joinBorder = await joinDiscord.evaluate((node) => getComputedStyle(node).borderColor);
     const downloadBorder = await downloadPost.evaluate((node) => getComputedStyle(node).borderColor);
     const fallbackBorder = await stockFallback.evaluate((node) => getComputedStyle(node).borderColor);

@@ -378,6 +378,40 @@
       return section;
     }
 
+    function renderConfigurationGuide(guide) {
+      const details = make("details", "addon-configuration-guide");
+      details.append(make("summary", "", guide.title));
+      const inner = make("div", "addon-configuration-guide-inner");
+      if (guide.intro) inner.append(make("p", "addon-dialog-callout addon-configuration-guide-intro", guide.intro));
+      if (guide.steps?.length) {
+        const steps = make("ol", "addon-configuration-steps");
+        guide.steps.forEach((step) => {
+          const item = make("li");
+          item.append(make("p", "", step.instruction));
+          if (step.code) {
+            const codeBlock = make("pre", "addon-configuration-code");
+            codeBlock.append(make("code", "", step.code));
+            item.append(codeBlock);
+          }
+          steps.append(item);
+        });
+        inner.append(steps);
+      }
+      (guide.notes || []).forEach((note) => inner.append(make("p", "addon-dialog-callout addon-dialog-warning", note)));
+      details.append(inner);
+      return details;
+    }
+
+    function renderCompatibilityNotes(notes) {
+      if (!notes?.length) return null;
+      const details = make("details", "addon-compatibility-notes");
+      details.append(make("summary", "", `Additional compatibility notes (${notes.length})`));
+      const inner = make("div", "addon-compatibility-notes-inner");
+      notes.forEach((note) => inner.append(make("p", "addon-compatibility-note", note)));
+      details.append(inner);
+      return details;
+    }
+
     function renderCustomization(record, heading) {
       const wrapper = make("div", "addon-dialog-section");
       wrapper.append(make("h3", "", heading || record.title));
@@ -494,6 +528,7 @@
       if (doesNot) dialogContent.append(doesNot);
       if (setup) dialogContent.append(setup);
       if (troubleshooting) dialogContent.append(troubleshooting);
+      (addon.configurationGuides || []).forEach((guide) => dialogContent.append(renderConfigurationGuide(guide)));
 
       if (customization) dialogContent.append(renderCustomization(customization, customization.title));
       const otherCustomizations = (addon.customizations || []).filter((record) => record !== customization);
@@ -511,7 +546,7 @@
       if (moduleMap) dialogContent.append(moduleMap);
 
       const compatibility = make("section", "addon-dialog-section");
-      compatibility.append(make("h3", "", "Compatibility and server notes"));
+      compatibility.append(make("h3", "", "Compatibility"));
       const meta = make("div", "addon-dialog-meta-grid");
       const metaItems = [
         ["WotLK client", addon.compatibility.client],
@@ -527,7 +562,13 @@
         meta.append(item);
       });
       compatibility.append(meta);
-      (addon.compatibility.notes || []).forEach((note) => compatibility.append(make("p", addon.compatibility.serverSensitive || addon.compatibility.maintenanceState === "old-unmaintained" ? "addon-dialog-callout addon-dialog-warning" : "addon-dialog-callout", note)));
+      (addon.compatibility.importantNotes || []).forEach((note) => {
+        const callout = make("p", "addon-dialog-callout addon-dialog-warning addon-important-note");
+        callout.append(make("strong", "", "Important:"), document.createTextNode(` ${note}`));
+        compatibility.append(callout);
+      });
+      const compatibilityNotes = renderCompatibilityNotes(addon.compatibility.notes);
+      if (compatibilityNotes) compatibility.append(compatibilityNotes);
       dialogContent.append(compatibility);
 
       if (addon.screenshots?.length) {

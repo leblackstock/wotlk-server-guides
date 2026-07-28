@@ -372,6 +372,16 @@ body[data-guide-section="addons"] {
 .addon-dialog details { margin-top: 8px; border: 1px solid var(--border-default); border-radius: 10px; background: rgba(255,255,255,.02); }
 .addon-dialog summary { min-height: 44px; display: flex; align-items: center; padding: 9px 11px; color: var(--section-addons-soft); font-weight: 850; cursor: pointer; }
 .addon-dialog details > div { padding: 0 11px 11px; }
+.addon-configuration-guide-inner { display: grid; gap: 10px; }
+.addon-configuration-guide-intro { margin: 0; }
+.addon-configuration-steps { margin: 0; padding-left: 24px; }
+.addon-configuration-steps li { margin: 9px 0; color: var(--text-muted); font-size: 13px; }
+.addon-configuration-steps p { margin: 0; }
+.addon-configuration-code { max-width: 100%; margin: 8px 0 0; padding: 10px 11px; overflow-x: auto; border: 1px solid rgba(var(--section-addons-rgb), .24); border-radius: 8px; background: var(--surface-page-deep); color: var(--text-strong); font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space: pre; tab-size: 4; }
+.addon-configuration-code code { font: inherit; }
+.addon-important-note strong { color: var(--status-warning-soft); }
+.addon-compatibility-notes-inner { display: grid; gap: 8px; }
+.addon-compatibility-note { margin: 0; padding: 9px 10px; border-left: 3px solid var(--border-strong); border-radius: 8px; background: rgba(255,255,255,.025); color: var(--text-muted); font-size: 12px; }
 .addon-all-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .addon-module-map-inner { display: grid; gap: 12px; }
 .addon-module-group { padding-top: 4px; }

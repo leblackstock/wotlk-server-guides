@@ -3187,11 +3187,11 @@
         "verifiedDownload": true,
         "serverSensitive": true,
         "maintenanceState": "wrath-era",
+        "importantNotes": [
+          "Confirmed Chatter error: Alt Linking can call strlower on a missing guild-note value during login. Open /chatter → Modules → Alt Linking, uncheck Use guildnotes, choose Okay, and run /reload; disabling Alt Linking entirely also prevents the error."
+        ],
         "notes": [
           "Hellscream test on July 23, 2026: Chatter loaded and its normal chat features appeared to work within a large addon setup.",
-          "Confirmed login error: Modules/AltNames.lua line 331 calls strlower on a missing guild-note value while Alt Linking scans guild notes.",
-          "Workaround: /chatter → Modules → Alt Linking → uncheck Use guildnotes → Okay → /reload.",
-          "Disabling Enable Alt Linking entirely also prevents that module from running while leaving the rest of Chatter available.",
           "Because a confirmed error exists before applying the workaround, this is a tested-with-workaround record rather than a clean compatibility pass."
         ]
       },
@@ -3246,6 +3246,38 @@
         "At character select, enable Load out of date AddOns so this legacy compatibility build can load on the 3.3.5a client.",
         "Open the Auction House and collect scans over several days before trusting suggested market prices.",
         "Preserve the WTF folder and SavedVariables when reinstalling so BeanCounter records and accumulated price history survive."
+      ],
+      "configurationGuides": [
+        {
+          "title": "Hellscream deposit-rate correction (10% rate, 1c minimum)",
+          "intro": "Auctioneer 5.9.4961 estimates deposits with the original standard rate and a 1-silver minimum. Hellscream currently charges one tenth of that calculated rate with a 1-copper minimum, so the addon estimate must be scaled after its normal calculation.",
+          "steps": [
+            {
+              "instruction": "Exit World of Warcraft completely before editing the addon. A UI reload is not enough when making and restoring file backups."
+            },
+            {
+              "instruction": "Back up Interface\\AddOns\\Auc-Advanced\\CorePost.lua outside the AddOns folder. For the default Hellscream installation shown here, the live file is D:\\Hellscream WoW\\launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost.lua."
+            },
+            {
+              "instruction": "Open CorePost.lua in a UTF-8-aware text editor. Near the top of the file, replace the existing 1-silver minimum declaration with these two lines:",
+              "code": "local MINIMUM_DEPOSIT = 1 -- Hellscream minimum deposit: 1 copper\nlocal HELLSCREAM_DEPOSIT_DIVISOR = 10"
+            },
+            {
+              "instruction": "Inside function GetDepositCost, find the deposit calculation and minimum check. Replace that block with the following code so the standard result is divided by ten before the 1-copper minimum is applied:",
+              "code": "local deposit = floor(faction * gsv * count) * duration\ndeposit = floor(deposit / HELLSCREAM_DEPOSIT_DIVISOR)\nif deposit < MINIMUM_DEPOSIT then\n\tdeposit = MINIMUM_DEPOSIT\nend"
+            },
+            {
+              "instruction": "Save CorePost.lua without changing its filename or extension, start WoW, open Auctioneer Appraiser, and compare at least one normal deposit and one very cheap item. The estimate should be one tenth of the former amount, rounded down to whole copper, and should never fall below 1 copper."
+            },
+            {
+              "instruction": "If Auctioneer produces a Lua error or the result is wrong, exit WoW and restore the backed-up CorePost.lua. Reinstalling Auctioneer may overwrite this server-specific correction, so keep the instructions and backup."
+            }
+          ],
+          "notes": [
+            "This correction changes Auctioneer's GetDepositCost estimates, including Appraiser totals, deposit-adjusted bids, and search-profit calculations. It does not change the amount Hellscream actually charges.",
+            "BeanCounter and Auctioneer's posting funds check also use Blizzard's CalculateAuctionDeposit API. Those paths may continue to show or record the original standard estimate even after this display correction."
+          ]
+        }
       ],
       "tags": [
         "all-roles",
@@ -3506,7 +3538,7 @@
         "client": "3.3.5a (enable Load out of date AddOns)",
         "hellscreamTested": true,
         "hellscreamTestedDate": "2026-07-24",
-        "lastReviewed": "2026-07-24",
+        "lastReviewed": "2026-07-28",
         "downloadVersion": "5.9.4961",
         "verifiedDownload": true,
         "serverSensitive": true,
@@ -4141,10 +4173,12 @@
         "verifiedDownload": true,
         "serverSensitive": true,
         "maintenanceState": "server-custom",
+        "importantNotes": [
+          "Install every Atlas and AtlasLoot folder from the same Hellscream package. Mixing stock or other-version modules can cause missing menus, stale loot, or silent errors."
+        ],
         "notes": [
           "Hellscream use confirmed July 25, 2026: this custom package works during normal play with no remembered errors or addon conflicts.",
           "The recommended package is the Hellscream-specific build posted February 5, 2026, based on AtlasLoot Enhanced v5.11.04; it should not be confused with the stock public release.",
-          "Install all folders from the same package together. Mixing Atlas, AtlasLoot, or data modules from another release can produce missing menus, stale loot, or silent errors.",
           "The February 2026 maintainer post says some Burning Crusade heroic items and Crimson Crusade reputation items remain missing, with more server content still to be added.",
           "Older maintainer guidance notes that a question-mark item may resolve after closing the AtlasLoot window and reopening it.",
           "The Discord message is the authoritative source post and may require signing in or joining the Hellscream Discord before its attachment is visible.",
