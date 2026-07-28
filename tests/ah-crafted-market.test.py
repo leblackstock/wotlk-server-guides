@@ -18,7 +18,7 @@ INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
     "inscription-materials-ah-price-guide.html": 107,
-    "engineering-materials-ah-price-guide.html": 42,
+    "engineering-materials-ah-price-guide.html": 46,
     "alchemy-materials-ah-price-guide.html": 12,
 }
 
