@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "catalog_defaults": {
     "profession": "Inscription",
     "crafted": true,
@@ -150,6 +150,26 @@
       "demand_class": "med",
       "materials": "Ace through Eight of the matching set",
       "notes": "Tradeable completed deck. Do not price it from Nobles/Greatness demand."
+    },
+    "engineering-part": {
+      "profession": "Engineering",
+      "quality": "common",
+      "materials": "Current live cost of the recipe's Engineering reagents; add only a convenience margin"
+    },
+    "engineering-explosive": {
+      "profession": "Engineering",
+      "quality": "common",
+      "materials": "Current live cost of the recipe's metals, powders, and triggers; price per finished unit"
+    },
+    "engineering-ammo": {
+      "profession": "Engineering",
+      "quality": "common",
+      "materials": "Current live cost of the recipe's metal and Engineering components; use the listed stack guidance"
+    },
+    "engineering-powder": {
+      "profession": "Engineering",
+      "quality": "common",
+      "materials": "Current live cost of the matching stones or motes; add a small convenience margin"
     }
   },
   "catalog": {
@@ -261,10 +281,55 @@
     "prisms-deck": {"name": "Prisms Deck", "item_id": 44259, "profile": "other-deck", "detail": "Completed tradeable Darkmoon deck"},
     "chaos-deck": {"name": "Chaos Deck", "item_id": 44276, "profile": "other-deck", "detail": "Completed tradeable Darkmoon deck"},
     "undeath-deck": {"name": "Undeath Deck", "item_id": 44294, "profile": "other-deck", "detail": "Completed tradeable Darkmoon deck"},
-    "nobles-deck": {"name": "Nobles Deck", "item_id": 44326, "profile": "nobles-deck", "detail": "Completed tradeable Greatness deck"}
+    "nobles-deck": {"name": "Nobles Deck", "item_id": 44326, "profile": "nobles-deck", "detail": "Completed tradeable Greatness deck"},
+
+    "eng-handful-of-cobalt-bolts": {"name":"Handful of Cobalt Bolts","item_id":39681,"profile":"engineering-part","detail":"Wrath Engineering part","quick_copper":15000,"target_copper":22500,"high_copper":35000,"stack":"5 / 10 / 20","demand":"Very High","demand_class":"vh","notes":"Core Wrath Engineering part made from Cobalt Bar. Used all over 375-450 recipes."},
+    "eng-volatile-blasting-trigger": {"name":"Volatile Blasting Trigger","item_id":39690,"profile":"engineering-part","detail":"Wrath Engineering part","quick_copper":30000,"target_copper":45000,"high_copper":70000,"stack":"1 / 5 / 10","demand":"High","demand_class":"hi","notes":"Used in Box of Bombs and other Wrath crafts. Often moves better than raw Cobalt if supply is thin."},
+    "eng-froststeel-tube": {"name":"Froststeel Tube","item_id":39683,"profile":"engineering-part","detail":"Wrath Engineering part","quick_copper":90000,"target_copper":130000,"high_copper":200000,"stack":"1 / 2 / 5","demand":"High","demand_class":"hi","notes":"Made from Cobalt Bar and Cobalt Bolts. Used for scopes and higher Wrath recipes."},
+    "eng-overcharged-capacitor": {"name":"Overcharged Capacitor","item_id":39682,"profile":"engineering-part","detail":"Wrath/TBC Engineering part","quick_copper":40000,"target_copper":60000,"high_copper":100000,"stack":"1 / 2 / 5","demand":"Med-High","demand_class":"hi","notes":"Used in Engineering quests/crafts and occasional leveling paths. Niche but recognizable."},
+    "eng-explosive-decoy": {"name":"Explosive Decoy","item_id":40536,"profile":"engineering-part","detail":"Wrath Engineering part","quick_copper":30000,"target_copper":50000,"high_copper":80000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Useful Engineering craft component/utility item. Slow but sells if nobody lists it."},
+    "eng-gnomish-army-knife": {"name":"Gnomish Army Knife","item_id":40772,"profile":"engineering-part","detail":"Wrath Engineering tool","quick_copper":80000,"target_copper":120000,"high_copper":200000,"stack":"1","demand":"Med-High","demand_class":"hi","notes":"Useful tool/reagent-kit item. Usually sells as convenience to Engineers/alts."},
+    "eng-saronite-bomb": {"name":"Saronite Bomb","item_id":41119,"profile":"engineering-explosive","detail":"Wrath bomb","quick_copper":12000,"target_copper":18000,"high_copper":30000,"stack":"5 / 10 / 20","demand":"High","demand_class":"hi","notes":"Useful to Engineers and sometimes raid/PvP players depending on this server's rules. Do not flood 8-day walls."},
+    "eng-global-thermal-sapper-charge": {"name":"Global Thermal Sapper Charge","item_id":42641,"profile":"engineering-explosive","detail":"Wrath sapper","quick_copper":30000,"target_copper":45000,"high_copper":70000,"stack":"1 / 5 / 10","demand":"Med-High","demand_class":"hi","notes":"Engineering-only utility consumable. Stronger if PvP/raid users are active."},
+    "eng-cobalt-frag-bomb": {"name":"Cobalt Frag Bomb","item_id":40771,"profile":"engineering-explosive","detail":"Wrath bomb","quick_copper":8000,"target_copper":12000,"high_copper":20000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Cheaper Wrath bomb. Good small-stack convenience item."},
+    "eng-box-of-bombs": {"name":"Box of Bombs","item_id":44951,"profile":"engineering-explosive","detail":"Wrath Engineering craft","quick_copper":80000,"target_copper":120000,"high_copper":180000,"stack":"1 / 2","demand":"Med","demand_class":"med","notes":"Leveling/craft item. Price from Saronite Bar + Volatile Blasting Trigger."},
+    "eng-mammoth-cutters": {"name":"Mammoth Cutters","item_id":41164,"profile":"engineering-ammo","detail":"Wrath ammo","quick_copper":8000,"target_copper":12000,"high_copper":20000,"stack":"200 / 1000","demand":"Med","demand_class":"med","notes":"Hunter ammo market may exist depending on this server's rules. Check actual demand before making many."},
+    "eng-saronite-razorheads": {"name":"Saronite Razorheads","item_id":41165,"profile":"engineering-ammo","detail":"Wrath ammo","quick_copper":8000,"target_copper":12000,"high_copper":20000,"stack":"200 / 1000","demand":"Med","demand_class":"med","notes":"Hunter ammo market may exist depending on this server's rules. Post smaller batches first."},
+    "eng-adamantite-shells": {"name":"Adamantite Shells","item_id":23773,"profile":"engineering-ammo","detail":"TBC ammo","quick_copper":2500,"target_copper":4000,"high_copper":7500,"stack":"200 / 1000","demand":"Low-Med","demand_class":"med","notes":"Old ammo. Only post if hunters/alts buy it on this server."},
+    "eng-fel-iron-shells": {"name":"Fel Iron Shells","item_id":23772,"profile":"engineering-ammo","detail":"TBC ammo","quick_copper":1500,"target_copper":2500,"high_copper":5000,"stack":"200 / 1000","demand":"Low","demand_class":"low","notes":"Old ammo. Usually slow."},
+    "eng-fel-iron-casing": {"name":"Fel Iron Casing","item_id":23782,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":10000,"target_copper":15000,"high_copper":25000,"stack":"1 / 5 / 10","demand":"Med-High","demand_class":"hi","notes":"Core TBC Engineering part. Made from Fel Iron Bar."},
+    "eng-handful-of-fel-iron-bolts": {"name":"Handful of Fel Iron Bolts","item_id":23783,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":4000,"target_copper":6500,"high_copper":10000,"stack":"5 / 10 / 20","demand":"Med-High","demand_class":"hi","notes":"Common TBC Engineering part. Good leveler convenience item."},
+    "eng-elemental-blasting-powder": {"name":"Elemental Blasting Powder","item_id":23781,"profile":"engineering-powder","detail":"TBC Engineering powder","quick_copper":7000,"target_copper":10000,"high_copper":17500,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Motes. Used in TBC Engineering leveling/crafts."},
+    "eng-adamantite-frame": {"name":"Adamantite Frame","item_id":23784,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":40000,"target_copper":60000,"high_copper":100000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Higher TBC Engineering part. Slow but valuable if scarce."},
+    "eng-khorium-power-core": {"name":"Khorium Power Core","item_id":23786,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":100000,"target_copper":150000,"high_copper":250000,"stack":"1 / 2","demand":"Med","demand_class":"med","notes":"Rare TBC Engineering part. Only list if Khorium supply supports the margin."},
+    "eng-felsteel-stabilizer": {"name":"Felsteel Stabilizer","item_id":23787,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":70000,"target_copper":100000,"high_copper":160000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Used in older Engineering recipes. Singles first."},
+    "eng-hardened-adamantite-tube": {"name":"Hardened Adamantite Tube","item_id":23785,"profile":"engineering-part","detail":"TBC Engineering part","quick_copper":80000,"target_copper":120000,"high_copper":200000,"stack":"1 / 2","demand":"Low-Med","demand_class":"med","notes":"Niche TBC Engineering part. Slow but can sell high when someone needs one."},
+    "eng-thorium-widget": {"name":"Thorium Widget","item_id":15994,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":15000,"target_copper":22500,"high_copper":35000,"stack":"1 / 5 / 10","demand":"Med-High","demand_class":"hi","notes":"Late Classic Engineering part and Darkmoon-style turn-in item if that demand exists here."},
+    "eng-thorium-tube": {"name":"Thorium Tube","item_id":16000,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":20000,"target_copper":30000,"high_copper":50000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Late Classic Engineering part. Singles sell best."},
+    "eng-truesilver-transformer": {"name":"Truesilver Transformer","item_id":18631,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":30000,"target_copper":50000,"high_copper":80000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Old Engineering component. Can spike if supply is empty."},
+    "eng-mithril-tube": {"name":"Mithril Tube","item_id":10559,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":10000,"target_copper":17500,"high_copper":30000,"stack":"1 / 2 / 5","demand":"Med-High","demand_class":"hi","notes":"Mid-level Engineering tube used in scopes, gadgets, and leveling paths. Price from Mithril Bars plus convenience."},
+    "eng-mithril-casing": {"name":"Mithril Casing","item_id":10561,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":10000,"target_copper":15000,"high_copper":25000,"stack":"1 / 5 / 10","demand":"Med-High","demand_class":"hi","notes":"Important mid-level Engineering part. Often used by levelers."},
+    "eng-unstable-trigger": {"name":"Unstable Trigger","item_id":10560,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":10000,"target_copper":15000,"high_copper":25000,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Engineering component. Price from Mithril + Mageweave-style inputs."},
+    "eng-gyrochronatom": {"name":"Gyrochronatom","item_id":4389,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":7500,"target_copper":11000,"high_copper":18000,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Mid-level Engineering part. Convenience seller."},
+    "eng-iron-strut": {"name":"Iron Strut","item_id":4387,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":6000,"target_copper":9000,"high_copper":15000,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Engineering component made from Iron Bar. Singles/5s."},
+    "eng-bronze-framework": {"name":"Bronze Framework","item_id":4382,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":4500,"target_copper":7000,"high_copper":12000,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Classic Engineering part. Useful catch-up material."},
+    "eng-whirring-bronze-gizmo": {"name":"Whirring Bronze Gizmo","item_id":4375,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":3500,"target_copper":5500,"high_copper":9000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Used in Engineering leveling/crafts. Good small-stack item."},
+    "eng-bronze-tube": {"name":"Bronze Tube","item_id":4371,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":2500,"target_copper":4000,"high_copper":7500,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Engineering part and quest/craft item. Singles sell well."},
+    "eng-silver-contact": {"name":"Silver Contact","item_id":4404,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":2000,"target_copper":3500,"high_copper":6000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Low-level Engineering part. Good exact-count item."},
+    "eng-copper-modulator": {"name":"Copper Modulator","item_id":4363,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":2500,"target_copper":4000,"high_copper":7500,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Low-level Engineering part. Also sometimes used for turn-ins on older systems."},
+    "eng-copper-tube": {"name":"Copper Tube","item_id":4361,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":1500,"target_copper":2500,"high_copper":4500,"stack":"1 / 5 / 10","demand":"Med","demand_class":"med","notes":"Early Engineering part. Good for levelers."},
+    "eng-handful-of-copper-bolts": {"name":"Handful of Copper Bolts","item_id":4359,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":800,"target_copper":1400,"high_copper":2500,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Very common low-level Engineering part. Post small stacks."},
+    "eng-fused-wiring": {"name":"Fused Wiring","item_id":7191,"profile":"engineering-part","detail":"Classic Engineering part","quick_copper":10000,"target_copper":20000,"high_copper":40000,"stack":"1 / 2 / 5","demand":"Med","demand_class":"med","notes":"Awkward old Engineering component. Scarce supply can make it worth more."},
+    "eng-dense-blasting-powder": {"name":"Dense Blasting Powder","item_id":15992,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":3500,"target_copper":5500,"high_copper":9000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Dense Stone. Used in late Classic Engineering."},
+    "eng-solid-blasting-powder": {"name":"Solid Blasting Powder","item_id":10505,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":2500,"target_copper":4000,"high_copper":7000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Solid Stone. Useful for Engineering levelers."},
+    "eng-heavy-blasting-powder": {"name":"Heavy Blasting Powder","item_id":4377,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":1800,"target_copper":3000,"high_copper":5000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Heavy Stone. Good small-stack item."},
+    "eng-coarse-blasting-powder": {"name":"Coarse Blasting Powder","item_id":4364,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":1000,"target_copper":1800,"high_copper":3000,"stack":"5 / 10 / 20","demand":"Med","demand_class":"med","notes":"Made from Coarse Stone. Early Engineering bottleneck."},
+    "eng-rough-blasting-powder": {"name":"Rough Blasting Powder","item_id":4357,"profile":"engineering-powder","detail":"Classic Engineering powder","quick_copper":400,"target_copper":700,"high_copper":1200,"stack":"5 / 10 / 20","demand":"Low-Med","demand_class":"med","notes":"Made from Rough Stone. Early Engineering item; small stacks only."}
   },
   "guides": {
     "inscription-materials-ah-price-guide.html": {
+      "intro_title": "Commonly crafted Inscription items",
+      "intro_description": "Every row below is an actual tradeable item that can be posted on the Auction House. Prices are per finished item. Check the current AH and your reagent cost before crafting a batch; on this server, short or absent profession cooldowns do not justify a cooldown premium.",
       "sections": [
         {"title": "Crafted buff scrolls", "description": "Manufactured raid and stat consumables. Rank VIII stat scrolls can also drop, but the finished items are identical and AH-tradeable.", "items": ["scroll-agility-viii", "scroll-intellect-viii", "scroll-spirit-viii", "scroll-stamina-viii", "scroll-strength-viii", "runescroll-fortitude"]},
         {"title": "Crafted utility and BoE equipment", "description": "Tradeable Inscription outputs beyond glyphs and cards. BoP shoulder inscriptions and scribe-only recall scrolls are intentionally excluded.", "items": ["armor-vellum", "weapon-vellum", "certificate-ownership", "iron-bound-tome", "faces-doom"]},
@@ -283,6 +348,26 @@
         {"title": "Prisms cards", "description": "Exact Illusion-set cards.", "items": ["ace-prisms", "two-prisms", "three-prisms", "four-prisms", "five-prisms", "six-prisms", "seven-prisms", "eight-prisms"]},
         {"title": "Undeath cards", "description": "Exact Death-set cards.", "items": ["ace-undeath", "two-undeath", "three-undeath", "four-undeath", "five-undeath", "six-undeath", "seven-undeath", "eight-undeath"]},
         {"title": "Completed Northrend decks", "description": "Tradeable assembled decks only. The quest-reward trinkets are BoP and are not listed.", "items": ["nobles-deck", "chaos-deck", "prisms-deck", "undeath-deck"]}
+      ]
+    },
+    "engineering-materials-ah-price-guide.html": {
+      "intro_title": "Commonly crafted Engineering items",
+      "intro_description": "Every row below is an actual tradeable Engineering output that can be posted on the Auction House. Prices are per finished item or listed stack. Check the current AH and live reagent cost before crafting a batch; server-specific profession, ammunition, PvP, and raid rules can change demand.",
+      "legacy_section_titles": [
+        "Northrend crafted Engineering parts",
+        "Bombs / sapper charges",
+        "Ammo",
+        "Outland crafted Engineering parts",
+        "Classic crafted Engineering parts",
+        "Blasting powders"
+      ],
+      "sections": [
+        {"title": "Northrend crafted Engineering parts", "description": "Tradeable Wrath components and utility tools used for leveling, devices, scopes, and other crafts.", "items": ["eng-handful-of-cobalt-bolts", "eng-volatile-blasting-trigger", "eng-froststeel-tube", "eng-overcharged-capacitor", "eng-explosive-decoy", "eng-gnomish-army-knife"]},
+        {"title": "Bombs / sapper charges", "description": "Tradeable Engineering explosives; demand depends on Hellscream's PvP, raid, and profession-use rules.", "items": ["eng-saronite-bomb", "eng-global-thermal-sapper-charge", "eng-cobalt-frag-bomb", "eng-box-of-bombs"]},
+        {"title": "Ammo", "description": "Tradeable projectile ammunition; verify Hunter demand and server ammunition rules before making large batches.", "items": ["eng-mammoth-cutters", "eng-saronite-razorheads", "eng-adamantite-shells", "eng-fel-iron-shells"]},
+        {"title": "Outland crafted Engineering parts", "description": "Tradeable Burning Crusade components commonly needed for Engineering leveling and older recipes.", "items": ["eng-fel-iron-casing", "eng-handful-of-fel-iron-bolts", "eng-elemental-blasting-powder", "eng-adamantite-frame", "eng-khorium-power-core", "eng-felsteel-stabilizer", "eng-hardened-adamantite-tube"]},
+        {"title": "Classic crafted Engineering parts", "description": "Tradeable Classic components used by levelers, quests, gadgets, and legacy recipes.", "items": ["eng-thorium-widget", "eng-thorium-tube", "eng-truesilver-transformer", "eng-mithril-tube", "eng-mithril-casing", "eng-unstable-trigger", "eng-gyrochronatom", "eng-iron-strut", "eng-bronze-framework", "eng-whirring-bronze-gizmo", "eng-bronze-tube", "eng-silver-contact", "eng-copper-modulator", "eng-copper-tube", "eng-handful-of-copper-bolts", "eng-fused-wiring"]},
+        {"title": "Blasting powders", "description": "Tradeable blasting powders made from matching stone tiers or elemental reagents.", "items": ["eng-dense-blasting-powder", "eng-solid-blasting-powder", "eng-heavy-blasting-powder", "eng-coarse-blasting-powder", "eng-rough-blasting-powder"]}
       ]
     }
   }
