@@ -166,12 +166,22 @@
     document.head.appendChild(script);
   }
 
+  function loadGuideUx() {
+    if (document.querySelector("script[data-guide-ux]")) return;
+    const script = document.createElement("script");
+    script.src = "../assets/guide-ux.js?v=20260728-main-ux-v1";
+    script.defer = true;
+    script.dataset.guideUx = "true";
+    document.head.appendChild(script);
+  }
+
   function init() {
     decorateNamedEntities();
     linkPhrases();
     decorateExistingWowheadLinks();
     iconizeEntities();
     loadWowheadTooltips();
+    loadGuideUx();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });

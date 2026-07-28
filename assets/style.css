@@ -1099,3 +1099,228 @@ footer a {
     font-size: 17px;
   }
 }
+
+/* Shared class-guide UX enhancements. */
+.page-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.page-pager a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(var(--theme-accent-rgb), .055);
+  color: var(--theme-accent-soft);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.page-pager a:hover,
+.page-pager a:focus-visible {
+  border-color: var(--theme-accent);
+  outline: none;
+}
+
+.talent-tree-primary-link {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.talent-tree-details {
+  margin-top: 10px;
+  overflow: hidden;
+  border-color: rgba(var(--theme-accent-rgb), .30);
+  background: rgba(var(--theme-accent-rgb), .035);
+}
+
+.talent-tree-details > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--theme-accent-soft);
+}
+
+.talent-tree-details > summary::after {
+  margin-left: auto;
+  content: "Open";
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.talent-tree-details[open] > summary::after {
+  content: "Close";
+}
+
+.talent-tree-details .talent-embed-wrap {
+  margin: 0 12px 10px;
+}
+
+body .talent-tree-details .talent-embed {
+  height: min(72vh, 720px);
+  min-height: 520px;
+}
+
+.talent-tree-details .talent-fallback {
+  margin: 0 12px 12px;
+}
+
+.raid-accordion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+  margin: 10px 0;
+}
+
+.raid-accordion-actions button,
+.raid-encounter-toggle {
+  border: 1px solid var(--line);
+  background: rgba(var(--theme-accent-rgb), .055);
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.raid-accordion-actions button {
+  min-height: 38px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.raid-accordion-actions button:hover,
+.raid-accordion-actions button:focus-visible,
+.raid-encounter-toggle:hover,
+.raid-encounter-toggle:focus-visible {
+  border-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .11);
+  outline: none;
+}
+
+.raid-encounter > h3 {
+  margin: -12px -13px;
+}
+
+.raid-encounter.is-open > h3 {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.raid-encounter-toggle {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.raid-encounter-toggle .ability-icon {
+  margin-right: 0;
+}
+
+.raid-encounter-chevron {
+  margin-left: auto;
+  color: var(--theme-accent-soft);
+  transition: transform 140ms ease;
+}
+
+.raid-encounter-toggle[aria-expanded="true"] .raid-encounter-chevron {
+  transform: rotate(180deg);
+}
+
+.raid-encounter-body {
+  padding-top: 10px;
+}
+
+@media (min-width: 1001px) {
+  body[data-guide-spec="marksmanship"] #quick-start .summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 681px) and (max-width: 1000px) {
+  body[data-guide-spec="marksmanship"] #quick-start .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  body .site-nav a {
+    min-height: 44px;
+  }
+
+  .guide-back-to-top {
+    width: 40px;
+    min-height: 40px;
+    justify-content: center;
+    padding: 5px;
+    font-size: 0;
+  }
+
+  .guide-back-to-top::before {
+    content: "↑";
+    font-size: 15px;
+  }
+
+  .table-wrap[data-mobile-scroll-hint="true"]::before {
+    position: sticky;
+    left: 8px;
+    z-index: 2;
+    display: block;
+    width: max-content;
+    margin: 8px;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface-raised);
+    color: var(--theme-accent-soft);
+    content: "Swipe table →";
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  body .talent-tree-details .talent-embed {
+    height: 68vh;
+    min-height: 520px;
+  }
+
+  .page-pager {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .page-pager a {
+    justify-content: center;
+  }
+}
+
+@media print {
+  .talent-tree-details {
+    display: none;
+  }
+
+  .raid-encounter-body[hidden] {
+    display: block;
+  }
+
+  .raid-accordion-actions,
+  .raid-encounter-chevron {
+    display: none;
+  }
+}
