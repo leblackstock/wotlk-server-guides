@@ -297,8 +297,16 @@ def load_dropped_scroll_config() -> dict:
     return config
 
 
-def render_price_pair(kind: str, buyout_copper: int) -> str:
-    bid = format_money(target_bid(buyout_copper))
+def render_price_pair(
+    kind: str,
+    buyout_copper: int,
+    bid_copper: int | None = None,
+) -> str:
+    bid = format_money(
+        target_bid(buyout_copper)
+        if bid_copper is None
+        else int(bid_copper)
+    )
     buyout = format_money(buyout_copper)
     return (
         f'<div class="pricepair {kind}">\n'
@@ -334,11 +342,11 @@ def render_crafted_row(config: dict, key: str) -> str:
         f'<td data-column="item" data-label="Item"><strong class="q-{quality}">{name}</strong>'
         f'<div class="mini">{detail}</div></td>'
         f'<td data-column="target" data-label="Target Price">'
-        f'{render_price_pair("target", int(item["target_copper"]))}</td>'
+        f'{render_price_pair("target", int(item["target_copper"]), item.get("target_bid_copper"))}</td>'
         f'<td data-column="quick" data-label="Quick Price">'
-        f'{render_price_pair("quick", int(item["quick_copper"]))}</td>'
+        f'{render_price_pair("quick", int(item["quick_copper"]), item.get("quick_bid_copper"))}</td>'
         f'<td data-column="high" data-label="High / Scarce">'
-        f'{render_price_pair("high", int(item["high_copper"]))}</td>'
+        f'{render_price_pair("high", int(item["high_copper"]), item.get("high_bid_copper"))}</td>'
         f'<td data-column="stack" data-label="Stack Size">{stack}</td>'
         f'<td data-column="demand" data-label="Demand">'
         f'<span class="demand {demand_class}">{demand}</span></td>'
@@ -381,6 +389,49 @@ def render_crafted_market(template: str, guide: dict, config: dict) -> str:
         )
         .replace("{{SECTIONS}}", sections)
     )
+
+
+def remove_legacy_crafted_rows(
+    source: str,
+    filename: str,
+    removals: dict[str, list[str]],
+) -> str:
+    """Remove priced craftable rows that were mixed into broader input sections."""
+    for section_title, item_names in removals.items():
+        section_pattern = re.compile(
+            r'<section class="common(?: [^"]*)?"><h2 class="ah-category-heading">'
+            + re.escape(html.escape(section_title))
+            + r'<a class="ah-back-to-top".*?</section>',
+            re.DOTALL,
+        )
+        section_matches = list(section_pattern.finditer(source))
+        if len(section_matches) != 1:
+            raise ValueError(
+                f"{filename}: expected one legacy row-removal section for {section_title}"
+            )
+
+        section_match = section_matches[0]
+        section_source = section_match.group(0)
+        for item_name in item_names:
+            row_pattern = re.compile(
+                r'<tr><td data-column="item" data-label="Item">'
+                r'<strong class="q-[^"]+">'
+                + re.escape(html.escape(item_name))
+                + r"</strong>.*?</tr>",
+                re.DOTALL,
+            )
+            section_source, row_count = row_pattern.subn("", section_source, count=1)
+            if row_count != 1:
+                raise ValueError(
+                    f"{filename}: expected one legacy crafted row for {item_name}"
+                )
+
+        source = (
+            source[: section_match.start()]
+            + section_source
+            + source[section_match.end() :]
+        )
+    return source
 
 
 def replace_legacy_crafted_sections(
@@ -521,6 +572,12 @@ def transform_guide(
         ):
             source = LEGACY_INSCRIPTION_CRAFTED_BLOCK.sub(expected, source, count=1)
         elif crafted_matches == 0 and crafted_guide.get("legacy_section_titles"):
+            if crafted_guide.get("legacy_row_removals"):
+                source = remove_legacy_crafted_rows(
+                    source,
+                    filename,
+                    crafted_guide["legacy_row_removals"],
+                )
             source = replace_legacy_crafted_sections(
                 source,
                 expected,

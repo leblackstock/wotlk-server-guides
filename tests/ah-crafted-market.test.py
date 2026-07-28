@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the shared Inscription and Engineering crafted-market catalog."""
+"""Validate the shared Inscription, Engineering, and Alchemy crafted catalog."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
     "inscription-materials-ah-price-guide.html": 107,
     "engineering-materials-ah-price-guide.html": 42,
+    "alchemy-materials-ah-price-guide.html": 12,
 }
 
 
@@ -146,8 +147,17 @@ def main() -> int:
                 ("quick", quick),
                 ("high", high),
             ):
+                bid_value = int(
+                    item.get(
+                        f"{kind}_bid_copper",
+                        max(1, round(value * 0.85)),
+                    )
+                )
+                if not 0 < bid_value <= value:
+                    fail(f"{key}: expected positive {kind} bid <= buyout")
                 price_pattern = (
                     rf'<div class="pricepair {kind}">.*?'
+                    rf'<span class="bid">{re.escape(format_money(bid_value))}</span>.*?'
                     rf'<span class="buyout">{re.escape(format_money(value))}</span>'
                 )
                 if not re.search(price_pattern, row, re.DOTALL):
@@ -204,9 +214,43 @@ def main() -> int:
         if label in engineering_names:
             fail(f"Engineering input or vendor component leaked into crafted outputs: {label}")
 
+    alchemy_names = {
+        merged_item(config, key)["name"]
+        for key in used_keys
+        if key.startswith("alch-")
+    }
+    for label in (
+        "Frost Lotus",
+        "Eternal Fire",
+        "Scarlet Ruby",
+        "Pygmy Suckerfish",
+        "Crystal Vial",
+        "Arcanite Bar",
+    ):
+        if label in alchemy_names:
+            fail(f"Alchemy input, vendor item, or reference row leaked into crafted outputs: {label}")
+
+    alchemy_source = sources["alchemy-materials-ah-price-guide.html"]
+    alchemy_outside_block = (
+        alchemy_source.split("<!-- AH_CRAFTED_SECTION_START -->", 1)[0]
+        + alchemy_source.split("<!-- AH_CRAFTED_SECTION_END -->", 1)[1]
+    )
+    if re.search(
+        r'<strong class="q-common">Pygmy Oil</strong>',
+        alchemy_outside_block,
+    ):
+        fail("Pygmy Oil remains duplicated in the Alchemy input rows")
+    if re.search(
+        r'<strong class="q-uncommon">Primal Might</strong>',
+        alchemy_outside_block,
+    ):
+        fail("Primal Might remains duplicated in the Alchemy input rows")
+    if "Major finished flasks / potions" in alchemy_outside_block:
+        fail("Legacy Alchemy finished-consumable section remains after migration")
+
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription and Engineering."
+        "are valid for Inscription, Engineering, and Alchemy."
     )
     return 0
 
