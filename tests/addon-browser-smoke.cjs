@@ -123,7 +123,8 @@ async function noOverflow(page, label) {
     await depositGuide.locator("summary").click();
     assert.match(await depositGuide.textContent(), /HELLSCREAM_DEPOSIT_DIVISOR = 10/);
     assert.match(await depositGuide.textContent(), /MINIMUM_DEPOSIT = 1/);
-    assert.match(await depositGuide.textContent(), /D:\\Hellscream WoW\\launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost\.lua/);
+    assert.match(await depositGuide.textContent(), /launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost\.lua/);
+    assert.doesNotMatch(await depositGuide.textContent(), /[A-Z]:\\/);
     const auctioneerNotes = desktop.locator(".addon-compatibility-notes");
     assert.equal(await auctioneerNotes.locator("summary").textContent(), "Additional compatibility notes (5)");
     assert.equal(await auctioneerNotes.evaluate((node) => node.open), false);

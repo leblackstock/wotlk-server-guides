@@ -3256,7 +3256,7 @@
               "instruction": "Exit World of Warcraft completely before editing the addon. A UI reload is not enough when making and restoring file backups."
             },
             {
-              "instruction": "Back up Interface\\AddOns\\Auc-Advanced\\CorePost.lua outside the AddOns folder. For the default Hellscream installation shown here, the live file is D:\\Hellscream WoW\\launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost.lua."
+              "instruction": "Back up Interface\\AddOns\\Auc-Advanced\\CorePost.lua outside the AddOns folder. From the Hellscream game installation folder, open launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost.lua."
             },
             {
               "instruction": "Open CorePost.lua in a UTF-8-aware text editor. Near the top of the file, replace the existing 1-silver minimum declaration with these two lines:",
