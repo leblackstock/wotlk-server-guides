@@ -17,6 +17,15 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/index.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#ah-search-input");
 
+    const hubLogoLink = desktop.locator(".hub-logo-link");
+    assert.equal(await hubLogoLink.getAttribute("href"), "./index.html");
+    assert.equal(await hubLogoLink.getAttribute("aria-label"), "Reload Guide Hub");
+    await Promise.all([
+      desktop.waitForNavigation({ waitUntil: "networkidle" }),
+      hubLogoLink.click()
+    ]);
+    assert.equal(desktop.url(), `${base}/index.html`);
+
     assert.equal(await desktop.locator(".ah-hub-browse").getAttribute("href"), "./auction-house.html");
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 0, "AH guide cards should not remain on the main hub");
     assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 4);

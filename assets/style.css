@@ -100,6 +100,21 @@ header {
     0 0 18px rgba(80, 201, 232, 0.09);
 }
 
+.hub-logo-link {
+  display: block;
+  grid-row: 1 / span 2;
+  border-radius: 18px;
+}
+
+.hub-logo-link .hub-logo {
+  grid-row: auto;
+}
+
+.hub-logo-link:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
 .hub-header-copy {
   min-width: 0;
 }
@@ -1036,6 +1051,11 @@ footer a {
     grid-row: 1;
     width: 72px;
     height: 72px;
+    border-radius: 14px;
+  }
+
+  .hub-logo-link {
+    grid-row: 1;
     border-radius: 14px;
   }
 
