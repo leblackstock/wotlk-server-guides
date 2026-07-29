@@ -5,12 +5,18 @@
   "specShortName": "Blood DK",
   "guideNickname": "Blood DK",
   "guideTypes": {
-    "quickStart": "Quick Start",
+    "quickStart": "Heroic LK25 Tank",
     "playing": "Playing Guide",
     "setup": "Setup Guide",
     "building": "Build Guide",
     "equipping": "Gear Guide",
     "raiding": "Heroic LK25 Tank Playbook"
+  },
+  "guideNavLabels": {
+    "quickStart": "LK25 Tank"
+  },
+  "pageTitles": {
+    "quickStart": "Blood Death Knight Heroic LK25 Tank"
   },
   "specSlug": "blood-death-knight",
   "specKey": "blood",

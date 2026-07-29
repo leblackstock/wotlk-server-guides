@@ -45,6 +45,12 @@ Use all six `guideTypes` keys:
 Guide types may be role-specific when that makes the page clearer, such as
 `Raid Healer Guide` or `Heroic LK25 Tank Playbook`.
 
+When a specialized family deliberately replaces a universal chapter type,
+use `guideNavLabels` for its compact navigation text and `pageTitles` for its
+browser/document title. The Blood DK landing page, for example, uses
+`LK25 Tank` in navigation and `Blood Death Knight Heroic LK25 Tank` as its
+page title.
+
 Do not add icons to the banner or jump-chip rail. To change the white guide-type
 text across every guide, edit only `--guide-type-color` near the top of
 `assets/guide-hero.css`.

@@ -41,7 +41,13 @@ const pages = [
   ["building","Building","gearing",`Building your ${config.specName}`],
   ["equipping","Equipping","gear-targets",`Equipping your ${config.specName}`],
   ["raiding","Raiding","raiding",`Raiding with your ${config.specName}`]
-].map(([key,label,suffix,title]) => ({key,label,suffix,title,guideType:config.guideTypes[key]}));
+].map(([key,label,suffix,title]) => ({
+  key,
+  label: config.guideNavLabels?.[key] || label,
+  suffix,
+  title: config.pageTitles?.[key] || title,
+  guideType: config.guideTypes[key]
+}));
 const missingGuideTypes = pages.filter((page) => !page.guideType).map((page) => page.key);
 if (missingGuideTypes.length) throw new Error(`Missing guideTypes entries: ${missingGuideTypes.join(", ")}`);
 const href = (page) => `${config.specSlug}-${page.suffix}.html`;

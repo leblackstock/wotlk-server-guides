@@ -19,6 +19,8 @@ const families = {
   "blood-death-knight": {
     specName: "Blood Death Knight",
     nickname: "Blood DK",
+    quickStartType: "Heroic LK25 Tank",
+    quickNavLabel: "LK25 Tank",
     raidType: "Heroic LK25 Tank Playbook"
   },
   "holy-priest": {
@@ -54,7 +56,11 @@ for (const [prefix, family] of Object.entries(families)) {
     const document = new JSDOM(html).window.document;
     const hero = document.querySelector("header.guide-hero");
     const rail = document.querySelector("nav.guide-jump-nav");
-    const expectedType = suffix === "raiding" ? family.raidType : defaultType;
+    const expectedType = suffix === "raiding"
+      ? family.raidType
+      : suffix === "pve-guide" && family.quickStartType
+        ? family.quickStartType
+        : defaultType;
 
     assert.ok(hero, `${relative}: shared guide hero is missing`);
     assert.equal(document.querySelectorAll("header.guide-hero").length, 1, `${relative}: expected one guide hero`);
@@ -77,6 +83,11 @@ for (const [prefix, family] of Object.entries(families)) {
       hero.querySelector(".hero-guide-type")?.textContent.trim(),
       expectedType,
       `${relative}: guide type is incorrect`
+    );
+    assert.equal(
+      document.querySelector(`.site-nav a[href="${prefix}-pve-guide.html"]`)?.textContent.trim(),
+      family.quickNavLabel || "Quick Start",
+      `${relative}: first chapter navigation label is incorrect`
     );
     assert.ok(hero.querySelector(".sub")?.textContent.trim(), `${relative}: description is missing`);
     assert.equal(hero.querySelectorAll("img, svg").length, 0, `${relative}: banner must not contain icons`);
@@ -121,6 +132,8 @@ const scaffold = fs.readFileSync(path.join(root, "tools/create-spec-guide-scaffo
 for (const marker of [
   "guideNickname",
   "guideTypes",
+  "guideNavLabels",
+  "pageTitles",
   "../assets/guide-hero.css",
   'class="guide-hero"',
   'class="guide-hero-title"',
