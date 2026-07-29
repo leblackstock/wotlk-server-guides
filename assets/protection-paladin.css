@@ -55,8 +55,12 @@
       line-height: 1.05;
     }
 
-    .guide-hero--compact h1 .hero-title-text {
+    .guide-hero--compact h1 .hero-spec-nickname {
       color: var(--spec-paladin-protection-accent);
+    }
+
+    .guide-hero--compact h1 .hero-guide-type {
+      color: #fff;
     }
 
     .site-nav {
