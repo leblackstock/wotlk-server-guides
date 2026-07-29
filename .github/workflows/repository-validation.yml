@@ -46,7 +46,7 @@ jobs:
           done
 
       - name: Run Node validation
-        run: npm run test:node
+        run: npm test
 
       - name: Check JavaScript syntax
         shell: bash

@@ -3,6 +3,15 @@
   "classSlug": "death-knight",
   "specName": "Blood Death Knight",
   "specShortName": "Blood DK",
+  "guideNickname": "Blood DK",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid Tank Guide"
+  },
   "specSlug": "blood-death-knight",
   "specKey": "blood",
   "role": "Tank",

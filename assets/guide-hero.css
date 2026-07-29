@@ -1,0 +1,113 @@
+/*
+ * Shared guide banner system.
+ *
+ * Change --guide-type-color once to update the white guide-type text on every
+ * current and future guide that uses this component.
+ */
+:root {
+  --guide-type-color: #ffffff;
+  --guide-hero-padding-block: 18px;
+  --guide-hero-padding-inline: 22px;
+  --guide-title-min-size: 34px;
+  --guide-title-max-size: 46px;
+  --guide-chip-gap: 8px;
+}
+
+body header.guide-hero {
+  padding: var(--guide-hero-padding-block) var(--guide-hero-padding-inline);
+  border-color: rgba(var(--class-accent-rgb), .32);
+  background:
+    linear-gradient(
+      135deg,
+      var(--surface-raised) 0%,
+      rgba(var(--class-accent-deep-rgb), .42) 46%,
+      rgba(var(--theme-accent-deep-rgb), .34) 78%,
+      var(--surface-card) 100%
+    );
+}
+
+body .guide-hero .page-kicker {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--class-accent);
+}
+
+body .guide-hero .guide-hero-title {
+  margin: 0 0 5px;
+  font-size: clamp(
+    var(--guide-title-min-size),
+    4.8vw,
+    var(--guide-title-max-size)
+  );
+  line-height: 1.05;
+}
+
+body .guide-hero .hero-spec-nickname {
+  color: var(--theme-accent);
+}
+
+body .guide-hero .hero-guide-type {
+  color: var(--guide-type-color);
+}
+
+body .guide-hero .sub {
+  margin: 0;
+}
+
+body .guide-jump-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--guide-chip-gap);
+  margin: 9px 0 0;
+  padding: 0 2px 2px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+body .guide-jump-nav a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 9px;
+  border: 1px solid rgba(var(--theme-accent-rgb), .28);
+  border-radius: 999px;
+  background: rgba(var(--theme-accent-rgb), .055);
+  color: var(--theme-accent-soft);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+body .guide-jump-nav a:hover,
+body .guide-jump-nav a:focus-visible {
+  border-color: var(--theme-accent);
+  background: rgba(var(--theme-accent-rgb), .11);
+  outline: none;
+}
+
+@media (max-width: 680px) {
+  :root {
+    --guide-hero-padding-block: 16px;
+    --guide-hero-padding-inline: 16px;
+  }
+}
+
+@media print {
+  body .guide-jump-nav {
+    display: none;
+  }
+
+  body header.guide-hero {
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  body .guide-hero .hero-spec-nickname,
+  body .guide-hero .hero-guide-type {
+    color: #000000;
+  }
+}

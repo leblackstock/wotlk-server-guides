@@ -8,6 +8,10 @@ node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.js
 node tools/create-complete-spec-guide.mjs templates/spec-guide/my-spec.config.json
 ```
 
+The generated pages automatically use the shared banner in
+`assets/guide-hero.css`. Set `guideNickname` and all six `guideTypes` values in
+the config; do not duplicate banner styles in the new spec stylesheet.
+
 Do not use `tools/create-spec-guide.mjs` by itself for a production guide. That compatibility command routes into the same complete production workflow, but `create-complete-spec-guide.mjs` is the canonical entrypoint.
 
 The production generator treats complexity-based icon approval as mandatory. A missing `iconDensityStatus` defaults to `required`, and the generator refuses to create a new guide marked `grandfathered`.

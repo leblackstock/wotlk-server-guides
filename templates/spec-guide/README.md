@@ -45,6 +45,12 @@ Use the same six navigation labels in the same order:
 
 `Guide Hub · Quick Start · Playing · Setup · Building · Equipping · Raiding`
 
+Every page also uses the shared banner contract from
+`assets/guide-hero.css`: full spec metadata, a large nickname in the spec
+color, a large guide-type label in the universal guide-type color, one concise
+description, and a detached jump-chip rail. Configure the nickname and six
+guide types instead of changing banner markup or page-specific banner CSS.
+
 ## 3. Voice and server wording
 
 The pages are unofficial player-made guides for our Hellscream community.

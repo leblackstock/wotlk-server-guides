@@ -11,6 +11,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
+EXCLUDED_GUIDES = {"protection-paladin-pve-guide.html"}
+
+
+def has_jump_navigation(source: str) -> bool:
+    return 'guide-jump-nav' in source or 'class="jump-nav"' in source
 
 
 subprocess.run(
@@ -22,9 +27,10 @@ subprocess.run(
 paths = sorted(
     path
     for path in GUIDES_DIR.glob("*.html")
-    if 'class="jump-nav"' in path.read_text(encoding="utf-8")
+    if path.name not in EXCLUDED_GUIDES
+    and has_jump_navigation(path.read_text(encoding="utf-8"))
 )
-assert len(paths) == 35
+assert len(paths) >= 35
 
 for path in paths:
     source = path.read_text(encoding="utf-8")

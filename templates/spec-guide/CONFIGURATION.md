@@ -8,12 +8,46 @@ Use `spec-guide.config.example.json` as the starting point.
 - `classSlug` — class-level filename and body key, such as `death-knight`
 - `specName` — full public name, such as `Blood Death Knight`
 - `specShortName` — compact label used in copy, such as `Blood DK`
+- `guideNickname` — large banner nickname, such as `Tankadin`, `Holy Pally`, or `Blood DK`
+- `guideTypes` — the white page-purpose label for each of the six pages
 - `specSlug` — public filename stem, such as `blood-death-knight`
 - `specKey` — short specialization key used by color tokens, such as `blood`
 - `role` — Tank, Healer, Melee DPS, Ranged DPS, or a more precise public label
-- `levelLabel` — normally `Level 80+`
+- `levelLabel` — must be `Level 80+` in the standard banner
+- `updatedDate` — optional `YYYY-MM-DD` override; otherwise the generator uses the creation date
 
 All slug and key fields must use lower-case kebab-case.
+
+## Shared banner
+
+Every public page and generated visual specimen uses `assets/guide-hero.css`.
+The banner contract is:
+
+1. full spec name, `WotLK 3.3.5`, and `Level 80+` in the metadata line
+2. large spec nickname in the spec color
+3. large guide type in the universal guide-type color
+4. one concise page description
+5. jump chips in a separate rail below the banner
+
+Use all six `guideTypes` keys:
+
+```json
+"guideTypes": {
+  "quickStart": "Quick Start",
+  "playing": "Playing Guide",
+  "setup": "Setup Guide",
+  "building": "Build Guide",
+  "equipping": "Gear Guide",
+  "raiding": "Raid Tank Guide"
+}
+```
+
+Guide types may be role-specific when that makes the page clearer, such as
+`Raid Healer Guide` or `Heroic LK25 Tank Playbook`.
+
+Do not add icons to the banner or jump-chip rail. To change the white guide-type
+text across every guide, edit only `--guide-type-color` near the top of
+`assets/guide-hero.css`.
 
 ## Shared class assets and entity registry
 

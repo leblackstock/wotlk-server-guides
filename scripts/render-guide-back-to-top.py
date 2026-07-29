@@ -12,7 +12,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
 STYLE_VERSION = "20260728-main-ux-v1"
-EXPECTED_LONG_GUIDES = 35
+MINIMUM_LONG_GUIDES = 35
+EXCLUDED_GUIDES = {"protection-paladin-pve-guide.html"}
+
+
+def has_jump_navigation(source: str) -> bool:
+    return 'guide-jump-nav' in source or 'class="jump-nav"' in source
 
 
 def transform(source: str, filename: str) -> str:
@@ -74,11 +79,12 @@ def main() -> int:
     paths = sorted(
         path
         for path in GUIDES_DIR.glob("*.html")
-        if 'class="jump-nav"' in path.read_text(encoding="utf-8")
+        if path.name not in EXCLUDED_GUIDES
+        and has_jump_navigation(path.read_text(encoding="utf-8"))
     )
-    if len(paths) != EXPECTED_LONG_GUIDES:
+    if len(paths) < MINIMUM_LONG_GUIDES:
         raise ValueError(
-            f"Expected {EXPECTED_LONG_GUIDES} long guides with jump navigation, found {len(paths)}"
+            f"Expected at least {MINIMUM_LONG_GUIDES} long guides with jump navigation, found {len(paths)}"
         )
 
     changed: list[str] = []

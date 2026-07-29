@@ -59,22 +59,23 @@ function shell(spec, current, title, description, jumps, body) {
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=${spec.cacheKey}">
-  <link rel="stylesheet" href="../assets/style.css?v=20260726-global-top-links-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
   <link rel="stylesheet" href="../assets/${spec.slug}.css?v=${spec.cacheKey}">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
   <script src="../assets/${spec.tooltipFile}?v=${spec.cacheKey}" defer></script>
   <script src="../assets/${spec.slug}.js?v=${spec.cacheKey}" defer></script>
 </head>
 <body data-guide-class="${spec.classSlug}" data-guide-spec="${spec.specKey}">
   <div class="wrap" id="top">
     ${nav(spec, current)}
-    <header>
-      <span class="page-kicker">${esc(spec.name)} • Fresh level 80</span>
-      <h1>WotLK 3.3.5 <span>${esc(title)}</span></h1>
+    <header class="guide-hero">
+      <span class="page-kicker">${esc(spec.name)} • WotLK 3.3.5 • Level 80+</span>
+      <h1 class="guide-hero-title"><span class="hero-spec-nickname">${esc(spec.nickname)}</span> <span class="hero-guide-type">${esc(spec.guideTypes[current])}</span></h1>
       <p class="sub">${esc(description)}</p>
-      <div class="jump-nav" aria-label="Topics on this page">${jumps.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join("")}</div>
     </header>
+    <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page">${jumps.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join("")}</nav>
     <main>${body}${pager(spec, current)}</main>
-    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting.</footer>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-29</footer>
   </div>
 </body>
 </html>
@@ -200,6 +201,15 @@ const holyPriest = {
   classSlug: "priest",
   name: "Holy Priest",
   shortName: "Holy Priest",
+  nickname: "Holy Priest",
+  guideTypes: {
+    quickStart: "Quick Start",
+    playing: "Playing Guide",
+    setup: "Setup Guide",
+    building: "Build Guide",
+    equipping: "Gear Guide",
+    raiding: "Raid Healer Guide"
+  },
   slug: "holy-priest",
   specKey: "priest-holy",
   tooltipFile: "priest-tooltips.js",
@@ -541,6 +551,15 @@ const shadowPriest = {
   classSlug: "priest",
   name: "Shadow Priest",
   shortName: "Shadow Priest",
+  nickname: "Shadow Priest",
+  guideTypes: {
+    quickStart: "Quick Start",
+    playing: "Playing Guide",
+    setup: "Setup Guide",
+    building: "Build Guide",
+    equipping: "Gear Guide",
+    raiding: "Raid DPS Guide"
+  },
   slug: "shadow-priest",
   specKey: "shadow",
   tooltipFile: "priest-tooltips.js",
@@ -882,6 +901,15 @@ const marksmanshipHunter = {
   classSlug: "hunter",
   name: "Marksmanship Hunter",
   shortName: "Marksman Hunter",
+  nickname: "Marks Hunter",
+  guideTypes: {
+    quickStart: "Quick Start",
+    playing: "Playing Guide",
+    setup: "Setup Guide",
+    building: "Build Guide",
+    equipping: "Gear Guide",
+    raiding: "Raid DPS Guide"
+  },
   slug: "marksmanship-hunter",
   specKey: "marksmanship",
   tooltipFile: "hunter-tooltips.js",
