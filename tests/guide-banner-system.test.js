@@ -128,6 +128,9 @@ const hubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "ut
 assert.equal(hubDocument.querySelectorAll(".class-guide-card").length, Object.keys(families).length);
 for (const [prefix, family] of Object.entries(families)) {
   const card = hubDocument.querySelector(`.class-guide-card[href="./guides/${prefix}-pve-guide.html"]`);
+  const landingDocument = new JSDOM(
+    fs.readFileSync(path.join(root, "guides", `${prefix}-pve-guide.html`), "utf8")
+  ).window.document;
   assert.ok(card, `index.html: ${prefix} class-guide card is missing`);
   assert.equal(
     card.querySelector(".guide-card-nickname")?.textContent.trim(),
@@ -149,6 +152,11 @@ for (const [prefix, family] of Object.entries(families)) {
     card.querySelector(".guide-action")?.textContent.trim(),
     "Open guide →",
     `index.html: ${prefix} card action is not neutral`
+  );
+  assert.equal(
+    card.querySelector(".guide-note")?.textContent.trim(),
+    landingDocument.querySelector("header.guide-hero .sub")?.textContent.trim(),
+    `index.html: ${prefix} card sentence does not match its guide banner`
   );
 }
 
