@@ -181,6 +181,35 @@ for (const [cardClass, classToken] of Object.entries({
   );
 }
 
+const tankadinPreviewDocument = new JSDOM(
+  fs.readFileSync(path.join(root, "guides", "protection-paladin-pve-guide.html"), "utf8")
+).window.document;
+const tankadinPreviewSection = tankadinPreviewDocument.querySelector("#quick-start");
+const tankadinPreviewHeading = tankadinPreviewSection?.querySelector(":scope > h2.guide-category-heading");
+assert.equal(tankadinPreviewDocument.querySelector(".wrap")?.id, "top", "Tankadin preview: Top target is missing");
+assert.equal(
+  tankadinPreviewHeading?.childNodes[1]?.textContent.trim(),
+  "Two-minute operating manual",
+  "Tankadin preview: B-style section title is missing"
+);
+assert.match(
+  tankadinPreviewHeading?.querySelector(".spell-icon")?.getAttribute("src") || "",
+  /spell_holy_devotionaura\.jpg$/,
+  "Tankadin preview: Protection section icon is missing"
+);
+assert.equal(
+  tankadinPreviewHeading?.querySelector(".guide-back-to-top")?.getAttribute("href"),
+  "#top",
+  "Tankadin preview: B-style Top control is missing"
+);
+assert.equal(
+  tankadinPreviewSection?.querySelector(".summary-detail a[href='protection-paladin-setting-up.html#glyphs']")?.textContent.trim(),
+  "Open the glyph guide.",
+  "Tankadin preview: A-style guide link changed"
+);
+assert.equal(tankadinPreviewSection?.querySelectorAll(".guide-box .checklist > li").length, 6, "Tankadin preview: A-style checklist changed");
+assert.equal(tankadinPreviewSection?.querySelectorAll(".guide-box .priority-list > li").length, 4, "Tankadin preview: A-style numbered list changed");
+
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");
