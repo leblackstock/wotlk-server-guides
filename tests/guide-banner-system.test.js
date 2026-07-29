@@ -152,6 +152,27 @@ for (const [prefix, family] of Object.entries(families)) {
   );
 }
 
+const hubInlineCss = hubDocument.querySelector("style")?.textContent || "";
+assert.match(
+  hubInlineCss,
+  /\.class-guide-card::before\{[^}]*background:var\(--class-guide-class-accent\)/,
+  "index.html: class-guide side bar must use the class color token"
+);
+for (const [cardClass, classToken] of Object.entries({
+  "paladin-protection": "class-paladin-accent",
+  "paladin-holy": "class-paladin-accent",
+  "death-knight-blood": "class-death-knight-accent",
+  "priest-holy": "class-priest-accent",
+  "priest-shadow": "class-priest-accent",
+  "hunter-marksmanship": "class-hunter-accent"
+})) {
+  assert.match(
+    hubInlineCss,
+    new RegExp(`\\.class-guide-card\\.${cardClass}\\{[^}]*--class-guide-class-accent:var\\(--${classToken}\\)`),
+    `index.html: ${cardClass} side bar does not use its class color`
+  );
+}
+
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");
