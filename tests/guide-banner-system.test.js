@@ -124,6 +124,34 @@ for (const file of discoveredGuideFiles) {
   assert.equal(hero.nextElementSibling, rail, `guides/${file}: discovered guide has chips inside the banner`);
 }
 
+const hubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "utf8")).window.document;
+assert.equal(hubDocument.querySelectorAll(".class-guide-card").length, Object.keys(families).length);
+for (const [prefix, family] of Object.entries(families)) {
+  const card = hubDocument.querySelector(`.class-guide-card[href="./guides/${prefix}-pve-guide.html"]`);
+  assert.ok(card, `index.html: ${prefix} class-guide card is missing`);
+  assert.equal(
+    card.querySelector(".guide-card-nickname")?.textContent.trim(),
+    family.nickname,
+    `index.html: ${prefix} card nickname is incorrect`
+  );
+  assert.equal(
+    card.querySelector(".guide-card-type")?.textContent.trim(),
+    family.quickStartType || pageTypes["pve-guide"],
+    `index.html: ${prefix} card guide type is incorrect`
+  );
+  assert.equal(card.querySelectorAll(".guide-card-badges .badge").length, 2, `index.html: ${prefix} card needs class and spec chips`);
+  assert.equal(
+    card.querySelector(".guide-card-spec-badge")?.textContent.trim(),
+    family.specName.split(" ")[0],
+    `index.html: ${prefix} card spec chip is incorrect`
+  );
+  assert.equal(
+    card.querySelector(".guide-action")?.textContent.trim(),
+    "Open guide →",
+    `index.html: ${prefix} card action is not neutral`
+  );
+}
+
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");

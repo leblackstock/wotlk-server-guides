@@ -13,13 +13,13 @@
   <link rel="stylesheet" href="./assets/addon-catalog.css?v=20260725-search-parity-v1">
   <style>
     .class-guide-card{position:relative;overflow:hidden}
-    .class-guide-card::before{position:absolute;inset:0 auto 0 0;width:3px;content:""}
-    .class-guide-card.paladin-protection::before{background:var(--spec-paladin-protection-accent)}
-    .class-guide-card.paladin-holy::before{background:var(--spec-paladin-holy-accent)}
-    .class-guide-card.death-knight-blood::before{background:var(--spec-death-knight-blood-accent)}
-    .class-guide-card.priest-holy::before{background:var(--spec-priest-holy-accent)}
-    .class-guide-card.priest-shadow::before{background:var(--spec-priest-shadow-accent)}
-    .class-guide-card.hunter-marksmanship::before{background:var(--spec-hunter-marksmanship-accent)}
+    .class-guide-card::before{position:absolute;inset:0 auto 0 0;width:3px;background:var(--class-guide-accent);content:""}
+    .class-guide-card.paladin-protection{--class-guide-accent:var(--spec-paladin-protection-accent);--class-guide-soft:var(--spec-paladin-protection-soft);--class-guide-rgb:var(--spec-paladin-protection-rgb)}
+    .class-guide-card.paladin-holy{--class-guide-accent:var(--spec-paladin-holy-accent);--class-guide-soft:var(--spec-paladin-holy-soft);--class-guide-rgb:var(--spec-paladin-holy-rgb)}
+    .class-guide-card.death-knight-blood{--class-guide-accent:var(--spec-death-knight-blood-accent);--class-guide-soft:var(--spec-death-knight-blood-soft);--class-guide-rgb:var(--spec-death-knight-blood-rgb)}
+    .class-guide-card.priest-holy{--class-guide-accent:var(--spec-priest-holy-accent);--class-guide-soft:var(--spec-priest-holy-soft);--class-guide-rgb:var(--spec-priest-holy-rgb)}
+    .class-guide-card.priest-shadow{--class-guide-accent:var(--spec-priest-shadow-accent);--class-guide-soft:var(--spec-priest-shadow-soft);--class-guide-rgb:var(--spec-priest-shadow-rgb)}
+    .class-guide-card.hunter-marksmanship{--class-guide-accent:var(--spec-hunter-marksmanship-accent);--class-guide-soft:var(--spec-hunter-marksmanship-soft);--class-guide-rgb:var(--spec-hunter-marksmanship-rgb)}
     .class-guide-card.paladin-protection:hover,.class-guide-card.paladin-protection:focus-visible{border-color:rgba(var(--spec-paladin-protection-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-protection-rgb),.09)}
     .class-guide-card.paladin-holy:hover,.class-guide-card.paladin-holy:focus-visible{border-color:rgba(var(--spec-paladin-holy-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-paladin-holy-rgb),.09)}
     .class-guide-card.death-knight-blood:hover,.class-guide-card.death-knight-blood:focus-visible{border-color:rgba(var(--spec-death-knight-blood-rgb),.72);box-shadow:0 0 18px rgba(var(--spec-death-knight-blood-rgb),.09)}
@@ -36,6 +36,11 @@
     .class-guide-card.priest-holy .guide-action{color:var(--spec-priest-holy-soft)}
     .class-guide-card.priest-shadow .guide-action{color:var(--spec-priest-shadow-soft)}
     .class-guide-card.hunter-marksmanship .guide-action{color:var(--spec-hunter-marksmanship-soft)}
+    .class-guide-card .guide-card-badges{display:flex;flex-wrap:wrap;gap:6px}
+    .class-guide-card .badge.guide-card-spec-badge{border:1px solid rgba(var(--class-guide-rgb),.56);background:rgba(var(--class-guide-rgb),.14);color:var(--class-guide-soft)}
+    .class-guide-card .guide-title{display:flex;flex-wrap:wrap;gap:0 .28em;line-height:1.2}
+    .class-guide-card .guide-card-nickname{color:var(--class-guide-accent)}
+    .class-guide-card .guide-card-type{color:#fff}
   </style>
   <script src="./assets/ah-search-index.js?v=20260728-engineering-items-v1" defer></script>
   <script src="./assets/ah-search.js?v=20260726-ah-card-bids-v1" defer></script>
@@ -157,40 +162,40 @@
       <h2>Gameplay &amp; Class Guides</h2>
       <div class="guide-grid compact-grid">
         <a class="guide-card class-guide-card paladin-protection" href="./guides/protection-paladin-pve-guide.html">
-          <span class="badge">Paladin</span>
-          <span class="guide-title">Tankadin Quick Start</span>
+          <span class="guide-card-badges"><span class="badge">Paladin</span><span class="badge guide-card-spec-badge">Protection</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Tankadin</span><span class="guide-card-type">Quick Start</span></span>
           <span class="guide-note">Start at level 80, learn the 969 rhythm, then continue through Playing, Setup, Building, Equipping, and Raiding.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
         <a class="guide-card class-guide-card paladin-holy" href="./guides/holy-paladin-pve-guide.html">
-          <span class="badge">Paladin</span>
-          <span class="guide-title">Holy Paladin Quick Start</span>
+          <span class="guide-card-badges"><span class="badge">Paladin</span><span class="badge guide-card-spec-badge">Holy</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Holy Pally</span><span class="guide-card-type">Quick Start</span></span>
           <span class="guide-note">Build the healing engine, master Beacon assignments, set up HealBot, gear intelligently, and prepare boss by boss.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
         <a class="guide-card class-guide-card death-knight-blood" href="./guides/blood-death-knight-pve-guide.html">
-          <span class="badge">Death Knight</span>
-          <span class="guide-title">Blood Death Knight — Heroic LK25</span>
+          <span class="guide-card-badges"><span class="badge">Death Knight</span><span class="badge guide-card-spec-badge">Blood</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Blood DK</span><span class="guide-card-type">Heroic LK25 Tank</span></span>
           <span class="guide-note">Use the exact 43/23/5 survival build, set up the tanking engine, gear deliberately, and execute every Lich King assignment.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
         <a class="guide-card class-guide-card priest-holy" href="./guides/holy-priest-pve-guide.html">
-          <span class="badge">Priest</span>
-          <span class="guide-title">Holy Priest Quick Start</span>
+          <span class="guide-card-badges"><span class="badge">Priest</span><span class="badge guide-card-spec-badge">Holy</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Holy Priest</span><span class="guide-card-type">Quick Start</span></span>
           <span class="guide-note">Start from fresh 80, build a mana-stable healing engine, set up mouseovers, gear by stage, and prepare every raid assignment.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
         <a class="guide-card class-guide-card priest-shadow" href="./guides/shadow-priest-pve-guide.html">
-          <span class="badge">Priest</span>
-          <span class="guide-title">Shadow Priest Quick Start</span>
+          <span class="guide-card-badges"><span class="badge">Priest</span><span class="badge guide-card-spec-badge">Shadow</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Shadow Priest</span><span class="guide-card-type">Quick Start</span></span>
           <span class="guide-note">Reach the real hit target, execute the five-stack opener, manage DoTs and channels, gear intelligently, and handle raid utility.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
         <a class="guide-card class-guide-card hunter-marksmanship" href="./guides/marksmanship-hunter-pve-guide.html">
-          <span class="badge">Hunter</span>
-          <span class="guide-title">Marksmanship Hunter Quick Start</span>
+          <span class="guide-card-badges"><span class="badge">Hunter</span><span class="badge guide-card-spec-badge">Marksmanship</span></span>
+          <span class="guide-title"><span class="guide-card-nickname">Marks Hunter</span><span class="guide-card-type">Quick Start</span></span>
           <span class="guide-note">Cap hit, stay Agility-first while fresh, master the shot priority and wolf, then progress through original-3.3.5 raid jobs.</span>
-          <span class="guide-action">Start guide →</span>
+          <span class="guide-action">Open guide →</span>
         </a>
       </div>
     </section>
