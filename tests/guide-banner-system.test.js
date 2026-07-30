@@ -212,8 +212,24 @@ assert.equal(
 );
 assert.deepEqual(
   [...tankadinPreviewSection.querySelectorAll(".mechanic-nine .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
-  ["Holy Shield", "Judgement", "Consecration"],
+  ["Holy Shield", "Judgement of Wisdom", "Consecration"],
   "Tankadin preview: 9-second icon sequence is incorrect"
+);
+const tankadinWisdomLink = tankadinPreviewSection.querySelector(".mechanic-nine .engine-spell-link[aria-label='Judgement of Wisdom']");
+assert.equal(
+  tankadinWisdomLink?.getAttribute("href"),
+  "https://www.wowhead.com/wotlk/spell=53408",
+  "Tankadin preview: Judgement of Wisdom does not use the correct hover link"
+);
+assert.equal(
+  tankadinWisdomLink?.getAttribute("data-wowhead"),
+  "spell=53408&domain=wotlk",
+  "Tankadin preview: Judgement of Wisdom hover data is incorrect"
+);
+assert.equal(
+  tankadinWisdomLink?.getAttribute("title"),
+  "Judgement of Wisdom",
+  "Tankadin preview: Judgement of Wisdom native hover label is missing"
 );
 assert.deepEqual(
   [...tankadinPreviewSection.querySelectorAll(".mechanic-six .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
@@ -234,6 +250,22 @@ assert.equal(
 );
 assert.equal(tankadinPreviewSection?.querySelectorAll(".guide-box .checklist > li").length, 6, "Tankadin preview: A-style checklist changed");
 assert.equal(tankadinPreviewSection?.querySelectorAll(".guide-box .priority-list > li").length, 4, "Tankadin preview: A-style numbered list changed");
+
+const tankadinPlayingDocument = new JSDOM(
+  fs.readFileSync(path.join(root, "guides", "protection-paladin-playing.html"), "utf8")
+).window.document;
+const tankadinFlexNote = tankadinPlayingDocument.querySelector("#cooldowns .seal-judgement-flex-note");
+assert.ok(tankadinFlexNote, "Tankadin Playing: seal and Judgement flexibility note is missing");
+assert.equal(
+  tankadinFlexNote?.textContent.trim(),
+  "Seals and Judgements are flexible. Swap either one when the encounter, target pattern, raid assignment, or mana needs change. This guide uses Judgement of Wisdom whenever an example needs a named Judgement, but use the Judgement your raid actually needs.",
+  "Tankadin Playing: seal and Judgement flexibility guidance changed"
+);
+assert.equal(
+  tankadinPlayingDocument.querySelector(".wrap > footer")?.textContent.trim().endsWith("Updated 2026-07-30"),
+  true,
+  "Tankadin Playing: footer date was not updated with the page"
+);
 
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
