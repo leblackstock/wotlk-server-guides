@@ -210,6 +210,22 @@ assert.equal(
   "Ready → 9-second → 6-second → repeat",
   "Tankadin preview: combat-engine sequence is incorrect"
 );
+assert.deepEqual(
+  [...tankadinPreviewSection.querySelectorAll(".mechanic-nine .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
+  ["Holy Shield", "Judgement", "Consecration"],
+  "Tankadin preview: 9-second icon sequence is incorrect"
+);
+assert.deepEqual(
+  [...tankadinPreviewSection.querySelectorAll(".mechanic-six .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
+  ["Hammer of the Righteous", "Shield of Righteousness"],
+  "Tankadin preview: 6-second icon sequence is incorrect"
+);
+assert.equal(tankadinPreviewSection.querySelectorAll(".mechanic-nine .engine-spell-separator").length, 2, "Tankadin preview: 9-second dashes are missing");
+assert.equal(tankadinPreviewSection.querySelectorAll(".mechanic-six .engine-spell-separator").length, 1, "Tankadin preview: 6-second dash is missing");
+assert.ok(
+  [...tankadinPreviewSection.querySelectorAll(".engine-spell-link")].every((link) => link.classList.contains("wowhead-link") && link.hasAttribute("data-wowhead")),
+  "Tankadin preview: spell icons must keep A-style Wowhead hover links"
+);
 assert.equal(tankadinPreviewSection?.querySelector(".rotation-card"), null, "Tankadin preview: old A-style rotation block remains");
 assert.equal(
   tankadinPreviewSection?.querySelector(".summary-detail a[href='protection-paladin-setting-up.html#glyphs']")?.textContent.trim(),
