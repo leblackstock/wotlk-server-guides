@@ -202,6 +202,15 @@ assert.equal(
   "#top",
   "Tankadin preview: B-style Top control is missing"
 );
+assert.equal(tankadinPreviewSection?.querySelectorAll(".summary-grid > .summary-card").length, 4, "Tankadin preview: B-style summary-card count changed");
+assert.equal(tankadinPreviewSection?.querySelectorAll(".combat-engine .engine-step").length, 4, "Tankadin preview: B-style four-step engine is missing");
+assert.equal(tankadinPreviewSection?.querySelectorAll(".combat-engine .engine-step .ability-icon").length, 4, "Tankadin preview: engine-step icons are missing");
+assert.equal(
+  tankadinPreviewSection?.querySelector(".combat-engine .summary-value")?.textContent.trim(),
+  "Ready → 9-second → 6-second → repeat",
+  "Tankadin preview: combat-engine sequence is incorrect"
+);
+assert.equal(tankadinPreviewSection?.querySelector(".rotation-card"), null, "Tankadin preview: old A-style rotation block remains");
 assert.equal(
   tankadinPreviewSection?.querySelector(".summary-detail a[href='protection-paladin-setting-up.html#glyphs']")?.textContent.trim(),
   "Open the glyph guide.",
