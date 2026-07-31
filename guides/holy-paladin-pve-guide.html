@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260724-holy-v1">
   <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
   <link rel="stylesheet" href="../assets/holy-paladin.css?v=20260724-holy-v1">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
   <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
   
   <script src="../assets/paladin-tooltips.js?v=20260728-main-ux-v1" defer></script>
@@ -31,8 +32,8 @@
   </nav>
   <main>
   
-<section class="common" id="quick-start">
-  <h2 class="guide-category-heading"><span class="section-mark">◆</span> Quick start<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
+<section class="common operating-manual" id="quick-start">
+  <h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Two-minute operating manual<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
   <div class="summary-grid">
     <div class="summary-card">
       <span class="summary-label">Core assignment</span>
@@ -49,24 +50,60 @@
       <div class="summary-value">Holy Light + Seal of Wisdom</div>
       <div class="summary-detail">Use Glyph of Holy Light and Glyph of Seal of Wisdom. The third slot is usually Beacon of Light or Divinity.</div>
     </div>
-    <div class="summary-card healing-engine">
+    <div class="summary-card healing-engine operating-engine">
       <span class="summary-label">Healing engine</span>
       <div class="summary-value">Maintain → cast → transfer → recover</div>
       <div class="engine-grid">
-        <div class="engine-step maintenance"><strong>Maintain</strong><p>Beacon of Light, Sacred Shield, and Judgements of the Pure.</p></div>
-        <div class="engine-step direct"><strong>Direct heal</strong><p>Cast Holy Light, Flash of Light, or Holy Shock on the target who needs the spell.</p></div>
-        <div class="engine-step beacon"><strong>Transfer</strong><p>Your eligible direct heal is copied to the Beacon target.</p></div>
-        <div class="engine-step mana"><strong>Recover</strong><p>Plan Divine Plea, Seal of Wisdom contact, potions, and quiet windows.</p></div>
+        <div class="engine-step maintenance">
+          <strong data-holy-iconized="true"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_beaconoflight.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Maintain</strong>
+          <p>Beacon of Light, Sacred Shield, and Judgements of the Pure.</p>
+          <div class="engine-spell-sequence" aria-label="Maintain spell sequence">
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=53563" target="_blank" rel="noopener" data-wowhead="spell=53563&amp;domain=wotlk" aria-label="Beacon of Light"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_beaconoflight.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=53601" target="_blank" rel="noopener" data-wowhead="spell=53601&amp;domain=wotlk" aria-label="Sacred Shield"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_blessedmending.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=53408" target="_blank" rel="noopener" data-wowhead="spell=53408&amp;domain=wotlk" aria-label="Judgement of Wisdom"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_judgementblue.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+          </div>
+        </div>
+        <div class="engine-step direct">
+          <strong data-holy-iconized="true"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Direct heal</strong>
+          <p>Cast Holy Light, Flash of Light, or Holy Shock on the target who needs the spell.</p>
+          <div class="engine-spell-sequence" aria-label="Direct heal spell sequence">
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=48782" target="_blank" rel="noopener" data-wowhead="spell=48782&amp;domain=wotlk" aria-label="Holy Light"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_holybolt.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=48785" target="_blank" rel="noopener" data-wowhead="spell=48785&amp;domain=wotlk" aria-label="Flash of Light"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_flashheal.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=48825" target="_blank" rel="noopener" data-wowhead="spell=48825&amp;domain=wotlk" aria-label="Holy Shock"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_searinglight.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+          </div>
+        </div>
+        <div class="engine-step beacon">
+          <strong data-holy-iconized="true"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_beaconoflight.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Transfer</strong>
+          <p>Your eligible direct heal is copied to the Beacon target.</p>
+          <div class="engine-spell-sequence" aria-label="Transfer spell">
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=53563" target="_blank" rel="noopener" data-wowhead="spell=53563&amp;domain=wotlk" aria-label="Beacon of Light"><img src="https://wow.zamimg.com/images/wow/icons/large/ability_paladin_beaconoflight.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+          </div>
+        </div>
+        <div class="engine-step mana">
+          <strong data-holy-iconized="true"><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Recover</strong>
+          <p>Plan Divine Plea, Seal of Wisdom contact, potions, and quiet windows.</p>
+          <div class="engine-spell-sequence" aria-label="Recover spell and item sequence">
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=54428" target="_blank" rel="noopener" data-wowhead="spell=54428&amp;domain=wotlk" aria-label="Divine Plea"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_aspiration.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/spell=20166" target="_blank" rel="noopener" data-wowhead="spell=20166&amp;domain=wotlk" aria-label="Seal of Wisdom"><img src="https://wow.zamimg.com/images/wow/icons/large/spell_holy_righteousnessaura.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+            <span class="engine-spell-separator" aria-hidden="true">—</span>
+            <a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/item=33448" target="_blank" rel="noopener" data-wowhead="item=33448&amp;domain=wotlk" aria-label="Runic Mana Potion"><img src="https://wow.zamimg.com/images/wow/icons/large/inv_alchemy_elixir_02.jpg" alt="" aria-hidden="true" onerror="this.remove()"></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <details class="server-behavior">
-    <summary>Server behavior on Hellscream</summary>
+    <summary><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/inv_misc_wrench_01.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Server behavior on Hellscream</summary>
     <p>Standard patch 3.3.5 behavior is the baseline. Beacon transfer, Sacred Shield, proc trinkets, encounter immunities, and scripted raid abilities may differ. Hellscream ICC also does not use the zone-wide ICC buff, so healing and mana checks are less forgiving than guides that assume it.</p>
   </details>
 
-  <div class="two-col" style="margin-top:12px">
+  <div class="two-col">
     <div class="guide-box">
       <h3>Before the pull</h3>
       <ul class="checklist">
@@ -113,7 +150,7 @@
 </section>
 
   </main>
-  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-29</footer>
+  <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-31</footer>
 </div>
 </body>
 </html>

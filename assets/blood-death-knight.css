@@ -41,13 +41,13 @@ body[data-guide-spec="blood"] {
 }
 .engine-step strong .ability-icon { width: 22px; height: 22px; margin: 0; }
 .engine-step p { margin: 0; color: var(--muted); font-size: 12px; }
-.mechanic-runes { border-color: rgba(var(--spec-runes-rgb), .42); background: rgba(var(--spec-runes-rgb), .065); }
+.mechanic-runes { --operating-step-rgb: var(--spec-runes-rgb); --operating-step-soft: var(--spec-runes-soft); border-color: rgba(var(--spec-runes-rgb), .42); background: rgba(var(--spec-runes-rgb), .065); }
 .mechanic-runes strong { color: var(--spec-runes-soft); }
-.mechanic-runic-power { border-color: rgba(var(--spec-runic-power-rgb), .42); background: rgba(var(--spec-runic-power-rgb), .065); }
+.mechanic-runic-power { --operating-step-rgb: var(--spec-runic-power-rgb); --operating-step-soft: var(--spec-runic-power-soft); border-color: rgba(var(--spec-runic-power-rgb), .42); background: rgba(var(--spec-runic-power-rgb), .065); }
 .mechanic-runic-power strong { color: var(--spec-runic-power-soft); }
-.mechanic-diseases { border-color: rgba(var(--spec-diseases-rgb), .42); background: rgba(var(--spec-diseases-rgb), .065); }
+.mechanic-diseases { --operating-step-rgb: var(--spec-diseases-rgb); --operating-step-soft: var(--spec-diseases-soft); border-color: rgba(var(--spec-diseases-rgb), .42); background: rgba(var(--spec-diseases-rgb), .065); }
 .mechanic-diseases strong { color: var(--spec-diseases-soft); }
-.mechanic-minions { border-color: rgba(var(--spec-minions-rgb), .42); background: rgba(var(--spec-minions-rgb), .065); }
+.mechanic-minions { --operating-step-rgb: var(--spec-minions-rgb); --operating-step-soft: var(--spec-minions-soft); border-color: rgba(var(--spec-minions-rgb), .42); background: rgba(var(--spec-minions-rgb), .065); }
 .mechanic-minions strong { color: var(--spec-minions-soft); }
 
 .spec-playbook-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }

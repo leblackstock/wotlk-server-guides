@@ -181,6 +181,57 @@ for (const [cardClass, classToken] of Object.entries({
   );
 }
 
+const operatingManuals = {
+  "protection-paladin": { id: "quick-start", summaryCards: 4, sequences: 3 },
+  "holy-paladin": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "blood-death-knight": { id: "verdict", summaryCards: 4, sequences: 4 },
+  "holy-priest": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "shadow-priest": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "marksmanship-hunter": { id: "quick-start", summaryCards: 5, sequences: 4, fourSummaries: true }
+};
+for (const [prefix, expected] of Object.entries(operatingManuals)) {
+  const relative = `guides/${prefix}-pve-guide.html`;
+  const document = new JSDOM(fs.readFileSync(path.join(root, relative), "utf8")).window.document;
+  const manual = document.querySelector(`#${expected.id}.operating-manual`);
+  const heading = manual?.querySelector(":scope > h2.guide-category-heading");
+  const headingCopy = heading?.cloneNode(true);
+  headingCopy?.querySelector(".guide-back-to-top")?.remove();
+
+  assert.ok(manual, `${relative}: shared Two-minute operating manual is missing`);
+  assert.equal(document.querySelectorAll(".operating-manual").length, 1, `${relative}: expected one operating manual`);
+  assert.equal(
+    document.querySelectorAll('link[href*="/guide-operating-manual.css"]').length,
+    1,
+    `${relative}: shared operating-manual stylesheet is missing`
+  );
+  assert.equal(headingCopy?.textContent.trim(), "Two-minute operating manual", `${relative}: operating-manual title changed`);
+  assert.ok(heading?.querySelector(".spell-icon"), `${relative}: operating-manual title icon is missing`);
+  assert.equal(heading?.querySelector(".guide-back-to-top")?.getAttribute("href"), "#top", `${relative}: Top control is missing`);
+  assert.equal(
+    manual?.querySelectorAll(":scope > .summary-grid > .summary-card").length,
+    expected.summaryCards,
+    `${relative}: summary-card count changed`
+  );
+  assert.equal(Boolean(manual?.classList.contains("operating-manual--four-summaries")), Boolean(expected.fourSummaries), `${relative}: four-summary layout flag is incorrect`);
+  assert.equal(manual?.querySelectorAll(".operating-engine").length, 1, `${relative}: operating engine is missing`);
+  assert.equal(manual?.querySelectorAll(".operating-engine .engine-step").length, 4, `${relative}: four-step engine is missing`);
+  assert.equal(manual?.querySelectorAll(".operating-engine .engine-step > strong .ability-icon").length, 4, `${relative}: engine title icons are missing`);
+  assert.equal(manual?.querySelectorAll(".engine-spell-sequence").length, expected.sequences, `${relative}: icon-sequence count changed`);
+  for (const sequence of manual?.querySelectorAll(".engine-spell-sequence") || []) {
+    const links = [...sequence.querySelectorAll(".engine-spell-link")];
+    assert.ok(links.length >= 1, `${relative}: an icon sequence is empty`);
+    assert.equal(sequence.querySelectorAll(".engine-spell-separator").length, links.length - 1, `${relative}: icon-sequence dashes do not match its icons`);
+    assert.ok(
+      links.every((link) => link.classList.contains("wowhead-link") && link.hasAttribute("data-wowhead") && link.querySelector("img")),
+      `${relative}: icon sequences must use Wowhead hover links`
+    );
+  }
+  assert.ok(manual?.querySelector(".server-behavior"), `${relative}: collapsed server behavior is missing`);
+  assert.ok(manual?.querySelector(".guide-box .checklist"), `${relative}: checkmark list is missing`);
+  assert.ok(manual?.querySelector(".guide-box .priority-list"), `${relative}: numbered list is missing`);
+  assert.match(document.querySelector(".wrap > footer")?.textContent || "", /Updated 2026-07-31$/, `${relative}: footer date is stale`);
+}
+
 const tankadinPreviewDocument = new JSDOM(
   fs.readFileSync(path.join(root, "guides", "protection-paladin-pve-guide.html"), "utf8")
 ).window.document;
@@ -307,6 +358,10 @@ assert.equal(
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");
+const operatingCss = fs.readFileSync(path.join(root, "assets/guide-operating-manual.css"), "utf8");
+for (const marker of [".operating-manual .operating-engine", ".engine-spell-sequence", ".checklist li::before", ".priority-list li::before", "@media (max-width: 680px)"]) {
+  assert.ok(operatingCss.includes(marker), `shared operating-manual stylesheet is missing ${marker}`);
+}
 
 const scaffold = fs.readFileSync(path.join(root, "tools/create-spec-guide-scaffold.mjs"), "utf8");
 for (const marker of [
@@ -315,15 +370,21 @@ for (const marker of [
   "guideNavLabels",
   "pageTitles",
   "../assets/guide-hero.css",
+  "../assets/guide-operating-manual.css",
   'class="guide-hero"',
   'class="guide-hero-title"',
-  "guide-jump-nav"
+  "guide-jump-nav",
+  "Two-minute operating manual",
+  "operating-manual",
+  "operating-engine",
+  "engine-spell-sequence",
+  "--operating-step-rgb"
 ]) {
   assert.ok(scaffold.includes(marker), `future-guide scaffold is missing ${marker}`);
 }
 
 const renderer = fs.readFileSync(path.join(root, "tools/render-fresh-80-spec-guides.mjs"), "utf8");
-for (const marker of ["../assets/guide-hero.css", 'class="guide-hero"', "guideTypes[current]", "guide-jump-nav"]) {
+for (const marker of ["../assets/guide-hero.css", "../assets/guide-operating-manual.css", 'class="guide-hero"', "guideTypes[current]", "guide-jump-nav", "operating-manual", "operating-engine", "engine-spell-sequence", "--quick-start-only"]) {
   assert.ok(renderer.includes(marker), `fresh-80 renderer is missing ${marker}`);
 }
 

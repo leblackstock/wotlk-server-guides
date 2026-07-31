@@ -24,13 +24,13 @@ body {
 .engine-step { padding:11px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.025); }
 .engine-step strong { display:block; margin-bottom:5px; font-size:13px; }
 .engine-step p { margin:0; color:var(--muted); font-size:12px; }
-.engine-step.maintenance { border-color:rgba(var(--holy-maintenance-rgb),.42); background:rgba(var(--holy-maintenance-rgb),.065); }
+.engine-step.maintenance { --operating-step-rgb:var(--holy-maintenance-rgb); --operating-step-soft:var(--holy-maintenance-soft); border-color:rgba(var(--holy-maintenance-rgb),.42); background:rgba(var(--holy-maintenance-rgb),.065); }
 .engine-step.maintenance strong { color:var(--holy-maintenance-soft); }
-.engine-step.direct { border-color:rgba(var(--holy-direct-rgb),.42); background:rgba(var(--holy-direct-rgb),.06); }
+.engine-step.direct { --operating-step-rgb:var(--holy-direct-rgb); --operating-step-soft:var(--holy-direct-soft); border-color:rgba(var(--holy-direct-rgb),.42); background:rgba(var(--holy-direct-rgb),.06); }
 .engine-step.direct strong { color:var(--holy-direct-soft); }
-.engine-step.beacon { border-color:rgba(var(--holy-beacon-rgb),.42); background:rgba(var(--holy-beacon-rgb),.06); }
+.engine-step.beacon { --operating-step-rgb:var(--holy-beacon-rgb); --operating-step-soft:var(--holy-beacon-soft); border-color:rgba(var(--holy-beacon-rgb),.42); background:rgba(var(--holy-beacon-rgb),.06); }
 .engine-step.beacon strong { color:var(--holy-beacon-soft); }
-.engine-step.mana { border-color:rgba(var(--holy-mana-rgb),.42); background:rgba(var(--holy-mana-rgb),.06); }
+.engine-step.mana { --operating-step-rgb:var(--holy-mana-rgb); --operating-step-soft:var(--holy-mana-soft); border-color:rgba(var(--holy-mana-rgb),.42); background:rgba(var(--holy-mana-rgb),.06); }
 .engine-step.mana strong { color:var(--holy-mana-soft); }
 
 .beacon-diagram {

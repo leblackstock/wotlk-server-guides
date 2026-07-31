@@ -40,6 +40,21 @@
     {
       "key": "survival",
       "label": "Survival",
+      "titleIcon": "spell_shadow_lifedrain",
+      "examples": [
+        {
+          "name": "Vampiric Blood",
+          "type": "spell",
+          "id": 55233,
+          "icon": "spell_shadow_lifedrain"
+        },
+        {
+          "name": "Rune Tap",
+          "type": "spell",
+          "id": 48982,
+          "icon": "spell_deathknight_runetap"
+        }
+      ],
       "color": "#E06A7E",
       "soft": "#FFC0CA",
       "deep": "#641E31",
@@ -49,6 +64,21 @@
     {
       "key": "runes",
       "label": "Runes",
+      "titleIcon": "spell_deathknight_butcher2",
+      "examples": [
+        {
+          "name": "Death Strike",
+          "type": "spell",
+          "id": 49998,
+          "icon": "spell_deathknight_butcher2"
+        },
+        {
+          "name": "Rune Tap",
+          "type": "spell",
+          "id": 48982,
+          "icon": "spell_deathknight_runetap"
+        }
+      ],
       "color": "#69BFD4",
       "soft": "#B9E7F1",
       "deep": "#20505D",
@@ -58,6 +88,21 @@
     {
       "key": "threat",
       "label": "Threat",
+      "titleIcon": "spell_deathknight_icetouch",
+      "examples": [
+        {
+          "name": "Icy Touch",
+          "type": "spell",
+          "id": 49909,
+          "icon": "spell_deathknight_icetouch"
+        },
+        {
+          "name": "Rune Strike",
+          "type": "spell",
+          "id": 56815,
+          "icon": "spell_deathknight_darkconviction"
+        }
+      ],
       "color": "#C59A57",
       "soft": "#E8C98F",
       "deep": "#50401F",
@@ -67,6 +112,21 @@
     {
       "key": "runic-power",
       "label": "Runic Power",
+      "titleIcon": "spell_deathknight_iceboundfortitude",
+      "examples": [
+        {
+          "name": "Icebound Fortitude",
+          "type": "spell",
+          "id": 48792,
+          "icon": "spell_deathknight_iceboundfortitude"
+        },
+        {
+          "name": "Anti-Magic Shell",
+          "type": "spell",
+          "id": 48707,
+          "icon": "spell_shadow_antimagicshell"
+        }
+      ],
       "color": "#5FC8B7",
       "soft": "#B9F0E7",
       "deep": "#20564D",

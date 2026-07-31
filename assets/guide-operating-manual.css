@@ -1,0 +1,294 @@
+/*
+ * Shared Two-minute operating manual.
+ *
+ * Keep structure and responsive behavior here so every guide changes together.
+ * Spec styles only provide the --operating-step-rgb and --operating-step-soft
+ * variables that give each engine step its own semantic color.
+ */
+
+.operating-manual .summary-grid,
+.operating-manual .engine-grid,
+.operating-manual > .two-col {
+  display: grid;
+  gap: 12px;
+}
+
+.operating-manual .summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.operating-manual--four-summaries .summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.operating-manual .summary-card,
+.operating-manual .guide-box {
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-card);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
+}
+
+.operating-manual .summary-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--theme-accent);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.operating-manual .summary-value {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.operating-manual .summary-detail,
+.operating-manual .guide-box p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.operating-manual .operating-engine {
+  grid-column: 1 / -1;
+}
+
+.operating-manual .engine-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 10px;
+  gap: 9px;
+}
+
+.operating-manual .engine-step {
+  display: flex;
+  flex-direction: column;
+  padding: 11px;
+  border: 1px solid rgba(var(--operating-step-rgb, var(--theme-accent-rgb)), .42);
+  border-radius: 12px;
+  background: rgba(var(--operating-step-rgb, var(--theme-accent-rgb)), .065);
+}
+
+.operating-manual .engine-step strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+  color: var(--operating-step-soft, var(--theme-accent-soft));
+  font-size: 13px;
+}
+
+.operating-manual .engine-step strong .ability-icon {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+
+.operating-manual .engine-step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.operating-manual .engine-spell-sequence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.operating-manual .engine-spell-link,
+.operating-manual .engine-spell-link:visited {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding: 3px;
+  border: 1px solid rgba(var(--operating-step-rgb, var(--theme-accent-rgb)), .46);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .035);
+  text-decoration: none !important;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.operating-manual .engine-spell-link:hover,
+.operating-manual .engine-spell-link:focus-visible {
+  border-color: var(--operating-step-soft, var(--theme-accent-soft));
+  background: rgba(255, 255, 255, .075);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.operating-manual .engine-spell-link img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.operating-manual .engine-spell-separator {
+  color: var(--operating-step-soft, var(--theme-accent-soft));
+  font-weight: 900;
+}
+
+body[data-guide-spec="priest-holy"] .operating-manual .mechanic-triage {
+  --operating-step-rgb: var(--spec-triage-rgb);
+  --operating-step-soft: var(--spec-triage-soft);
+}
+
+body[data-guide-spec="priest-holy"] .operating-manual .mechanic-serendipity {
+  --operating-step-rgb: var(--spec-serendipity-rgb);
+  --operating-step-soft: var(--spec-serendipity-soft);
+}
+
+body[data-guide-spec="priest-holy"] .operating-manual .mechanic-prayer {
+  --operating-step-rgb: var(--spec-prayer-rgb);
+  --operating-step-soft: var(--spec-prayer-soft);
+}
+
+body[data-guide-spec="priest-holy"] .operating-manual .mechanic-mana {
+  --operating-step-rgb: var(--spec-mana-rgb);
+  --operating-step-soft: var(--spec-mana-soft);
+}
+
+body[data-guide-spec="shadow"] .operating-manual .mechanic-dots {
+  --operating-step-rgb: var(--spec-dots-rgb);
+  --operating-step-soft: var(--spec-dots-soft);
+}
+
+body[data-guide-spec="shadow"] .operating-manual .mechanic-weaving {
+  --operating-step-rgb: var(--spec-weaving-rgb);
+  --operating-step-soft: var(--spec-weaving-soft);
+}
+
+body[data-guide-spec="shadow"] .operating-manual .mechanic-channel {
+  --operating-step-rgb: var(--spec-channel-rgb);
+  --operating-step-soft: var(--spec-channel-soft);
+}
+
+body[data-guide-spec="shadow"] .operating-manual .mechanic-mana {
+  --operating-step-rgb: var(--spec-mana-rgb);
+  --operating-step-soft: var(--spec-mana-soft);
+}
+
+body[data-guide-spec="marksmanship"] .operating-manual .mechanic-sting {
+  --operating-step-rgb: var(--spec-sting-rgb);
+  --operating-step-soft: var(--spec-sting-soft);
+}
+
+body[data-guide-spec="marksmanship"] .operating-manual .mechanic-shots {
+  --operating-step-rgb: var(--spec-shots-rgb);
+  --operating-step-soft: var(--spec-shots-soft);
+}
+
+body[data-guide-spec="marksmanship"] .operating-manual .mechanic-movement {
+  --operating-step-rgb: var(--spec-movement-rgb);
+  --operating-step-soft: var(--spec-movement-soft);
+}
+
+body[data-guide-spec="marksmanship"] .operating-manual .mechanic-pet {
+  --operating-step-rgb: var(--spec-pet-rgb);
+  --operating-step-soft: var(--spec-pet-soft);
+}
+
+.operating-manual .server-behavior {
+  margin-top: 12px;
+  border-color: rgba(var(--status-info-rgb), .20);
+  background: rgba(var(--status-info-rgb), .035);
+}
+
+.operating-manual .server-behavior > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--status-info-soft);
+  font-size: 13px;
+}
+
+.operating-manual .server-behavior > p {
+  margin-bottom: 2px;
+}
+
+.operating-manual .operating-manual-more {
+  margin-top: 12px;
+}
+
+.operating-manual > .two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.operating-manual .checklist,
+.operating-manual .priority-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.operating-manual .checklist li,
+.operating-manual .priority-list li {
+  margin: 7px 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .025);
+  color: var(--muted);
+}
+
+.operating-manual .checklist li::before {
+  content: "✓";
+  margin-right: 8px;
+  color: var(--status-success);
+  font-weight: 900;
+}
+
+.operating-manual .priority-list {
+  counter-reset: operating-step;
+}
+
+.operating-manual .priority-list li {
+  position: relative;
+  padding-left: 42px;
+  counter-increment: operating-step;
+}
+
+.operating-manual .priority-list li::before {
+  content: counter(operating-step);
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--theme-accent);
+  color: var(--theme-on-accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+@media (max-width: 1100px) {
+  .operating-manual--four-summaries .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .operating-manual .summary-grid,
+  .operating-manual .engine-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .operating-manual .summary-grid,
+  .operating-manual .engine-grid,
+  .operating-manual > .two-col {
+    grid-template-columns: 1fr;
+  }
+}

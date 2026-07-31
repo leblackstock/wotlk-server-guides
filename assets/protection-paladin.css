@@ -294,6 +294,8 @@
     }
 
     .engine-step.mechanic-ready {
+      --operating-step-rgb: var(--class-accent-rgb);
+      --operating-step-soft: var(--class-accent-soft);
       border-color: rgba(var(--class-accent-rgb),.42);
       background: rgba(var(--class-accent-rgb),.065);
     }
@@ -303,6 +305,8 @@
     }
 
     .engine-step.mechanic-nine {
+      --operating-step-rgb: var(--rotation-nine-rgb);
+      --operating-step-soft: var(--rotation-nine-soft);
       border-color: rgba(var(--rotation-nine-rgb),.42);
       background: rgba(var(--rotation-nine-rgb),.065);
     }
@@ -312,6 +316,8 @@
     }
 
     .engine-step.mechanic-six {
+      --operating-step-rgb: var(--rotation-six-rgb);
+      --operating-step-soft: var(--rotation-six-soft);
       border-color: rgba(var(--rotation-six-rgb),.42);
       background: rgba(var(--rotation-six-rgb),.065);
     }
@@ -321,6 +327,8 @@
     }
 
     .engine-step.mechanic-repeat {
+      --operating-step-rgb: var(--pull-utility-rgb);
+      --operating-step-soft: var(--pull-utility-soft);
       border-color: rgba(var(--pull-utility-rgb),.42);
       background: rgba(var(--pull-utility-rgb),.06);
     }

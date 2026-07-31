@@ -10,6 +10,13 @@ const esc = (value) => String(value)
   .replaceAll('"', "&quot;");
 const icon = (name, className = "spell-icon") =>
   `<img class="${className}" src="https://wow.zamimg.com/images/wow/icons/large/${esc(name)}.jpg" alt="" aria-hidden="true" onerror="this.remove()">`;
+const operatingExampleLink = (example) => {
+  const type = example.type || "spell";
+  return `<a class="engine-spell-link wowhead-link" href="https://www.wowhead.com/wotlk/${type}=${example.id}" target="_blank" rel="noopener" data-wowhead="${type}=${example.id}&amp;domain=wotlk" aria-label="${esc(example.name)}">${icon(example.icon, "")}</a>`;
+};
+const operatingSequence = (mechanic) => mechanic.examples?.length
+  ? `<div class="engine-spell-sequence" aria-label="${esc(mechanic.label)} spell sequence">${mechanic.examples.map((example, index) => `${index ? '<span class="engine-spell-separator" aria-hidden="true">—</span>' : ""}${operatingExampleLink(example)}`).join("")}</div>`
+  : "";
 const entity = (name, className = "ability-name", withIcon = false) =>
   `<span class="${className}"${withIcon ? ` data-entity-icon="${esc(name)}"` : ""}>${esc(name)}</span>`;
 const item = (name, quality = "q-epic", withIcon = false) =>
@@ -19,8 +26,8 @@ const list = (items, className = "clean-list") =>
 const table = (headers, rows, className = "") =>
   `<div class="table-wrap"><table${className ? ` class="${className}"` : ""}><thead><tr>${headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 const uniconizedSections = new Set(["guide-pages", "sources", "mistakes", "professions", "special", "assignments"]);
-const section = (spec, id, title, body, iconName = spec.icons.class) =>
-  `<section class="common" id="${id}"><h2 class="guide-category-heading">${uniconizedSections.has(id) ? "" : `${icon(iconName)} `}${title}<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>${body}</section>`;
+const section = (spec, id, title, body, iconName = spec.icons.class, className = "common") =>
+  `<section class="${className}" id="${id}"><h2 class="guide-category-heading">${uniconizedSections.has(id) ? "" : `${icon(iconName)} `}${title}<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>${body}</section>`;
 const sourceList = (links) =>
   `<ul class="source-list">${links.map(([label, href]) => `<li><a href="${href}" target="_blank" rel="noopener">${label}</a></li>`).join("")}</ul>`;
 
@@ -61,6 +68,7 @@ function shell(spec, current, title, description, jumps, body) {
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=${spec.cacheKey}">
   <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
   <link rel="stylesheet" href="../assets/${spec.slug}.css?v=${spec.cacheKey}">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
   <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
   <script src="../assets/${spec.tooltipFile}?v=${spec.cacheKey}" defer></script>
   <script src="../assets/${spec.slug}.js?v=${spec.cacheKey}" defer></script>
@@ -75,7 +83,7 @@ function shell(spec, current, title, description, jumps, body) {
     </header>
     <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page">${jumps.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join("")}</nav>
     <main>${body}${pager(spec, current)}</main>
-    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-29</footer>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-31</footer>
   </div>
 </body>
 </html>
@@ -110,12 +118,13 @@ function filterPanel(spec) {
 
 function renderQuickStart(spec) {
   const summaries = spec.quick.summaries.map((card) => `<div class="summary-card"><span class="summary-label">${esc(card.label)}</span><div class="summary-value">${card.value}</div><div class="summary-detail">${card.detail}</div></div>`).join("");
-  const engine = `<div class="summary-card combat-engine"><span class="summary-label">Combat engine</span><div class="summary-value">${esc(spec.quick.engineTitle)}</div><div class="engine-grid">${spec.mechanics.map((mechanic) => `<div class="engine-step mechanic-${mechanic.key}"><strong data-entity-icon="${esc(mechanic.iconEntity)}">${esc(mechanic.label)}</strong><p>${esc(mechanic.use)}</p></div>`).join("")}</div></div>`;
+  const engine = `<div class="summary-card combat-engine operating-engine"><span class="summary-label">Combat engine</span><div class="summary-value">${esc(spec.quick.engineTitle)}</div><div class="engine-grid">${spec.mechanics.map((mechanic) => `<div class="engine-step mechanic-${mechanic.key}"><strong>${icon(mechanic.titleIcon || mechanic.examples?.[0]?.icon, "ability-icon")} ${esc(mechanic.label)}</strong><p>${esc(mechanic.use)}</p>${operatingSequence(mechanic)}</div>`).join("")}</div></div>`;
   const chapters = pageOrder.slice(1).map(([key, label], index) => `<a class="chapter-card" href="${href(spec, key)}"><span class="chapter-number">${index + 1}</span><h3>${icon(spec.icons[key])} ${label}</h3><p>${esc(spec.descriptions[key])}</p><span class="chapter-topics">${esc(spec.quick.chapterTopics[key])}</span></a>`).join("");
+  const manualClass = `common operating-manual${spec.quick.summaries.length === 4 ? " operating-manual--four-summaries" : ""}`;
   const body =
     section(spec, "quick-start", "Two-minute operating manual", `<div class="summary-grid">${summaries}${engine}</div>
       <details class="server-behavior"><summary>${icon("inv_misc_wrench_01", "ability-icon")} Server behavior on Hellscream</summary><p>${esc(spec.serverNote)}</p></details>
-      <div class="two-col" style="margin-top:12px"><div class="guide-box"><h3>${icon(spec.quick.beforeIcon, "ability-icon")} Before the pull</h3>${list(spec.quick.before, "checklist")}</div><div class="guide-box"><h3>${icon(spec.quick.firstIcon, "ability-icon")} First fresh-80 moves</h3>${list(spec.quick.firstMoves, "priority-list")}</div></div>`, spec.icons.quickStart) +
+      <div class="two-col"><div class="guide-box"><h3>${icon(spec.quick.beforeIcon, "ability-icon")} Before the pull</h3>${list(spec.quick.before, "checklist")}</div><div class="guide-box"><h3>${icon(spec.quick.firstIcon, "ability-icon")} First fresh-80 moves</h3>${list(spec.quick.firstMoves, "priority-list")}</div></div>`, spec.icons.quickStart, manualClass) +
     section(spec, "guide-pages", `Continue the ${esc(spec.shortName)} guide`, `<div class="chapter-grid">${chapters}</div>`, spec.icons.class) +
     section(spec, "sources", "Sources and verification", sourceList(spec.sources.quick), "inv_misc_book_11");
   return shell(spec, "quickStart", `${spec.name} Quick Start`, spec.descriptions.quickStart, [["quick-start", "Quick start"], ["guide-pages", "Guide pages"], ["sources", "Sources"]], body);
@@ -234,10 +243,52 @@ const holyPriest = {
     raiding: "Handle raid healing, tank support, dispels, movement, recovery cooldowns, and encounter assignments by size and difficulty."
   },
   mechanics: [
-    { key: "triage", label: "Triage", iconEntity: "Flash Heal", use: "Use the smallest spell that lands safely before the next damage." },
-    { key: "serendipity", label: "Serendipity", iconEntity: "Serendipity", use: "Build with Flash Heal or Binding Heal; spend on Prayer of Healing or Greater Heal." },
-    { key: "prayer", label: "Prayer", iconEntity: "Prayer of Mending", use: "Aim Prayer of Mending and Circle of Healing where several players will take damage." },
-    { key: "mana", label: "Mana", iconEntity: "Shadowfiend", use: "Plan Inner Focus, Shadowfiend, Hymn of Hope, and lower-cost fillers early." }
+    {
+      key: "triage",
+      label: "Triage",
+      iconEntity: "Flash Heal",
+      titleIcon: "spell_holy_flashheal",
+      use: "Use the smallest spell that lands safely before the next damage.",
+      examples: [
+        { name: "Flash Heal", id: 48071, icon: "spell_holy_flashheal" },
+        { name: "Binding Heal", id: 48120, icon: "spell_holy_blindingheal" }
+      ]
+    },
+    {
+      key: "serendipity",
+      label: "Serendipity",
+      iconEntity: "Serendipity",
+      titleIcon: "spell_holy_serendipity",
+      use: "Build with Flash Heal or Binding Heal; spend on Prayer of Healing or Greater Heal.",
+      examples: [
+        { name: "Flash Heal", id: 48071, icon: "spell_holy_flashheal" },
+        { name: "Serendipity", id: 63730, icon: "spell_holy_serendipity" },
+        { name: "Prayer of Healing", id: 48072, icon: "spell_holy_prayerofhealing02" }
+      ]
+    },
+    {
+      key: "prayer",
+      label: "Prayer",
+      iconEntity: "Prayer of Mending",
+      titleIcon: "spell_holy_prayerofmendingtga",
+      use: "Aim Prayer of Mending and Circle of Healing where several players will take damage.",
+      examples: [
+        { name: "Prayer of Mending", id: 48113, icon: "spell_holy_prayerofmendingtga" },
+        { name: "Circle of Healing", id: 48089, icon: "spell_holy_circleofrenewal" }
+      ]
+    },
+    {
+      key: "mana",
+      label: "Mana",
+      iconEntity: "Shadowfiend",
+      titleIcon: "spell_shadow_shadowfiend",
+      use: "Plan Inner Focus, Shadowfiend, Hymn of Hope, and lower-cost fillers early.",
+      examples: [
+        { name: "Inner Focus", id: 14751, icon: "spell_frost_windwalkon" },
+        { name: "Shadowfiend", id: 34433, icon: "spell_shadow_shadowfiend" },
+        { name: "Hymn of Hope", id: 64901, icon: "spell_holy_symbolofhope" }
+      ]
+    }
   ],
   roleFilters: [["raid-healing", "Raid healing"], ["tank-support", "Tank support"], ["utility", "Dispel / utility"], ["cooldown", "Cooldown"], ["special", "Special assignment"]],
   quick: {
@@ -584,10 +635,50 @@ const shadowPriest = {
     raiding: "Apply damage, Replenishment, Dispersion soaks, Mass Dispel, add control, and encounter assignments by size and difficulty."
   },
   mechanics: [
-    { key: "dots", label: "DoTs", iconEntity: "Vampiric Touch", use: "Maintain Vampiric Touch and Devouring Plague without clipping their final ticks." },
-    { key: "weaving", label: "Shadow Weaving", iconEntity: "Shadow Weaving", use: "Reach five stacks before the lasting Shadow Word: Pain application." },
-    { key: "channel", label: "Channel", iconEntity: "Mind Flay", use: "Fit complete Mind Flay ticks between higher-priority events." },
-    { key: "mana", label: "Mana & support", iconEntity: "Dispersion", use: "Use Shadowfiend, Dispersion, Replenishment, and Hymn of Hope deliberately." }
+    {
+      key: "dots",
+      label: "DoTs",
+      iconEntity: "Vampiric Touch",
+      titleIcon: "spell_holy_stoicism",
+      use: "Maintain Vampiric Touch and Devouring Plague without clipping their final ticks.",
+      examples: [
+        { name: "Vampiric Touch", id: 48160, icon: "spell_holy_stoicism" },
+        { name: "Devouring Plague", id: 48300, icon: "spell_shadow_blackplague" }
+      ]
+    },
+    {
+      key: "weaving",
+      label: "Shadow Weaving",
+      iconEntity: "Shadow Weaving",
+      titleIcon: "spell_shadow_blackplague",
+      use: "Reach five stacks before the lasting Shadow Word: Pain application.",
+      examples: [
+        { name: "Shadow Weaving", id: 15258, icon: "spell_shadow_blackplague" },
+        { name: "Shadow Word: Pain", id: 48125, icon: "spell_shadow_shadowwordpain" }
+      ]
+    },
+    {
+      key: "channel",
+      label: "Channel",
+      iconEntity: "Mind Flay",
+      titleIcon: "spell_shadow_siphonmana",
+      use: "Fit complete Mind Flay ticks between higher-priority events.",
+      examples: [
+        { name: "Mind Flay", id: 48156, icon: "spell_shadow_siphonmana" }
+      ]
+    },
+    {
+      key: "mana",
+      label: "Mana & support",
+      iconEntity: "Dispersion",
+      titleIcon: "spell_shadow_dispersion",
+      use: "Use Shadowfiend, Dispersion, Replenishment, and Hymn of Hope deliberately.",
+      examples: [
+        { name: "Shadowfiend", id: 34433, icon: "spell_shadow_shadowfiend" },
+        { name: "Dispersion", id: 47585, icon: "spell_shadow_dispersion" },
+        { name: "Hymn of Hope", id: 64901, icon: "spell_holy_symbolofhope" }
+      ]
+    }
   ],
   roleFilters: [["single-target", "Single target"], ["multi-dot", "Adds / multi-DoT"], ["utility", "Utility / dispel"], ["soak", "Dispersion soak"], ["special", "Special assignment"]],
   quick: {
@@ -934,10 +1025,54 @@ const marksmanshipHunter = {
     raiding: "Deliver ranged damage, Misdirection, Tranquilizing Shot, interrupts, traps, kiting, and add assignments by size and difficulty."
   },
   mechanics: [
-    { key: "sting", label: "Sting", iconEntity: "Serpent Sting", use: "Apply Serpent Sting once, then protect it with timely Chimera Shot refreshes." },
-    { key: "shots", label: "Shot priority", iconEntity: "Chimera Shot", use: "Protect Kill Shot, Chimera Shot, and Aimed Shot cooldowns before filling with Steady Shot." },
-    { key: "movement", label: "Movement", iconEntity: "Disengage", use: "Move during instant-shot globals and stop long enough for Auto Shot and Steady Shot." },
-    { key: "pet", label: "Pet & utility", iconEntity: "Furious Howl", use: "Keep the wolf alive, control its cooldowns, and use Misdirection, traps, and interrupts as assignments." }
+    {
+      key: "sting",
+      label: "Sting",
+      iconEntity: "Serpent Sting",
+      titleIcon: "ability_hunter_quickshot",
+      use: "Apply Serpent Sting once, then protect it with timely Chimera Shot refreshes.",
+      examples: [
+        { name: "Serpent Sting", id: 49001, icon: "ability_hunter_quickshot" },
+        { name: "Chimera Shot", id: 53209, icon: "ability_hunter_chimerashot2" }
+      ]
+    },
+    {
+      key: "shots",
+      label: "Shot priority",
+      iconEntity: "Chimera Shot",
+      titleIcon: "ability_hunter_chimerashot2",
+      use: "Protect Kill Shot, Chimera Shot, and Aimed Shot cooldowns before filling with Steady Shot.",
+      examples: [
+        { name: "Kill Shot", id: 61006, icon: "ability_hunter_assassinate2" },
+        { name: "Chimera Shot", id: 53209, icon: "ability_hunter_chimerashot2" },
+        { name: "Aimed Shot", id: 49050, icon: "inv_spear_07" },
+        { name: "Steady Shot", id: 49052, icon: "ability_hunter_steadyshot" }
+      ]
+    },
+    {
+      key: "movement",
+      label: "Movement",
+      iconEntity: "Disengage",
+      titleIcon: "ability_rogue_feint",
+      use: "Move during instant-shot globals and stop long enough for Auto Shot and Steady Shot.",
+      examples: [
+        { name: "Disengage", id: 781, icon: "ability_rogue_feint" },
+        { name: "Auto Shot", id: 75, icon: "ability_whirlwind" },
+        { name: "Steady Shot", id: 49052, icon: "ability_hunter_steadyshot" }
+      ]
+    },
+    {
+      key: "pet",
+      label: "Pet & utility",
+      iconEntity: "Furious Howl",
+      titleIcon: "ability_hunter_pet_wolf",
+      use: "Keep the wolf alive, control its cooldowns, and use Misdirection, traps, and interrupts as assignments.",
+      examples: [
+        { name: "Furious Howl", id: 64495, icon: "ability_hunter_pet_wolf" },
+        { name: "Misdirection", id: 34477, icon: "ability_hunter_misdirection" },
+        { name: "Tranquilizing Shot", id: 19801, icon: "spell_nature_drowsy" }
+      ]
+    }
   ],
   talent: {
     points: "7/57/7",
@@ -1324,11 +1459,16 @@ const renderers = {
   raiding: renderRaiding
 };
 
+const quickStartOnly = process.argv.slice(2).includes("--quick-start-only");
+const selectedPages = quickStartOnly
+  ? pageOrder.filter(([pageKey]) => pageKey === "quickStart")
+  : pageOrder;
+
 for (const spec of specs) {
-  for (const [pageKey, , fileSuffix] of pageOrder) {
+  for (const [pageKey, , fileSuffix] of selectedPages) {
     const destination = path.join(root, "guides", `${spec.slug}-${fileSuffix}.html`);
     fs.writeFileSync(destination, renderers[pageKey](spec), "utf8");
   }
 }
 
-console.log(`Rendered ${specs.length * pageOrder.length} complete fresh-80 guide pages.`);
+console.log(`Rendered ${specs.length * selectedPages.length} complete fresh-80 guide pages.`);
