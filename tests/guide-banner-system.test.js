@@ -231,6 +231,27 @@ assert.equal(
   "Judgement of Wisdom",
   "Tankadin preview: Judgement of Wisdom native hover label is missing"
 );
+const tankadinAssignedJudgementLink = tankadinPreviewSection.querySelector(".mechanic-nine p .wowhead-link");
+assert.equal(
+  tankadinAssignedJudgementLink?.textContent.trim(),
+  "assigned Judgement",
+  "Tankadin preview: assigned Judgement mouseover text changed"
+);
+assert.equal(
+  tankadinAssignedJudgementLink?.getAttribute("href"),
+  "https://www.wowhead.com/wotlk/spell=53408",
+  "Tankadin preview: assigned Judgement does not use the Wisdom hover link"
+);
+assert.equal(
+  tankadinAssignedJudgementLink?.getAttribute("data-wowhead"),
+  "spell=53408&domain=wotlk",
+  "Tankadin preview: assigned Judgement Wisdom hover data is incorrect"
+);
+assert.equal(
+  tankadinAssignedJudgementLink?.getAttribute("title"),
+  "Judgement of Wisdom",
+  "Tankadin preview: assigned Judgement native hover label is missing"
+);
 assert.deepEqual(
   [...tankadinPreviewSection.querySelectorAll(".mechanic-six .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
   ["Hammer of the Righteous", "Shield of Righteousness"],
