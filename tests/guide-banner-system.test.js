@@ -210,6 +210,21 @@ assert.equal(
   "Ready → 9-second → 6-second → repeat",
   "Tankadin preview: combat-engine sequence is incorrect"
 );
+assert.equal(
+  tankadinPreviewSection?.querySelector(".mechanic-ready p")?.textContent.trim(),
+  "Turn on Righteous Fury and Divine Plea; have Sacred Shield ready before contact.",
+  "Tankadin preview: Ready card guidance is incorrect"
+);
+assert.deepEqual(
+  [...tankadinPreviewSection.querySelectorAll(".mechanic-ready .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
+  ["Righteous Fury", "Divine Plea", "Sacred Shield"],
+  "Tankadin preview: Ready icon sequence is incorrect"
+);
+assert.deepEqual(
+  [...tankadinPreviewSection.querySelectorAll(".mechanic-ready .engine-spell-link")].map((link) => link.getAttribute("data-wowhead")),
+  ["spell=25780&domain=wotlk", "spell=54428&domain=wotlk", "spell=53601&domain=wotlk"],
+  "Tankadin preview: Ready icon hover links are incorrect"
+);
 assert.deepEqual(
   [...tankadinPreviewSection.querySelectorAll(".mechanic-nine .engine-spell-link")].map((link) => link.getAttribute("aria-label")),
   ["Holy Shield", "Judgement of Wisdom", "Consecration"],
@@ -257,6 +272,7 @@ assert.deepEqual(
   ["Hammer of the Righteous", "Shield of Righteousness"],
   "Tankadin preview: 6-second icon sequence is incorrect"
 );
+assert.equal(tankadinPreviewSection.querySelectorAll(".mechanic-ready .engine-spell-separator").length, 2, "Tankadin preview: Ready dashes are missing");
 assert.equal(tankadinPreviewSection.querySelectorAll(".mechanic-nine .engine-spell-separator").length, 2, "Tankadin preview: 9-second dashes are missing");
 assert.equal(tankadinPreviewSection.querySelectorAll(".mechanic-six .engine-spell-separator").length, 1, "Tankadin preview: 6-second dash is missing");
 assert.ok(

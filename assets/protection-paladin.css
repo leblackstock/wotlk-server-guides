@@ -285,6 +285,14 @@
       color: var(--rotation-six-soft);
     }
 
+    .mechanic-ready .engine-spell-link {
+      border-color: rgba(var(--class-accent-rgb),.46);
+    }
+
+    .mechanic-ready .engine-spell-separator {
+      color: var(--class-accent-soft);
+    }
+
     .engine-step.mechanic-ready {
       border-color: rgba(var(--class-accent-rgb),.42);
       background: rgba(var(--class-accent-rgb),.065);
