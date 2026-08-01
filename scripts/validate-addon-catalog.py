@@ -123,19 +123,20 @@ def main() -> int:
             fail(errors, f"{addon_id}: 'doesNot' exceeds two bullets")
         if len(addon.get("generalSetup", [])) > 5:
             fail(errors, f"{addon_id}: general setup exceeds five steps")
-        for guide in addon.get("configurationGuides", []):
-            if not guide.get("title", "").strip() or not guide.get("intro", "").strip():
-                fail(errors, f"{addon_id}: configuration guides need a title and introduction")
-            steps = guide.get("steps", [])
-            if not steps:
-                fail(errors, f"{addon_id}: configuration guides need at least one step")
-            for step in steps:
-                if not step.get("instruction", "").strip():
-                    fail(errors, f"{addon_id}: every configuration-guide step needs an instruction")
-                if "code" in step and not step.get("code", "").strip():
-                    fail(errors, f"{addon_id}: configuration-guide code blocks cannot be empty")
-            if any(not note.strip() for note in guide.get("notes", [])):
-                fail(errors, f"{addon_id}: configuration-guide notes cannot be empty")
+        for guide_collection in ("configurationGuides", "generalSetupGuides"):
+            for guide in addon.get(guide_collection, []):
+                if not guide.get("title", "").strip() or not guide.get("intro", "").strip():
+                    fail(errors, f"{addon_id}: {guide_collection} entries need a title and introduction")
+                steps = guide.get("steps", [])
+                if not steps:
+                    fail(errors, f"{addon_id}: {guide_collection} entries need at least one step")
+                for step in steps:
+                    if not step.get("instruction", "").strip():
+                        fail(errors, f"{addon_id}: every {guide_collection} step needs an instruction")
+                    if "code" in step and not step.get("code", "").strip():
+                        fail(errors, f"{addon_id}: {guide_collection} code blocks cannot be empty")
+                if any(not note.strip() for note in guide.get("notes", [])):
+                    fail(errors, f"{addon_id}: {guide_collection} notes cannot be empty")
         module_names: list[str] = []
         for group in addon.get("moduleGroups", []):
             if not group.get("label", "").strip():

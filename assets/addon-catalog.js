@@ -381,8 +381,8 @@
       return section;
     }
 
-    function renderConfigurationGuide(guide) {
-      const details = make("details", "addon-configuration-guide");
+    function renderConfigurationGuide(guide, className = "addon-configuration-guide") {
+      const details = make("details", className);
       details.append(make("summary", "", guide.title));
       const inner = make("div", "addon-configuration-guide-inner");
       if (guide.intro) inner.append(make("p", "addon-dialog-callout addon-configuration-guide-intro", guide.intro));
@@ -403,6 +403,17 @@
       (guide.notes || []).forEach((note) => inner.append(make("p", "addon-dialog-callout addon-dialog-warning", note)));
       details.append(inner);
       return details;
+    }
+
+    function generalSetupSection(addon) {
+      const items = addon.generalSetup || [];
+      const guides = addon.generalSetupGuides || [];
+      if (!items.length && !guides.length) return null;
+      const section = make("section", "addon-dialog-section");
+      section.append(make("h3", "", "General setup"));
+      appendList(section, items, true);
+      guides.forEach((guide) => section.append(renderConfigurationGuide(guide, "addon-existing-install-guide")));
+      return section;
     }
 
     function renderCompatibilityNotes(notes) {
@@ -525,7 +536,7 @@
 
       const does = dialogSection("What it does", addon.does, false);
       const doesNot = dialogSection("What it does not do", addon.doesNot, false);
-      const setup = dialogSection("General setup", addon.generalSetup, true);
+      const setup = generalSetupSection(addon);
       const troubleshooting = troubleshootingSection(addon);
       if (does) dialogContent.append(does);
       if (doesNot) dialogContent.append(doesNot);

@@ -3248,11 +3248,40 @@
         "Does not automatically select the correct private-server preset or make mixed suite versions safe; choose the known server rules and install every folder from one matched source."
       ],
       "generalSetup": [
-        "Exit World of Warcraft, back up the existing suite plus AucAdvanced.lua, AucAdvanced.lua.bak, BeanCounter.lua, and BeanCounter.lua.bak under WTF\\Account\\<account>\\SavedVariables, then move every old Auctioneer suite folder out of Interface\\AddOns.",
         "Recommended: install GitAddonsManager from the official page linked above, select the correct Interface\\AddOns directory, and add the clone URL https://github.com/leblackstock/auctioneer-revisited-wotlk.git.",
         "After GitAddonsManager finishes, confirm Interface\\AddOns\\Auc-Advanced\\Auc-Advanced.toc and Interface\\AddOns\\BeanCounter\\BeanCounter.toc exist directly under AddOns rather than inside another nested folder.",
         "At character select, enable Load out of date AddOns, then open Auctioneer Configure → Server Rules. New profiles currently default to Hellscream's measured 20% deposit rate, 1-copper minimum, 4× duration, and 6-hour BeanCounter tolerance; confirm that preset on Hellscream or switch to Standard WotLK on ordinary servers.",
         "Collect Auction House scans over several days before trusting market prices. In Appraiser, enable Match clicked seller and click a competitor's row only when you want to copy that row's exact per-item bid and buyout into Fixed pricing."
+      ],
+      "generalSetupGuides": [
+        {
+          "title": "Already have Auctioneer? Protect your scanned data first",
+          "intro": "Auctioneer's market scans, profiles, and BeanCounter transaction history are stored in account SavedVariables. Back them up before replacing the old suite so an installation mistake can be reversed.",
+          "steps": [
+            {
+              "instruction": "Exit World of Warcraft completely before making the backup. A UI reload is not enough because the game writes SavedVariables when it closes."
+            },
+            {
+              "instruction": "Open WTF\\Account\\<account>\\SavedVariables and copy AucAdvanced.lua, AucAdvanced.lua.bak, BeanCounter.lua, and BeanCounter.lua.bak into a dated backup folder outside the WoW installation. Repeat this for every WoW account whose data matters."
+            },
+            {
+              "instruction": "Move the complete old Auctioneer suite to a backup folder outside Interface\\AddOns. Include !Swatter, Auc-Advanced, every Auc-Filter, Auc-ScanData, Auc-Stat, and Auc-Util folder, BeanCounter, Enchantrix, Informant, SlideBar, and Stubby."
+            },
+            {
+              "instruction": "Install Auctioneer Revisited without deleting or resetting the SavedVariables. Start WoW on the same account and server, then open Auctioneer and BeanCounter and confirm the previous scan statistics, profiles, and transaction history appear."
+            },
+            {
+              "instruction": "Run /reload and check the data again. Keep the dated backup until Auctioneer, Appraiser, and BeanCounter have all worked normally through at least one login and reload."
+            },
+            {
+              "instruction": "If the old data is missing, exit WoW, remove the Revisited suite, restore the complete addon-folder backup, and copy the saved AucAdvanced and BeanCounter files back into the same account's SavedVariables folder."
+            }
+          ],
+          "notes": [
+            "AucAdvanced.lua contains Auctioneer profiles and market scan data; BeanCounter.lua contains the transaction journal.",
+            "Do not leave a renamed backup inside Interface\\AddOns. WoW can still discover addon folders there, allowing old and new suite files to load together."
+          ]
+        }
       ],
       "configurationGuides": [
         {
