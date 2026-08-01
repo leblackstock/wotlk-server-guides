@@ -17,6 +17,19 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
     assert.equal(await desktop.locator(".addon-card").count(), 18, "Default catalog should show eighteen addons");
+    const managerGuide = desktop.locator(".addon-manager-guide");
+    assert.equal(await managerGuide.evaluate((node) => node.open), false, "GitAddonsManager instructions should start collapsed");
+    assert.equal(await managerGuide.locator("h3").first().isVisible(), false);
+    assert.equal(await desktop.locator('a[href="https://woblight.gitlab.io/overview/gitaddonsmanager/"]').count() > 0, true);
+    await managerGuide.locator("summary").click();
+    assert.equal(await managerGuide.locator("h3").count(), 4);
+    const managerText = await managerGuide.textContent();
+    assert.match(managerText, /Download for Windows x64/);
+    assert.match(managerText, /Interface\\AddOns/);
+    assert.match(managerText, /https:\/\/github\.com\/leblackstock\/auctioneer-revisited-wotlk\.git/);
+    assert.match(managerText, /Refresh addons list and check for updates/);
+    assert.match(managerText, /Upgrade all addons/);
+    assert.match(managerText, /does not automatically detect addons installed manually/);
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -41,7 +54,7 @@ async function noOverflow(page, label) {
 
     await desktop.locator("#addon-search-input").fill("auction house");
     await desktop.waitForTimeout(80);
-    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Auctioneer Suite");
+    assert.equal(await desktop.locator(".addon-card h2").first().textContent(), "Auctioneer Revisited");
     const auctioneerCard = desktop.locator('.addon-card[data-addon-id="auctioneer-suite"]');
     assert.equal(await auctioneerCard.locator(".addon-card-tag").first().textContent(), "Auction House");
 
@@ -113,21 +126,30 @@ async function noOverflow(page, label) {
 
     await desktop.goto(`${base}/guides/addons.html?role=dps#addon=auctioneer-suite`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#addon-details-dialog[open]");
-    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Auctioneer Suite");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "Auctioneer Revisited");
     const auctioneerText = await desktop.locator("#addon-dialog-content").textContent();
-    assert.match(auctioneerText, /5\.9\.4961/);
+    assert.match(auctioneerText, /5\.9\.4961-Revisited\.1/);
     assert.match(auctioneerText, /Load out of date AddOns/);
+    assert.match(auctioneerText, /Match clicked seller/);
+    assert.match(auctioneerText, /20% deposit rate/);
+    assert.match(auctioneerText, /4× duration/);
+    assert.match(auctioneerText, /default to Hellscream/);
+    assert.match(auctioneerText, /switch to Standard WotLK/);
+    assert.match(auctioneerText, /not yet been marked Hellscream-tested/);
+    assert.equal(await desktop.locator(".addon-important-note").isVisible(), true);
+    assert.match(await desktop.locator(".addon-important-note").textContent(), /complete old Auctioneer suite/);
     const depositGuide = desktop.locator(".addon-configuration-guide");
-    assert.equal(await depositGuide.locator("summary").textContent(), "Hellscream deposit-rate correction (10% rate, 1c minimum)");
+    assert.equal(await depositGuide.locator("summary").textContent(), "Replace the old manual Hellscream deposit patch");
     assert.equal(await depositGuide.evaluate((node) => node.closest("section.addon-dialog-section")?.querySelector(":scope > h3")?.textContent), "Troubleshooting");
     assert.equal(await depositGuide.evaluate((node) => node.open), false);
     await depositGuide.locator("summary").click();
-    assert.match(await depositGuide.textContent(), /HELLSCREAM_DEPOSIT_DIVISOR = 10/);
-    assert.match(await depositGuide.textContent(), /MINIMUM_DEPOSIT = 1/);
-    assert.match(await depositGuide.textContent(), /launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost\.lua/);
+    assert.match(await depositGuide.textContent(), /auctioneer-revisited-wotlk\.git/);
+    assert.match(await depositGuide.textContent(), /20% deposit, 1-copper minimum, 4× duration, and 6-hour tolerance/);
+    assert.match(await depositGuide.textContent(), /53s 76c standard → 10s 75c/);
+    assert.match(await depositGuide.textContent(), /restore the complete matched-suite backup/);
     assert.doesNotMatch(await depositGuide.textContent(), /[A-Z]:\\/);
     const auctioneerNotes = desktop.locator(".addon-compatibility-notes");
-    assert.equal(await auctioneerNotes.locator("summary").textContent(), "Additional compatibility notes (5)");
+    assert.equal(await auctioneerNotes.locator("summary").textContent(), "Additional compatibility notes (7)");
     assert.equal(await auctioneerNotes.evaluate((node) => node.open), false);
     const moduleMap = desktop.locator(".addon-module-map");
     assert.equal(await moduleMap.locator("summary").textContent(), "Suite module map (43)");
@@ -136,6 +158,8 @@ async function noOverflow(page, label) {
     assert.equal(await moduleMap.locator("dt").count(), 43);
     assert.equal(await moduleMap.locator("dt", { hasText: "BeanCounter" }).count(), 1);
     assert.equal(await moduleMap.locator("dt", { hasText: "Auc-Util-Appraiser" }).count(), 1);
+    assert.equal(await desktop.locator('a[href="https://woblight.gitlab.io/overview/gitaddonsmanager/"]').count() > 0, true);
+    assert.equal(await desktop.locator('a[href="https://github.com/leblackstock/auctioneer-revisited-wotlk"]').count() > 0, true);
     assert.equal(await desktop.locator('a[href="https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip"]').count() > 0, true);
     await noOverflow(desktop, "Auctioneer module drawer");
 
@@ -273,6 +297,11 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".addon-card").count(), 18);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
+    await mobile.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
+    await mobile.waitForSelector(".addon-card");
+    await mobile.locator(".addon-manager-guide summary").click();
+    await noOverflow(mobile, "Mobile GitAddonsManager guide");
+
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
     await mobile.waitForSelector("#addon-details-dialog[open]");
     await noOverflow(mobile, "Mobile catalog and drawer");

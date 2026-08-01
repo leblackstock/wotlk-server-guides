@@ -10,9 +10,9 @@
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-atlasloot-discord-v2">
   <link rel="stylesheet" href="../assets/style.css?v=20260726-atlasloot-discord-v2">
-  <link rel="stylesheet" href="../assets/addon-catalog.css?v=20260728-addon-notes-v1">
+  <link rel="stylesheet" href="../assets/addon-catalog.css?v=20260731-gitaddonsmanager-v1">
   <link rel="stylesheet" href="../assets/addon-color-roles.css?v=20260726-atlasloot-discord-v2">
-  <script src="../assets/addon-catalog-data.js?v=20260728-addon-notes-v2" defer></script>
+  <script src="../assets/addon-catalog-data.js?v=20260731-auctioneer-revisited-v1" defer></script>
   <script src="../assets/addon-search-core.js?v=20260726-atlasloot-discord-v2" defer></script>
   <script src="../assets/addon-catalog.js?v=20260728-troubleshooting-v1" defer></script>
 </head>
@@ -30,6 +30,63 @@
     </header>
 
     <main>
+      <section id="gitaddonsmanager" class="addon-manager" aria-labelledby="addon-manager-heading">
+        <span class="addon-manager-kicker">Recommended updater</span>
+        <h2 id="addon-manager-heading">Keep Git-hosted addons updated with GitAddonsManager</h2>
+        <p>GitAddonsManager installs and updates addons directly from GitHub, GitLab, and similar Git repositories. It is the recommended way to install Auctioneer Revisited and other addons for which this guide provides a <code>.git</code> clone URL.</p>
+        <a class="addon-manager-download" href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">Download GitAddonsManager from the official page ↗</a>
+
+        <details class="addon-manager-guide">
+          <summary>Installation, setup, adding addons, and updating addons</summary>
+          <div class="addon-manager-guide-inner">
+            <section>
+              <h3>1. Install GitAddonsManager on Windows</h3>
+              <ol>
+                <li>Exit World of Warcraft completely before installing or updating addons.</li>
+                <li>Open the official GitAddonsManager page above and select <strong>Download for Windows x64</strong>.</li>
+                <li>Extract the downloaded ZIP into a permanent tools folder. Do not run the application from inside the ZIP.</li>
+                <li>Open the extracted folder and run GitAddonsManager. Keep the folder in place so its files remain available the next time you update addons.</li>
+              </ol>
+            </section>
+
+            <section>
+              <h3>2. Point it at the correct WoW installation</h3>
+              <ol>
+                <li>On first launch, choose the folder that directly contains your addons. It normally ends in <code>World of Warcraft\Interface\AddOns</code>; a private-server launcher may instead use a path ending in <code>launcher\Interface\AddOns</code>.</li>
+                <li>Confirm you selected <code>Interface\AddOns</code> itself—not <code>Interface</code>, the game root, or one individual addon folder.</li>
+                <li>If you maintain more than one WoW installation, open <strong>Options</strong>, select <strong>Add directory</strong>, and add each installation's separate <code>Interface\AddOns</code> folder.</li>
+              </ol>
+            </section>
+
+            <section>
+              <h3>3. Add an addon from a repository</h3>
+              <ol>
+                <li>Back up any existing copy and its important files under <code>WTF\Account\&lt;account&gt;\SavedVariables</code>. Remove or move old addon folders out of <code>Interface\AddOns</code> so releases cannot mix.</li>
+                <li>Open GitAddonsManager's <strong>Addons</strong> tab and select the <strong>+</strong> button labeled <strong>Download a new addon from a git repository</strong>.</li>
+                <li>In <strong>Clone Repository</strong>, paste the repository's clone URL, which normally ends in <code>.git</code>. For Auctioneer Revisited, use <code>https://github.com/leblackstock/auctioneer-revisited-wotlk.git</code>.</li>
+                <li>If more than one AddOns directory is configured, choose the correct destination, select <strong>OK</strong>, and wait for cloning and subfolder setup to finish.</li>
+                <li>For Auctioneer Revisited, confirm <code>Interface\AddOns\Auc-Advanced\Auc-Advanced.toc</code> and <code>Interface\AddOns\BeanCounter\BeanCounter.toc</code> exist directly under AddOns. Do not leave the suite nested inside another folder.</li>
+                <li>Start WoW, enable <strong>Load out of date AddOns</strong> if the client requests it, and verify the addon version and settings before normal play.</li>
+              </ol>
+            </section>
+
+            <section>
+              <h3>4. Check for and install addon updates</h3>
+              <ol>
+                <li>Exit WoW, open GitAddonsManager, and select <strong>Refresh addons list and check for updates</strong>.</li>
+                <li>Use the update button beside one addon when its tooltip says <strong>Perform upgrade</strong>, or select <strong>Upgrade all addons</strong> in the toolbar.</li>
+                <li>Wait until the manager reports that the operation has finished, then start WoW and confirm the expected addon version still loads.</li>
+                <li>Keep SavedVariables unless an addon's own upgrade instructions explicitly require a reset; that is where Auctioneer market history and BeanCounter records are stored.</li>
+              </ol>
+            </section>
+
+            <aside class="addon-manager-limitations">
+              <strong>Know the limits:</strong> GitAddonsManager does not search for addons and does not automatically detect addons installed manually without a <code>.git</code> repository. Only use clone URLs supplied by a trusted addon source, and keep backups because repair or update operations can replace local file edits.
+            </aside>
+          </div>
+        </details>
+      </section>
+
       <section class="addon-controls" aria-labelledby="addon-search-heading">
         <div class="addon-search-row">
           <div class="addon-search-block">
@@ -93,7 +150,7 @@
             <li><a href="https://warperia.com/addon-wotlk/questie/" target="_blank" rel="noopener">Questie ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/skada-revisited/" target="_blank" rel="noopener">Skada Revisited ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/chatter/" target="_blank" rel="noopener">Chatter ↗</a></li>
-            <li><a href="https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip" target="_blank" rel="noopener">Auctioneer Suite ↗</a></li>
+            <li>Auctioneer Revisited: <a href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">get GitAddonsManager ↗</a> · <a href="https://github.com/leblackstock/auctioneer-revisited-wotlk" target="_blank" rel="noopener">open the repository ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/addon-control-panel/" target="_blank" rel="noopener">Addon Control Panel ↗</a></li>
             <li><a href="https://www.curseforge.com/wow/addons/bartender4/files/439962" target="_blank" rel="noopener">Bartender4 ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/outfitter/" target="_blank" rel="noopener">Outfitter ↗</a></li>
@@ -108,7 +165,7 @@
       </aside>
     </main>
 
-    <footer>Unofficial WotLK 3.3.5 addon reference. Compatibility does not mean tested on Hellscream. • Updated 2026-07-28</footer>
+    <footer>Unofficial WotLK 3.3.5 addon reference. Compatibility does not mean tested on Hellscream. • Updated 2026-07-31</footer>
   </div>
 
   <dialog id="addon-details-dialog" class="addon-dialog" aria-labelledby="addon-dialog-title">

@@ -42,6 +42,8 @@ const searchCases = [
   ["chat timestamps", "chatter"],
   ["auction house", "auctioneer-suite"],
   ["auctioneer", "auctioneer-suite"],
+  ["server rules", "auctioneer-suite"],
+  ["match clicked seller", "auctioneer-suite"],
   ["addon control", "addon-control-panel"],
   ["acp", "addon-control-panel"],
   ["bartender", "bartender4"],
@@ -177,14 +179,25 @@ assert.equal(chatterRole.importance, "optional");
 assert.deepEqual(chatterRole.purposes, ["communication"]);
 
 const auctioneer = addons.find((addon) => addon.id === "auctioneer-suite");
-assert.equal(auctioneer.compatibility.downloadVersion, "5.9.4961");
-assert.equal(auctioneer.compatibility.hellscreamTested, true);
-assert.equal(auctioneer.compatibility.hellscreamTestedDate, "2026-07-24");
-assert.equal(auctioneer.download.url, "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip");
+assert.equal(auctioneer.name, "Auctioneer Revisited");
+assert.equal(auctioneer.compatibility.downloadVersion, "5.9.4961-Revisited.1");
+assert.equal(auctioneer.compatibility.hellscreamTested, false);
+assert.ok(auctioneer.tags.includes("not-tested-hellscream"));
+assert.ok(!auctioneer.tags.includes("tested-hellscream"));
+assert.equal(auctioneer.download.url, "https://github.com/leblackstock/auctioneer-revisited-wotlk");
+assert.equal(auctioneer.prerequisiteLinks[0].url, "https://woblight.gitlab.io/overview/gitaddonsmanager/");
+assert.equal(auctioneer.alternateDownloads[0].url, "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip");
+assert.match(auctioneer.generalSetup.join("\n"), /auctioneer-revisited-wotlk\.git/);
+assert.match(auctioneer.generalSetup.join("\n"), /20% deposit rate, 1-copper minimum, 4× duration, and 6-hour BeanCounter tolerance/);
+assert.match(auctioneer.generalSetup.join("\n"), /default to Hellscream/);
+assert.match(auctioneer.generalSetup.join("\n"), /switch to Standard WotLK/);
+assert.match(auctioneer.does.join("\n"), /Match clicked seller/);
+assert.match(auctioneer.compatibility.importantNotes.join("\n"), /complete old Auctioneer suite/);
 assert.equal(auctioneer.configurationGuides.length, 1);
-assert.match(auctioneer.configurationGuides[0].title, /10% rate, 1c minimum/);
-assert.match(auctioneer.configurationGuides[0].steps.map((step) => `${step.instruction}\n${step.code || ""}`).join("\n"), /HELLSCREAM_DEPOSIT_DIVISOR = 10/);
-assert.match(auctioneer.configurationGuides[0].steps.map((step) => `${step.instruction}\n${step.code || ""}`).join("\n"), /MINIMUM_DEPOSIT = 1/);
+assert.match(auctioneer.configurationGuides[0].title, /Replace the old manual Hellscream deposit patch/);
+assert.match(auctioneer.configurationGuides[0].steps.map((step) => step.instruction).join("\n"), /Configure → Server Rules/);
+assert.match(auctioneer.configurationGuides[0].steps.map((step) => step.instruction).join("\n"), /53s 76c standard → 10s 75c/);
+assert.doesNotMatch(auctioneer.configurationGuides[0].steps.map((step) => step.instruction).join("\n"), /[A-Z]:\\/);
 assert.equal(auctioneer.moduleGroups.length, 5);
 assert.equal(auctioneer.moduleGroups.flatMap((group) => group.items).length, 43);
 assert.ok(auctioneer.moduleGroups.flatMap((group) => group.items).some((item) => item.name === "BeanCounter" && /transaction journal/.test(item.description)));

@@ -3210,10 +3210,12 @@
     },
     {
       "id": "auctioneer-suite",
-      "name": "Auctioneer Suite",
+      "name": "Auctioneer Revisited",
       "aliases": [
         "Auctioneer",
         "Auctioneer 5.9.4961",
+        "Auctioneer Revisited for WotLK 3.3.5a",
+        "Auctioneer Revisited 5.9.4961-Revisited.1",
         "AuctioneerSuite",
         "WhackyWallaby"
       ],
@@ -3228,54 +3230,57 @@
         "enchantrix",
         "informant",
         "deal finder",
-        "sales history"
+        "sales history",
+        "server rules",
+        "hellscream preset",
+        "deposit percentage",
+        "auction duration multiplier",
+        "match clicked seller"
       ],
-      "summary": "A complete auction-house toolkit for scanning, pricing, posting, deal searches, sales history, disenchant values, and detailed item information.",
+      "summary": "A maintained WotLK 3.3.5a Auctioneer fork with configurable private-server rules, advanced posting, market scans, pricing, and BeanCounter history.",
       "does": [
         "Scans the Auction House and builds a local market-price database from observed listings.",
-        "Adds advanced posting, compact browsing, bargain searches, transaction history, and pricing statistics.",
-        "Bundles BeanCounter, Enchantrix, Informant, error reporting, and dozens of focused Auctioneer modules."
+        "Adds advanced posting, compact browsing, bargain searches, pricing statistics, and an opt-in Match clicked seller control that copies exact per-item prices without posting.",
+        "Adds profile-aware Standard WotLK and Hellscream server rules for deposits, durations, and BeanCounter matching while bundling Enchantrix, Informant, and the complete matched suite."
       ],
       "doesNot": [
         "Does not provide live server-wide prices before the player has collected enough scans.",
-        "Does not make mixed Auctioneer versions safe; every suite folder should come from the same archive."
+        "Does not automatically select the correct private-server preset or make mixed suite versions safe; choose the known server rules and install every folder from one matched source."
       ],
       "generalSetup": [
-        "Download the exact AuctioneerSuite-5.9.4961 archive linked below.",
-        "Extract every included folder into Interface\\AddOns; do not mix individual modules from other Auctioneer releases.",
-        "At character select, enable Load out of date AddOns so this legacy compatibility build can load on the 3.3.5a client.",
-        "Open the Auction House and collect scans over several days before trusting suggested market prices.",
-        "Preserve the WTF folder and SavedVariables when reinstalling so BeanCounter records and accumulated price history survive."
+        "Exit World of Warcraft, back up the existing suite plus AucAdvanced.lua, AucAdvanced.lua.bak, BeanCounter.lua, and BeanCounter.lua.bak under WTF\\Account\\<account>\\SavedVariables, then move every old Auctioneer suite folder out of Interface\\AddOns.",
+        "Recommended: install GitAddonsManager from the official page linked above, select the correct Interface\\AddOns directory, and add the clone URL https://github.com/leblackstock/auctioneer-revisited-wotlk.git.",
+        "After GitAddonsManager finishes, confirm Interface\\AddOns\\Auc-Advanced\\Auc-Advanced.toc and Interface\\AddOns\\BeanCounter\\BeanCounter.toc exist directly under AddOns rather than inside another nested folder.",
+        "At character select, enable Load out of date AddOns, then open Auctioneer Configure → Server Rules. New profiles currently default to Hellscream's measured 20% deposit rate, 1-copper minimum, 4× duration, and 6-hour BeanCounter tolerance; confirm that preset on Hellscream or switch to Standard WotLK on ordinary servers.",
+        "Collect Auction House scans over several days before trusting market prices. In Appraiser, enable Match clicked seller and click a competitor's row only when you want to copy that row's exact per-item bid and buyout into Fixed pricing."
       ],
       "configurationGuides": [
         {
-          "title": "Hellscream deposit-rate correction (10% rate, 1c minimum)",
-          "intro": "Auctioneer 5.9.4961 estimates deposits with the original standard rate and a 1-silver minimum. Hellscream currently charges one tenth of that calculated rate with a 1-copper minimum, so the addon estimate must be scaled after its normal calculation.",
+          "title": "Replace the old manual Hellscream deposit patch",
+          "intro": "Auctioneer Revisited includes the measured Hellscream deposit and duration rules. Remove the old hand-edited CorePost.lua installation instead of copying that patch into the maintained fork.",
           "steps": [
             {
-              "instruction": "Exit World of Warcraft completely before editing the addon. A UI reload is not enough when making and restoring file backups."
+              "instruction": "Exit World of Warcraft completely. Back up the complete old Auctioneer suite and the AucAdvanced and BeanCounter SavedVariables before replacing files."
             },
             {
-              "instruction": "Back up Interface\\AddOns\\Auc-Advanced\\CorePost.lua outside the AddOns folder. From the Hellscream game installation folder, open launcher\\Interface\\AddOns\\Auc-Advanced\\CorePost.lua."
+              "instruction": "Move all old suite folders out of Interface\\AddOns, including !Swatter, Auc-Advanced, the Auc-Filter, Auc-ScanData, Auc-Stat, and Auc-Util folders, BeanCounter, Enchantrix, Informant, SlideBar, and Stubby. Do not leave the patched Auc-Advanced folder beside the Revisited suite."
             },
             {
-              "instruction": "Open CorePost.lua in a UTF-8-aware text editor. Near the top of the file, replace the existing 1-silver minimum declaration with these two lines:",
-              "code": "local MINIMUM_DEPOSIT = 1 -- Hellscream minimum deposit: 1 copper\nlocal HELLSCREAM_DEPOSIT_DIVISOR = 10"
+              "instruction": "Use GitAddonsManager's Add button, paste https://github.com/leblackstock/auctioneer-revisited-wotlk.git into Clone Repository, select the correct AddOns directory if prompted, and wait for the operation to finish."
             },
             {
-              "instruction": "Inside function GetDepositCost, find the deposit calculation and minimum check. Replace that block with the following code so the standard result is divided by ten before the 1-copper minimum is applied:",
-              "code": "local deposit = floor(faction * gsv * count) * duration\ndeposit = floor(deposit / HELLSCREAM_DEPOSIT_DIVISOR)\nif deposit < MINIMUM_DEPOSIT then\n\tdeposit = MINIMUM_DEPOSIT\nend"
+              "instruction": "Start WoW, enable Load out of date AddOns, open Auctioneer Configure → Server Rules, and apply Hellscream. Run /reload and confirm the active profile still shows a 20% deposit, 1-copper minimum, 4× duration, and 6-hour tolerance."
             },
             {
-              "instruction": "Save CorePost.lua without changing its filename or extension, start WoW, open Auctioneer Appraiser, and compare at least one normal deposit and one very cheap item. The estimate should be one tenth of the former amount, rounded down to whole copper, and should never fall below 1 copper."
+              "instruction": "Verify a normal and very cheap deposit before bulk posting. Measured examples are 53s 76c standard → 10s 75c, 3s 38c standard → 67c, and a minimum result of 1c."
             },
             {
-              "instruction": "If Auctioneer produces a Lua error or the result is wrong, exit WoW and restore the backed-up CorePost.lua. Reinstalling Auctioneer may overwrite this server-specific correction, so keep the instructions and backup."
+              "instruction": "To restore the previous installation, exit WoW, remove every Revisited suite folder, restore the complete matched-suite backup, and restore SavedVariables only if the Auctioneer or BeanCounter data must also be rolled back."
             }
           ],
           "notes": [
-            "This correction changes Auctioneer's GetDepositCost estimates, including Appraiser totals, deposit-adjusted bids, and search-profit calculations. It does not change the amount Hellscream actually charges.",
-            "BeanCounter and Auctioneer's posting funds check also use Blizzard's CalculateAuctionDeposit API. Those paths may continue to show or record the original standard estimate even after this display correction."
+            "The Hellscream preset changes Auctioneer estimates, posting affordability checks, recorded deposits, effective auction durations, and BeanCounter reconciliation; it does not change the amount charged by the server.",
+            "Selecting Standard WotLK disables the fork's custom calculation and matching paths without deleting profiles or BeanCounter history."
           ]
         }
       ],
@@ -3286,12 +3291,12 @@
         "setup-required",
         "advanced",
         "verified-335-download",
-        "tested-hellscream",
+        "not-tested-hellscream",
         "server-sensitive"
       ],
       "featuredTags": [
         "auction-house",
-        "tested-hellscream",
+        "verified-335-download",
         "setup-required"
       ],
       "scope": {
@@ -3535,27 +3540,50 @@
         }
       ],
       "compatibility": {
-        "client": "3.3.5a (enable Load out of date AddOns)",
-        "hellscreamTested": true,
-        "hellscreamTestedDate": "2026-07-24",
-        "lastReviewed": "2026-07-28",
-        "downloadVersion": "5.9.4961",
+        "client": "3.3.5a",
+        "hellscreamTested": false,
+        "lastReviewed": "2026-07-31",
+        "downloadVersion": "5.9.4961-Revisited.1",
         "verifiedDownload": true,
         "serverSensitive": true,
-        "maintenanceState": "legacy-compatible",
+        "maintenanceState": "maintained-port",
+        "importantNotes": [
+          "Back up and remove the complete old Auctioneer suite before installing Revisited. Mixing Auc-Advanced, BeanCounter, Enchantrix, Informant, or support folders from different suite versions can cause silent data and interface failures."
+        ],
         "notes": [
-          "Hellscream test reported July 24, 2026: the complete Auctioneer Suite 5.9.4961 installation works well during normal use in an established large-addon setup.",
-          "No specific addon conflict or Lua error was reported during that use.",
-          "This build is intentionally loaded as an out-of-date addon on the 3.3.5a client; that warning alone does not mean the tested archive is broken.",
-          "The suite contains many optional and internal modules. The overall installation passed normal use, but every module function was not individually isolated and tested.",
-          "Install all folders from the same archive. Mixing Auctioneer, BeanCounter, Enchantrix, or utility modules from other releases can create silent data and interface problems."
+          "The GitHub repository identifies this as Auctioneer Revisited 5.9.4961-Revisited.1, based on Auctioneer Suite 5.9.4961 WhackyWallaby for Interface 30300.",
+          "The unmodified 5.9.4961 baseline was reported working during normal Hellscream use on July 24, 2026; that historical result does not validate every Revisited runtime change.",
+          "The Hellscream preset is based on live deposit and duration measurements: 20% of Auctioneer's standard deposit rounded down, a 1-copper minimum, and 4× auction durations.",
+          "The fork adds settings-aware deposit estimates and posting checks plus candidate-specific BeanCounter matching for sales, cancellations, and expirations.",
+          "The repository's current main branch defaults profiles without saved server-rule values to Hellscream and includes the opt-in Match clicked seller Appraiser control; the control copies prices but never queues or posts an auction by itself.",
+          "The complete Revisited fork has not yet been marked Hellscream-tested because its published in-game checklist still requires end-to-end posting, cancellation, expiration, sale-mail, Postal, and BeanCounter validation.",
+          "GitAddonsManager manages repositories cloned through the application. It does not automatically detect ordinary manually extracted addons that have no .git repository."
         ]
       },
+      "prerequisiteLinks": [
+        {
+          "url": "https://woblight.gitlab.io/overview/gitaddonsmanager/",
+          "source": "GitAddonsManager",
+          "label": "Get GitAddonsManager ↗",
+          "cardLabel": "Get Addon Manager ↗",
+          "notes": "Recommended Git-based installer and updater for this repository. Use the page's Windows x64 download for Windows."
+        }
+      ],
       "download": {
-        "url": "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip",
-        "source": "Auctioneer AddOn archive (Wayback Machine)",
-        "notes": "Original AuctioneerSuite-5.9.4961.zip release archive preserved from auctioneeraddon.com."
+        "url": "https://github.com/leblackstock/auctioneer-revisited-wotlk",
+        "source": "GitHub",
+        "notes": "Maintained Auctioneer Revisited source repository. Install with GitAddonsManager using https://github.com/leblackstock/auctioneer-revisited-wotlk.git.",
+        "label": "Open Auctioneer Revisited on GitHub ↗",
+        "cardLabel": "Open Repository ↗"
       },
+      "alternateDownloads": [
+        {
+          "url": "https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip",
+          "source": "Auctioneer AddOn archive (Wayback Machine)",
+          "label": "Original Auctioneer Suite 5.9.4961 fallback ↗",
+          "notes": "Legacy unmodified AuctioneerSuite-5.9.4961.zip archive. It does not include Revisited server rules or BeanCounter fixes."
+        }
+      ],
       "icon": {
         "path": "assets/addons/icons/auctioneer-suite.svg",
         "alt": "Auction gavel over stacked coins and a market chart"
