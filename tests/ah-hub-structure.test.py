@@ -73,8 +73,10 @@ def main() -> int:
         for href, classes in main_hub.links
         if "library-hub-chip" in classes and "addons.html" not in href
     ]
-    if len(main_ah_chips) != 4:
-        errors.append(f"Main AH search must contain four popular-guide chips; found {len(main_ah_chips)}")
+    if len(main_ah_chips) != 5:
+        errors.append(f"Main AH search must contain five popular-guide chips; found {len(main_ah_chips)}")
+    if "./guides/merchants-guild.html" not in main_ah_chips:
+        errors.append("Main AH search must link to The Merchant’s Guild page")
 
     ah_page_chips = [
         href
