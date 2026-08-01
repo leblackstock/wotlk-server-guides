@@ -111,16 +111,45 @@
 
   function searchItems(items, query, limit = MAX_RESULTS) {
     if (normalize(query).length < 2) return [];
-    return items
+    const rankedItems = items
       .map((item) => ({ item, score: scoreItem(item, query) }))
       .filter((result) => Number.isFinite(result.score))
       .sort((left, right) =>
         left.score - right.score ||
         left.item.name.localeCompare(right.item.name) ||
         left.item.guide.localeCompare(right.item.guide)
-      )
-      .slice(0, limit)
-      .map((result) => result.item);
+      );
+
+    const groupedItems = new Map();
+    rankedItems.forEach(({ item }) => {
+      const key = normalize(item.name);
+      const existing = groupedItems.get(key);
+      if (existing) {
+        existing.matches.push(item);
+        return;
+      }
+      groupedItems.set(key, { ...item, matches: [item] });
+    });
+
+    return Array.from(groupedItems.values()).slice(0, limit);
+  }
+
+  function uniqueItemCount(items) {
+    return new Set(items.map((item) => normalize(item.name)).filter(Boolean)).size;
+  }
+
+  function uniqueValues(items, key) {
+    return Array.from(new Set(items.map((item) => item[key] || "—")));
+  }
+
+  function groupedLocations(matches, showEveryLocation) {
+    if (showEveryLocation) return matches;
+    const guides = new Set();
+    return matches.filter((item) => {
+      if (guides.has(item.guide)) return false;
+      guides.add(item.guide);
+      return true;
+    });
   }
 
   function makeElement(tag, className, text) {
@@ -139,16 +168,24 @@
     if (!input || !resultsElement || !statusElement || !index || !Array.isArray(index.items)) return;
 
     if (countElement) {
-      countElement.textContent = `${index.itemCount.toLocaleString()} items across ${index.guideCount} guides`;
+      countElement.textContent = `${uniqueItemCount(index.items).toLocaleString()} unique items across ${index.guideCount} guides`;
     }
     let visibleResults = [];
     let activeIndex = -1;
 
+    function resultLinks() {
+      return Array.from(resultsElement.querySelectorAll(".ah-search-result"))
+        .map((card) => card.querySelector("a.ah-search-result-primary, a.ah-search-location-link"))
+        .filter(Boolean);
+    }
+
     function setActiveResult(nextIndex) {
-      const links = Array.from(resultsElement.querySelectorAll("a"));
+      const links = resultLinks();
       if (!links.length) return;
       activeIndex = (nextIndex + links.length) % links.length;
+      resultsElement.querySelectorAll(".ah-search-result").forEach((card) => card.classList.remove("is-active"));
       links.forEach((link, indexValue) => link.classList.toggle("is-active", indexValue === activeIndex));
+      links[activeIndex].closest(".ah-search-result")?.classList.add("is-active");
       links[activeIndex].scrollIntoView({ block: "nearest" });
     }
 
@@ -175,34 +212,68 @@
       }
 
       visibleResults.forEach((item) => {
+        const matches = item.matches || [item];
+        const guideCount = new Set(matches.map((match) => match.guide)).size;
+        const bidValues = uniqueValues(matches, "targetBid");
+        const buyoutValues = uniqueValues(matches, "target");
+        const demandValues = uniqueValues(matches, "demand");
+        const pricesVary = bidValues.length > 1 || buyoutValues.length > 1;
+        const demandVaries = demandValues.length > 1;
+        const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
-        const link = makeElement("a", "ah-search-result");
-        link.href = item.href;
-        link.classList.add(`quality-${item.quality}`);
+        const card = makeElement("article", "ah-search-result");
+        card.classList.add(`quality-${item.quality}`);
+        const primary = makeElement(grouped ? "div" : "a", "ah-search-result-primary");
+        if (!grouped) primary.href = item.href;
 
         const topLine = makeElement("span", "ah-search-result-top");
         topLine.append(makeElement("strong", `ah-search-item-name quality-${item.quality}`, item.name));
         const targetPrice = makeElement("span", "ah-search-target-price");
         const targetBid = makeElement("span", "ah-search-target-part ah-search-target-bid");
         targetBid.append(makeElement("span", "ah-search-target-label", "Target Bid"));
-        targetBid.append(makeElement("strong", "ah-search-target-value", item.targetBid || "—"));
+        targetBid.append(makeElement("strong", "ah-search-target-value", pricesVary ? "Varies" : bidValues[0]));
         const targetBuyout = makeElement("span", "ah-search-target-part ah-search-target-buyout");
         targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
-        targetBuyout.append(makeElement("strong", "ah-search-target-value", item.target));
+        targetBuyout.append(makeElement("strong", "ah-search-target-value", pricesVary ? "Varies" : buyoutValues[0]));
         targetPrice.append(targetBid, targetBuyout);
         topLine.append(targetPrice);
-        link.append(topLine);
+        primary.append(topLine);
 
-        const meta = [item.section, item.demand !== "—" ? `${item.demand} demand` : ""]
+        const locationSummary = `${matches.length} ${matches.length === 1 ? "entry" : "entries"} across ${guideCount} ${guideCount === 1 ? "guide" : "guides"}`;
+        const meta = [grouped ? locationSummary : item.section, demandVaries ? "Demand varies by guide" : demandValues[0] !== "—" ? `${demandValues[0]} demand` : ""]
           .filter(Boolean)
           .join(" · ");
-        link.append(makeElement("span", "ah-search-result-meta", meta));
+        primary.append(makeElement("span", "ah-search-result-meta", meta));
 
-        const footer = makeElement("span", "ah-search-result-footer");
-        footer.append(makeElement("span", "ah-search-result-guide", item.guide));
-        footer.append(makeElement("span", "ah-search-result-arrow", "→"));
-        link.append(footer);
-        listItem.append(link);
+        if (!grouped) {
+          const footer = makeElement("span", "ah-search-result-footer");
+          footer.append(makeElement("span", "ah-search-result-guide", item.guide));
+          footer.append(makeElement("span", "ah-search-result-arrow", "→"));
+          primary.append(footer);
+        }
+        card.append(primary);
+
+        if (grouped) {
+          const locations = makeElement("span", "ah-search-result-locations");
+          locations.append(makeElement("span", "ah-search-location-label", "Open in"));
+          const routes = groupedLocations(matches, pricesVary || demandVaries);
+          const guideOccurrences = new Map();
+          routes.forEach((route) => guideOccurrences.set(route.guide, (guideOccurrences.get(route.guide) || 0) + 1));
+          routes.forEach((route) => {
+            const routeLabel = guideOccurrences.get(route.guide) > 1 ? `${route.guide} — ${route.section}` : route.guide;
+            const routeLink = makeElement("a", "ah-search-location-link");
+            routeLink.href = route.href;
+            routeLink.append(makeElement("span", "ah-search-location-name", routeLabel));
+            const routeMeta = [];
+            if (pricesVary) routeMeta.push(`Bid ${route.targetBid || "—"} · Buyout ${route.target || "—"}`);
+            if (demandVaries) routeMeta.push(route.demand !== "—" ? `${route.demand} demand` : "Demand —");
+            if (routeMeta.length) routeLink.append(makeElement("span", "ah-search-location-meta", routeMeta.join(" · ")));
+            locations.append(routeLink);
+          });
+          card.append(locations);
+        }
+
+        listItem.append(card);
         resultsElement.append(listItem);
       });
 
@@ -222,7 +293,8 @@
         setActiveResult(activeIndex - 1);
       } else if (event.key === "Enter") {
         event.preventDefault();
-        const target = visibleResults[Math.max(0, activeIndex)];
+        const links = resultLinks();
+        const target = links[Math.max(0, activeIndex)];
         if (target) global.location.href = target.href;
       } else if (event.key === "Escape") {
         input.value = "";
@@ -302,7 +374,7 @@
     selectRow(targetRow, { pulse: true, scroll: true });
   }
 
-  global.AHSearchCore = { normalize, scoreItem, searchItems, slugify };
+  global.AHSearchCore = { normalize, scoreItem, searchItems, slugify, uniqueItemCount };
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       initializeSearch();

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate that every AH search card exposes target bid and buyout."""
+"""Validate that every AH search row can populate grouped-card bid and buyout values."""
 
 from __future__ import annotations
 
@@ -37,10 +37,14 @@ for item in index["items"]:
 search_script = SEARCH_SCRIPT_PATH.read_text(encoding="utf-8")
 assert '"Target Bid"' in search_script
 assert '"Buyout"' in search_script
-assert "item.targetBid" in search_script
-assert "item.target" in search_script
+assert 'uniqueValues(matches, "targetBid")' in search_script
+assert 'uniqueValues(matches, "target")' in search_script
+assert 'pricesVary ? "Varies" : bidValues[0]' in search_script
+assert 'pricesVary ? "Varies" : buyoutValues[0]' in search_script
+assert "route.targetBid" in search_script
+assert "route.target" in search_script
 
 print(
     f"Validated target bid and buyout fields for all "
-    f"{index['itemCount']} AH search cards."
+    f"{index['itemCount']} AH search-index entries."
 )

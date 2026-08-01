@@ -53,6 +53,7 @@ async function noOverflow(page, label) {
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Dark Iron Scraps/);
     assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
     assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-value").count(), 2);
+    assert.match(await desktop.locator("a.ah-search-result-primary").first().getAttribute("href"), /^\.\/guides\//);
     await noOverflow(desktop, "Desktop main hub");
 
     await desktop.locator("#addon-hub-search-input").fill("healbt");
@@ -71,13 +72,39 @@ async function noOverflow(page, label) {
     await desktop.waitForURL(`${base}/auction-house.html`);
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should list all sixteen guides");
     assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 5);
-    assert.match(await desktop.locator("#ah-search-count").textContent(), /^[\d,]+ items across 16 guides$/);
+    const expectedUniqueItems = await desktop.evaluate(() => window.AHSearchCore.uniqueItemCount(window.AH_SEARCH_INDEX.items));
+    assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 16 guides`);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Sanguine Hibiscus/);
     assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
-    assert.match(await desktop.locator(".ah-search-result").first().getAttribute("href"), /^\.\/guides\//);
+    assert.match(await desktop.locator("a.ah-search-result-primary").first().getAttribute("href"), /^\.\/guides\//);
+
+    await desktop.locator("#ah-search-input").fill("saronite");
+    const saroniteCards = desktop.locator(".ah-search-result");
+    assert.equal(await saroniteCards.count(), 9);
+    const saroniteNames = await desktop.locator(".ah-search-item-name").allTextContents();
+    assert.equal(new Set(saroniteNames).size, 9);
+    const saroniteBar = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Saronite Bar$/ })
+    });
+    assert.equal(await saroniteBar.count(), 1);
+    assert.match(await saroniteBar.locator(".ah-search-result-meta").textContent(), /4 entries across 3 guides/);
+    assert.equal(await saroniteBar.locator(".ah-search-location-link").count(), 3);
+    await desktop.locator("#ah-search-input").press("ArrowDown");
+    assert.equal(await saroniteBar.evaluate((card) => card.classList.contains("is-active")), true);
+    await desktop.locator("#ah-search-input").press("ArrowDown");
+    assert.equal(await saroniteCards.nth(1).evaluate((card) => card.classList.contains("is-active")), true);
+
+    await desktop.locator("#ah-search-input").fill("Autumn's Glow");
+    const autumnsGlow = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Autumn's Glow$/ })
+    });
+    assert.equal(await autumnsGlow.count(), 1);
+    assert.deepEqual(await autumnsGlow.locator(".ah-search-target-value").allTextContents(), ["Varies", "Varies"]);
+    assert.equal(await autumnsGlow.locator(".ah-search-location-link").count(), 2);
+    assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 2);
     await noOverflow(desktop, "Desktop Auction House hub");
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
@@ -95,6 +122,8 @@ async function noOverflow(page, label) {
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
+    await mobile.locator("#ah-search-input").fill("saronite");
+    assert.equal(await mobile.locator(".ah-search-result").count(), 9);
     await noOverflow(mobile, "Mobile Auction House hub");
 
     console.log("Auction House hub smoke tests passed at desktop and mobile widths.");
