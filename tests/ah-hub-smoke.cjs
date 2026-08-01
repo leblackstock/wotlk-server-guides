@@ -31,6 +31,17 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 5);
     assert.equal(await desktop.locator(".library-hub-addons .library-hub-chip").count(), 4);
 
+    const merchantGuildLink = desktop.locator(".library-hub-secret-link");
+    assert.equal(await merchantGuildLink.count(), 1);
+    assert.equal(await merchantGuildLink.getAttribute("href"), "./guides/merchants-guild.html");
+    assert.equal(await merchantGuildLink.getAttribute("aria-label"), "Open The Merchant’s Guild");
+    const hiddenGuildWidth = (await merchantGuildLink.boundingBox()).width;
+    assert.ok(Number(await merchantGuildLink.evaluate((node) => getComputedStyle(node).opacity)) < 0.5);
+    await merchantGuildLink.hover();
+    await desktop.waitForTimeout(200);
+    const revealedGuildWidth = (await merchantGuildLink.boundingBox()).width;
+    assert.ok(revealedGuildWidth > hiddenGuildWidth + 40, "Merchant’s Guild label should reveal on hover");
+
     const searchBox = await desktop.locator(".library-hub-ah .ah-search-input-wrap").boundingBox();
     const browseButton = await desktop.locator(".ah-hub-browse").boundingBox();
     assert.ok(searchBox && browseButton, "Search and Browse controls should be visible");
@@ -77,6 +88,9 @@ async function noOverflow(page, label) {
     for (let index = 0; index < 2; index += 1) {
       assert.equal(await mobileSearchRows.nth(index).evaluate((node) => getComputedStyle(node).gridTemplateColumns.split(" ").length), 1);
     }
+    const mobileGuildLink = mobile.locator(".library-hub-secret-link");
+    assert.equal(await mobileGuildLink.isVisible(), true);
+    assert.ok((await mobileGuildLink.boundingBox()).width <= 34, "Merchant’s Guild link should remain discreet on mobile");
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });

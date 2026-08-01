@@ -514,6 +514,50 @@ h1 {
   outline: none;
 }
 
+.library-hub-secret-link {
+  min-width: 30px;
+  justify-content: center;
+  gap: 0;
+  overflow: hidden;
+  padding: 4px;
+  border-color: rgba(236, 197, 96, 0.16);
+  background: rgba(236, 197, 96, 0.025);
+  opacity: 0.38;
+  transition: opacity 160ms ease, border-color 160ms ease, background 160ms ease, padding 160ms ease;
+}
+
+.library-hub-secret-link img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  filter: sepia(100%) saturate(520%) hue-rotate(353deg) brightness(113%) contrast(96%);
+}
+
+.library-hub-secret-label {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width 160ms ease, margin-left 160ms ease, opacity 120ms ease;
+}
+
+.library-hub-secret-link:hover,
+.library-hub-secret-link:focus-visible {
+  padding: 4px 9px;
+  border-color: rgba(236, 197, 96, 0.62);
+  background: rgba(236, 197, 96, 0.10);
+  color: #f3d88d;
+  opacity: 1;
+}
+
+.library-hub-secret-link:hover .library-hub-secret-label,
+.library-hub-secret-link:focus-visible .library-hub-secret-label {
+  max-width: 110px;
+  margin-left: 5px;
+  opacity: 1;
+}
+
 .library-hub-status,
 .library-hub-results {
   grid-column: 1;
