@@ -58,7 +58,7 @@
   display: block;
   width: 88px;
   height: 88px;
-  filter: brightness(0) saturate(100%) invert(80%) sepia(63%) saturate(610%) hue-rotate(351deg) brightness(98%) contrast(91%);
+  filter: sepia(100%) saturate(520%) hue-rotate(353deg) brightness(113%) contrast(96%);
   image-rendering: auto;
 }
 
