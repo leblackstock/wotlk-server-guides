@@ -28,7 +28,7 @@ async function noOverflow(page, label) {
 
     assert.equal(await desktop.locator(".ah-hub-browse").getAttribute("href"), "./auction-house.html");
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 0, "AH guide cards should not remain on the main hub");
-    assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 4);
+    assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 5);
     assert.equal(await desktop.locator(".library-hub-addons .library-hub-chip").count(), 4);
 
     const searchBox = await desktop.locator(".library-hub-ah .ah-search-input-wrap").boundingBox();
@@ -59,7 +59,7 @@ async function noOverflow(page, label) {
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should list all sixteen guides");
-    assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 4);
+    assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 5);
     assert.match(await desktop.locator("#ah-search-count").textContent(), /^[\d,]+ items across 16 guides$/);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");

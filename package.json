@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "test": "npm run test:node && npm run test:guide-banner",
-    "test:node": "node tests/addon-search.test.js",
+    "test:node": "node tests/addon-search.test.js && node tests/merchant-guild.test.js",
     "test:guide-banner": "node tests/guide-banner-system.test.js",
-    "test:browser": "node tests/addon-browser-smoke.cjs && node tests/ah-hub-smoke.cjs"
+    "test:browser": "node tests/addon-browser-smoke.cjs && node tests/ah-hub-smoke.cjs && node tests/merchant-guild-smoke.cjs"
   },
   "devDependencies": {
     "jsdom": "24.1.3",

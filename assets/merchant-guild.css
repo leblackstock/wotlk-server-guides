@@ -1,0 +1,508 @@
+.merchant-page {
+  --merchant-gold: var(--market-price-target-buyout);
+  --merchant-gold-soft: var(--market-price-target-buyout-soft);
+  --merchant-teal: var(--section-ah-accent);
+  --merchant-teal-soft: var(--section-ah-soft);
+}
+
+.merchant-page a {
+  text-underline-offset: 3px;
+}
+
+.merchant-hero {
+  display: grid;
+  grid-template-columns: 138px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72px 72px, rgba(var(--market-price-target-buyout-rgb), .15), transparent 150px),
+    linear-gradient(135deg, #1b232d 0%, rgba(var(--section-ah-rgb), .13) 52%, #121820 100%);
+}
+
+.merchant-emblem-shell {
+  position: relative;
+  display: grid;
+  width: 126px;
+  height: 126px;
+  place-items: center;
+  border: 1px solid rgba(var(--market-price-target-buyout-rgb), .55);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(var(--market-price-target-buyout-rgb), .10), transparent 62%),
+    #0c1116;
+  box-shadow:
+    inset 0 0 0 6px rgba(var(--section-ah-rgb), .07),
+    0 14px 28px rgba(0, 0, 0, .34),
+    0 0 28px rgba(var(--market-price-target-buyout-rgb), .10);
+}
+
+.merchant-emblem-shell::before,
+.merchant-emblem-shell::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+}
+
+.merchant-emblem-shell::before {
+  inset: 8px;
+  border: 1px solid rgba(var(--market-price-target-buyout-rgb), .25);
+}
+
+.merchant-emblem-shell::after {
+  inset: -5px;
+  border: 1px solid rgba(var(--section-ah-rgb), .20);
+}
+
+.merchant-emblem {
+  display: block;
+  width: 88px;
+  height: 88px;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(63%) saturate(610%) hue-rotate(351deg) brightness(98%) contrast(91%);
+  image-rendering: auto;
+}
+
+.merchant-hero-copy {
+  min-width: 0;
+}
+
+.merchant-hero .hub-kicker {
+  color: var(--merchant-teal-soft);
+}
+
+.merchant-hero h1 {
+  color: #fff;
+}
+
+.merchant-progress {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.merchant-progress span:not(.merchant-progress-arrow) {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid rgba(var(--section-ah-rgb), .26);
+  border-radius: 999px;
+  background: rgba(var(--section-ah-rgb), .07);
+}
+
+.merchant-progress strong {
+  color: var(--merchant-gold-soft);
+}
+
+.merchant-progress-arrow {
+  color: var(--merchant-teal);
+  font-weight: 900;
+}
+
+.merchant-jump-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 2px 0 6px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.merchant-jump-nav a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 40px;
+  align-items: center;
+  padding: 8px 11px;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .025);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.merchant-jump-nav a:hover,
+.merchant-jump-nav a:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), .72);
+  color: var(--merchant-teal-soft);
+  outline: none;
+}
+
+.merchant-section {
+  overflow: visible;
+}
+
+.merchant-section-intro {
+  max-width: 920px;
+  margin: -2px 0 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.participation-grid,
+.posting-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.participation-card,
+.posting-grid article {
+  border: 1px solid var(--border-default);
+  border-radius: 13px;
+  background: var(--surface-card);
+  padding: 13px;
+}
+
+.participation-step {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--merchant-teal-soft);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.participation-card h3,
+.copy-card h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 15px;
+}
+
+.participation-card p,
+.posting-grid p {
+  margin: 7px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.participation-card a,
+.merchant-reference-note a {
+  color: var(--merchant-teal-soft);
+}
+
+.merchant-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 11px 12px;
+  border: 1px solid rgba(var(--status-warning-rgb), .28);
+  border-left: 4px solid var(--status-warning);
+  border-radius: 10px;
+  background: rgba(var(--status-warning-rgb), .065);
+  color: var(--status-warning-soft);
+  font-size: 13px;
+}
+
+.merchant-warning-compact {
+  margin: 0 0 14px;
+}
+
+.merchant-callout-icon {
+  display: inline-grid;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border: 1px solid rgba(var(--status-warning-rgb), .55);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.merchant-reference-note {
+  margin: 12px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.merchant-privacy {
+  border-color: rgba(var(--status-info-rgb), .22);
+  background:
+    linear-gradient(135deg, rgba(var(--status-info-rgb), .045), transparent 52%),
+    var(--surface-section);
+}
+
+.privacy-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.privacy-list li {
+  position: relative;
+  padding-left: 21px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.privacy-list li::before {
+  position: absolute;
+  top: .1em;
+  left: 0;
+  color: var(--status-info);
+  content: "✓";
+  font-weight: 900;
+}
+
+.copy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.copy-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid var(--border-default);
+  border-radius: 13px;
+  background: var(--surface-card);
+  padding: 13px;
+}
+
+.copy-card-wide {
+  grid-column: 1 / -1;
+}
+
+.copy-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.copy-card-heading > span {
+  flex: 0 0 auto;
+  color: var(--merchant-teal-soft);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.copy-text {
+  min-height: 84px;
+  flex: 1;
+  margin: 0;
+  padding: 11px 12px;
+  overflow: auto;
+  border: 1px solid rgba(var(--section-ah-rgb), .16);
+  border-radius: 10px;
+  background: var(--surface-code);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+  white-space: pre-wrap;
+  user-select: text;
+}
+
+.copy-text:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), .72);
+  outline: 2px solid rgba(var(--section-ah-rgb), .34);
+  outline-offset: 2px;
+}
+
+.copy-card-actions {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 9px;
+}
+
+.copy-btn {
+  display: inline-flex;
+  min-width: 96px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--section-ah-rgb), .58);
+  border-radius: 9px;
+  background: rgba(var(--section-ah-rgb), .11);
+  color: var(--merchant-teal-soft);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.copy-btn:hover,
+.copy-btn:focus-visible {
+  border-color: var(--merchant-teal);
+  background: rgba(var(--section-ah-rgb), .18);
+  color: #fff;
+  outline: none;
+}
+
+.copy-btn.is-copied {
+  border-color: rgba(var(--status-success-rgb), .72);
+  background: rgba(var(--status-success-rgb), .10);
+  color: var(--status-success-soft);
+}
+
+.copy-status {
+  color: var(--status-success-soft);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.macro-card {
+  border-color: rgba(var(--market-price-target-buyout-rgb), .22);
+}
+
+.macro-card .copy-card-heading > .macro-count {
+  color: var(--merchant-gold-soft);
+}
+
+.macro-text {
+  min-height: 108px;
+  color: var(--merchant-gold-soft);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+.posting-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.posting-grid strong {
+  color: var(--merchant-teal-soft);
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .participation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .merchant-hero {
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .merchant-emblem-shell {
+    width: 78px;
+    height: 78px;
+  }
+
+  .merchant-emblem {
+    width: 56px;
+    height: 56px;
+  }
+
+  .merchant-hero .sub,
+  .merchant-progress {
+    grid-column: 1 / -1;
+  }
+
+  .merchant-hero-copy {
+    display: contents;
+  }
+
+  .merchant-hero-copy .hub-kicker,
+  .merchant-hero-copy h1 {
+    grid-column: 2;
+  }
+
+  .merchant-hero-copy .hub-kicker {
+    align-self: end;
+  }
+
+  .merchant-hero-copy h1 {
+    align-self: start;
+    margin-top: -8px;
+  }
+
+  .merchant-progress-arrow {
+    display: none;
+  }
+
+  .merchant-progress span:not(.merchant-progress-arrow) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .participation-grid,
+  .privacy-list,
+  .copy-grid,
+  .posting-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .copy-card-wide {
+    grid-column: auto;
+  }
+
+  .copy-card {
+    padding: 12px;
+  }
+
+  .copy-text {
+    min-height: 0;
+    max-height: none;
+  }
+
+  .copy-card-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .copy-btn {
+    width: 100%;
+  }
+
+  .copy-status:empty {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-btn {
+    transition: none;
+  }
+}
+
+@media print {
+  .hub-nav,
+  .merchant-jump-nav,
+  .guide-back-to-top,
+  .copy-card-actions {
+    display: none !important;
+  }
+
+  .merchant-page,
+  .merchant-hero,
+  .common,
+  .copy-card,
+  .copy-text {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .copy-grid,
+  .participation-grid,
+  .posting-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
