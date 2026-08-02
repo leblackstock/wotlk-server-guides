@@ -122,6 +122,22 @@ def main() -> int:
     )
     for path in sorted((ROOT / "guides").glob("*-ah-price-guide.html")):
         source = path.read_text(encoding="utf-8")
+        stale_labels = [
+            name
+            for name in forbidden_names
+            if f">{name}</strong>" in source
+        ]
+        stale_labels.extend(
+            name
+            for name in (
+                "Design: Etched Twilight Opal",
+                "Design: Glinting Twilight Opal",
+                "Design: Lightning Forest Emerald",
+            )
+            if name in source
+        )
+        if stale_labels:
+            fail(f"{path.name}: stale item labels remain: {', '.join(stale_labels)}")
         for phrase in forbidden_copy:
             if phrase in source:
                 fail(f"{path.name}: repeated or vague AH note remains: {phrase}")
