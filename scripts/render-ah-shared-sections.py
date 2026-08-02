@@ -360,11 +360,22 @@ def render_crafted_row(
             f'<a class="crafted-note-ref" href="#{note_id}" '
             f'aria-label="See {note_label} note">{marker}</a>'
         )
-        notes_cell = (
-            f'<span class="crafted-item-note">{row_note}</span> {note_reference}'
-            if row_note
-            else note_reference
-        )
+        note_parts = []
+        if row_note:
+            note_parts.append(f'<span class="crafted-item-note">{row_note}</span>')
+        source_spell_id = int(item.get("source_spell_id", 0))
+        if source_spell_id > 0:
+            recipe_url = f"https://www.wowhead.com/wotlk/spell={source_spell_id}"
+            note_parts.append(
+                f'<a class="crafted-recipe-link ah-item-tooltip ah-item-tooltip-label" '
+                f'href="{recipe_url}" target="_blank" rel="noopener" '
+                f'data-wowhead="spell={source_spell_id}&amp;domain=wotlk" '
+                f'data-ah-wowhead-url="{recipe_url}" '
+                f'aria-label="Open {name} recipe and materials on Wowhead">'
+                f'Recipe &amp; mats ↗</a>'
+            )
+        note_parts.append(note_reference)
+        notes_cell = " ".join(note_parts)
     else:
         notes_cell = f'<strong>Reagent floor:</strong> {materials}. {notes}'
     return (

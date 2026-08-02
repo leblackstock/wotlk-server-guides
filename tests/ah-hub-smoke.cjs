@@ -123,9 +123,16 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#crafted-enchanting-pricing-note").count(), 1);
     assert.equal(await desktop.locator(".crafted-note-ref").count(), 276);
     assert.equal(await desktop.locator(".crafted-item-note").count(), 276);
+    assert.equal(await desktop.locator(".crafted-recipe-link").count(), 276);
     const berserkingGuideRow = desktop.locator('[data-crafted-key="ench-scroll-of-enchant-weapon-berserking"]');
     assert.equal(await berserkingGuideRow.locator('[data-column="target"] .buyout').textContent(), "510g");
     assert.match(await berserkingGuideRow.locator(".crafted-item-note").textContent(), /Premium raid melee-DPS staple/);
+    const berserkingRecipeLink = berserkingGuideRow.locator(".crafted-recipe-link");
+    assert.equal(await berserkingRecipeLink.textContent(), "Recipe & mats ↗");
+    assert.equal(await berserkingRecipeLink.getAttribute("href"), "https://www.wowhead.com/wotlk/spell=59621");
+    assert.equal(await berserkingRecipeLink.getAttribute("data-wowhead"), "spell=59621&domain=wotlk");
+    assert.equal(await berserkingRecipeLink.getAttribute("target"), "_blank");
+    assert.equal(await berserkingRecipeLink.getAttribute("rel"), "noopener");
     const tuskarrGuideRow = desktop.locator('[data-crafted-key="ench-scroll-of-enchant-boots-tuskarrs-vitality"]');
     assert.match(await tuskarrGuideRow.locator(".crafted-item-note").textContent(), /Raid movement-speed staple/);
     const legacyOilGuideRow = desktop.locator('[data-crafted-key="ench-superior-wizard-oil"]');
@@ -164,6 +171,7 @@ async function noOverflow(page, label) {
     assert.equal(await mobile.locator("#crafted-enchanting-pricing-note").count(), 1);
     assert.equal(await mobile.locator(".crafted-note-ref").count(), 276);
     assert.equal(await mobile.locator(".crafted-item-note").count(), 276);
+    assert.equal(await mobile.locator(".crafted-recipe-link").count(), 276);
     await noOverflow(mobile, "Mobile Enchanting guide");
 
     console.log("Auction House hub and Enchanting guide smoke tests passed at desktop and mobile widths.");

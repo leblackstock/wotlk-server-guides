@@ -180,6 +180,22 @@ def main() -> int:
                     not in row
                 ):
                     fail(f"{key}: item-specific note does not match canonical data")
+                source_spell_id = int(item.get("source_spell_id", 0))
+                if source_spell_id > 0:
+                    recipe_url = (
+                        f"https://www.wowhead.com/wotlk/spell={source_spell_id}"
+                    )
+                    recipe_link = (
+                        '<a class="crafted-recipe-link ah-item-tooltip '
+                        'ah-item-tooltip-label" '
+                        f'href="{recipe_url}" target="_blank" rel="noopener" '
+                        f'data-wowhead="spell={source_spell_id}&amp;domain=wotlk" '
+                        f'data-ah-wowhead-url="{recipe_url}" '
+                        f'aria-label="Open {html.escape(item["name"])} recipe and '
+                        'materials on Wowhead">Recipe &amp; mats ↗</a>'
+                    )
+                    if recipe_link not in row:
+                        fail(f"{key}: recipe hover link does not match its source spell")
             else:
                 if "<strong>Reagent floor:</strong>" not in row:
                     fail(f"{key}: row is missing its reagent floor")
@@ -362,6 +378,10 @@ def main() -> int:
         fail("Every Enchanting crafted row must reference the shared pricing note")
     if enchanting_source.count('class="crafted-item-note"') != 276:
         fail("Every Enchanting crafted row must render an item-specific note")
+    if enchanting_source.count('class="crafted-recipe-link ') != 276:
+        fail("Every Enchanting crafted row must render a recipe hover link")
+    if enchanting_source.count("Recipe &amp; mats ↗</a>") != 276:
+        fail("Every Enchanting recipe link must use the compact shared label")
     if enchanting_source.count("<strong>* Reagent floor and pricing:</strong>") != 1:
         fail("Enchanting reagent-floor copy must appear exactly once")
     if "Each price band was recalculated per item" not in enchanting_source:
