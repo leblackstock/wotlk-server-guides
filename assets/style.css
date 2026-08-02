@@ -16,6 +16,7 @@
   --q-uncommon: #1eff00;
   --q-rare: #0070dd;
   --q-epic: #a335ee;
+  --q-legendary: #ff8000;
 }
 
 * {
@@ -729,6 +730,10 @@ h1 {
 
 .ah-search-item-name.quality-epic {
   color: var(--q-epic);
+}
+
+.ah-search-item-name.quality-legendary {
+  color: var(--q-legendary);
 }
 
 .ah-search-target-price {

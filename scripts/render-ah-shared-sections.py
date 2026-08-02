@@ -21,7 +21,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
-AH_STYLESHEET_VERSION = "20260727-shared-item-links-v1"
+AH_STYLESHEET_VERSION = "20260801-ah-rarity-v1"
 
 NAV_BLOCK = re.compile(
     r"(?:<!-- AH_SHARED_NAV_START -->\s*)?"
@@ -237,6 +237,17 @@ def load_crafted_config() -> dict:
         path = GUIDES_DIR / filename
         if not path.is_file():
             raise FileNotFoundError(f"Missing AH guide: {path.relative_to(ROOT)}")
+        shared_note = guide.get("shared_note")
+        if shared_note:
+            required_note_fields = {"id", "marker", "label", "text"}
+            missing_note_fields = required_note_fields - set(shared_note)
+            if missing_note_fields:
+                raise ValueError(
+                    f"{filename}: shared crafted note is missing "
+                    f"{', '.join(sorted(missing_note_fields))}"
+                )
+            if not re.fullmatch(r"[a-z0-9-]+", shared_note["id"]):
+                raise ValueError(f"{filename}: shared crafted note ID is not anchor-safe")
         for section in guide.get("sections", []):
             for key in section.get("items", []):
                 if key not in catalog:
@@ -325,7 +336,11 @@ def crafted_item(config: dict, key: str) -> dict:
     )
 
 
-def render_crafted_row(config: dict, key: str) -> str:
+def render_crafted_row(
+    config: dict,
+    key: str,
+    shared_note: dict | None = None,
+) -> str:
     item = crafted_item(config, key)
     profession = html.escape(item["profession"])
     name = html.escape(item["name"])
@@ -336,6 +351,16 @@ def render_crafted_row(config: dict, key: str) -> str:
     materials = html.escape(item["materials"])
     notes = html.escape(item["notes"])
     quality = html.escape(item["quality"])
+    if shared_note:
+        note_id = html.escape(shared_note["id"])
+        marker = html.escape(shared_note["marker"])
+        note_label = html.escape(shared_note["label"])
+        notes_cell = (
+            f'<a class="crafted-note-ref" href="#{note_id}" '
+            f'aria-label="See {note_label} note">{marker}</a>'
+        )
+    else:
+        notes_cell = f'<strong>Reagent floor:</strong> {materials}. {notes}'
     return (
         f'<tr data-crafted-key="{html.escape(key)}" data-market-source="crafted" '
         f'data-profession="{profession}">'
@@ -351,15 +376,22 @@ def render_crafted_row(config: dict, key: str) -> str:
         f'<td data-column="demand" data-label="Demand">'
         f'<span class="demand {demand_class}">{demand}</span></td>'
         f'<td data-column="notes" data-label="Use / Selling Notes">'
-        f'<strong>Reagent floor:</strong> {materials}. {notes}</td></tr>'
+        f'{notes_cell}</td></tr>'
     )
 
 
-def render_crafted_section(config: dict, section: dict) -> str:
+def render_crafted_section(
+    config: dict,
+    section: dict,
+    shared_note: dict | None = None,
+) -> str:
     title = html.escape(section["title"])
     section_id = html.escape(section.get("id") or anchor_slug(section["title"]))
     description = html.escape(section["description"])
-    rows = "\n".join(render_crafted_row(config, key) for key in section["items"])
+    rows = "\n".join(
+        render_crafted_row(config, key, shared_note)
+        for key in section["items"]
+    )
     return (
         f'<section class="common crafted-market-section" id="{section_id}">\n'
         f'<h2 class="ah-category-heading">{title}'
@@ -377,16 +409,28 @@ def render_crafted_section(config: dict, section: dict) -> str:
 
 
 def render_crafted_market(template: str, guide: dict, config: dict) -> str:
+    shared_note = guide.get("shared_note")
     sections = "\n".join(
-        render_crafted_section(config, section)
+        render_crafted_section(config, section, shared_note)
         for section in guide["sections"]
     )
+    intro_note = ""
+    if shared_note:
+        note_id = html.escape(shared_note["id"])
+        marker = html.escape(shared_note["marker"])
+        note_label = html.escape(shared_note["label"])
+        note_text = html.escape(shared_note["text"])
+        intro_note = (
+            f'\n    <p class="small crafted-market-shared-note" id="{note_id}">'
+            f'<strong>{marker} {note_label}:</strong> {note_text}</p>'
+        )
     return (
         template.replace("{{INTRO_TITLE}}", html.escape(guide["intro_title"]))
         .replace(
             "{{INTRO_DESCRIPTION}}",
             html.escape(guide["intro_description"]),
         )
+        .replace("{{INTRO_NOTE}}", intro_note)
         .replace("{{SECTIONS}}", sections)
     )
 

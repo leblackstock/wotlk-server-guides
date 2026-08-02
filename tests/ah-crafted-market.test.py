@@ -163,10 +163,22 @@ def main() -> int:
                 )
                 if not re.search(price_pattern, row, re.DOTALL):
                     fail(f"{key}: {kind} price does not match canonical data")
-            if "<strong>Reagent floor:</strong>" not in row:
-                fail(f"{key}: row is missing its reagent floor")
-            if html.escape(item["notes"]) not in row:
-                fail(f"{key}: selling note does not match canonical data")
+            shared_note = guide.get("shared_note")
+            if shared_note:
+                note_reference = (
+                    f'class="crafted-note-ref" href="#{html.escape(shared_note["id"])}" '
+                    f'aria-label="See {html.escape(shared_note["label"])} note">'
+                    f'{html.escape(shared_note["marker"])}</a>'
+                )
+                if note_reference not in row:
+                    fail(f"{key}: row is missing its shared-note reference")
+                if "<strong>Reagent floor:</strong>" in row:
+                    fail(f"{key}: row repeats the full reagent-floor note")
+            else:
+                if "<strong>Reagent floor:</strong>" not in row:
+                    fail(f"{key}: row is missing its reagent floor")
+                if html.escape(item["notes"]) not in row:
+                    fail(f"{key}: selling note does not match canonical data")
 
             matches = [
                 entry
@@ -338,6 +350,20 @@ def main() -> int:
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
     if "Updated 2026-08-01" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
+    if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
+        fail("Enchanting guide must contain exactly one shared pricing note")
+    if enchanting_source.count('class="crafted-note-ref"') != 276:
+        fail("Every Enchanting crafted row must reference the shared pricing note")
+    if enchanting_source.count("<strong>* Reagent floor and pricing:</strong>") != 1:
+        fail("Enchanting reagent-floor copy must appear exactly once")
+    for repeated_copy in (
+        "Exact Northrend dust, essence, shard, crystal, and Weapon Vellum III cost",
+        "Wrath weapon-enchant scroll. Prices vary sharply by recipe",
+        "Legacy armor-enchant scroll. Test one listing at a time",
+        "Legacy weapon oil. Confirm that the effect works",
+    ):
+        if repeated_copy in enchanting_source:
+            fail(f"Repeated Enchanting row copy remains: {repeated_copy}")
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "

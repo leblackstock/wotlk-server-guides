@@ -120,6 +120,14 @@ async function noOverflow(page, label) {
     await desktop.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator('[data-crafted-key^="ench-"]').count(), 276);
     assert.equal(await desktop.locator(".crafted-market-section").count(), 25);
+    assert.equal(await desktop.locator("#crafted-enchanting-pricing-note").count(), 1);
+    assert.equal(await desktop.locator(".crafted-note-ref").count(), 276);
+    const rarityColors = await desktop.evaluate(() => ["common", "uncommon", "rare", "epic"].map((quality) => {
+      const itemName = document.querySelector(`strong.q-${quality}`);
+      return itemName ? getComputedStyle(itemName).color : "";
+    }));
+    assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
+    assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
     assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-01/);
     await noOverflow(desktop, "Desktop Enchanting guide");
 
@@ -145,6 +153,8 @@ async function noOverflow(page, label) {
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator('[data-crafted-key^="ench-"]').count(), 276);
     assert.equal(await mobile.locator(".crafted-market-section").count(), 25);
+    assert.equal(await mobile.locator("#crafted-enchanting-pricing-note").count(), 1);
+    assert.equal(await mobile.locator(".crafted-note-ref").count(), 276);
     await noOverflow(mobile, "Mobile Enchanting guide");
 
     console.log("Auction House hub and Enchanting guide smoke tests passed at desktop and mobile widths.");

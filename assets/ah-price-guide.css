@@ -59,6 +59,11 @@ body[data-guide-section="auction-house"] li.green { border-color: rgba(142,224,1
 body[data-guide-section="auction-house"] li.purple { border-color: rgba(var(--market-price-high-rgb), .60); background: linear-gradient(90deg, rgba(var(--market-price-high-rgb), .13), rgba(var(--market-price-high-rgb), .03)); }
 body[data-guide-section="auction-house"] li.red { border-color: rgba(255,140,140,.55); background: linear-gradient(90deg, rgba(255,140,140,.13), rgba(255,140,140,.03)); }
 body[data-guide-section="auction-house"] .item { font-weight: 800; }
+body[data-guide-section="auction-house"] .q-common { color: var(--quality-common); }
+body[data-guide-section="auction-house"] .q-uncommon { color: var(--quality-uncommon); }
+body[data-guide-section="auction-house"] .q-rare { color: var(--quality-rare-text); }
+body[data-guide-section="auction-house"] .q-epic { color: var(--quality-epic-text); }
+body[data-guide-section="auction-house"] .q-legendary { color: var(--quality-legendary); }
 body[data-guide-section="auction-house"] .ah-item-link {
   display: inline-flex;
   align-items: center;
