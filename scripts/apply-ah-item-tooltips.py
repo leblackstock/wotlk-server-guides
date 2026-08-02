@@ -61,6 +61,13 @@ CLASS_PRIORITY = {
 ALLOWED_CLASSES = set(CLASS_PRIORITY)
 MANUAL_OVERRIDES = {
     "arcane dust": 22445,
+    # The five tradeable Burning Crusade protection potions share names with
+    # later internal cauldron-charge records. Prefer the actual crafted items.
+    "major arcane protection potion": 22845,
+    "major fire protection potion": 22841,
+    "major frost protection potion": 22842,
+    "major nature protection potion": 22844,
+    "major shadow protection potion": 22846,
     # The Hellscream guides are Horde-first. The two Battered Hilts share a
     # display name; 50380 is the Horde quest starter.
     "battered hilt": 50380,

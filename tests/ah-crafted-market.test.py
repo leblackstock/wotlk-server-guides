@@ -19,7 +19,7 @@ ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
     "inscription-materials-ah-price-guide.html": 107,
     "engineering-materials-ah-price-guide.html": 55,
-    "alchemy-materials-ah-price-guide.html": 12,
+    "alchemy-materials-ah-price-guide.html": 206,
 }
 
 
@@ -229,6 +229,40 @@ def main() -> int:
     ):
         if label in alchemy_names:
             fail(f"Alchemy input, vendor item, or reference row leaked into crafted outputs: {label}")
+
+    for label in (
+        "Elixir of Tongues (NYI)",
+        "Philosopher's Stone",
+        "Alchemist's Stone",
+        "Mercurial Alchemist Stone",
+        "Indestructible Alchemist's Stone",
+        "Mighty Alchemist's Stone",
+        "Endless Healing Potion",
+        "Endless Mana Potion",
+        "Flask of the North",
+    ):
+        if label in alchemy_names:
+            fail(f"Non-tradeable or NYI Alchemy output leaked in: {label}")
+
+    for label in (
+        "Elixir of Accuracy",
+        "Mighty Shadow Protection Potion",
+        "Cardinal Ruby",
+        "Flask of Relentless Assault",
+        "Haste Potion",
+        "Cauldron of Major Fire Protection",
+        "Flask of Supreme Power",
+        "Living Action Potion",
+        "Free Action Potion",
+        "Blackmouth Oil",
+        "Goblin Rocket Fuel",
+    ):
+        if label not in alchemy_names:
+            fail(f"Expanded Alchemy era/category coverage is missing: {label}")
+
+    alchemy_sections = guides["alchemy-materials-ah-price-guide.html"]["sections"]
+    if len(alchemy_sections) != 20:
+        fail(f"Expected 20 expanded Alchemy sections, found {len(alchemy_sections)}")
 
     alchemy_source = sources["alchemy-materials-ah-price-guide.html"]
     alchemy_outside_block = (
