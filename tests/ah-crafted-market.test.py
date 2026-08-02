@@ -153,6 +153,20 @@ def main() -> int:
             fail(f"{filename}: rendered rows do not match canonical crafted order")
         used_keys.extend(expected_order)
 
+        shared_note = guide.get("shared_note")
+        if not shared_note:
+            fail(f"{filename}: every crafted guide needs one shared pricing note")
+        if source.count(f'id="{shared_note["id"]}"') != 1:
+            fail(f"{filename}: shared pricing note must render exactly once")
+        if source.count('class="crafted-note-ref"') != len(expected_order):
+            fail(f"{filename}: every crafted row must reference the shared note")
+        if source.count('class="crafted-item-note"') != len(expected_order):
+            fail(f"{filename}: every crafted row must render an item-specific note")
+        if source.count('class="crafted-recipe-link ') != len(expected_order):
+            fail(f"{filename}: every crafted row must render a recipe hover link")
+        if "<strong>Reagent floor:</strong>" in source:
+            fail(f"{filename}: repeated row-level reagent-floor copy remains")
+
         for key in expected_order:
             item = merged_item(config, key)
             if not item["crafted"] or not item["tradeable"]:
@@ -197,44 +211,36 @@ def main() -> int:
                 )
                 if not re.search(price_pattern, row, re.DOTALL):
                     fail(f"{key}: {kind} price does not match canonical data")
-            shared_note = guide.get("shared_note")
-            if shared_note:
-                note_reference = (
-                    f'class="crafted-note-ref" href="#{html.escape(shared_note["id"])}" '
-                    f'aria-label="See {html.escape(shared_note["label"])} note">'
-                    f'{html.escape(shared_note["marker"])}</a>'
-                )
-                if note_reference not in row:
-                    fail(f"{key}: row is missing its shared-note reference")
-                if "<strong>Reagent floor:</strong>" in row:
-                    fail(f"{key}: row repeats the full reagent-floor note")
-                row_note = item.get("row_note", "").strip()
-                if row_note and (
-                    f'<span class="crafted-item-note">{html.escape(row_note)}</span>'
-                    not in row
-                ):
-                    fail(f"{key}: item-specific note does not match canonical data")
-                source_spell_id = int(item.get("source_spell_id", 0))
-                if source_spell_id > 0:
-                    recipe_url = (
-                        f"https://www.wowhead.com/wotlk/spell={source_spell_id}"
-                    )
-                    recipe_link = (
-                        '<a class="crafted-recipe-link ah-item-tooltip '
-                        'ah-item-tooltip-label" '
-                        f'href="{recipe_url}" target="_blank" rel="noopener" '
-                        f'data-wowhead="spell={source_spell_id}&amp;domain=wotlk" '
-                        f'data-ah-wowhead-url="{recipe_url}" '
-                        f'aria-label="Open {html.escape(item["name"])} recipe and '
-                        'materials on Wowhead">Recipe &amp; mats ↗</a>'
-                    )
-                    if recipe_link not in row:
-                        fail(f"{key}: recipe hover link does not match its source spell")
-            else:
-                if "<strong>Reagent floor:</strong>" not in row:
-                    fail(f"{key}: row is missing its reagent floor")
-                if html.escape(item["notes"]) not in row:
-                    fail(f"{key}: selling note does not match canonical data")
+            note_reference = (
+                f'class="crafted-note-ref" href="#{html.escape(shared_note["id"])}" '
+                f'aria-label="See {html.escape(shared_note["label"])} note">'
+                f'{html.escape(shared_note["marker"])}</a>'
+            )
+            if note_reference not in row:
+                fail(f"{key}: row is missing its shared-note reference")
+            row_note = item.get("row_note", "").strip()
+            if not row_note:
+                fail(f"{key}: item-specific use or market note is missing")
+            if (
+                f'<span class="crafted-item-note">{html.escape(row_note)}</span>'
+                not in row
+            ):
+                fail(f"{key}: item-specific note does not match canonical data")
+            source_spell_id = int(item.get("source_spell_id", 0))
+            if source_spell_id <= 0:
+                fail(f"{key}: source spell ID is missing")
+            recipe_url = f"https://www.wowhead.com/wotlk/spell={source_spell_id}"
+            recipe_link = (
+                '<a class="crafted-recipe-link ah-item-tooltip '
+                'ah-item-tooltip-label" '
+                f'href="{recipe_url}" target="_blank" rel="noopener" '
+                f'data-wowhead="spell={source_spell_id}&amp;domain=wotlk" '
+                f'data-ah-wowhead-url="{recipe_url}" '
+                f'aria-label="Open {html.escape(item["name"])} recipe and '
+                'materials on Wowhead">Recipe &amp; mats ↗</a>'
+            )
+            if recipe_link not in row:
+                fail(f"{key}: recipe hover link does not match its source spell")
 
             matches = [
                 entry
@@ -263,10 +269,13 @@ def main() -> int:
         "Scroll of Protection VIII",
         "Scroll of Recall",
         "Master's Inscription",
-        "Darkmoon Card of the North</strong>",
+        "Darkmoon Card of the North",
         "Darkmoon Card: Greatness",
     ):
-        if label in inscription_block:
+        if re.search(
+            rf'<strong class="q-[^"]+">{re.escape(html.escape(label))}</strong>',
+            inscription_block,
+        ):
             fail(f"Excluded or non-tradeable Inscription output leaked in: {label}")
 
     engineering_names = {
@@ -343,6 +352,31 @@ def main() -> int:
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
             fail(f"{key}: audited target price changed unexpectedly")
+
+    representative_non_enchanting_notes = {
+        "glyph-disease": "refreshes disease durations",
+        "chaos-deck": "price it separately from Nobles",
+        "eng-khorium-power-core": "used in high-end devices",
+        "alch-flask-endless-rage": "Increases attack power by 180",
+        "alch-cardinal-ruby": "Uncut red epic gem",
+    }
+    for key, expected_fragment in representative_non_enchanting_notes.items():
+        if expected_fragment not in merged_item(config, key)["row_note"]:
+            fail(f"{key}: expected item-specific use or market context is missing")
+
+    for filename in (
+        "inscription-materials-ah-price-guide.html",
+        "engineering-materials-ah-price-guide.html",
+        "alchemy-materials-ah-price-guide.html",
+    ):
+        keys = [
+            key
+            for section in guides[filename]["sections"]
+            for key in section["items"]
+        ]
+        row_notes = [merged_item(config, key)["row_note"] for key in keys]
+        if len(set(row_notes)) != len(row_notes):
+            fail(f"{filename}: duplicated item-note boilerplate remains")
 
     for filename in (
         "inscription-materials-ah-price-guide.html",

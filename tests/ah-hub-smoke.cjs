@@ -11,15 +11,28 @@ async function noOverflow(page, label) {
 }
 
 async function verifyAuditedCraftedGuide(page, options) {
-  const { filename, rows, sections, key, target, label } = options;
+  const { filename, rows, sections, key, target, recipeSpell, notePattern, label } = options;
   await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
   assert.equal(await page.locator(".crafted-market-section").count(), sections);
   assert.match(await page.locator(".crafted-market-intro").textContent(), /exact 3\.3\.5 recipe/);
+  assert.equal(await page.locator(".crafted-market-shared-note").count(), 1);
+  assert.equal(await page.locator(".crafted-note-ref").count(), rows);
+  assert.equal(await page.locator(".crafted-item-note").count(), rows);
+  assert.equal(await page.locator(".crafted-recipe-link").count(), rows);
+  assert.equal(await page.locator('[data-column="notes"] strong', { hasText: "Reagent floor:" }).count(), 0);
+  const representativeRow = page.locator(`[data-crafted-key="${key}"]`);
   assert.equal(
-    await page.locator(`[data-crafted-key="${key}"] [data-column="target"] .buyout`).textContent(),
+    await representativeRow.locator('[data-column="target"] .buyout').textContent(),
     target
   );
+  assert.match(await representativeRow.locator(".crafted-item-note").textContent(), notePattern);
+  const recipeLink = representativeRow.locator(".crafted-recipe-link");
+  assert.equal(await recipeLink.textContent(), "Recipe & mats ↗");
+  assert.equal(await recipeLink.getAttribute("href"), `https://www.wowhead.com/wotlk/spell=${recipeSpell}`);
+  assert.equal(await recipeLink.getAttribute("data-wowhead"), `spell=${recipeSpell}&domain=wotlk`);
+  assert.equal(await recipeLink.getAttribute("target"), "_blank");
+  assert.equal(await recipeLink.getAttribute("rel"), "noopener");
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-02/);
   await noOverflow(page, label);
 }
@@ -166,6 +179,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 17,
       key: "chaos-deck",
       target: "1,025g",
+      recipeSpell: 60265,
+      notePattern: /price it separately from Nobles/,
       label: "Desktop Inscription guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -174,6 +189,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 6,
       key: "eng-khorium-power-core",
       target: "52g",
+      recipeSpell: 30308,
+      notePattern: /used in high-end devices/,
       label: "Desktop Engineering guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -182,6 +199,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 20,
       key: "alch-cardinal-ruby",
       target: "120g",
+      recipeSpell: 66659,
+      notePattern: /Uncut red epic gem/,
       label: "Desktop Alchemy guide"
     });
 
@@ -219,6 +238,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 17,
       key: "chaos-deck",
       target: "1,025g",
+      recipeSpell: 60265,
+      notePattern: /price it separately from Nobles/,
       label: "Mobile Inscription guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -227,6 +248,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 6,
       key: "eng-khorium-power-core",
       target: "52g",
+      recipeSpell: 30308,
+      notePattern: /used in high-end devices/,
       label: "Mobile Engineering guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -235,6 +258,8 @@ async function verifyAuditedCraftedGuide(page, options) {
       sections: 20,
       key: "alch-cardinal-ruby",
       target: "120g",
+      recipeSpell: 66659,
+      notePattern: /Uncut red epic gem/,
       label: "Mobile Alchemy guide"
     });
 
