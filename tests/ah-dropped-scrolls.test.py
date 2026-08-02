@@ -98,6 +98,8 @@ def main() -> int:
     rank_profiles = config["rank_profiles"]
     stat_profiles = config["stat_profiles"]
     defaults = config["catalog_defaults"]
+    guide = config["guides"][GUIDE_PATH.name]
+    shared_note = guide.get("shared_note")
     source = GUIDE_PATH.read_text(encoding="utf-8")
     index = generated_json(INDEX_PATH, "AH_SEARCH_INDEX")
     item_ids = generated_json(ITEM_IDS_PATH, "AH_ITEM_IDS")
@@ -110,6 +112,19 @@ def main() -> int:
             fail(f"Rank {rank}: expected six scroll types, found {len(rank_items)}")
     if "Scroll of Protection VIII" in source:
         fail("Scroll of Protection VIII has no 3.3.5 loot source and must remain excluded")
+    if not shared_note:
+        fail("Dropped-scroll rows need one shared source and pricing note")
+    if source.count(f'id="{shared_note["id"]}"') != 1:
+        fail("Dropped-scroll shared source and pricing note must render exactly once")
+    if source.count('class="dropped-scroll-note-ref"') != len(catalog):
+        fail("Every dropped-scroll row must reference the shared note")
+    if source.count('class="dropped-scroll-item-note"') != len(catalog):
+        fail("Every dropped-scroll row must retain its item-specific selling note")
+    repeated_source = (
+        "Lower-level world drops, lockboxes, and reward containers."
+    )
+    if repeated_source in source:
+        fail("Repeated row-level dropped-scroll source boilerplate remains")
 
     for key, raw_item in catalog.items():
         item = (
@@ -134,8 +149,15 @@ def main() -> int:
         row = row_match.group(1)
         if f'<span class="buyout">{format_money(target)}</span>' not in row:
             fail(f"{key}: rendered target price is incorrect")
-        if "<strong>Source:</strong>" not in row:
-            fail(f"{key}: row is missing world-drop source guidance")
+        note_reference = (
+            f'class="dropped-scroll-note-ref" href="#{shared_note["id"]}" '
+            f'aria-label="See {shared_note["label"]} note">'
+            f'{shared_note["marker"]}</a>'
+        )
+        if note_reference not in row:
+            fail(f"{key}: row is missing its shared source-note reference")
+        if f'<span class="dropped-scroll-item-note">{item["notes"]}</span>' not in row:
+            fail(f"{key}: item-specific selling note is missing or incorrect")
 
         matches = [
             entry

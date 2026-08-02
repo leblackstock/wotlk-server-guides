@@ -77,6 +77,12 @@
     "inscription-materials-ah-price-guide.html": {
       "title": "Lower-rank droppable scrolls",
       "description": "All six world-drop scroll types for Ranks I–VII. The five droppable Rank VIII stat scrolls are already priced in Crafted buff scrolls because Scribes can make the identical finished items.",
+      "shared_note": {
+        "id": "dropped-scroll-source-note",
+        "marker": "*",
+        "label": "Drop source and pricing",
+        "text": "Ranks I–VII are unbound world drops from lower-level mobs, lockboxes, and reward containers; they are not made by Scribes. Price against current supply, post singles first, and remember that low-rank completion and leveling demand is usually thin."
+      },
       "items": [
         "scroll-agility-1", "scroll-intellect-1", "scroll-protection-1", "scroll-spirit-1", "scroll-stamina-1", "scroll-strength-1",
         "scroll-agility-2", "scroll-intellect-2", "scroll-protection-2", "scroll-spirit-2", "scroll-stamina-2", "scroll-strength-2",

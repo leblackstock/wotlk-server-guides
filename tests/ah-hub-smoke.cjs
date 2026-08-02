@@ -110,9 +110,9 @@ async function verifyAuditedCraftedGuide(page, options) {
 
     await desktop.locator("#ah-search-input").fill("saronite");
     const saroniteCards = desktop.locator(".ah-search-result");
-    assert.equal(await saroniteCards.count(), 9);
+    assert.equal(await saroniteCards.count(), 5);
     const saroniteNames = await desktop.locator(".ah-search-item-name").allTextContents();
-    assert.equal(new Set(saroniteNames).size, 9);
+    assert.equal(new Set(saroniteNames).size, 5);
     const saroniteBar = desktop.locator(".ah-search-result", {
       has: desktop.locator(".ah-search-item-name", { hasText: /^Saronite Bar$/ })
     });
@@ -129,7 +129,7 @@ async function verifyAuditedCraftedGuide(page, options) {
       has: desktop.locator(".ah-search-item-name", { hasText: /^Autumn's Glow$/ })
     });
     assert.equal(await autumnsGlow.count(), 1);
-    assert.deepEqual(await autumnsGlow.locator(".ah-search-target-value").allTextContents(), ["Varies", "Varies"]);
+    assert.deepEqual(await autumnsGlow.locator(".ah-search-target-value").allTextContents(), ["8g 50s", "10g"]);
     assert.equal(await autumnsGlow.locator(".ah-search-location-link").count(), 2);
     assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 2);
     await noOverflow(desktop, "Desktop Auction House hub");
@@ -220,7 +220,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
     await mobile.locator("#ah-search-input").fill("saronite");
-    assert.equal(await mobile.locator(".ah-search-result").count(), 9);
+    assert.equal(await mobile.locator(".ah-search-result").count(), 5);
     await noOverflow(mobile, "Mobile Auction House hub");
 
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });

@@ -83,6 +83,7 @@ class AHGuideParser(HTMLParser):
         self.heading_parts: list[str] = []
         self.in_tbody = False
         self.in_row = False
+        self.search_table_excluded = False
         self.cell_index = -1
         self.cell_parts: list[list[str]] = []
         self.cell_columns: list[str] = []
@@ -98,6 +99,7 @@ class AHGuideParser(HTMLParser):
         self.quality = "common"
         self.market_source = "market"
         self.profession = ""
+        self.search_excluded = False
         self.items: list[dict[str, str | int]] = []
         self.occurrences: dict[str, int] = {}
 
@@ -115,10 +117,16 @@ class AHGuideParser(HTMLParser):
             self.capture_heading_action = True
         elif tag == "tbody":
             self.in_tbody = True
+        elif tag == "table":
+            self.search_table_excluded = values.get("data-table-family") == "reference"
         elif tag == "tr" and self.in_tbody:
             self.in_row = True
             self.market_source = values.get("data-market-source", "market")
             self.profession = values.get("data-profession", "")
+            self.search_excluded = (
+                self.search_table_excluded
+                or values.get("data-ah-search-exclude") == "true"
+            )
             self.cell_index = -1
             self.cell_parts = []
             self.cell_columns = []
@@ -176,6 +184,8 @@ class AHGuideParser(HTMLParser):
             self.in_row = False
         elif tag == "tbody":
             self.in_tbody = False
+        elif tag == "table":
+            self.search_table_excluded = False
 
     def handle_data(self, data: str) -> None:
         if self.capture_heading and not self.capture_heading_action:
@@ -192,6 +202,8 @@ class AHGuideParser(HTMLParser):
             self.target_buyout_parts.append(data)
 
     def _finish_row(self) -> None:
+        if self.search_excluded:
+            return
         name = clean_text(self.name_parts)
         if not name:
             return

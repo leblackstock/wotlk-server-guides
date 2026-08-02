@@ -533,7 +533,11 @@ def dropped_scroll_item(config: dict, key: str) -> dict:
     )
 
 
-def render_dropped_scroll_row(config: dict, key: str) -> str:
+def render_dropped_scroll_row(
+    config: dict,
+    key: str,
+    shared_note: dict,
+) -> str:
     item = dropped_scroll_item(config, key)
     name = html.escape(item["name"])
     rank = int(item["rank"])
@@ -542,6 +546,13 @@ def render_dropped_scroll_row(config: dict, key: str) -> str:
     demand = html.escape(item["demand"])
     demand_class = html.escape(item["demand_class"])
     notes = html.escape(item["notes"])
+    note_id = html.escape(shared_note["id"])
+    marker = html.escape(shared_note["marker"])
+    note_label = html.escape(shared_note["label"])
+    note_reference = (
+        f'<a class="dropped-scroll-note-ref" href="#{note_id}" '
+        f'aria-label="See {note_label} note">{marker}</a>'
+    )
     return (
         f'<tr data-dropped-scroll-key="{html.escape(key)}" data-market-source="drop">'
         f'<td data-column="item" data-label="Item"><strong class="q-common">{name}</strong>'
@@ -556,14 +567,19 @@ def render_dropped_scroll_row(config: dict, key: str) -> str:
         f'<td data-column="demand" data-label="Demand">'
         f'<span class="demand {demand_class}">{demand}</span></td>'
         f'<td data-column="notes" data-label="Use / Selling Notes">'
-        f'<strong>Source:</strong> Lower-level world drops, lockboxes, and reward containers. '
-        f"{notes}</td></tr>"
+        f'<span class="dropped-scroll-item-note">{notes}</span> '
+        f"{note_reference}</td></tr>"
     )
 
 
-def render_dropped_rank_table(config: dict, rank: int, item_keys: list[str]) -> str:
+def render_dropped_rank_table(
+    config: dict,
+    rank: int,
+    item_keys: list[str],
+    shared_note: dict,
+) -> str:
     rows = "\n".join(
-        render_dropped_scroll_row(config, key)
+        render_dropped_scroll_row(config, key, shared_note)
         for key in item_keys
         if int(config["catalog"][key]["rank"]) == rank
     )
@@ -580,13 +596,23 @@ def render_dropped_rank_table(config: dict, rank: int, item_keys: list[str]) -> 
 
 
 def render_dropped_scroll_section(template: str, guide: dict, config: dict) -> str:
+    shared_note = guide["shared_note"]
     rank_tables = "\n".join(
-        render_dropped_rank_table(config, rank, guide["items"])
+        render_dropped_rank_table(config, rank, guide["items"], shared_note)
         for rank in range(1, 8)
+    )
+    note_id = html.escape(shared_note["id"])
+    marker = html.escape(shared_note["marker"])
+    note_label = html.escape(shared_note["label"])
+    note_text = html.escape(shared_note["text"])
+    shared_note_html = (
+        f'\n  <p class="small dropped-scroll-shared-note" id="{note_id}">'
+        f'<strong>{marker} {note_label}:</strong> {note_text}</p>'
     )
     return (
         template.replace("{{TITLE}}", html.escape(guide["title"]))
         .replace("{{DESCRIPTION}}", html.escape(guide["description"]))
+        .replace("{{SHARED_NOTE}}", shared_note_html)
         .replace("{{RANK_TABLES}}", rank_tables)
     )
 
