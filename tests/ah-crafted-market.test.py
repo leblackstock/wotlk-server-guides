@@ -174,6 +174,12 @@ def main() -> int:
                     fail(f"{key}: row is missing its shared-note reference")
                 if "<strong>Reagent floor:</strong>" in row:
                     fail(f"{key}: row repeats the full reagent-floor note")
+                row_note = item.get("row_note", "").strip()
+                if row_note and (
+                    f'<span class="crafted-item-note">{html.escape(row_note)}</span>'
+                    not in row
+                ):
+                    fail(f"{key}: item-specific note does not match canonical data")
             else:
                 if "<strong>Reagent floor:</strong>" not in row:
                     fail(f"{key}: row is missing its reagent floor")
@@ -348,14 +354,18 @@ def main() -> int:
         fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
 
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
-    if "Updated 2026-08-01" not in enchanting_source:
+    if "Updated 2026-08-02" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
     if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
         fail("Enchanting guide must contain exactly one shared pricing note")
     if enchanting_source.count('class="crafted-note-ref"') != 276:
         fail("Every Enchanting crafted row must reference the shared pricing note")
+    if enchanting_source.count('class="crafted-item-note"') != 276:
+        fail("Every Enchanting crafted row must render an item-specific note")
     if enchanting_source.count("<strong>* Reagent floor and pricing:</strong>") != 1:
         fail("Enchanting reagent-floor copy must appear exactly once")
+    if "Each price band was recalculated per item" not in enchanting_source:
+        fail("Enchanting shared note must explain the per-item price method")
     for repeated_copy in (
         "Exact Northrend dust, essence, shard, crystal, and Weapon Vellum III cost",
         "Wrath weapon-enchant scroll. Prices vary sharply by recipe",
@@ -364,6 +374,95 @@ def main() -> int:
     ):
         if repeated_copy in enchanting_source:
             fail(f"Repeated Enchanting row copy remains: {repeated_copy}")
+
+    enchanting_keys = [
+        key
+        for section in enchanting_sections
+        for key in section["items"]
+    ]
+    wrath_keys = [
+        key
+        for section in enchanting_sections[:7]
+        for key in section["items"]
+    ]
+    if len(wrath_keys) != 72:
+        fail(f"Expected 72 Wrath enchant rows, found {len(wrath_keys)}")
+
+    for key in enchanting_keys:
+        item = merged_item(config, key)
+        if not item.get("row_note", "").strip():
+            fail(f"{key}: every Enchanting output needs a specific market/effect note")
+        if int(item.get("source_spell_id", 0)) <= 0:
+            fail(f"{key}: source spell ID is missing")
+        floors = item.get("pricing_floor_copper")
+        if set(floors or {}) != {"quick", "target", "high"}:
+            fail(f"{key}: audited price floors are missing")
+        for band in ("quick", "target", "high"):
+            if int(item[f"{band}_copper"]) < int(floors[band]):
+                fail(f"{key}: {band} price falls below its audited craft floor")
+        if item["name"].startswith("Scroll of ") and item.get("vellum_rank") not in {
+            1,
+            2,
+            3,
+        }:
+            fail(f"{key}: compatible vellum rank is missing")
+
+    enchanting_notes = [
+        merged_item(config, key)["row_note"] for key in enchanting_keys
+    ]
+    if len(set(enchanting_notes)) != len(enchanting_notes):
+        fail("Enchanting item notes must be specific rather than duplicated boilerplate")
+    for repeated_note_fragment in (
+        "Permanently enchant",
+        "Prices vary sharply",
+        "Post one at a time",
+    ):
+        if any(repeated_note_fragment in note for note in enchanting_notes):
+            fail(f"Repeated Enchanting note boilerplate remains: {repeated_note_fragment}")
+
+    representative_enchants = {
+        "ench-scroll-of-enchant-weapon-berserking": (
+            5_100_000,
+            "Premium raid melee-DPS staple",
+        ),
+        "ench-scroll-of-enchant-chest-powerful-stats": (
+            2_150_000,
+            "Premier raid all-stats chest enchant",
+        ),
+        "ench-scroll-of-enchant-boots-tuskarrs-vitality": (
+            760_000,
+            "Raid movement-speed staple",
+        ),
+        "ench-scroll-of-enchant-gloves-armsman": (
+            None,
+            "Tank threat and parry glove enchant",
+        ),
+        "ench-scroll-of-enchant-cloak-superior-frost-resistance": (
+            None,
+            "Encounter-specific Frost resistance",
+        ),
+        "ench-scroll-of-enchant-gloves-angler": (
+            None,
+            "Fishing utility; not a raid enchant",
+        ),
+        "ench-superior-wizard-oil": (
+            None,
+            "not for Wrath raid gear",
+        ),
+    }
+    for key, (expected_target, note_fragment) in representative_enchants.items():
+        item = merged_item(config, key)
+        if expected_target is not None and int(item["target_copper"]) != expected_target:
+            fail(f"{key}: audited target price changed unexpectedly")
+        if note_fragment not in item["row_note"]:
+            fail(f"{key}: expected note context is missing")
+
+    if merged_item(config, "ench-scroll-of-enchant-gloves-angler")["vellum_rank"] != 1:
+        fail("Angler should use unrestricted Armor Vellum, not Armor Vellum III")
+    if merged_item(config, "ench-scroll-of-enchant-weapon-mongoose")["vellum_rank"] != 2:
+        fail("Mongoose should use Weapon Vellum II for its level-35 restriction")
+    if merged_item(config, "ench-scroll-of-enchant-weapon-berserking")["vellum_rank"] != 3:
+        fail("Berserking should use Weapon Vellum III")
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "

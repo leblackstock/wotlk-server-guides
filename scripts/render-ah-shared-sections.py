@@ -350,14 +350,20 @@ def render_crafted_row(
     demand_class = html.escape(item["demand_class"])
     materials = html.escape(item["materials"])
     notes = html.escape(item["notes"])
+    row_note = html.escape(item.get("row_note", "").strip())
     quality = html.escape(item["quality"])
     if shared_note:
         note_id = html.escape(shared_note["id"])
         marker = html.escape(shared_note["marker"])
         note_label = html.escape(shared_note["label"])
-        notes_cell = (
+        note_reference = (
             f'<a class="crafted-note-ref" href="#{note_id}" '
             f'aria-label="See {note_label} note">{marker}</a>'
+        )
+        notes_cell = (
+            f'<span class="crafted-item-note">{row_note}</span> {note_reference}'
+            if row_note
+            else note_reference
         )
     else:
         notes_cell = f'<strong>Reagent floor:</strong> {materials}. {notes}'

@@ -122,13 +122,21 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator(".crafted-market-section").count(), 25);
     assert.equal(await desktop.locator("#crafted-enchanting-pricing-note").count(), 1);
     assert.equal(await desktop.locator(".crafted-note-ref").count(), 276);
+    assert.equal(await desktop.locator(".crafted-item-note").count(), 276);
+    const berserkingGuideRow = desktop.locator('[data-crafted-key="ench-scroll-of-enchant-weapon-berserking"]');
+    assert.equal(await berserkingGuideRow.locator('[data-column="target"] .buyout').textContent(), "510g");
+    assert.match(await berserkingGuideRow.locator(".crafted-item-note").textContent(), /Premium raid melee-DPS staple/);
+    const tuskarrGuideRow = desktop.locator('[data-crafted-key="ench-scroll-of-enchant-boots-tuskarrs-vitality"]');
+    assert.match(await tuskarrGuideRow.locator(".crafted-item-note").textContent(), /Raid movement-speed staple/);
+    const legacyOilGuideRow = desktop.locator('[data-crafted-key="ench-superior-wizard-oil"]');
+    assert.match(await legacyOilGuideRow.locator(".crafted-item-note").textContent(), /not for Wrath raid gear/);
     const rarityColors = await desktop.evaluate(() => ["common", "uncommon", "rare", "epic"].map((quality) => {
       const itemName = document.querySelector(`strong.q-${quality}`);
       return itemName ? getComputedStyle(itemName).color : "";
     }));
     assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
-    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-01/);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-02/);
     await noOverflow(desktop, "Desktop Enchanting guide");
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
@@ -155,6 +163,7 @@ async function noOverflow(page, label) {
     assert.equal(await mobile.locator(".crafted-market-section").count(), 25);
     assert.equal(await mobile.locator("#crafted-enchanting-pricing-note").count(), 1);
     assert.equal(await mobile.locator(".crafted-note-ref").count(), 276);
+    assert.equal(await mobile.locator(".crafted-item-note").count(), 276);
     await noOverflow(mobile, "Mobile Enchanting guide");
 
     console.log("Auction House hub and Enchanting guide smoke tests passed at desktop and mobile widths.");
