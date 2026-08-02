@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
+RECIPE_AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
@@ -79,8 +80,14 @@ def main() -> int:
         cwd=ROOT,
         check=True,
     )
+    subprocess.run(
+        [sys.executable, "scripts/audit-ah-crafted-prices.py", "--check"],
+        cwd=ROOT,
+        check=True,
+    )
 
     config = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    recipe_audit = json.loads(RECIPE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config["catalog"]
     guides = config["guides"]
     index = generated_json(INDEX_PATH, "AH_SEARCH_INDEX")
@@ -95,6 +102,33 @@ def main() -> int:
         fail("Crafted item IDs must be unique")
     if len({item["name"].casefold() for item in catalog.values()}) != len(catalog):
         fail("Crafted item names must be unique")
+
+    non_enchanting_keys = {
+        key
+        for filename, guide in guides.items()
+        if filename != "enchanting-mats-ah-price-guide.html"
+        for section in guide["sections"]
+        for key in section["items"]
+    }
+    if len(non_enchanting_keys) != 368:
+        fail(f"Expected 368 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
+        fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
+    for key in non_enchanting_keys:
+        item = merged_item(config, key)
+        recipe = recipe_audit["recipes"][key]
+        if int(item.get("source_spell_id", 0)) != int(recipe["source_spell_id"]):
+            fail(f"{key}: source spell does not match the recipe audit")
+        if int(recipe["output_item_id"]) != int(item["item_id"]):
+            fail(f"{key}: recipe output item does not match the catalog item")
+        if int(recipe["output_count"]) <= 0 or not recipe.get("reagents"):
+            fail(f"{key}: recipe output or reagent snapshot is incomplete")
+        floors = item.get("pricing_floor_copper") or {}
+        if set(floors) != {"quick", "target", "high"}:
+            fail(f"{key}: audited price floors are missing")
+        for band in ("quick", "target", "high"):
+            if int(item[f"{band}_copper"]) < int(floors[band]):
+                fail(f"{key}: {band} price falls below its audited craft floor")
 
     used_keys: list[str] = []
     sources: dict[str, str] = {}
@@ -298,6 +332,27 @@ def main() -> int:
     alchemy_sections = guides["alchemy-materials-ah-price-guide.html"]["sections"]
     if len(alchemy_sections) != 20:
         fail(f"Expected 20 expanded Alchemy sections, found {len(alchemy_sections)}")
+
+    representative_non_enchanting_prices = {
+        "chaos-deck": 10_250_000,
+        "eng-khorium-power-core": 520_000,
+        "alch-flask-endless-rage": 550_000,
+        "alch-flask-frost-wyrm": 600_000,
+        "alch-cardinal-ruby": 1_200_000,
+    }
+    for key, expected_target in representative_non_enchanting_prices.items():
+        if int(merged_item(config, key)["target_copper"]) != expected_target:
+            fail(f"{key}: audited target price changed unexpectedly")
+
+    for filename in (
+        "inscription-materials-ah-price-guide.html",
+        "engineering-materials-ah-price-guide.html",
+        "alchemy-materials-ah-price-guide.html",
+    ):
+        if "Updated 2026-08-02" not in sources[filename]:
+            fail(f"{filename}: crafted-price audit footer date is stale")
+        if "exact 3.3.5 recipe" not in sources[filename]:
+            fail(f"{filename}: recipe-level pricing method is not explained")
 
     alchemy_source = sources["alchemy-materials-ah-price-guide.html"]
     alchemy_outside_block = (

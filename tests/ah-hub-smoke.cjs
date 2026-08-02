@@ -10,6 +10,20 @@ async function noOverflow(page, label) {
   assert.ok(overflow <= 1, `${label} has ${overflow}px horizontal overflow`);
 }
 
+async function verifyAuditedCraftedGuide(page, options) {
+  const { filename, rows, sections, key, target, label } = options;
+  await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
+  assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
+  assert.equal(await page.locator(".crafted-market-section").count(), sections);
+  assert.match(await page.locator(".crafted-market-intro").textContent(), /exact 3\.3\.5 recipe/);
+  assert.equal(
+    await page.locator(`[data-crafted-key="${key}"] [data-column="target"] .buyout`).textContent(),
+    target
+  );
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-02/);
+  await noOverflow(page, label);
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   try {
@@ -146,6 +160,31 @@ async function noOverflow(page, label) {
     assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-02/);
     await noOverflow(desktop, "Desktop Enchanting guide");
 
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "inscription-materials-ah-price-guide.html",
+      rows: 107,
+      sections: 17,
+      key: "chaos-deck",
+      target: "1,025g",
+      label: "Desktop Inscription guide"
+    });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "engineering-materials-ah-price-guide.html",
+      rows: 55,
+      sections: 6,
+      key: "eng-khorium-power-core",
+      target: "52g",
+      label: "Desktop Engineering guide"
+    });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "alchemy-materials-ah-price-guide.html",
+      rows: 206,
+      sections: 20,
+      key: "alch-cardinal-ruby",
+      target: "120g",
+      label: "Desktop Alchemy guide"
+    });
+
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/index.html`, { waitUntil: "networkidle" });
     await mobile.waitForSelector(".ah-hub-browse");
@@ -174,7 +213,32 @@ async function noOverflow(page, label) {
     assert.equal(await mobile.locator(".crafted-recipe-link").count(), 276);
     await noOverflow(mobile, "Mobile Enchanting guide");
 
-    console.log("Auction House hub and Enchanting guide smoke tests passed at desktop and mobile widths.");
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "inscription-materials-ah-price-guide.html",
+      rows: 107,
+      sections: 17,
+      key: "chaos-deck",
+      target: "1,025g",
+      label: "Mobile Inscription guide"
+    });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "engineering-materials-ah-price-guide.html",
+      rows: 55,
+      sections: 6,
+      key: "eng-khorium-power-core",
+      target: "52g",
+      label: "Mobile Engineering guide"
+    });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "alchemy-materials-ah-price-guide.html",
+      rows: 206,
+      sections: 20,
+      key: "alch-cardinal-ruby",
+      target: "120g",
+      label: "Mobile Alchemy guide"
+    });
+
+    console.log("Auction House hub and all four crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }
