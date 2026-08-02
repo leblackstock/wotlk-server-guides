@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the shared Inscription, Engineering, and Alchemy crafted catalog."""
+"""Validate the shared Inscription, Engineering, Alchemy, and Enchanting catalog."""
 
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ EXPECTED_GUIDE_COUNTS = {
     "inscription-materials-ah-price-guide.html": 107,
     "engineering-materials-ah-price-guide.html": 55,
     "alchemy-materials-ah-price-guide.html": 206,
+    "enchanting-mats-ah-price-guide.html": 276,
 }
 
 
@@ -282,9 +283,65 @@ def main() -> int:
     if "Major finished flasks / potions" in alchemy_outside_block:
         fail("Legacy Alchemy finished-consumable section remains after migration")
 
+    enchanting_names = {
+        merged_item(config, key)["name"]
+        for key in used_keys
+        if key.startswith("ench-")
+    }
+    enchanting_scrolls = {
+        name for name in enchanting_names if name.startswith("Scroll of Enchant ")
+    }
+    if len(enchanting_scrolls) != 259:
+        fail(f"Expected 259 valid Enchanting scrolls, found {len(enchanting_scrolls)}")
+
+    for label in (
+        "Scroll of Enchant Weapon - Exceptional Striking",
+        "Scroll of Enchant Weapon - Exceptional Intellect",
+        "Scroll of Enchant Gloves - Exceptional Healing",
+        "Scroll of Enchant Shield - Exceptional Stamina",
+        "Scroll of Enchant Weapon - Exceptional Healing",
+        "Scroll of Enchant Bracers - Major Healing",
+        "Runed Titanium Rod",
+        "Smoking Heart of the Mountain",
+        "Arcane Dust",
+        "Large Prismatic Shard",
+        "Small Prismatic Shard",
+    ):
+        if label in enchanting_names:
+            fail(f"Invalid, BoP, or duplicate Enchanting output leaked in: {label}")
+
+    if any(name.startswith("Scroll of Enchant Ring") for name in enchanting_names):
+        fail("Self-only ring enchants must not appear as auctionable scrolls")
+
+    for label in (
+        "Scroll of Enchant Weapon - Berserking",
+        "Scroll of Enchant Weapon - Blade Ward",
+        "Scroll of Enchant Chest - Powerful Stats",
+        "Scroll of Enchant Boots - Icewalker",
+        "Scroll of Enchant Weapon - Mongoose",
+        "Scroll of Enchant Boots - Boar's Speed",
+        "Scroll of Enchant Weapon - Crusader",
+        "Scroll of Enchant Boots - Minor Speed",
+        "Brilliant Wizard Oil",
+        "Superior Mana Oil",
+        "Greater Magic Wand",
+        "Enchanted Thorium Bar",
+        "Void Sphere",
+    ):
+        if label not in enchanting_names:
+            fail(f"Expanded Enchanting era/category coverage is missing: {label}")
+
+    enchanting_sections = guides["enchanting-mats-ah-price-guide.html"]["sections"]
+    if len(enchanting_sections) != 25:
+        fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
+
+    enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
+    if "Updated 2026-08-01" not in enchanting_source:
+        fail("Enchanting guide footer date was not updated")
+
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, and Alchemy."
+        "are valid for Inscription, Engineering, Alchemy, and Enchanting."
     )
     return 0
 

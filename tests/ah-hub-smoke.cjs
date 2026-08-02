@@ -107,6 +107,22 @@ async function noOverflow(page, label) {
     assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 2);
     await noOverflow(desktop, "Desktop Auction House hub");
 
+    await desktop.locator("#ah-search-input").fill("Scroll of Enchant Weapon - Berserking");
+    const berserkingScroll = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Scroll of Enchant Weapon - Berserking$/ })
+    });
+    assert.equal(await berserkingScroll.count(), 1);
+    assert.match(
+      await berserkingScroll.locator("a.ah-search-result-primary").getAttribute("href"),
+      /enchanting-mats-ah-price-guide\.html/
+    );
+
+    await desktop.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator('[data-crafted-key^="ench-"]').count(), 276);
+    assert.equal(await desktop.locator(".crafted-market-section").count(), 25);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-01/);
+    await noOverflow(desktop, "Desktop Enchanting guide");
+
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/index.html`, { waitUntil: "networkidle" });
     await mobile.waitForSelector(".ah-hub-browse");
@@ -126,7 +142,12 @@ async function noOverflow(page, label) {
     assert.equal(await mobile.locator(".ah-search-result").count(), 9);
     await noOverflow(mobile, "Mobile Auction House hub");
 
-    console.log("Auction House hub smoke tests passed at desktop and mobile widths.");
+    await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await mobile.locator('[data-crafted-key^="ench-"]').count(), 276);
+    assert.equal(await mobile.locator(".crafted-market-section").count(), 25);
+    await noOverflow(mobile, "Mobile Enchanting guide");
+
+    console.log("Auction House hub and Enchanting guide smoke tests passed at desktop and mobile widths.");
   } finally {
     await browser.close();
   }
