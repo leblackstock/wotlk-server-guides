@@ -5833,12 +5833,12 @@
     },
     "45912": {
       "name": "Book of Glyph Mastery",
-      "quick": 1500000,
-      "target": 3000000,
-      "high": 7000000,
-      "source_type": "frozen-pre-scan-guide",
+      "quick": 125000,
+      "target": 250000,
+      "high": 600000,
+      "source_type": "realized-sales-history",
       "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
+      "reason": "User-reported average realized-sale estimate on 2026-08-03 set the 25g target; transaction counts, buyers, and days were not supplied, so confidence remains low and the value may be updated if later evidence differs. Quick and high retain the prior relative spread with the high band rounded. Replaced original 2026-08-02 frozen baseline: 150g quick, 300g target, 700g high."
     },
     "47556": {
       "name": "Crusader Orb",

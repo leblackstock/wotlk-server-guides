@@ -60,6 +60,21 @@ def main() -> int:
     solid_stone = baseline["items"]["7912"]
     if solid_stone["source_type"] != "realized-sales-history" or solid_stone["target"] != 900:
         fail("Solid Stone realized-sale validation is missing")
+    glyph_book = baseline["items"]["45912"]
+    if tuple(glyph_book[band] for band in ("quick", "target", "high")) != (
+        125_000,
+        250_000,
+        600_000,
+    ):
+        fail("Book of Glyph Mastery user-estimated sale band is missing")
+    if (
+        glyph_book["source_type"] != "realized-sales-history"
+        or glyph_book["confidence"] != "low"
+        or "2026-08-03" not in glyph_book["reason"]
+        or "150g quick, 300g target, 700g high" not in glyph_book["reason"]
+        or "may be updated if later evidence differs" not in glyph_book["reason"]
+    ):
+        fail("Book of Glyph Mastery provenance or original baseline note is missing")
     expected_inputs = {
         "36912": (4_500, 7_000, 11_000),
         "36913": (9_000, 15_000, 22_000),
