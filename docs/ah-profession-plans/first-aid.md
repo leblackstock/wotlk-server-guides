@@ -6,16 +6,16 @@
 - Suggested order: 7
 
 > Hard gate: audit current cloth prices and any existing bandage/anti-venom rows
-> before adding crafted rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> before adding crafted rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Audit every cloth input in `guides/tailoring-cloth-ah-price-guide.html` and
   reconcile duplicates before calculating bandage prices.
 - Search all AH guides for bandages, anti-venoms, venom sacs, and related
   reagents; correct or consolidate any existing rows first.
-- Check the live AH for actual supply and sales. These items may be technically
-  auctionable but too thin to justify broad price confidence.
+- Record active supply and seller concentration separately from completed sales.
+  Thin listings cannot establish a baseline or broad price confidence.
 - Verify server-specific tradeability, stack sizes, healing values, level
   requirements, and whether First Aid behavior matches 3.3.5.
 
@@ -70,7 +70,7 @@ because both consume cloth.
 
 - Audit date:
 - Placement decision:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Server-specific findings:
 - Decisions and unresolved items:

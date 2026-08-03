@@ -3,8 +3,9 @@
 ## AH Profession Expansion Plans
 
 - Before adding or expanding profession-crafted AH content, read `docs/ah-profession-plans/README.md` and the matching profession plan.
-- Complete the plan's current-price audit before adding crafted rows. Reconcile duplicate prices across guides and verify the ingredient prices used for craft-cost calculations.
-- Update the matching plan's status and evidence log as the work advances. Do not treat an unverified price as current.
+- Complete the plan's non-circular baseline audit before adding crafted rows. Reconcile duplicate prices across guides and verify the saved ingredient baselines used for craft-cost calculations.
+- Active AH listings are competition evidence only and must never automatically set a baseline. Record source type and confidence in `data/ah-price-baselines.json` under `docs/ah-pricing-methodology.md`.
+- Update the matching plan's status and evidence log as the work advances. Do not treat a listing, low-confidence reference, or fallback as verified current value.
 - Publishing remains a separate step and requires explicit user authorization.
 
 ## Guide Footer Dates

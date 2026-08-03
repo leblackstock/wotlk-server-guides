@@ -5,10 +5,10 @@
 - Work type: smelting-output catalog
 - Suggested order: 6
 
-> Hard gate: finish and record the current-price audit before adding smelted
-> outputs. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding smelted
+> outputs. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Recheck all current ore, bar, alloy, and stone rows in the 88-row guide before
   changing or expanding smelting coverage.
@@ -51,7 +51,7 @@
 
 ## Acceptance Checks
 
-- [ ] Current-price audit completed and recorded.
+- [ ] Baseline evidence audit completed and recorded.
 - [ ] Every smelting spell has an include/exclude decision.
 - [ ] Ore-to-bar and alloy calculations use exact outputs.
 - [ ] Blacksmithing-owned crafts are not duplicated as Mining outputs.
@@ -61,7 +61,7 @@
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Smelting/cooldown findings:
 - Decisions and unresolved items:

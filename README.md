@@ -10,8 +10,10 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `assets/` - shared assets for the guide hub
 - `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
 - `data/ah-vendor-sections.json` - canonical vendor/source costs and suggested AH buyouts
+- `data/ah-price-baselines.json` - frozen non-circular material and posting baselines with confidence
 - `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
 - `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
+- `scripts/apply-ah-price-baselines.py` - reconciles static rows to frozen baselines and shared crafted outputs
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
 - `README.md` - maintenance notes
@@ -59,10 +61,21 @@ Search results link to the exact item row. Every AH guide therefore loads `asset
 ## Expand A Profession AH Guide
 
 Before adding profession-crafted items, read
-[`docs/ah-profession-plans/README.md`](docs/ah-profession-plans/README.md) and the
-matching profession plan. The current-price audit is a required first gate: fix
-and reconcile the guide's existing prices and its ingredient references before
-calculating or adding crafted-item prices.
+[`docs/ah-profession-plans/README.md`](docs/ah-profession-plans/README.md),
+[`docs/ah-pricing-methodology.md`](docs/ah-pricing-methodology.md), and the
+matching profession plan. The non-circular baseline audit is the first gate:
+active listings may describe competition, but only saved baselines, exact
+vendor costs, deterministic conversions, and qualified realized sales may feed
+crafted-item prices.
+
+After a deliberate baseline or crafted-price change, reconcile and verify the
+static guide rows:
+
+```powershell
+python scripts/apply-ah-price-baselines.py
+python scripts/apply-ah-price-baselines.py --check
+python tests/ah-price-baseline.test.py
+```
 
 ## Add A New Guide
 

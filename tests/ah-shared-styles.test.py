@@ -46,6 +46,15 @@ for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     expected_href = f"../assets/ah-guide-icons.css?v={STYLESHEET_VERSION}"
     assert expected_href in source, f"{path.name}: shared AH stylesheet cache marker is stale"
+    assert source.count("<!-- AH_BASELINE_NOTE_START -->") == 1, (
+        f"{path.name}: expected exactly one canonical pricing-baseline note"
+    )
+    assert source.count('class="note ah-baseline-note"') == 1, (
+        f"{path.name}: expected exactly one visible pricing-baseline note"
+    )
+    assert "Active listings show competition only and never set or raise guide prices." in source, (
+        f"{path.name}: pricing-baseline note does not preserve the non-circular guard"
+    )
 
 icon_styles = ICON_STYLES_PATH.read_text(encoding="utf-8")
 assert f'./ah-price-guide.css?v={STYLESHEET_VERSION}' in icon_styles, (

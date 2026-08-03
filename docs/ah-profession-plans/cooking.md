@@ -5,10 +5,10 @@
 - Work type: full crafted catalog
 - Suggested order: 5
 
-> Hard gate: finish and record the current-price audit before adding crafted
-> rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding crafted
+> rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Audit the current finished-food/drink rows and every fish, meat, egg, spice,
   and vendor ingredient that feeds a Cooking recipe in the 147-row shared guide.
@@ -53,7 +53,7 @@
 
 ## Acceptance Checks
 
-- [ ] Current-price audit completed and recorded.
+- [ ] Baseline evidence audit completed and recorded.
 - [ ] Every valid tradeable Cooking output has an include/exclude decision.
 - [ ] Batch yields and per-item costs are verified by recipe.
 - [ ] Level-80 buff-food notes identify exact stats and likely roles.
@@ -63,7 +63,7 @@
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Output/server findings:
 - Decisions and unresolved items:

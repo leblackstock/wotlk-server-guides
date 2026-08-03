@@ -5,10 +5,10 @@
 - Work type: full crafted catalog
 - Suggested order: 2
 
-> Hard gate: finish and record the current-price audit before adding crafted
-> rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding crafted
+> rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Recheck all 82 current rows: epic/rare/uncommon raw gems, meta bases and cut
   metas, Dragon's Eye, prospecting ores, older gems, stone, and settings.
@@ -51,7 +51,7 @@
 
 ## Acceptance Checks
 
-- [ ] Current-price audit completed and recorded.
+- [ ] Baseline evidence audit completed and recorded.
 - [ ] Every valid tradeable cut has an item ID, recipe ID, rarity, and price.
 - [ ] Raw-versus-cut opportunity costs are tested.
 - [ ] Random-output conversions use an explicit model or remain unpriced.
@@ -61,7 +61,7 @@
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Server-specific binding findings:
 - Random-output method:

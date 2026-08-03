@@ -5,10 +5,10 @@
 - Work type: gathering-price audit; conversions belong to Leatherworking
 - Suggested order: 9
 
-> Hard gate: complete the current-price audit before Leatherworking crafted
-> prices are calculated. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: complete the baseline evidence audit before Leatherworking crafted
+> prices are calculated. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Audit the raw leather, hide, scale, scrap, and specialty-drop rows in the
   current 58-row combined guide.
@@ -44,7 +44,7 @@ to the Leatherworking plan even when their inputs come from Skinning.
 
 ## Acceptance Checks
 
-- [ ] All current raw-material prices were rechecked and recorded.
+- [ ] Every saved raw-material baseline has a source type and confidence.
 - [ ] Duplicate prices agree across guides.
 - [ ] Raw materials and Leatherworking conversions have clear ownership.
 - [ ] Leatherworking's ingredient references use refreshed values.
@@ -54,7 +54,7 @@ to the Leatherworking plan even when their inputs come from Skinning.
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Item/source references checked:
 - Server-specific gathering findings:
 - Decisions and unresolved items:

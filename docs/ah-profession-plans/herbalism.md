@@ -5,10 +5,10 @@
 - Work type: gathering-price audit; no normal crafted catalog
 - Suggested order: 8
 
-> Hard gate: complete the current-price audit before any herb-related crafted
-> expansion is calculated elsewhere. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: complete the baseline evidence audit before any herb-related crafted
+> expansion is calculated elsewhere. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Recheck all 53 current herb and vendor/convenience rows across Northrend,
   Outland, and Classic.
@@ -45,7 +45,7 @@ Herbalism rows.
 
 ## Acceptance Checks
 
-- [ ] All current prices were rechecked and evidence recorded.
+- [ ] Every saved baseline has a source type and confidence.
 - [ ] Duplicate herb prices agree across guides.
 - [ ] Alchemy/Inscription dependency references use the refreshed values.
 - [ ] No non-item Herbalism spell is presented as a craftable AH item.
@@ -55,7 +55,7 @@ Herbalism rows.
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Item/source references checked:
 - Server-specific gathering findings:
 - Decisions and unresolved items:

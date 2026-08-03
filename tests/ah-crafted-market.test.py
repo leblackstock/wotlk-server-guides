@@ -86,6 +86,11 @@ def main() -> int:
         cwd=ROOT,
         check=True,
     )
+    subprocess.run(
+        [sys.executable, "scripts/apply-ah-price-baselines.py", "--check"],
+        cwd=ROOT,
+        check=True,
+    )
 
     config = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     recipe_audit = json.loads(RECIPE_AUDIT_PATH.read_text(encoding="utf-8"))
@@ -382,7 +387,7 @@ def main() -> int:
         "alch-flask-endless-rage": 550_000,
         "alch-flask-frost-wyrm": 600_000,
         "alch-cardinal-ruby": 1_200_000,
-        "bs-eternal-belt-buckle": 340_000,
+        "bs-eternal-belt-buckle": 350_000,
         "bs-puresteel-legplates": 76_500_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():

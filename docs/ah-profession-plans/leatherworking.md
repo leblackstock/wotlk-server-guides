@@ -5,10 +5,10 @@
 - Work type: full crafted catalog
 - Suggested order: 4
 
-> Hard gate: finish and record the current-price audit before adding crafted
-> rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding crafted
+> rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Recheck all 58 current rows, including Northrend leather/hides/scales,
   Arctic Fur, scraps, older materials, Eternals, salt, leg armors, kits, and
@@ -53,7 +53,7 @@
 
 ## Acceptance Checks
 
-- [ ] Current-price audit completed and recorded.
+- [ ] Baseline evidence audit completed and recorded.
 - [ ] All material conversions are canonical and recursively priced.
 - [ ] Every tradeable Leatherworking output has an include/exclude decision.
 - [ ] Self-only fur linings and BoP crafts are absent.
@@ -63,7 +63,7 @@
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Conversion/server findings:
 - Decisions and unresolved items:

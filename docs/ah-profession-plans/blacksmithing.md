@@ -5,18 +5,18 @@
 - Work type: full crafted catalog
 - Suggested order: 1
 
-> Hard gate: finish and record the current-price audit before adding crafted
-> rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding crafted
+> rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
-- Recheck all 88 current rows, especially Primordial Saronite, Crusader/Runed/
+- Recheck every existing material/reference row, especially Primordial Saronite, Crusader/Runed/
   Frozen Orbs, Titansteel and Titanium, Saronite, Eternals, Infinite Dust, and
   the existing Wrath utility items.
 - Reconcile duplicated bars, ores, stone, rods, and cross-profession reagents
   with the Mining/Smithing, Enchanting, and cross-profession guides.
-- Recalculate the current belt buckle, weapon chain, shield plating, stones,
-  keys, and rod blanks from verified inputs before using them as examples.
+- Recalculate the belt buckle, weapon chain, shield plating, stones, keys, and
+  rod blanks from saved input baselines before using them as examples.
 - Record whether the server follows normal 3.3.5 Titansteel cooldown behavior;
   keep that access issue separate from raw reagent cost.
 
@@ -49,11 +49,11 @@
   physical DPS, caster plate, PvP, leveling, and collection markets.
 - State what each buckle, chain, spike, plating, key, or stone actually does and
   whether level restrictions affect demand.
-- Use one shared craft-cost `*` note and one exact recipe mouseover per row.
+- Use one shared baseline-pricing `*` note and one exact recipe mouseover per row.
 
 ## Acceptance Checks
 
-- [x] Current-price audit completed and recorded.
+- [x] Baseline evidence audit completed and recorded.
 - [x] Every tradeable Blacksmithing output has an include/exclude decision.
 - [x] All recursive bar/rod costs and guaranteed output counts are tested.
 - [x] Self-only sockets and BoP crafts are absent.
@@ -63,14 +63,23 @@
 ## Evidence Log
 
 - Audit date: 2026-08-02.
-- Live AH observations: the same-day Garrosh-Horde Auctioneer full scan contained
-  3,294 auction rows and 12,616 units. Strong clusters used in the input audit
-  included Saronite Ore (35 listings / 407 units; 1g 26s low and about 1g 30s
-  median), Mageweave Cloth (19 listings / 154 units at 16s), Rough Stone (8
-  listings / 54 units around 5s), Sharp Claw (10 listings around 1s 66c), Ichor
-  of Undeath (4 listings from 8s to about 13s), Volatile Rum (3 listings / 15
-  units at 7s), and Dark Rune (8 singles at 80s). Thin one-listing outliers were
-  not used to reset a band.
+- Listing concentration observations (not valuation evidence): the same-day
+  Garrosh-Horde scan contained 3,294 auction rows and 12,616 units. Its top
+  three sellers controlled 73.7% of all units. Saronite Ore (407 units), Rough
+  Stone (54), and Thick Leather (4) were each supplied by only Cloudbreaker;
+  Mageweave Cloth had only two sellers. No active-listing price was retained as
+  baseline evidence.
+- Realized-sales coverage: BeanCounter contained 126 completed-sale records,
+  842 units, and 33 unique items. Only four of 149 direct Blacksmithing inputs
+  and three Blacksmithing outputs had any completed sales. Solid Stone's frozen
+  9s target was independently matched by 80 units across four auctions, two
+  buyers, and two days, so that one baseline is medium confidence. The 695
+  Saronite Ore units sold in one 13-minute window to two buyers were recorded
+  as validation only and did not reset the baseline.
+- Baseline decision: `data/ah-price-baselines.json` freezes 650 pre-scan item
+  bands. Of those, 649 remain low confidence and one is medium confidence;
+  exact vendor costs still override the file during recipe calculation. Active
+  scans cannot update the file automatically.
 - Recipe/item sources checked: the complete WotLKDB Blacksmithing spell list was
   retrieved in three non-truncated skill ranges (525 records), then recipes and
   exact minimum outputs were linked to Wowhead WotLK spell pages and checked
@@ -81,11 +90,14 @@
 - Decisions and unresolved items: 453 distinct Horde-relevant tradeable outputs
   were included. Fifty-three BoP outputs, six duplicate Alliance-only Trial of
   the Crusader records, and self-only socket applications were excluded. Rare
-  legacy reagents without current listings retain documented conservative
-  fallbacks, and the 423 finished outputs absent from this scan still require a
-  live competition check before stock is crafted.
+  legacy reagents without independent evidence retain documented conservative
+  fallbacks. Current competition should still be checked before stock is
+  crafted, but it cannot alter the saved valuation baseline.
 - Completion summary: 16 crafted sections now cover Wrath, Outland, and Classic
   enhancements, intermediates, weapons, shields, and BoE armor. Every crafted
   row has a rarity color, item-specific market/use note, exact recipe mouseover,
-  and one shared craft-cost `*` reference. Duplicate rod and grinding-stone rows
-  in Mining + Smithing were synchronized to the same prices and recipe links.
+  and one shared baseline-pricing `*` reference. The non-circular re-audit
+  recalculated all 453 outputs: 103 changed, 94 target prices decreased, eight
+  increased from frozen historical output references, and 350 were unchanged.
+  Duplicate rod and grinding-stone rows in Mining + Smithing remain synchronized
+  to the canonical output prices and recipe links.

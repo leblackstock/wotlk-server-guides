@@ -17,6 +17,7 @@ VENDOR_DATA_PATH = ROOT / "data" / "ah-vendor-sections.json"
 CRAFTED_DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
 DROPPED_SCROLL_DATA_PATH = ROOT / "data" / "ah-dropped-scrolls.json"
 NAV_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "navigation.html"
+BASELINE_NOTE_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "baseline-note.html"
 VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-section.html"
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
@@ -27,6 +28,12 @@ NAV_BLOCK = re.compile(
     r"(?:<!-- AH_SHARED_NAV_START -->\s*)?"
     r"<nav class=\"site-nav(?: ah-guide-nav)?\" aria-label=\"Guide navigation\">.*?</nav>"
     r"(?:\s*<!-- AH_SHARED_NAV_END -->)?",
+    re.DOTALL,
+)
+BASELINE_NOTE_BLOCK = re.compile(
+    r"<!-- AH_BASELINE_NOTE_START -->\s*"
+    r"<aside class=\"note ah-baseline-note\">.*?</aside>"
+    r"\s*<!-- AH_BASELINE_NOTE_END -->",
     re.DOTALL,
 )
 VENDOR_BLOCK = re.compile(
@@ -621,6 +628,7 @@ def transform_guide(
     source: str,
     filename: str,
     nav_template: str,
+    baseline_note_template: str,
     vendor_template: str,
     crafted_template: str,
     dropped_scroll_template: str,
@@ -631,6 +639,20 @@ def transform_guide(
     source, nav_count = NAV_BLOCK.subn(nav_template, source, count=1)
     if nav_count != 1:
         raise ValueError(f"{filename}: expected exactly one guide navigation block")
+
+    baseline_note_matches = len(BASELINE_NOTE_BLOCK.findall(source))
+    if baseline_note_matches == 1:
+        source = BASELINE_NOTE_BLOCK.sub(baseline_note_template, source, count=1)
+    elif baseline_note_matches == 0:
+        if source.count("</header>") != 1:
+            raise ValueError(f"{filename}: expected exactly one header insertion point")
+        source = source.replace(
+            "</header>",
+            f"{baseline_note_template}\n</header>",
+            1,
+        )
+    else:
+        raise ValueError(f"{filename}: expected at most one pricing-baseline note")
 
     guide_config = vendor_config["guides"].get(filename)
     vendor_matches = len(VENDOR_BLOCK.findall(source))
@@ -710,6 +732,7 @@ def main() -> int:
     crafted_config = load_crafted_config()
     dropped_scroll_config = load_dropped_scroll_config()
     nav_template = NAV_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
+    baseline_note_template = BASELINE_NOTE_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     vendor_template = VENDOR_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     crafted_template = CRAFTED_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     dropped_scroll_template = DROPPED_SCROLL_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
@@ -725,6 +748,7 @@ def main() -> int:
             source,
             path.name,
             nav_template,
+            baseline_note_template,
             vendor_template,
             crafted_template,
             dropped_scroll_template,

@@ -44,11 +44,16 @@ def main() -> int:
     errors: list[str] = []
     main_hub = parse(MAIN_HUB)
     ah_hub = parse(AH_HUB)
+    ah_hub_source = AH_HUB.read_text(encoding="utf-8")
 
     if len(main_hub.ids) != len(set(main_hub.ids)):
         errors.append("index.html contains duplicate IDs")
     if len(ah_hub.ids) != len(set(ah_hub.ids)):
         errors.append("auction-house.html contains duplicate IDs")
+    if "Active listings show competition only and never set or raise guide prices." not in ah_hub_source:
+        errors.append("auction-house.html is missing the non-circular pricing notice")
+    if "These are suggested starting prices, not live AH data." in ah_hub_source:
+        errors.append("auction-house.html still contains the superseded live-AH price notice")
 
     browse_links = [
         href

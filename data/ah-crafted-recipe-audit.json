@@ -14,10 +14,10 @@
     }
   },
   "pricing_method": {
-    "reagent_reference": "Highest matching quick, target, and high material row outside generated crafted blocks; exact vendor cost where applicable.",
+    "reagent_reference": "Frozen non-circular quick, target, and high bands from data/ah-price-baselines.json; exact vendor cost where applicable. Active AH listings are excluded.",
     "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their current crafted-catalog bands.",
     "output_quantity": "Minimum guaranteed output; charged devices use all guaranteed charges.",
-    "market_margin": "Demand-sensitive margin with upward convenience rounding; existing higher guide prices and matching output rows elsewhere in the guide set remain the baseline.",
+    "market_margin": "Demand-sensitive margin with upward convenience rounding; frozen output references may preserve an independently established higher posting baseline.",
     "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium."
   },
   "reagent_price_overrides": {
@@ -27,7 +27,8 @@
       "quick": 10000,
       "target": 20000,
       "high": 40000,
-      "reason": "Unpriced legacy mob-drop reagent."
+      "reason": "Unpriced legacy mob-drop reagent.",
+      "confidence": "fallback"
     },
     "2901": {
       "name": "Mining Pick",
@@ -35,7 +36,8 @@
       "quick": 81,
       "target": 81,
       "high": 81,
-      "reason": "Exact unlimited-vendor cost."
+      "reason": "Exact unlimited-vendor cost.",
+      "confidence": "high"
     },
     "3164": {
       "name": "Discolored Worg Heart",
@@ -43,7 +45,8 @@
       "quick": 5000,
       "target": 10000,
       "high": 20000,
-      "reason": "Unpriced legacy mob-drop reagent."
+      "reason": "Unpriced legacy mob-drop reagent.",
+      "confidence": "fallback"
     },
     "3819": {
       "name": "Wintersbite",
@@ -51,7 +54,8 @@
       "quick": 5000,
       "target": 10000,
       "high": 20000,
-      "reason": "Unpriced legacy herb; aligned to other scarce Classic herbs."
+      "reason": "Unpriced legacy herb; aligned to other scarce Classic herbs.",
+      "confidence": "fallback"
     },
     "4342": {
       "name": "Purple Dye",
@@ -59,7 +63,8 @@
       "quick": 2500,
       "target": 2500,
       "high": 2500,
-      "reason": "Exact unlimited-vendor cost."
+      "reason": "Exact unlimited-vendor cost.",
+      "confidence": "high"
     },
     "5635": {
       "name": "Sharp Claw",
@@ -67,7 +72,8 @@
       "quick": 150,
       "target": 200,
       "high": 300,
-      "reason": "Current Garrosh-Horde full scan: 10 listings at about 1s 66c each."
+      "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
+      "confidence": "fallback"
     },
     "5956": {
       "name": "Blacksmith Hammer",
@@ -75,7 +81,8 @@
       "quick": 18,
       "target": 18,
       "high": 18,
-      "reason": "Exact unlimited-vendor cost."
+      "reason": "Exact unlimited-vendor cost.",
+      "confidence": "high"
     },
     "7005": {
       "name": "Skinning Knife",
@@ -83,7 +90,8 @@
       "quick": 82,
       "target": 82,
       "high": 82,
-      "reason": "Exact unlimited-vendor cost."
+      "reason": "Exact unlimited-vendor cost.",
+      "confidence": "high"
     },
     "7972": {
       "name": "Ichor of Undeath",
@@ -91,7 +99,8 @@
       "quick": 800,
       "target": 1300,
       "high": 2500,
-      "reason": "Current Garrosh-Horde full scan: four listings from 8s to about 13s each."
+      "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
+      "confidence": "fallback"
     },
     "9260": {
       "name": "Volatile Rum",
@@ -99,7 +108,8 @@
       "quick": 600,
       "target": 700,
       "high": 1200,
-      "reason": "Current Garrosh-Horde full scan: three listings / 15 units at 7s each."
+      "reason": "Provisional legacy drop fallback; no independent realized-price baseline yet.",
+      "confidence": "fallback"
     },
     "10286": {
       "name": "Heart of the Wild",
@@ -107,7 +117,8 @@
       "quick": 10000,
       "target": 20000,
       "high": 40000,
-      "reason": "Unpriced legacy mob-drop reagent."
+      "reason": "Unpriced legacy mob-drop reagent.",
+      "confidence": "fallback"
     },
     "12938": {
       "name": "Blood of Heroes",
@@ -115,7 +126,8 @@
       "quick": 50000,
       "target": 100000,
       "high": 200000,
-      "reason": "Unpriced scarce open-world pickup."
+      "reason": "Unpriced scarce open-world pickup.",
+      "confidence": "fallback"
     },
     "39970": {
       "name": "Fire Leaf",
@@ -123,7 +135,8 @@
       "quick": 12000,
       "target": 18000,
       "high": 28000,
-      "reason": "Unpriced Northrend herb; aligned to nearby herb bands."
+      "reason": "Unpriced Northrend herb; aligned to nearby herb bands.",
+      "confidence": "fallback"
     },
     "41814": {
       "name": "Glassfin Minnow",
@@ -131,7 +144,8 @@
       "quick": 6000,
       "target": 10000,
       "high": 17500,
-      "reason": "Unpriced Northrend fish; aligned to Fangtooth Herring."
+      "reason": "Unpriced Northrend fish; aligned to Fangtooth Herring.",
+      "confidence": "fallback"
     },
     "4255": {
       "name": "Green Leather Armor",
@@ -139,7 +153,8 @@
       "quick": 20000,
       "target": 35000,
       "high": 60000,
-      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe."
+      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
+      "confidence": "fallback"
     },
     "5966": {
       "name": "Guardian Gloves",
@@ -147,7 +162,8 @@
       "quick": 30000,
       "target": 50000,
       "high": 90000,
-      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe."
+      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
+      "confidence": "fallback"
     },
     "11754": {
       "name": "Black Diamond",
@@ -155,7 +171,8 @@
       "quick": 5000,
       "target": 10000,
       "high": 20000,
-      "reason": "Unpriced legacy dungeon-drop gem used by Darkrune Helm."
+      "reason": "Unpriced legacy dungeon-drop gem used by Darkrune Helm.",
+      "confidence": "fallback"
     },
     "12662": {
       "name": "Demonic Rune",
@@ -163,7 +180,8 @@
       "quick": 10000,
       "target": 20000,
       "high": 40000,
-      "reason": "BoP farmed reagent; valued only as an explicit access estimate."
+      "reason": "BoP farmed reagent; valued only as an explicit access estimate.",
+      "confidence": "fallback"
     },
     "12753": {
       "name": "Skin of Shadow",
@@ -171,7 +189,8 @@
       "quick": 20000,
       "target": 40000,
       "high": 80000,
-      "reason": "BoP Scholomance reagent; valued only as an explicit access estimate."
+      "reason": "BoP Scholomance reagent; valued only as an explicit access estimate.",
+      "confidence": "fallback"
     },
     "12809": {
       "name": "Guardian Stone",
@@ -179,7 +198,8 @@
       "quick": 20000,
       "target": 40000,
       "high": 80000,
-      "reason": "Unpriced scarce legacy mob-drop reagent."
+      "reason": "Unpriced scarce legacy mob-drop reagent.",
+      "confidence": "fallback"
     },
     "15417": {
       "name": "Devilsaur Leather",
@@ -187,7 +207,8 @@
       "quick": 20000,
       "target": 35000,
       "high": 60000,
-      "reason": "Unpriced legacy Skinning material used by Persuader."
+      "reason": "Unpriced legacy Skinning material used by Persuader.",
+      "confidence": "fallback"
     },
     "17012": {
       "name": "Core Leather",
@@ -195,7 +216,8 @@
       "quick": 20000,
       "target": 40000,
       "high": 70000,
-      "reason": "Unpriced Molten Core Skinning material."
+      "reason": "Unpriced Molten Core Skinning material.",
+      "confidence": "fallback"
     },
     "17203": {
       "name": "Sulfuron Ingot",
@@ -203,7 +225,8 @@
       "quick": 750000,
       "target": 1250000,
       "high": 2000000,
-      "reason": "Unpriced epic Molten Core drop used eight at a time by Sulfuron Hammer."
+      "reason": "Unpriced epic Molten Core drop used eight at a time by Sulfuron Hammer.",
+      "confidence": "fallback"
     },
     "19726": {
       "name": "Bloodvine",
@@ -211,7 +234,8 @@
       "quick": 30000,
       "target": 50000,
       "high": 90000,
-      "reason": "Unpriced Zul'Gurub gathering material."
+      "reason": "Unpriced Zul'Gurub gathering material.",
+      "confidence": "fallback"
     },
     "19774": {
       "name": "Souldarite",
@@ -219,7 +243,8 @@
       "quick": 20000,
       "target": 35000,
       "high": 60000,
-      "reason": "Unpriced Zul'Gurub ore used by Bloodsoul and Darksoul crafts."
+      "reason": "Unpriced Zul'Gurub ore used by Bloodsoul and Darksoul crafts.",
+      "confidence": "fallback"
     },
     "20520": {
       "name": "Dark Rune",
@@ -227,7 +252,8 @@
       "quick": 7000,
       "target": 8000,
       "high": 12000,
-      "reason": "Current Garrosh-Horde full scan: eight single-item listings at 80s each."
+      "reason": "Provisional legacy dungeon-drop fallback; no independent realized-price baseline yet.",
+      "confidence": "fallback"
     },
     "22202": {
       "name": "Small Obsidian Shard",
@@ -235,7 +261,8 @@
       "quick": 10000,
       "target": 20000,
       "high": 40000,
-      "reason": "Unpriced Ahn'Qiraj crafting shard."
+      "reason": "Unpriced Ahn'Qiraj crafting shard.",
+      "confidence": "fallback"
     },
     "22203": {
       "name": "Large Obsidian Shard",
@@ -243,7 +270,8 @@
       "quick": 30000,
       "target": 50000,
       "high": 90000,
-      "reason": "Unpriced Ahn'Qiraj crafting shard."
+      "reason": "Unpriced Ahn'Qiraj crafting shard.",
+      "confidence": "fallback"
     },
     "22682": {
       "name": "Frozen Rune",
@@ -251,7 +279,8 @@
       "quick": 250000,
       "target": 400000,
       "high": 700000,
-      "reason": "Unpriced scarce legacy Naxxramas crafting rune."
+      "reason": "Unpriced scarce legacy Naxxramas crafting rune.",
+      "confidence": "fallback"
     },
     "34664": {
       "name": "Sunmote",
@@ -259,7 +288,8 @@
       "quick": 200000,
       "target": 350000,
       "high": 600000,
-      "reason": "Unpriced scarce Sunwell crafting drop."
+      "reason": "Unpriced scarce Sunwell crafting drop.",
+      "confidence": "fallback"
     }
   },
   "recipes": {

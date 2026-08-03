@@ -208,7 +208,7 @@ async function verifyAuditedCraftedGuide(page, options) {
       rows: 453,
       sections: 16,
       key: "bs-eternal-belt-buckle",
-      target: "34g",
+      target: "35g",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
       label: "Desktop Blacksmithing guide"
@@ -277,7 +277,7 @@ async function verifyAuditedCraftedGuide(page, options) {
       rows: 453,
       sections: 16,
       key: "bs-eternal-belt-buckle",
-      target: "34g",
+      target: "35g",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
       label: "Mobile Blacksmithing guide"

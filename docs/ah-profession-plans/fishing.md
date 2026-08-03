@@ -5,10 +5,10 @@
 - Work type: gathering-price audit; finished food belongs to Cooking
 - Suggested order: 10
 
-> Hard gate: complete the current-price audit before Cooking crafted prices are
-> calculated. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: complete the baseline evidence audit before Cooking crafted prices are
+> calculated. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Audit raw fish, clams, pearls, quest fish, rare catches, junk/vendor items,
   and fishing-source utility rows in the current 147-row combined guide.
@@ -48,7 +48,7 @@ source. Do not describe these as Fishing-crafted items.
 
 ## Acceptance Checks
 
-- [ ] All current Fishing-domain prices were rechecked and recorded.
+- [ ] Every saved Fishing-domain baseline has a source type and confidence.
 - [ ] Cooking ingredient references use refreshed fish prices.
 - [ ] Random clam contents are not priced as guaranteed output.
 - [ ] Utility items retain their true profession/source ownership.
@@ -58,7 +58,7 @@ source. Do not describe these as Fishing-crafted items.
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Item/source references checked:
 - Server-specific fishing findings:
 - Decisions and unresolved items:

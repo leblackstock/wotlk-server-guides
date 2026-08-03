@@ -11,14 +11,16 @@ For the next AH addition:
 
 1. Read this file and the matching profession plan.
 2. Change that plan's status to `in progress` and record the date.
-3. Complete **Gate 0: current-price audit** before adding any crafted rows.
+3. Complete **Gate 0: non-circular baseline audit** before adding crafted rows.
 4. Record sources, unresolved questions, and important decisions in the plan's
    evidence log while working.
 5. Complete the plan's acceptance checks, then mark it `complete`.
 6. Publish only after the user explicitly asks to make the work live.
 
-Do not silently reuse an old price. If a price cannot be verified, label it as
-pending research and keep it out of the finished crafted-price calculation.
+Follow [the non-circular pricing methodology](../ah-pricing-methodology.md).
+Freeze weak evidence as low confidence instead of replacing it with an active-
+listing median. A documented fallback may cost a rare recipe, but it must never
+be presented as a verified current price.
 
 ## Profession Registry and Suggested Order
 
@@ -39,7 +41,7 @@ Alchemy, Blacksmithing, Enchanting, Engineering, and Inscription have canonical
 crafted catalogs in `data/ah-crafted-sections.json`. They remain comparison
 models, not unfinished plans. Jewelcrafting is the next suggested expansion.
 
-## Gate 0: Audit Current Prices Before Adding Crafteds
+## Gate 0: Establish Non-Circular Baselines Before Adding Crafteds
 
 This gate applies to every expansion plan, including the gathering-only audits.
 
@@ -47,9 +49,12 @@ This gate applies to every expansion plan, including the gathering-only audits.
   the same item wherever it appears in another AH guide.
 - Verify that prices are per item or per stated stack; correct accidental
   per-stack/per-unit mismatches.
-- Recheck the current AH market before changing bands. Record the observation
-  date, quantities seen, low buyout, useful market cluster or median, and
-  scarcity/outlier conditions. Do not let a single extreme listing set a band.
+- Audit the frozen reference in `data/ah-price-baselines.json`, its source type,
+  and its confidence before changing any band.
+- Record current AH seller count, units, and concentration separately. Active
+  listings may guide posting timing and stack size, but never establish value.
+- Record completed BeanCounter sales separately. Promote them into the baseline
+  only when they pass the realized-sales gate in the shared methodology.
 - Verify fixed vendor prices against the canonical vendor catalog and reconcile
   shared reagents with their canonical guide rows.
 - Reconcile duplicate item names to one canonical quick, target, and high band
@@ -60,10 +65,10 @@ This gate applies to every expansion plan, including the gathering-only audits.
 - Confirm the item ID, expansion/tier, tradeability, binding, rarity class, and
   source note for every row touched.
 - Audit every ingredient that will feed the new crafted catalog. Crafted-price
-  work may begin only after those input prices are current and internally
-  consistent.
-- Mark unavailable live-market evidence as `pending`; do not disguise a fallback
-  band as a verified current price.
+  work may begin only after those inputs have a saved baseline, confidence, and
+  internally consistent conversion path.
+- Mark missing independent evidence as `low` or `fallback`; do not disguise an
+  active listing or provisional band as a verified current price.
 
 ## Crafted Catalog Discovery
 
@@ -89,9 +94,8 @@ For a deterministic recipe, calculate each band per finished item:
 Then apply a modest, documented demand-sensitive margin. Use guaranteed output,
 not specialization procs. Keep these checks explicit:
 
-- A craft's quick band must not undercut its current quick reagent cost unless
-  the row clearly says the market is below cost and recommends buying rather
-  than crafting.
+- A craft's quick band must not undercut its saved quick reagent baseline unless
+  the row clearly documents a cheaper deterministic supply path.
 - Opportunity cost applies when the recipe consumes a tradeable intermediate,
   uncut gem, cloth cooldown, bar, leather, or other saleable input.
 - Cooldowns, rare recipes, reputation gates, and specialization access belong
@@ -135,10 +139,12 @@ When a guide changes:
 
 ```powershell
 python scripts/render-ah-shared-sections.py --check
+python scripts/apply-ah-price-baselines.py --check
 python scripts/build-ah-search-index.py --check
 python scripts/apply-ah-item-tooltips.py --check
 python scripts/audit-ah-crafted-prices.py --check
 python tests/ah-crafted-market.test.py
+python tests/ah-price-baseline.test.py
 python tests/ah-cross-guide-consistency.test.py
 python tests/ah-vendor-pricing.test.py
 python tests/ah-hub-structure.test.py
@@ -155,7 +161,7 @@ A profession is complete only when:
 - Gate 0 and its evidence log are complete.
 - The candidate recipe list has an inclusion or exclusion decision for every
   relevant tradeable output.
-- Prices trace to verified current inputs and correct output quantities.
+- Prices trace to saved input baselines, recorded confidence, and correct output quantities.
 - Notes are specific, recipe links mouse over correctly, and rarity colors are
   accurate.
 - Duplicate prices across guides agree.

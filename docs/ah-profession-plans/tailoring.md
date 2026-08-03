@@ -5,10 +5,10 @@
 - Work type: full crafted catalog
 - Suggested order: 3
 
-> Hard gate: finish and record the current-price audit before adding crafted
-> rows. Follow [the shared Gate 0](README.md#gate-0-audit-current-prices-before-adding-crafteds).
+> Hard gate: finish and record the baseline evidence audit before adding crafted
+> rows. Follow [the shared Gate 0](README.md#gate-0-establish-non-circular-baselines-before-adding-crafteds).
 
-## Current-Price Audit
+## Baseline Evidence Audit
 
 - Recheck all 57 current rows, especially specialty cloth, bolts, raw cloth,
   spider silks, Eternals, and vendor thread/dyes.
@@ -51,7 +51,7 @@
 
 ## Acceptance Checks
 
-- [ ] Current-price audit completed and recorded.
+- [ ] Baseline evidence audit completed and recorded.
 - [ ] Cloth conversion and cooldown rules are documented and tested.
 - [ ] Every tradeable Tailoring output has an include/exclude decision.
 - [ ] Bag sizes/restrictions and spellthread effects are exact.
@@ -61,7 +61,7 @@
 ## Evidence Log
 
 - Audit date:
-- Live AH observations:
+- Listing concentration observations (not valuation evidence):
 - Recipe/item sources checked:
 - Cooldown/specialization findings:
 - Decisions and unresolved items:

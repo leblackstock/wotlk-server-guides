@@ -2,9 +2,9 @@
 """Audit non-Enchanting crafted prices against exact 3.3.5 recipes.
 
 Recipe metadata is refreshed deliberately from WotLKDB and stored in a local
-snapshot. Normal checks are offline: they price each recipe from the guide
-set's own quick/target/high reagent references, exact vendor costs, and a small
-documented fallback table for recipe inputs not otherwise priced in the site.
+snapshot. Normal checks are offline: they price each recipe from the frozen
+non-circular baseline, exact vendor costs, and documented fallbacks for inputs
+that still lack independent evidence. Active AH listings never set a floor.
 """
 
 from __future__ import annotations
@@ -12,12 +12,10 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import datetime as dt
-import html
 import json
 import math
 import re
 import sys
-import unicodedata
 import urllib.request
 from decimal import Decimal, ROUND_CEILING
 from pathlib import Path
@@ -26,9 +24,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CRAFTED_DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
 RECIPE_AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
+PRICE_BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
 VENDOR_DATA_PATH = ROOT / "data" / "ah-vendor-sections.json"
-ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
-GUIDES_DIR = ROOT / "guides"
 
 PROFESSION_SKILLS = {
     "inscription-materials-ah-price-guide.html": 773,
@@ -62,9 +59,9 @@ DECK_COMPLETION_MARGINS = {
     "high": Decimal("1.10"),
 }
 
-# These recipe inputs are not currently priced as normal rows elsewhere in the
-# guide set. Vendor entries use exact unlimited-vendor cost. Market fallbacks
-# are intentionally conservative low-pop bands and are named in the snapshot.
+# These recipe inputs are not represented in the frozen baseline. Vendor
+# entries use exact unlimited-vendor cost. Other values are explicitly low-
+# confidence fallbacks; active listings are not valuation evidence.
 REAGENT_PRICE_OVERRIDES = {
     1288: {
         "name": "Large Venom Sac",
@@ -112,7 +109,7 @@ REAGENT_PRICE_OVERRIDES = {
         "quick": 150,
         "target": 200,
         "high": 300,
-        "reason": "Current Garrosh-Horde full scan: 10 listings at about 1s 66c each.",
+        "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
     },
     5956: {
         "name": "Blacksmith Hammer",
@@ -136,7 +133,7 @@ REAGENT_PRICE_OVERRIDES = {
         "quick": 800,
         "target": 1_300,
         "high": 2_500,
-        "reason": "Current Garrosh-Horde full scan: four listings from 8s to about 13s each.",
+        "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
     },
     9260: {
         "name": "Volatile Rum",
@@ -144,7 +141,7 @@ REAGENT_PRICE_OVERRIDES = {
         "quick": 600,
         "target": 700,
         "high": 1_200,
-        "reason": "Current Garrosh-Horde full scan: three listings / 15 units at 7s each.",
+        "reason": "Provisional legacy drop fallback; no independent realized-price baseline yet.",
     },
     10286: {
         "name": "Heart of the Wild",
@@ -272,7 +269,7 @@ REAGENT_PRICE_OVERRIDES = {
         "quick": 7_000,
         "target": 8_000,
         "high": 12_000,
-        "reason": "Current Garrosh-Horde full scan: eight single-item listings at 80s each.",
+        "reason": "Provisional legacy dungeon-drop fallback; no independent realized-price baseline yet.",
     },
     22202: {
         "name": "Small Obsidian Shard",
@@ -307,24 +304,6 @@ REAGENT_PRICE_OVERRIDES = {
         "reason": "Unpriced scarce Sunwell crafting drop.",
     },
 }
-
-
-def normalized_item_name(value: str) -> str:
-    value = "".join(
-        character
-        for character in unicodedata.normalize("NFKD", value)
-        if unicodedata.category(character) != "Mn"
-    )
-    value = re.sub(r"['’]", "", value.casefold())
-    return " ".join(re.sub(r"[^a-z0-9]+", " ", value).split())
-
-
-def money_from_text(value: str) -> int:
-    total = 0
-    clean = " ".join(html.unescape(re.sub(r"<[^>]+>", "", value)).split())
-    for amount, unit in re.findall(r"([\d,]+)\s*([gsc])", clean):
-        total += int(amount.replace(",", "")) * {"g": 10_000, "s": 100, "c": 1}[unit]
-    return total
 
 
 def fetch_text(url: str) -> str:
@@ -577,72 +556,38 @@ def refresh_recipe_audit(config: dict) -> dict:
             },
         },
         "pricing_method": {
-            "reagent_reference": "Highest matching quick, target, and high material row outside generated crafted blocks; exact vendor cost where applicable.",
+            "reagent_reference": "Frozen non-circular quick, target, and high bands from data/ah-price-baselines.json; exact vendor cost where applicable. Active AH listings are excluded.",
             "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their current crafted-catalog bands.",
             "output_quantity": "Minimum guaranteed output; charged devices use all guaranteed charges.",
-            "market_margin": "Demand-sensitive margin with upward convenience rounding; existing higher guide prices and matching output rows elsewhere in the guide set remain the baseline.",
+            "market_margin": "Demand-sensitive margin with upward convenience rounding; frozen output references may preserve an independently established higher posting baseline.",
             "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium.",
         },
         "reagent_price_overrides": {
-            str(item_id): record for item_id, record in REAGENT_PRICE_OVERRIDES.items()
+            str(item_id): record
+            | {
+                "confidence": (
+                    "high" if record["source_type"] == "coin-vendor" else "fallback"
+                )
+            }
+            for item_id, record in REAGENT_PRICE_OVERRIDES.items()
         },
         "recipes": ordered_recipes,
     }
 
 
-def load_item_ids() -> dict[str, int]:
-    source = ITEM_IDS_PATH.read_text(encoding="utf-8")
-    match = re.search(r"window\.AH_ITEM_IDS=(\{.*?\});\n", source, re.DOTALL)
-    if not match:
-        raise ValueError("Could not parse AH item ID map")
-    return {key: int(value) for key, value in json.loads(match.group(1)).items()}
-
-
-def guide_reagent_references() -> dict[int, dict[str, int]]:
-    item_ids = load_item_ids()
-    candidates: dict[int, list[dict[str, int]]] = {}
-    crafted_block = re.compile(
-        r"<!-- AH_CRAFTED_SECTION_START -->.*?<!-- AH_CRAFTED_SECTION_END -->",
-        re.DOTALL,
-    )
-    row_pattern = re.compile(r"<tr[^>]*>.*?</tr>", re.DOTALL)
-    item_pattern = re.compile(
-        r'<td[^>]*data-column="item"[^>]*>.*?<strong[^>]*>(.*?)</strong>',
-        re.DOTALL,
-    )
-    for path in GUIDES_DIR.glob("*ah-price-guide.html"):
-        source = crafted_block.sub("", path.read_text(encoding="utf-8"))
-        for row_match in row_pattern.finditer(source):
-            row = row_match.group(0)
-            item_match = item_pattern.search(row)
-            if not item_match:
-                continue
-            name = " ".join(
-                html.unescape(re.sub(r"<[^>]+>", "", item_match.group(1))).split()
-            )
-            item_id = item_ids.get(normalized_item_name(name))
-            if not item_id:
-                continue
-            values: dict[str, int] = {}
-            for band in PRICE_BANDS:
-                price_match = re.search(
-                    rf'<div class="pricepair {band}">.*?'
-                    rf'<span class="buyout">(.*?)</span>',
-                    row,
-                    re.DOTALL,
-                )
-                if price_match:
-                    values[band] = money_from_text(price_match.group(1))
-            if set(values) == set(PRICE_BANDS):
-                candidates.setdefault(item_id, []).append(values)
-
-    return {
-        item_id: {
-            band: max(candidate[band] for candidate in item_candidates)
-            for band in PRICE_BANDS
-        }
-        for item_id, item_candidates in candidates.items()
-    }
+def baseline_reagent_references() -> dict[int, dict[str, int]]:
+    baseline = json.loads(PRICE_BASELINE_PATH.read_text(encoding="utf-8"))
+    if int(baseline.get("version", 0)) != 1:
+        raise ValueError("Unsupported AH price baseline version")
+    if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
+        raise ValueError("Listing diagnostics must not set AH baseline prices")
+    references: dict[int, dict[str, int]] = {}
+    for item_id, record in baseline.get("items", {}).items():
+        values = {band: int(record[band]) for band in PRICE_BANDS}
+        if not values["quick"] <= values["target"] <= values["high"]:
+            raise ValueError(f"Invalid AH baseline bands for {record['name']}")
+        references[int(item_id)] = values
+    return references
 
 
 def exact_vendor_prices() -> dict[int, int]:
@@ -676,7 +621,7 @@ def merged_item(config: dict, key: str) -> dict:
 
 def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
     recipes = audit["recipes"]
-    guide_prices = guide_reagent_references()
+    baseline_prices = baseline_reagent_references()
     vendor_prices = exact_vendor_prices()
     crafted_prices = canonical_crafted_references(config)
     overrides = {
@@ -692,8 +637,8 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
     def raw_price(item_id: int, band: str) -> int:
         if item_id in vendor_prices:
             return vendor_prices[item_id]
-        if item_id in guide_prices:
-            return int(guide_prices[item_id][band])
+        if item_id in baseline_prices:
+            return int(baseline_prices[item_id][band])
         if item_id in crafted_prices:
             return int(crafted_prices[item_id][band])
         if item_id in overrides:
@@ -754,7 +699,7 @@ def recommended_prices(
     floors: dict[str, dict[str, int]],
 ) -> dict[str, dict[str, int]]:
     prices: dict[str, dict[str, int]] = {}
-    output_references = guide_reagent_references()
+    output_references = baseline_reagent_references()
     for key, item_floors in floors.items():
         item = merged_item(config, key)
         item_id = int(item["item_id"])
