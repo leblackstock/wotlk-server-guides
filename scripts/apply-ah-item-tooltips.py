@@ -71,6 +71,11 @@ MANUAL_OVERRIDES = {
     # The Hellscream guides are Horde-first. The two Battered Hilts share a
     # display name; 50380 is the Horde quest starter.
     "battered hilt": 50380,
+    # Prefer the actual Sunwell-era Jewelcrafting cuts over later same-name
+    # internal records that are not the profession spell outputs.
+    "teardrop crimson spinel": 32195,
+    "runed crimson spinel": 32196,
+    "bright crimson spinel": 32197,
     # 24288 is an internal same-name epic record. The profession reagent sold
     # by trade-supply vendors is the common item 14341.
     "rune thread": 14341,

@@ -89,3 +89,8 @@ The initial 2026-08-02 baseline is intentionally conservative: 650 pre-scan
 guide references are frozen as low confidence, with stronger classifications
 added only where independent evidence exists. This stops circular repricing
 immediately while preserving usable provisional posting bands.
+
+The 2026-08-03 Jewelcrafting expansion added eight explicit fallback-confidence
+input references that were absent from the pre-scan guide set. They are retained
+as documented fallbacks—not current-price claims—until realized sales or measured
+acquisition evidence supports replacement.

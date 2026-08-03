@@ -40,10 +40,10 @@ def main() -> int:
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 650:
-        fail("Initial frozen baseline must contain all 650 pre-scan references")
+    if len(baseline.get("items", {})) != 658:
+        fail("Frozen baseline must contain 650 pre-scan references plus 8 documented Jewelcrafting input fallbacks")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 649, "medium": 1}):
+    if confidence != Counter({"low": 649, "medium": 1, "fallback": 8}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
@@ -65,6 +65,9 @@ def main() -> int:
         "36913": (9_000, 15_000, 22_000),
         "2835": (100, 200, 400),
         "4338": (700, 1_000, 1_600),
+        "32227": (80_000, 120_000, 200_000),
+        "32229": (70_000, 100_000, 180_000),
+        "24243": (10_000, 20_000, 37_500),
     }
     for item_id, expected in expected_inputs.items():
         record = baseline["items"][item_id]
@@ -127,7 +130,7 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 650 frozen references, "
+        "Non-circular AH baseline is valid: 658 frozen references and documented fallbacks, "
         "149 Blacksmithing inputs covered, active scans excluded."
     )
     return 0

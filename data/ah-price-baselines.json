@@ -5884,6 +5884,78 @@
       "source_type": "frozen-pre-scan-guide",
       "confidence": "low",
       "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
+    },
+    "12363": {
+      "name": "Arcane Crystal",
+      "quick": 150000,
+      "target": 220000,
+      "high": 350000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional pre-scan replacement-cost fallback aligned below the saved Arcanite Bar bands; no active listing was used."
+    },
+    "24243": {
+      "name": "Adamantite Powder",
+      "quick": 10000,
+      "target": 20000,
+      "high": 37500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional prospecting-byproduct fallback tied to five-ore Adamantite opportunity cost; no active listing was used."
+    },
+    "32227": {
+      "name": "Crimson Spinel",
+      "quick": 80000,
+      "target": 120000,
+      "high": 200000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Living Ruby band; no active listing was used."
+    },
+    "32228": {
+      "name": "Empyrean Sapphire",
+      "quick": 60000,
+      "target": 90000,
+      "high": 160000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Star of Elune band; no active listing was used."
+    },
+    "32229": {
+      "name": "Lionseye",
+      "quick": 70000,
+      "target": 100000,
+      "high": 180000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Dawnstone band; no active listing was used."
+    },
+    "32230": {
+      "name": "Shadowsong Amethyst",
+      "quick": 60000,
+      "target": 90000,
+      "high": 160000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Nightseye band; no active listing was used."
+    },
+    "32231": {
+      "name": "Pyrestone",
+      "quick": 70000,
+      "target": 100000,
+      "high": 180000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Noble Topaz band; no active listing was used."
+    },
+    "32249": {
+      "name": "Seaspray Emerald",
+      "quick": 60000,
+      "target": 80000,
+      "high": 140000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Talasite band; no active listing was used."
     }
   }
 }

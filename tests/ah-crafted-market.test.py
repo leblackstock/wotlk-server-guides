@@ -23,6 +23,7 @@ EXPECTED_GUIDE_COUNTS = {
     "alchemy-materials-ah-price-guide.html": 206,
     "enchanting-mats-ah-price-guide.html": 276,
     "blacksmithing-materials-ah-price-guide.html": 453,
+    "jewelcrafting-gems-ah-price-guide.html": 497,
 }
 
 
@@ -116,8 +117,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 821:
-        fail(f"Expected 821 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 1318:
+        fail(f"Expected 1318 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -347,6 +348,43 @@ def main() -> int:
         if "item-level 0" in item["detail"] or "weapon weapon" in item["detail"]:
             fail(f"Misclassified Blacksmithing utility remains: {item['name']}")
 
+    jewelcrafting_items = {
+        merged_item(config, key)["name"]: merged_item(config, key)
+        for key in used_keys
+        if key.startswith("jc-")
+    }
+    if len(jewelcrafting_items) != 497:
+        fail(f"Expected 497 distinct tradeable Jewelcrafting outputs, found {len(jewelcrafting_items)}")
+    for label in (
+        "Bold Dragon's Eye",
+        "Figurine - Monarch Crab",
+        "Rough Stone Statue",
+        "Don Julio's Heart",
+    ):
+        if label in jewelcrafting_items:
+            fail(f"BoP Jewelcrafting output leaked into the AH catalog: {label}")
+    for label in (
+        "Delicate Cardinal Ruby",
+        "Chaotic Skyflare Diamond",
+        "Bold Scarlet Ruby",
+        "Delicate Bloodstone",
+        "Bold Crimson Spinel",
+        "Bold Living Ruby",
+        "Bold Blood Garnet",
+        "Titanium Impact Band",
+        "Mercurial Adamantite",
+        "Icy Prism",
+        "Prismatic Black Diamond",
+        "Thorium Setting",
+    ):
+        if label not in jewelcrafting_items:
+            fail(f"Expanded Jewelcrafting era/category coverage is missing: {label}")
+    jewelcrafting_sections = guides["jewelcrafting-gems-ah-price-guide.html"]["sections"]
+    if len(jewelcrafting_sections) != 45:
+        fail(f"Expected 45 expanded Jewelcrafting sections, found {len(jewelcrafting_sections)}")
+    if any(int(item.get("required_skill", 0)) for item in jewelcrafting_items.values()):
+        fail("Profession-restricted finished Jewelcrafting item leaked into general-use sections")
+
     for label in (
         "Elixir of Tongues (NYI)",
         "Philosopher's Stone",
@@ -389,10 +427,22 @@ def main() -> int:
         "alch-cardinal-ruby": 1_200_000,
         "bs-eternal-belt-buckle": 350_000,
         "bs-puresteel-legplates": 76_500_000,
+        "jc-delicate-cardinal-ruby": 1_500_000,
+        "jc-chaotic-skyflare-diamond": 400_000,
+        "jc-nightmare-tear": 1_300_000,
+        "jc-titanium-impact-band": 6_200_000,
+        "jc-prismatic-black-diamond": 12_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
             fail(f"{key}: audited target price changed unexpectedly")
+    cardinal_cut = merged_item(config, "jc-delicate-cardinal-ruby")
+    if int(cardinal_cut["pricing_floor_copper"]["target"]) != 1_200_000:
+        fail("Cardinal Ruby cut does not preserve the uncut gem's saved target opportunity cost")
+    for key in ("jc-prismatic-black-diamond", "jc-icy-prism", "jc-brilliant-glass"):
+        recipe = recipe_audit["recipes"][key]
+        if int(recipe["output_count"]) != 1:
+            fail(f"{key}: random sealed craft must use one guaranteed finished output")
 
     representative_non_enchanting_notes = {
         "glyph-disease": "refreshes disease durations",
@@ -402,6 +452,11 @@ def main() -> int:
         "alch-cardinal-ruby": "Uncut red epic gem",
         "bs-eternal-belt-buckle": "one permanent socket",
         "bs-puresteel-legplates": "ICC-era raid gearing",
+        "jc-delicate-cardinal-ruby": "+20 Agility",
+        "jc-chaotic-skyflare-diamond": "Requires at least 2 blue gems",
+        "jc-nightmare-tear": "+10 All Stats",
+        "jc-titanium-impact-band": "item level 200",
+        "jc-prismatic-black-diamond": "eventual gem is random",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -412,6 +467,7 @@ def main() -> int:
         "engineering-materials-ah-price-guide.html",
         "alchemy-materials-ah-price-guide.html",
         "blacksmithing-materials-ah-price-guide.html",
+        "jewelcrafting-gems-ah-price-guide.html",
     ):
         keys = [
             key
@@ -427,6 +483,7 @@ def main() -> int:
         "engineering-materials-ah-price-guide.html",
         "alchemy-materials-ah-price-guide.html",
         "blacksmithing-materials-ah-price-guide.html",
+        "jewelcrafting-gems-ah-price-guide.html",
     ):
         if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
@@ -620,7 +677,7 @@ def main() -> int:
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, Alchemy, and Enchanting."
+        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, and Jewelcrafting."
     )
     return 0
 

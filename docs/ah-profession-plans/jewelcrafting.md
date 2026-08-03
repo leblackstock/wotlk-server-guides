@@ -1,6 +1,6 @@
 # Jewelcrafting AH Expansion Plan
 
-- Status: `planned`
+- Status: `complete` — 2026-08-03
 - Existing guide: `guides/jewelcrafting-gems-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 2
@@ -10,7 +10,7 @@
 
 ## Baseline Evidence Audit
 
-- Recheck all 82 current rows: epic/rare/uncommon raw gems, meta bases and cut
+- Recheck all 80 current rows: epic/rare/uncommon raw gems, meta bases and cut
   metas, Dragon's Eye, prospecting ores, older gems, stone, and settings.
 - Reconcile ores with Mining, Eternals with cross-profession materials, and
   raw-gem prices wherever the same gem appears in another guide.
@@ -51,19 +51,56 @@
 
 ## Acceptance Checks
 
-- [ ] Baseline evidence audit completed and recorded.
-- [ ] Every valid tradeable cut has an item ID, recipe ID, rarity, and price.
-- [ ] Raw-versus-cut opportunity costs are tested.
-- [ ] Random-output conversions use an explicit model or remain unpriced.
-- [ ] BoP and jewelcrafter-only non-AH outputs are excluded.
-- [ ] Shared validation in `README.md` passes.
+- [x] Baseline evidence audit completed and recorded.
+- [x] Every valid tradeable cut has an item ID, recipe ID, rarity, and price.
+- [x] Raw-versus-cut opportunity costs are tested.
+- [x] Random-output conversions use an explicit model or remain unpriced.
+- [x] BoP and jewelcrafter-only non-AH outputs are excluded.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Listing concentration observations (not valuation evidence):
-- Recipe/item sources checked:
-- Server-specific binding findings:
-- Random-output method:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-03.
+- Baseline audit: The pre-expansion guide contained 80 priced rows. Seventy-four
+  resolved to real item IDs and all 74 had frozen non-circular references; the
+  remaining six were synthetic cut-gem pricing rules and were replaced by
+  individual finished items. Of those 74 references, 73 were low-confidence
+  frozen pre-scan values and Solid Stone was the one medium-confidence
+  realized-sales reference. All 32 items duplicated in another guide agreed
+  with their canonical bands. Per-item/stack semantics and `quick <= target <=
+  high` checks passed.
+- Listing concentration observations (not valuation evidence): The saved
+  2026-08-02 diagnostic remains heavily concentrated, including the user's
+  report that the user and friends account for at least half the listings. No
+  active listing price was imported into a baseline or craft calculation.
+- Recipe/item sources checked: Complete WotLKDB 3.3.5 Jewelcrafting skill 755
+  list using six non-overlapping skill ranges (566 spells, 558 outputs), exact
+  recipe reagents and spell IDs, WotLKDB item tooltips for exact gem effects and
+  meta requirements, and AzerothCore `item_template` build 12340 for item ID,
+  quality, binding, class, required level, item level, and RequiredSkill.
+- Ingredient coverage: Existing frozen baselines and canonical crafted/vendor
+  sources covered all but nine direct inputs. Added documented fallbacks for
+  Arcane Crystal, Adamantite Powder, and the six tradeable Outland epic uncut
+  gems; each is explicitly fallback confidence and no listing set its value.
+  Purified Draenic Water uses its exact unlimited-vendor cost of 12s 80c each.
+- Server-specific binding findings: 497 outputs are tradeable (376 unbound and
+  121 Bind on Equip) and none has a hard Jewelcrafting-use requirement. The 61
+  Bind on Pickup outputs are excluded, including Dragon's Eye cuts, figurines,
+  statues, and faction-bound gem rewards. Raw Dragon's Eye remains in the
+  existing Jewelcrafter-only material section.
+- Random-output method: Brilliant Glass and Icy Prism are priced only as sealed
+  finished items from their exact recipes. Prismatic Black Diamond is priced
+  from one Black Diamond; its eventual cut is explicitly random. No possible
+  gem result inherits the full random craft cost.
+- Decisions and unresolved items: Cut-gem floors use the saved sale value of
+  the exact uncut gem before applying the demand margin, rather than the raw
+  gem's cheapest recursive production cost. Eight new market inputs remain
+  documented fallbacks until independent realized sales or measured acquisition
+  evidence replaces them.
+- Completion summary: Added all 497 tradeable outputs in 45 price-sorted
+  sections: 366 cut/special gems, 120 jewelry or other armor pieces, five
+  components, five utilities/random-result items, and one weapon. Every row has
+  a rarity color, exact item ID, item-specific use/effect note, recipe-and-mats
+  mouseover link, exact recipe floor, and a reference to one shared `*`
+  craft-cost note. The six generic pricing rows and eleven duplicate legacy
+  crafted rows were removed from the static portion of the guide.

@@ -27,7 +27,7 @@ be presented as a verified current price.
 | Order | Profession | Work type | Plan |
 |---:|---|---|---|
 | 1 | Blacksmithing | Complete — 2026-08-02 | [blacksmithing.md](blacksmithing.md) |
-| 2 | Jewelcrafting | Full crafted catalog | [jewelcrafting.md](jewelcrafting.md) |
+| 2 | Jewelcrafting | Complete — 2026-08-03 | [jewelcrafting.md](jewelcrafting.md) |
 | 3 | Tailoring | Full crafted catalog | [tailoring.md](tailoring.md) |
 | 4 | Leatherworking | Full crafted catalog | [leatherworking.md](leatherworking.md) |
 | 5 | Cooking | Full crafted catalog | [cooking.md](cooking.md) |
@@ -37,9 +37,10 @@ be presented as a verified current price.
 | 9 | Skinning | Gathering-price audit; conversions belong to Leatherworking | [skinning.md](skinning.md) |
 | 10 | Fishing | Gathering-price audit; finished food belongs to Cooking | [fishing.md](fishing.md) |
 
-Alchemy, Blacksmithing, Enchanting, Engineering, and Inscription have canonical
-crafted catalogs in `data/ah-crafted-sections.json`. They remain comparison
-models, not unfinished plans. Jewelcrafting is the next suggested expansion.
+Alchemy, Blacksmithing, Enchanting, Engineering, Inscription, and Jewelcrafting
+have canonical crafted catalogs in `data/ah-crafted-sections.json`. They remain
+comparison models, not unfinished plans. Tailoring is the next suggested
+expansion.
 
 ## Gate 0: Establish Non-Circular Baselines Before Adding Crafteds
 

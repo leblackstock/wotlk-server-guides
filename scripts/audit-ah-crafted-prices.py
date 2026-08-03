@@ -32,11 +32,21 @@ PROFESSION_SKILLS = {
     "engineering-materials-ah-price-guide.html": 202,
     "alchemy-materials-ah-price-guide.html": 171,
     "blacksmithing-materials-ah-price-guide.html": 164,
+    "jewelcrafting-gems-ah-price-guide.html": 755,
 }
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
     # truncates it at 300. These non-overlapping ranges return the complete set.
     164: ("maxrs=300", "minrs=301;maxrs=350", "minrs=351;maxrs=450"),
+    # Jewelcrafting has 566 records and also exceeds WotLKDB's 300-row cap.
+    755: (
+        "maxrs=300",
+        "minrs=301;maxrs=350",
+        "minrs=351;maxrs=375",
+        "minrs=376;maxrs=400",
+        "minrs=401;maxrs=425",
+        "minrs=426;maxrs=450",
+    ),
 }
 PRICE_BANDS = ("quick", "target", "high")
 WOTLKDB_SKILL_URL = "https://wotlkdb.com/?spells=11.{skill_id}"
@@ -150,6 +160,14 @@ REAGENT_PRICE_OVERRIDES = {
         "target": 20_000,
         "high": 40_000,
         "reason": "Unpriced legacy mob-drop reagent.",
+    },
+    27860: {
+        "name": "Purified Draenic Water",
+        "source_type": "coin-vendor",
+        "quick": 1_280,
+        "target": 1_280,
+        "high": 1_280,
+        "reason": "Exact unlimited-vendor cost: 64s per five, or 12s 80c each.",
     },
     12938: {
         "name": "Blood of Heroes",
@@ -414,9 +432,11 @@ def refresh_recipe_audit(config: dict) -> dict:
                 {int(spell["id"]): spell for spell in listview_data(source, "spells")}
             )
         spells = list(spell_map.values())
-        if skill_id == 164 and len(spells) != 525:
+        expected_skill_records = {164: 525, 755: 566}
+        expected_records = expected_skill_records.get(skill_id)
+        if expected_records is not None and len(spells) != expected_records:
             raise ValueError(
-                f"Expected 525 complete Blacksmithing spell records; got {len(spells)}"
+                f"Expected {expected_records} complete skill {skill_id} spell records; got {len(spells)}"
             )
         profession_spells[skill_id] = {int(spell["id"]): spell for spell in spells}
         for spell in spells:
@@ -476,6 +496,19 @@ def refresh_recipe_audit(config: dict) -> dict:
                 output_count=1,
                 output_count_max=1,
                 pricing_rule="random-darkmoon-card",
+            )
+        elif (
+            config["catalog"][key].get("profession") == "Jewelcrafting"
+            and int((spell.get("creates") or [0, 0])[1]) == 0
+        ):
+            # WotLKDB's Jewelcrafting list reports zero for many valid cut gems
+            # and random gem containers even though each craft creates one item.
+            recipes[key] = recipe_record(
+                key,
+                spell,
+                names,
+                output_count=1,
+                output_count_max=1,
             )
         else:
             recipes[key] = recipe_record(key, spell, names)
@@ -657,7 +690,13 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
         for reagent in recipe["reagents"]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
-            unit_cost = floor_for(dependency, band) if dependency else raw_price(item_id, band)
+            if key.startswith("jc-") and item_id in baseline_prices:
+                # A cut gem or piece of jewelry consumes the sale value of its
+                # tradeable uncut gem/component, not merely that input's own
+                # cheapest recursive production path.
+                unit_cost = raw_price(item_id, band)
+            else:
+                unit_cost = floor_for(dependency, band) if dependency else raw_price(item_id, band)
             total += unit_cost * int(reagent["count"])
         output_count = int(recipe["output_count"])
         memo[token] = math.ceil(total / output_count)
@@ -720,7 +759,7 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") == "Blacksmithing"
+                if item.get("profession") in {"Blacksmithing", "Jewelcrafting"}
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)

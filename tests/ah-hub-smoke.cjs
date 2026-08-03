@@ -213,6 +213,16 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /one permanent socket/,
       label: "Desktop Blacksmithing guide"
     });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "jewelcrafting-gems-ah-price-guide.html",
+      rows: 497,
+      sections: 45,
+      key: "jc-delicate-cardinal-ruby",
+      target: "150g",
+      recipeSpell: 66448,
+      notePattern: /\+20 Agility/,
+      label: "Desktop Jewelcrafting guide"
+    });
 
     await desktop.goto(`${base}/guides/engineering-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#general-use-engineering-utility").count(), 1);
@@ -307,8 +317,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /one permanent socket/,
       label: "Mobile Blacksmithing guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "jewelcrafting-gems-ah-price-guide.html",
+      rows: 497,
+      sections: 45,
+      key: "jc-delicate-cardinal-ruby",
+      target: "150g",
+      recipeSpell: 66448,
+      notePattern: /\+20 Agility/,
+      label: "Mobile Jewelcrafting guide"
+    });
 
-    console.log("Auction House hub and all five crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all six crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }
