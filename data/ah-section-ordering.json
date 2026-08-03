@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "scope": {
+    "guide_glob": "*-ah-price-guide.html",
+    "expected_guide_count": 16,
+    "expected_priced_table_count": 201
+  },
+  "default_order": {
+    "field": "target_buyout_copper",
+    "direction": "descending",
+    "unit": "per item",
+    "tie_behavior": "stable",
+    "non_numeric_behavior": "bottom-stable"
+  },
+  "fixed_order_groups": [
+    {
+      "guide": "blacksmithing-materials-ah-price-guide.html",
+      "section_ids": [
+        "blacksmith-only-skeleton-keys",
+        "enchanter-only-rod-blanks",
+        "wrath-weapons-and-shields",
+        "wrath-leveling-and-fresh-80-armor",
+        "outland-weapons",
+        "outland-rare-and-epic-armor",
+        "outland-leveling-armor",
+        "classic-enhancements-and-craft-intermediates",
+        "classic-weapons-skill-1-150",
+        "classic-armor-skill-1-150",
+        "classic-weapons-skill-151-300",
+        "classic-armor-skill-151-300"
+      ],
+      "section_titles": [
+        "Wrath leveling / common BS inputs",
+        "Outland / TBC Blacksmithing inputs",
+        "Classic bars / old-world metals",
+        "Raw stone"
+      ],
+      "order": "profession and item-tier progression",
+      "reason": "These tables deliberately preserve skill, equipment-tier, or material-tier progression."
+    },
+    {
+      "guide": "cross-profession-materials-ah-price-guide.html",
+      "section_titles": [
+        "Northrend elemental chain",
+        "Outland elemental chain",
+        "Classic elemental chain"
+      ],
+      "order": "conversion-chain grouping",
+      "reason": "Keep matching elemental forms in a consistent conversion-chain sequence."
+    },
+    {
+      "guide": "drop-turn-in-quest-page-items-ah-price-guide.html",
+      "section_titles": [
+        "Darkmoon Faire drop turn-ins only"
+      ],
+      "order": "numbered tier progression",
+      "reason": "The rows intentionally run from Darkmoon turn-in Tier 1 through Tier 5."
+    },
+    {
+      "guide": "enchanting-mats-ah-price-guide.html",
+      "section_ids": [
+        "crafted-classic-weapon-oils",
+        "crafted-outland-weapon-oils",
+        "crafted-classic-wands"
+      ],
+      "section_titles": [
+        "Northrend / WotLK mats — 375–450",
+        "Outland / TBC mats — 300–375",
+        "Classic / old-world mats — 1–300"
+      ],
+      "order": "profession and material-tier progression",
+      "reason": "Preserve profession-rank and dust, essence, shard, crystal, oil, or wand progression."
+    },
+    {
+      "guide": "engineering-materials-ah-price-guide.html",
+      "section_ids": [
+        "northrend-crafted-engineering-parts",
+        "outland-crafted-engineering-parts",
+        "classic-crafted-engineering-parts",
+        "engineer-only-tools",
+        "blasting-powders",
+        "ammo"
+      ],
+      "section_titles": [
+        "Northrend raw Engineering inputs",
+        "Outland raw Engineering inputs",
+        "Raw stone inputs",
+        "Practical raw metal bars",
+        "Practical cloth / leather / gem inputs"
+      ],
+      "order": "profession and material-tier progression",
+      "reason": "These rows form recognizable Engineering skill, component, ammunition, or input progressions."
+    },
+    {
+      "guide": "inscription-materials-ah-price-guide.html",
+      "section_ids": [
+        "dropped-scrolls",
+        "nobles-cards",
+        "chaos-cards",
+        "prisms-cards",
+        "undeath-cards"
+      ],
+      "section_titles": [
+        "Northrend inks / pigments / card inputs",
+        "Classic and Outland inks / pigments"
+      ],
+      "order": "rank, card-number, and ink-tier progression",
+      "reason": "Preserve scroll ranks, Ace-through-Eight card order, and paired ink/pigment tiers."
+    },
+    {
+      "guide": "jewelcrafting-gems-ah-price-guide.html",
+      "section_titles": [
+        "Prospecting ore / JC input ore"
+      ],
+      "order": "ore-tier progression",
+      "reason": "The ores intentionally run through prospecting tiers."
+    },
+    {
+      "guide": "mining-smithing-ah-price-guide.html",
+      "section_titles": [
+        "Northrend ore",
+        "Northrend bars / alloys",
+        "Outland ore",
+        "Outland bars / alloys",
+        "Classic ore",
+        "Classic bars / alloys",
+        "Raw stone",
+        "Grinding stones",
+        "Blacksmith-made Enchanting rod blanks"
+      ],
+      "order": "profession and material-tier progression",
+      "reason": "Preserve mining, smelting, stone, and Enchanting-rod tier progression."
+    },
+    {
+      "guide": "skinning-leatherworking-materials-ah-price-guide.html",
+      "section_titles": [
+        "Classic leather",
+        "Classic hides",
+        "General-use finished leg armors, kits, and drums"
+      ],
+      "order": "material and product-tier progression",
+      "reason": "Preserve leather and hide grades plus the premium, budget, kit, and drums sequence used by formula-priced finished items."
+    },
+    {
+      "guide": "tailoring-cloth-ah-price-guide.html",
+      "section_titles": [
+        "Bolts / processed cloth",
+        "Cloth drops",
+        "Spider silks / market-priced tailoring supplies"
+      ],
+      "order": "material-tier progression",
+      "reason": "Preserve cloth, bolt, silk, and thread tier groupings."
+    }
+  ]
+}

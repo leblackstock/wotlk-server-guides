@@ -170,7 +170,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     }));
     assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
-    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-02/);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-03/);
     await noOverflow(desktop, "Desktop Enchanting guide");
 
     await verifyAuditedCraftedGuide(desktop, {

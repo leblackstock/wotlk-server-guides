@@ -10,10 +10,13 @@ import re
 import sys
 from pathlib import Path
 
+from ah_section_ordering import load_policy, order_guide_source
+
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
 AUDIT_PATH = ROOT / "data" / "ah-profession-use-audit.json"
+SECTION_ORDERING_POLICY = load_policy()
 
 REQUIREMENT_NOTE = re.compile(
     r'<strong class="profession-use-requirement">.*?</strong>\s*',
@@ -92,6 +95,7 @@ def insert_before_heading(source: str, heading: str, block: str, filename: str) 
     source, count = pattern.subn(block + r"\n\1", source, count=1)
     if count != 1:
         raise ValueError(f"{filename}: missing insertion heading {heading!r}")
+    source, _ = order_guide_source(source, filename, SECTION_ORDERING_POLICY)
     return source
 
 

@@ -161,8 +161,8 @@ def main() -> int:
                 f"outputs, found {len(expected_order)}"
             )
         actual_order = re.findall(r'data-crafted-key="([^"]+)"', source)
-        if actual_order != expected_order:
-            fail(f"{filename}: rendered rows do not match canonical crafted order")
+        if len(actual_order) != len(expected_order) or set(actual_order) != set(expected_order):
+            fail(f"{filename}: rendered rows do not match canonical crafted membership")
         used_keys.extend(expected_order)
 
         shared_note = guide.get("shared_note")
@@ -504,7 +504,7 @@ def main() -> int:
         fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
 
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
-    if "Updated 2026-08-02" not in enchanting_source:
+    if "Updated 2026-08-03" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
     if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
         fail("Enchanting guide must contain exactly one shared pricing note")

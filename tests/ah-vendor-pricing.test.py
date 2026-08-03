@@ -111,8 +111,8 @@ def main() -> int:
         for restricted_section in guide_config.get("restricted_sections", []):
             expected_keys.extend(restricted_section["items"])
         actual_keys = re.findall(r'<tr data-vendor-key="([^"]+)"[^>]*>', section)
-        if actual_keys != expected_keys:
-            fail(f"{path.name}: vendor rows do not match canonical order")
+        if len(actual_keys) != len(expected_keys) or set(actual_keys) != set(expected_keys):
+            fail(f"{path.name}: vendor rows do not match canonical membership")
 
         for key in expected_keys:
             used_keys.add(key)

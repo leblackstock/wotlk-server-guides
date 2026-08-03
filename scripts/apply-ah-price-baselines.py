@@ -12,6 +12,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from ah_section_ordering import load_policy, order_guide_source
+
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
@@ -24,6 +26,7 @@ CRAFTED_BLOCK = re.compile(
     r"(<!-- AH_CRAFTED_SECTION_START -->.*?<!-- AH_CRAFTED_SECTION_END -->)",
     re.DOTALL,
 )
+SECTION_ORDERING_POLICY = load_policy()
 ROW_PATTERN = re.compile(r"<tr[^>]*>.*?</tr>", re.DOTALL)
 ITEM_PATTERN = re.compile(
     r'<td[^>]*data-column="item"[^>]*>.*?<strong[^>]*>(.*?)</strong>',
@@ -163,24 +166,37 @@ def main() -> int:
     item_ids = load_item_ids()
     stale: list[str] = []
     total_changed = 0
+    total_reordered = 0
     for path in sorted(GUIDES_DIR.glob("*ah-price-guide.html")):
         source = path.read_text(encoding="utf-8")
         updated, changed = transform(source, prices, item_ids, renderer)
-        if not changed:
+        updated, ordering_reports = order_guide_source(
+            updated, path.name, SECTION_ORDERING_POLICY
+        )
+        reordered = [report for report in ordering_reports if report["changed"]]
+        if updated == source:
             continue
         total_changed += changed
+        total_reordered += len(reordered)
         if args.check:
-            stale.append(f"{path.name}: {changed} stale static price rows")
+            stale.append(
+                f"{path.name}: {changed} stale static price rows, "
+                f"{len(reordered)} stale price-order sections"
+            )
         else:
             path.write_text(updated, encoding="utf-8", newline="\n")
-            print(f"{path.name}: updated {changed} static price rows")
+            print(
+                f"{path.name}: updated {changed} static price rows and "
+                f"{len(reordered)} price-order sections"
+            )
     if stale:
         print("\n".join(stale), file=sys.stderr)
         return 1
     action = "Validated" if args.check else "Updated"
     print(
         f"{action} frozen AH baselines: {counts['baseline']} baseline items, "
-        f"{counts['crafted']} shared crafted outputs, {total_changed} stale rows."
+        f"{counts['crafted']} shared crafted outputs, {total_changed} stale rows, "
+        f"{total_reordered} stale price-order sections."
     )
     return 0
 

@@ -12,10 +12,12 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `data/ah-vendor-sections.json` - canonical vendor/source costs and suggested AH buyouts
 - `data/ah-price-baselines.json` - frozen non-circular material and posting baselines with confidence
 - `data/ah-profession-use-audit.json` - finished-item profession requirements and general-use exceptions
+- `data/ah-section-ordering.json` - price-first row policy and documented fixed-order sections
 - `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
 - `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
 - `scripts/apply-ah-price-baselines.py` - reconciles static rows to frozen baselines and shared crafted outputs
 - `scripts/apply-ah-profession-use-sections.py` - moves static restricted items into canonical sections
+- `scripts/apply-ah-section-price-order.py` - sorts eligible AH sections by target buyout, highest first
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
 - `README.md` - maintenance notes
@@ -28,6 +30,7 @@ shared navigation and pricing sections:
 
 ```powershell
 python scripts/render-ah-shared-sections.py
+python scripts/apply-ah-section-price-order.py
 python scripts/build-ah-search-index.py
 ```
 
@@ -35,6 +38,7 @@ Verify that both generated layers are current:
 
 ```powershell
 python scripts/render-ah-shared-sections.py --check
+python scripts/apply-ah-section-price-order.py --check
 python scripts/build-ah-search-index.py --check
 python tests/ah-vendor-pricing.test.py
 ```
@@ -60,6 +64,21 @@ python scripts/build-ah-search-index.py --check
 
 Search results link to the exact item row. Every AH guide therefore loads `assets/ah-search.js`, which handles the row highlight after navigation.
 
+## Maintain AH Section Order
+
+AH tables default to target buyout per item from highest to lowest. Price ties
+keep their existing relative order. Sections with a real profession-rank,
+material-conversion, numbered-tier, or crafting-progression sequence are listed
+as fixed-order exceptions in `data/ah-section-ordering.json`.
+
+Apply and verify the shared ordering rule after any item or price change:
+
+```powershell
+python scripts/apply-ah-section-price-order.py
+python scripts/apply-ah-section-price-order.py --check
+python tests/ah-section-price-order.test.py
+```
+
 ## Expand A Profession AH Guide
 
 Before adding profession-crafted items, read
@@ -82,10 +101,13 @@ static guide rows:
 ```powershell
 python scripts/apply-ah-price-baselines.py
 python scripts/apply-ah-profession-use-sections.py
+python scripts/apply-ah-section-price-order.py
 python scripts/apply-ah-price-baselines.py --check
 python scripts/apply-ah-profession-use-sections.py --check
+python scripts/apply-ah-section-price-order.py --check
 python tests/ah-price-baseline.test.py
 python tests/ah-profession-use-sections.test.py
+python tests/ah-section-price-order.test.py
 ```
 
 ## Add A New Guide

@@ -10,6 +10,8 @@ import re
 import sys
 from pathlib import Path
 
+from ah_section_ordering import load_policy, order_guide_source
+
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
@@ -24,6 +26,7 @@ CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-sectio
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
 AH_STYLESHEET_VERSION = "20260801-ah-rarity-v1"
+SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(
     r"(?:<!-- AH_SHARED_NAV_START -->\s*)?"
@@ -840,7 +843,9 @@ def transform_guide(
             raise ValueError(f"{filename}: expected one dropped-scroll block")
     elif dropped_matches:
         raise ValueError(f"{filename}: dropped-scroll section is absent from canonical data")
-    return decorate_category_headings(source, filename)
+    source = decorate_category_headings(source, filename)
+    source, _ = order_guide_source(source, filename, SECTION_ORDERING_POLICY)
+    return source
 
 
 def main() -> int:
