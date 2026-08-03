@@ -110,9 +110,9 @@ async function verifyAuditedCraftedGuide(page, options) {
 
     await desktop.locator("#ah-search-input").fill("saronite");
     const saroniteCards = desktop.locator(".ah-search-result");
-    assert.equal(await saroniteCards.count(), 5);
+    assert.equal(await saroniteCards.count(), 12);
     const saroniteNames = await desktop.locator(".ah-search-item-name").allTextContents();
-    assert.equal(new Set(saroniteNames).size, 5);
+    assert.equal(new Set(saroniteNames).size, 12);
     const saroniteBar = desktop.locator(".ah-search-result", {
       has: desktop.locator(".ah-search-item-name", { hasText: /^Saronite Bar$/ })
     });
@@ -203,6 +203,16 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /Uncut red epic gem/,
       label: "Desktop Alchemy guide"
     });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "blacksmithing-materials-ah-price-guide.html",
+      rows: 453,
+      sections: 16,
+      key: "bs-eternal-belt-buckle",
+      target: "34g",
+      recipeSpell: 55656,
+      notePattern: /one permanent socket/,
+      label: "Desktop Blacksmithing guide"
+    });
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/index.html`, { waitUntil: "networkidle" });
@@ -220,7 +230,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
     await mobile.locator("#ah-search-input").fill("saronite");
-    assert.equal(await mobile.locator(".ah-search-result").count(), 5);
+    assert.equal(await mobile.locator(".ah-search-result").count(), 12);
     await noOverflow(mobile, "Mobile Auction House hub");
 
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
@@ -262,8 +272,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /Uncut red epic gem/,
       label: "Mobile Alchemy guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "blacksmithing-materials-ah-price-guide.html",
+      rows: 453,
+      sections: 16,
+      key: "bs-eternal-belt-buckle",
+      target: "34g",
+      recipeSpell: 55656,
+      notePattern: /one permanent socket/,
+      label: "Mobile Blacksmithing guide"
+    });
 
-    console.log("Auction House hub and all four crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all five crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

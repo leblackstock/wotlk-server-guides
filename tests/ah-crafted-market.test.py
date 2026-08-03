@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the shared Inscription, Engineering, Alchemy, and Enchanting catalog."""
+"""Validate every canonical profession-crafted AH catalog."""
 
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ EXPECTED_GUIDE_COUNTS = {
     "engineering-materials-ah-price-guide.html": 55,
     "alchemy-materials-ah-price-guide.html": 206,
     "enchanting-mats-ah-price-guide.html": 276,
+    "blacksmithing-materials-ah-price-guide.html": 453,
 }
 
 
@@ -110,8 +111,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 368:
-        fail(f"Expected 368 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 821:
+        fail(f"Expected 821 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -127,8 +128,14 @@ def main() -> int:
         if set(floors) != {"quick", "target", "high"}:
             fail(f"{key}: audited price floors are missing")
         for band in ("quick", "target", "high"):
-            if int(item[f"{band}_copper"]) < int(floors[band]):
+            if (
+                item.get("price_strategy") != "shared-market-reference"
+                and int(item[f"{band}_copper"]) < int(floors[band])
+            ):
                 fail(f"{key}: {band} price falls below its audited craft floor")
+        if item.get("price_strategy") == "shared-market-reference":
+            if "below" not in item.get("row_note", "") or "skip" not in item.get("row_note", ""):
+                fail(f"{key}: shared market pricing must explain the unprofitable craft route")
 
     used_keys: list[str] = []
     sources: dict[str, str] = {}
@@ -308,6 +315,33 @@ def main() -> int:
         if label in alchemy_names:
             fail(f"Alchemy input, vendor item, or reference row leaked into crafted outputs: {label}")
 
+    blacksmithing_items = {
+        merged_item(config, key)["name"]: merged_item(config, key)
+        for key in used_keys
+        if key.startswith("bs-")
+    }
+    if len(blacksmithing_items) != 453:
+        fail(f"Expected 453 distinct Blacksmithing output names, found {len(blacksmithing_items)}")
+    for label in (
+        "Dark Iron Plate",
+        "Lionheart Executioner",
+        "Stormherald",
+        "Hard Khorium Battleplate",
+        "Chestplate of Conquest",
+        "Legplates of Conquest",
+    ):
+        if label in blacksmithing_items:
+            fail(f"BoP Blacksmithing output leaked into the AH catalog: {label}")
+    alliance_only_ids = {47570, 47572, 47574, 47589, 47591, 47593}
+    leaked_alliance = alliance_only_ids & {
+        int(item["item_id"]) for item in blacksmithing_items.values()
+    }
+    if leaked_alliance:
+        fail(f"Alliance-only duplicate Blacksmithing records leaked in: {sorted(leaked_alliance)}")
+    for item in blacksmithing_items.values():
+        if "item-level 0" in item["detail"] or "weapon weapon" in item["detail"]:
+            fail(f"Misclassified Blacksmithing utility remains: {item['name']}")
+
     for label in (
         "Elixir of Tongues (NYI)",
         "Philosopher's Stone",
@@ -348,6 +382,8 @@ def main() -> int:
         "alch-flask-endless-rage": 550_000,
         "alch-flask-frost-wyrm": 600_000,
         "alch-cardinal-ruby": 1_200_000,
+        "bs-eternal-belt-buckle": 340_000,
+        "bs-puresteel-legplates": 76_500_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
@@ -359,6 +395,8 @@ def main() -> int:
         "eng-khorium-power-core": "used in high-end devices",
         "alch-flask-endless-rage": "Increases attack power by 180",
         "alch-cardinal-ruby": "Uncut red epic gem",
+        "bs-eternal-belt-buckle": "one permanent socket",
+        "bs-puresteel-legplates": "ICC-era raid gearing",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -368,6 +406,7 @@ def main() -> int:
         "inscription-materials-ah-price-guide.html",
         "engineering-materials-ah-price-guide.html",
         "alchemy-materials-ah-price-guide.html",
+        "blacksmithing-materials-ah-price-guide.html",
     ):
         keys = [
             key
@@ -382,6 +421,7 @@ def main() -> int:
         "inscription-materials-ah-price-guide.html",
         "engineering-materials-ah-price-guide.html",
         "alchemy-materials-ah-price-guide.html",
+        "blacksmithing-materials-ah-price-guide.html",
     ):
         if "Updated 2026-08-02" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")

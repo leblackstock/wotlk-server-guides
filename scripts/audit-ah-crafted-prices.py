@@ -34,6 +34,12 @@ PROFESSION_SKILLS = {
     "inscription-materials-ah-price-guide.html": 773,
     "engineering-materials-ah-price-guide.html": 202,
     "alchemy-materials-ah-price-guide.html": 171,
+    "blacksmithing-materials-ah-price-guide.html": 164,
+}
+PROFESSION_SKILL_FILTERS = {
+    # The unfiltered Blacksmithing list contains 525 records but WotLKDB
+    # truncates it at 300. These non-overlapping ranges return the complete set.
+    164: ("maxrs=300", "minrs=301;maxrs=350", "minrs=351;maxrs=450"),
 }
 PRICE_BANDS = ("quick", "target", "high")
 WOTLKDB_SKILL_URL = "https://wotlkdb.com/?spells=11.{skill_id}"
@@ -103,10 +109,10 @@ REAGENT_PRICE_OVERRIDES = {
     5635: {
         "name": "Sharp Claw",
         "source_type": "market-fallback",
-        "quick": 1_000,
-        "target": 2_000,
-        "high": 4_000,
-        "reason": "Unpriced common legacy mob-drop reagent.",
+        "quick": 150,
+        "target": 200,
+        "high": 300,
+        "reason": "Current Garrosh-Horde full scan: 10 listings at about 1s 66c each.",
     },
     5956: {
         "name": "Blacksmith Hammer",
@@ -127,18 +133,18 @@ REAGENT_PRICE_OVERRIDES = {
     7972: {
         "name": "Ichor of Undeath",
         "source_type": "market-fallback",
-        "quick": 5_000,
-        "target": 10_000,
-        "high": 20_000,
-        "reason": "Unpriced legacy mob-drop reagent.",
+        "quick": 800,
+        "target": 1_300,
+        "high": 2_500,
+        "reason": "Current Garrosh-Horde full scan: four listings from 8s to about 13s each.",
     },
     9260: {
         "name": "Volatile Rum",
         "source_type": "market-fallback",
-        "quick": 5_000,
-        "target": 10_000,
-        "high": 20_000,
-        "reason": "Unpriced legacy world-drop reagent.",
+        "quick": 600,
+        "target": 700,
+        "high": 1_200,
+        "reason": "Current Garrosh-Horde full scan: three listings / 15 units at 7s each.",
     },
     10286: {
         "name": "Heart of the Wild",
@@ -171,6 +177,134 @@ REAGENT_PRICE_OVERRIDES = {
         "target": 10_000,
         "high": 17_500,
         "reason": "Unpriced Northrend fish; aligned to Fangtooth Herring.",
+    },
+    4255: {
+        "name": "Green Leather Armor",
+        "source_type": "market-fallback",
+        "quick": 20_000,
+        "target": 35_000,
+        "high": 60_000,
+        "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
+    },
+    5966: {
+        "name": "Guardian Gloves",
+        "source_type": "market-fallback",
+        "quick": 30_000,
+        "target": 50_000,
+        "high": 90_000,
+        "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
+    },
+    11754: {
+        "name": "Black Diamond",
+        "source_type": "market-fallback",
+        "quick": 5_000,
+        "target": 10_000,
+        "high": 20_000,
+        "reason": "Unpriced legacy dungeon-drop gem used by Darkrune Helm.",
+    },
+    12662: {
+        "name": "Demonic Rune",
+        "source_type": "bind-on-pickup-farming-estimate",
+        "quick": 10_000,
+        "target": 20_000,
+        "high": 40_000,
+        "reason": "BoP farmed reagent; valued only as an explicit access estimate.",
+    },
+    12753: {
+        "name": "Skin of Shadow",
+        "source_type": "bind-on-pickup-farming-estimate",
+        "quick": 20_000,
+        "target": 40_000,
+        "high": 80_000,
+        "reason": "BoP Scholomance reagent; valued only as an explicit access estimate.",
+    },
+    12809: {
+        "name": "Guardian Stone",
+        "source_type": "market-fallback",
+        "quick": 20_000,
+        "target": 40_000,
+        "high": 80_000,
+        "reason": "Unpriced scarce legacy mob-drop reagent.",
+    },
+    15417: {
+        "name": "Devilsaur Leather",
+        "source_type": "market-fallback",
+        "quick": 20_000,
+        "target": 35_000,
+        "high": 60_000,
+        "reason": "Unpriced legacy Skinning material used by Persuader.",
+    },
+    17012: {
+        "name": "Core Leather",
+        "source_type": "market-fallback",
+        "quick": 20_000,
+        "target": 40_000,
+        "high": 70_000,
+        "reason": "Unpriced Molten Core Skinning material.",
+    },
+    17203: {
+        "name": "Sulfuron Ingot",
+        "source_type": "market-fallback",
+        "quick": 750_000,
+        "target": 1_250_000,
+        "high": 2_000_000,
+        "reason": "Unpriced epic Molten Core drop used eight at a time by Sulfuron Hammer.",
+    },
+    19726: {
+        "name": "Bloodvine",
+        "source_type": "market-fallback",
+        "quick": 30_000,
+        "target": 50_000,
+        "high": 90_000,
+        "reason": "Unpriced Zul'Gurub gathering material.",
+    },
+    19774: {
+        "name": "Souldarite",
+        "source_type": "market-fallback",
+        "quick": 20_000,
+        "target": 35_000,
+        "high": 60_000,
+        "reason": "Unpriced Zul'Gurub ore used by Bloodsoul and Darksoul crafts.",
+    },
+    20520: {
+        "name": "Dark Rune",
+        "source_type": "market-fallback",
+        "quick": 7_000,
+        "target": 8_000,
+        "high": 12_000,
+        "reason": "Current Garrosh-Horde full scan: eight single-item listings at 80s each.",
+    },
+    22202: {
+        "name": "Small Obsidian Shard",
+        "source_type": "market-fallback",
+        "quick": 10_000,
+        "target": 20_000,
+        "high": 40_000,
+        "reason": "Unpriced Ahn'Qiraj crafting shard.",
+    },
+    22203: {
+        "name": "Large Obsidian Shard",
+        "source_type": "market-fallback",
+        "quick": 30_000,
+        "target": 50_000,
+        "high": 90_000,
+        "reason": "Unpriced Ahn'Qiraj crafting shard.",
+    },
+    22682: {
+        "name": "Frozen Rune",
+        "source_type": "market-fallback",
+        "quick": 250_000,
+        "target": 400_000,
+        "high": 700_000,
+        "reason": "Unpriced scarce legacy Naxxramas crafting rune.",
+    },
+    34664: {
+        "name": "Sunmote",
+        "source_type": "market-fallback",
+        "quick": 200_000,
+        "target": 350_000,
+        "high": 600_000,
+        "reason": "Unpriced scarce Sunwell crafting drop.",
     },
 }
 
@@ -284,9 +418,27 @@ def refresh_recipe_audit(config: dict) -> dict:
     matches: dict[str, dict] = {}
     profession_spells: dict[int, dict[int, dict]] = {}
     for filename, skill_id in PROFESSION_SKILLS.items():
-        source = fetch_text(WOTLKDB_SKILL_URL.format(skill_id=skill_id))
-        names.update(wotlkdb_item_names(source))
-        spells = listview_data(source, "spells")
+        filters = PROFESSION_SKILL_FILTERS.get(skill_id, ())
+        urls = (
+            [
+                WOTLKDB_SKILL_URL.format(skill_id=skill_id) + f"&filter={filter_value}"
+                for filter_value in filters
+            ]
+            if filters
+            else [WOTLKDB_SKILL_URL.format(skill_id=skill_id)]
+        )
+        spell_map: dict[int, dict] = {}
+        for url in urls:
+            source = fetch_text(url)
+            names.update(wotlkdb_item_names(source))
+            spell_map.update(
+                {int(spell["id"]): spell for spell in listview_data(source, "spells")}
+            )
+        spells = list(spell_map.values())
+        if skill_id == 164 and len(spells) != 525:
+            raise ValueError(
+                f"Expected 525 complete Blacksmithing spell records; got {len(spells)}"
+            )
         profession_spells[skill_id] = {int(spell["id"]): spell for spell in spells}
         for spell in spells:
             creates = spell.get("creates")
@@ -419,10 +571,14 @@ def refresh_recipe_audit(config: dict) -> dict:
             "name": "WotLKDB 3.3.5a profession and item records",
             "profession_url_template": WOTLKDB_SKILL_URL,
             "item_url_template": WOTLKDB_ITEM_URL,
+            "complete_skill_filters": {
+                str(skill_id): list(filters)
+                for skill_id, filters in PROFESSION_SKILL_FILTERS.items()
+            },
         },
         "pricing_method": {
             "reagent_reference": "Highest matching quick, target, and high material row outside generated crafted blocks; exact vendor cost where applicable.",
-            "crafted_intermediates": "Recursively priced from their own recipe floors.",
+            "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their current crafted-catalog bands.",
             "output_quantity": "Minimum guaranteed output; charged devices use all guaranteed charges.",
             "market_margin": "Demand-sensitive margin with upward convenience rounding; existing higher guide prices and matching output rows elsewhere in the guide set remain the baseline.",
             "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium.",
@@ -503,6 +659,16 @@ def exact_vendor_prices() -> dict[int, int]:
     return prices
 
 
+def canonical_crafted_references(config: dict) -> dict[int, dict[str, int]]:
+    references: dict[int, dict[str, int]] = {}
+    for key, raw in config["catalog"].items():
+        item = config.get("catalog_defaults", {}) | config["price_profiles"][raw["profile"]] | raw
+        values = {band: int(item[f"{band}_copper"]) for band in PRICE_BANDS}
+        if all(value > 0 for value in values.values()):
+            references[int(item["item_id"])] = values
+    return references
+
+
 def merged_item(config: dict, key: str) -> dict:
     raw = config["catalog"][key]
     return config["catalog_defaults"] | config["price_profiles"][raw["profile"]] | raw
@@ -512,6 +678,7 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
     recipes = audit["recipes"]
     guide_prices = guide_reagent_references()
     vendor_prices = exact_vendor_prices()
+    crafted_prices = canonical_crafted_references(config)
     overrides = {
         int(item_id): {band: int(record[band]) for band in PRICE_BANDS}
         for item_id, record in audit["reagent_price_overrides"].items()
@@ -527,6 +694,8 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
             return vendor_prices[item_id]
         if item_id in guide_prices:
             return int(guide_prices[item_id][band])
+        if item_id in crafted_prices:
+            return int(crafted_prices[item_id][band])
         if item_id in overrides:
             return int(overrides[item_id][band])
         raise ValueError(f"No {band} reagent reference for item {item_id}")
@@ -597,11 +766,19 @@ def recommended_prices(
             margin = Decimal(DEMAND_MARGINS[demand][band])
             floor_with_margin = rounded_market_price(Decimal(item_floors[band]) * margin)
             matching_output = output_references.get(item_id, {}).get(band, 0)
-            prices[key][band] = max(
-                int(item[f"{band}_copper"]),
-                int(matching_output),
-                floor_with_margin,
+            if item.get("price_strategy") == "shared-market-reference":
+                if not matching_output:
+                    raise ValueError(
+                        f"{key}: shared-market-reference has no matching AH market row"
+                    )
+                prices[key][band] = int(matching_output)
+                continue
+            current_price = (
+                0
+                if item.get("profession") == "Blacksmithing"
+                else int(item[f"{band}_copper"])
             )
+            prices[key][band] = max(current_price, int(matching_output), floor_with_margin)
     output_keys = {
         int(config["catalog"][key]["item_id"]): key for key in floors
     }

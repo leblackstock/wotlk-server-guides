@@ -13,6 +13,7 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
 - `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
+- `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
 - `README.md` - maintenance notes
 
 ## Update Vendor & Convenience Prices
@@ -54,6 +55,14 @@ python scripts/build-ah-search-index.py --check
 ```
 
 Search results link to the exact item row. Every AH guide therefore loads `assets/ah-search.js`, which handles the row highlight after navigation.
+
+## Expand A Profession AH Guide
+
+Before adding profession-crafted items, read
+[`docs/ah-profession-plans/README.md`](docs/ah-profession-plans/README.md) and the
+matching profession plan. The current-price audit is a required first gate: fix
+and reconcile the guide's existing prices and its ingredient references before
+calculating or adding crafted-item prices.
 
 ## Add A New Guide
 

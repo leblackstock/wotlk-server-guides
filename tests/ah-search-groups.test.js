@@ -14,15 +14,15 @@ assert.equal(uniqueItemCount(index.items), expectedUniqueCount);
 assert.ok(expectedUniqueCount < index.itemCount);
 
 const saronite = searchItems(index.items, "saronite");
-assert.equal(saronite.length, 5);
+assert.equal(saronite.length, 12);
 assert.equal(new Set(saronite.map((item) => normalize(item.name))).size, saronite.length);
 
 const saroniteBar = saronite.find((item) => item.name === "Saronite Bar");
 assert.ok(saroniteBar);
 assert.equal(saroniteBar.matches.length, 4);
 assert.equal(new Set(saroniteBar.matches.map((item) => item.guide)).size, 3);
-assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.targetBid)), new Set(["1g 28s"]));
-assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.target)), new Set(["1g 50s"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.targetBid)), new Set(["2g 38s"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.target)), new Set(["2g 80s"]));
 
 const autumnsGlow = searchItems(index.items, "Autumn's Glow").find((item) => item.name === "Autumn's Glow");
 assert.ok(autumnsGlow);
