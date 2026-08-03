@@ -217,6 +217,7 @@
         const bidValues = uniqueValues(matches, "targetBid");
         const buyoutValues = uniqueValues(matches, "target");
         const demandValues = uniqueValues(matches, "demand");
+        const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
         const pricesVary = bidValues.length > 1 || buyoutValues.length > 1;
         const demandVaries = demandValues.length > 1;
         const grouped = matches.length > 1;
@@ -244,6 +245,13 @@
           .filter(Boolean)
           .join(" · ");
         primary.append(makeElement("span", "ah-search-result-meta", meta));
+
+        if (conversionHints.length) {
+          const conversionHint = conversionHints.length === 1
+            ? conversionHints[0]
+            : "Conversion estimates vary by guide.";
+          primary.append(makeElement("span", "ah-search-conversion-hint", `Conversion check: ${conversionHint}`));
+        }
 
         if (!grouped) {
           const footer = makeElement("span", "ah-search-result-footer");

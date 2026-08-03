@@ -198,7 +198,8 @@ def main() -> int:
             profession = re.escape(item["profession"])
             row_pattern = (
                 rf'<tr data-crafted-key="{re.escape(key)}" '
-                rf'data-market-source="crafted" data-profession="{profession}">'
+                rf'data-market-source="crafted" data-profession="{profession}"'
+                rf'(?: data-search-hint="[^"]+")?>'
                 rf"(.*?)</tr>"
             )
             row_match = re.search(row_pattern, source, re.DOTALL)
@@ -522,6 +523,46 @@ def main() -> int:
         "lw-pack-of-endless-pockets",
     }:
         fail("Leatherworking profession-material bags are not fully isolated")
+    leatherworking_source = sources[
+        "skinning-leatherworking-materials-ah-price-guide.html"
+    ]
+    if leatherworking_source.count(
+        'data-column="estimate" data-label="Estimated Value"'
+    ) != 5:
+        fail("Leatherworking conversion checks must show five estimated values")
+    for estimate in (
+        "6 Borean input ≈4g 20s",
+        "10 Heavy Borean ≈65g; 1 Arctic Fur ≈40g",
+        "5 Knothide input ≈2g 75s",
+        "Borean ≈85s; Knothide ≈60s; Light ≈10s",
+        "≈25s / 45s / 60s / 2g 30s / 8g",
+    ):
+        if estimate not in leatherworking_source:
+            fail(f"Leatherworking conversion estimate is missing: {estimate}")
+
+    expected_leatherworking_search_hints = {
+        "Arctic Fur": "10 Heavy Borean ≈65g vs Arctic Fur ≈40g",
+        "Borean Leather": "5 Borean Scraps ≈70s → target 85s",
+        "Cured Heavy Hide": "Heavy Hide + Salt ≈51s 50c → target 60s",
+        "Cured Light Hide": "Light Hide + Salt ≈20s 50c → target 25s",
+        "Cured Medium Hide": "Medium Hide + Salt ≈35s 50c → target 45s",
+        "Cured Rugged Hide": "Rugged Hide + Refined Salt ≈6g 75s → target 8g",
+        "Cured Thick Hide": "Thick Hide + Salt ≈2g → target 2g 30s",
+        "Heavy Borean Leather": "6 Borean ≈4g 20s → target 6g 50s",
+        "Heavy Knothide Leather": "5 Knothide ≈2g 75s → target 3g 20s",
+        "Knothide Leather": "5 Knothide Scraps ≈50s → target 60s",
+        "Light Leather": "3 Ruined Scraps ≈6s → target 10s",
+    }
+    actual_leatherworking_search_hints = {
+        item["name"]: item["conversionHint"]
+        for item in index["items"]
+        if "skinning-leatherworking-materials-ah-price-guide.html" in item["href"]
+        and "conversionHint" in item
+    }
+    if actual_leatherworking_search_hints != expected_leatherworking_search_hints:
+        fail("Leatherworking conversion estimates are not attached to canonical search items")
+    if any("value check" in item["name"].casefold() for item in index["items"]):
+        fail("Reference-only value-check rows must stay out of AH search")
 
     for label in (
         "Elixir of Tongues (NYI)",

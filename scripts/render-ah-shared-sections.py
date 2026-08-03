@@ -448,6 +448,10 @@ def render_crafted_row(
     notes = html.escape(item["notes"])
     row_note = html.escape(item.get("row_note", "").strip())
     quality = html.escape(item["quality"])
+    search_hint = html.escape(item.get("search_hint", "").strip(), quote=True)
+    search_hint_attribute = (
+        f' data-search-hint="{search_hint}"' if search_hint else ""
+    )
     requirement = config["_profession_use_audit"].get(
         "canonical_hard_requirements", {}
     ).get(key)
@@ -498,7 +502,7 @@ def render_crafted_row(
         notes_cell = f'<strong>Reagent floor:</strong> {materials}. {notes}'
     return (
         f'<tr data-crafted-key="{html.escape(key)}" data-market-source="crafted" '
-        f'data-profession="{profession}">'
+        f'data-profession="{profession}"{search_hint_attribute}>'
         f'<td data-column="item" data-label="Item"><strong class="q-{quality}">{name}</strong>'
         f'<div class="mini">{detail}</div></td>'
         f'<td data-column="target" data-label="Target Price">'

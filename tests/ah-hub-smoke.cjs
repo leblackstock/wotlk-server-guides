@@ -132,6 +132,16 @@ async function verifyAuditedCraftedGuide(page, options) {
     assert.deepEqual(await autumnsGlow.locator(".ah-search-target-value").allTextContents(), ["8g 50s", "10g"]);
     assert.equal(await autumnsGlow.locator(".ah-search-location-link").count(), 2);
     assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 2);
+
+    await desktop.locator("#ah-search-input").fill("Heavy Borean Leather");
+    const heavyBoreanLeather = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Heavy Borean Leather$/ })
+    });
+    assert.equal(await heavyBoreanLeather.count(), 1);
+    assert.equal(
+      await heavyBoreanLeather.locator(".ah-search-conversion-hint").textContent(),
+      "Conversion check: 6 Borean ≈4g 20s → target 6g 50s"
+    );
     await noOverflow(desktop, "Desktop Auction House hub");
 
     await desktop.locator("#ah-search-input").fill("Scroll of Enchant Weapon - Berserking");
@@ -309,6 +319,15 @@ async function verifyAuditedCraftedGuide(page, options) {
     assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
     await mobile.locator("#ah-search-input").fill("saronite");
     assert.equal(await mobile.locator(".ah-search-result").count(), 12);
+    await mobile.locator("#ah-search-input").fill("Heavy Borean Leather");
+    const mobileHeavyBoreanLeather = mobile.locator(".ah-search-result", {
+      has: mobile.locator(".ah-search-item-name", { hasText: /^Heavy Borean Leather$/ })
+    });
+    assert.equal(await mobileHeavyBoreanLeather.count(), 1);
+    assert.equal(
+      await mobileHeavyBoreanLeather.locator(".ah-search-conversion-hint").textContent(),
+      "Conversion check: 6 Borean ≈4g 20s → target 6g 50s"
+    );
     await noOverflow(mobile, "Mobile Auction House hub");
 
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });

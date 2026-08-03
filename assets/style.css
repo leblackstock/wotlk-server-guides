@@ -779,6 +779,16 @@ h1 {
   line-height: 1.35;
 }
 
+.ah-search-conversion-hint {
+  display: block;
+  margin-top: 7px;
+  padding-left: 8px;
+  border-left: 2px solid rgba(233, 196, 106, 0.68);
+  color: #d8c98d;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .ah-search-result-footer {
   display: flex;
   align-items: center;

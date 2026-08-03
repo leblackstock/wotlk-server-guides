@@ -24,7 +24,7 @@ index_source = INDEX_PATH.read_text(encoding="utf-8").splitlines()[1]
 index = json.loads(
     index_source.removeprefix("window.AH_SEARCH_INDEX=").removesuffix(";")
 )
-assert index["version"] == 2
+assert index["version"] == 3
 assert index["itemCount"] == len(index["items"])
 assert index["items"]
 

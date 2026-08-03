@@ -99,6 +99,7 @@ class AHGuideParser(HTMLParser):
         self.quality = "common"
         self.market_source = "market"
         self.profession = ""
+        self.search_hint = ""
         self.search_excluded = False
         self.items: list[dict[str, str | int]] = []
         self.occurrences: dict[str, int] = {}
@@ -123,6 +124,7 @@ class AHGuideParser(HTMLParser):
             self.in_row = True
             self.market_source = values.get("data-market-source", "market")
             self.profession = values.get("data-profession", "")
+            self.search_hint = values.get("data-search-hint", "").strip()
             self.search_excluded = (
                 self.search_table_excluded
                 or values.get("data-ah-search-exclude") == "true"
@@ -218,22 +220,23 @@ class AHGuideParser(HTMLParser):
         demand = ""
         if "demand" in self.cell_columns:
             demand = clean_text(self.cell_parts[self.cell_columns.index("demand")])
-        self.items.append(
-            {
-                "name": name,
-                "detail": clean_text(self.mini_parts),
-                "guide": self.guide_title,
-                "section": self.section,
-                "targetBid": clean_text(self.target_bid_parts) or "—",
-                "target": clean_text(self.target_buyout_parts) or "—",
-                "demand": demand or "—",
-                "quality": self.quality,
-                "marketSource": self.market_source,
-                "profession": self.profession,
-                "href": f"./guides/{self.filename}#{fragment}",
-                "occurrence": occurrence,
-            }
-        )
+        item: dict[str, str | int] = {
+            "name": name,
+            "detail": clean_text(self.mini_parts),
+            "guide": self.guide_title,
+            "section": self.section,
+            "targetBid": clean_text(self.target_bid_parts) or "—",
+            "target": clean_text(self.target_buyout_parts) or "—",
+            "demand": demand or "—",
+            "quality": self.quality,
+            "marketSource": self.market_source,
+            "profession": self.profession,
+            "href": f"./guides/{self.filename}#{fragment}",
+            "occurrence": occurrence,
+        }
+        if self.search_hint:
+            item["conversionHint"] = self.search_hint
+        self.items.append(item)
 
 
 def build_index() -> str:
@@ -255,7 +258,7 @@ def build_index() -> str:
 
     items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guide"]).casefold()))
     payload = {
-        "version": 2,
+        "version": 3,
         "guideCount": len(hub_parser.guides),
         "itemCount": len(items),
         "items": items,
