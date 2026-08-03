@@ -29,7 +29,7 @@ subprocess.run(
 hard = AUDIT["canonical_hard_requirements"]
 profession_audience = AUDIT["canonical_profession_audience"]
 general_exceptions = AUDIT["canonical_general_use_exceptions"]
-assert len(hard) == 15
+assert len(hard) == 18
 assert len(profession_audience) == 10
 assert len(general_exceptions) == 7
 assert len(AUDIT["vendor_hard_requirements"]) == 3
@@ -130,6 +130,6 @@ for excluded in AUDIT["excluded_items"]:
 
 print(
     "Profession-use audit is current: "
-    "22 hard-restricted finished items, 10 profession-audience items, "
+    "25 hard-restricted finished items, 10 profession-audience items, "
     "and 9 documented general-use exceptions."
 )

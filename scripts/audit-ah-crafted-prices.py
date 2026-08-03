@@ -33,6 +33,7 @@ PROFESSION_SKILLS = {
     "alchemy-materials-ah-price-guide.html": 171,
     "blacksmithing-materials-ah-price-guide.html": 164,
     "jewelcrafting-gems-ah-price-guide.html": 755,
+    "tailoring-cloth-ah-price-guide.html": 197,
 }
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
@@ -40,6 +41,15 @@ PROFESSION_SKILL_FILTERS = {
     164: ("maxrs=300", "minrs=301;maxrs=350", "minrs=351;maxrs=450"),
     # Jewelcrafting has 566 records and also exceeds WotLKDB's 300-row cap.
     755: (
+        "maxrs=300",
+        "minrs=301;maxrs=350",
+        "minrs=351;maxrs=375",
+        "minrs=376;maxrs=400",
+        "minrs=401;maxrs=425",
+        "minrs=426;maxrs=450",
+    ),
+    # Tailoring has 439 records and also exceeds WotLKDB's 300-row cap.
+    197: (
         "maxrs=300",
         "minrs=301;maxrs=350",
         "minrs=351;maxrs=375",
@@ -321,6 +331,46 @@ REAGENT_PRICE_OVERRIDES = {
         "high": 600_000,
         "reason": "Unpriced scarce Sunwell crafting drop.",
     },
+    2325: {
+        "name": "Black Dye",
+        "source_type": "coin-vendor",
+        "quick": 1_000,
+        "target": 1_000,
+        "high": 1_000,
+        "reason": "Exact unlimited-vendor cost.",
+    },
+    4341: {
+        "name": "Yellow Dye",
+        "source_type": "coin-vendor",
+        "quick": 500,
+        "target": 500,
+        "high": 500,
+        "reason": "Exact unlimited-vendor cost.",
+    },
+    6261: {
+        "name": "Orange Dye",
+        "source_type": "coin-vendor",
+        "quick": 1_000,
+        "target": 1_000,
+        "high": 1_000,
+        "reason": "Exact unlimited-vendor cost.",
+    },
+    10290: {
+        "name": "Pink Dye",
+        "source_type": "coin-vendor",
+        "quick": 2_500,
+        "target": 2_500,
+        "high": 2_500,
+        "reason": "Exact unlimited-vendor cost.",
+    },
+    18240: {
+        "name": "Ogre Tannin",
+        "source_type": "bind-on-pickup-farming-estimate",
+        "quick": 10_000,
+        "target": 20_000,
+        "high": 40_000,
+        "reason": "BoP Dire Maul cache reagent; provisional access-cost fallback only.",
+    },
 }
 
 
@@ -432,7 +482,7 @@ def refresh_recipe_audit(config: dict) -> dict:
                 {int(spell["id"]): spell for spell in listview_data(source, "spells")}
             )
         spells = list(spell_map.values())
-        expected_skill_records = {164: 525, 755: 566}
+        expected_skill_records = {164: 525, 755: 566, 197: 439}
         expected_records = expected_skill_records.get(skill_id)
         if expected_records is not None and len(spells) != expected_records:
             raise ValueError(
@@ -690,10 +740,10 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
         for reagent in recipe["reagents"]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
-            if key.startswith("jc-") and item_id in baseline_prices:
-                # A cut gem or piece of jewelry consumes the sale value of its
-                # tradeable uncut gem/component, not merely that input's own
-                # cheapest recursive production path.
+            if key.startswith(("jc-", "tailor-")) and item_id in baseline_prices:
+                # A cut gem, piece of jewelry, or Tailoring output consumes the
+                # saved sale value of its tradeable input, not merely that
+                # input's own cheapest recursive production path.
                 unit_cost = raw_price(item_id, band)
             else:
                 unit_cost = floor_for(dependency, band) if dependency else raw_price(item_id, band)
@@ -759,7 +809,7 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") in {"Blacksmithing", "Jewelcrafting"}
+                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring"}
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)

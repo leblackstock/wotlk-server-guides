@@ -24,6 +24,7 @@ EXPECTED_GUIDE_COUNTS = {
     "enchanting-mats-ah-price-guide.html": 276,
     "blacksmithing-materials-ah-price-guide.html": 453,
     "jewelcrafting-gems-ah-price-guide.html": 497,
+    "tailoring-cloth-ah-price-guide.html": 406,
 }
 
 
@@ -117,8 +118,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 1318:
-        fail(f"Expected 1318 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 1724:
+        fail(f"Expected 1724 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -385,6 +386,60 @@ def main() -> int:
     if any(int(item.get("required_skill", 0)) for item in jewelcrafting_items.values()):
         fail("Profession-restricted finished Jewelcrafting item leaked into general-use sections")
 
+    tailoring_items = {
+        merged_item(config, key)["name"]: merged_item(config, key)
+        for key in used_keys
+        if key.startswith("tailor-")
+    }
+    if len(tailoring_items) != 406:
+        fail(f"Expected 406 distinct tradeable Tailoring outputs, found {len(tailoring_items)}")
+    for label in (
+        "Robe of the Archmage",
+        "Sunfire Robe",
+        "Magnificent Flying Carpet",
+        "Frosty Flying Carpet",
+        "Flying Carpet",
+    ):
+        if label in tailoring_items:
+            fail(f"BoP, self-only, or excluded Tailoring output leaked in: {label}")
+    alliance_tailoring_ids = {47585, 47587, 47603, 47605}
+    leaked_tailoring_alliance = alliance_tailoring_ids & {
+        int(item["item_id"]) for item in tailoring_items.values()
+    }
+    if leaked_tailoring_alliance:
+        fail(
+            "Alliance-only duplicate Tailoring records leaked in: "
+            f"{sorted(leaked_tailoring_alliance)}"
+        )
+    for label in (
+        "Spellweave",
+        "Frostweave Bag",
+        "Brilliant Spellthread",
+        "Frostweave Net",
+        "Leggings of Woven Death",
+        "Spellfire Robe",
+        "Bottomless Bag",
+        "Mooncloth",
+        "Rich Purple Silk Shirt",
+        "Gordok Ogre Suit",
+    ):
+        if label not in tailoring_items:
+            fail(f"Expanded Tailoring era/category coverage is missing: {label}")
+    tailoring_sections = guides["tailoring-cloth-ah-price-guide.html"]["sections"]
+    if len(tailoring_sections) != 17:
+        fail(f"Expected 17 expanded Tailoring sections, found {len(tailoring_sections)}")
+    restricted_tailoring = [
+        section
+        for section in tailoring_sections
+        if section.get("audience") == "profession-restricted"
+    ]
+    if len(restricted_tailoring) != 1 or set(restricted_tailoring[0]["items"]) != {
+        "tailor-netherweave-net",
+        "tailor-heavy-netherweave-net",
+        "tailor-frostweave-net",
+    }:
+        fail("Tailor-only nets are not isolated in one profession-restricted section")
+
     for label in (
         "Elixir of Tongues (NYI)",
         "Philosopher's Stone",
@@ -432,6 +487,10 @@ def main() -> int:
         "jc-nightmare-tear": 1_300_000,
         "jc-titanium-impact-band": 6_200_000,
         "jc-prismatic-black-diamond": 12_000,
+        "tailor-spellweave": 520_000,
+        "tailor-frostweave-bag": 640_000,
+        "tailor-brilliant-spellthread": 850_000,
+        "tailor-leggings-of-woven-death": 71_000_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
@@ -457,6 +516,11 @@ def main() -> int:
         "jc-nightmare-tear": "+10 All Stats",
         "jc-titanium-impact-band": "item level 200",
         "jc-prismatic-black-diamond": "eventual gem is random",
+        "tailor-spellweave": "assumes one guaranteed output",
+        "tailor-frostweave-bag": "20-slot general bag",
+        "tailor-brilliant-spellthread": "spell power by 50 and Spirit by 20",
+        "tailor-frostweave-net": "Tailoring 350 to use",
+        "tailor-rich-purple-silk-shirt": "appearance and roleplay collectors",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -468,6 +532,7 @@ def main() -> int:
         "alchemy-materials-ah-price-guide.html",
         "blacksmithing-materials-ah-price-guide.html",
         "jewelcrafting-gems-ah-price-guide.html",
+        "tailoring-cloth-ah-price-guide.html",
     ):
         keys = [
             key
@@ -484,10 +549,11 @@ def main() -> int:
         "alchemy-materials-ah-price-guide.html",
         "blacksmithing-materials-ah-price-guide.html",
         "jewelcrafting-gems-ah-price-guide.html",
+        "tailoring-cloth-ah-price-guide.html",
     ):
         if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
-        if "exact 3.3.5 recipe" not in sources[filename]:
+        if not re.search(r"exact 3\.3\.5 (?:recipe|reagent)", sources[filename]):
             fail(f"{filename}: recipe-level pricing method is not explained")
 
     alchemy_source = sources["alchemy-materials-ah-price-guide.html"]
@@ -677,7 +743,7 @@ def main() -> int:
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, and Jewelcrafting."
+        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, and Tailoring."
     )
     return 0
 

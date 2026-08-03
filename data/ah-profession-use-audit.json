@@ -28,7 +28,10 @@
     "bs-truesilver-skeleton-key": {"item_id": 15871, "skill": "Blacksmithing", "rank": 200},
     "bs-arcanite-skeleton-key": {"item_id": 15872, "skill": "Blacksmithing", "rank": 275},
     "bs-cobalt-skeleton-key": {"item_id": 43854, "skill": "Blacksmithing", "rank": 350},
-    "bs-titanium-skeleton-key": {"item_id": 43853, "skill": "Blacksmithing", "rank": 430}
+    "bs-titanium-skeleton-key": {"item_id": 43853, "skill": "Blacksmithing", "rank": 430},
+    "tailor-netherweave-net": {"item_id": 24268, "skill": "Tailoring", "rank": 300},
+    "tailor-heavy-netherweave-net": {"item_id": 24269, "skill": "Tailoring", "rank": 325},
+    "tailor-frostweave-net": {"item_id": 41509, "skill": "Tailoring", "rank": 350}
   },
   "canonical_profession_audience": {
     "eng-gyromatic-micro-adjustor": {"item_id": 10498, "audience": "Engineering", "reason": "Reusable Engineering recipe tool; the item record has no direct skill gate."},

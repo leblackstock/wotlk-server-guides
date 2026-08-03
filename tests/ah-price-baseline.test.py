@@ -40,10 +40,10 @@ def main() -> int:
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 658:
-        fail("Frozen baseline must contain 650 pre-scan references plus 8 documented Jewelcrafting input fallbacks")
+    if len(baseline.get("items", {})) != 662:
+        fail("Frozen baseline must contain 650 pre-scan references plus 12 documented profession-input fallbacks")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 649, "medium": 1, "fallback": 8}):
+    if confidence != Counter({"low": 649, "medium": 1, "fallback": 12}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
@@ -108,6 +108,14 @@ def main() -> int:
     }
     if len(blacksmithing_inputs) != 149:
         fail(f"Expected 149 direct Blacksmithing inputs, found {len(blacksmithing_inputs)}")
+    tailoring_inputs = {
+        int(reagent["item_id"])
+        for key, recipe in recipes.items()
+        if key.startswith("tailor-")
+        for reagent in recipe["reagents"]
+    }
+    if len(tailoring_inputs) != 147:
+        fail(f"Expected 147 direct Tailoring inputs, found {len(tailoring_inputs)}")
 
     representative_targets = {
         "bs-eternal-belt-buckle": 350_000,
@@ -130,8 +138,8 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 658 frozen references and documented fallbacks, "
-        "149 Blacksmithing inputs covered, active scans excluded."
+        "Non-circular AH baseline is valid: 662 frozen references and documented fallbacks, "
+        "149 Blacksmithing and 147 Tailoring inputs covered, active scans excluded."
     )
     return 0
 

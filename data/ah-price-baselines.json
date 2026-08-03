@@ -5956,6 +5956,42 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional legacy epic-gem fallback above the 5g vendor floor and corresponding Talasite band; no active listing was used."
+    },
+    "4589": {
+      "name": "Long Elegant Feather",
+      "quick": 2500,
+      "target": 5000,
+      "high": 10000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop fallback for Tailoring recipes; no active listing was used."
+    },
+    "7072": {
+      "name": "Naga Scale",
+      "quick": 2500,
+      "target": 5000,
+      "high": 10000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop fallback aligned to other common old-world scales; no active listing was used."
+    },
+    "11040": {
+      "name": "Morrowgrain",
+      "quick": 1000,
+      "target": 2500,
+      "high": 5000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional quest-derived legacy reagent fallback; no active listing was used."
+    },
+    "21882": {
+      "name": "Soul Essence",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Outland mob-drop fallback for Soulcloth; no active listing was used."
     }
   }
 }

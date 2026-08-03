@@ -3,7 +3,7 @@
   "scope": {
     "guide_glob": "*-ah-price-guide.html",
     "expected_guide_count": 16,
-    "expected_priced_table_count": 245
+    "expected_priced_table_count": 260
   },
   "default_order": {
     "field": "target_buyout_copper",
@@ -144,12 +144,11 @@
     {
       "guide": "tailoring-cloth-ah-price-guide.html",
       "section_titles": [
-        "Bolts / processed cloth",
         "Cloth drops",
         "Spider silks / market-priced tailoring supplies"
       ],
       "order": "material-tier progression",
-      "reason": "Preserve cloth, bolt, silk, and thread tier groupings."
+      "reason": "Preserve raw-cloth, silk, and thread tier groupings; canonical crafted intermediates use price order."
     }
   ]
 }

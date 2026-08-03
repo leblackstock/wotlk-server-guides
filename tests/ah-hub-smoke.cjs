@@ -15,7 +15,7 @@ async function verifyAuditedCraftedGuide(page, options) {
   await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
   assert.equal(await page.locator(".crafted-market-section").count(), sections);
-  assert.match(await page.locator(".crafted-market-intro").textContent(), /exact 3\.3\.5 recipe/);
+  assert.match(await page.locator(".crafted-market-intro").textContent(), /exact 3\.3\.5 (?:recipe|reagent)/);
   assert.equal(await page.locator(".crafted-market-shared-note").count(), 1);
   assert.equal(await page.locator(".crafted-note-ref").count(), rows);
   assert.equal(await page.locator(".crafted-item-note").count(), rows);
@@ -223,6 +223,25 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /\+20 Agility/,
       label: "Desktop Jewelcrafting guide"
     });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "tailoring-cloth-ah-price-guide.html",
+      rows: 406,
+      sections: 17,
+      key: "tailor-spellweave",
+      target: "52g",
+      recipeSpell: 56003,
+      notePattern: /assumes one guaranteed output/,
+      label: "Desktop Tailoring guide"
+    });
+
+    await desktop.goto(`${base}/guides/tailoring-cloth-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator("#tailor-only-nets").count(), 1);
+    assert.equal(await desktop.locator("#tailor-only-nets tbody tr").count(), 3);
+    assert.match(
+      await desktop.locator('[data-crafted-key="tailor-frostweave-net"] [data-column="notes"]').textContent(),
+      /Requires Tailoring 350 to use/
+    );
+    await noOverflow(desktop, "Desktop profession-separated Tailoring guide");
 
     await desktop.goto(`${base}/guides/engineering-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#general-use-engineering-utility").count(), 1);
@@ -327,8 +346,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /\+20 Agility/,
       label: "Mobile Jewelcrafting guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "tailoring-cloth-ah-price-guide.html",
+      rows: 406,
+      sections: 17,
+      key: "tailor-spellweave",
+      target: "52g",
+      recipeSpell: 56003,
+      notePattern: /assumes one guaranteed output/,
+      label: "Mobile Tailoring guide"
+    });
 
-    console.log("Auction House hub and all six crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all seven crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

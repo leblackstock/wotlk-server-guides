@@ -94,3 +94,8 @@ The 2026-08-03 Jewelcrafting expansion added eight explicit fallback-confidence
 input references that were absent from the pre-scan guide set. They are retained
 as documented fallbacks—not current-price claims—until realized sales or measured
 acquisition evidence supports replacement.
+
+The 2026-08-03 Tailoring expansion added four more fallback-confidence inputs:
+Long Elegant Feather, Naga Scale, Morrowgrain, and Soul Essence. Exact unlimited-
+vendor dye costs remain vendor overrides, while BoP Ogre Tannin uses a separately
+identified access-cost fallback. None of these values came from active listings.
