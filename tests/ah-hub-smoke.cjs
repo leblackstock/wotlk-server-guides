@@ -233,6 +233,16 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /assumes one guaranteed output/,
       label: "Desktop Tailoring guide"
     });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "skinning-leatherworking-materials-ah-price-guide.html",
+      rows: 490,
+      sections: 29,
+      key: "lw-drums-of-battle",
+      target: "31g",
+      recipeSpell: 35543,
+      notePattern: /Cannot affect targets level 80 or higher/,
+      label: "Desktop Leatherworking guide"
+    });
 
     await desktop.goto(`${base}/guides/tailoring-cloth-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#tailor-only-nets").count(), 1);
@@ -242,6 +252,20 @@ async function verifyAuditedCraftedGuide(page, options) {
       /Requires Tailoring 350 to use/
     );
     await noOverflow(desktop, "Desktop profession-separated Tailoring guide");
+
+    await desktop.goto(`${base}/guides/skinning-leatherworking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator("#leatherworker-only-drums").count(), 1);
+    assert.equal(await desktop.locator("#leatherworker-only-drums tbody tr").count(), 5);
+    assert.match(
+      await desktop.locator('[data-crafted-key="lw-drums-of-battle"] [data-column="notes"]').textContent(),
+      /Requires Leatherworking 350 to use/
+    );
+    assert.equal(await desktop.locator('[data-use-audience="profession-input"] tbody tr').count(), 6);
+    assert.match(
+      await desktop.locator('[data-crafted-key="lw-drums-of-forgotten-kings"] [data-column="notes"]').textContent(),
+      /No profession required/
+    );
+    await noOverflow(desktop, "Desktop profession-separated Leatherworking guide");
 
     await desktop.goto(`${base}/guides/engineering-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#general-use-engineering-utility").count(), 1);
@@ -356,8 +380,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /assumes one guaranteed output/,
       label: "Mobile Tailoring guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "skinning-leatherworking-materials-ah-price-guide.html",
+      rows: 490,
+      sections: 29,
+      key: "lw-drums-of-battle",
+      target: "31g",
+      recipeSpell: 35543,
+      notePattern: /Cannot affect targets level 80 or higher/,
+      label: "Mobile Leatherworking guide"
+    });
 
-    console.log("Auction House hub and all seven crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all eight crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

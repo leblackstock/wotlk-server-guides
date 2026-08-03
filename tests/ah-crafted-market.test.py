@@ -25,6 +25,7 @@ EXPECTED_GUIDE_COUNTS = {
     "blacksmithing-materials-ah-price-guide.html": 453,
     "jewelcrafting-gems-ah-price-guide.html": 497,
     "tailoring-cloth-ah-price-guide.html": 406,
+    "skinning-leatherworking-materials-ah-price-guide.html": 490,
 }
 
 
@@ -118,8 +119,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 1724:
-        fail(f"Expected 1724 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2214:
+        fail(f"Expected 2214 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -440,6 +441,88 @@ def main() -> int:
     }:
         fail("Tailor-only nets are not isolated in one profession-restricted section")
 
+    leatherworking_items = {
+        merged_item(config, key)["name"]: merged_item(config, key)
+        for key in used_keys
+        if key.startswith("lw-")
+    }
+    if len(leatherworking_items) != 490:
+        fail(
+            "Expected 490 distinct tradeable Leatherworking outputs, found "
+            f"{len(leatherworking_items)}"
+        )
+    for label in (
+        "Netherstrike Breastplate",
+        "Carapace of Sun and Shadow",
+        "Fur Lining - Attack Power",
+        "Cobrahide Leg Reinforcements",
+        "Gordok Ogre Suit",
+    ):
+        if label in leatherworking_items:
+            fail(f"BoP, self-only, or duplicate Leatherworking output leaked in: {label}")
+    alliance_leatherworking_ids = {47576, 47579, 47581, 47583, 47595, 47597, 47599, 47602}
+    leaked_leatherworking_alliance = alliance_leatherworking_ids & {
+        int(item["item_id"]) for item in leatherworking_items.values()
+    }
+    if leaked_leatherworking_alliance:
+        fail(
+            "Alliance-only duplicate Leatherworking records leaked in: "
+            f"{sorted(leaked_leatherworking_alliance)}"
+        )
+    for label in (
+        "Heavy Borean Leather",
+        "Frosthide Leg Armor",
+        "Drums of Battle",
+        "Drums of Forgotten Kings",
+        "Mammoth Mining Bag",
+        "Nerubian Reinforced Quiver",
+        "Belt of Dragons",
+        "Earthgiving Legguards",
+        "Onyxia Scale Cloak",
+        "Riding Crop",
+        "Heavy Leather Ball",
+    ):
+        if label not in leatherworking_items:
+            fail(f"Expanded Leatherworking era/category coverage is missing: {label}")
+    leatherworking_sections = guides[
+        "skinning-leatherworking-materials-ah-price-guide.html"
+    ]["sections"]
+    if len(leatherworking_sections) != 29:
+        fail(
+            "Expected 29 expanded Leatherworking sections, found "
+            f"{len(leatherworking_sections)}"
+        )
+    restricted_leatherworking = [
+        section
+        for section in leatherworking_sections
+        if section.get("audience") == "profession-restricted"
+    ]
+    if len(restricted_leatherworking) != 1 or set(
+        restricted_leatherworking[0]["items"]
+    ) != {
+        "lw-drums-of-war",
+        "lw-drums-of-battle",
+        "lw-drums-of-speed",
+        "lw-drums-of-restoration",
+        "lw-drums-of-panic",
+    }:
+        fail("Leatherworker-only drums are not isolated in one restricted section")
+    profession_bag_keys = {
+        key
+        for section in leatherworking_sections
+        if section.get("audience") == "profession-input"
+        for key in section["items"]
+    }
+    if profession_bag_keys != {
+        "lw-leatherworkers-satchel",
+        "lw-bag-of-many-hides",
+        "lw-trappers-traveling-pack",
+        "lw-reinforced-mining-bag",
+        "lw-mammoth-mining-bag",
+        "lw-pack-of-endless-pockets",
+    }:
+        fail("Leatherworking profession-material bags are not fully isolated")
+
     for label in (
         "Elixir of Tongues (NYI)",
         "Philosopher's Stone",
@@ -491,6 +574,13 @@ def main() -> int:
         "tailor-frostweave-bag": 640_000,
         "tailor-brilliant-spellthread": 850_000,
         "tailor-leggings-of-woven-death": 71_000_000,
+        "lw-drums-of-battle": 310_000,
+        "lw-drums-of-forgotten-kings": 1_050_000,
+        "lw-frosthide-leg-armor": 1_450_000,
+        "lw-mammoth-mining-bag": 630_000,
+        "lw-heavy-borean-leather": 65_000,
+        "lw-belt-of-dragons": 5_900_000,
+        "lw-lightning-infused-leggings": 68_500_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
@@ -521,6 +611,13 @@ def main() -> int:
         "tailor-brilliant-spellthread": "spell power by 50 and Spirit by 20",
         "tailor-frostweave-net": "Tailoring 350 to use",
         "tailor-rich-purple-silk-shirt": "appearance and roleplay collectors",
+        "lw-drums-of-battle": "Cannot affect targets level 80 or higher",
+        "lw-drums-of-forgotten-kings": "requires no profession to use",
+        "lw-frosthide-leg-armor": "Stamina by 55 and Agility by 22",
+        "lw-mammoth-mining-bag": "32 slots of Mining supplies only",
+        "lw-nerubian-reinforced-quiver": "28 slots of arrows",
+        "lw-belt-of-dragons": "physical-DPS use",
+        "lw-riding-crop": "Does not work for players above level 70",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -533,6 +630,7 @@ def main() -> int:
         "blacksmithing-materials-ah-price-guide.html",
         "jewelcrafting-gems-ah-price-guide.html",
         "tailoring-cloth-ah-price-guide.html",
+        "skinning-leatherworking-materials-ah-price-guide.html",
     ):
         keys = [
             key
@@ -550,6 +648,7 @@ def main() -> int:
         "blacksmithing-materials-ah-price-guide.html",
         "jewelcrafting-gems-ah-price-guide.html",
         "tailoring-cloth-ah-price-guide.html",
+        "skinning-leatherworking-materials-ah-price-guide.html",
     ):
         if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
@@ -743,7 +842,7 @@ def main() -> int:
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, and Tailoring."
+        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, Tailoring, and Leatherworking."
     )
     return 0
 

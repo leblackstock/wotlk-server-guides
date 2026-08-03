@@ -5992,6 +5992,258 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional Outland mob-drop fallback for Soulcloth; no active listing was used."
+    },
+    "4096": {
+      "name": "Coarse Gorilla Hair",
+      "quick": 1500,
+      "target": 3000,
+      "high": 6000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world mob-drop fallback aligned to other common legacy Leatherworking inputs; no active listing was used."
+    },
+    "4461": {
+      "name": "Raptor Hide",
+      "quick": 2500,
+      "target": 5000,
+      "high": 10000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world skinning fallback aligned to other legacy hides; no active listing was used."
+    },
+    "5082": {
+      "name": "Thin Kodo Leather",
+      "quick": 1000,
+      "target": 2000,
+      "high": 4000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world skinning fallback aligned to Light and Medium Leather; no active listing was used."
+    },
+    "5373": {
+      "name": "Lucky Charm",
+      "quick": 1500,
+      "target": 3000,
+      "high": 6000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world mob-drop fallback for a niche Leatherworking recipe; no active listing was used."
+    },
+    "5784": {
+      "name": "Slimy Murloc Scale",
+      "quick": 1000,
+      "target": 2000,
+      "high": 4000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional common old-world scale fallback aligned to other low-tier Leatherworking inputs; no active listing was used."
+    },
+    "5785": {
+      "name": "Thick Murloc Scale",
+      "quick": 2500,
+      "target": 5000,
+      "high": 10000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world scale fallback aligned to other mid-tier Leatherworking inputs; no active listing was used."
+    },
+    "6471": {
+      "name": "Perfect Deviate Scale",
+      "quick": 15000,
+      "target": 30000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional rare-drop fallback above the saved Deviate Scale band; no active listing was used."
+    },
+    "7286": {
+      "name": "Black Whelp Scale",
+      "quick": 1000,
+      "target": 2000,
+      "high": 4000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-tier whelp-scale fallback aligned to common old-world scales; no active listing was used."
+    },
+    "7287": {
+      "name": "Red Whelp Scale",
+      "quick": 1500,
+      "target": 3000,
+      "high": 6000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-tier whelp-scale fallback aligned to common old-world scales; no active listing was used."
+    },
+    "8154": {
+      "name": "Scorpid Scale",
+      "quick": 1500,
+      "target": 3000,
+      "high": 6000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional common skinning fallback aligned to other old-world scales; no active listing was used."
+    },
+    "8165": {
+      "name": "Worn Dragonscale",
+      "quick": 3000,
+      "target": 6000,
+      "high": 12000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world dragonscale fallback aligned to Turtle and Green Whelp Scale; no active listing was used."
+    },
+    "12607": {
+      "name": "Brilliant Chromatic Scale",
+      "quick": 50000,
+      "target": 100000,
+      "high": 200000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional rare elite-drop fallback above common dragonscale bands; no active listing was used."
+    },
+    "15408": {
+      "name": "Heavy Scorpid Scale",
+      "quick": 3000,
+      "target": 6000,
+      "high": 12000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional high-tier skinning fallback above the Scorpid Scale band; no active listing was used."
+    },
+    "15409": {
+      "name": "Refined Deeprock Salt",
+      "quick": 25000,
+      "target": 50000,
+      "high": 100000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional cooldown-conversion fallback above the saved Deeprock Salt input band; no active listing was used."
+    },
+    "15410": {
+      "name": "Scale of Onyxia",
+      "quick": 100000,
+      "target": 200000,
+      "high": 400000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional raid-skinning fallback reflecting restricted acquisition and legacy cloak demand; no active listing was used."
+    },
+    "15412": {
+      "name": "Green Dragonscale",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world dragonscale fallback aligned to comparable saved scale bands; no active listing was used."
+    },
+    "15414": {
+      "name": "Red Dragonscale",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional scarcer old-world dragonscale fallback above comparable common scale bands; no active listing was used."
+    },
+    "15415": {
+      "name": "Blue Dragonscale",
+      "quick": 6000,
+      "target": 12000,
+      "high": 24000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world dragonscale fallback aligned to comparable saved scale bands; no active listing was used."
+    },
+    "15419": {
+      "name": "Warbear Leather",
+      "quick": 7500,
+      "target": 15000,
+      "high": 30000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional restricted-source skinning fallback above common Rugged Leather; no active listing was used."
+    },
+    "17056": {
+      "name": "Light Feather",
+      "quick": 500,
+      "target": 1000,
+      "high": 2000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional common old-world mob-drop fallback; no active listing was used."
+    },
+    "19767": {
+      "name": "Primal Bat Leather",
+      "quick": 15000,
+      "target": 30000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy raid-skinning fallback above common old-world leather; no active listing was used."
+    },
+    "19768": {
+      "name": "Primal Tiger Leather",
+      "quick": 15000,
+      "target": 30000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy raid-skinning fallback above common old-world leather; no active listing was used."
+    },
+    "20381": {
+      "name": "Dreamscale",
+      "quick": 30000,
+      "target": 60000,
+      "high": 120000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional rare legacy-event skinning fallback above common dragonscale bands; no active listing was used."
+    },
+    "20498": {
+      "name": "Silithid Chitin",
+      "quick": 3000,
+      "target": 6000,
+      "high": 12000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world skinning fallback aligned to other high-level common scales; no active listing was used."
+    },
+    "20500": {
+      "name": "Light Silithid Carapace",
+      "quick": 6000,
+      "target": 12000,
+      "high": 24000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world skinning fallback above common Silithid Chitin; no active listing was used."
+    },
+    "20501": {
+      "name": "Heavy Silithid Carapace",
+      "quick": 8000,
+      "target": 15000,
+      "high": 30000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world skinning fallback above common Silithid Chitin; no active listing was used."
+    },
+    "25699": {
+      "name": "Crystal Infused Leather",
+      "quick": 10000,
+      "target": 17500,
+      "high": 30000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Outland skinning fallback aligned to Fel Scales and other specialty leather; no active listing was used."
+    },
+    "25719": {
+      "name": "Arakkoa Feather",
+      "quick": 2500,
+      "target": 5000,
+      "high": 10000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Outland mob-drop fallback aligned to other legacy feather inputs; no active listing was used."
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "audited": "2026-08-02",
+  "audited": "2026-08-03",
   "source": {
     "name": "AzerothCore WotLK item_template",
     "repository": "azerothcore/azerothcore-wotlk",
@@ -31,7 +31,12 @@
     "bs-titanium-skeleton-key": {"item_id": 43853, "skill": "Blacksmithing", "rank": 430},
     "tailor-netherweave-net": {"item_id": 24268, "skill": "Tailoring", "rank": 300},
     "tailor-heavy-netherweave-net": {"item_id": 24269, "skill": "Tailoring", "rank": 325},
-    "tailor-frostweave-net": {"item_id": 41509, "skill": "Tailoring", "rank": 350}
+    "tailor-frostweave-net": {"item_id": 41509, "skill": "Tailoring", "rank": 350},
+    "lw-drums-of-war": {"item_id": 29528, "skill": "Leatherworking", "rank": 325},
+    "lw-drums-of-battle": {"item_id": 29529, "skill": "Leatherworking", "rank": 350},
+    "lw-drums-of-speed": {"item_id": 29530, "skill": "Leatherworking", "rank": 340},
+    "lw-drums-of-restoration": {"item_id": 29531, "skill": "Leatherworking", "rank": 350},
+    "lw-drums-of-panic": {"item_id": 29532, "skill": "Leatherworking", "rank": 350}
   },
   "canonical_profession_audience": {
     "eng-gyromatic-micro-adjustor": {"item_id": 10498, "audience": "Engineering", "reason": "Reusable Engineering recipe tool; the item record has no direct skill gate."},
@@ -43,7 +48,13 @@
     "bs-fel-iron-rod": {"item_id": 25843, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
     "bs-adamantite-rod": {"item_id": 25844, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
     "bs-eternium-rod": {"item_id": 25845, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-titanium-rod": {"item_id": 41745, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."}
+    "bs-titanium-rod": {"item_id": 41745, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
+    "lw-leatherworkers-satchel": {"item_id": 34482, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
+    "lw-bag-of-many-hides": {"item_id": 34490, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
+    "lw-trappers-traveling-pack": {"item_id": 38399, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
+    "lw-reinforced-mining-bag": {"item_id": 29540, "audience": "Mining", "reason": "Specialty bag that holds Mining supplies only."},
+    "lw-mammoth-mining-bag": {"item_id": 38347, "audience": "Mining", "reason": "Specialty bag that holds Mining supplies only."},
+    "lw-pack-of-endless-pockets": {"item_id": 44446, "audience": "Inscription", "reason": "Specialty bag that holds Inscription supplies only."}
   },
   "canonical_general_use_exceptions": {
     "eng-gnomish-army-knife": {"item_id": 40772, "show_note": true, "reason": "No Engineering requirement; supplies several profession-tool functions and a resurrection attempt."},
@@ -52,7 +63,9 @@
     "alch-cauldron-of-major-fire-protection": {"item_id": 32849, "reason": "No Alchemy requirement on the finished cauldron."},
     "alch-cauldron-of-major-frost-protection": {"item_id": 32850, "reason": "No Alchemy requirement on the finished cauldron."},
     "alch-cauldron-of-major-nature-protection": {"item_id": 32851, "reason": "No Alchemy requirement on the finished cauldron."},
-    "alch-cauldron-of-major-shadow-protection": {"item_id": 32852, "reason": "No Alchemy requirement on the finished cauldron."}
+    "alch-cauldron-of-major-shadow-protection": {"item_id": 32852, "reason": "No Alchemy requirement on the finished cauldron."},
+    "lw-drums-of-forgotten-kings": {"item_id": 49633, "show_note": true, "reason": "No Leatherworking requirement on the finished drums."},
+    "lw-drums-of-the-wild": {"item_id": 49634, "show_note": true, "reason": "No Leatherworking requirement on the finished drums."}
   },
   "vendor_hard_requirements": {
     "salvaged-iron-golem-parts": {"item_id": 44499, "skill": "Engineering", "rank": 450},
@@ -65,10 +78,7 @@
     {"guide": "fishing-cooking-materials-ah-price-guide.html", "item_id": 43480, "name": "Small Feast", "skill": "Cooking", "rank": 375, "section_id": "cook-required-feasts"},
     {"guide": "jewelcrafting-gems-ah-price-guide.html", "item_id": 42225, "name": "Dragon's Eye", "skill": "Jewelcrafting", "rank": 350, "section_id": "jewelcrafter-only-dragons-eye"}
   ],
-  "static_general_use_exceptions": [
-    {"guide": "skinning-leatherworking-materials-ah-price-guide.html", "item_id": 49633, "name": "Drums of Forgotten Kings", "reason": "The finished drums have no Leatherworking requirement."},
-    {"guide": "skinning-leatherworking-materials-ah-price-guide.html", "item_id": 49634, "name": "Drums of the Wild", "reason": "The finished drums have no Leatherworking requirement."}
-  ],
+  "static_general_use_exceptions": [],
   "static_sections": {
     "cook-required-feasts": {
       "guide": "fishing-cooking-materials-ah-price-guide.html",

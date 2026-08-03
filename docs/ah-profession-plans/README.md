@@ -29,7 +29,7 @@ be presented as a verified current price.
 | 1 | Blacksmithing | Complete — 2026-08-02 | [blacksmithing.md](blacksmithing.md) |
 | 2 | Jewelcrafting | Complete — 2026-08-03 | [jewelcrafting.md](jewelcrafting.md) |
 | 3 | Tailoring | Complete — 2026-08-03 | [tailoring.md](tailoring.md) |
-| 4 | Leatherworking | Full crafted catalog | [leatherworking.md](leatherworking.md) |
+| 4 | Leatherworking | Complete — 2026-08-03 | [leatherworking.md](leatherworking.md) |
 | 5 | Cooking | Full crafted catalog | [cooking.md](cooking.md) |
 | 6 | Mining | Smelting-output catalog | [mining.md](mining.md) |
 | 7 | First Aid | Small full catalog and guide-placement decision | [first-aid.md](first-aid.md) |
@@ -38,9 +38,9 @@ be presented as a verified current price.
 | 10 | Fishing | Gathering-price audit; finished food belongs to Cooking | [fishing.md](fishing.md) |
 
 Alchemy, Blacksmithing, Enchanting, Engineering, Inscription, Jewelcrafting,
-and Tailoring have canonical crafted catalogs in `data/ah-crafted-sections.json`.
-They remain comparison models, not unfinished plans. Leatherworking is the next
-suggested expansion.
+Tailoring, and Leatherworking have canonical crafted catalogs in
+`data/ah-crafted-sections.json`. They remain comparison models, not unfinished
+plans. Cooking is the next suggested expansion.
 
 ## Gate 0: Establish Non-Circular Baselines Before Adding Crafteds
 

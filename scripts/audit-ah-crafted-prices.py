@@ -34,6 +34,7 @@ PROFESSION_SKILLS = {
     "blacksmithing-materials-ah-price-guide.html": 164,
     "jewelcrafting-gems-ah-price-guide.html": 755,
     "tailoring-cloth-ah-price-guide.html": 197,
+    "skinning-leatherworking-materials-ah-price-guide.html": 165,
 }
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
@@ -50,6 +51,15 @@ PROFESSION_SKILL_FILTERS = {
     ),
     # Tailoring has 439 records and also exceeds WotLKDB's 300-row cap.
     197: (
+        "maxrs=300",
+        "minrs=301;maxrs=350",
+        "minrs=351;maxrs=375",
+        "minrs=376;maxrs=400",
+        "minrs=401;maxrs=425",
+        "minrs=426;maxrs=450",
+    ),
+    # Leatherworking has 548 records and also exceeds WotLKDB's 300-row cap.
+    165: (
         "maxrs=300",
         "minrs=301;maxrs=350",
         "minrs=351;maxrs=375",
@@ -482,7 +492,7 @@ def refresh_recipe_audit(config: dict) -> dict:
                 {int(spell["id"]): spell for spell in listview_data(source, "spells")}
             )
         spells = list(spell_map.values())
-        expected_skill_records = {164: 525, 755: 566, 197: 439}
+        expected_skill_records = {164: 525, 755: 566, 197: 439, 165: 548}
         expected_records = expected_skill_records.get(skill_id)
         if expected_records is not None and len(spells) != expected_records:
             raise ValueError(
@@ -740,10 +750,15 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
         for reagent in recipe["reagents"]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
-            if key.startswith(("jc-", "tailor-")) and item_id in baseline_prices:
-                # A cut gem, piece of jewelry, or Tailoring output consumes the
-                # saved sale value of its tradeable input, not merely that
-                # input's own cheapest recursive production path.
+            if (
+                key.startswith(("jc-", "tailor-", "lw-"))
+                or (dependency and dependency.startswith("lw-"))
+            ) and item_id in baseline_prices:
+                # These catalogs consume the saved sale value of a tradeable
+                # baseline input, not merely that input's own cheapest
+                # recursive production path. The dependency check preserves
+                # that opportunity cost when another profession consumes a
+                # cataloged Leatherworking conversion.
                 unit_cost = raw_price(item_id, band)
             else:
                 unit_cost = floor_for(dependency, band) if dependency else raw_price(item_id, band)
@@ -809,7 +824,7 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring"}
+                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking"}
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)

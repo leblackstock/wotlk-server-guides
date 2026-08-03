@@ -76,6 +76,20 @@ MANUAL_OVERRIDES = {
     "teardrop crimson spinel": 32195,
     "runed crimson spinel": 32196,
     "bright crimson spinel": 32197,
+    # Prefer the Horde Trial of the Crusader Leatherworking outputs over the
+    # same-name Alliance records so tooltips match the Horde-first catalog.
+    "crusaders dragonscale bracers": 47577,
+    "black chitin bracers": 47580,
+    "bracers of swift death": 47582,
+    "moonshadow armguards": 47584,
+    "crusaders dragonscale breastplate": 47596,
+    "ensorcelled nerubian breastplate": 47598,
+    "knightbane carapace": 47600,
+    "lunar eclipse robes": 47601,
+    # Prefer the actual Leatherworking outputs over unrelated same-name
+    # internal or quest records.
+    "handstitched leather bracers": 7277,
+    "riding crop": 25653,
     # 24288 is an internal same-name epic record. The profession reagent sold
     # by trade-supply vendors is the common item 14341.
     "rune thread": 14341,

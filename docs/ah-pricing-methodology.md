@@ -99,3 +99,10 @@ The 2026-08-03 Tailoring expansion added four more fallback-confidence inputs:
 Long Elegant Feather, Naga Scale, Morrowgrain, and Soul Essence. Exact unlimited-
 vendor dye costs remain vendor overrides, while BoP Ogre Tannin uses a separately
 identified access-cost fallback. None of these values came from active listings.
+
+The 2026-08-03 Leatherworking expansion added 28 fallback-confidence inputs for
+legacy scales, hides, feathers, carapaces, and other specialty drops that were not
+in the frozen pre-scan guide set. Their provisional bands are anchored to saved
+comparable material tiers and explicit acquisition constraints—not active
+listings—and must be replaced when qualifying realized-sale or measured-yield
+evidence becomes available.

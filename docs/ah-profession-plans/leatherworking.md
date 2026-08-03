@@ -1,6 +1,6 @@
 # Leatherworking AH Expansion Plan
 
-- Status: `planned`
+- Status: `complete — 2026-08-03`
 - Existing guide: `guides/skinning-leatherworking-materials-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 4
@@ -53,18 +53,40 @@
 
 ## Acceptance Checks
 
-- [ ] Baseline evidence audit completed and recorded.
-- [ ] All material conversions are canonical and recursively priced.
-- [ ] Every tradeable Leatherworking output has an include/exclude decision.
-- [ ] Self-only fur linings and BoP crafts are absent.
-- [ ] Existing leg armor/kit/drum rows were recalculated, not merely retained.
-- [ ] Shared validation in `README.md` passes.
+- [x] Baseline evidence audit completed and recorded.
+- [x] All material conversions are canonical and recursively priced.
+- [x] Every tradeable Leatherworking output has an include/exclude decision.
+- [x] Self-only fur linings and BoP crafts are absent.
+- [x] Existing leg armor/kit/drum rows were recalculated, not merely retained.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Listing concentration observations (not valuation evidence):
-- Recipe/item sources checked:
-- Conversion/server findings:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-03.
+- Listing concentration observations (not valuation evidence): The saved Horde
+  scan remains unusable for valuation because the user and friends control at
+  least 50% of listed units. No current listing price entered the baseline or
+  set a crafted band.
+- Recipe/item sources checked: WotLKDB's complete Leatherworking skill list in
+  six non-overlapping rank windows (548 spell records), exact recipe and output
+  quantities, and AzerothCore WotLK `item_template` build 12340 for item IDs,
+  rarity, binding, skill gates, bag family, stack limit, and equipment data.
+- Conversion/server findings: Gate 0 passed against 662 pre-expansion frozen
+  references and 68 shared crafted outputs. The live guide contained 53 priced
+  rows rather than the plan's stale estimate of 58. The finished catalog uses
+  saved opportunity cost for tradeable leather and exact minimum guaranteed
+  outputs. It covers 165 direct inputs; 28 previously absent legacy inputs were
+  added as explicit fallback-confidence references, never as current values.
+- Decisions and unresolved items: Included 490 distinct tradeable outputs in
+  29 sections. Excluded 30 Bind on Pickup items, eight duplicate Alliance Trial
+  records, and the Gordok Ogre Suit already owned by Tailoring. Ten self-only
+  fur-lining or leg-reinforcement spells create no tradeable item and remain
+  excluded. Five Outland drums are isolated as Leatherworker-only; six specialty
+  bags are labeled for Leatherworking, Mining, or Inscription buyers; the two
+  Wrath raid drums remain explicitly general-use. All 28 new input fallbacks
+  remain provisional pending qualifying realized sales or measured yields.
+- Completion summary: Canonical data, 2,214-output non-Enchanting recipe audit,
+  shared price reconciliation, recipe mouseovers, item tooltips, rarity colors,
+  search index, price ordering, profession-use sections, and the 2026-08-03
+  footer were regenerated. All Python tests, `npm test`, and the desktop/mobile
+  Playwright smoke test passed. Cooking is the next planned profession.

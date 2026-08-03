@@ -29,12 +29,12 @@ subprocess.run(
 hard = AUDIT["canonical_hard_requirements"]
 profession_audience = AUDIT["canonical_profession_audience"]
 general_exceptions = AUDIT["canonical_general_use_exceptions"]
-assert len(hard) == 18
-assert len(profession_audience) == 10
-assert len(general_exceptions) == 7
+assert len(hard) == 23
+assert len(profession_audience) == 16
+assert len(general_exceptions) == 9
 assert len(AUDIT["vendor_hard_requirements"]) == 3
 assert len(AUDIT["static_hard_requirements"]) == 4
-assert len(AUDIT["static_general_use_exceptions"]) == 2
+assert len(AUDIT["static_general_use_exceptions"]) == 0
 assert len(AUDIT["excluded_items"]) == 4
 
 locations: dict[str, tuple[str, dict]] = {}
@@ -107,9 +107,14 @@ assert ">Epic Northrend gems<a" in jewelcrafting
 assert "Epic Northrend gems / Dragon's Eye" not in jewelcrafting
 
 leatherworking = (GUIDES / "skinning-leatherworking-materials-ah-price-guide.html").read_text(encoding="utf-8")
-for entry in AUDIT["static_general_use_exceptions"]:
-    assert entry["name"] in leatherworking
-assert leatherworking.count("No profession required:</strong> the finished drums") == 2
+for key in ("lw-drums-of-forgotten-kings", "lw-drums-of-the-wild"):
+    row = re.search(
+        rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>',
+        leatherworking,
+        re.DOTALL,
+    )
+    assert row and "No profession required:</strong>" in row.group(0)
+assert leatherworking.count("No profession required:</strong>") == 2
 
 engineering_mounts = engineering[
     engineering.index('id="engineer-only-mount-components"'):
@@ -130,6 +135,6 @@ for excluded in AUDIT["excluded_items"]:
 
 print(
     "Profession-use audit is current: "
-    "25 hard-restricted finished items, 10 profession-audience items, "
+    "30 hard-restricted finished items, 16 profession-audience items, "
     "and 9 documented general-use exceptions."
 )

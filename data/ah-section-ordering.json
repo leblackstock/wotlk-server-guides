@@ -3,7 +3,7 @@
   "scope": {
     "guide_glob": "*-ah-price-guide.html",
     "expected_guide_count": 16,
-    "expected_priced_table_count": 260
+    "expected_priced_table_count": 288
   },
   "default_order": {
     "field": "target_buyout_copper",
@@ -135,11 +135,10 @@
       "guide": "skinning-leatherworking-materials-ah-price-guide.html",
       "section_titles": [
         "Classic leather",
-        "Classic hides",
-        "General-use finished leg armors, kits, and drums"
+        "Classic hides"
       ],
       "order": "material and product-tier progression",
-      "reason": "Preserve leather and hide grades plus the premium, budget, kit, and drums sequence used by formula-priced finished items."
+      "reason": "Preserve raw leather and hide grade progression; canonical crafted Leatherworking sections use price order."
     },
     {
       "guide": "tailoring-cloth-ah-price-guide.html",
