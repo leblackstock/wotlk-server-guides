@@ -61,7 +61,7 @@ def main() -> int:
     if len(guide_paths) != 16:
         fail(f"Expected 16 AH guides, found {len(guide_paths)}")
     if len(configured_guides) != 10:
-        fail(f"Expected 10 guides with vendor sections, found {len(configured_guides)}")
+        fail(f"Expected 10 vendor configurations, found {len(configured_guides)}")
 
     used_keys: set[str] = set()
     for path in guide_paths:
@@ -78,9 +78,7 @@ def main() -> int:
             fail(f"{path.name}: missing canonical Guide Hub / AH Hub navigation")
 
         vendor_match = re.search(
-            r"<!-- AH_VENDOR_SECTION_START -->\s*"
-            r"<section class=\"common vendor-compact\" data-ah-template=\"vendor-convenience-v2\">"
-            r"(.*?)</section>\s*<!-- AH_VENDOR_SECTION_END -->",
+            r"<!-- AH_VENDOR_SECTION_START -->(.*?)<!-- AH_VENDOR_SECTION_END -->",
             source,
             re.DOTALL,
         )
@@ -88,6 +86,10 @@ def main() -> int:
         if guide_config is None:
             if vendor_match:
                 fail(f"{path.name}: unexpected vendor section")
+            continue
+        if guide_config.get("remove"):
+            if vendor_match:
+                fail(f"{path.name}: removed vendor section was rendered")
             continue
         if not vendor_match:
             fail(f"{path.name}: missing canonical vendor section")
@@ -105,8 +107,10 @@ def main() -> int:
             if phrase in lowered:
                 fail(f"{path.name}: vague vendor phrase remains: {phrase}")
 
-        expected_keys = guide_config["items"]
-        actual_keys = re.findall(r'<tr data-vendor-key="([^"]+)">', section)
+        expected_keys = list(guide_config["items"])
+        for restricted_section in guide_config.get("restricted_sections", []):
+            expected_keys.extend(restricted_section["items"])
+        actual_keys = re.findall(r'<tr data-vendor-key="([^"]+)"[^>]*>', section)
         if actual_keys != expected_keys:
             fail(f"{path.name}: vendor rows do not match canonical order")
 
@@ -115,7 +119,7 @@ def main() -> int:
             item = catalog[key]
             expected_target = format_money(int(item["target_copper"]))
             row_match = re.search(
-                rf'<tr data-vendor-key="{re.escape(key)}">(.*?)</tr>',
+                rf'<tr data-vendor-key="{re.escape(key)}"[^>]*>(.*?)</tr>',
                 section,
                 re.DOTALL,
             )
@@ -149,6 +153,7 @@ def main() -> int:
             fail(f"{key}: non-vendor source needs a cost label")
 
     exact_targets = {
+        "salvaged-iron-golem-parts": "220g",
         "goblin-machined-piston": "1,050g",
         "elementium-plated-exhaust-pipe": "1,575g",
         "rune-thread": "75s",
@@ -170,12 +175,16 @@ def main() -> int:
     for label in obsolete_labels:
         if label.casefold() in combined.casefold():
             fail(f"Obsolete vendor label remains: {label}")
-    if "Bright Baubles" not in combined or ">5s each<" not in combined:
-        fail("Bright Baubles summary price was not updated")
+    for removed_tool in ("Bright Baubles", "Virtuoso Inking Set", "Jeweler's Kit", "Simple Grinder"):
+        if removed_tool in combined:
+            fail(f"Removed profession-only vendor tool remains: {removed_tool}")
 
     index = load_index()
     for filename, guide in configured_guides.items():
-        for key in guide["items"]:
+        expected_keys = list(guide["items"])
+        for restricted_section in guide.get("restricted_sections", []):
+            expected_keys.extend(restricted_section["items"])
+        for key in expected_keys:
             item = catalog[key]
             expected_target = format_money(int(item["target_copper"]))
             matches = [
@@ -225,7 +234,8 @@ def main() -> int:
 
     print(
         "AH vendor pricing validation passed: "
-        f"{len(catalog)} canonical items, {len(configured_guides)} priced sections, "
+        f"{len(catalog)} canonical items, "
+        f"{sum(not guide.get('remove') for guide in configured_guides.values())} rendered vendor blocks, "
         "16 two-button guide navs."
     )
     return 0

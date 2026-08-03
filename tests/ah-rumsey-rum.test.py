@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GUIDE_PATH = ROOT / "guides" / "fishing-cooking-materials-ah-price-guide.html"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
-CATEGORY = "Finished foods, feasts, and utility drinks"
+CATEGORY = "Finished foods and utility drinks"
 
 
 subprocess.run(

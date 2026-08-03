@@ -34,17 +34,6 @@
       "stack": "1 / 5",
       "notes": "Low-level Tailoring dye. Keep listings small."
     },
-    "bright-baubles": {
-      "name": "Bright Baubles",
-      "item_id": 6532,
-      "source_type": "coin-vendor",
-      "source_label": "Unlimited coin vendor",
-      "vendor_cost_copper": 250,
-      "vendor_buy_count": 1,
-      "target_copper": 500,
-      "stack": "1 / 5",
-      "notes": "Vendor fishing lure. Convenience price only; do not treat it as scarce."
-    },
     "coal": {
       "name": "Coal",
       "item_id": 3857,
@@ -166,6 +155,16 @@
       "stack": "1 / 8",
       "notes": "The 1,050g target is a 5% convenience margin over the normal 1,000g vendor cost."
     },
+    "salvaged-iron-golem-parts": {
+      "name": "Salvaged Iron Golem Parts",
+      "item_id": 44499,
+      "source_type": "market-source",
+      "source_label": "Mechano-hog / Chopper part",
+      "source_cost_label": "Server-dependent Salvaged Iron Golem source",
+      "target_copper": 2200000,
+      "stack": "1",
+      "notes": "Tradeable mount component with thin supply. Verify the server source before buying inventory."
+    },
     "gray-dye": {
       "name": "Gray Dye",
       "item_id": 4340,
@@ -242,17 +241,6 @@
       "target_copper": 6000,
       "stack": "5 / 20",
       "notes": "Higher-level Alchemy vial. Vendor cost is 2g per bundle of five."
-    },
-    "jewelers-kit": {
-      "name": "Jeweler's Kit",
-      "item_id": 20815,
-      "source_type": "coin-vendor",
-      "source_label": "Unlimited coin vendor tool",
-      "vendor_cost_copper": 800,
-      "vendor_buy_count": 1,
-      "target_copper": 1600,
-      "stack": "1",
-      "notes": "Required Jewelcrafting tool. List singly."
     },
     "leaded-vial": {
       "name": "Leaded Vial",
@@ -364,17 +352,6 @@
       "stack": "5 / 20",
       "notes": "Old-world Cooking reagent. Vendor cost is 25c per bundle of five."
     },
-    "simple-grinder": {
-      "name": "Simple Grinder",
-      "item_id": 20824,
-      "source_type": "coin-vendor",
-      "source_label": "Unlimited coin vendor tool",
-      "vendor_cost_copper": 25000,
-      "vendor_buy_count": 1,
-      "target_copper": 30000,
-      "stack": "1",
-      "notes": "Jewelcrafting tool. Only list one at a time for convenience."
-    },
     "simple-wood": {
       "name": "Simple Wood",
       "item_id": 4470,
@@ -407,17 +384,6 @@
       "target_copper": 3000,
       "stack": "1 / 5 / 20",
       "notes": "Blacksmithing supply. The target is a convenience price, not a scarce-material price."
-    },
-    "virtuoso-inking-set": {
-      "name": "Virtuoso Inking Set",
-      "item_id": 39505,
-      "source_type": "coin-vendor",
-      "source_label": "Unlimited coin vendor tool",
-      "vendor_cost_copper": 750,
-      "vendor_buy_count": 1,
-      "target_copper": 1500,
-      "stack": "1",
-      "notes": "Required Inscription tool. List singly."
     },
     "weak-flux": {
       "name": "Weak Flux",
@@ -452,16 +418,28 @@
     },
     "engineering-materials-ah-price-guide.html": {
       "items": [
-        "goblin-machined-piston",
-        "elementium-plated-exhaust-pipe",
         "weak-flux",
         "heavy-stock",
         "simple-wood"
+      ],
+      "restricted_sections": [
+        {
+          "id": "engineer-only-mount-components",
+          "title": "Engineer-only mount components",
+          "description": "These tradeable Mechano-hog and Mekgineer's Chopper components require Engineering 450 to use in the mount craft. The completed BoE mount can be used by non-Engineers.",
+          "items": [
+            "salvaged-iron-golem-parts",
+            "goblin-machined-piston",
+            "elementium-plated-exhaust-pipe"
+          ]
+        }
+      ],
+      "legacy_section_removals": [
+        "Mount / expensive special components"
       ]
     },
     "fishing-cooking-materials-ah-price-guide.html": {
       "items": [
-        "bright-baubles",
         "simple-flour",
         "mild-spices",
         "hot-spices",
@@ -474,14 +452,12 @@
         "crystal-vial",
         "imbued-vial",
         "enchanted-vial",
-        "virtuoso-inking-set",
         "light-parchment",
         "resilient-parchment"
       ]
     },
     "inscription-materials-ah-price-guide.html": {
       "items": [
-        "virtuoso-inking-set",
         "light-parchment",
         "common-parchment",
         "heavy-parchment",
@@ -489,10 +465,8 @@
       ]
     },
     "jewelcrafting-gems-ah-price-guide.html": {
-      "items": [
-        "jewelers-kit",
-        "simple-grinder"
-      ]
+      "items": [],
+      "remove": true
     },
     "mining-smithing-ah-price-guide.html": {
       "items": [

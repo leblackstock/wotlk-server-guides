@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
 VENDOR_DATA_PATH = ROOT / "data" / "ah-vendor-sections.json"
 CRAFTED_DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
+PROFESSION_USE_AUDIT_PATH = ROOT / "data" / "ah-profession-use-audit.json"
 DROPPED_SCROLL_DATA_PATH = ROOT / "data" / "ah-dropped-scrolls.json"
 NAV_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "navigation.html"
 BASELINE_NOTE_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "baseline-note.html"
@@ -37,9 +38,7 @@ BASELINE_NOTE_BLOCK = re.compile(
     re.DOTALL,
 )
 VENDOR_BLOCK = re.compile(
-    r"(?:<!-- AH_VENDOR_SECTION_START -->\s*)?"
-    r"<section class=\"common vendor-compact\"(?: data-ah-template=\"[^\"]+\")?>.*?</section>"
-    r"(?:\s*<!-- AH_VENDOR_SECTION_END -->)?",
+    r"<!-- AH_VENDOR_SECTION_START -->.*?<!-- AH_VENDOR_SECTION_END -->",
     re.DOTALL,
 )
 CRAFTED_BLOCK = re.compile(
@@ -101,7 +100,7 @@ def anchor_slug(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.casefold()).strip("-")
 
 
-def render_vendor_row(key: str, item: dict) -> str:
+def render_vendor_row(key: str, item: dict, use_audit: dict) -> str:
     name = html.escape(item["name"])
     source_label = html.escape(item["source_label"])
     target_copper = int(item["target_copper"])
@@ -110,8 +109,19 @@ def render_vendor_row(key: str, item: dict) -> str:
     stack = html.escape(item["stack"])
     notes = html.escape(item["notes"])
     cost = source_cost(item)
+    requirement = use_audit.get("vendor_hard_requirements", {}).get(key)
+    audience_attribute = ""
+    requirement_note = ""
+    if requirement:
+        skill = html.escape(requirement["skill"])
+        rank = int(requirement["rank"])
+        audience_attribute = ' data-use-audience="profession-restricted"'
+        requirement_note = (
+            f'<strong class="profession-use-requirement">'
+            f'Requires {skill} {rank} to use.</strong> '
+        )
     return (
-        f'        <tr data-vendor-key="{html.escape(key)}">\n'
+        f'        <tr data-vendor-key="{html.escape(key)}"{audience_attribute}>\n'
         f'          <td data-column="item" data-label="Item">'
         f'<strong class="q-common">{name}</strong>'
         f'<div class="mini">{source_label}</div></td>\n'
@@ -126,13 +136,14 @@ def render_vendor_row(key: str, item: dict) -> str:
         f'          <td data-column="demand" data-label="Demand">'
         f'<span class="demand low">Low</span></td>\n'
         f'          <td data-column="notes" data-label="Use / Selling Notes">'
-        f'<strong>Source / cost:</strong> {cost}. {notes}</td>\n'
+        f'{requirement_note}<strong>Source / cost:</strong> {cost}. {notes}</td>\n'
         f"        </tr>"
     )
 
 
 def load_vendor_config() -> dict:
     config = json.loads(VENDOR_DATA_PATH.read_text(encoding="utf-8"))
+    use_audit = json.loads(PROFESSION_USE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config.get("catalog", {})
     guides = config.get("guides", {})
     if not catalog or not guides:
@@ -143,7 +154,10 @@ def load_vendor_config() -> dict:
         path = GUIDES_DIR / filename
         if not path.is_file():
             raise FileNotFoundError(f"Missing AH guide: {path.relative_to(ROOT)}")
-        for key in guide.get("items", []):
+        item_keys = list(guide.get("items", []))
+        for section in guide.get("restricted_sections", []):
+            item_keys.extend(section.get("items", []))
+        for key in item_keys:
             if key not in catalog:
                 raise KeyError(f"{filename} references unknown vendor item: {key}")
             used.add(key)
@@ -151,16 +165,72 @@ def load_vendor_config() -> dict:
     unused = sorted(set(catalog) - used)
     if unused:
         raise ValueError(f"Unused vendor catalog entries: {', '.join(unused)}")
+    for key, requirement in use_audit.get("vendor_hard_requirements", {}).items():
+        if key not in catalog:
+            raise KeyError(f"Profession-use audit references unknown vendor item: {key}")
+        if int(requirement["item_id"]) != int(catalog[key]["item_id"]):
+            raise ValueError(f"Profession-use audit item ID mismatch for vendor item {key}")
+    config["_profession_use_audit"] = use_audit
     return config
 
 
 def render_vendor_section(
     template: str,
-    item_keys: list[str],
+    guide: dict,
     catalog: dict,
+    use_audit: dict,
 ) -> str:
-    rows = "\n".join(render_vendor_row(key, catalog[key]) for key in item_keys)
-    return template.replace("{{ROWS}}", rows)
+    rows = "\n".join(
+        render_vendor_row(key, catalog[key], use_audit)
+        for key in guide.get("items", [])
+    )
+    rendered = template.replace("{{ROWS}}", rows)
+    restricted_blocks: list[str] = []
+    for section in guide.get("restricted_sections", []):
+        section_id = html.escape(section["id"])
+        title = html.escape(section["title"])
+        description = html.escape(section["description"])
+        restricted_rows = "\n".join(
+            render_vendor_row(key, catalog[key], use_audit)
+            for key in section["items"]
+        )
+        restricted_blocks.append(
+            f'<section class="common vendor-compact profession-use-section" '
+            f'id="{section_id}" data-ah-template="vendor-convenience-v2" '
+            f'data-use-audience="profession-restricted">\n'
+            f'  <h2>{title}</h2>\n'
+            f'  <p class="small">{description}</p>\n'
+            f'  <div class="table-wrap"><table class="ah-market-table '
+            f'ah-market-table--standard ah-vendor-table" data-table-family="market">'
+            f'<thead><tr><th data-column="item">Item</th>'
+            f'<th data-column="target">Target Price</th>'
+            f'<th data-column="stack">Stack Size</th>'
+            f'<th data-column="demand">Demand</th>'
+            f'<th data-column="notes">Use / Selling Notes</th>'
+            f'</tr></thead><tbody>\n{restricted_rows}\n'
+            f'      </tbody></table></div>\n</section>'
+        )
+    if restricted_blocks:
+        rendered = rendered.replace(
+            "<!-- AH_VENDOR_SECTION_END -->",
+            "\n".join(restricted_blocks) + "\n<!-- AH_VENDOR_SECTION_END -->",
+        )
+    return rendered
+
+
+def remove_legacy_vendor_sections(source: str, guide: dict, filename: str) -> str:
+    for title in guide.get("legacy_section_removals", []):
+        pattern = re.compile(
+            r'<section class="common(?:\s[^"]*)?">'
+            r'<h2 class="ah-category-heading">'
+            + re.escape(html.escape(title, quote=False))
+            + r".*?</section>\s*",
+            re.DOTALL,
+        )
+        source, count = pattern.subn("", source, count=1)
+        if count > 1:
+            raise ValueError(f"{filename}: duplicate legacy vendor section {title!r}")
+    return source
 
 
 def decorate_category_headings(source: str, filename: str) -> str:
@@ -217,6 +287,7 @@ def decorate_category_headings(source: str, filename: str) -> str:
 
 def load_crafted_config() -> dict:
     config = json.loads(CRAFTED_DATA_PATH.read_text(encoding="utf-8"))
+    use_audit = json.loads(PROFESSION_USE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config.get("catalog", {})
     profiles = config.get("price_profiles", {})
     guides = config.get("guides", {})
@@ -266,6 +337,21 @@ def load_crafted_config() -> dict:
     unused = sorted(set(catalog) - used)
     if unused:
         raise ValueError(f"Unused crafted catalog entries: {', '.join(unused)}")
+    classified_keys: set[str] = set()
+    for group_name in (
+        "canonical_hard_requirements",
+        "canonical_profession_audience",
+        "canonical_general_use_exceptions",
+    ):
+        for key, requirement in use_audit.get(group_name, {}).items():
+            if key in classified_keys:
+                raise ValueError(f"Profession-use audit classifies {key} more than once")
+            classified_keys.add(key)
+            if key not in catalog:
+                raise KeyError(f"Profession-use audit references unknown crafted item: {key}")
+            if int(requirement["item_id"]) != int(catalog[key]["item_id"]):
+                raise ValueError(f"Profession-use audit item ID mismatch for {key}")
+    config["_profession_use_audit"] = use_audit
     return config
 
 
@@ -359,6 +445,20 @@ def render_crafted_row(
     notes = html.escape(item["notes"])
     row_note = html.escape(item.get("row_note", "").strip())
     quality = html.escape(item["quality"])
+    requirement = config["_profession_use_audit"].get(
+        "canonical_hard_requirements", {}
+    ).get(key)
+    general_use_exception = config["_profession_use_audit"].get(
+        "canonical_general_use_exceptions", {}
+    ).get(key)
+    requirement_note = ""
+    if requirement:
+        skill = html.escape(requirement["skill"])
+        rank = int(requirement["rank"])
+        requirement_note = (
+            f'<strong class="profession-use-requirement">'
+            f'Requires {skill} {rank} to use.</strong>'
+        )
     if shared_note:
         note_id = html.escape(shared_note["id"])
         marker = html.escape(shared_note["marker"])
@@ -368,6 +468,14 @@ def render_crafted_row(
             f'aria-label="See {note_label} note">{marker}</a>'
         )
         note_parts = []
+        if requirement_note:
+            note_parts.append(requirement_note)
+        if general_use_exception and general_use_exception.get("show_note"):
+            reason = html.escape(general_use_exception["reason"])
+            note_parts.append(
+                f'<strong class="profession-use-exception">'
+                f'No profession required:</strong> {reason}'
+            )
         if row_note:
             note_parts.append(f'<span class="crafted-item-note">{row_note}</span>')
         source_spell_id = int(item.get("source_spell_id", 0))
@@ -412,12 +520,17 @@ def render_crafted_section(
     title = html.escape(section["title"])
     section_id = html.escape(section.get("id") or anchor_slug(section["title"]))
     description = html.escape(section["description"])
+    audience = section.get("audience")
+    audience_attribute = (
+        f' data-use-audience="{html.escape(audience)}"' if audience else ""
+    )
     rows = "\n".join(
         render_crafted_row(config, key, shared_note)
         for key in section["items"]
     )
     return (
-        f'<section class="common crafted-market-section" id="{section_id}">\n'
+        f'<section class="common crafted-market-section" id="{section_id}"'
+        f'{audience_attribute}>\n'
         f'<h2 class="ah-category-heading">{title}'
         f'<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>\n'
         f'<p class="small">{description}</p>\n'
@@ -657,14 +770,21 @@ def transform_guide(
     guide_config = vendor_config["guides"].get(filename)
     vendor_matches = len(VENDOR_BLOCK.findall(source))
     if guide_config:
-        if vendor_matches != 1:
-            raise ValueError(f"{filename}: expected exactly one vendor section")
-        expected = render_vendor_section(
-            vendor_template,
-            guide_config["items"],
-            vendor_config["catalog"],
-        )
-        source = VENDOR_BLOCK.sub(expected, source, count=1)
+        source = remove_legacy_vendor_sections(source, guide_config, filename)
+        if guide_config.get("remove"):
+            if vendor_matches > 1:
+                raise ValueError(f"{filename}: expected at most one vendor section")
+            source = VENDOR_BLOCK.sub("", source, count=1)
+        else:
+            if vendor_matches != 1:
+                raise ValueError(f"{filename}: expected exactly one vendor section")
+            expected = render_vendor_section(
+                vendor_template,
+                guide_config,
+                vendor_config["catalog"],
+                vendor_config["_profession_use_audit"],
+            )
+            source = VENDOR_BLOCK.sub(expected, source, count=1)
     elif vendor_matches:
         raise ValueError(f"{filename}: vendor section exists but is absent from canonical data")
 

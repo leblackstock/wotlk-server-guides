@@ -186,12 +186,12 @@ def main() -> int:
 
     anchors = AnchorParser()
     anchors.feed(source)
-    if len(anchors.jump_targets) != 25:
-        fail(f"Expected 25 category jump links, found {len(anchors.jump_targets)}")
+    if len(anchors.jump_targets) != 26:
+        fail(f"Expected 26 category jump links, found {len(anchors.jump_targets)}")
     missing_targets = [target for target in anchors.jump_targets if target not in anchors.ids]
     if missing_targets:
         fail(f"Jump links target missing categories: {', '.join(missing_targets)}")
-    if anchors.category_headings != 25 or anchors.back_to_top_targets != ["#top"] * 25:
+    if anchors.category_headings != 26 or anchors.back_to_top_targets != ["#top"] * 26:
         fail("Every category heading must have one right-aligned Back to top control")
     if "top" not in anchors.ids:
         fail("Back to top controls need a real #top destination")

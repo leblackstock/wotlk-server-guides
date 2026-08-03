@@ -11,9 +11,11 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
 - `data/ah-vendor-sections.json` - canonical vendor/source costs and suggested AH buyouts
 - `data/ah-price-baselines.json` - frozen non-circular material and posting baselines with confidence
+- `data/ah-profession-use-audit.json` - finished-item profession requirements and general-use exceptions
 - `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
 - `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
 - `scripts/apply-ah-price-baselines.py` - reconciles static rows to frozen baselines and shared crafted outputs
+- `scripts/apply-ah-profession-use-sections.py` - moves static restricted items into canonical sections
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
 - `README.md` - maintenance notes
@@ -68,13 +70,22 @@ active listings may describe competition, but only saved baselines, exact
 vendor costs, deterministic conversions, and qualified realized sales may feed
 crafted-item prices.
 
+Classify finished-item use before adding rows. Hard profession requirements
+belong in their own restricted section; profession tools and inputs must name
+their actual buyer; genuinely general-use items remain separate even when a
+profession crafts them. The saved decisions live in
+`data/ah-profession-use-audit.json`.
+
 After a deliberate baseline or crafted-price change, reconcile and verify the
 static guide rows:
 
 ```powershell
 python scripts/apply-ah-price-baselines.py
+python scripts/apply-ah-profession-use-sections.py
 python scripts/apply-ah-price-baselines.py --check
+python scripts/apply-ah-profession-use-sections.py --check
 python tests/ah-price-baseline.test.py
+python tests/ah-profession-use-sections.test.py
 ```
 
 ## Add A New Guide

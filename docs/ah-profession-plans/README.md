@@ -64,6 +64,10 @@ This gate applies to every expansion plan, including the gathering-only audits.
   stack and likely purchase quantity.
 - Confirm the item ID, expansion/tier, tradeability, binding, rarity class, and
   source note for every row touched.
+- Check the finished item against `data/ah-profession-use-audit.json`. Put hard
+  skill requirements in a dedicated profession-restricted section, label tools
+  and inputs for their actual profession buyer, and keep genuinely general-use
+  finished items separate even when another profession crafts them.
 - Audit every ingredient that will feed the new crafted catalog. Crafted-price
   work may begin only after those inputs have a saved baseline, confidence, and
   internally consistent conversion path.
@@ -139,6 +143,7 @@ When a guide changes:
 
 ```powershell
 python scripts/render-ah-shared-sections.py --check
+python scripts/apply-ah-profession-use-sections.py --check
 python scripts/apply-ah-price-baselines.py --check
 python scripts/build-ah-search-index.py --check
 python scripts/apply-ah-item-tooltips.py --check

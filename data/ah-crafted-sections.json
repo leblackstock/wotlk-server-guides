@@ -1474,7 +1474,8 @@
       "shared_note": {"id":"crafted-inscription-pricing-note","marker":"*","label":"Craft-cost pricing","text":"Each price band was recalculated from the exact 3.3.5 ink, parchment, and other recipe quantities, the minimum guaranteed output, and a modest demand margin. Darkmoon Card of the North results are random, so exact-card and completed-deck prices must also reflect missing-rank scarcity. Recheck the live ink, glyph, card, and deck markets before crafting; sell glyphs and scrolls mostly as singles or small stacks."},
       "sections": [
         {"title": "Crafted buff scrolls", "description": "Manufactured raid and stat consumables. Rank VIII stat scrolls can also drop, but the finished items are identical and AH-tradeable.", "items": ["scroll-agility-viii", "scroll-intellect-viii", "scroll-spirit-viii", "scroll-stamina-viii", "scroll-strength-viii", "runescroll-fortitude"]},
-        {"title": "Crafted utility and BoE equipment", "description": "Tradeable Inscription outputs beyond glyphs and cards. BoP shoulder inscriptions and scribe-only recall scrolls are intentionally excluded.", "items": ["armor-vellum", "weapon-vellum", "certificate-ownership", "iron-bound-tome", "faces-doom"]},
+        {"title": "Enchanter-only blank vellums", "audience": "profession-restricted", "description": "Blank Armor and Weapon Vellum III require Enchanting 1 to use. The finished enchant scrolls produced from them can be used by non-Enchanters.", "items": ["armor-vellum", "weapon-vellum"]},
+        {"title": "Crafted general-use utility and BoE equipment", "audience": "general-use", "description": "Tradeable Inscription outputs that do not require Inscription to use. BoP shoulder inscriptions and scribe-only recall scrolls are intentionally excluded.", "items": ["certificate-ownership", "iron-bound-tome", "faces-doom"]},
         {"title": "Death Knight glyphs", "description": "Curated level-80 raid and tanking demand.", "items": ["glyph-disease", "glyph-dark-death", "glyph-death-strike", "glyph-icy-touch", "glyph-rune-strike", "glyph-vampiric-blood"]},
         {"title": "Druid glyphs", "description": "Curated Balance, Feral, Restoration, and tank demand.", "items": ["glyph-starfire", "glyph-insect-swarm", "glyph-rapid-rejuvenation", "glyph-wild-growth", "glyph-savage-roar", "glyph-maul"]},
         {"title": "Hunter glyphs", "description": "Curated level-80 PvE demand across the common Hunter builds.", "items": ["glyph-explosive-shot", "glyph-kill-shot", "glyph-serpent-sting", "glyph-steady-shot", "glyph-chimera-shot", "glyph-bestial-wrath"]},
@@ -1505,12 +1506,14 @@
         "Blasting powders"
       ],
       "sections": [
-        {"title": "Northrend crafted Engineering parts", "description": "Tradeable Wrath components and utility tools used for leveling, devices, scopes, and other crafts.", "items": ["eng-handful-of-cobalt-bolts", "eng-volatile-blasting-trigger", "eng-froststeel-tube", "eng-overcharged-capacitor", "eng-explosive-decoy", "eng-mana-injector-kit", "eng-gnomish-army-knife"]},
-        {"title": "Bombs / sapper charges", "description": "Tradeable Engineering explosives; demand depends on Hellscream's PvP, raid, and profession-use rules.", "items": ["eng-saronite-bomb", "eng-global-thermal-sapper-charge", "eng-cobalt-frag-bomb", "eng-box-of-bombs"]},
-        {"title": "Ammo", "description": "Tradeable engineered bullets and arrows from ICC-grade rounds through Classic leveling ammo. Treat Quick / Target / High as prices per 200 rounds; use 1,000 only as the bulk stack. Verify Hunter demand, specialization recipes, exchanges, and server ammunition rules before making large batches.", "items": ["eng-iceblade-arrow", "eng-shatter-rounds", "eng-mammoth-cutters", "eng-saronite-razorheads", "eng-adamantite-stinger", "eng-adamantite-shells", "eng-fel-iron-shells", "eng-thorium-shells", "eng-mithril-gyro-shot", "eng-hi-impact-mithril-slugs", "eng-crafted-solid-shot", "eng-crafted-heavy-shot", "eng-crafted-light-shot"]},
-        {"title": "Outland crafted Engineering parts", "description": "Tradeable Burning Crusade components commonly needed for Engineering leveling and older recipes.", "items": ["eng-fel-iron-casing", "eng-handful-of-fel-iron-bolts", "eng-elemental-blasting-powder", "eng-adamantite-frame", "eng-khorium-power-core", "eng-felsteel-stabilizer", "eng-hardened-adamantite-tube"]},
-        {"title": "Classic crafted Engineering parts", "description": "Tradeable Classic components used by levelers, quests, gadgets, and legacy recipes.", "items": ["eng-thorium-widget", "eng-thorium-tube", "eng-truesilver-transformer", "eng-mithril-tube", "eng-mithril-casing", "eng-unstable-trigger", "eng-gyromatic-micro-adjustor", "eng-gold-power-core", "eng-gyrochronatom", "eng-iron-strut", "eng-bronze-framework", "eng-whirring-bronze-gizmo", "eng-bronze-tube", "eng-silver-contact", "eng-copper-modulator", "eng-arclight-spanner", "eng-copper-tube", "eng-handful-of-copper-bolts", "eng-fused-wiring"]},
-        {"title": "Blasting powders", "description": "Tradeable blasting powders made from matching stone tiers or elemental reagents.", "items": ["eng-dense-blasting-powder", "eng-solid-blasting-powder", "eng-heavy-blasting-powder", "eng-coarse-blasting-powder", "eng-rough-blasting-powder"]}
+        {"title": "Northrend crafted Engineering parts", "audience": "profession-input", "description": "Tradeable Wrath components used for Engineering leveling, devices, scopes, and other crafts.", "items": ["eng-handful-of-cobalt-bolts", "eng-volatile-blasting-trigger", "eng-froststeel-tube", "eng-overcharged-capacitor"]},
+        {"title": "General-use Engineering utility", "audience": "general-use", "description": "Finished Engineering utility items with no Engineering requirement on the item or its direct result.", "items": ["eng-mana-injector-kit", "eng-gnomish-army-knife"]},
+        {"title": "Engineer-only bombs, sapper charges, and decoys", "audience": "profession-restricted", "description": "The finished explosives require Engineering to use. Box of Bombs has no direct skill gate, but it contains Saronite Bombs that require Engineering 350.", "items": ["eng-explosive-decoy", "eng-saronite-bomb", "eng-global-thermal-sapper-charge", "eng-cobalt-frag-bomb", "eng-box-of-bombs"]},
+        {"title": "Ammo", "audience": "general-use", "description": "Tradeable engineered bullets and arrows do not require Engineering to fire. Treat Quick / Target / High as prices per 200 rounds; use 1,000 only as the bulk stack. Verify Hunter demand, specialization recipes, exchanges, and server ammunition rules before making large batches.", "items": ["eng-iceblade-arrow", "eng-shatter-rounds", "eng-mammoth-cutters", "eng-saronite-razorheads", "eng-adamantite-stinger", "eng-adamantite-shells", "eng-fel-iron-shells", "eng-thorium-shells", "eng-mithril-gyro-shot", "eng-hi-impact-mithril-slugs", "eng-crafted-solid-shot", "eng-crafted-heavy-shot", "eng-crafted-light-shot"]},
+        {"title": "Outland crafted Engineering parts", "audience": "profession-input", "description": "Tradeable Burning Crusade components commonly needed for Engineering leveling and older recipes.", "items": ["eng-fel-iron-casing", "eng-handful-of-fel-iron-bolts", "eng-elemental-blasting-powder", "eng-adamantite-frame", "eng-khorium-power-core", "eng-felsteel-stabilizer", "eng-hardened-adamantite-tube"]},
+        {"title": "Classic crafted Engineering parts", "audience": "profession-input", "description": "Tradeable Classic components used by levelers, quests, gadgets, and legacy recipes.", "items": ["eng-thorium-widget", "eng-thorium-tube", "eng-truesilver-transformer", "eng-mithril-tube", "eng-mithril-casing", "eng-unstable-trigger", "eng-gold-power-core", "eng-gyrochronatom", "eng-iron-strut", "eng-bronze-framework", "eng-whirring-bronze-gizmo", "eng-bronze-tube", "eng-silver-contact", "eng-copper-modulator", "eng-copper-tube", "eng-handful-of-copper-bolts", "eng-fused-wiring"]},
+        {"title": "Engineer-only tools", "audience": "profession-restricted", "description": "Arclight Spanner requires Engineering 50. Gyromatic Micro-Adjustor has no direct tooltip gate, but its only practical purpose is as an Engineering recipe tool.", "items": ["eng-arclight-spanner", "eng-gyromatic-micro-adjustor"]},
+        {"title": "Blasting powders", "audience": "profession-input", "description": "Tradeable Engineering inputs made from matching stone tiers or elemental reagents; these are components rather than general-use explosives.", "items": ["eng-dense-blasting-powder", "eng-solid-blasting-powder", "eng-heavy-blasting-powder", "eng-coarse-blasting-powder", "eng-rough-blasting-powder"]}
       ]
     },
     "alchemy-materials-ah-price-guide.html": {
@@ -1527,15 +1530,16 @@
       "sections": [
         {"title": "Crafted Wrath flasks", "description": "Tradeable Northrend flasks, including raid staples and lesser fallback flasks. Preserve the established prices on the four primary raid flasks; reprice the rest from live herbs and vial cost.", "items": ["alch-lesser-flask-of-toughness", "alch-lesser-flask-of-resistance", "alch-flask-endless-rage", "alch-flask-pure-mojo", "alch-flask-stoneblood", "alch-flask-frost-wyrm"]},
         {"title": "Crafted Wrath elixirs", "description": "Battle, guardian, utility, and role-specific Northrend elixirs. Demand varies by class, build, raid schedule, and server buff rules.", "items": ["alch-wrath-elixir", "alch-spellpower-elixir", "alch-guru-s-elixir", "alch-elixir-of-mighty-strength", "alch-elixir-of-spirit", "alch-elixir-of-mighty-fortitude", "alch-elixir-of-mighty-agility", "alch-elixir-of-mighty-thoughts", "alch-elixir-of-accuracy", "alch-elixir-of-armor-piercing", "alch-elixir-of-deadly-strikes", "alch-elixir-of-expertise", "alch-elixir-of-lightning-speed", "alch-elixir-of-mighty-defense", "alch-elixir-of-mighty-mageblood", "alch-elixir-of-protection", "alch-elixir-of-water-walking"]},
-        {"title": "Crafted Wrath combat and recovery potions", "description": "Northrend combat, recovery, and utility potions. Existing raid-potion values are preserved; added rows use conservative fallback bands.", "items": ["alch-resurgent-healing-potion", "alch-icy-mana-potion", "alch-potion-of-nightmares", "alch-indestructible-potion", "alch-crazy-alchemists-potion", "alch-potion-speed", "alch-potion-wild-magic", "alch-powerful-rejuvenation-potion", "alch-runic-healing-potion", "alch-runic-mana-potion"]},
+        {"title": "Crafted Wrath combat and recovery potions", "description": "Northrend combat, recovery, and utility potions usable without Alchemy. Existing raid-potion values are preserved; added rows use conservative fallback bands.", "items": ["alch-resurgent-healing-potion", "alch-icy-mana-potion", "alch-potion-of-nightmares", "alch-indestructible-potion", "alch-potion-speed", "alch-potion-wild-magic", "alch-powerful-rejuvenation-potion", "alch-runic-healing-potion", "alch-runic-mana-potion"]},
         {"title": "Crafted Wrath protection potions", "description": "Element-specific Northrend protection potions. Confirm encounter mechanics and actual Hellscream demand before producing large stacks.", "items": ["alch-mighty-arcane-protection-potion", "alch-mighty-fire-protection-potion", "alch-mighty-frost-protection-potion", "alch-mighty-nature-protection-potion", "alch-mighty-shadow-protection-potion"]},
         {"title": "Crafted Wrath oils and intermediates", "description": "Tradeable Northrend Alchemy oils and intermediates used by other recipes or niche utility crafts.", "items": ["alch-ethereal-oil", "alch-pygmy-oil"]},
         {"title": "Crafted Wrath transmutes", "description": "Tradeable Northrend gem, metal, meta-gem, and specialty transmute outputs. Compare exact inputs, cooldowns, and specialization procs before converting.", "items": ["alch-cardinal-ruby", "alch-eternal-might", "alch-titanium-bar", "alch-earthsiege-diamond", "alch-skyflare-diamond", "alch-ametrine", "alch-dreadstone", "alch-eye-of-zul", "alch-king-s-amber", "alch-majestic-zircon"]},
         {"title": "Crafted Outland flasks", "description": "Tradeable Burning Crusade flasks for legacy raids, collectors, and level-70 content. Post singles first in this narrow market.", "items": ["alch-flask-of-blinding-light", "alch-flask-of-fortification", "alch-flask-of-mighty-restoration", "alch-flask-of-pure-death", "alch-flask-of-relentless-assault", "alch-flask-of-chromatic-wonder"]},
         {"title": "Crafted Outland elixirs", "description": "Tradeable Burning Crusade battle, guardian, and utility elixirs used for leveling and legacy content.", "items": ["alch-adept-s-elixir", "alch-onslaught-elixir", "alch-elixir-of-camouflage", "alch-elixir-of-major-strength", "alch-elixir-of-healing-power", "alch-elixir-of-major-fortitude", "alch-elixir-of-mastery", "alch-earthen-elixir", "alch-elixir-of-draenic-wisdom", "alch-elixir-of-major-frost-power", "alch-elixir-of-the-searching-eye", "alch-elixir-of-ironskin", "alch-elixir-of-major-agility", "alch-fel-strength-elixir", "alch-elixir-of-major-defense", "alch-elixir-of-major-firepower", "alch-elixir-of-major-shadow-power", "alch-elixir-of-major-mageblood", "alch-elixir-of-empowerment"]},
-        {"title": "Crafted Outland potions", "description": "Tradeable Burning Crusade combat, recovery, and utility potions. Recipe rarity does not guarantee buyer demand.", "items": ["alch-super-rejuvenation-potion", "alch-volatile-healing-potion", "alch-unstable-mana-potion", "alch-sneaking-potion", "alch-insane-strength-potion", "alch-mad-alchemist-s-potion", "alch-super-healing-potion", "alch-shrouding-potion", "alch-super-mana-potion", "alch-fel-regeneration-potion", "alch-destruction-potion", "alch-haste-potion", "alch-heroic-potion", "alch-major-dreamless-sleep-potion", "alch-fel-mana-potion", "alch-ironshield-potion"]},
+        {"title": "Crafted Outland potions", "description": "Tradeable Burning Crusade combat, recovery, and utility potions usable without Alchemy. Recipe rarity does not guarantee buyer demand.", "items": ["alch-super-rejuvenation-potion", "alch-volatile-healing-potion", "alch-unstable-mana-potion", "alch-sneaking-potion", "alch-insane-strength-potion", "alch-super-healing-potion", "alch-shrouding-potion", "alch-super-mana-potion", "alch-fel-regeneration-potion", "alch-destruction-potion", "alch-haste-potion", "alch-heroic-potion", "alch-major-dreamless-sleep-potion", "alch-fel-mana-potion", "alch-ironshield-potion"]},
+        {"title": "Alchemist-only potions", "audience": "profession-restricted", "description": "These two finished potions are tradeable, but the drinker must meet the listed Alchemy requirement. Keep them for the specialist market rather than mixing them with general consumables.", "items": ["alch-crazy-alchemists-potion", "alch-mad-alchemist-s-potion"]},
         {"title": "Crafted Outland protection potions", "description": "Major element-specific protection potions from Burning Crusade. Verify the relevant encounter before stocking.", "items": ["alch-major-arcane-protection-potion", "alch-major-fire-protection-potion", "alch-major-frost-protection-potion", "alch-major-holy-protection-potion", "alch-major-nature-protection-potion", "alch-major-shadow-protection-potion"]},
-        {"title": "Crafted Outland protection cauldrons", "description": "Tradeable group cauldrons that distribute major protection potions. Confirm Hellscream trade and use behavior before crafting.", "items": ["alch-cauldron-of-major-arcane-protection", "alch-cauldron-of-major-fire-protection", "alch-cauldron-of-major-frost-protection", "alch-cauldron-of-major-nature-protection", "alch-cauldron-of-major-shadow-protection"]},
+        {"title": "Crafted Outland protection cauldrons", "audience": "general-use", "description": "Tradeable group cauldrons with no Alchemy requirement on the finished item. Confirm Hellscream trade and use behavior before crafting.", "items": ["alch-cauldron-of-major-arcane-protection", "alch-cauldron-of-major-fire-protection", "alch-cauldron-of-major-frost-protection", "alch-cauldron-of-major-nature-protection", "alch-cauldron-of-major-shadow-protection"]},
         {"title": "Crafted Outland intermediates and transmutes", "description": "Tradeable Burning Crusade Alchemy components, meta gems, and Primal Might. Compare the finished item directly with its inputs.", "items": ["alch-mercurial-stone", "alch-earthstorm-diamond", "alch-primal-might", "alch-skyfire-diamond"]},
         {"title": "Crafted Classic flasks", "description": "Tradeable Classic raid flasks. Black Lotus cost and very thin legacy demand make single-item listings safest.", "items": ["alch-flask-of-chromatic-resistance", "alch-flask-of-distilled-wisdom", "alch-flask-of-supreme-power", "alch-flask-of-the-titans"]},
         {"title": "Crafted Classic endgame elixirs", "description": "Higher-tier Classic elixirs for legacy raids, PvP, twinks, and specialty uses.", "items": ["alch-elixir-of-detect-undead", "alch-arcane-elixir", "alch-elixir-of-greater-intellect", "alch-elixir-of-dream-vision", "alch-elixir-of-greater-agility", "alch-gift-of-arthas", "alch-elixir-of-giants", "alch-elixir-of-demonslaying", "alch-elixir-of-detect-demon", "alch-elixir-of-greater-firepower", "alch-elixir-of-shadow-power", "alch-elixir-of-superior-defense", "alch-elixir-of-the-sages", "alch-elixir-of-brute-force", "alch-mageblood-elixir", "alch-elixir-of-the-mongoose", "alch-greater-arcane-elixir", "alch-mighty-troll-s-blood-elixir"]},
@@ -1601,16 +1605,42 @@
       ],
       "sections": [
         {
-          "title": "Wrath enhancements, keys, rods, and intermediates",
-          "description": "Tradeable Wrath Blacksmithing utilities and profession inputs. Prices use exact recipe output counts, including multi-key batches.",
+          "title": "Wrath general-use enhancements",
+          "audience": "general-use",
+          "description": "Tradeable Wrath Blacksmithing enhancements that do not require Blacksmithing to apply or use.",
           "items": [
-            "bs-cobalt-skeleton-key",
             "bs-eternal-belt-buckle",
-            "bs-titanium-rod",
             "bs-titanium-weapon-chain",
             "bs-titanium-shield-spike",
-            "bs-titanium-skeleton-key",
             "bs-titanium-plating"
+          ]
+        },
+        {
+          "title": "Blacksmith-only skeleton keys",
+          "audience": "profession-restricted",
+          "description": "Every skeleton key in this section is tradeable but requires the listed Blacksmithing rank to use. Prices use exact multi-key recipe outputs.",
+          "items": [
+            "bs-silver-skeleton-key",
+            "bs-golden-skeleton-key",
+            "bs-truesilver-skeleton-key",
+            "bs-arcanite-skeleton-key",
+            "bs-cobalt-skeleton-key",
+            "bs-titanium-skeleton-key"
+          ]
+        },
+        {
+          "title": "Enchanter-only rod blanks",
+          "audience": "profession-input",
+          "description": "These Blacksmith-made blanks have no direct item skill gate, but their practical market is Enchanters creating runed profession tools. Runed rods are BoP and remain excluded.",
+          "items": [
+            "bs-silver-rod",
+            "bs-golden-rod",
+            "bs-truesilver-rod",
+            "bs-arcanite-rod",
+            "bs-fel-iron-rod",
+            "bs-adamantite-rod",
+            "bs-eternium-rod",
+            "bs-titanium-rod"
           ]
         },
         {
@@ -1753,22 +1783,20 @@
           ]
         },
         {
-          "title": "Outland enhancements, rods, and intermediates",
-          "description": "Tradeable Burning Crusade utilities and profession inputs. These are mostly leveling and convenience markets.",
+          "title": "Outland general-use enhancements",
+          "audience": "general-use",
+          "description": "Tradeable Burning Crusade enhancements that do not require Blacksmithing to apply or use. These are mostly leveling and convenience markets.",
           "items": [
             "bs-fel-sharpening-stone",
-            "bs-fel-iron-rod",
             "bs-fel-weightstone",
             "bs-lesser-rune-of-warding",
             "bs-lesser-ward-of-shielding",
             "bs-adamantite-weapon-chain",
             "bs-adamantite-sharpening-stone",
-            "bs-adamantite-rod",
             "bs-adamantite-weightstone",
             "bs-greater-rune-of-warding",
             "bs-greater-ward-of-shielding",
-            "bs-felsteel-shield-spike",
-            "bs-eternium-rod"
+            "bs-felsteel-shield-spike"
           ]
         },
         {
@@ -1869,8 +1897,9 @@
           ]
         },
         {
-          "title": "Classic enhancements, keys, rods, and intermediates",
-          "description": "Tradeable Classic Blacksmithing utilities and profession inputs. Use small stacks matched to leveling recipes.",
+          "title": "Classic enhancements and craft intermediates",
+          "audience": "mixed-input-and-general-use",
+          "description": "General-use enhancements plus clearly identified Blacksmithing and cross-profession craft inputs. Use small stacks matched to leveling recipes.",
           "items": [
             "bs-rough-sharpening-stone",
             "bs-rough-weightstone",
@@ -1878,31 +1907,23 @@
             "bs-coarse-sharpening-stone",
             "bs-coarse-weightstone",
             "bs-coarse-grinding-stone",
-            "bs-silver-rod",
-            "bs-silver-skeleton-key",
             "bs-heavy-sharpening-stone",
             "bs-heavy-weightstone",
             "bs-heavy-grinding-stone",
             "bs-iron-shield-spike",
             "bs-iron-buckle",
-            "bs-golden-rod",
-            "bs-golden-skeleton-key",
             "bs-iron-counterweight",
             "bs-steel-weapon-chain",
             "bs-solid-sharpening-stone",
             "bs-solid-grinding-stone",
             "bs-solid-weightstone",
             "bs-inlaid-mithril-cylinder",
-            "bs-truesilver-rod",
-            "bs-truesilver-skeleton-key",
             "bs-mithril-shield-spike",
             "bs-mithril-spurs",
             "bs-dense-grinding-stone",
             "bs-dense-weightstone",
             "bs-dense-sharpening-stone",
             "bs-thorium-shield-spike",
-            "bs-arcanite-skeleton-key",
-            "bs-arcanite-rod",
             "bs-elemental-sharpening-stone"
           ]
         },

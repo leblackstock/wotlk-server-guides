@@ -33,7 +33,7 @@ async function verifyAuditedCraftedGuide(page, options) {
   assert.equal(await recipeLink.getAttribute("data-wowhead"), `spell=${recipeSpell}&domain=wotlk`);
   assert.equal(await recipeLink.getAttribute("target"), "_blank");
   assert.equal(await recipeLink.getAttribute("rel"), "noopener");
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-02/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-03/);
   await noOverflow(page, label);
 }
 
@@ -176,7 +176,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(desktop, {
       filename: "inscription-materials-ah-price-guide.html",
       rows: 107,
-      sections: 17,
+      sections: 18,
       key: "chaos-deck",
       target: "1,025g",
       recipeSpell: 60265,
@@ -186,7 +186,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(desktop, {
       filename: "engineering-materials-ah-price-guide.html",
       rows: 55,
-      sections: 6,
+      sections: 8,
       key: "eng-khorium-power-core",
       target: "52g",
       recipeSpell: 30308,
@@ -196,7 +196,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(desktop, {
       filename: "alchemy-materials-ah-price-guide.html",
       rows: 206,
-      sections: 20,
+      sections: 21,
       key: "alch-cardinal-ruby",
       target: "120g",
       recipeSpell: 66659,
@@ -206,13 +206,38 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(desktop, {
       filename: "blacksmithing-materials-ah-price-guide.html",
       rows: 453,
-      sections: 16,
+      sections: 18,
       key: "bs-eternal-belt-buckle",
       target: "35g",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
       label: "Desktop Blacksmithing guide"
     });
+
+    await desktop.goto(`${base}/guides/engineering-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator("#general-use-engineering-utility").count(), 1);
+    assert.equal(await desktop.locator("#engineer-only-tools").count(), 1);
+    assert.equal(await desktop.locator("#engineer-only-mount-components").count(), 1);
+    assert.match(
+      await desktop.locator('[data-crafted-key="eng-gnomish-army-knife"] [data-column="notes"]').textContent(),
+      /No profession required/
+    );
+    assert.match(
+      await desktop.locator('[data-vendor-key="goblin-machined-piston"] [data-column="notes"]').textContent(),
+      /Requires Engineering 450 to use/
+    );
+    await noOverflow(desktop, "Desktop profession-separated Engineering guide");
+
+    await desktop.goto(`${base}/guides/fishing-cooking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator("#cook-required-feasts").count(), 1);
+    assert.equal(await desktop.locator("#cook-required-feasts tbody tr").count(), 3);
+    assert.match(await desktop.locator("#cook-required-feasts").textContent(), /Requires Cooking 425 to place/);
+    await noOverflow(desktop, "Desktop profession-separated Cooking guide");
+
+    await desktop.goto(`${base}/guides/jewelcrafting-gems-ah-price-guide.html`, { waitUntil: "networkidle" });
+    assert.equal(await desktop.locator("#jewelcrafter-only-dragons-eye").count(), 1);
+    assert.match(await desktop.locator("#jewelcrafter-only-dragons-eye").textContent(), /Requires Jewelcrafting 350 to use/);
+    await noOverflow(desktop, "Desktop profession-separated Jewelcrafting guide");
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/index.html`, { waitUntil: "networkidle" });
@@ -245,7 +270,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(mobile, {
       filename: "inscription-materials-ah-price-guide.html",
       rows: 107,
-      sections: 17,
+      sections: 18,
       key: "chaos-deck",
       target: "1,025g",
       recipeSpell: 60265,
@@ -255,7 +280,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(mobile, {
       filename: "engineering-materials-ah-price-guide.html",
       rows: 55,
-      sections: 6,
+      sections: 8,
       key: "eng-khorium-power-core",
       target: "52g",
       recipeSpell: 30308,
@@ -265,7 +290,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(mobile, {
       filename: "alchemy-materials-ah-price-guide.html",
       rows: 206,
-      sections: 20,
+      sections: 21,
       key: "alch-cardinal-ruby",
       target: "120g",
       recipeSpell: 66659,
@@ -275,7 +300,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await verifyAuditedCraftedGuide(mobile, {
       filename: "blacksmithing-materials-ah-price-guide.html",
       rows: 453,
-      sections: 16,
+      sections: 18,
       key: "bs-eternal-belt-buckle",
       target: "35g",
       recipeSpell: 55656,

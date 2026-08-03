@@ -378,8 +378,8 @@ def main() -> int:
             fail(f"Expanded Alchemy era/category coverage is missing: {label}")
 
     alchemy_sections = guides["alchemy-materials-ah-price-guide.html"]["sections"]
-    if len(alchemy_sections) != 20:
-        fail(f"Expected 20 expanded Alchemy sections, found {len(alchemy_sections)}")
+    if len(alchemy_sections) != 21:
+        fail(f"Expected 21 expanded Alchemy sections, found {len(alchemy_sections)}")
 
     representative_non_enchanting_prices = {
         "chaos-deck": 10_250_000,
@@ -428,7 +428,7 @@ def main() -> int:
         "alchemy-materials-ah-price-guide.html",
         "blacksmithing-materials-ah-price-guide.html",
     ):
-        if "Updated 2026-08-02" not in sources[filename]:
+        if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
         if "exact 3.3.5 recipe" not in sources[filename]:
             fail(f"{filename}: recipe-level pricing method is not explained")
