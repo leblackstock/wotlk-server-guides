@@ -77,12 +77,18 @@ def main() -> int:
         if len(entries) > 1 and len(qualities) > 1:
             fail(f"{name}: duplicate AH rows disagree on rarity: {sorted(qualities)}")
 
-    forbidden_names = {"Firethorn", "Saronite Skeleton Key", "Toughened Flesh"}
+    forbidden_names = {
+        "Basilisk Meat",
+        "Firethorn",
+        "Saronite Skeleton Key",
+        "Toughened Flesh",
+    }
     leaked = forbidden_names & grouped.keys()
     if leaked:
         fail(f"Invalid or post-Wrath item labels remain: {', '.join(sorted(leaked))}")
 
     required_ids = {
+        "Chunk o' Basilisk": 27677,
         "Fire Leaf": 39970,
         "Titanium Skeleton Key": 43853,
         "Design: Etched Monarch Topaz": 41777,
@@ -94,6 +100,36 @@ def main() -> int:
             fail(f"Corrected 3.3.5 item is missing from search: {name}")
         if item_ids.get(normalized_item_name(name)) != item_id:
             fail(f"{name}: expected tooltip item ID {item_id}")
+
+    verified_qualities = {
+        "Arctic Fur": "rare",
+        "Black Lotus": "uncommon",
+        "Dark Herring": "uncommon",
+        "Fel Lotus": "uncommon",
+        "Frost Lotus": "uncommon",
+        "Hot Spices": "poor",
+        "Siren's Tear": "rare",
+        "Soothing Spices": "poor",
+    }
+    for name, quality in verified_qualities.items():
+        if not grouped.get(name):
+            fail(f"Verified rarity item is missing: {name}")
+        actual = {entry["quality"] for entry in grouped[name]}
+        if actual != {quality}:
+            fail(f"{name}: expected {quality} rarity, found {sorted(actual)}")
+
+    verified_max_stacks = {
+        "Bear Flank": 20,
+        "Crystallized Shadow": 10,
+        "Crystallized Water": 10,
+        "Green Whelp Scale": 5,
+        "Okra": 10,
+    }
+    for name, max_stack in verified_max_stacks.items():
+        for entry in grouped.get(name, []):
+            counts = [int(part.strip()) for part in entry["stack"].split("/")]
+            if any(count > max_stack for count in counts):
+                fail(f"{name}: stack recommendation exceeds {max_stack}: {entry['stack']}")
 
     unresolved = {
         entry["name"]

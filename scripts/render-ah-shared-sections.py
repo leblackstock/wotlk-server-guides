@@ -25,7 +25,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDE_GLOB = "*ah-price-guide.html"
-AH_STYLESHEET_VERSION = "20260801-ah-rarity-v1"
+AH_STYLESHEET_VERSION = "20260804-gathering-audit-v1"
 SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(
@@ -139,6 +139,7 @@ def anchor_slug(value: str) -> str:
 def render_vendor_row(key: str, item: dict, use_audit: dict) -> str:
     name = html.escape(item["name"])
     source_label = html.escape(item["source_label"])
+    quality = html.escape(item.get("quality", "common"))
     target_copper = int(item["target_copper"])
     bid = format_money(target_bid(target_copper))
     target = format_money(target_copper)
@@ -159,7 +160,7 @@ def render_vendor_row(key: str, item: dict, use_audit: dict) -> str:
     return (
         f'        <tr data-vendor-key="{html.escape(key)}"{audience_attribute}>\n'
         f'          <td data-column="item" data-label="Item">'
-        f'<strong class="q-common">{name}</strong>'
+        f'<strong class="q-{quality}">{name}</strong>'
         f'<div class="mini">{source_label}</div></td>\n'
         f'          <td data-column="target" data-label="Target Price">'
         f'<div class="pricepair target">\n'

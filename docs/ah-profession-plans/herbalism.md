@@ -1,6 +1,6 @@
 # Herbalism AH Audit Plan
 
-- Status: `planned`
+- Status: `complete` — 2026-08-04
 - Existing guide: `guides/herbalism-herbs-ah-price-guide.html`
 - Work type: gathering-price audit; no normal crafted catalog
 - Suggested order: 8
@@ -10,7 +10,7 @@
 
 ## Baseline Evidence Audit
 
-- Recheck all 53 current herb and vendor/convenience rows across Northrend,
+- Recheck all 52 searchable herb and vendor/convenience rows across Northrend,
   Outland, and Classic.
 - Reconcile every duplicated herb with Alchemy and Inscription input references.
 - Verify item IDs, rarity, stack size, zone/tier, normal gathering source, and
@@ -45,18 +45,18 @@ Herbalism rows.
 
 ## Acceptance Checks
 
-- [ ] Every saved baseline has a source type and confidence.
-- [ ] Duplicate herb prices agree across guides.
-- [ ] Alchemy/Inscription dependency references use the refreshed values.
-- [ ] No non-item Herbalism spell is presented as a craftable AH item.
-- [ ] Rarity, source, stack, demand, and notes are accurate.
-- [ ] Shared validation in `README.md` passes.
+- [x] Every saved baseline has a source type and confidence.
+- [x] Duplicate herb prices agree across guides.
+- [x] Alchemy/Inscription dependency references use the refreshed values.
+- [x] No non-item Herbalism spell is presented as a craftable AH item.
+- [x] Rarity, source, stack, demand, and notes are accurate.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Listing concentration observations (not valuation evidence):
-- Item/source references checked:
-- Server-specific gathering findings:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-04
+- Listing concentration observations (not valuation evidence): The user reported that their auctions plus friends' auctions make up approximately 50% of all AH listings. This fails the 30% concentration guard, so no active listing price was used.
+- Item/source references checked: Audited 52 searchable rows: 47 frozen pre-scan baselines and 5 canonical vendor rows. Verified exact item IDs, rarity, maximum stack, and binding against AzerothCore `item_template` commit `e0fe11ba46b885a01e4a4038001e0055822cc7ba`; reconciled 35 duplicated herb/supply names with Alchemy and Inscription.
+- Server-specific gathering findings: No measured route or qualifying realized-sale dataset was available. No custom-server farming rate, spawn claim, or active-listing median was introduced.
+- Decisions and unresolved items: No price bands changed; all 52 rows already matched the accepted frozen/vendor evidence. Corrected Frost Lotus, Fel Lotus, and Black Lotus to uncommon rarity in both Herbalism and Alchemy, and replaced three generic herb notes with specific flask, pigment, and milling demand.
+- Completion summary: Herbalism remains a 52-row gathering/supply guide with no invented crafted outputs. Baselines, duplicate prices, ownership, rarity, stacks, demand notes, and dependent Alchemy/Inscription references passed validation.

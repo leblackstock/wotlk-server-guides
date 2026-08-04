@@ -15,9 +15,10 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 SEARCH_PATH = ROOT / "assets" / "ah-search.js"
 OUTPUT_PATH = ROOT / "assets" / "ah-item-ids.js"
+ITEM_TEMPLATE_COMMIT = "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
 ITEM_TEMPLATE_URL = (
     "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/"
-    "master/data/sql/base/db_world/item_template.sql"
+    f"{ITEM_TEMPLATE_COMMIT}/data/sql/base/db_world/item_template.sql"
 )
 
 LOADER_MARKER = "/* AH item tooltip loader */"
@@ -29,7 +30,7 @@ LOADER_BLOCK = r'''
     const current = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-search\.js(?:\?|$)/.test(script.src));
     if (!current || !current.src) return;
     const tooltipScript = document.createElement("script");
-    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260725-vendor-rows-v2", current.src).href;
+    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260804-gathering-audit-v1", current.src).href;
     tooltipScript.async = false;
     tooltipScript.dataset.ahItemTooltips = "true";
     document.head.appendChild(tooltipScript);
@@ -97,7 +98,6 @@ MANUAL_OVERRIDES = {
 # Small wording differences where the guide label clearly identifies one
 # canonical WotLK item. These are not used for category or multi-item labels.
 NAME_ALIASES = {
-    "basilisk meat": "chunk o basilisk",
     "formula enchant weapon spell power": "formula enchant weapon spellpower",
     "formula enchant weapon unholy weapon": "formula enchant weapon unholy",
 }

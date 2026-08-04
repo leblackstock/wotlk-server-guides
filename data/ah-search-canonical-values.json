@@ -15,6 +15,8 @@
     "Coarse Grinding Stone": {"value": "1 / 5 / 20", "source_guide": "Blacksmithing Materials", "item_id": 3478, "max_stack": 20},
     "Cobalt Bar": {"value": "5 / 10 / 20", "source_guide": "Mining + Smithing", "item_id": 36916, "max_stack": 20},
     "Copper Bar": {"value": "5 / 10 / 20", "source_guide": "Mining + Smithing", "item_id": 2840, "max_stack": 20},
+    "Crystallized Shadow": {"value": "5 / 10", "source_guide": "Cross-Profession Materials", "item_id": 37703, "max_stack": 10},
+    "Crystallized Water": {"value": "5 / 10", "source_guide": "Cross-Profession Materials", "item_id": 37705, "max_stack": 10},
     "Dense Grinding Stone": {"value": "1 / 5 / 20", "source_guide": "Blacksmithing Materials", "item_id": 12644, "max_stack": 20},
     "Enchanted Thorium Bar": {"value": "1 / 5 / 10 / 20", "source_guide": "Enchanting Mats + Scrolls", "item_id": 12655, "max_stack": 20},
     "Eternium Thread": {"value": "1 / 5", "source_guide": "Skinning + Leatherworking", "item_id": 38426, "max_stack": 20},

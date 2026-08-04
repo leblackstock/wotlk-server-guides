@@ -12,6 +12,7 @@
   --purple: #caa7ff;
   --orange: #ffb071;
   --cyan: #72e3ff;
+  --q-poor: #9d9d9d;
   --q-common: #ffffff;
   --q-uncommon: #1eff00;
   --q-rare: #0070dd;
@@ -718,6 +719,10 @@ h1 {
   color: #fff;
   font-size: 14px;
   line-height: 1.25;
+}
+
+.ah-search-item-name.quality-poor {
+  color: var(--q-poor);
 }
 
 .ah-search-item-name.quality-uncommon {

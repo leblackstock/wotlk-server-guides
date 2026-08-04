@@ -1,6 +1,6 @@
 # Fishing AH Audit Plan
 
-- Status: `planned`
+- Status: `complete` — 2026-08-04
 - Existing guide: `guides/fishing-cooking-materials-ah-price-guide.html`
 - Work type: gathering-price audit; finished food belongs to Cooking
 - Suggested order: 10
@@ -11,7 +11,8 @@
 ## Baseline Evidence Audit
 
 - Audit raw fish, clams, pearls, quest fish, rare catches, junk/vendor items,
-  and fishing-source utility rows in the current 147-row combined guide.
+  and fishing-source utility rows across 146 searchable rows and 4
+  reference-only rows in the current combined guide.
 - Reconcile raw fish and pearl prices with Cooking, Jewelcrafting, and
   cross-profession references.
 - Separate current per-fish, per-clam, per-pearl, and per-stack values; correct
@@ -48,18 +49,18 @@ source. Do not describe these as Fishing-crafted items.
 
 ## Acceptance Checks
 
-- [ ] Every saved Fishing-domain baseline has a source type and confidence.
-- [ ] Cooking ingredient references use refreshed fish prices.
-- [ ] Random clam contents are not priced as guaranteed output.
-- [ ] Utility items retain their true profession/source ownership.
-- [ ] Non-tradeable and vendor-only items are clearly handled.
-- [ ] Shared validation in `README.md` passes.
+- [x] Every saved Fishing-domain baseline has a source type and confidence.
+- [x] Cooking ingredient references use refreshed fish prices.
+- [x] Random clam contents are not priced as guaranteed output.
+- [x] Utility items retain their true profession/source ownership.
+- [x] Non-tradeable and vendor-only items are clearly handled.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Listing concentration observations (not valuation evidence):
-- Item/source references checked:
-- Server-specific fishing findings:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-04
+- Listing concentration observations (not valuation evidence): The user reported that their auctions plus friends' auctions make up approximately 50% of all AH listings. This fails the 30% concentration guard, so no active listing price was used.
+- Item/source references checked: Audited 146 searchable rows: 127 frozen pre-scan baselines and 19 canonical vendor rows, plus 4 reference-only catches. Verified exact item IDs, rarity, maximum stack, and binding against AzerothCore `item_template` commit `e0fe11ba46b885a01e4a4038001e0055822cc7ba`; reconciled fish, meat, pearl, and clam references with Cooking, Jewelcrafting, and cross-profession rows.
+- Server-specific fishing findings: No measured catch dataset or qualifying realized-sale dataset was available. No custom-server pool, catch-rate, or active-listing median was introduced.
+- Decisions and unresolved items: No price bands changed; all 146 searchable rows already matched the accepted frozen/vendor evidence. Restored the exact item name Chunk o' Basilisk; corrected Dark Herring and Siren's Tear rarity, Hot/Soothing Spices rarity, and impossible Bear Flank/Okra stack sizes. Random clam contents remain value context only, never guaranteed pearl output.
+- Completion summary: Fishing remains the gathering/source side of the combined guide; all finished food stays Cooking-owned. Baseline coverage, duplicate prices, unit handling, item metadata, ownership, vendor separation, rare-catch notes, and Cooking dependencies passed validation.

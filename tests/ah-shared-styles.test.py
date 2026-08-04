@@ -16,7 +16,7 @@ STYLES_PATH = ROOT / "assets" / "ah-price-guide.css"
 ICON_STYLES_PATH = ROOT / "assets" / "ah-guide-icons.css"
 SEARCH_STYLES_PATH = ROOT / "assets" / "style.css"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
-STYLESHEET_VERSION = "20260801-ah-rarity-v1"
+STYLESHEET_VERSION = "20260804-gathering-audit-v1"
 
 
 def normalize_item_name(value: str) -> str:
@@ -99,7 +99,7 @@ for path in guide_paths:
         if normalize_item_name(name) not in item_ids:
             continue
         checked_item_names += 1
-        assert re.search(r"\bq-(?:common|uncommon|rare|epic|legendary)\b", classes or ""), (
+        assert re.search(r"\bq-(?:poor|common|uncommon|rare|epic|legendary)\b", classes or ""), (
             f"{path.name}: item name lacks a rarity class: {name}"
         )
 

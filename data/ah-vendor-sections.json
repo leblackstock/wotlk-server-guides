@@ -228,6 +228,7 @@
       "vendor_cost_copper": 40,
       "vendor_buy_count": 1,
       "target_copper": 100,
+      "quality": "poor",
       "stack": "5 / 20",
       "notes": "Old-world Cooking reagent. Post in recipe-sized stacks."
     },
@@ -371,6 +372,7 @@
       "vendor_cost_copper": 160,
       "vendor_buy_count": 1,
       "target_copper": 400,
+      "quality": "poor",
       "stack": "5 / 20",
       "notes": "Old-world Cooking reagent. Post in recipe-sized stacks."
     },

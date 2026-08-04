@@ -128,6 +128,9 @@ def main() -> int:
             if not row_match:
                 fail(f"{path.name}: missing row for {key}")
             row = row_match.group(1)
+            expected_quality = item.get("quality", "common")
+            if f'<strong class="q-{expected_quality}">{item["name"]}</strong>' not in row:
+                fail(f"{path.name}: wrong rarity class for {item['name']}")
             if '<div class="pricepair target">' not in row:
                 fail(f"{path.name}: {item['name']} does not use the standard price box")
             if f'<span class="buyout">{expected_target}</span>' not in row:
@@ -141,6 +144,8 @@ def main() -> int:
         fail("Vendor catalog and guide usage do not match")
 
     for key, item in catalog.items():
+        if item.get("quality", "common") not in {"poor", "common", "uncommon", "rare", "epic", "legendary"}:
+            fail(f"{key}: invalid item quality")
         target = int(item["target_copper"])
         if target <= 0:
             fail(f"{key}: target price must be positive")
