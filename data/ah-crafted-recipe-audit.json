@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refreshed": "2026-08-03",
+  "refreshed": "2026-08-04",
   "recipe_source": {
     "name": "WotLKDB 3.3.5a profession and item records",
     "profession_url_template": "https://wotlkdb.com/?spells=11.{skill_id}",
@@ -43,30 +43,12 @@
   },
   "pricing_method": {
     "reagent_reference": "Frozen non-circular quick, target, and high bands from data/ah-price-baselines.json; exact vendor cost where applicable. Active AH listings are excluded.",
-    "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their current crafted-catalog bands.",
+    "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their saved crafted-catalog bands.",
     "output_quantity": "Minimum guaranteed output; charged devices use all guaranteed charges.",
     "market_margin": "Demand-sensitive margin with upward convenience rounding; frozen output references may preserve an independently established higher posting baseline.",
     "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium."
   },
-  "reagent_price_overrides": {
-    "1475": {
-      "name": "Small Venom Sac",
-      "source_type": "market-fallback",
-      "quick": 2000,
-      "target": 4000,
-      "high": 8000,
-      "reason": "Provisional low-tier mob-drop range anchored above the exact 82c vendor liquidation value; no active listing was used.",
-      "confidence": "fallback"
-    },
-    "1288": {
-      "name": "Large Venom Sac",
-      "source_type": "market-fallback",
-      "quick": 10000,
-      "target": 20000,
-      "high": 40000,
-      "reason": "Provisional mid-tier mob-drop range anchored above the exact 1s 85c vendor liquidation value; no active listing was used.",
-      "confidence": "fallback"
-    },
+  "reagent_cost_overrides": {
     "2901": {
       "name": "Mining Pick",
       "source_type": "coin-vendor",
@@ -76,24 +58,6 @@
       "reason": "Exact unlimited-vendor cost.",
       "confidence": "high"
     },
-    "3164": {
-      "name": "Discolored Worg Heart",
-      "source_type": "market-fallback",
-      "quick": 5000,
-      "target": 10000,
-      "high": 20000,
-      "reason": "Unpriced legacy mob-drop reagent.",
-      "confidence": "fallback"
-    },
-    "3819": {
-      "name": "Wintersbite",
-      "source_type": "market-fallback",
-      "quick": 5000,
-      "target": 10000,
-      "high": 20000,
-      "reason": "Unpriced legacy herb; aligned to other scarce Classic herbs.",
-      "confidence": "fallback"
-    },
     "4342": {
       "name": "Purple Dye",
       "source_type": "coin-vendor",
@@ -102,15 +66,6 @@
       "high": 2500,
       "reason": "Exact unlimited-vendor cost.",
       "confidence": "high"
-    },
-    "5635": {
-      "name": "Sharp Claw",
-      "source_type": "market-fallback",
-      "quick": 150,
-      "target": 200,
-      "high": 300,
-      "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
-      "confidence": "fallback"
     },
     "5956": {
       "name": "Blacksmith Hammer",
@@ -130,33 +85,6 @@
       "reason": "Exact unlimited-vendor cost.",
       "confidence": "high"
     },
-    "7972": {
-      "name": "Ichor of Undeath",
-      "source_type": "market-fallback",
-      "quick": 800,
-      "target": 1300,
-      "high": 2500,
-      "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
-      "confidence": "fallback"
-    },
-    "9260": {
-      "name": "Volatile Rum",
-      "source_type": "market-fallback",
-      "quick": 600,
-      "target": 700,
-      "high": 1200,
-      "reason": "Provisional legacy drop fallback; no independent realized-price baseline yet.",
-      "confidence": "fallback"
-    },
-    "10286": {
-      "name": "Heart of the Wild",
-      "source_type": "market-fallback",
-      "quick": 10000,
-      "target": 20000,
-      "high": 40000,
-      "reason": "Unpriced legacy mob-drop reagent.",
-      "confidence": "fallback"
-    },
     "27860": {
       "name": "Purified Draenic Water",
       "source_type": "coin-vendor",
@@ -165,69 +93,6 @@
       "high": 1280,
       "reason": "Exact unlimited-vendor cost: 64s per five, or 12s 80c each.",
       "confidence": "high"
-    },
-    "12938": {
-      "name": "Blood of Heroes",
-      "source_type": "market-fallback",
-      "quick": 50000,
-      "target": 100000,
-      "high": 200000,
-      "reason": "Unpriced scarce open-world pickup.",
-      "confidence": "fallback"
-    },
-    "19441": {
-      "name": "Huge Venom Sac",
-      "source_type": "market-fallback",
-      "quick": 10000,
-      "target": 20000,
-      "high": 40000,
-      "reason": "Provisional high-tier mob-drop range anchored above the exact 15s vendor liquidation value and aligned to the saved Large Venom Sac range; no active listing was used.",
-      "confidence": "fallback"
-    },
-    "39970": {
-      "name": "Fire Leaf",
-      "source_type": "market-fallback",
-      "quick": 12000,
-      "target": 18000,
-      "high": 28000,
-      "reason": "Unpriced Northrend herb; aligned to nearby herb bands.",
-      "confidence": "fallback"
-    },
-    "41814": {
-      "name": "Glassfin Minnow",
-      "source_type": "market-fallback",
-      "quick": 6000,
-      "target": 10000,
-      "high": 17500,
-      "reason": "Unpriced Northrend fish; aligned to Fangtooth Herring.",
-      "confidence": "fallback"
-    },
-    "4255": {
-      "name": "Green Leather Armor",
-      "source_type": "market-fallback",
-      "quick": 20000,
-      "target": 35000,
-      "high": 60000,
-      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
-      "confidence": "fallback"
-    },
-    "5966": {
-      "name": "Guardian Gloves",
-      "source_type": "market-fallback",
-      "quick": 30000,
-      "target": 50000,
-      "high": 90000,
-      "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
-      "confidence": "fallback"
-    },
-    "11754": {
-      "name": "Black Diamond",
-      "source_type": "market-fallback",
-      "quick": 5000,
-      "target": 10000,
-      "high": 20000,
-      "reason": "Unpriced legacy dungeon-drop gem used by Darkrune Helm.",
-      "confidence": "fallback"
     },
     "12662": {
       "name": "Demonic Rune",
@@ -247,103 +112,13 @@
       "reason": "BoP Scholomance reagent; valued only as an explicit access estimate.",
       "confidence": "fallback"
     },
-    "12809": {
-      "name": "Guardian Stone",
-      "source_type": "market-fallback",
-      "quick": 20000,
-      "target": 40000,
-      "high": 80000,
-      "reason": "Unpriced scarce legacy mob-drop reagent.",
-      "confidence": "fallback"
-    },
-    "15417": {
-      "name": "Devilsaur Leather",
-      "source_type": "market-fallback",
-      "quick": 20000,
-      "target": 35000,
-      "high": 60000,
-      "reason": "Unpriced legacy Skinning material used by Persuader.",
-      "confidence": "fallback"
-    },
-    "17012": {
-      "name": "Core Leather",
-      "source_type": "market-fallback",
-      "quick": 20000,
-      "target": 40000,
-      "high": 70000,
-      "reason": "Unpriced Molten Core Skinning material.",
-      "confidence": "fallback"
-    },
-    "17203": {
-      "name": "Sulfuron Ingot",
-      "source_type": "market-fallback",
-      "quick": 750000,
-      "target": 1250000,
-      "high": 2000000,
-      "reason": "Unpriced epic Molten Core drop used eight at a time by Sulfuron Hammer.",
-      "confidence": "fallback"
-    },
-    "19726": {
-      "name": "Bloodvine",
-      "source_type": "market-fallback",
-      "quick": 30000,
-      "target": 50000,
-      "high": 90000,
-      "reason": "Unpriced Zul'Gurub gathering material.",
-      "confidence": "fallback"
-    },
-    "19774": {
-      "name": "Souldarite",
-      "source_type": "market-fallback",
-      "quick": 20000,
-      "target": 35000,
-      "high": 60000,
-      "reason": "Unpriced Zul'Gurub ore used by Bloodsoul and Darksoul crafts.",
-      "confidence": "fallback"
-    },
-    "20520": {
-      "name": "Dark Rune",
-      "source_type": "market-fallback",
-      "quick": 7000,
-      "target": 8000,
-      "high": 12000,
-      "reason": "Provisional legacy dungeon-drop fallback; no independent realized-price baseline yet.",
-      "confidence": "fallback"
-    },
-    "22202": {
-      "name": "Small Obsidian Shard",
-      "source_type": "market-fallback",
-      "quick": 10000,
-      "target": 20000,
-      "high": 40000,
-      "reason": "Unpriced Ahn'Qiraj crafting shard.",
-      "confidence": "fallback"
-    },
-    "22203": {
-      "name": "Large Obsidian Shard",
-      "source_type": "market-fallback",
-      "quick": 30000,
-      "target": 50000,
-      "high": 90000,
-      "reason": "Unpriced Ahn'Qiraj crafting shard.",
-      "confidence": "fallback"
-    },
-    "22682": {
-      "name": "Frozen Rune",
-      "source_type": "market-fallback",
-      "quick": 250000,
-      "target": 400000,
-      "high": 700000,
-      "reason": "Unpriced scarce legacy Naxxramas crafting rune.",
-      "confidence": "fallback"
-    },
-    "34664": {
-      "name": "Sunmote",
-      "source_type": "market-fallback",
-      "quick": 200000,
-      "target": 350000,
-      "high": 600000,
-      "reason": "Unpriced scarce Sunwell crafting drop.",
+    "12938": {
+      "name": "Blood of Heroes",
+      "source_type": "bind-on-pickup-farming-estimate",
+      "quick": 50000,
+      "target": 100000,
+      "high": 200000,
+      "reason": "BoP open-world pickup; valued only as an explicit access estimate.",
       "confidence": "fallback"
     },
     "2325": {
@@ -54464,116 +54239,6 @@
         {
           "item_id": 17194,
           "name": "Holiday Spices",
-          "count": 1
-        }
-      ]
-    },
-    "cook-pumpkin-pie": {
-      "source_spell_id": 66036,
-      "source_spell_name": "Pumpkin Pie",
-      "output_item_id": 44836,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 46796,
-          "name": "Ripe Tirisfal Pumpkin",
-          "count": 1
-        },
-        {
-          "item_id": 44853,
-          "name": "Honey",
-          "count": 1
-        }
-      ]
-    },
-    "cook-spice-bread-stuffing": {
-      "source_spell_id": 66038,
-      "source_spell_name": "Spice Bread Stuffing",
-      "output_item_id": 44837,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 30816,
-          "name": "Spice Bread",
-          "count": 1
-        },
-        {
-          "item_id": 44835,
-          "name": "Autumnal Herbs",
-          "count": 1
-        }
-      ]
-    },
-    "cook-slow-roasted-turkey": {
-      "source_spell_id": 66037,
-      "source_spell_name": "Slow-Roasted Turkey",
-      "output_item_id": 44838,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 44834,
-          "name": "Wild Turkey",
-          "count": 1
-        },
-        {
-          "item_id": 44853,
-          "name": "Honey",
-          "count": 2
-        },
-        {
-          "item_id": 44835,
-          "name": "Autumnal Herbs",
-          "count": 1
-        }
-      ]
-    },
-    "cook-candied-sweet-potato": {
-      "source_spell_id": 66034,
-      "source_spell_name": "Candied Sweet Potato",
-      "output_item_id": 44839,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 46797,
-          "name": "Mulgore Sweet Potato",
-          "count": 1
-        },
-        {
-          "item_id": 44853,
-          "name": "Honey",
-          "count": 1
-        },
-        {
-          "item_id": 44835,
-          "name": "Autumnal Herbs",
-          "count": 1
-        }
-      ]
-    },
-    "cook-cranberry-chutney": {
-      "source_spell_id": 66035,
-      "source_spell_name": "Cranberry Chutney",
-      "output_item_id": 44840,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 46793,
-          "name": "Tangy Southfury Cranberries",
-          "count": 1
-        },
-        {
-          "item_id": 44853,
-          "name": "Honey",
           "count": 1
         }
       ]

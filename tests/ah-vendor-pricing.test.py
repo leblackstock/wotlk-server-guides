@@ -140,8 +140,14 @@ def main() -> int:
             if "<strong>Source / cost:</strong>" not in row:
                 fail(f"{path.name}: {item['name']} is missing source cost in its notes")
 
-    if used_keys != set(catalog):
-        fail("Vendor catalog and guide usage do not match")
+    cost_only_keys = {
+        key for key, item in catalog.items() if item.get("cost_only") is True
+    }
+    if used_keys != set(catalog) - cost_only_keys:
+        fail("Rendered vendor rows must match the auctionable vendor catalog")
+    for key in cost_only_keys:
+        if catalog[key].get("auctionable") is not False:
+            fail(f"{key}: cost-only vendor input must set auctionable=false")
 
     for key, item in catalog.items():
         if item.get("quality", "common") not in {"poor", "common", "uncommon", "rare", "epic", "legendary"}:

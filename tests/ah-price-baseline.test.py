@@ -40,10 +40,10 @@ def main() -> int:
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 705:
-        fail("Frozen baseline must contain 650 pre-scan references plus 55 documented profession-input fallbacks")
+    if len(baseline.get("items", {})) != 720:
+        fail("Frozen baseline must contain 645 valid pre-scan references plus 75 documented profession-input fallbacks")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 649, "medium": 1, "fallback": 55}):
+    if confidence != Counter({"low": 644, "medium": 1, "fallback": 75}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
@@ -52,10 +52,15 @@ def main() -> int:
             fail(f"{item_id}: invalid confidence {record['confidence']}")
         if not int(record["quick"]) <= int(record["target"]) <= int(record["high"]):
             fail(f"{item_id}: invalid baseline band ordering")
-    for item_id, record in audit["reagent_price_overrides"].items():
+    for item_id, record in audit["reagent_cost_overrides"].items():
+        if record["source_type"] not in {
+            "coin-vendor",
+            "bind-on-pickup-farming-estimate",
+        }:
+            fail(f"{item_id}: tradeable input leaked outside the canonical baseline")
         expected_confidence = "high" if record["source_type"] == "coin-vendor" else "fallback"
         if record.get("confidence") != expected_confidence:
-            fail(f"{item_id}: reagent override confidence is missing or incorrect")
+            fail(f"{item_id}: reagent cost override confidence is missing or incorrect")
 
     solid_stone = baseline["items"]["7912"]
     if solid_stone["source_type"] != "realized-sales-history" or solid_stone["target"] != 900:
@@ -95,11 +100,25 @@ def main() -> int:
         fail("Active scan provenance remains in the recipe audit")
     if forbidden in (ROOT / "scripts" / "audit-ah-crafted-prices.py").read_text(encoding="utf-8"):
         fail("Active scan provenance remains in the pricing code")
+    circular_phrases = (
+        "current live cost",
+        "reprice from live",
+        "live reagent cost",
+        "live reagent math",
+        "reprice the rest from live",
+    )
+    crafted_source = CATALOG_PATH.read_text(encoding="utf-8").casefold()
+    for phrase in circular_phrases:
+        if phrase in crafted_source:
+            fail(f"Circular pricing language remains in the crafted catalog: {phrase}")
 
     recipes = audit["recipes"]
     output_ids = {int(recipe["output_item_id"]) for recipe in recipes.values()}
     baseline_ids = {int(item_id) for item_id in baseline["items"]}
-    override_ids = {int(item_id) for item_id in audit["reagent_price_overrides"]}
+    override_ids = {int(item_id) for item_id in audit["reagent_cost_overrides"]}
+    overlap = baseline_ids & override_ids
+    if overlap:
+        fail(f"Reagent IDs are duplicated between baseline and cost-only overrides: {sorted(overlap)}")
     vendor_ids = {
         int(item["item_id"])
         for item in vendor["catalog"].values()
@@ -145,8 +164,8 @@ def main() -> int:
         if key.startswith("cook-")
         for reagent in recipe["reagents"]
     }
-    if len(cooking_inputs) != 148:
-        fail(f"Expected 148 direct Cooking inputs, found {len(cooking_inputs)}")
+    if len(cooking_inputs) != 141:
+        fail(f"Expected 141 direct Cooking inputs, found {len(cooking_inputs)}")
     mining_inputs = {
         int(reagent["item_id"])
         for key, recipe in recipes.items()
@@ -204,7 +223,6 @@ def main() -> int:
         "41800",
         "41801",
         "43501",
-        "44834",
     ):
         record = baseline["items"][item_id]
         if record["source_type"] != "documented-fallback" or record["confidence"] != "fallback":
@@ -231,8 +249,8 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 705 frozen references and documented fallbacks, "
-        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 148 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
+        "Non-circular AH baseline is valid: 720 frozen references and documented fallbacks, "
+        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 141 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
     )
     return 0
 

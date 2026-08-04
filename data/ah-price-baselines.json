@@ -4841,42 +4841,6 @@
       "confidence": "low",
       "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
     },
-    "41120": {
-      "name": "Plans: Reinforced Cobalt Legplates",
-      "quick": 20000,
-      "target": 60000,
-      "high": 180000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
-    },
-    "41122": {
-      "name": "Plans: Reinforced Cobalt Chestpiece",
-      "quick": 20000,
-      "target": 60000,
-      "high": 180000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
-    },
-    "41123": {
-      "name": "Plans: Reinforced Cobalt Helm",
-      "quick": 20000,
-      "target": 60000,
-      "high": 180000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
-    },
-    "41124": {
-      "name": "Plans: Reinforced Cobalt Shoulders",
-      "quick": 20000,
-      "target": 60000,
-      "high": 180000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
-    },
     "41163": {
       "name": "Titanium Bar",
       "quick": 90000,
@@ -4972,15 +4936,6 @@
       "quick": 60000,
       "target": 80000,
       "high": 120000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
-    },
-    "41582": {
-      "name": "Design: Glinting Monarch Topaz",
-      "quick": 600000,
-      "target": 1500000,
-      "high": 3750000,
       "source_type": "frozen-pre-scan-guide",
       "confidence": "low",
       "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
@@ -6335,15 +6290,6 @@
       "confidence": "fallback",
       "reason": "Provisional Northrend egg fallback aligned to the saved Small Egg band; no active listing was used."
     },
-    "44834": {
-      "name": "Wild Turkey",
-      "quick": 5000,
-      "target": 10000,
-      "high": 20000,
-      "source_type": "documented-fallback",
-      "confidence": "fallback",
-      "reason": "Provisional seven-day Pilgrim's Bounty drop fallback aligned to seasonal meat scarcity; no active listing was used."
-    },
     "18562": {
       "name": "Elementium Ore",
       "quick": 100000,
@@ -6379,6 +6325,195 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional high-tier mob-drop range anchored above the exact 15s AzerothCore vendor liquidation value and aligned to the saved Large Venom Sac range. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "3164": {
+      "name": "Discolored Worg Heart",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop reagent fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "3819": {
+      "name": "Wintersbite",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy herb fallback aligned to other scarce Classic herbs. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "5635": {
+      "name": "Sharp Claw",
+      "quick": 150,
+      "target": 200,
+      "high": 300,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "7972": {
+      "name": "Ichor of Undeath",
+      "quick": 800,
+      "target": 1300,
+      "high": 2500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "9260": {
+      "name": "Volatile Rum",
+      "quick": 600,
+      "target": 700,
+      "high": 1200,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "10286": {
+      "name": "Heart of the Wild",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy mob-drop reagent fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "41814": {
+      "name": "Glassfin Minnow",
+      "quick": 6000,
+      "target": 10000,
+      "high": 17500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Northrend fish fallback aligned to Fangtooth Herring. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "4255": {
+      "name": "Green Leather Armor",
+      "quick": 20000,
+      "target": 35000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional BoE Leatherworking-input fallback for one Classic Blacksmithing recipe. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "5966": {
+      "name": "Guardian Gloves",
+      "quick": 30000,
+      "target": 50000,
+      "high": 90000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional BoE Leatherworking-input fallback for one Classic Blacksmithing recipe. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "11754": {
+      "name": "Black Diamond",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy dungeon-drop gem fallback used by Darkrune Helm. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "12809": {
+      "name": "Guardian Stone",
+      "quick": 20000,
+      "target": 40000,
+      "high": 80000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional scarce legacy mob-drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "15417": {
+      "name": "Devilsaur Leather",
+      "quick": 20000,
+      "target": 35000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy Skinning-material fallback used by Persuader. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "17012": {
+      "name": "Core Leather",
+      "quick": 20000,
+      "target": 40000,
+      "high": 70000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Molten Core Skinning-material fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "17203": {
+      "name": "Sulfuron Ingot",
+      "quick": 750000,
+      "target": 1250000,
+      "high": 2000000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional epic Molten Core drop fallback used eight at a time by Sulfuron Hammer. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "19726": {
+      "name": "Bloodvine",
+      "quick": 30000,
+      "target": 50000,
+      "high": 90000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Zul'Gurub gathering-material fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "19774": {
+      "name": "Souldarite",
+      "quick": 20000,
+      "target": 35000,
+      "high": 60000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Zul'Gurub ore fallback used by Bloodsoul and Darksoul crafts. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "20520": {
+      "name": "Dark Rune",
+      "quick": 7000,
+      "target": 8000,
+      "high": 12000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional legacy dungeon-drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "22202": {
+      "name": "Small Obsidian Shard",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Ahn'Qiraj crafting-shard fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "22203": {
+      "name": "Large Obsidian Shard",
+      "quick": 30000,
+      "target": 50000,
+      "high": 90000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Ahn'Qiraj crafting-shard fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "22682": {
+      "name": "Frozen Rune",
+      "quick": 250000,
+      "target": 400000,
+      "high": 700000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional scarce legacy Naxxramas crafting-rune fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "34664": {
+      "name": "Sunmote",
+      "quick": 200000,
+      "target": 350000,
+      "high": 600000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional scarce Sunwell crafting-drop fallback. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
     }
   }
 }

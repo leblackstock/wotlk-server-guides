@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lock the 95 recipe-drop rows to the audited tradeable 3.3.5 item set."""
+"""Lock the 90 recipe-drop rows to the audited tradeable 3.3.5 item set."""
 
 from __future__ import annotations
 
@@ -16,13 +16,13 @@ INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_COUNTS = {
     "consumable-misc-recipe-drops-ah-price-guide.html": 15,
-    "gear-pattern-drops-ah-price-guide.html": 41,
-    "utility-recipe-drops-ah-price-guide.html": 39,
+    "gear-pattern-drops-ah-price-guide.html": 37,
+    "utility-recipe-drops-ah-price-guide.html": 38,
 }
-# Audited against AzerothCore's 3.3.5 item_template on 2026-08-02. Every
+# Audited against AzerothCore's 3.3.5 item_template on 2026-08-04. Every
 # fingerprinted record had item class 9 (Recipe) and bonding 0 (tradeable).
 EXPECTED_AUDITED_FINGERPRINT = (
-    "dd9aa65c2be650b63dc0d4b98a519ddd10212df72a0a86cf1f1e6d5c9d89eb92"
+    "4bf4438cd4763db99666732922f83c7a9a832329c713d0c9f0a5d12541136cc5"
 )
 
 
@@ -70,8 +70,8 @@ def main() -> int:
 
     if dict(counts) != EXPECTED_COUNTS:
         fail(f"Recipe-drop guide counts changed: {dict(counts)}")
-    if len(audited_rows) != 95:
-        fail(f"Expected 95 recipe-drop rows, found {len(audited_rows)}")
+    if len(audited_rows) != 90:
+        fail(f"Expected 90 recipe-drop rows, found {len(audited_rows)}")
 
     fingerprint = hashlib.sha256(
         "\n".join(sorted(audited_rows)).encode("utf-8")
@@ -84,14 +84,13 @@ def main() -> int:
 
     expected_corrections = {
         "Design: Etched Monarch Topaz": 41777,
-        "Design: Glinting Monarch Topaz": 41582,
         "Design: Shining Forest Emerald": 41782,
     }
     for name, item_id in expected_corrections.items():
         if item_ids.get(normalized_item_name(name)) != item_id:
             fail(f"{name}: expected audited 3.3.5 item ID {item_id}")
 
-    print("All 95 recipe-drop rows match the audited tradeable 3.3.5 item set.")
+    print("All 90 recipe-drop rows match the audited tradeable 3.3.5 item set.")
     return 0
 
 

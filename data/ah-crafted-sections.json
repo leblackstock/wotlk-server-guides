@@ -154,146 +154,146 @@
     "engineering-part": {
       "profession": "Engineering",
       "quality": "common",
-      "materials": "Current live cost of the recipe's Engineering reagents; add only a convenience margin"
+      "materials": "Saved non-circular cost of the recipe's Engineering reagents; add only a convenience margin"
     },
     "engineering-explosive": {
       "profession": "Engineering",
       "quality": "common",
-      "materials": "Current live cost of the recipe's metals, powders, and triggers; price per finished unit"
+      "materials": "Saved non-circular cost of the recipe's metals, powders, and triggers; price per finished unit"
     },
     "engineering-ammo": {
       "profession": "Engineering",
       "quality": "common",
-      "materials": "Current live cost of the recipe's metal and Engineering components; use the listed stack guidance"
+      "materials": "Saved non-circular cost of the recipe's metal and Engineering components; use the listed stack guidance"
     },
     "engineering-powder": {
       "profession": "Engineering",
       "quality": "common",
-      "materials": "Current live cost of the matching stones or motes; add a small convenience margin"
+      "materials": "Saved non-circular cost of the matching stones or motes; add a small convenience margin"
     },
     "alchemy-flask": {
       "profession": "Alchemy",
       "quality": "common",
-      "materials": "Current live cost of the matching herbs, Frost Lotus, and Enchanted Vial; price per finished flask"
+      "materials": "Saved non-circular cost of the matching herbs, Frost Lotus, and Enchanted Vial; price per finished flask"
     },
     "alchemy-potion": {
       "profession": "Alchemy",
       "quality": "common",
-      "materials": "Current live cost of the matching herbs, oils, and Crystal Vial; price per finished potion"
+      "materials": "Saved non-circular cost of the matching herbs, oils, and Crystal Vial; price per finished potion"
     },
     "alchemy-oil": {
       "profession": "Alchemy",
       "quality": "common",
-      "materials": "Current live cost of Pygmy Suckerfish; account for the recipe's variable oil yield"
+      "materials": "Saved non-circular cost of Pygmy Suckerfish; account for the recipe's variable oil yield"
     },
     "alchemy-transmute": {
       "profession": "Alchemy",
       "quality": "rare",
-      "materials": "Current live cost of the required Primals; add only a convenience margin because cooldown scarcity may not apply"
+      "materials": "Saved non-circular cost of the required Primals; add only a convenience margin because cooldown scarcity may not apply"
     },
     "alchemy-wrath-flask": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 50000, "target_copper": 80000, "high_copper": 140000, "stack": "1 / 2 / 5", "demand": "Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Northrend herbs and vial; price per finished flask",
-      "notes": "Fallback market band for a less-common Wrath flask. Reprice from live reagents and actual demand before making a batch."
+      "materials": "Saved non-circular cost of the matching Northrend herbs and vial; price per finished flask",
+      "notes": "Fallback market band for a less-common Wrath flask. Check competition and actual demand before making a batch without changing the saved baseline."
     },
     "alchemy-wrath-elixir": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 10000, "target_copper": 17500, "high_copper": 30000, "stack": "5 / 10 / 20", "demand": "Med-High", "demand_class": "hi",
-      "materials": "Current live cost of the matching Northrend herbs, oils, and vial; price per finished elixir",
+      "materials": "Saved non-circular cost of the matching Northrend herbs, oils, and vial; price per finished elixir",
       "notes": "Fallback Wrath elixir band. Demand varies sharply by role and raid schedule; test small stacks first."
     },
     "alchemy-wrath-potion": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 6000, "target_copper": 10000, "high_copper": 18000, "stack": "5 / 10 / 20", "demand": "Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Northrend herbs, oils, and vial; price per finished potion",
-      "notes": "Fallback Wrath utility-potion band. Use live reagent cost and observed sell-through for the final listing price."
+      "materials": "Saved non-circular cost of the matching Northrend herbs, oils, and vial; price per finished potion",
+      "notes": "Fallback Wrath utility-potion band. Use observed sell-through only to decide whether and how much to post; it does not rewrite the saved baseline."
     },
     "alchemy-wrath-protection": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 8000, "target_copper": 13000, "high_copper": 22500, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Crystallized element and vial; price per finished protection potion",
+      "materials": "Saved non-circular cost of the matching Crystallized element and vial; price per finished protection potion",
       "notes": "Encounter-specific Wrath protection potion. Confirm that Hellscream mechanics create real demand before stocking deeply."
     },
     "alchemy-wrath-intermediate": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 4000, "target_copper": 7000, "high_copper": 12000, "stack": "1 / 5 / 10", "demand": "Med", "demand_class": "med",
-      "materials": "Current live cost of the recipe input; account for any variable output quantity",
+      "materials": "Saved non-circular cost of the recipe input; account for any variable output quantity",
       "notes": "Wrath Alchemy intermediate. Compare the finished item directly with its input before converting."
     },
     "alchemy-wrath-transmute": {
       "profession": "Alchemy", "quality": "rare", "quick_copper": 30000, "target_copper": 50000, "high_copper": 90000, "stack": "1 / 2 / 5", "demand": "Med-High", "demand_class": "hi",
-      "materials": "Current live cost of the exact transmute inputs; use the output quantity shown by the server",
+      "materials": "Saved non-circular cost of the exact transmute inputs; use the output quantity shown by the server",
       "notes": "Fallback transmute band only. Gem and metal values move independently, and cooldown scarcity may differ on Hellscream."
     },
     "alchemy-outland-flask": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 60000, "target_copper": 100000, "high_copper": 180000, "stack": "1 / 2 / 5", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Outland herbs, Fel Lotus, and vial; price per finished flask",
+      "materials": "Saved non-circular cost of the matching Outland herbs, Fel Lotus, and vial; price per finished flask",
       "notes": "Legacy raid flask with a narrow market. Post singles and verify level-70 or collector demand before restocking."
     },
     "alchemy-outland-elixir": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 6000, "target_copper": 10000, "high_copper": 18000, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Outland herbs and vial; price per finished elixir",
+      "materials": "Saved non-circular cost of the matching Outland herbs and vial; price per finished elixir",
       "notes": "Legacy elixir and leveling craft. Small stacks reduce risk in the thin level-60 to 70 market."
     },
     "alchemy-outland-potion": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 6000, "target_copper": 10000, "high_copper": 18000, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching Outland herbs and vial; price per finished potion",
-      "notes": "Legacy potion and leveling craft. Treat the listed prices as fallback bands, not a substitute for live reagent math."
+      "materials": "Saved non-circular cost of the matching Outland herbs and vial; price per finished potion",
+      "notes": "Legacy potion and leveling craft. Treat the listed prices as provisional saved bands until qualifying realized-sale or measured-yield evidence replaces them."
     },
     "alchemy-outland-protection": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 8000, "target_copper": 13000, "high_copper": 22500, "stack": "5 / 10 / 20", "demand": "Low", "demand_class": "low",
-      "materials": "Current live cost of the matching Primal or mote reagents and vial; price per finished potion",
+      "materials": "Saved non-circular cost of the matching Primal or mote reagents and vial; price per finished potion",
       "notes": "Legacy encounter-specific protection potion. Verify the relevant damage mechanic and buyer pool before crafting."
     },
     "alchemy-outland-cauldron": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 100000, "target_copper": 160000, "high_copper": 260000, "stack": "1", "demand": "Low", "demand_class": "low",
-      "materials": "Current live cost of the matching protection potions and cauldron reagents; price per finished cauldron",
+      "materials": "Saved non-circular cost of the matching protection potions and cauldron reagents; price per finished cauldron",
       "notes": "Very niche group utility. Confirm that the cauldron remains tradeable and useful under Hellscream's server rules before crafting."
     },
     "alchemy-outland-intermediate": {
       "profession": "Alchemy", "quality": "uncommon", "quick_copper": 10000, "target_copper": 17500, "high_copper": 30000, "stack": "1 / 2 / 5", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the exact Outland recipe inputs; price per finished intermediate",
+      "materials": "Saved non-circular cost of the exact Outland recipe inputs; price per finished intermediate",
       "notes": "Legacy Alchemy intermediate. Compare directly with its inputs and downstream craft demand."
     },
     "alchemy-outland-transmute": {
       "profession": "Alchemy", "quality": "rare", "quick_copper": 150000, "target_copper": 250000, "high_copper": 450000, "stack": "1 / 2", "demand": "Med", "demand_class": "med",
-      "materials": "Current live cost of the exact Outland transmute inputs; account for specialization procs",
+      "materials": "Saved non-circular cost of the exact Outland transmute inputs; account for specialization procs",
       "notes": "Legacy transmute output. Cooldown and proc behavior can differ on Hellscream, so verify both before pricing."
     },
     "alchemy-classic-flask": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 80000, "target_copper": 140000, "high_copper": 250000, "stack": "1 / 2 / 5", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of Black Lotus, matching Classic herbs, and vial; price per finished flask",
+      "materials": "Saved non-circular cost of Black Lotus, matching Classic herbs, and vial; price per finished flask",
       "notes": "Classic raid flask with expensive inputs and thin demand. Post singles and avoid speculative batches."
     },
     "alchemy-classic-leveling-elixir": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 1000, "target_copper": 2000, "high_copper": 4000, "stack": "5 / 10 / 20", "demand": "Low", "demand_class": "low",
-      "materials": "Current live cost of the matching Classic herbs and vial; price per finished elixir",
+      "materials": "Saved non-circular cost of the matching Classic herbs and vial; price per finished elixir",
       "notes": "Leveling elixir or skill-up output. Sell inexpensive small stacks only where actual leveling demand exists."
     },
     "alchemy-classic-endgame-elixir": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 5000, "target_copper": 9000, "high_copper": 16000, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching high-tier Classic herbs and vial; price per finished elixir",
+      "materials": "Saved non-circular cost of the matching high-tier Classic herbs and vial; price per finished elixir",
       "notes": "Classic endgame or specialty elixir. Recipe rarity can justify a premium only when buyers are present."
     },
     "alchemy-classic-leveling-potion": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 800, "target_copper": 1500, "high_copper": 3000, "stack": "5 / 10 / 20", "demand": "Low", "demand_class": "low",
-      "materials": "Current live cost of the matching Classic herbs and vial; price per finished potion",
+      "materials": "Saved non-circular cost of the matching Classic herbs and vial; price per finished potion",
       "notes": "Leveling potion or skill-up output. Vendor competition and low demand make small stacks safest."
     },
     "alchemy-classic-endgame-potion": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 4000, "target_copper": 7000, "high_copper": 12000, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching high-tier Classic herbs and vial; price per finished potion",
+      "materials": "Saved non-circular cost of the matching high-tier Classic herbs and vial; price per finished potion",
       "notes": "Classic endgame or specialty potion. Test singles or small stacks before committing rare herbs."
     },
     "alchemy-classic-leveling-protection": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 1500, "target_copper": 3000, "high_copper": 6000, "stack": "5 / 10 / 20", "demand": "Low", "demand_class": "low",
-      "materials": "Current live cost of the matching Classic elemental reagent, herbs, and vial",
+      "materials": "Saved non-circular cost of the matching Classic elemental reagent, herbs, and vial",
       "notes": "Low-tier protection potion. Demand is encounter-specific and usually thin on a level-80 server."
     },
     "alchemy-classic-endgame-protection": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 4000, "target_copper": 7000, "high_copper": 12000, "stack": "5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the matching high-tier Classic elemental reagent, herbs, and vial",
+      "materials": "Saved non-circular cost of the matching high-tier Classic elemental reagent, herbs, and vial",
       "notes": "Classic endgame protection potion. Verify raid, dungeon, or PvP demand before crafting a batch."
     },
     "alchemy-classic-intermediate": {
       "profession": "Alchemy", "quality": "common", "quick_copper": 5000, "target_copper": 9000, "high_copper": 16000, "stack": "1 / 5 / 10 / 20", "demand": "Low-Med", "demand_class": "med",
-      "materials": "Current live cost of the exact Classic recipe inputs; account for output quantity",
+      "materials": "Saved non-circular cost of the exact Classic recipe inputs; account for output quantity",
       "notes": "Classic Alchemy oil, dye, fuel, or specialty intermediate. Compare directly with downstream demand."
     },
     "enchanting-wrath-weapon": {
@@ -640,7 +640,7 @@
     "alch-cauldron-of-major-frost-protection": {"name":"Cauldron of Major Frost Protection","item_id":32850,"profile":"alchemy-outland-cauldron","detail":"Outland protection cauldron","source_spell_id":41501,"pricing_floor_copper":{"quick":200500,"target":306500,"high":497000},"quick_copper":210000,"target_copper":340000,"high_copper":600000,"row_note":"Creates a five-minute, 25-use raid cauldron of Major Frost Protection Potions."},
     "alch-cauldron-of-major-nature-protection": {"name":"Cauldron of Major Nature Protection","item_id":32851,"profile":"alchemy-outland-cauldron","detail":"Outland protection cauldron","source_spell_id":41502,"pricing_floor_copper":{"quick":190500,"target":286500,"high":477000},"quick_copper":200000,"target_copper":330000,"high_copper":600000,"row_note":"Creates a five-minute, 25-use raid cauldron of Major Nature Protection Potions."},
     "alch-cauldron-of-major-shadow-protection": {"name":"Cauldron of Major Shadow Protection","item_id":32852,"profile":"alchemy-outland-cauldron","detail":"Outland protection cauldron","source_spell_id":41503,"pricing_floor_copper":{"quick":194500,"target":296500,"high":487000},"quick_copper":205000,"target_copper":330000,"high_copper":590000,"row_note":"Creates a five-minute, 25-use raid cauldron of Major Shadow Protection Potions."},
-    "alch-mercurial-stone": {"name":"Mercurial Stone","item_id":31080,"profile":"alchemy-outland-intermediate","detail":"Outland Alchemy intermediate","source_spell_id":38070,"pricing_floor_copper":{"quick":55000,"target":85000,"high":135000},"quick_copper":62500,"target_copper":112500,"high_copper":205000,"row_note":"BoE Alchemy trinket and profession intermediate with 27 Stamina and 27 hit rating."},
+    "alch-mercurial-stone": {"name":"Mercurial Stone","item_id":31080,"profile":"alchemy-outland-intermediate","detail":"Outland Alchemy intermediate","source_spell_id":38070,"pricing_floor_copper":{"quick":55000,"target":85000,"high":135000},"quick_copper":62500,"target_copper":112500,"high_copper":205000,"binding":"boe","row_note":"BoE Alchemy trinket and profession intermediate with 27 Stamina and 27 hit rating."},
     "alch-earthstorm-diamond": {"name":"Earthstorm Diamond","item_id":25867,"profile":"alchemy-outland-transmute","detail":"Outland transmute output","source_spell_id":32765,"pricing_floor_copper":{"quick":82600,"target":131000,"high":209000},"quick_copper":150000,"target_copper":250000,"high_copper":450000,"row_note":"Uncut Outland meta gem supplied to Jewelcrafters for Earthstorm cuts."},
     "alch-primal-might": {"name":"Primal Might","item_id":23571,"profile":"alchemy-transmute","detail":"TBC transmute reagent","source_spell_id":29688,"pricing_floor_copper":{"quick":170000,"target":265000,"high":405000},"quick_copper":350000,"target_copper":500000,"high_copper":800000,"stack":"1 / 2","demand":"Med","demand_class":"med","notes":"Important older Alchemy transmute product. Cooldown scarcity may not apply on this server.","row_note":"Combined Primal reagent used by high-end Outland profession recipes."},
     "alch-skyfire-diamond": {"name":"Skyfire Diamond","item_id":25868,"profile":"alchemy-outland-transmute","detail":"Outland transmute output","source_spell_id":32766,"pricing_floor_copper":{"quick":235000,"target":365500,"high":566500},"quick_copper":250000,"target_copper":430000,"high_copper":730000,"row_note":"Uncut Outland meta gem supplied to Jewelcrafters for Skyfire cuts."},
@@ -1114,7 +1114,7 @@
     "bs-golden-scale-shoulders": {"name":"Golden Scale Shoulders","item_id":3841,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 35 mail shoulder","source_spell_id":3505,"pricing_floor_copper":{"quick":32200,"target":52100,"high":89600},"quick_copper":34000,"target_copper":57500,"high_copper":110000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Golden Scale Shoulders is a BoE item-level 35 mail shoulder for physical-DPS use, requires level 30; +7 Strength, +6 Stamina. Classic leveling or legacy collection; post one at a time. Drop-plan access can limit supply."},
     "bs-barbaric-iron-helm": {"name":"Barbaric Iron Helm","item_id":7915,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 35 mail head","source_spell_id":9814,"pricing_floor_copper":{"quick":22300,"target":37400,"high":62600},"quick_copper":23000,"target_copper":42000,"high_copper":77500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Barbaric Iron Helm is a BoE item-level 35 mail head for physical-DPS use, requires level 30; +9 Strength. Classic leveling or legacy collection; post one at a time."},
     "bs-moonsteel-broadsword": {"name":"Moonsteel Broadsword","item_id":3853,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 36 two-hand sword","source_spell_id":3496,"pricing_floor_copper":{"quick":46000,"target":75200,"high":125700},"quick_copper":48000,"target_copper":85000,"high_copper":155000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Moonsteel Broadsword is a BoE item-level 36 two-hand sword for physical-DPS use, requires level 31; +4 Stamina, 24.6 DPS. Classic leveling or legacy collection; post one at a time."},
-    "bs-green-iron-hauberk": {"name":"Green Iron Hauberk","item_id":3844,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 36 mail chest","source_spell_id":3508,"pricing_floor_copper":{"quick":68200,"target":115000,"high":191500},"quick_copper":72500,"target_copper":127500,"high_copper":230000,"quality":"rare","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Green Iron Hauberk is a BoE item-level 36 mail chest for physical-DPS use, requires level 31; +11 Stamina, +7 Strength. Classic leveling or legacy collection; post one at a time."},
+    "bs-green-iron-hauberk": {"name":"Green Iron Hauberk","item_id":3844,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 36 mail chest","source_spell_id":3508,"pricing_floor_copper":{"quick":76800,"target":131400,"high":219400},"quick_copper":80000,"target_copper":145000,"high_copper":270000,"quality":"rare","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Green Iron Hauberk is a BoE item-level 36 mail chest for physical-DPS use, requires level 31; +11 Stamina, +7 Strength. Classic leveling or legacy collection; post one at a time."},
     "bs-barbaric-iron-boots": {"name":"Barbaric Iron Boots","item_id":7916,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 36 mail feet","source_spell_id":9818,"pricing_floor_copper":{"quick":32000,"target":54200,"high":91200},"quick_copper":33000,"target_copper":60000,"high_copper":110000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Barbaric Iron Boots is a BoE item-level 36 mail feet for physical-DPS use, requires level 31; +7 Strength. Classic leveling or legacy collection; post one at a time."},
     "bs-glinting-steel-dagger": {"name":"Glinting Steel Dagger","item_id":12259,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 36 dagger","source_spell_id":15972,"pricing_floor_copper":{"quick":41200,"target":66500,"high":110000},"quick_copper":43000,"target_copper":75000,"high_copper":132500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Glinting Steel Dagger is a BoE item-level 36 dagger for physical-DPS use, requires level 31; +12 attack power, 18.7 DPS. Classic leveling or legacy collection; post one at a time."},
     "bs-massive-iron-axe": {"name":"Massive Iron Axe","item_id":3855,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 37 two-hand axe","source_spell_id":3498,"pricing_floor_copper":{"quick":60000,"target":94200,"high":158200},"quick_copper":62500,"target_copper":105000,"high_copper":190000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Massive Iron Axe is a BoE item-level 37 two-hand axe for physical-DPS use, requires level 32; +11 Strength, +7 Stamina, 25.6 DPS. Classic leveling or legacy collection; post one at a time."},
@@ -1150,7 +1150,7 @@
     "bs-ornate-mithril-gloves": {"name":"Ornate Mithril Gloves","item_id":7927,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 45 plate hands","source_spell_id":9950,"pricing_floor_copper":{"quick":43200,"target":67100,"high":116000},"quick_copper":45000,"target_copper":75000,"high_copper":140000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Ornate Mithril Gloves is a BoE item-level 45 plate hands for physical-DPS use, requires level 40; full stats are available in the item mouseover. Classic leveling or legacy collection; post one at a time."},
     "bs-blue-glittering-axe": {"name":"Blue Glittering Axe","item_id":7942,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 44 one-hand axe","source_spell_id":9995,"pricing_floor_copper":{"quick":64000,"target":103600,"high":181400},"quick_copper":67500,"target_copper":115000,"high_copper":220000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Blue Glittering Axe is a BoE item-level 44 one-hand axe for physical-DPS use, requires level 39; +8 Agility, 25.8 DPS. Classic leveling or legacy collection; post one at a time. Drop-plan access can limit supply."},
     "bs-ornate-mithril-shoulder": {"name":"Ornate Mithril Shoulder","item_id":7928,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 45 plate shoulder","source_spell_id":9952,"pricing_floor_copper":{"quick":57000,"target":89500,"high":156000},"quick_copper":60000,"target_copper":100000,"high_copper":190000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Ornate Mithril Shoulder is a BoE item-level 45 plate shoulder for tank use, requires level 40; +5 Strength, +12 dodge rating. Classic leveling or legacy collection; post one at a time."},
-    "bs-truesilver-gauntlets": {"name":"Truesilver Gauntlets","item_id":7938,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 45 plate hands","source_spell_id":9954,"pricing_floor_copper":{"quick":161950,"target":247350,"high":425950},"quick_copper":170000,"target_copper":280000,"high_copper":520000,"quality":"rare","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Truesilver Gauntlets is a BoE item-level 45 plate hands for physical-DPS use, requires level 40; +16 Strength, +7 Stamina. Classic leveling or legacy collection; post one at a time."},
+    "bs-truesilver-gauntlets": {"name":"Truesilver Gauntlets","item_id":7938,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 45 plate hands","source_spell_id":9954,"pricing_floor_copper":{"quick":183500,"target":283700,"high":492300},"quick_copper":190000,"target_copper":320000,"high_copper":600000,"quality":"rare","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Truesilver Gauntlets is a BoE item-level 45 plate hands for physical-DPS use, requires level 40; +16 Strength, +7 Stamina. Classic leveling or legacy collection; post one at a time."},
     "bs-wicked-mithril-blade": {"name":"Wicked Mithril Blade","item_id":7943,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 45 one-hand sword","source_spell_id":9997,"pricing_floor_copper":{"quick":90000,"target":137600,"high":238400},"quick_copper":95000,"target_copper":155000,"high_copper":290000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Wicked Mithril Blade is a BoE item-level 45 one-hand sword for physical-DPS use, requires level 40; +12 attack power, 26.5 DPS. Classic leveling or legacy collection; post one at a time. Drop-plan access can limit supply."},
     "bs-heavy-mithril-breastplate": {"name":"Heavy Mithril Breastplate","item_id":7930,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 46 plate chest","source_spell_id":9959,"pricing_floor_copper":{"quick":40000,"target":64000,"high":112000},"quick_copper":42000,"target_copper":72500,"high_copper":135000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Heavy Mithril Breastplate is a BoE item-level 46 plate chest for physical-DPS use, requires level 41; +10 Stamina. Classic leveling or legacy collection; post one at a time."},
     "bs-mithril-coif": {"name":"Mithril Coif","item_id":7931,"profile":"blacksmithing-craft","detail":"Classic • BoE item-level 46 mail head","source_spell_id":9961,"pricing_floor_copper":{"quick":29200,"target":46000,"high":79600},"quick_copper":31000,"target_copper":52500,"high_copper":97500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Mithril Coif is a BoE item-level 46 mail head for physical-DPS use, requires level 41; +9 Stamina, +30 attack power. Classic leveling or legacy collection; post one at a time."},
@@ -2412,7 +2412,7 @@
     "lw-dark-leather-shoulders": {"name":"Dark Leather Shoulders","item_id":4252,"profile":"leatherworking-output","detail":"Classic • BoE item-level 28 leather shoulder","source_spell_id":3769,"pricing_floor_copper":{"quick":20190,"target":34390,"high":60090},"quick_copper":21000,"target_copper":38000,"high_copper":72500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Dark Leather Shoulders is a BoE item-level 28 leather shoulder for physical-DPS use, requires level 23; +7 Agility. Classic leveling or appearance market. Post one at a time."},
     "lw-toughened-leather-gloves": {"name":"Toughened Leather Gloves","item_id":4253,"profile":"leatherworking-output","detail":"Classic • BoE item-level 27 leather hands","source_spell_id":3770,"pricing_floor_copper":{"quick":31580,"target":55980,"high":95380},"quick_copper":33000,"target_copper":65000,"high_copper":120000,"quality":"rare","binding":"boe","stack":"1","demand":"Low-Med","demand_class":"med","row_note":"Toughened Leather Gloves is a BoE item-level 27 leather hands for physical-DPS use, requires level 22; +6 Agility, +6 Stamina, +3 critical strike rating. Classic legacy gearing, twink, or collection market. Post one at a time."},
     "lw-barbaric-gloves": {"name":"Barbaric Gloves","item_id":4254,"profile":"leatherworking-output","detail":"Classic • BoE item-level 30 leather hands","source_spell_id":3771,"pricing_floor_copper":{"quick":11300,"target":19100,"high":33100},"quick_copper":12000,"target_copper":22000,"high_copper":40000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Barbaric Gloves is a BoE item-level 30 leather hands for physical-DPS use, requires level 25; +6 Stamina, +10 attack power. Classic leveling or appearance market. Post one at a time."},
-    "lw-green-leather-armor": {"name":"Green Leather Armor","item_id":4255,"profile":"leatherworking-output","detail":"Classic • BoE item-level 31 leather chest","source_spell_id":3772,"pricing_floor_copper":{"quick":11400,"target":18600,"high":32100},"quick_copper":12000,"target_copper":21000,"high_copper":39000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Green Leather Armor is a BoE item-level 31 leather chest for tank use, requires level 26; +8 Agility, +8 dodge rating; Increases your dodge rating by 8. Classic leveling or appearance market. Post one at a time."},
+    "lw-green-leather-armor": {"name":"Green Leather Armor","item_id":4255,"profile":"leatherworking-output","detail":"Classic • BoE item-level 31 leather chest","source_spell_id":3772,"pricing_floor_copper":{"quick":11400,"target":18600,"high":32100},"quick_copper":20000,"target_copper":35000,"high_copper":60000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Green Leather Armor is a BoE item-level 31 leather chest for tank use, requires level 26; +8 Agility, +8 dodge rating; Increases your dodge rating by 8. Classic leveling or appearance market. Post one at a time."},
     "lw-guardian-armor": {"name":"Guardian Armor","item_id":4256,"profile":"leatherworking-output","detail":"Classic • BoE item-level 35 leather chest","source_spell_id":3773,"pricing_floor_copper":{"quick":72940,"target":120540,"high":210540},"quick_copper":77500,"target_copper":135000,"high_copper":260000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Guardian Armor is a BoE item-level 35 leather chest for caster use, requires level 30; +10 Intellect, +10 spell power. Classic leveling or appearance market. Post one at a time."},
     "lw-green-leather-belt": {"name":"Green Leather Belt","item_id":4257,"profile":"leatherworking-output","detail":"Classic • BoE item-level 32 leather waist","source_spell_id":3774,"pricing_floor_copper":{"quick":10250,"target":16850,"high":29350},"quick_copper":11000,"target_copper":19000,"high_copper":36000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Green Leather Belt is a BoE item-level 32 leather waist for tank use, requires level 27; +6 Agility, +6 dodge rating; Increases your dodge rating by 6. Classic leveling or appearance market. Post one at a time."},
     "lw-guardian-belt": {"name":"Guardian Belt","item_id":4258,"profile":"leatherworking-output","detail":"Classic • BoE item-level 34 leather waist","source_spell_id":3775,"pricing_floor_copper":{"quick":12100,"target":19900,"high":34900},"quick_copper":13000,"target_copper":22000,"high_copper":42000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Guardian Belt is a BoE item-level 34 leather waist for caster use, requires level 29; +7 Intellect, +7 spell power. Classic leveling or appearance market. Post one at a time."},
@@ -2437,7 +2437,7 @@
     "lw-barbaric-leggings": {"name":"Barbaric Leggings","item_id":5963,"profile":"leatherworking-output","detail":"Classic • BoE item-level 34 leather legs","source_spell_id":7149,"pricing_floor_copper":{"quick":16700,"target":28200,"high":47700},"quick_copper":18000,"target_copper":32000,"high_copper":57500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Barbaric Leggings is a BoE item-level 34 leather legs for physical-DPS use, requires level 29; +10 Stamina, +3 critical strike rating, +6 Agility. Classic leveling or appearance market. Post one at a time."},
     "lw-barbaric-shoulders": {"name":"Barbaric Shoulders","item_id":5964,"profile":"leatherworking-output","detail":"Classic • BoE item-level 35 leather shoulder","source_spell_id":7151,"pricing_floor_copper":{"quick":12950,"target":21350,"high":37350},"quick_copper":14000,"target_copper":24000,"high_copper":45000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Barbaric Shoulders is a BoE item-level 35 leather shoulder for physical-DPS use, requires level 30; +8 Stamina, +5 Agility. Classic leveling or appearance market. Post one at a time."},
     "lw-guardian-cloak": {"name":"Guardian Cloak","item_id":5965,"profile":"leatherworking-output","detail":"Classic • BoE item-level 37 cloak back","source_spell_id":7153,"pricing_floor_copper":{"quick":21400,"target":34600,"high":59000},"quick_copper":23000,"target_copper":39000,"high_copper":72500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Guardian Cloak is a BoE item-level 37 cloak back for caster/healer use, requires level 32; +6 Spirit, +6 spell power. Classic leveling or appearance market. Post one at a time."},
-    "lw-guardian-gloves": {"name":"Guardian Gloves","item_id":5966,"profile":"leatherworking-output","detail":"Classic • BoE item-level 38 leather hands","source_spell_id":7156,"pricing_floor_copper":{"quick":8450,"target":13650,"high":23650},"quick_copper":9000,"target_copper":16000,"high_copper":29000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Guardian Gloves is a BoE item-level 38 leather hands for caster use, requires level 33; +8 Intellect, +8 spell power. Classic leveling or appearance market. Post one at a time."},
+    "lw-guardian-gloves": {"name":"Guardian Gloves","item_id":5966,"profile":"leatherworking-output","detail":"Classic • BoE item-level 38 leather hands","source_spell_id":7156,"pricing_floor_copper":{"quick":8450,"target":13650,"high":23650},"quick_copper":30000,"target_copper":50000,"high_copper":90000,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Guardian Gloves is a BoE item-level 38 leather hands for caster use, requires level 33; +8 Intellect, +8 spell power. Classic leveling or appearance market. Post one at a time."},
     "lw-deviate-scale-cloak": {"name":"Deviate Scale Cloak","item_id":6466,"profile":"leatherworking-output","detail":"Classic • BoE item-level 18 cloak back","source_spell_id":7953,"pricing_floor_copper":{"quick":31350,"target":52150,"high":93650},"quick_copper":33000,"target_copper":57500,"high_copper":112500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Deviate Scale Cloak is a BoE item-level 18 cloak back for physical-DPS use, requires level 13; +2 Stamina, +2 Agility. Classic leveling or appearance market. Post one at a time."},
     "lw-deviate-scale-gloves": {"name":"Deviate Scale Gloves","item_id":6467,"profile":"leatherworking-output","detail":"Classic • BoE item-level 21 leather hands","source_spell_id":7954,"pricing_floor_copper":{"quick":37700,"target":62700,"high":112700},"quick_copper":39000,"target_copper":70000,"high_copper":137500,"quality":"uncommon","binding":"boe","stack":"1","demand":"Low","demand_class":"low","row_note":"Deviate Scale Gloves is a BoE item-level 21 leather hands for physical-DPS use, requires level 16; +3 Stamina, +3 Agility. Classic leveling or appearance market. Post one at a time."},
     "lw-deviate-scale-belt": {"name":"Deviate Scale Belt","item_id":6468,"profile":"leatherworking-output","detail":"Classic • BoE item-level 23 leather waist","source_spell_id":7955,"pricing_floor_copper":{"quick":120200,"target":230200,"high":450200},"quick_copper":127500,"target_copper":260000,"high_copper":560000,"quality":"rare","binding":"boe","stack":"1","demand":"Low-Med","demand_class":"med","row_note":"Deviate Scale Belt is a BoE item-level 23 leather waist for physical-DPS use, requires level 18; +6 Stamina, +5 Agility, +3 hit rating. Classic legacy gearing, twink, or collection market. Post one at a time."},
@@ -3026,11 +3026,6 @@
     "cook-tasty-cupcake": {"name":"Tasty Cupcake","item_id":43490,"profile":"cooking-output","detail":"Wrath achievement and novelty foods","source_spell_id":58512,"pricing_floor_copper":{"quick":1202,"target":2002,"high":4002},"quick_copper":1500,"target_copper":2500,"high_copper":5000,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Cupcakes make you happy."},
     "cook-bad-clams": {"name":"Bad Clams","item_id":43491,"profile":"cooking-output","detail":"Wrath achievement and novelty foods","source_spell_id":58523,"pricing_floor_copper":{"quick":1200,"target":2100,"high":3500},"quick_copper":1500,"target_copper":2500,"high_copper":4500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Bad Clams make you angry."},
     "cook-haunted-herring": {"name":"Haunted Herring","item_id":43492,"profile":"cooking-output","detail":"Wrath achievement and novelty foods","source_spell_id":58525,"pricing_floor_copper":{"quick":7200,"target":12000,"high":19500},"quick_copper":7500,"target_copper":14000,"high_copper":25000,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Haunted Herring makes you scared."},
-    "cook-pumpkin-pie": {"name":"Pumpkin Pie","item_id":44836,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66036,"pricing_floor_copper":{"quick":10,"target":10,"high":10},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling Spirit and Stamina for 1 hour."},
-    "cook-spice-bread-stuffing": {"name":"Spice Bread Stuffing","item_id":44837,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66038,"pricing_floor_copper":{"quick":9,"target":9,"high":9},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling hit rating and Stamina for 1 hour."},
-    "cook-slow-roasted-turkey": {"name":"Slow-Roasted Turkey","item_id":44838,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66037,"pricing_floor_copper":{"quick":5012,"target":10012,"high":20012},"quick_copper":5500,"target_copper":12000,"high_copper":25000,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling attack power and Stamina for 1 hour."},
-    "cook-candied-sweet-potato": {"name":"Candied Sweet Potato","item_id":44839,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66034,"pricing_floor_copper":{"quick":12,"target":12,"high":12},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling haste rating and Stamina for 1 hour."},
-    "cook-cranberry-chutney": {"name":"Cranberry Chutney","item_id":44840,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66035,"pricing_floor_copper":{"quick":10,"target":10,"high":10},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling spell power and Stamina for 1 hour."},
     "cook-worg-tartare": {"name":"Worg Tartare","item_id":44953,"profile":"cooking-output","detail":"Wrath level-80 personal stat foods","source_spell_id":62350,"pricing_floor_copper":{"quick":31000,"target":48000,"high":80000},"quick_copper":34000,"target_copper":60000,"high_copper":107500,"stack":"1 / 5 / 20","demand":"High","demand_class":"hi","row_note":"Requires level 70. Restores 22500 health and 19200 mana over 30 sec. If you spend at least 10 seconds eating you will become well fed and gain 40 Hit Rating and 40 Stamina for 1 hour."},
     "cook-black-jelly": {"name":"Black Jelly","item_id":45932,"profile":"cooking-output","detail":"Wrath recovery foods and drinks","source_spell_id":64358,"pricing_floor_copper":{"quick":15000,"target":25500,"high":45000},"quick_copper":16000,"target_copper":29000,"high_copper":55000,"stack":"1 / 5 / 20","demand":"Low","demand_class":"low","row_note":"Requires level 75. Restores 45000 health and 38400 mana over 1 min. Must remain seated while eating."},
     "mining-titansteel-bar": {"name":"Titansteel Bar","item_id":37663,"profile":"mining-output","detail":"Wrath alloy bar","source_spell_id":55208,"pricing_floor_copper":{"quick":445000,"target":667500,"high":1070000},"quick_copper":550000,"target_copper":840000,"high_copper":1500000,"quality":"uncommon","stack":"1 / 2 / 4","demand":"Very High","demand_class":"vh","row_note":"3 Titanium Bars + 1 Eternal Fire + 1 Eternal Earth + 1 Eternal Shadow → 1 bar. Major Blacksmithing and Engineering input. Standard 3.3.5 data shows no cooldown; do not add cooldown scarcity unless Hellscream displays one."},
@@ -3241,7 +3236,7 @@
         "Outland / TBC Alchemy materials": ["Primal Might"]
       },
       "sections": [
-        {"title": "Crafted Wrath flasks", "description": "Tradeable Northrend flasks, including raid staples and lesser fallback flasks. Preserve the established prices on the four primary raid flasks; reprice the rest from live herbs and vial cost.", "items": ["alch-lesser-flask-of-toughness", "alch-lesser-flask-of-resistance", "alch-flask-endless-rage", "alch-flask-pure-mojo", "alch-flask-stoneblood", "alch-flask-frost-wyrm"]},
+        {"title": "Crafted Wrath flasks", "description": "Tradeable Northrend flasks, including raid staples and lesser provisional flasks. Preserve the established prices on the four primary raid flasks; price the rest from saved non-circular herb and vial baselines.", "items": ["alch-lesser-flask-of-toughness", "alch-lesser-flask-of-resistance", "alch-flask-endless-rage", "alch-flask-pure-mojo", "alch-flask-stoneblood", "alch-flask-frost-wyrm"]},
         {"title": "Crafted Wrath elixirs", "description": "Battle, guardian, utility, and role-specific Northrend elixirs. Demand varies by class, build, raid schedule, and server buff rules.", "items": ["alch-wrath-elixir", "alch-spellpower-elixir", "alch-guru-s-elixir", "alch-elixir-of-mighty-strength", "alch-elixir-of-spirit", "alch-elixir-of-mighty-fortitude", "alch-elixir-of-mighty-agility", "alch-elixir-of-mighty-thoughts", "alch-elixir-of-accuracy", "alch-elixir-of-armor-piercing", "alch-elixir-of-deadly-strikes", "alch-elixir-of-expertise", "alch-elixir-of-lightning-speed", "alch-elixir-of-mighty-defense", "alch-elixir-of-mighty-mageblood", "alch-elixir-of-protection", "alch-elixir-of-water-walking"]},
         {"title": "Crafted Wrath combat and recovery potions", "description": "Northrend combat, recovery, and utility potions usable without Alchemy. Existing raid-potion values are preserved; added rows use conservative fallback bands.", "items": ["alch-resurgent-healing-potion", "alch-icy-mana-potion", "alch-potion-of-nightmares", "alch-indestructible-potion", "alch-potion-speed", "alch-potion-wild-magic", "alch-powerful-rejuvenation-potion", "alch-runic-healing-potion", "alch-runic-mana-potion"]},
         {"title": "Crafted Wrath protection potions", "description": "Element-specific Northrend protection potions. Confirm encounter mechanics and actual Hellscream demand before producing large stacks.", "items": ["alch-mighty-arcane-protection-potion", "alch-mighty-fire-protection-potion", "alch-mighty-frost-protection-potion", "alch-mighty-nature-protection-potion", "alch-mighty-shadow-protection-potion"]},
@@ -3513,16 +3508,11 @@
         },
         {
           "title": "Seasonal foods and drinks",
-          "description": "Holiday recipes and event-limited outputs. Pilgrim's Bounty food lasts seven real days, so do not carry it beyond the event window.",
+          "description": "Tradeable holiday recipes and event-limited outputs. Temporary items with a real-time duration are excluded because AzerothCore does not permit them on the Auction House.",
           "items": [
             "cook-gingerbread-cookie",
             "cook-egg-nog",
-            "cook-hot-apple-cider",
-            "cook-pumpkin-pie",
-            "cook-spice-bread-stuffing",
-            "cook-slow-roasted-turkey",
-            "cook-candied-sweet-potato",
-            "cook-cranberry-chutney"
+            "cook-hot-apple-cider"
           ]
         },
         {

@@ -473,7 +473,9 @@
       "vendor_buy_count": 5,
       "target_copper": 500,
       "stack": "5 / 20",
-      "notes": "Winter Veil Cooking reagent. Vendor cost is 10s per bundle of five; availability is seasonal."
+      "auctionable": false,
+      "cost_only": true,
+      "notes": "Cost-only input for Hot Apple Cider. Vendor cost is 10s per bundle of five; the item has a two-day real-time duration and cannot be auctioned."
     },
     "savory-snowplum": {
       "name": "Savory Snowplum",
@@ -496,61 +498,6 @@
       "target_copper": 3000,
       "stack": "5 / 20",
       "notes": "Kungaloosh ingredient. Vendor cost is 85s per bundle of five."
-    },
-    "autumnal-herbs": {
-      "name": "Autumnal Herbs",
-      "item_id": 44835,
-      "source_type": "coin-vendor",
-      "source_label": "Seasonal coin vendor",
-      "vendor_cost_copper": 10,
-      "vendor_buy_count": 5,
-      "target_copper": 100,
-      "stack": "5 / 20",
-      "notes": "Pilgrim's Bounty Cooking reagent. Vendor cost is 10c per bundle of five; availability is seasonal."
-    },
-    "honey": {
-      "name": "Honey",
-      "item_id": 44853,
-      "source_type": "coin-vendor",
-      "source_label": "Seasonal coin vendor",
-      "vendor_cost_copper": 25,
-      "vendor_buy_count": 5,
-      "target_copper": 100,
-      "stack": "5 / 20",
-      "notes": "Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
-    },
-    "tangy-southfury-cranberries": {
-      "name": "Tangy Southfury Cranberries",
-      "item_id": 46793,
-      "source_type": "coin-vendor",
-      "source_label": "Seasonal coin vendor",
-      "vendor_cost_copper": 25,
-      "vendor_buy_count": 5,
-      "target_copper": 100,
-      "stack": "5 / 20",
-      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
-    },
-    "ripe-tirisfal-pumpkin": {
-      "name": "Ripe Tirisfal Pumpkin",
-      "item_id": 46796,
-      "source_type": "coin-vendor",
-      "source_label": "Seasonal coin vendor",
-      "vendor_cost_copper": 25,
-      "vendor_buy_count": 5,
-      "target_copper": 100,
-      "stack": "5 / 20",
-      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
-    },
-    "mulgore-sweet-potato": {
-      "name": "Mulgore Sweet Potato",
-      "item_id": 46797,
-      "source_type": "coin-vendor",
-      "source_label": "Seasonal coin vendor",
-      "vendor_cost_copper": 25,
-      "vendor_buy_count": 5,
-      "target_copper": 100,
-      "stack": "5 / 20",
-      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
     }
   },
   "guides": {
@@ -607,14 +554,8 @@
         "skin-of-dwarven-stout",
         "holiday-spices",
         "holiday-spirits",
-        "sparkling-apple-cider",
         "savory-snowplum",
-        "tundra-berries",
-        "autumnal-herbs",
-        "honey",
-        "tangy-southfury-cranberries",
-        "ripe-tirisfal-pumpkin",
-        "mulgore-sweet-potato"
+        "tundra-berries"
       ]
     },
     "herbalism-herbs-ah-price-guide.html": {

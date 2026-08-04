@@ -26,7 +26,7 @@ EXPECTED_GUIDE_COUNTS = {
     "jewelcrafting-gems-ah-price-guide.html": 497,
     "tailoring-cloth-ah-price-guide.html": 423,
     "skinning-leatherworking-materials-ah-price-guide.html": 490,
-    "fishing-cooking-materials-ah-price-guide.html": 167,
+    "fishing-cooking-materials-ah-price-guide.html": 162,
     "mining-smithing-ah-price-guide.html": 24,
 }
 
@@ -77,6 +77,18 @@ def merged_item(config: dict, key: str) -> dict:
     )
 
 
+def apply_guide_supplements(config: dict) -> dict:
+    for filename, supplement in config.get("guide_supplements", {}).items():
+        guide = config["guides"][filename]
+        guide.update(supplement.get("overrides", {}))
+        guide["sections"] = (
+            list(supplement.get("prepend_sections", []))
+            + list(guide.get("sections", []))
+            + list(supplement.get("append_sections", []))
+        )
+    return config
+
+
 def main() -> int:
     subprocess.run(
         [sys.executable, "scripts/render-ah-shared-sections.py", "--check"],
@@ -88,18 +100,6 @@ def main() -> int:
         cwd=ROOT,
         check=True,
     )
-
-
-def apply_guide_supplements(config: dict) -> dict:
-    for filename, supplement in config.get("guide_supplements", {}).items():
-        guide = config["guides"][filename]
-        guide.update(supplement.get("overrides", {}))
-        guide["sections"] = (
-            list(supplement.get("prepend_sections", []))
-            + list(guide.get("sections", []))
-            + list(supplement.get("append_sections", []))
-        )
-    return config
     subprocess.run(
         [sys.executable, "scripts/audit-ah-crafted-prices.py", "--check"],
         cwd=ROOT,
@@ -137,8 +137,8 @@ def apply_guide_supplements(config: dict) -> dict:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 2422:
-        fail(f"Expected 2422 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2417:
+        fail(f"Expected 2417 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -597,12 +597,21 @@ def apply_guide_supplements(config: dict) -> dict:
         for key in used_keys
         if key.startswith("cook-")
     }
-    if len(cooking_keys) != 167:
-        fail(f"Expected 167 distinct tradeable Cooking outputs, found {len(cooking_keys)}")
+    if len(cooking_keys) != 162:
+        fail(f"Expected 162 distinct tradeable Cooking outputs, found {len(cooking_keys)}")
     cooking_names = {merged_item(config, key)["name"] for key in cooking_keys}
     for label in ("Clamlette Magnifique", "Bread of the Dead"):
         if label in cooking_names:
             fail(f"Bind-on-pickup Cooking output leaked in: {label}")
+    for label in (
+        "Pumpkin Pie",
+        "Spice Bread Stuffing",
+        "Slow-Roasted Turkey",
+        "Candied Sweet Potato",
+        "Cranberry Chutney",
+    ):
+        if label in cooking_names:
+            fail(f"Duration-limited Cooking output leaked in: {label}")
     for label in (
         "Fish Feast",
         "Great Feast",
@@ -610,7 +619,7 @@ def apply_guide_supplements(config: dict) -> dict:
         "Delicious Chocolate Cake",
         "Savory Deviate Delight",
         "Thistle Tea",
-        "Pumpkin Pie",
+        "Hot Apple Cider",
     ):
         if label not in cooking_names:
             fail(f"Expanded Cooking era/category coverage is missing: {label}")
@@ -666,16 +675,6 @@ def apply_guide_supplements(config: dict) -> dict:
     ):
         if fragment not in mining_source:
             fail(f"Mining shared-output or input coverage is missing: {fragment}")
-    expected_pilgrim_spells = {
-        "cook-pumpkin-pie": 66036,
-        "cook-slow-roasted-turkey": 66037,
-        "cook-cranberry-chutney": 66035,
-        "cook-spice-bread-stuffing": 66038,
-        "cook-candied-sweet-potato": 66034,
-    }
-    for key, spell_id in expected_pilgrim_spells.items():
-        if int(merged_item(config, key)["source_spell_id"]) != spell_id:
-            fail(f"{key}: Horde Pilgrim's Bounty recipe was not preserved")
     leatherworking_source = sources[
         "skinning-leatherworking-materials-ah-price-guide.html"
     ]
@@ -823,7 +822,7 @@ def apply_guide_supplements(config: dict) -> dict:
         "lw-riding-crop": "Does not work for players above level 70",
         "cook-fish-feast": "80 Attack Power, 46 Spell Power and 40 Stamina",
         "cook-thistle-tea": "Rogue only",
-        "cook-pumpkin-pie": "seven-day real-time duration",
+        "cook-hot-apple-cider": "20 Stamina and Spirit",
         "mining-titansteel-bar": "Standard 3.3.5 data shows no cooldown",
         "mining-hardened-adamantite-bar": "ten-bar opportunity cost",
         "mining-elementium-bar": "Thunderfury quest material",

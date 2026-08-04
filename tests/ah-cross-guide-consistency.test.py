@@ -92,7 +92,6 @@ def main() -> int:
         "Fire Leaf": 39970,
         "Titanium Skeleton Key": 43853,
         "Design: Etched Monarch Topaz": 41777,
-        "Design: Glinting Monarch Topaz": 41582,
         "Design: Shining Forest Emerald": 41782,
     }
     for name, item_id in required_ids.items():

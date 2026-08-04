@@ -280,7 +280,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "fishing-cooking-materials-ah-price-guide.html",
-      rows: 167,
+      rows: 162,
       sections: 13,
       key: "cook-fish-feast",
       target: "20g 50s",
@@ -465,7 +465,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "fishing-cooking-materials-ah-price-guide.html",
-      rows: 167,
+      rows: 162,
       sections: 13,
       key: "cook-fish-feast",
       target: "20g 50s",

@@ -197,9 +197,18 @@ def load_vendor_config() -> dict:
         for key in item_keys:
             if key not in catalog:
                 raise KeyError(f"{filename} references unknown vendor item: {key}")
+            if catalog[key].get("cost_only"):
+                raise ValueError(f"{filename} renders cost-only vendor item: {key}")
             used.add(key)
 
-    unused = sorted(set(catalog) - used)
+    unused = sorted(
+        key
+        for key in set(catalog) - used
+        if not (
+            catalog[key].get("cost_only") is True
+            and catalog[key].get("auctionable") is False
+        )
+    )
     if unused:
         raise ValueError(f"Unused vendor catalog entries: {', '.join(unused)}")
     for key, requirement in use_audit.get("vendor_hard_requirements", {}).items():

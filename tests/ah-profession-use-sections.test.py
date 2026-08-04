@@ -118,7 +118,7 @@ assert "Finished foods and utility drinks" in fishing
 assert "Finished foods, feasts, and utility drinks" not in fishing
 assert "AH_PROFESSION_USE_SECTION_START cook-required-feasts" not in fishing
 assert fishing.count('id="cook-required-feasts"') == 1
-assert len(re.findall(r'<tr data-crafted-key="cook-[^"]+"', fishing)) == 167
+assert len(re.findall(r'<tr data-crafted-key="cook-[^"]+"', fishing)) == 162
 assert fishing.count('data-use-audience="profession-restricted"') >= 1
 assert fishing.count('data-use-audience="class-restricted"') == 1
 assert "Requires Cooking 425 to place." in fishing

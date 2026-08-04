@@ -93,17 +93,6 @@ DEMAND_MARGINS = {
     "Very High": {"quick": "1.08", "target": "1.25", "high": "1.38"},
 }
 
-# Pilgrim's Bounty has faction-specific recipes for the same five outputs.
-# Use the Horde recipes so the ingredient audit matches this Horde guide.
-COOKING_RECIPE_SPELL_OVERRIDES = {
-    "cook-pumpkin-pie": 66036,
-    "cook-slow-roasted-turkey": 66037,
-    "cook-cranberry-chutney": 66035,
-    "cook-spice-bread-stuffing": 66038,
-    "cook-candied-sweet-potato": 66034,
-}
-
-
 def profession_skill_url(skill_id: int) -> str:
     return WOTLKDB_SKILL_URLS.get(
         skill_id,
@@ -131,26 +120,10 @@ DECK_COMPLETION_MARGINS = {
     "high": Decimal("1.10"),
 }
 
-# These recipe inputs are not represented in the frozen baseline. Vendor
-# entries use exact unlimited-vendor cost. Other values are explicitly low-
-# confidence fallbacks; active listings are not valuation evidence.
-REAGENT_PRICE_OVERRIDES = {
-    1475: {
-        "name": "Small Venom Sac",
-        "source_type": "market-fallback",
-        "quick": 2_000,
-        "target": 4_000,
-        "high": 8_000,
-        "reason": "Provisional low-tier mob-drop range anchored above the exact 82c vendor liquidation value; no active listing was used.",
-    },
-    1288: {
-        "name": "Large Venom Sac",
-        "source_type": "market-fallback",
-        "quick": 10_000,
-        "target": 20_000,
-        "high": 40_000,
-        "reason": "Provisional mid-tier mob-drop range anchored above the exact 1s 85c vendor liquidation value; no active listing was used.",
-    },
+# These nontradeable recipe inputs are cost-only exceptions. Tradeable input
+# references belong in data/ah-price-baselines.json, while exact vendor tools
+# and explicit BoP access estimates remain isolated here.
+REAGENT_COST_OVERRIDES = {
     2901: {
         "name": "Mining Pick",
         "source_type": "coin-vendor",
@@ -159,22 +132,6 @@ REAGENT_PRICE_OVERRIDES = {
         "high": 81,
         "reason": "Exact unlimited-vendor cost.",
     },
-    3164: {
-        "name": "Discolored Worg Heart",
-        "source_type": "market-fallback",
-        "quick": 5_000,
-        "target": 10_000,
-        "high": 20_000,
-        "reason": "Unpriced legacy mob-drop reagent.",
-    },
-    3819: {
-        "name": "Wintersbite",
-        "source_type": "market-fallback",
-        "quick": 5_000,
-        "target": 10_000,
-        "high": 20_000,
-        "reason": "Unpriced legacy herb; aligned to other scarce Classic herbs.",
-    },
     4342: {
         "name": "Purple Dye",
         "source_type": "coin-vendor",
@@ -182,14 +139,6 @@ REAGENT_PRICE_OVERRIDES = {
         "target": 2_500,
         "high": 2_500,
         "reason": "Exact unlimited-vendor cost.",
-    },
-    5635: {
-        "name": "Sharp Claw",
-        "source_type": "market-fallback",
-        "quick": 150,
-        "target": 200,
-        "high": 300,
-        "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
     },
     5956: {
         "name": "Blacksmith Hammer",
@@ -207,30 +156,6 @@ REAGENT_PRICE_OVERRIDES = {
         "high": 82,
         "reason": "Exact unlimited-vendor cost.",
     },
-    7972: {
-        "name": "Ichor of Undeath",
-        "source_type": "market-fallback",
-        "quick": 800,
-        "target": 1_300,
-        "high": 2_500,
-        "reason": "Provisional legacy mob-drop fallback; no independent realized-price baseline yet.",
-    },
-    9260: {
-        "name": "Volatile Rum",
-        "source_type": "market-fallback",
-        "quick": 600,
-        "target": 700,
-        "high": 1_200,
-        "reason": "Provisional legacy drop fallback; no independent realized-price baseline yet.",
-    },
-    10286: {
-        "name": "Heart of the Wild",
-        "source_type": "market-fallback",
-        "quick": 10_000,
-        "target": 20_000,
-        "high": 40_000,
-        "reason": "Unpriced legacy mob-drop reagent.",
-    },
     27860: {
         "name": "Purified Draenic Water",
         "source_type": "coin-vendor",
@@ -238,62 +163,6 @@ REAGENT_PRICE_OVERRIDES = {
         "target": 1_280,
         "high": 1_280,
         "reason": "Exact unlimited-vendor cost: 64s per five, or 12s 80c each.",
-    },
-    12938: {
-        "name": "Blood of Heroes",
-        "source_type": "market-fallback",
-        "quick": 50_000,
-        "target": 100_000,
-        "high": 200_000,
-        "reason": "Unpriced scarce open-world pickup.",
-    },
-    19441: {
-        "name": "Huge Venom Sac",
-        "source_type": "market-fallback",
-        "quick": 10_000,
-        "target": 20_000,
-        "high": 40_000,
-        "reason": "Provisional high-tier mob-drop range anchored above the exact 15s vendor liquidation value and aligned to the saved Large Venom Sac range; no active listing was used.",
-    },
-    39970: {
-        "name": "Fire Leaf",
-        "source_type": "market-fallback",
-        "quick": 12_000,
-        "target": 18_000,
-        "high": 28_000,
-        "reason": "Unpriced Northrend herb; aligned to nearby herb bands.",
-    },
-    41814: {
-        "name": "Glassfin Minnow",
-        "source_type": "market-fallback",
-        "quick": 6_000,
-        "target": 10_000,
-        "high": 17_500,
-        "reason": "Unpriced Northrend fish; aligned to Fangtooth Herring.",
-    },
-    4255: {
-        "name": "Green Leather Armor",
-        "source_type": "market-fallback",
-        "quick": 20_000,
-        "target": 35_000,
-        "high": 60_000,
-        "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
-    },
-    5966: {
-        "name": "Guardian Gloves",
-        "source_type": "market-fallback",
-        "quick": 30_000,
-        "target": 50_000,
-        "high": 90_000,
-        "reason": "Unpriced BoE Leatherworking input for one Classic Blacksmithing recipe.",
-    },
-    11754: {
-        "name": "Black Diamond",
-        "source_type": "market-fallback",
-        "quick": 5_000,
-        "target": 10_000,
-        "high": 20_000,
-        "reason": "Unpriced legacy dungeon-drop gem used by Darkrune Helm.",
     },
     12662: {
         "name": "Demonic Rune",
@@ -304,100 +173,20 @@ REAGENT_PRICE_OVERRIDES = {
         "reason": "BoP farmed reagent; valued only as an explicit access estimate.",
     },
     12753: {
-        "name": "Skin of Shadow",
+      "name": "Skin of Shadow",
+      "source_type": "bind-on-pickup-farming-estimate",
+      "quick": 20_000,
+      "target": 40_000,
+      "high": 80_000,
+      "reason": "BoP Scholomance reagent; valued only as an explicit access estimate.",
+    },
+    12938: {
+        "name": "Blood of Heroes",
         "source_type": "bind-on-pickup-farming-estimate",
-        "quick": 20_000,
-        "target": 40_000,
-        "high": 80_000,
-        "reason": "BoP Scholomance reagent; valued only as an explicit access estimate.",
-    },
-    12809: {
-        "name": "Guardian Stone",
-        "source_type": "market-fallback",
-        "quick": 20_000,
-        "target": 40_000,
-        "high": 80_000,
-        "reason": "Unpriced scarce legacy mob-drop reagent.",
-    },
-    15417: {
-        "name": "Devilsaur Leather",
-        "source_type": "market-fallback",
-        "quick": 20_000,
-        "target": 35_000,
-        "high": 60_000,
-        "reason": "Unpriced legacy Skinning material used by Persuader.",
-    },
-    17012: {
-        "name": "Core Leather",
-        "source_type": "market-fallback",
-        "quick": 20_000,
-        "target": 40_000,
-        "high": 70_000,
-        "reason": "Unpriced Molten Core Skinning material.",
-    },
-    17203: {
-        "name": "Sulfuron Ingot",
-        "source_type": "market-fallback",
-        "quick": 750_000,
-        "target": 1_250_000,
-        "high": 2_000_000,
-        "reason": "Unpriced epic Molten Core drop used eight at a time by Sulfuron Hammer.",
-    },
-    19726: {
-        "name": "Bloodvine",
-        "source_type": "market-fallback",
-        "quick": 30_000,
-        "target": 50_000,
-        "high": 90_000,
-        "reason": "Unpriced Zul'Gurub gathering material.",
-    },
-    19774: {
-        "name": "Souldarite",
-        "source_type": "market-fallback",
-        "quick": 20_000,
-        "target": 35_000,
-        "high": 60_000,
-        "reason": "Unpriced Zul'Gurub ore used by Bloodsoul and Darksoul crafts.",
-    },
-    20520: {
-        "name": "Dark Rune",
-        "source_type": "market-fallback",
-        "quick": 7_000,
-        "target": 8_000,
-        "high": 12_000,
-        "reason": "Provisional legacy dungeon-drop fallback; no independent realized-price baseline yet.",
-    },
-    22202: {
-        "name": "Small Obsidian Shard",
-        "source_type": "market-fallback",
-        "quick": 10_000,
-        "target": 20_000,
-        "high": 40_000,
-        "reason": "Unpriced Ahn'Qiraj crafting shard.",
-    },
-    22203: {
-        "name": "Large Obsidian Shard",
-        "source_type": "market-fallback",
-        "quick": 30_000,
-        "target": 50_000,
-        "high": 90_000,
-        "reason": "Unpriced Ahn'Qiraj crafting shard.",
-    },
-    22682: {
-        "name": "Frozen Rune",
-        "source_type": "market-fallback",
-        "quick": 250_000,
-        "target": 400_000,
-        "high": 700_000,
-        "reason": "Unpriced scarce legacy Naxxramas crafting rune.",
-    },
-    34664: {
-        "name": "Sunmote",
-        "source_type": "market-fallback",
-        "quick": 200_000,
-        "target": 350_000,
-        "high": 600_000,
-        "reason": "Unpriced scarce Sunwell crafting drop.",
+        "quick": 50_000,
+        "target": 100_000,
+        "high": 200_000,
+        "reason": "BoP open-world pickup; valued only as an explicit access estimate.",
     },
     2325: {
         "name": "Black Dye",
@@ -585,12 +374,6 @@ def refresh_recipe_audit(config: dict) -> dict:
                 if item_filename == filename and item_skill_id == skill_id:
                     matches[key] = spell
 
-    for key, spell_id in COOKING_RECIPE_SPELL_OVERRIDES.items():
-        spell = profession_spells[185].get(spell_id)
-        if not spell:
-            raise ValueError(f"Missing Cooking source spell {spell_id} for {key}")
-        matches[key] = spell
-
     missing = [
         (item_id, key, filename, skill_id)
         for item_id, (key, filename, skill_id) in item_to_key.items()
@@ -640,15 +423,6 @@ def refresh_recipe_audit(config: dict) -> dict:
                 output_count=1,
                 output_count_max=1,
                 pricing_rule="random-darkmoon-card",
-            )
-        elif key == "cook-cranberry-chutney":
-            # WotLKDB reports a zero output count for this valid Horde recipe.
-            recipes[key] = recipe_record(
-                key,
-                spell,
-                names,
-                output_count=1,
-                output_count_max=1,
             )
         elif (
             config["catalog"][key].get("profession") == "Jewelcrafting"
@@ -746,19 +520,19 @@ def refresh_recipe_audit(config: dict) -> dict:
         },
         "pricing_method": {
             "reagent_reference": "Frozen non-circular quick, target, and high bands from data/ah-price-baselines.json; exact vendor cost where applicable. Active AH listings are excluded.",
-            "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their current crafted-catalog bands.",
+            "crafted_intermediates": "Recursively priced from their own audited recipe floors; canonical Enchanting outputs use their saved crafted-catalog bands.",
             "output_quantity": "Minimum guaranteed output; charged devices use all guaranteed charges.",
             "market_margin": "Demand-sensitive margin with upward convenience rounding; frozen output references may preserve an independently established higher posting baseline.",
             "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium.",
         },
-        "reagent_price_overrides": {
+        "reagent_cost_overrides": {
             str(item_id): record
             | {
                 "confidence": (
                     "high" if record["source_type"] == "coin-vendor" else "fallback"
                 )
             }
-            for item_id, record in REAGENT_PRICE_OVERRIDES.items()
+            for item_id, record in REAGENT_COST_OVERRIDES.items()
         },
         "recipes": ordered_recipes,
     }
@@ -815,7 +589,7 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
     crafted_prices = canonical_crafted_references(config)
     overrides = {
         int(item_id): {band: int(record[band]) for band in PRICE_BANDS}
-        for item_id, record in audit["reagent_price_overrides"].items()
+        for item_id, record in audit["reagent_cost_overrides"].items()
     }
     output_keys = {
         int(config["catalog"][key]["item_id"]): key for key in recipes

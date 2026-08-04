@@ -71,25 +71,34 @@
   and recipe quantities; Wowhead WotLK item tooltips for binding, rarity,
   requirements, stack size, and effects; AzerothCore's build-12340 item baseline
   for canonical item identity and tradeability.
-- Baseline findings: The 167 included recipes consume 148 distinct ingredients:
-  118 already had frozen references, three already had exact vendor records,
-  two are recursively audited crafted inputs, 14 received exact vendor records,
-  and 11 received clearly labeled comparison-based fallback bands. None came
+- Baseline findings: The corrected 162-recipe catalog consumes 141 distinct
+  ingredients. Twelve have exact coin-vendor records and ten use clearly
+  labeled comparison-based fallback bands; every other tradeable input remains
+  covered by its saved baseline or recursively audited crafted value. None came
   from active listings.
 - Output/server findings: 174 Cooking spells create 169 distinct item outputs.
-  Five Pilgrim's Bounty outputs have faction-alternate recipes and were
-  consolidated to one output each using the Horde ingredient route. Clamlette
-  Magnifique and Bread of the Dead are Bind on Pickup, leaving 167 distinct
-  tradeable outputs. No verified Hellscream override was available, so the
-  catalog documents standard 3.3.5 behavior and keeps server checks explicit.
+  Clamlette Magnifique and Bread of the Dead are Bind on Pickup. Pumpkin Pie,
+  Spice Bread Stuffing, Slow-Roasted Turkey, Candied Sweet Potato, and Cranberry
+  Chutney have seven-day real-time durations, which AzerothCore rejects from AH
+  posting, leaving 162 auctionable outputs. No verified Hellscream override was
+  available, so the catalog documents standard 3.3.5 behavior and keeps server
+  checks explicit.
 - Decisions and unresolved items: Great Feast, Fish Feast, Gigantic Feast, and
   Small Feast are isolated because placing them requires Cooking. Thistle Tea
   has its own Rogue-only section. Raw fish, meats, eggs, spices, and vendor
-  ingredients remain in material/vendor coverage. Provisional fallback inputs
-  should be replaced only by qualifying realized-sale or measured-yield
-  evidence.
-- Completion summary: Added 167 crafted rows in 13 sections with exact effect
+  ingredients remain in material/vendor coverage only when they are auctionable.
+  Sparkling Apple Cider remains a cost-only Hot Apple Cider input because its
+  two-day duration prevents auctioning. Provisional fallback inputs should be
+  replaced only by qualifying realized-sale or measured-yield evidence.
+- Completion summary: Added 162 crafted rows in 13 sections with exact effect
   notes, recipe-and-material mouseovers, common-quality rarity coloring,
   non-circular price bands, price-descending section order, and current search
   and tooltip assets. The complete AH validation and desktop/mobile browser
   smoke suite passed before publication.
+- Eligibility correction — 2026-08-04: Removed the five duration-limited
+  Pilgrim's Bounty outputs, their five vendor rows, and the now-unused Wild
+  Turkey baseline. Sparkling Apple Cider remains only as an explicit cost
+  input. The 2,417-recipe non-Enchanting snapshot was refreshed, and a pinned
+  AzerothCore
+  auction-eligibility audit to prevent duration, conjured, or invalid-binding
+  items from returning.

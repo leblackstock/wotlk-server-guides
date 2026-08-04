@@ -31,9 +31,9 @@ SPECS = {
     },
     "fishing": {
         "guide": "fishing-cooking-materials-ah-price-guide.html",
-        "searchable": 146,
+        "searchable": 140,
         "baseline": 127,
-        "vendor": 19,
+        "vendor": 13,
         "reference": 4,
     },
 }
@@ -165,11 +165,11 @@ def main() -> int:
     if ITEM_TEMPLATE_COMMIT not in tooltip_builder or '"master/data/' in tooltip_builder:
         fail("AH tooltip item-template source is not pinned to the audited commit")
 
-    if (total_searchable, total_baseline, total_vendor) != (235, 205, 30):
+    if (total_searchable, total_baseline, total_vendor) != (229, 205, 24):
         fail("Gathering audit totals drifted")
     print(
-        "Gathering profession audits are complete: 235 searchable rows, "
-        "205 frozen baselines, 30 canonical vendor rows, and 9 reference checks."
+        "Gathering profession audits are complete: 229 searchable rows, "
+        "205 frozen baselines, 24 canonical vendor rows, and 9 reference checks."
     )
     return 0
 
