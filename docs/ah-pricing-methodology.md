@@ -106,3 +106,9 @@ in the frozen pre-scan guide set. Their provisional bands are anchored to saved
 comparable material tiers and explicit acquisition constraints—not active
 listings—and must be replaced when qualifying realized-sale or measured-yield
 evidence becomes available.
+
+The 2026-08-03 Cooking expansion added 11 fallback-confidence inputs for missing
+legacy meats, quest drops, Northrend fish, Northern Egg, and event-limited Wild
+Turkey. Fourteen other missing recipe inputs received exact coin-vendor records,
+including Horde Pilgrim's Bounty ingredients. The fallback bands use saved
+comparable ingredient tiers and event availability; no active listing was used.

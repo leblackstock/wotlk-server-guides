@@ -29,13 +29,13 @@ subprocess.run(
 hard = AUDIT["canonical_hard_requirements"]
 profession_audience = AUDIT["canonical_profession_audience"]
 general_exceptions = AUDIT["canonical_general_use_exceptions"]
-assert len(hard) == 23
-assert len(profession_audience) == 16
+assert len(hard) == 27
+assert len(profession_audience) == 17
 assert len(general_exceptions) == 9
 assert len(AUDIT["vendor_hard_requirements"]) == 3
-assert len(AUDIT["static_hard_requirements"]) == 4
+assert len(AUDIT["static_hard_requirements"]) == 1
 assert len(AUDIT["static_general_use_exceptions"]) == 0
-assert len(AUDIT["excluded_items"]) == 4
+assert len(AUDIT["excluded_items"]) == 6
 
 locations: dict[str, tuple[str, dict]] = {}
 for filename, guide in CRAFTED["guides"].items():
@@ -55,12 +55,17 @@ for key, requirement in hard.items():
         rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>', source, re.DOTALL
     )
     assert row, f"Missing rendered crafted row: {key}"
-    expected = f'Requires {requirement["skill"]} {requirement["rank"]} to use.'
+    action = "place" if CRAFTED["catalog"][key]["name"].endswith("Feast") else "use"
+    expected = f'Requires {requirement["skill"]} {requirement["rank"]} to {action}.'
     assert row.group(0).count(expected) == 1, f"Missing exact requirement note: {key}"
 
 for key in profession_audience:
     _, section = locations[key]
-    assert section.get("audience") in {"profession-restricted", "profession-input"}, (
+    assert section.get("audience") in {
+        "profession-restricted",
+        "profession-input",
+        "class-restricted",
+    }, (
         f"{key} is incorrectly presented as general-use"
     )
 
@@ -102,6 +107,14 @@ for section_id, section in AUDIT["static_sections"].items():
 fishing = (GUIDES / "fishing-cooking-materials-ah-price-guide.html").read_text(encoding="utf-8")
 assert "Finished foods and utility drinks" in fishing
 assert "Finished foods, feasts, and utility drinks" not in fishing
+assert "AH_PROFESSION_USE_SECTION_START cook-required-feasts" not in fishing
+assert fishing.count('id="cook-required-feasts"') == 1
+assert len(re.findall(r'<tr data-crafted-key="cook-[^"]+"', fishing)) == 167
+assert fishing.count('data-use-audience="profession-restricted"') >= 1
+assert fishing.count('data-use-audience="class-restricted"') == 1
+assert "Requires Cooking 425 to place." in fishing
+assert "Requires Cooking 375 to place." in fishing
+assert "Rogue only; requires level 5." in fishing
 jewelcrafting = (GUIDES / "jewelcrafting-gems-ah-price-guide.html").read_text(encoding="utf-8")
 assert ">Epic Northrend gems<a" in jewelcrafting
 assert "Epic Northrend gems / Dragon's Eye" not in jewelcrafting
@@ -135,6 +148,6 @@ for excluded in AUDIT["excluded_items"]:
 
 print(
     "Profession-use audit is current: "
-    "30 hard-restricted finished items, 16 profession-audience items, "
+    "31 hard-restricted finished items, 17 profession-or-class-audience items, "
     "and 9 documented general-use exceptions."
 )

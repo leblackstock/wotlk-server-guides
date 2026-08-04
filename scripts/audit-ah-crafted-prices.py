@@ -35,6 +35,7 @@ PROFESSION_SKILLS = {
     "jewelcrafting-gems-ah-price-guide.html": 755,
     "tailoring-cloth-ah-price-guide.html": 197,
     "skinning-leatherworking-materials-ah-price-guide.html": 165,
+    "fishing-cooking-materials-ah-price-guide.html": 185,
 }
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
@@ -70,6 +71,9 @@ PROFESSION_SKILL_FILTERS = {
 }
 PRICE_BANDS = ("quick", "target", "high")
 WOTLKDB_SKILL_URL = "https://wotlkdb.com/?spells=11.{skill_id}"
+WOTLKDB_SKILL_URLS = {
+    185: "https://wotlkdb.com/?spells=9.185",
+}
 WOTLKDB_ITEM_URL = "https://wotlkdb.com/?item={item_id}"
 USER_AGENT = "WotLK-guide-crafted-price-audit/1.0"
 
@@ -83,6 +87,25 @@ DEMAND_MARGINS = {
     "High": {"quick": "1.07", "target": "1.21", "high": "1.34"},
     "Very High": {"quick": "1.08", "target": "1.25", "high": "1.38"},
 }
+
+# Pilgrim's Bounty has faction-specific recipes for the same five outputs.
+# Use the Horde recipes so the ingredient audit matches this Horde guide.
+COOKING_RECIPE_SPELL_OVERRIDES = {
+    "cook-pumpkin-pie": 66036,
+    "cook-slow-roasted-turkey": 66037,
+    "cook-cranberry-chutney": 66035,
+    "cook-spice-bread-stuffing": 66038,
+    "cook-candied-sweet-potato": 66034,
+}
+
+
+def profession_skill_url(skill_id: int) -> str:
+    return WOTLKDB_SKILL_URLS.get(
+        skill_id,
+        WOTLKDB_SKILL_URL.format(skill_id=skill_id),
+    )
+
+
 DECK_COMPLETION_MARGINS = {
     "quick": Decimal("1.03"),
     "target": Decimal("1.05"),
@@ -478,11 +501,11 @@ def refresh_recipe_audit(config: dict) -> dict:
         filters = PROFESSION_SKILL_FILTERS.get(skill_id, ())
         urls = (
             [
-                WOTLKDB_SKILL_URL.format(skill_id=skill_id) + f"&filter={filter_value}"
+                profession_skill_url(skill_id) + f"&filter={filter_value}"
                 for filter_value in filters
             ]
             if filters
-            else [WOTLKDB_SKILL_URL.format(skill_id=skill_id)]
+            else [profession_skill_url(skill_id)]
         )
         spell_map: dict[int, dict] = {}
         for url in urls:
@@ -492,7 +515,7 @@ def refresh_recipe_audit(config: dict) -> dict:
                 {int(spell["id"]): spell for spell in listview_data(source, "spells")}
             )
         spells = list(spell_map.values())
-        expected_skill_records = {164: 525, 755: 566, 197: 439, 165: 548}
+        expected_skill_records = {164: 525, 755: 566, 197: 439, 165: 548, 185: 181}
         expected_records = expected_skill_records.get(skill_id)
         if expected_records is not None and len(spells) != expected_records:
             raise ValueError(
@@ -506,6 +529,12 @@ def refresh_recipe_audit(config: dict) -> dict:
             key, item_filename, _ = item_to_key[int(creates[0])]
             if item_filename == filename:
                 matches[key] = spell
+
+    for key, spell_id in COOKING_RECIPE_SPELL_OVERRIDES.items():
+        spell = profession_spells[185].get(spell_id)
+        if not spell:
+            raise ValueError(f"Missing Cooking source spell {spell_id} for {key}")
+        matches[key] = spell
 
     missing = [
         (item_id, key, filename, skill_id)
@@ -556,6 +585,15 @@ def refresh_recipe_audit(config: dict) -> dict:
                 output_count=1,
                 output_count_max=1,
                 pricing_rule="random-darkmoon-card",
+            )
+        elif key == "cook-cranberry-chutney":
+            # WotLKDB reports a zero output count for this valid Horde recipe.
+            recipes[key] = recipe_record(
+                key,
+                spell,
+                names,
+                output_count=1,
+                output_count_max=1,
             )
         elif (
             config["catalog"][key].get("profession") == "Jewelcrafting"
@@ -642,6 +680,9 @@ def refresh_recipe_audit(config: dict) -> dict:
         "recipe_source": {
             "name": "WotLKDB 3.3.5a profession and item records",
             "profession_url_template": WOTLKDB_SKILL_URL,
+            "profession_url_overrides": {
+                str(skill_id): url for skill_id, url in WOTLKDB_SKILL_URLS.items()
+            },
             "item_url_template": WOTLKDB_ITEM_URL,
             "complete_skill_filters": {
                 str(skill_id): list(filters)
@@ -751,7 +792,7 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
             if (
-                key.startswith(("jc-", "tailor-", "lw-"))
+                key.startswith(("jc-", "tailor-", "lw-", "cook-"))
                 or (dependency and dependency.startswith("lw-"))
             ) and item_id in baseline_prices:
                 # These catalogs consume the saved sale value of a tradeable
@@ -824,7 +865,7 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking"}
+                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking", "Cooking"}
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)

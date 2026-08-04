@@ -6244,6 +6244,105 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional Outland mob-drop fallback aligned to other legacy feather inputs; no active listing was used."
+    },
+    "3172": {
+      "name": "Boar Intestines",
+      "quick": 1500,
+      "target": 2500,
+      "high": 4500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-level mob-drop fallback aligned to Bear Meat and similar uncommon Cooking inputs; no active listing was used."
+    },
+    "3174": {
+      "name": "Spider Ichor",
+      "quick": 1500,
+      "target": 2500,
+      "high": 4500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-level mob-drop fallback aligned to Bear Meat and similar uncommon Cooking inputs; no active listing was used."
+    },
+    "5471": {
+      "name": "Stag Meat",
+      "quick": 1000,
+      "target": 1800,
+      "high": 3000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional old-world meat fallback aligned to Strider Meat and Crawler Meat; no active listing was used."
+    },
+    "12206": {
+      "name": "Tender Crab Meat",
+      "quick": 4500,
+      "target": 7500,
+      "high": 12500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional higher-level old-world meat fallback aligned to Tender Wolf Meat; no active listing was used."
+    },
+    "22644": {
+      "name": "Crunchy Spider Leg",
+      "quick": 800,
+      "target": 1400,
+      "high": 2500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-level mob-drop fallback aligned to Small Spider Leg; no active listing was used."
+    },
+    "23676": {
+      "name": "Moongraze Stag Tenderloin",
+      "quick": 800,
+      "target": 1400,
+      "high": 2500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional starting-zone quest-drop fallback aligned to other low-level meat; no active listing was used."
+    },
+    "27676": {
+      "name": "Strange Spores",
+      "quick": 4500,
+      "target": 7500,
+      "high": 12500,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Outland mob-drop fallback aligned to other specialty legacy Cooking inputs; no active listing was used."
+    },
+    "41800": {
+      "name": "Deep Sea Monsterbelly",
+      "quick": 12000,
+      "target": 19000,
+      "high": 30000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Northrend fish fallback aligned to Imperial Manta Ray; no active listing was used."
+    },
+    "41801": {
+      "name": "Moonglow Cuttlefish",
+      "quick": 14000,
+      "target": 22000,
+      "high": 35000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Northrend fish fallback aligned to other premium open-water catches; no active listing was used."
+    },
+    "43501": {
+      "name": "Northern Egg",
+      "quick": 6000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Northrend egg fallback aligned to the saved Small Egg band; no active listing was used."
+    },
+    "44834": {
+      "name": "Wild Turkey",
+      "quick": 5000,
+      "target": 10000,
+      "high": 20000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional seven-day Pilgrim's Bounty drop fallback aligned to seasonal meat scarcity; no active listing was used."
     }
   }
 }

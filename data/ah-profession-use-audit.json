@@ -14,99 +14,345 @@
     "input_exception": "Raw materials, recipes, and explicitly labeled components remain in their existing input sections because RequiredSkill can describe milling, prospecting, learning, or crafting behavior rather than exclusive ownership."
   },
   "canonical_hard_requirements": {
-    "armor-vellum": {"item_id": 43145, "skill": "Enchanting", "rank": 1},
-    "weapon-vellum": {"item_id": 43146, "skill": "Enchanting", "rank": 1},
-    "eng-explosive-decoy": {"item_id": 40536, "skill": "Engineering", "rank": 350},
-    "eng-saronite-bomb": {"item_id": 41119, "skill": "Engineering", "rank": 350},
-    "eng-global-thermal-sapper-charge": {"item_id": 42641, "skill": "Engineering", "rank": 400},
-    "eng-cobalt-frag-bomb": {"item_id": 40771, "skill": "Engineering", "rank": 330},
-    "eng-arclight-spanner": {"item_id": 6219, "skill": "Engineering", "rank": 50},
-    "alch-crazy-alchemists-potion": {"item_id": 40077, "skill": "Alchemy", "rank": 400},
-    "alch-mad-alchemist-s-potion": {"item_id": 34440, "skill": "Alchemy", "rank": 315},
-    "bs-silver-skeleton-key": {"item_id": 15869, "skill": "Blacksmithing", "rank": 100},
-    "bs-golden-skeleton-key": {"item_id": 15870, "skill": "Blacksmithing", "rank": 150},
-    "bs-truesilver-skeleton-key": {"item_id": 15871, "skill": "Blacksmithing", "rank": 200},
-    "bs-arcanite-skeleton-key": {"item_id": 15872, "skill": "Blacksmithing", "rank": 275},
-    "bs-cobalt-skeleton-key": {"item_id": 43854, "skill": "Blacksmithing", "rank": 350},
-    "bs-titanium-skeleton-key": {"item_id": 43853, "skill": "Blacksmithing", "rank": 430},
-    "tailor-netherweave-net": {"item_id": 24268, "skill": "Tailoring", "rank": 300},
-    "tailor-heavy-netherweave-net": {"item_id": 24269, "skill": "Tailoring", "rank": 325},
-    "tailor-frostweave-net": {"item_id": 41509, "skill": "Tailoring", "rank": 350},
-    "lw-drums-of-war": {"item_id": 29528, "skill": "Leatherworking", "rank": 325},
-    "lw-drums-of-battle": {"item_id": 29529, "skill": "Leatherworking", "rank": 350},
-    "lw-drums-of-speed": {"item_id": 29530, "skill": "Leatherworking", "rank": 340},
-    "lw-drums-of-restoration": {"item_id": 29531, "skill": "Leatherworking", "rank": 350},
-    "lw-drums-of-panic": {"item_id": 29532, "skill": "Leatherworking", "rank": 350}
+    "armor-vellum": {
+      "item_id": 43145,
+      "skill": "Enchanting",
+      "rank": 1
+    },
+    "weapon-vellum": {
+      "item_id": 43146,
+      "skill": "Enchanting",
+      "rank": 1
+    },
+    "eng-explosive-decoy": {
+      "item_id": 40536,
+      "skill": "Engineering",
+      "rank": 350
+    },
+    "eng-saronite-bomb": {
+      "item_id": 41119,
+      "skill": "Engineering",
+      "rank": 350
+    },
+    "eng-global-thermal-sapper-charge": {
+      "item_id": 42641,
+      "skill": "Engineering",
+      "rank": 400
+    },
+    "eng-cobalt-frag-bomb": {
+      "item_id": 40771,
+      "skill": "Engineering",
+      "rank": 330
+    },
+    "eng-arclight-spanner": {
+      "item_id": 6219,
+      "skill": "Engineering",
+      "rank": 50
+    },
+    "alch-crazy-alchemists-potion": {
+      "item_id": 40077,
+      "skill": "Alchemy",
+      "rank": 400
+    },
+    "alch-mad-alchemist-s-potion": {
+      "item_id": 34440,
+      "skill": "Alchemy",
+      "rank": 315
+    },
+    "bs-silver-skeleton-key": {
+      "item_id": 15869,
+      "skill": "Blacksmithing",
+      "rank": 100
+    },
+    "bs-golden-skeleton-key": {
+      "item_id": 15870,
+      "skill": "Blacksmithing",
+      "rank": 150
+    },
+    "bs-truesilver-skeleton-key": {
+      "item_id": 15871,
+      "skill": "Blacksmithing",
+      "rank": 200
+    },
+    "bs-arcanite-skeleton-key": {
+      "item_id": 15872,
+      "skill": "Blacksmithing",
+      "rank": 275
+    },
+    "bs-cobalt-skeleton-key": {
+      "item_id": 43854,
+      "skill": "Blacksmithing",
+      "rank": 350
+    },
+    "bs-titanium-skeleton-key": {
+      "item_id": 43853,
+      "skill": "Blacksmithing",
+      "rank": 430
+    },
+    "tailor-netherweave-net": {
+      "item_id": 24268,
+      "skill": "Tailoring",
+      "rank": 300
+    },
+    "tailor-heavy-netherweave-net": {
+      "item_id": 24269,
+      "skill": "Tailoring",
+      "rank": 325
+    },
+    "tailor-frostweave-net": {
+      "item_id": 41509,
+      "skill": "Tailoring",
+      "rank": 350
+    },
+    "lw-drums-of-war": {
+      "item_id": 29528,
+      "skill": "Leatherworking",
+      "rank": 325
+    },
+    "lw-drums-of-battle": {
+      "item_id": 29529,
+      "skill": "Leatherworking",
+      "rank": 350
+    },
+    "lw-drums-of-speed": {
+      "item_id": 29530,
+      "skill": "Leatherworking",
+      "rank": 340
+    },
+    "lw-drums-of-restoration": {
+      "item_id": 29531,
+      "skill": "Leatherworking",
+      "rank": 350
+    },
+    "lw-drums-of-panic": {
+      "item_id": 29532,
+      "skill": "Leatherworking",
+      "rank": 350
+    },
+    "cook-great-feast": {
+      "item_id": 34753,
+      "skill": "Cooking",
+      "rank": 375
+    },
+    "cook-fish-feast": {
+      "item_id": 43015,
+      "skill": "Cooking",
+      "rank": 425
+    },
+    "cook-gigantic-feast": {
+      "item_id": 43478,
+      "skill": "Cooking",
+      "rank": 375
+    },
+    "cook-small-feast": {
+      "item_id": 43480,
+      "skill": "Cooking",
+      "rank": 375
+    }
   },
   "canonical_profession_audience": {
-    "eng-gyromatic-micro-adjustor": {"item_id": 10498, "audience": "Engineering", "reason": "Reusable Engineering recipe tool; the item record has no direct skill gate."},
-    "eng-box-of-bombs": {"item_id": 44951, "audience": "Engineering", "reason": "The box contains Saronite Bombs, which require Engineering 350 to use."},
-    "bs-silver-rod": {"item_id": 6338, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-golden-rod": {"item_id": 11128, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-truesilver-rod": {"item_id": 11144, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-arcanite-rod": {"item_id": 16206, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-fel-iron-rod": {"item_id": 25843, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-adamantite-rod": {"item_id": 25844, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-eternium-rod": {"item_id": 25845, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "bs-titanium-rod": {"item_id": 41745, "audience": "Enchanting", "reason": "Rod blank bought to create an Enchanting tool."},
-    "lw-leatherworkers-satchel": {"item_id": 34482, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
-    "lw-bag-of-many-hides": {"item_id": 34490, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
-    "lw-trappers-traveling-pack": {"item_id": 38399, "audience": "Leatherworking", "reason": "Specialty bag that holds Leatherworking materials only."},
-    "lw-reinforced-mining-bag": {"item_id": 29540, "audience": "Mining", "reason": "Specialty bag that holds Mining supplies only."},
-    "lw-mammoth-mining-bag": {"item_id": 38347, "audience": "Mining", "reason": "Specialty bag that holds Mining supplies only."},
-    "lw-pack-of-endless-pockets": {"item_id": 44446, "audience": "Inscription", "reason": "Specialty bag that holds Inscription supplies only."}
+    "eng-gyromatic-micro-adjustor": {
+      "item_id": 10498,
+      "audience": "Engineering",
+      "reason": "Reusable Engineering recipe tool; the item record has no direct skill gate."
+    },
+    "eng-box-of-bombs": {
+      "item_id": 44951,
+      "audience": "Engineering",
+      "reason": "The box contains Saronite Bombs, which require Engineering 350 to use."
+    },
+    "bs-silver-rod": {
+      "item_id": 6338,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-golden-rod": {
+      "item_id": 11128,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-truesilver-rod": {
+      "item_id": 11144,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-arcanite-rod": {
+      "item_id": 16206,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-fel-iron-rod": {
+      "item_id": 25843,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-adamantite-rod": {
+      "item_id": 25844,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-eternium-rod": {
+      "item_id": 25845,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "bs-titanium-rod": {
+      "item_id": 41745,
+      "audience": "Enchanting",
+      "reason": "Rod blank bought to create an Enchanting tool."
+    },
+    "lw-leatherworkers-satchel": {
+      "item_id": 34482,
+      "audience": "Leatherworking",
+      "reason": "Specialty bag that holds Leatherworking materials only."
+    },
+    "lw-bag-of-many-hides": {
+      "item_id": 34490,
+      "audience": "Leatherworking",
+      "reason": "Specialty bag that holds Leatherworking materials only."
+    },
+    "lw-trappers-traveling-pack": {
+      "item_id": 38399,
+      "audience": "Leatherworking",
+      "reason": "Specialty bag that holds Leatherworking materials only."
+    },
+    "lw-reinforced-mining-bag": {
+      "item_id": 29540,
+      "audience": "Mining",
+      "reason": "Specialty bag that holds Mining supplies only."
+    },
+    "lw-mammoth-mining-bag": {
+      "item_id": 38347,
+      "audience": "Mining",
+      "reason": "Specialty bag that holds Mining supplies only."
+    },
+    "lw-pack-of-endless-pockets": {
+      "item_id": 44446,
+      "audience": "Inscription",
+      "reason": "Specialty bag that holds Inscription supplies only."
+    },
+    "cook-thistle-tea": {
+      "item_id": 7676,
+      "audience": "Rogue",
+      "reason": "The finished tea has a direct Rogue class restriction."
+    }
   },
   "canonical_general_use_exceptions": {
-    "eng-gnomish-army-knife": {"item_id": 40772, "show_note": true, "reason": "No Engineering requirement; supplies several profession-tool functions and a resurrection attempt."},
-    "eng-mana-injector-kit": {"item_id": 42546, "show_note": true, "reason": "No Engineering requirement on the kit or resulting Runic Mana Injectors."},
-    "alch-cauldron-of-major-arcane-protection": {"item_id": 32839, "reason": "No Alchemy requirement on the finished cauldron."},
-    "alch-cauldron-of-major-fire-protection": {"item_id": 32849, "reason": "No Alchemy requirement on the finished cauldron."},
-    "alch-cauldron-of-major-frost-protection": {"item_id": 32850, "reason": "No Alchemy requirement on the finished cauldron."},
-    "alch-cauldron-of-major-nature-protection": {"item_id": 32851, "reason": "No Alchemy requirement on the finished cauldron."},
-    "alch-cauldron-of-major-shadow-protection": {"item_id": 32852, "reason": "No Alchemy requirement on the finished cauldron."},
-    "lw-drums-of-forgotten-kings": {"item_id": 49633, "show_note": true, "reason": "No Leatherworking requirement on the finished drums."},
-    "lw-drums-of-the-wild": {"item_id": 49634, "show_note": true, "reason": "No Leatherworking requirement on the finished drums."}
+    "eng-gnomish-army-knife": {
+      "item_id": 40772,
+      "show_note": true,
+      "reason": "No Engineering requirement; supplies several profession-tool functions and a resurrection attempt."
+    },
+    "eng-mana-injector-kit": {
+      "item_id": 42546,
+      "show_note": true,
+      "reason": "No Engineering requirement on the kit or resulting Runic Mana Injectors."
+    },
+    "alch-cauldron-of-major-arcane-protection": {
+      "item_id": 32839,
+      "reason": "No Alchemy requirement on the finished cauldron."
+    },
+    "alch-cauldron-of-major-fire-protection": {
+      "item_id": 32849,
+      "reason": "No Alchemy requirement on the finished cauldron."
+    },
+    "alch-cauldron-of-major-frost-protection": {
+      "item_id": 32850,
+      "reason": "No Alchemy requirement on the finished cauldron."
+    },
+    "alch-cauldron-of-major-nature-protection": {
+      "item_id": 32851,
+      "reason": "No Alchemy requirement on the finished cauldron."
+    },
+    "alch-cauldron-of-major-shadow-protection": {
+      "item_id": 32852,
+      "reason": "No Alchemy requirement on the finished cauldron."
+    },
+    "lw-drums-of-forgotten-kings": {
+      "item_id": 49633,
+      "show_note": true,
+      "reason": "No Leatherworking requirement on the finished drums."
+    },
+    "lw-drums-of-the-wild": {
+      "item_id": 49634,
+      "show_note": true,
+      "reason": "No Leatherworking requirement on the finished drums."
+    }
   },
   "vendor_hard_requirements": {
-    "salvaged-iron-golem-parts": {"item_id": 44499, "skill": "Engineering", "rank": 450},
-    "goblin-machined-piston": {"item_id": 44501, "skill": "Engineering", "rank": 450},
-    "elementium-plated-exhaust-pipe": {"item_id": 44500, "skill": "Engineering", "rank": 450}
+    "salvaged-iron-golem-parts": {
+      "item_id": 44499,
+      "skill": "Engineering",
+      "rank": 450
+    },
+    "goblin-machined-piston": {
+      "item_id": 44501,
+      "skill": "Engineering",
+      "rank": 450
+    },
+    "elementium-plated-exhaust-pipe": {
+      "item_id": 44500,
+      "skill": "Engineering",
+      "rank": 450
+    }
   },
   "static_hard_requirements": [
-    {"guide": "fishing-cooking-materials-ah-price-guide.html", "item_id": 43015, "name": "Fish Feast", "skill": "Cooking", "rank": 425, "section_id": "cook-required-feasts"},
-    {"guide": "fishing-cooking-materials-ah-price-guide.html", "item_id": 43478, "name": "Gigantic Feast", "skill": "Cooking", "rank": 375, "section_id": "cook-required-feasts"},
-    {"guide": "fishing-cooking-materials-ah-price-guide.html", "item_id": 43480, "name": "Small Feast", "skill": "Cooking", "rank": 375, "section_id": "cook-required-feasts"},
-    {"guide": "jewelcrafting-gems-ah-price-guide.html", "item_id": 42225, "name": "Dragon's Eye", "skill": "Jewelcrafting", "rank": 350, "section_id": "jewelcrafter-only-dragons-eye"}
+    {
+      "guide": "jewelcrafting-gems-ah-price-guide.html",
+      "item_id": 42225,
+      "name": "Dragon's Eye",
+      "skill": "Jewelcrafting",
+      "rank": 350,
+      "section_id": "jewelcrafter-only-dragons-eye"
+    }
   ],
   "static_general_use_exceptions": [],
   "static_sections": {
-    "cook-required-feasts": {
-      "guide": "fishing-cooking-materials-ah-price-guide.html",
-      "title": "Cook-required feasts",
-      "description": "These finished feasts are tradeable, but the character placing one must meet the listed Cooking rank. Other party or raid members do not need Cooking to eat from it.",
-      "insert_before_heading": "Finished foods, feasts, and utility drinks",
-      "items": ["Fish Feast", "Gigantic Feast", "Small Feast"]
-    },
     "jewelcrafter-only-dragons-eye": {
       "guide": "jewelcrafting-gems-ah-price-guide.html",
       "title": "Jewelcrafter-only Dragon's Eye",
       "description": "Raw Dragon's Eye is tradeable, but its practical market is Jewelcrafters who meet the listed requirement. The finished jeweler-only cuts are Bind on Pickup and remain excluded from the AH guide.",
       "insert_before_heading": "Rare Northrend gems",
-      "items": ["Dragon's Eye"]
+      "items": [
+        "Dragon's Eye"
+      ]
     }
   },
   "static_heading_replacements": {
-    "fishing-cooking-materials-ah-price-guide.html": {
-      "Finished foods, feasts, and utility drinks": "Finished foods and utility drinks"
-    },
     "jewelcrafting-gems-ah-price-guide.html": {
       "Epic Northrend gems / Dragon's Eye": "Epic Northrend gems"
     }
   },
   "excluded_items": [
-    {"item_id": 6532, "name": "Bright Baubles", "reason": "Removed instead of creating a one-row Fishing-restricted section for an unlimited low-cost vendor lure."},
-    {"item_id": 39505, "name": "Virtuoso Inking Set", "reason": "Removed from two guides instead of listing an unlimited low-cost Scribe-only vendor tool."},
-    {"item_id": 20815, "name": "Jeweler's Kit", "reason": "Removed instead of listing an unlimited low-cost Jewelcrafting-only vendor tool."},
-    {"item_id": 20824, "name": "Simple Grinder", "reason": "Removed instead of listing an unlimited low-cost Jewelcrafting-only vendor tool."}
+    {
+      "item_id": 6532,
+      "name": "Bright Baubles",
+      "reason": "Removed instead of creating a one-row Fishing-restricted section for an unlimited low-cost vendor lure."
+    },
+    {
+      "item_id": 39505,
+      "name": "Virtuoso Inking Set",
+      "reason": "Removed from two guides instead of listing an unlimited low-cost Scribe-only vendor tool."
+    },
+    {
+      "item_id": 20815,
+      "name": "Jeweler's Kit",
+      "reason": "Removed instead of listing an unlimited low-cost Jewelcrafting-only vendor tool."
+    },
+    {
+      "item_id": 20824,
+      "name": "Simple Grinder",
+      "reason": "Removed instead of listing an unlimited low-cost Jewelcrafting-only vendor tool."
+    },
+    {
+      "item_id": 33004,
+      "name": "Clamlette Magnifique",
+      "reason": "Bind on Pickup Cooking quest output; cannot be sold on the Auction House."
+    },
+    {
+      "item_id": 46691,
+      "name": "Bread of the Dead",
+      "reason": "Bind on Pickup seasonal Cooking output; cannot be sold on the Auction House."
+    }
   ]
 }

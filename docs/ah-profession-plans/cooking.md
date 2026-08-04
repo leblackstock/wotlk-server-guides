@@ -1,6 +1,6 @@
 # Cooking AH Expansion Plan
 
-- Status: `planned`
+- Status: `complete` — 2026-08-03
 - Existing guide: `guides/fishing-cooking-materials-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 5
@@ -11,7 +11,7 @@
 ## Baseline Evidence Audit
 
 - Audit the current finished-food/drink rows and every fish, meat, egg, spice,
-  and vendor ingredient that feeds a Cooking recipe in the 147-row shared guide.
+  and vendor ingredient that feeds a Cooking recipe in the existing shared guide.
 - Reconcile raw fish/meat prices with their other guide appearances and vendor
   ingredients with the canonical vendor catalog.
 - Recheck current feasts and level-80 buff foods before expanding older tiers.
@@ -53,18 +53,43 @@
 
 ## Acceptance Checks
 
-- [ ] Baseline evidence audit completed and recorded.
-- [ ] Every valid tradeable Cooking output has an include/exclude decision.
-- [ ] Batch yields and per-item costs are verified by recipe.
-- [ ] Level-80 buff-food notes identify exact stats and likely roles.
-- [ ] Fishing materials and Cooking outputs remain clearly owned.
-- [ ] Shared validation in `README.md` passes.
+- [x] Baseline evidence audit completed and recorded.
+- [x] Every valid tradeable Cooking output has an include/exclude decision.
+- [x] Batch yields and per-item costs are verified by recipe.
+- [x] Level-80 buff-food notes identify exact stats and likely roles.
+- [x] Fishing materials and Cooking outputs remain clearly owned.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Listing concentration observations (not valuation evidence):
-- Recipe/item sources checked:
-- Output/server findings:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-03
+- Listing concentration observations (not valuation evidence): The saved Horde
+  scan remains unusable for valuation because the user and friends account for
+  at least half of listed units. No active listing set or raised a Cooking
+  baseline or finished-food price.
+- Recipe/item sources checked: WotLKDB's complete 181-record Cooking spell list
+  and recipe quantities; Wowhead WotLK item tooltips for binding, rarity,
+  requirements, stack size, and effects; AzerothCore's build-12340 item baseline
+  for canonical item identity and tradeability.
+- Baseline findings: The 167 included recipes consume 148 distinct ingredients:
+  118 already had frozen references, three already had exact vendor records,
+  two are recursively audited crafted inputs, 14 received exact vendor records,
+  and 11 received clearly labeled comparison-based fallback bands. None came
+  from active listings.
+- Output/server findings: 174 Cooking spells create 169 distinct item outputs.
+  Five Pilgrim's Bounty outputs have faction-alternate recipes and were
+  consolidated to one output each using the Horde ingredient route. Clamlette
+  Magnifique and Bread of the Dead are Bind on Pickup, leaving 167 distinct
+  tradeable outputs. No verified Hellscream override was available, so the
+  catalog documents standard 3.3.5 behavior and keeps server checks explicit.
+- Decisions and unresolved items: Great Feast, Fish Feast, Gigantic Feast, and
+  Small Feast are isolated because placing them requires Cooking. Thistle Tea
+  has its own Rogue-only section. Raw fish, meats, eggs, spices, and vendor
+  ingredients remain in material/vendor coverage. Provisional fallback inputs
+  should be replaced only by qualifying realized-sale or measured-yield
+  evidence.
+- Completion summary: Added 167 crafted rows in 13 sections with exact effect
+  notes, recipe-and-material mouseovers, common-quality rarity coloring,
+  non-circular price bands, price-descending section order, and current search
+  and tooltip assets. The complete AH validation and desktop/mobile browser
+  smoke suite passed before publication.

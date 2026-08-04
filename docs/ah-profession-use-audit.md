@@ -1,6 +1,6 @@
 # AH Crafted-Item Profession-Use Audit
 
-Audited: 2026-08-02
+Audited: 2026-08-03
 
 This audit separates the profession that crafts an item from the profession,
 if any, required to use the finished item. The canonical decisions are stored
@@ -58,9 +58,11 @@ in `data/ah-profession-use-audit.json`.
 
 ### Cooking
 
-- **Cook-required feasts:** Fish Feast, Gigantic Feast, and Small Feast. The
+- **Cook-required feasts:** Great Feast, Fish Feast, Gigantic Feast, and Small
+  Feast. The
   character placing the feast needs Cooking; characters eating from it do not.
-- Ordinary finished foods and drinks remain in the general-use section.
+- **Rogue-only utility:** Thistle Tea is tradeable but only Rogues can use it.
+- Ordinary finished foods and drinks remain in general-use crafted sections.
 
 ### Jewelcrafting
 
@@ -69,17 +71,24 @@ in `data/ah-profession-use-audit.json`.
 
 ### Leatherworking
 
-- The finished leg armor, armor kit, and drums section is explicitly labeled
-  general-use.
+- **Leatherworker-only drums:** Drums of War, Battle, Speed, Restoration, and
+  Panic retain their finished-item Leatherworking requirements.
+- Specialty profession-material bags are labeled for their actual profession
+  buyer rather than presented as ordinary general-use bags.
 - Drums of Forgotten Kings and Drums of the Wild do not require Leatherworking
   on the finished item.
+
+### Tailoring
+
+- **Tailor-only nets:** Netherweave Net, Heavy Netherweave Net, and Frostweave
+  Net retain their finished-item Tailoring requirements.
+- Tradeable cloth, bags, equipment, and spellthreads remain in general-use
+  sections; self-only embroidery and BoP carpets remain excluded.
 
 ## Profession Guides With No Restricted Finished-Item Move
 
 - Enchanting: completed enchant scrolls, oils, and tradeable wands are usable
   without Enchanting; profession intermediates were already isolated.
-- Tailoring: the listed cloth, bags, and tradeable finished outputs have no
-  profession-use restriction; self-only embroidery and BoP carpets remain out.
 - Mining: the guide contains ores, bars, stones, and smelting outputs rather
   than profession-locked consumer items.
 - Herbalism, Skinning, and Fishing raw-material sections remain input markets.
@@ -97,3 +106,11 @@ in `data/ah-profession-use-audit.json`.
 
 No tradeable crafted output was removed. The removals are low-cost vendor tools
 that added noise without a defensible specialist AH market.
+
+## Excluded Crafted Outputs
+
+- **Clamlette Magnifique:** Bind on Pickup Cooking quest output.
+- **Bread of the Dead:** Bind on Pickup seasonal Cooking output.
+
+These were excluded during complete recipe discovery because neither item can
+be listed on the Auction House; they were not removed from an existing AH row.

@@ -462,9 +462,10 @@ def render_crafted_row(
     if requirement:
         skill = html.escape(requirement["skill"])
         rank = int(requirement["rank"])
+        action = "place" if item["name"].endswith("Feast") else "use"
         requirement_note = (
             f'<strong class="profession-use-requirement">'
-            f'Requires {skill} {rank} to use.</strong>'
+            f'Requires {skill} {rank} to {action}.</strong>'
         )
     if shared_note:
         note_id = html.escape(shared_note["id"])
@@ -631,9 +632,11 @@ def replace_legacy_crafted_sections(
     matches: list[re.Match[str]] = []
     for title in titles:
         pattern = re.compile(
-            r'<section class="common"><h2 class="ah-category-heading">'
+            r'(?:<!-- AH_PROFESSION_USE_SECTION_START [a-z0-9-]+ -->\s*)?'
+            r'<section class="common(?:\s[^"]*)?"[^>]*><h2 class="ah-category-heading">'
             + re.escape(html.escape(title))
-            + r'<a class="ah-back-to-top".*?</section>',
+            + r'<a class="ah-back-to-top".*?</section>'
+            r'(?:\s*<!-- AH_PROFESSION_USE_SECTION_END [a-z0-9-]+ -->)?',
             re.DOTALL,
         )
         title_matches = list(pattern.finditer(source))

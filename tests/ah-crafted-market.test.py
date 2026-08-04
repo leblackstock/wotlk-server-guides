@@ -26,6 +26,7 @@ EXPECTED_GUIDE_COUNTS = {
     "jewelcrafting-gems-ah-price-guide.html": 497,
     "tailoring-cloth-ah-price-guide.html": 406,
     "skinning-leatherworking-materials-ah-price-guide.html": 490,
+    "fishing-cooking-materials-ah-price-guide.html": 167,
 }
 
 
@@ -119,8 +120,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 2214:
-        fail(f"Expected 2214 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2381:
+        fail(f"Expected 2381 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -523,6 +524,61 @@ def main() -> int:
         "lw-pack-of-endless-pockets",
     }:
         fail("Leatherworking profession-material bags are not fully isolated")
+
+    cooking_keys = {
+        key
+        for key in used_keys
+        if key.startswith("cook-")
+    }
+    if len(cooking_keys) != 167:
+        fail(f"Expected 167 distinct tradeable Cooking outputs, found {len(cooking_keys)}")
+    cooking_names = {merged_item(config, key)["name"] for key in cooking_keys}
+    for label in ("Clamlette Magnifique", "Bread of the Dead"):
+        if label in cooking_names:
+            fail(f"Bind-on-pickup Cooking output leaked in: {label}")
+    for label in (
+        "Fish Feast",
+        "Great Feast",
+        "Dragonfin Filet",
+        "Delicious Chocolate Cake",
+        "Savory Deviate Delight",
+        "Thistle Tea",
+        "Pumpkin Pie",
+    ):
+        if label not in cooking_names:
+            fail(f"Expanded Cooking era/category coverage is missing: {label}")
+    cooking_sections = guides["fishing-cooking-materials-ah-price-guide.html"]["sections"]
+    if len(cooking_sections) != 13:
+        fail(f"Expected 13 expanded Cooking sections, found {len(cooking_sections)}")
+    restricted_cooking = [
+        section for section in cooking_sections
+        if section.get("audience") == "profession-restricted"
+    ]
+    if len(restricted_cooking) != 1 or set(restricted_cooking[0]["items"]) != {
+        "cook-great-feast",
+        "cook-fish-feast",
+        "cook-gigantic-feast",
+        "cook-small-feast",
+    }:
+        fail("Cook-required feasts are not isolated in one restricted section")
+    class_restricted_cooking = [
+        section for section in cooking_sections
+        if section.get("audience") == "class-restricted"
+    ]
+    if len(class_restricted_cooking) != 1 or class_restricted_cooking[0]["items"] != [
+        "cook-thistle-tea"
+    ]:
+        fail("Thistle Tea is not isolated in one Rogue-only section")
+    expected_pilgrim_spells = {
+        "cook-pumpkin-pie": 66036,
+        "cook-slow-roasted-turkey": 66037,
+        "cook-cranberry-chutney": 66035,
+        "cook-spice-bread-stuffing": 66038,
+        "cook-candied-sweet-potato": 66034,
+    }
+    for key, spell_id in expected_pilgrim_spells.items():
+        if int(merged_item(config, key)["source_spell_id"]) != spell_id:
+            fail(f"{key}: Horde Pilgrim's Bounty recipe was not preserved")
     leatherworking_source = sources[
         "skinning-leatherworking-materials-ah-price-guide.html"
     ]
@@ -659,6 +715,9 @@ def main() -> int:
         "lw-nerubian-reinforced-quiver": "28 slots of arrows",
         "lw-belt-of-dragons": "physical-DPS use",
         "lw-riding-crop": "Does not work for players above level 70",
+        "cook-fish-feast": "80 Attack Power, 46 Spell Power and 40 Stamina",
+        "cook-thistle-tea": "Rogue only",
+        "cook-pumpkin-pie": "seven-day real-time duration",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -690,6 +749,7 @@ def main() -> int:
         "jewelcrafting-gems-ah-price-guide.html",
         "tailoring-cloth-ah-price-guide.html",
         "skinning-leatherworking-materials-ah-price-guide.html",
+        "fishing-cooking-materials-ah-price-guide.html",
     ):
         if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
@@ -883,7 +943,7 @@ def main() -> int:
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, Tailoring, and Leatherworking."
+        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, Tailoring, Leatherworking, and Cooking."
     )
     return 0
 

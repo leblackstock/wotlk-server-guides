@@ -4,6 +4,9 @@
   "recipe_source": {
     "name": "WotLKDB 3.3.5a profession and item records",
     "profession_url_template": "https://wotlkdb.com/?spells=11.{skill_id}",
+    "profession_url_overrides": {
+      "185": "https://wotlkdb.com/?spells=9.185"
+    },
     "item_url_template": "https://wotlkdb.com/?item={item_id}",
     "complete_skill_filters": {
       "164": [
@@ -51438,6 +51441,2886 @@
           "item_id": 21887,
           "name": "Knothide Leather",
           "count": 2
+        }
+      ]
+    },
+    "cook-great-feast": {
+      "source_spell_id": 45554,
+      "source_spell_name": "Great Feast",
+      "output_item_id": 34753,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 1
+        },
+        {
+          "item_id": 43009,
+          "name": "Shoveltusk Flank",
+          "count": 1
+        },
+        {
+          "item_id": 43010,
+          "name": "Worm Meat",
+          "count": 1
+        },
+        {
+          "item_id": 43013,
+          "name": "Chilled Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-fish-feast": {
+      "source_spell_id": 57423,
+      "source_spell_name": "Fish Feast",
+      "output_item_id": 43015,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41806,
+          "name": "Musselback Sculpin",
+          "count": 2
+        },
+        {
+          "item_id": 41809,
+          "name": "Glacial Salmon",
+          "count": 2
+        },
+        {
+          "item_id": 41813,
+          "name": "Nettlefish",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-gigantic-feast": {
+      "source_spell_id": 58527,
+      "source_spell_name": "Gigantic Feast",
+      "output_item_id": 43478,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41800,
+          "name": "Deep Sea Monsterbelly",
+          "count": 2
+        },
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 2
+        },
+        {
+          "item_id": 41803,
+          "name": "Rockfin Grouper",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-small-feast": {
+      "source_spell_id": 58528,
+      "source_spell_name": "Small Feast",
+      "output_item_id": 43480,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41813,
+          "name": "Nettlefish",
+          "count": 2
+        },
+        {
+          "item_id": 43012,
+          "name": "Rhino Meat",
+          "count": 2
+        },
+        {
+          "item_id": 41809,
+          "name": "Glacial Salmon",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mammoth-meal": {
+      "source_spell_id": 45549,
+      "source_spell_name": "Mammoth Meal",
+      "output_item_id": 34748,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 1
+        }
+      ]
+    },
+    "cook-shoveltusk-steak": {
+      "source_spell_id": 45550,
+      "source_spell_name": "Shoveltusk Steak",
+      "output_item_id": 34749,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43009,
+          "name": "Shoveltusk Flank",
+          "count": 1
+        }
+      ]
+    },
+    "cook-worm-delight": {
+      "source_spell_id": 45551,
+      "source_spell_name": "Worm Delight",
+      "output_item_id": 34750,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43010,
+          "name": "Worm Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roasted-worg": {
+      "source_spell_id": 45552,
+      "source_spell_name": "Roasted Worg",
+      "output_item_id": 34751,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43011,
+          "name": "Worg Haunch",
+          "count": 1
+        }
+      ]
+    },
+    "cook-rhino-dogs": {
+      "source_spell_id": 45553,
+      "source_spell_name": "Rhino Dogs",
+      "output_item_id": 34752,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43012,
+          "name": "Rhino Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mega-mammoth-meal": {
+      "source_spell_id": 45555,
+      "source_spell_name": "Mega Mammoth Meal",
+      "output_item_id": 34754,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-tender-shoveltusk-steak": {
+      "source_spell_id": 45556,
+      "source_spell_name": "Tender Shoveltusk Steak",
+      "output_item_id": 34755,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43009,
+          "name": "Shoveltusk Flank",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spiced-worm-burger": {
+      "source_spell_id": 45557,
+      "source_spell_name": "Spiced Worm Burger",
+      "output_item_id": 34756,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43010,
+          "name": "Worm Meat",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-very-burnt-worg": {
+      "source_spell_id": 45558,
+      "source_spell_name": "Very Burnt Worg",
+      "output_item_id": 34757,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43011,
+          "name": "Worg Haunch",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mighty-rhino-dogs": {
+      "source_spell_id": 45559,
+      "source_spell_name": "Mighty Rhino Dogs",
+      "output_item_id": 34758,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43012,
+          "name": "Rhino Meat",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-grilled-sculpin": {
+      "source_spell_id": 45563,
+      "source_spell_name": "Grilled Sculpin",
+      "output_item_id": 34762,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41806,
+          "name": "Musselback Sculpin",
+          "count": 1
+        }
+      ]
+    },
+    "cook-smoked-salmon": {
+      "source_spell_id": 45564,
+      "source_spell_name": "Smoked Salmon",
+      "output_item_id": 34763,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41809,
+          "name": "Glacial Salmon",
+          "count": 1
+        }
+      ]
+    },
+    "cook-poached-nettlefish": {
+      "source_spell_id": 45565,
+      "source_spell_name": "Poached Nettlefish",
+      "output_item_id": 34764,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41813,
+          "name": "Nettlefish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-pickled-fangtooth": {
+      "source_spell_id": 45566,
+      "source_spell_name": "Pickled Fangtooth",
+      "output_item_id": 34765,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41810,
+          "name": "Fangtooth Herring",
+          "count": 1
+        }
+      ]
+    },
+    "cook-poached-northern-sculpin": {
+      "source_spell_id": 45567,
+      "source_spell_name": "Poached Northern Sculpin",
+      "output_item_id": 34766,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41806,
+          "name": "Musselback Sculpin",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-firecracker-salmon": {
+      "source_spell_id": 45568,
+      "source_spell_name": "Firecracker Salmon",
+      "output_item_id": 34767,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41809,
+          "name": "Glacial Salmon",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spicy-blue-nettlefish": {
+      "source_spell_id": 45571,
+      "source_spell_name": "Spicy Blue Nettlefish",
+      "output_item_id": 34768,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41813,
+          "name": "Nettlefish",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-imperial-manta-steak": {
+      "source_spell_id": 45570,
+      "source_spell_name": "Imperial Manta Steak",
+      "output_item_id": 34769,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41802,
+          "name": "Imperial Manta Ray",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-baked-manta-ray": {
+      "source_spell_id": 45569,
+      "source_spell_name": "Baked Manta Ray",
+      "output_item_id": 42942,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41802,
+          "name": "Imperial Manta Ray",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spicy-fried-herring": {
+      "source_spell_id": 57433,
+      "source_spell_name": "Spicy Fried Herring",
+      "output_item_id": 42993,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41810,
+          "name": "Fangtooth Herring",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-rhinolicious-wormsteak": {
+      "source_spell_id": 57434,
+      "source_spell_name": "Rhinolicious Wormsteak",
+      "output_item_id": 42994,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43010,
+          "name": "Worm Meat",
+          "count": 1
+        },
+        {
+          "item_id": 43012,
+          "name": "Rhino Meat",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hearty-rhino": {
+      "source_spell_id": 57436,
+      "source_spell_name": "Hearty Rhino",
+      "output_item_id": 42995,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43012,
+          "name": "Rhino Meat",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-snapper-extreme": {
+      "source_spell_id": 57437,
+      "source_spell_name": "Snapper Extreme",
+      "output_item_id": 42996,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41808,
+          "name": "Bonescale Snapper",
+          "count": 3
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-cuttlesteak": {
+      "source_spell_id": 57439,
+      "source_spell_name": "Cuttlesteak",
+      "output_item_id": 42998,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41801,
+          "name": "Moonglow Cuttlefish",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-blackened-dragonfin": {
+      "source_spell_id": 57441,
+      "source_spell_name": "Blackened Dragonfin",
+      "output_item_id": 42999,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41807,
+          "name": "Dragonfin Angelfish",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dragonfin-filet": {
+      "source_spell_id": 57442,
+      "source_spell_name": "Dragonfin Filet",
+      "output_item_id": 43000,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41807,
+          "name": "Dragonfin Angelfish",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dalaran-clam-chowder": {
+      "source_spell_id": 58065,
+      "source_spell_name": "Dalaran Clam Chowder",
+      "output_item_id": 43268,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 36782,
+          "name": "Succulent Clam Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-worg-tartare": {
+      "source_spell_id": 62350,
+      "source_spell_name": "Worg Tartare",
+      "output_item_id": 44953,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43011,
+          "name": "Worg Haunch",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-northern-stew": {
+      "source_spell_id": 57421,
+      "source_spell_name": "Northern Stew",
+      "output_item_id": 34747,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43013,
+          "name": "Chilled Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-smoked-rockfin": {
+      "source_spell_id": 45560,
+      "source_spell_name": "Smoked Rockfin",
+      "output_item_id": 34759,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41803,
+          "name": "Rockfin Grouper",
+          "count": 1
+        }
+      ]
+    },
+    "cook-grilled-bonescale": {
+      "source_spell_id": 45561,
+      "source_spell_name": "Grilled Bonescale",
+      "output_item_id": 34760,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41808,
+          "name": "Bonescale Snapper",
+          "count": 1
+        }
+      ]
+    },
+    "cook-sauteed-goby": {
+      "source_spell_id": 45562,
+      "source_spell_name": "Sauteed Goby",
+      "output_item_id": 34761,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41812,
+          "name": "Barrelhead Goby",
+          "count": 1
+        }
+      ]
+    },
+    "cook-kungaloosh": {
+      "source_spell_id": 53056,
+      "source_spell_name": "Kungaloosh",
+      "output_item_id": 39520,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 35949,
+          "name": "Tundra Berries",
+          "count": 2
+        },
+        {
+          "item_id": 35948,
+          "name": "Savory Snowplum",
+          "count": 1
+        }
+      ]
+    },
+    "cook-black-jelly": {
+      "source_spell_id": 64358,
+      "source_spell_name": "Black Jelly",
+      "output_item_id": 45932,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41805,
+          "name": "Borean Man O' War",
+          "count": 3
+        }
+      ]
+    },
+    "cook-blackened-worg-steak": {
+      "source_spell_id": 57438,
+      "source_spell_name": "Blackened Worg Steak",
+      "output_item_id": 42997,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43011,
+          "name": "Worg Haunch",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-tracker-snacks": {
+      "source_spell_id": 57443,
+      "source_spell_name": "Tracker Snacks",
+      "output_item_id": 43001,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43009,
+          "name": "Shoveltusk Flank",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-critter-bites": {
+      "source_spell_id": 57435,
+      "source_spell_name": "Critter Bites",
+      "output_item_id": 43004,
+      "output_count": 4,
+      "output_count_max": 4,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 43013,
+          "name": "Chilled Meat",
+          "count": 2
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spiced-mammoth-treats": {
+      "source_spell_id": 57440,
+      "source_spell_name": "Spiced Mammoth Treats",
+      "output_item_id": 43005,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 1
+        },
+        {
+          "item_id": 43007,
+          "name": "Northern Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-last-weeks-mammoth": {
+      "source_spell_id": 58521,
+      "source_spell_name": "Last Week's Mammoth",
+      "output_item_id": 43488,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34736,
+          "name": "Chunk o' Mammoth",
+          "count": 1
+        }
+      ]
+    },
+    "cook-tasty-cupcake": {
+      "source_spell_id": 58512,
+      "source_spell_name": "Tasty Cupcake",
+      "output_item_id": 43490,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 30817,
+          "name": "Simple Flour",
+          "count": 2
+        },
+        {
+          "item_id": 43501,
+          "name": "Northern Egg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-bad-clams": {
+      "source_spell_id": 58523,
+      "source_spell_name": "Bad Clams",
+      "output_item_id": 43491,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 36782,
+          "name": "Succulent Clam Meat",
+          "count": 1
+        },
+        {
+          "item_id": 22577,
+          "name": "Mote of Shadow",
+          "count": 1
+        }
+      ]
+    },
+    "cook-haunted-herring": {
+      "source_spell_id": 58525,
+      "source_spell_name": "Haunted Herring",
+      "output_item_id": 43492,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41810,
+          "name": "Fangtooth Herring",
+          "count": 1
+        },
+        {
+          "item_id": 12808,
+          "name": "Essence of Undeath",
+          "count": 1
+        }
+      ]
+    },
+    "cook-ravager-dog": {
+      "source_spell_id": 33284,
+      "source_spell_name": "Ravager Dog",
+      "output_item_id": 27655,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27674,
+          "name": "Ravager Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-sporeling-snack": {
+      "source_spell_id": 33285,
+      "source_spell_name": "Sporeling Snack",
+      "output_item_id": 27656,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27676,
+          "name": "Strange Spores",
+          "count": 1
+        }
+      ]
+    },
+    "cook-blackened-basilisk": {
+      "source_spell_id": 33286,
+      "source_spell_name": "Blackened Basilisk",
+      "output_item_id": 27657,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27677,
+          "name": "Chunk o' Basilisk",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roasted-clefthoof": {
+      "source_spell_id": 33287,
+      "source_spell_name": "Roasted Clefthoof",
+      "output_item_id": 27658,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27678,
+          "name": "Clefthoof Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-warp-burger": {
+      "source_spell_id": 33288,
+      "source_spell_name": "Warp Burger",
+      "output_item_id": 27659,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27681,
+          "name": "Warped Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-talbuk-steak": {
+      "source_spell_id": 33289,
+      "source_spell_name": "Talbuk Steak",
+      "output_item_id": 27660,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27682,
+          "name": "Talbuk Venison",
+          "count": 1
+        }
+      ]
+    },
+    "cook-feltail-delight": {
+      "source_spell_id": 33291,
+      "source_spell_name": "Feltail Delight",
+      "output_item_id": 27662,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27425,
+          "name": "Spotted Feltail",
+          "count": 1
+        }
+      ]
+    },
+    "cook-blackened-sporefish": {
+      "source_spell_id": 33292,
+      "source_spell_name": "Blackened Sporefish",
+      "output_item_id": 27663,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27429,
+          "name": "Zangarian Sporefish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-grilled-mudfish": {
+      "source_spell_id": 33293,
+      "source_spell_name": "Grilled Mudfish",
+      "output_item_id": 27664,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27435,
+          "name": "Figluster's Mudfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-poached-bluefish": {
+      "source_spell_id": 33294,
+      "source_spell_name": "Poached Bluefish",
+      "output_item_id": 27665,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27437,
+          "name": "Icefin Bluefish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-golden-fish-sticks": {
+      "source_spell_id": 33295,
+      "source_spell_name": "Golden Fish Sticks",
+      "output_item_id": 27666,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27438,
+          "name": "Golden Darter",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spicy-crawdad": {
+      "source_spell_id": 33296,
+      "source_spell_name": "Spicy Crawdad",
+      "output_item_id": 27667,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27439,
+          "name": "Furious Crawdad",
+          "count": 1
+        }
+      ]
+    },
+    "cook-clam-bar": {
+      "source_spell_id": 36210,
+      "source_spell_name": "Clam Bar",
+      "output_item_id": 30155,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 24477,
+          "name": "Jaggal Clam Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-moknathal-shortribs": {
+      "source_spell_id": 38867,
+      "source_spell_name": "Mok'Nathal Shortribs",
+      "output_item_id": 31672,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 31670,
+          "name": "Raptor Ribs",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crunchy-serpent": {
+      "source_spell_id": 38868,
+      "source_spell_name": "Crunchy Serpent",
+      "output_item_id": 31673,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 31671,
+          "name": "Serpent Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-fishermans-feast": {
+      "source_spell_id": 42302,
+      "source_spell_name": "Fisherman's Feast",
+      "output_item_id": 33052,
+      "output_count": 6,
+      "output_count_max": 6,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27515,
+          "name": "Huge Spotted Feltail",
+          "count": 1
+        }
+      ]
+    },
+    "cook-skullfish-soup": {
+      "source_spell_id": 43707,
+      "source_spell_name": "Skullfish Soup",
+      "output_item_id": 33825,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 33824,
+          "name": "Crescent-Tail Skullfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-broiled-bloodfin": {
+      "source_spell_id": 43761,
+      "source_spell_name": "Broiled Bloodfin",
+      "output_item_id": 33867,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 33823,
+          "name": "Bloodfin Catfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spicy-hot-talbuk": {
+      "source_spell_id": 43765,
+      "source_spell_name": "Spicy Hot Talbuk",
+      "output_item_id": 33872,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27682,
+          "name": "Talbuk Venison",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roasted-moongraze-tenderloin": {
+      "source_spell_id": 33277,
+      "source_spell_name": "Roasted Moongraze Tenderloin",
+      "output_item_id": 24105,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23676,
+          "name": "Moongraze Stag Tenderloin",
+          "count": 1
+        }
+      ]
+    },
+    "cook-lynx-steak": {
+      "source_spell_id": 33276,
+      "source_spell_name": "Lynx Steak",
+      "output_item_id": 27635,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27668,
+          "name": "Lynx Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-bat-bites": {
+      "source_spell_id": 33278,
+      "source_spell_name": "Bat Bites",
+      "output_item_id": 27636,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27669,
+          "name": "Bat Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-buzzard-bites": {
+      "source_spell_id": 33279,
+      "source_spell_name": "Buzzard Bites",
+      "output_item_id": 27651,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27671,
+          "name": "Buzzard Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-blackened-trout": {
+      "source_spell_id": 33290,
+      "source_spell_name": "Blackened Trout",
+      "output_item_id": 27661,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27422,
+          "name": "Barbed Gill Trout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-stewed-trout": {
+      "source_spell_id": 42296,
+      "source_spell_name": "Stewed Trout",
+      "output_item_id": 33048,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27422,
+          "name": "Barbed Gill Trout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hot-buttered-trout": {
+      "source_spell_id": 42305,
+      "source_spell_name": "Hot Buttered Trout",
+      "output_item_id": 33053,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27516,
+          "name": "Enormous Barbed Gill Trout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-stormchops": {
+      "source_spell_id": 43758,
+      "source_spell_name": "Stormchops",
+      "output_item_id": 33866,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27678,
+          "name": "Clefthoof Meat",
+          "count": 1
+        },
+        {
+          "item_id": 13757,
+          "name": "Lightning Eel",
+          "count": 1
+        }
+      ]
+    },
+    "cook-kiblers-bits": {
+      "source_spell_id": 43772,
+      "source_spell_name": "Kibler's Bits",
+      "output_item_id": 33874,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 27671,
+          "name": "Buzzard Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-delicious-chocolate-cake": {
+      "source_spell_id": 43779,
+      "source_spell_name": "Delicious Chocolate Cake",
+      "output_item_id": 33924,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 30817,
+          "name": "Simple Flour",
+          "count": 8
+        },
+        {
+          "item_id": 1179,
+          "name": "Ice Cold Milk",
+          "count": 4
+        },
+        {
+          "item_id": 2678,
+          "name": "Mild Spices",
+          "count": 4
+        },
+        {
+          "item_id": 6889,
+          "name": "Small Egg",
+          "count": 8
+        },
+        {
+          "item_id": 2593,
+          "name": "Flask of Port",
+          "count": 1
+        },
+        {
+          "item_id": 785,
+          "name": "Mageroyal",
+          "count": 3
+        }
+      ]
+    },
+    "cook-captain-rumseys-lager": {
+      "source_spell_id": 45695,
+      "source_spell_name": "Captain Rumsey's Lager",
+      "output_item_id": 34832,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2596,
+          "name": "Skin of Dwarven Stout",
+          "count": 1
+        },
+        {
+          "item_id": 2594,
+          "name": "Flagon of Mead",
+          "count": 1
+        }
+      ]
+    },
+    "cook-goretusk-liver-pie": {
+      "source_spell_id": 2542,
+      "source_spell_name": "Goretusk Liver Pie",
+      "output_item_id": 724,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 723,
+          "name": "Goretusk Liver",
+          "count": 1
+        }
+      ]
+    },
+    "cook-seasoned-wolf-kabob": {
+      "source_spell_id": 2549,
+      "source_spell_name": "Seasoned Wolf Kabob",
+      "output_item_id": 1017,
+      "output_count": 3,
+      "output_count_max": 3,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1015,
+          "name": "Lean Wolf Flank",
+          "count": 2
+        }
+      ]
+    },
+    "cook-redridge-goulash": {
+      "source_spell_id": 2547,
+      "source_spell_name": "Redridge Goulash",
+      "output_item_id": 1082,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1081,
+          "name": "Crisp Spider Meat",
+          "count": 1
+        },
+        {
+          "item_id": 1080,
+          "name": "Tough Condor Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spiced-wolf-meat": {
+      "source_spell_id": 2539,
+      "source_spell_name": "Spiced Wolf Meat",
+      "output_item_id": 2680,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2672,
+          "name": "Stringy Wolf Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crab-cake": {
+      "source_spell_id": 2544,
+      "source_spell_name": "Crab Cake",
+      "output_item_id": 2683,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2674,
+          "name": "Crawler Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-coyote-steak": {
+      "source_spell_id": 2541,
+      "source_spell_name": "Coyote Steak",
+      "output_item_id": 2684,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2673,
+          "name": "Coyote Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dry-pork-ribs": {
+      "source_spell_id": 2546,
+      "source_spell_name": "Dry Pork Ribs",
+      "output_item_id": 2687,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2677,
+          "name": "Boar Ribs",
+          "count": 1
+        }
+      ]
+    },
+    "cook-beer-basted-boar-ribs": {
+      "source_spell_id": 2795,
+      "source_spell_name": "Beer Basted Boar Ribs",
+      "output_item_id": 2888,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2886,
+          "name": "Crag Boar Rib",
+          "count": 1
+        }
+      ]
+    },
+    "cook-blood-sausage": {
+      "source_spell_id": 3371,
+      "source_spell_name": "Blood Sausage",
+      "output_item_id": 3220,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3173,
+          "name": "Bear Meat",
+          "count": 1
+        },
+        {
+          "item_id": 3172,
+          "name": "Boar Intestines",
+          "count": 1
+        },
+        {
+          "item_id": 3174,
+          "name": "Spider Ichor",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crocolisk-steak": {
+      "source_spell_id": 3370,
+      "source_spell_name": "Crocolisk Steak",
+      "output_item_id": 3662,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2924,
+          "name": "Crocolisk Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-murloc-fin-soup": {
+      "source_spell_id": 3372,
+      "source_spell_name": "Murloc Fin Soup",
+      "output_item_id": 3663,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1468,
+          "name": "Murloc Fin",
+          "count": 2
+        }
+      ]
+    },
+    "cook-crocolisk-gumbo": {
+      "source_spell_id": 3373,
+      "source_spell_name": "Crocolisk Gumbo",
+      "output_item_id": 3664,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3667,
+          "name": "Tender Crocolisk Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-curiously-tasty-omelet": {
+      "source_spell_id": 3376,
+      "source_spell_name": "Curiously Tasty Omelet",
+      "output_item_id": 3665,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3685,
+          "name": "Raptor Egg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-gooey-spider-cake": {
+      "source_spell_id": 3377,
+      "source_spell_name": "Gooey Spider Cake",
+      "output_item_id": 3666,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2251,
+          "name": "Gooey Spider Leg",
+          "count": 2
+        }
+      ]
+    },
+    "cook-big-bear-steak": {
+      "source_spell_id": 3397,
+      "source_spell_name": "Big Bear Steak",
+      "output_item_id": 3726,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3730,
+          "name": "Big Bear Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hot-lion-chops": {
+      "source_spell_id": 3398,
+      "source_spell_name": "Hot Lion Chops",
+      "output_item_id": 3727,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3731,
+          "name": "Lion Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-tasty-lion-steak": {
+      "source_spell_id": 3399,
+      "source_spell_name": "Tasty Lion Steak",
+      "output_item_id": 3728,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3731,
+          "name": "Lion Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-soothing-turtle-bisque": {
+      "source_spell_id": 3400,
+      "source_spell_name": "Soothing Turtle Bisque",
+      "output_item_id": 3729,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3712,
+          "name": "Turtle Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-barbecued-buzzard-wing": {
+      "source_spell_id": 4094,
+      "source_spell_name": "Barbecued Buzzard Wing",
+      "output_item_id": 4457,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3404,
+          "name": "Buzzard Wing",
+          "count": 1
+        }
+      ]
+    },
+    "cook-kaldorei-spider-kabob": {
+      "source_spell_id": 6412,
+      "source_spell_name": "Kaldorei Spider Kabob",
+      "output_item_id": 5472,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5465,
+          "name": "Small Spider Leg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roasted-kodo-meat": {
+      "source_spell_id": 6414,
+      "source_spell_name": "Roasted Kodo Meat",
+      "output_item_id": 5474,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5467,
+          "name": "Kodo Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-fillet-of-frenzy": {
+      "source_spell_id": 6415,
+      "source_spell_name": "Fillet of Frenzy",
+      "output_item_id": 5476,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5468,
+          "name": "Soft Frenzy Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-strider-stew": {
+      "source_spell_id": 6416,
+      "source_spell_name": "Strider Stew",
+      "output_item_id": 5477,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5469,
+          "name": "Strider Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crispy-lizard-tail": {
+      "source_spell_id": 6418,
+      "source_spell_name": "Crispy Lizard Tail",
+      "output_item_id": 5479,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5470,
+          "name": "Thunder Lizard Tail",
+          "count": 1
+        }
+      ]
+    },
+    "cook-lean-venison": {
+      "source_spell_id": 6419,
+      "source_spell_name": "Lean Venison",
+      "output_item_id": 5480,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5471,
+          "name": "Stag Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-boiled-clams": {
+      "source_spell_id": 6499,
+      "source_spell_name": "Boiled Clams",
+      "output_item_id": 5525,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5503,
+          "name": "Clam Meat",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
+        }
+      ]
+    },
+    "cook-goblin-deviled-clams": {
+      "source_spell_id": 6500,
+      "source_spell_name": "Goblin Deviled Clams",
+      "output_item_id": 5527,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5504,
+          "name": "Tangy Clam Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-giant-clam-scorcho": {
+      "source_spell_id": 7213,
+      "source_spell_name": "Giant Clam Scorcho",
+      "output_item_id": 6038,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4655,
+          "name": "Giant Clam Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-herb-baked-egg": {
+      "source_spell_id": 8604,
+      "source_spell_name": "Herb Baked Egg",
+      "output_item_id": 6888,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6889,
+          "name": "Small Egg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-lean-wolf-steak": {
+      "source_spell_id": 15853,
+      "source_spell_name": "Lean Wolf Steak",
+      "output_item_id": 12209,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1015,
+          "name": "Lean Wolf Flank",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roast-raptor": {
+      "source_spell_id": 15855,
+      "source_spell_name": "Roast Raptor",
+      "output_item_id": 12210,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12184,
+          "name": "Raptor Flesh",
+          "count": 1
+        }
+      ]
+    },
+    "cook-jungle-stew": {
+      "source_spell_id": 15861,
+      "source_spell_name": "Jungle Stew",
+      "output_item_id": 12212,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12202,
+          "name": "Tiger Meat",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
+        }
+      ]
+    },
+    "cook-carrion-surprise": {
+      "source_spell_id": 15863,
+      "source_spell_name": "Carrion Surprise",
+      "output_item_id": 12213,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12037,
+          "name": "Mystery Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mystery-stew": {
+      "source_spell_id": 15865,
+      "source_spell_name": "Mystery Stew",
+      "output_item_id": 12214,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12037,
+          "name": "Mystery Meat",
+          "count": 1
+        },
+        {
+          "item_id": 2596,
+          "name": "Skin of Dwarven Stout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-heavy-kodo-stew": {
+      "source_spell_id": 15910,
+      "source_spell_name": "Heavy Kodo Stew",
+      "output_item_id": 12215,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12204,
+          "name": "Heavy Kodo Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-spiced-chili-crab": {
+      "source_spell_id": 15915,
+      "source_spell_name": "Spiced Chili Crab",
+      "output_item_id": 12216,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12206,
+          "name": "Tender Crab Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-monster-omelet": {
+      "source_spell_id": 15933,
+      "source_spell_name": "Monster Omelet",
+      "output_item_id": 12218,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12207,
+          "name": "Giant Egg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crispy-bat-wing": {
+      "source_spell_id": 15935,
+      "source_spell_name": "Crispy Bat Wing",
+      "output_item_id": 12224,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12223,
+          "name": "Meaty Bat Wing",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hot-wolf-ribs": {
+      "source_spell_id": 15856,
+      "source_spell_name": "Hot Wolf Ribs",
+      "output_item_id": 13851,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12203,
+          "name": "Red Wolf Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-cooked-glossy-mightfish": {
+      "source_spell_id": 18239,
+      "source_spell_name": "Cooked Glossy Mightfish",
+      "output_item_id": 13927,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13754,
+          "name": "Raw Glossy Mightfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-grilled-squid": {
+      "source_spell_id": 18240,
+      "source_spell_name": "Grilled Squid",
+      "output_item_id": 13928,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13755,
+          "name": "Winter Squid",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hot-smoked-bass": {
+      "source_spell_id": 18242,
+      "source_spell_name": "Hot Smoked Bass",
+      "output_item_id": 13929,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13756,
+          "name": "Raw Summer Bass",
+          "count": 1
+        }
+      ]
+    },
+    "cook-nightfin-soup": {
+      "source_spell_id": 18243,
+      "source_spell_name": "Nightfin Soup",
+      "output_item_id": 13931,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13759,
+          "name": "Raw Nightfin Snapper",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
+        }
+      ]
+    },
+    "cook-poached-sunscale-salmon": {
+      "source_spell_id": 18244,
+      "source_spell_name": "Poached Sunscale Salmon",
+      "output_item_id": 13932,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13760,
+          "name": "Raw Sunscale Salmon",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mightfish-steak": {
+      "source_spell_id": 18246,
+      "source_spell_name": "Mightfish Steak",
+      "output_item_id": 13934,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13893,
+          "name": "Large Raw Mightfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spider-sausage": {
+      "source_spell_id": 21175,
+      "source_spell_name": "Spider Sausage",
+      "output_item_id": 17222,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12205,
+          "name": "White Spider Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-tender-wolf-steak": {
+      "source_spell_id": 22480,
+      "source_spell_name": "Tender Wolf Steak",
+      "output_item_id": 18045,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12208,
+          "name": "Tender Wolf Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-runn-tum-tuber-surprise": {
+      "source_spell_id": 22761,
+      "source_spell_name": "Runn Tum Tuber Surprise",
+      "output_item_id": 18254,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 18255,
+          "name": "Runn Tum Tuber",
+          "count": 1
+        }
+      ]
+    },
+    "cook-heavy-crocolisk-stew": {
+      "source_spell_id": 24418,
+      "source_spell_name": "Heavy Crocolisk Stew",
+      "output_item_id": 20074,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3667,
+          "name": "Tender Crocolisk Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-smoked-desert-dumplings": {
+      "source_spell_id": 24801,
+      "source_spell_name": "Smoked Desert Dumplings",
+      "output_item_id": 20452,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 20424,
+          "name": "Sandworm Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dirges-kickin-chimaerok-chops": {
+      "source_spell_id": 25659,
+      "source_spell_name": "Dirge's Kickin' Chimaerok Chops",
+      "output_item_id": 21023,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 9061,
+          "name": "Goblin Rocket Fuel",
+          "count": 1
+        },
+        {
+          "item_id": 8150,
+          "name": "Deeprock Salt",
+          "count": 1
+        },
+        {
+          "item_id": 21024,
+          "name": "Chimaerok Tenderloin",
+          "count": 1
+        }
+      ]
+    },
+    "cook-smoked-sagefish": {
+      "source_spell_id": 25704,
+      "source_spell_name": "Smoked Sagefish",
+      "output_item_id": 21072,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 21071,
+          "name": "Raw Sagefish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-sagefish-delight": {
+      "source_spell_id": 25954,
+      "source_spell_name": "Sagefish Delight",
+      "output_item_id": 21217,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 21153,
+          "name": "Raw Greater Sagefish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-crunchy-spider-surprise": {
+      "source_spell_id": 28267,
+      "source_spell_name": "Crunchy Spider Surprise",
+      "output_item_id": 22645,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22644,
+          "name": "Crunchy Spider Leg",
+          "count": 1
+        }
+      ]
+    },
+    "cook-charred-bear-kabobs": {
+      "source_spell_id": 46684,
+      "source_spell_name": "Charred Bear Kabobs",
+      "output_item_id": 35563,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 35562,
+          "name": "Bear Flank",
+          "count": 1
+        }
+      ]
+    },
+    "cook-juicy-bear-burger": {
+      "source_spell_id": 46688,
+      "source_spell_name": "Juicy Bear Burger",
+      "output_item_id": 35565,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 35562,
+          "name": "Bear Flank",
+          "count": 1
+        }
+      ]
+    },
+    "cook-westfall-stew": {
+      "source_spell_id": 2543,
+      "source_spell_name": "Westfall Stew",
+      "output_item_id": 733,
+      "output_count": 5,
+      "output_count_max": 5,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 729,
+          "name": "Stringy Vulture Meat",
+          "count": 1
+        },
+        {
+          "item_id": 730,
+          "name": "Murloc Eye",
+          "count": 1
+        },
+        {
+          "item_id": 731,
+          "name": "Goretusk Snout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-slitherskin-mackerel": {
+      "source_spell_id": 7752,
+      "source_spell_name": "Slitherskin Mackerel",
+      "output_item_id": 787,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6303,
+          "name": "Raw Slitherskin Mackerel",
+          "count": 1
+        }
+      ]
+    },
+    "cook-charred-wolf-meat": {
+      "source_spell_id": 2538,
+      "source_spell_name": "Charred Wolf Meat",
+      "output_item_id": 2679,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2672,
+          "name": "Stringy Wolf Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-roasted-boar-meat": {
+      "source_spell_id": 2540,
+      "source_spell_name": "Roasted Boar Meat",
+      "output_item_id": 2681,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 769,
+          "name": "Chunk of Boar Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-cooked-crab-claw": {
+      "source_spell_id": 2545,
+      "source_spell_name": "Cooked Crab Claw",
+      "output_item_id": 2682,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2675,
+          "name": "Crawler Claw",
+          "count": 1
+        }
+      ]
+    },
+    "cook-succulent-pork-ribs": {
+      "source_spell_id": 2548,
+      "source_spell_name": "Succulent Pork Ribs",
+      "output_item_id": 2685,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2677,
+          "name": "Boar Ribs",
+          "count": 2
+        }
+      ]
+    },
+    "cook-longjaw-mud-snapper": {
+      "source_spell_id": 7753,
+      "source_spell_name": "Longjaw Mud Snapper",
+      "output_item_id": 4592,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6289,
+          "name": "Raw Longjaw Mud Snapper",
+          "count": 1
+        }
+      ]
+    },
+    "cook-bristle-whisker-catfish": {
+      "source_spell_id": 7755,
+      "source_spell_name": "Bristle Whisker Catfish",
+      "output_item_id": 4593,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6308,
+          "name": "Raw Bristle Whisker Catfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-rockscale-cod": {
+      "source_spell_id": 7828,
+      "source_spell_name": "Rockscale Cod",
+      "output_item_id": 4594,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6362,
+          "name": "Raw Rockscale Cod",
+          "count": 1
+        }
+      ]
+    },
+    "cook-rainbow-fin-albacore": {
+      "source_spell_id": 7827,
+      "source_spell_name": "Rainbow Fin Albacore",
+      "output_item_id": 5095,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6361,
+          "name": "Raw Rainbow Fin Albacore",
+          "count": 1
+        }
+      ]
+    },
+    "cook-scorpid-surprise": {
+      "source_spell_id": 6413,
+      "source_spell_name": "Scorpid Surprise",
+      "output_item_id": 5473,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5466,
+          "name": "Scorpid Stinger",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dig-rat-stew": {
+      "source_spell_id": 6417,
+      "source_spell_name": "Dig Rat Stew",
+      "output_item_id": 5478,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5051,
+          "name": "Dig Rat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-clam-chowder": {
+      "source_spell_id": 6501,
+      "source_spell_name": "Clam Chowder",
+      "output_item_id": 5526,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 5503,
+          "name": "Clam Meat",
+          "count": 1
+        },
+        {
+          "item_id": 1179,
+          "name": "Ice Cold Milk",
+          "count": 1
+        }
+      ]
+    },
+    "cook-brilliant-smallfish": {
+      "source_spell_id": 7751,
+      "source_spell_name": "Brilliant Smallfish",
+      "output_item_id": 6290,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6291,
+          "name": "Raw Brilliant Smallfish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-loch-frenzy-delight": {
+      "source_spell_id": 7754,
+      "source_spell_name": "Loch Frenzy Delight",
+      "output_item_id": 6316,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6317,
+          "name": "Raw Loch Frenzy",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spotted-yellowtail": {
+      "source_spell_id": 18238,
+      "source_spell_name": "Spotted Yellowtail",
+      "output_item_id": 6887,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4603,
+          "name": "Raw Spotted Yellowtail",
+          "count": 1
+        }
+      ]
+    },
+    "cook-smoked-bear-meat": {
+      "source_spell_id": 8607,
+      "source_spell_name": "Smoked Bear Meat",
+      "output_item_id": 6890,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3173,
+          "name": "Bear Meat",
+          "count": 1
+        }
+      ]
+    },
+    "cook-mithril-head-trout": {
+      "source_spell_id": 20916,
+      "source_spell_name": "Mithril Head Trout",
+      "output_item_id": 8364,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 8365,
+          "name": "Raw Mithril Head Trout",
+          "count": 1
+        }
+      ]
+    },
+    "cook-goldthorn-tea": {
+      "source_spell_id": 13028,
+      "source_spell_name": "Goldthorn Tea",
+      "output_item_id": 10841,
+      "output_count": 4,
+      "output_count_max": 4,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3821,
+          "name": "Goldthorn",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
+        }
+      ]
+    },
+    "cook-filet-of-redgill": {
+      "source_spell_id": 18241,
+      "source_spell_name": "Filet of Redgill",
+      "output_item_id": 13930,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13758,
+          "name": "Raw Redgill",
+          "count": 1
+        }
+      ]
+    },
+    "cook-lobster-stew": {
+      "source_spell_id": 18245,
+      "source_spell_name": "Lobster Stew",
+      "output_item_id": 13933,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13888,
+          "name": "Darkclaw Lobster",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
+        }
+      ]
+    },
+    "cook-baked-salmon": {
+      "source_spell_id": 18247,
+      "source_spell_name": "Baked Salmon",
+      "output_item_id": 13935,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 13889,
+          "name": "Raw Whitescale Salmon",
+          "count": 1
+        }
+      ]
+    },
+    "cook-undermine-clam-chowder": {
+      "source_spell_id": 20626,
+      "source_spell_name": "Undermine Clam Chowder",
+      "output_item_id": 16766,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 7974,
+          "name": "Zesty Clam Meat",
+          "count": 2
+        }
+      ]
+    },
+    "cook-spice-bread": {
+      "source_spell_id": 37836,
+      "source_spell_name": "Spice Bread",
+      "output_item_id": 30816,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 30817,
+          "name": "Simple Flour",
+          "count": 1
+        },
+        {
+          "item_id": 2678,
+          "name": "Mild Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-savory-deviate-delight": {
+      "source_spell_id": 8238,
+      "source_spell_name": "Savory Deviate Delight",
+      "output_item_id": 6657,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6522,
+          "name": "Deviate Fish",
+          "count": 1
+        }
+      ]
+    },
+    "cook-dragonbreath-chili": {
+      "source_spell_id": 15906,
+      "source_spell_name": "Dragonbreath Chili",
+      "output_item_id": 12217,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12037,
+          "name": "Mystery Meat",
+          "count": 1
+        },
+        {
+          "item_id": 4402,
+          "name": "Small Flame Sac",
+          "count": 1
+        }
+      ]
+    },
+    "cook-gingerbread-cookie": {
+      "source_spell_id": 21143,
+      "source_spell_name": "Gingerbread Cookie",
+      "output_item_id": 17197,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6889,
+          "name": "Small Egg",
+          "count": 1
+        },
+        {
+          "item_id": 17194,
+          "name": "Holiday Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-egg-nog": {
+      "source_spell_id": 21144,
+      "source_spell_name": "Egg Nog",
+      "output_item_id": 17198,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 6889,
+          "name": "Small Egg",
+          "count": 1
+        },
+        {
+          "item_id": 1179,
+          "name": "Ice Cold Milk",
+          "count": 1
+        },
+        {
+          "item_id": 17196,
+          "name": "Holiday Spirits",
+          "count": 1
+        },
+        {
+          "item_id": 17194,
+          "name": "Holiday Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-hot-apple-cider": {
+      "source_spell_id": 45022,
+      "source_spell_name": "Hot Apple Cider",
+      "output_item_id": 34411,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 34412,
+          "name": "Sparkling Apple Cider",
+          "count": 1
+        },
+        {
+          "item_id": 17196,
+          "name": "Holiday Spirits",
+          "count": 1
+        },
+        {
+          "item_id": 17194,
+          "name": "Holiday Spices",
+          "count": 1
+        }
+      ]
+    },
+    "cook-pumpkin-pie": {
+      "source_spell_id": 66036,
+      "source_spell_name": "Pumpkin Pie",
+      "output_item_id": 44836,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 46796,
+          "name": "Ripe Tirisfal Pumpkin",
+          "count": 1
+        },
+        {
+          "item_id": 44853,
+          "name": "Honey",
+          "count": 1
+        }
+      ]
+    },
+    "cook-spice-bread-stuffing": {
+      "source_spell_id": 66038,
+      "source_spell_name": "Spice Bread Stuffing",
+      "output_item_id": 44837,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 30816,
+          "name": "Spice Bread",
+          "count": 1
+        },
+        {
+          "item_id": 44835,
+          "name": "Autumnal Herbs",
+          "count": 1
+        }
+      ]
+    },
+    "cook-slow-roasted-turkey": {
+      "source_spell_id": 66037,
+      "source_spell_name": "Slow-Roasted Turkey",
+      "output_item_id": 44838,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 44834,
+          "name": "Wild Turkey",
+          "count": 1
+        },
+        {
+          "item_id": 44853,
+          "name": "Honey",
+          "count": 2
+        },
+        {
+          "item_id": 44835,
+          "name": "Autumnal Herbs",
+          "count": 1
+        }
+      ]
+    },
+    "cook-candied-sweet-potato": {
+      "source_spell_id": 66034,
+      "source_spell_name": "Candied Sweet Potato",
+      "output_item_id": 44839,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 46797,
+          "name": "Mulgore Sweet Potato",
+          "count": 1
+        },
+        {
+          "item_id": 44853,
+          "name": "Honey",
+          "count": 1
+        },
+        {
+          "item_id": 44835,
+          "name": "Autumnal Herbs",
+          "count": 1
+        }
+      ]
+    },
+    "cook-cranberry-chutney": {
+      "source_spell_id": 66035,
+      "source_spell_name": "Cranberry Chutney",
+      "output_item_id": 44840,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 46793,
+          "name": "Tangy Southfury Cranberries",
+          "count": 1
+        },
+        {
+          "item_id": 44853,
+          "name": "Honey",
+          "count": 1
+        }
+      ]
+    },
+    "cook-thistle-tea": {
+      "source_spell_id": 9513,
+      "source_spell_name": "Thistle Tea",
+      "output_item_id": 7676,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2452,
+          "name": "Swiftthistle",
+          "count": 1
+        },
+        {
+          "item_id": 159,
+          "name": "Refreshing Spring Water",
+          "count": 1
         }
       ]
     }

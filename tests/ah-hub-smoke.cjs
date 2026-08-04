@@ -253,6 +253,16 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /Cannot affect targets level 80 or higher/,
       label: "Desktop Leatherworking guide"
     });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "fishing-cooking-materials-ah-price-guide.html",
+      rows: 167,
+      sections: 13,
+      key: "cook-fish-feast",
+      target: "20g 50s",
+      recipeSpell: 57423,
+      notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
+      label: "Desktop Cooking guide"
+    });
 
     await desktop.goto(`${base}/guides/tailoring-cloth-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#tailor-only-nets").count(), 1);
@@ -293,8 +303,10 @@ async function verifyAuditedCraftedGuide(page, options) {
 
     await desktop.goto(`${base}/guides/fishing-cooking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#cook-required-feasts").count(), 1);
-    assert.equal(await desktop.locator("#cook-required-feasts tbody tr").count(), 3);
+    assert.equal(await desktop.locator("#cook-required-feasts tbody tr").count(), 4);
     assert.match(await desktop.locator("#cook-required-feasts").textContent(), /Requires Cooking 425 to place/);
+    assert.equal(await desktop.locator("#rogue-only-utility tbody tr").count(), 1);
+    assert.match(await desktop.locator("#rogue-only-utility").textContent(), /Rogue only/);
     await noOverflow(desktop, "Desktop profession-separated Cooking guide");
 
     await desktop.goto(`${base}/guides/jewelcrafting-gems-ah-price-guide.html`, { waitUntil: "networkidle" });
@@ -409,8 +421,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /Cannot affect targets level 80 or higher/,
       label: "Mobile Leatherworking guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "fishing-cooking-materials-ah-price-guide.html",
+      rows: 167,
+      sections: 13,
+      key: "cook-fish-feast",
+      target: "20g 50s",
+      recipeSpell: 57423,
+      notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
+      label: "Mobile Cooking guide"
+    });
 
-    console.log("Auction House hub and all eight crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all nine crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

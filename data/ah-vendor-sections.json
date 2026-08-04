@@ -395,6 +395,160 @@
       "target_copper": 200,
       "stack": "1 / 5 / 20",
       "notes": "Low-level Blacksmithing and Engineering supply."
+    },
+    "ice-cold-milk": {
+      "name": "Ice Cold Milk",
+      "item_id": 1179,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 125,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Low-level Cooking drink. Vendor cost is 1s 25c per bundle of five."
+    },
+    "flask-of-port": {
+      "name": "Flask of Port",
+      "item_id": 2593,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 150,
+      "vendor_buy_count": 1,
+      "target_copper": 500,
+      "stack": "1 / 5 / 20",
+      "notes": "Cooking drink. Vendor cost is 1s 50c each."
+    },
+    "flagon-of-mead": {
+      "name": "Flagon of Mead",
+      "item_id": 2594,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 1500,
+      "vendor_buy_count": 1,
+      "target_copper": 3000,
+      "stack": "1 / 5 / 20",
+      "notes": "Cooking drink. Vendor cost is 15s each."
+    },
+    "skin-of-dwarven-stout": {
+      "name": "Skin of Dwarven Stout",
+      "item_id": 2596,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 120,
+      "vendor_buy_count": 1,
+      "target_copper": 500,
+      "stack": "1 / 5 / 20",
+      "notes": "Cooking drink. Vendor cost is 1s 20c each."
+    },
+    "holiday-spices": {
+      "name": "Holiday Spices",
+      "item_id": 17194,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 10,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Winter Veil Cooking reagent. Vendor cost is 10c per bundle of five; availability is seasonal."
+    },
+    "holiday-spirits": {
+      "name": "Holiday Spirits",
+      "item_id": 17196,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 50,
+      "vendor_buy_count": 1,
+      "target_copper": 200,
+      "stack": "1 / 5 / 20",
+      "notes": "Winter Veil Cooking reagent. Vendor cost is 50c each; availability is seasonal."
+    },
+    "sparkling-apple-cider": {
+      "name": "Sparkling Apple Cider",
+      "item_id": 34412,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 1000,
+      "vendor_buy_count": 5,
+      "target_copper": 500,
+      "stack": "5 / 20",
+      "notes": "Winter Veil Cooking reagent. Vendor cost is 10s per bundle of five; availability is seasonal."
+    },
+    "savory-snowplum": {
+      "name": "Savory Snowplum",
+      "item_id": 35948,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 16000,
+      "vendor_buy_count": 5,
+      "target_copper": 5000,
+      "stack": "5 / 20",
+      "notes": "Kungaloosh ingredient. Vendor cost is 1g 60s per bundle of five."
+    },
+    "tundra-berries": {
+      "name": "Tundra Berries",
+      "item_id": 35949,
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited coin vendor",
+      "vendor_cost_copper": 8500,
+      "vendor_buy_count": 5,
+      "target_copper": 3000,
+      "stack": "5 / 20",
+      "notes": "Kungaloosh ingredient. Vendor cost is 85s per bundle of five."
+    },
+    "autumnal-herbs": {
+      "name": "Autumnal Herbs",
+      "item_id": 44835,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 10,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Pilgrim's Bounty Cooking reagent. Vendor cost is 10c per bundle of five; availability is seasonal."
+    },
+    "honey": {
+      "name": "Honey",
+      "item_id": 44853,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
+    },
+    "tangy-southfury-cranberries": {
+      "name": "Tangy Southfury Cranberries",
+      "item_id": 46793,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
+    },
+    "ripe-tirisfal-pumpkin": {
+      "name": "Ripe Tirisfal Pumpkin",
+      "item_id": 46796,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
+    },
+    "mulgore-sweet-potato": {
+      "name": "Mulgore Sweet Potato",
+      "item_id": 46797,
+      "source_type": "coin-vendor",
+      "source_label": "Seasonal coin vendor",
+      "vendor_cost_copper": 25,
+      "vendor_buy_count": 5,
+      "target_copper": 100,
+      "stack": "5 / 20",
+      "notes": "Horde Pilgrim's Bounty Cooking reagent. Vendor cost is 25c per bundle of five; availability is seasonal."
     }
   },
   "guides": {
@@ -444,7 +598,21 @@
         "mild-spices",
         "hot-spices",
         "soothing-spices",
-        "refreshing-spring-water"
+        "refreshing-spring-water",
+        "ice-cold-milk",
+        "flask-of-port",
+        "flagon-of-mead",
+        "skin-of-dwarven-stout",
+        "holiday-spices",
+        "holiday-spirits",
+        "sparkling-apple-cider",
+        "savory-snowplum",
+        "tundra-berries",
+        "autumnal-herbs",
+        "honey",
+        "tangy-southfury-cranberries",
+        "ripe-tirisfal-pumpkin",
+        "mulgore-sweet-potato"
       ]
     },
     "herbalism-herbs-ah-price-guide.html": {
