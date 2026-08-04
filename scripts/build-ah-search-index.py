@@ -220,6 +220,9 @@ class AHGuideParser(HTMLParser):
         demand = ""
         if "demand" in self.cell_columns:
             demand = clean_text(self.cell_parts[self.cell_columns.index("demand")])
+        stack = "1"
+        if "stack" in self.cell_columns:
+            stack = clean_text(self.cell_parts[self.cell_columns.index("stack")]) or "1"
         item: dict[str, str | int] = {
             "name": name,
             "detail": clean_text(self.mini_parts),
@@ -227,6 +230,7 @@ class AHGuideParser(HTMLParser):
             "section": self.section,
             "targetBid": clean_text(self.target_bid_parts) or "—",
             "target": clean_text(self.target_buyout_parts) or "—",
+            "stack": stack,
             "demand": demand or "—",
             "quality": self.quality,
             "marketSource": self.market_source,
@@ -258,7 +262,7 @@ def build_index() -> str:
 
     items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guide"]).casefold()))
     payload = {
-        "version": 3,
+        "version": 4,
         "guideCount": len(hub_parser.guides),
         "itemCount": len(items),
         "items": items,

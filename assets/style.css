@@ -771,6 +771,30 @@ h1 {
   font-size: 13px;
 }
 
+.ah-search-recommended-stack {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  grid-column: 1 / -1;
+  gap: 5px;
+  margin-top: 1px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(150, 163, 175, 0.18);
+}
+
+.ah-search-stack-label {
+  color: #8794a0;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ah-search-stack-value {
+  color: #c7d0d8;
+  font-size: 10px;
+}
+
 .ah-search-result-meta {
   display: block;
   margin-top: 6px;

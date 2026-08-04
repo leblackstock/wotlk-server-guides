@@ -216,9 +216,11 @@
         const guideCount = new Set(matches.map((match) => match.guide)).size;
         const bidValues = uniqueValues(matches, "targetBid");
         const buyoutValues = uniqueValues(matches, "target");
+        const stackValues = uniqueValues(matches, "stack");
         const demandValues = uniqueValues(matches, "demand");
         const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
         const pricesVary = bidValues.length > 1 || buyoutValues.length > 1;
+        const stackVaries = stackValues.length > 1;
         const demandVaries = demandValues.length > 1;
         const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
@@ -236,7 +238,10 @@
         const targetBuyout = makeElement("span", "ah-search-target-part ah-search-target-buyout");
         targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
         targetBuyout.append(makeElement("strong", "ah-search-target-value", pricesVary ? "Varies" : buyoutValues[0]));
-        targetPrice.append(targetBid, targetBuyout);
+        const recommendedStack = makeElement("span", "ah-search-recommended-stack");
+        recommendedStack.append(makeElement("span", "ah-search-stack-label", "Recommended stack"));
+        recommendedStack.append(makeElement("strong", "ah-search-stack-value", stackVaries ? "Varies by guide" : stackValues[0]));
+        targetPrice.append(targetBid, targetBuyout, recommendedStack);
         topLine.append(targetPrice);
         primary.append(topLine);
 
@@ -264,7 +269,7 @@
         if (grouped) {
           const locations = makeElement("span", "ah-search-result-locations");
           locations.append(makeElement("span", "ah-search-location-label", "Open in"));
-          const routes = groupedLocations(matches, pricesVary || demandVaries);
+          const routes = groupedLocations(matches, pricesVary || stackVaries || demandVaries);
           const guideOccurrences = new Map();
           routes.forEach((route) => guideOccurrences.set(route.guide, (guideOccurrences.get(route.guide) || 0) + 1));
           routes.forEach((route) => {
@@ -274,6 +279,7 @@
             routeLink.append(makeElement("span", "ah-search-location-name", routeLabel));
             const routeMeta = [];
             if (pricesVary) routeMeta.push(`Bid ${route.targetBid || "—"} · Buyout ${route.target || "—"}`);
+            if (stackVaries) routeMeta.push(`Stack ${route.stack || "—"}`);
             if (demandVaries) routeMeta.push(route.demand !== "—" ? `${route.demand} demand` : "Demand —");
             if (routeMeta.length) routeLink.append(makeElement("span", "ah-search-location-meta", routeMeta.join(" · ")));
             locations.append(routeLink);
