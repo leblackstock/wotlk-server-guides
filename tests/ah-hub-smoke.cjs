@@ -33,7 +33,7 @@ async function verifyAuditedCraftedGuide(page, options) {
   assert.equal(await recipeLink.getAttribute("data-wowhead"), `spell=${recipeSpell}&domain=wotlk`);
   assert.equal(await recipeLink.getAttribute("target"), "_blank");
   assert.equal(await recipeLink.getAttribute("rel"), "noopener");
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-03/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-04/);
   await noOverflow(page, label);
 }
 
@@ -124,6 +124,14 @@ async function verifyAuditedCraftedGuide(page, options) {
     await desktop.locator("#ah-search-input").press("ArrowDown");
     assert.equal(await saroniteCards.nth(1).evaluate((card) => card.classList.contains("is-active")), true);
 
+    await desktop.locator("#ah-search-input").fill("truesilver bar");
+    const truesilverBar = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Truesilver Bar$/ })
+    });
+    assert.equal(await truesilverBar.count(), 1);
+    assert.deepEqual(await truesilverBar.locator(".ah-search-target-value").allTextContents(), ["1g 49s", "1g 75s"]);
+    assert.equal(await truesilverBar.getByText("Varies", { exact: true }).count(), 0);
+
     await desktop.locator("#ah-search-input").fill("Autumn's Glow");
     const autumnsGlow = desktop.locator(".ah-search-result", {
       has: desktop.locator(".ah-search-item-name", { hasText: /^Autumn's Glow$/ })
@@ -180,7 +188,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     }));
     assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
-    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-03/);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-04/);
     await noOverflow(desktop, "Desktop Enchanting guide");
 
     await verifyAuditedCraftedGuide(desktop, {

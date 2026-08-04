@@ -74,6 +74,18 @@ come first. Demand margins are modest and deterministic. Current competitors
 may tell the player not to craft or not to post, but they do not rewrite the
 cost model.
 
+## Display Currency Rule
+
+Saved baselines and craft calculations retain their exact copper values. The
+published AH guides and search cards use no more than two currency units:
+
+- Prices below 1g display silver and copper (`S & C`) without rounding.
+- Prices of 1g or more round to the nearest silver and display gold and silver
+  (`G & S`); copper is never shown with gold.
+- Fifty copper rounds up, and rounding carries normally into the next gold.
+- Grouped search results compare these displayed values, so sub-silver rounding
+  differences do not incorrectly produce a `Varies` label.
+
 ## Required Workflow
 
 1. Audit baseline coverage and confidence before adding a profession.

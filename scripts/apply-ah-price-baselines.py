@@ -146,7 +146,10 @@ def transform(source: str, prices: dict[int, dict[str, int]], item_ids: dict[str
         current = current_buyouts(row, renderer)
         if set(current) != set(PRICE_BANDS):
             return row
-        target = {band: int(expected[band]) for band in PRICE_BANDS}
+        target = {
+            band: renderer.display_money_copper(int(expected[band]))
+            for band in PRICE_BANDS
+        }
         if current == target:
             return row
         changed += 1

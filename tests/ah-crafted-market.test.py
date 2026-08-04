@@ -36,6 +36,8 @@ def fail(message: str) -> None:
 
 
 def format_money(copper: int) -> str:
+    if copper >= 10_000:
+        copper = ((copper + 50) // 100) * 100
     gold, remainder = divmod(copper, 10_000)
     silver, copper = divmod(remainder, 100)
     parts: list[str] = []
@@ -860,7 +862,7 @@ def apply_guide_supplements(config: dict) -> dict:
         "fishing-cooking-materials-ah-price-guide.html",
         "mining-smithing-ah-price-guide.html",
     ):
-        if "Updated 2026-08-03" not in sources[filename]:
+        if "Updated 2026-08-04" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
         if not re.search(r"exact 3\.3\.5 (?:recipe|reagent)", sources[filename]):
             fail(f"{filename}: recipe-level pricing method is not explained")
@@ -936,7 +938,7 @@ def apply_guide_supplements(config: dict) -> dict:
         fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
 
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
-    if "Updated 2026-08-03" not in enchanting_source:
+    if "Updated 2026-08-04" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
     if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
         fail("Enchanting guide must contain exactly one shared pricing note")

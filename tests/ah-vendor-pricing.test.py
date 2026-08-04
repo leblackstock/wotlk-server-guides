@@ -22,6 +22,8 @@ def fail(message: str) -> None:
 
 
 def format_money(copper: int) -> str:
+    if copper >= 10_000:
+        copper = ((copper + 50) // 100) * 100
     gold, remainder = divmod(copper, 10_000)
     silver, copper = divmod(remainder, 100)
     parts: list[str] = []

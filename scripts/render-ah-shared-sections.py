@@ -61,11 +61,23 @@ LEGACY_INSCRIPTION_CRAFTED_BLOCK = re.compile(
     r"<section class=\"common ref-compact\"><h2>Vellums</h2>.*?</section>",
     re.DOTALL,
 )
+MONEY_VALUE_SPAN = re.compile(
+    r'(<span class="(?:bid|buyout)">)(.*?)(</span>)',
+    re.DOTALL,
+)
+
+
+def display_money_copper(copper: int) -> int:
+    """Return the site-wide display value without changing saved price math."""
+    if copper < 0:
+        raise ValueError("Money cannot be negative")
+    if copper >= 10_000:
+        return ((copper + 50) // 100) * 100
+    return copper
 
 
 def format_money(copper: int) -> str:
-    if copper < 0:
-        raise ValueError("Money cannot be negative")
+    copper = display_money_copper(copper)
     gold, remainder = divmod(copper, 10_000)
     silver, copper = divmod(remainder, 100)
     parts: list[str] = []
@@ -76,6 +88,27 @@ def format_money(copper: int) -> str:
     if copper or not parts:
         parts.append(f"{copper}c")
     return " ".join(parts)
+
+
+def money_from_text(value: str) -> int:
+    components = re.findall(r"([\d,]+)\s*([gsc])", html.unescape(value))
+    if not components:
+        raise ValueError(f"Could not parse money label: {value!r}")
+    return sum(
+        int(amount.replace(",", "")) * {"g": 10_000, "s": 100, "c": 1}[unit]
+        for amount, unit in components
+    )
+
+
+def normalize_money_display(source: str) -> str:
+    """Use G/S at one gold or more and S/C below one gold everywhere."""
+
+    def replace(match: re.Match[str]) -> str:
+        if not re.search(r"[\d,]+\s*[gsc]", match.group(2)):
+            return match.group(0)
+        return f"{match.group(1)}{format_money(money_from_text(match.group(2)))}{match.group(3)}"
+
+    return MONEY_VALUE_SPAN.sub(replace, source)
 
 
 def source_cost(item: dict) -> str:
@@ -887,6 +920,7 @@ def transform_guide(
             raise ValueError(f"{filename}: expected one dropped-scroll block")
     elif dropped_matches:
         raise ValueError(f"{filename}: dropped-scroll section is absent from canonical data")
+    source = normalize_money_display(source)
     source = decorate_category_headings(source, filename)
     source, _ = order_guide_source(source, filename, SECTION_ORDERING_POLICY)
     return source
