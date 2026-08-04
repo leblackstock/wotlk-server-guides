@@ -148,6 +148,81 @@
       "item_id": 43480,
       "skill": "Cooking",
       "rank": 375
+    },
+    "firstaid-linen-bandage": {
+      "item_id": 1251,
+      "skill": "First Aid",
+      "rank": 1
+    },
+    "firstaid-heavy-linen-bandage": {
+      "item_id": 2581,
+      "skill": "First Aid",
+      "rank": 20
+    },
+    "firstaid-wool-bandage": {
+      "item_id": 3530,
+      "skill": "First Aid",
+      "rank": 50
+    },
+    "firstaid-heavy-wool-bandage": {
+      "item_id": 3531,
+      "skill": "First Aid",
+      "rank": 75
+    },
+    "firstaid-silk-bandage": {
+      "item_id": 6450,
+      "skill": "First Aid",
+      "rank": 100
+    },
+    "firstaid-heavy-silk-bandage": {
+      "item_id": 6451,
+      "skill": "First Aid",
+      "rank": 125
+    },
+    "firstaid-mageweave-bandage": {
+      "item_id": 8544,
+      "skill": "First Aid",
+      "rank": 150
+    },
+    "firstaid-heavy-mageweave-bandage": {
+      "item_id": 8545,
+      "skill": "First Aid",
+      "rank": 175
+    },
+    "firstaid-runecloth-bandage": {
+      "item_id": 14529,
+      "skill": "First Aid",
+      "rank": 200
+    },
+    "firstaid-heavy-runecloth-bandage": {
+      "item_id": 14530,
+      "skill": "First Aid",
+      "rank": 225
+    },
+    "firstaid-powerful-anti-venom": {
+      "item_id": 19440,
+      "skill": "First Aid",
+      "rank": 300
+    },
+    "firstaid-netherweave-bandage": {
+      "item_id": 21990,
+      "skill": "First Aid",
+      "rank": 300
+    },
+    "firstaid-heavy-netherweave-bandage": {
+      "item_id": 21991,
+      "skill": "First Aid",
+      "rank": 325
+    },
+    "firstaid-frostweave-bandage": {
+      "item_id": 34721,
+      "skill": "First Aid",
+      "rank": 350
+    },
+    "firstaid-heavy-frostweave-bandage": {
+      "item_id": 34722,
+      "skill": "First Aid",
+      "rank": 400
     }
   },
   "canonical_profession_audience": {
@@ -277,6 +352,16 @@
       "item_id": 49634,
       "show_note": true,
       "reason": "No Leatherworking requirement on the finished drums."
+    },
+    "firstaid-anti-venom": {
+      "item_id": 6452,
+      "show_note": true,
+      "reason": "No First Aid requirement on the finished poison cure."
+    },
+    "firstaid-strong-anti-venom": {
+      "item_id": 6453,
+      "show_note": true,
+      "reason": "No First Aid requirement on the finished poison cure."
     }
   },
   "vendor_hard_requirements": {

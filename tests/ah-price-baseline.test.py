@@ -40,10 +40,10 @@ def main() -> int:
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 702:
-        fail("Frozen baseline must contain 650 pre-scan references plus 52 documented profession-input fallbacks")
+    if len(baseline.get("items", {})) != 705:
+        fail("Frozen baseline must contain 650 pre-scan references plus 55 documented profession-input fallbacks")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 649, "medium": 1, "fallback": 52}):
+    if confidence != Counter({"low": 649, "medium": 1, "fallback": 55}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
@@ -155,6 +155,30 @@ def main() -> int:
     }
     if len(mining_inputs) != 34:
         fail(f"Expected 34 direct Mining inputs, found {len(mining_inputs)}")
+    first_aid_inputs = {
+        int(reagent["item_id"])
+        for key, recipe in recipes.items()
+        if key.startswith("firstaid-")
+        for reagent in recipe["reagents"]
+    }
+    if len(first_aid_inputs) != 10:
+        fail(f"Expected 10 direct First Aid inputs, found {len(first_aid_inputs)}")
+    venom_sacs = {
+        "1475": ((2_000, 4_000, 8_000), "82c"),
+        "1288": ((10_000, 20_000, 40_000), "1s 85c"),
+        "19441": ((10_000, 20_000, 40_000), "15s"),
+    }
+    for item_id, (expected, vendor_anchor) in venom_sacs.items():
+        record = baseline["items"][item_id]
+        actual = tuple(int(record[band]) for band in ("quick", "target", "high"))
+        if (
+            actual != expected
+            or record["source_type"] != "documented-fallback"
+            or record["confidence"] != "fallback"
+            or vendor_anchor not in record["reason"]
+            or "No active listing was used" not in record["reason"]
+        ):
+            fail(f"{record['name']}: First Aid fallback bands or provenance are missing")
     elementium_ore = baseline["items"]["18562"]
     if (
         elementium_ore["source_type"] != "documented-fallback"
@@ -207,8 +231,8 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 702 frozen references and documented fallbacks, "
-        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 148 Cooking, and 34 Mining inputs covered; active scans excluded."
+        "Non-circular AH baseline is valid: 705 frozen references and documented fallbacks, "
+        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 148 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
     )
     return 0
 

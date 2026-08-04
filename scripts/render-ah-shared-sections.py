@@ -288,8 +288,24 @@ def decorate_category_headings(source: str, filename: str) -> str:
     )
 
 
+def apply_guide_supplements(config: dict) -> dict:
+    for filename, supplement in config.get("guide_supplements", {}).items():
+        if filename not in config.get("guides", {}):
+            raise KeyError(f"Crafted guide supplement references unknown guide: {filename}")
+        guide = config["guides"][filename]
+        guide.update(supplement.get("overrides", {}))
+        guide["sections"] = (
+            list(supplement.get("prepend_sections", []))
+            + list(guide.get("sections", []))
+            + list(supplement.get("append_sections", []))
+        )
+    return config
+
+
 def load_crafted_config() -> dict:
-    config = json.loads(CRAFTED_DATA_PATH.read_text(encoding="utf-8"))
+    config = apply_guide_supplements(
+        json.loads(CRAFTED_DATA_PATH.read_text(encoding="utf-8"))
+    )
     use_audit = json.loads(PROFESSION_USE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config.get("catalog", {})
     profiles = config.get("price_profiles", {})

@@ -6352,6 +6352,33 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional Blackwing Lair raid-drop fallback: the 10g quick band is anchored to the exact AzerothCore vendor liquidation value, while target and high reflect unverified scarcity. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "1475": {
+      "name": "Small Venom Sac",
+      "quick": 2000,
+      "target": 4000,
+      "high": 8000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional low-tier mob-drop range anchored above the exact 82c AzerothCore vendor liquidation value. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "1288": {
+      "name": "Large Venom Sac",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional mid-tier mob-drop range anchored above the exact 1s 85c AzerothCore vendor liquidation value. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
+    },
+    "19441": {
+      "name": "Huge Venom Sac",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional high-tier mob-drop range anchored above the exact 15s AzerothCore vendor liquidation value and aligned to the saved Large Venom Sac range. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
     }
   }
 }

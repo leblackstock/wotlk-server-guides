@@ -235,13 +235,13 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "tailoring-cloth-ah-price-guide.html",
-      rows: 406,
-      sections: 17,
-      key: "tailor-spellweave",
-      target: "52g",
-      recipeSpell: 56003,
-      notePattern: /assumes one guaranteed output/,
-      label: "Desktop Tailoring guide"
+      rows: 423,
+      sections: 21,
+      key: "firstaid-heavy-frostweave-bandage",
+      target: "1g 10s",
+      recipeSpell: 45546,
+      notePattern: /Heals 5,800 damage/,
+      label: "Desktop Tailoring + First Aid guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "skinning-leatherworking-materials-ah-price-guide.html",
@@ -271,7 +271,19 @@ async function verifyAuditedCraftedGuide(page, options) {
       await desktop.locator('[data-crafted-key="tailor-frostweave-net"] [data-column="notes"]').textContent(),
       /Requires Tailoring 350 to use/
     );
-    await noOverflow(desktop, "Desktop profession-separated Tailoring guide");
+    assert.equal(await desktop.locator("#first-aid-only-wrath-bandages").count(), 1);
+    assert.equal(await desktop.locator("#first-aid-only-outland-bandages").count(), 1);
+    assert.equal(await desktop.locator("#first-aid-only-classic-supplies").count(), 1);
+    assert.equal(await desktop.locator("#general-use-anti-venoms").count(), 1);
+    assert.match(
+      await desktop.locator('[data-crafted-key="firstaid-heavy-frostweave-bandage"] [data-column="notes"]').textContent(),
+      /Requires First Aid 400 to use/
+    );
+    assert.match(
+      await desktop.locator('[data-crafted-key="firstaid-strong-anti-venom"] [data-column="notes"]').textContent(),
+      /No profession required/
+    );
+    await noOverflow(desktop, "Desktop profession-separated Tailoring + First Aid guide");
 
     await desktop.goto(`${base}/guides/skinning-leatherworking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#leatherworker-only-drums").count(), 1);
@@ -403,13 +415,13 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "tailoring-cloth-ah-price-guide.html",
-      rows: 406,
-      sections: 17,
-      key: "tailor-spellweave",
-      target: "52g",
-      recipeSpell: 56003,
-      notePattern: /assumes one guaranteed output/,
-      label: "Mobile Tailoring guide"
+      rows: 423,
+      sections: 21,
+      key: "firstaid-heavy-frostweave-bandage",
+      target: "1g 10s",
+      recipeSpell: 45546,
+      notePattern: /Heals 5,800 damage/,
+      label: "Mobile Tailoring + First Aid guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "skinning-leatherworking-materials-ah-price-guide.html",
@@ -442,7 +454,7 @@ async function verifyAuditedCraftedGuide(page, options) {
       label: "Mobile Mining guide"
     });
 
-    console.log("Auction House hub and all ten crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all ten crafted guides, including the shared First Aid catalog, passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

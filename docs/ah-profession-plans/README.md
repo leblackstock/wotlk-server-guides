@@ -32,15 +32,15 @@ be presented as a verified current price.
 | 4 | Leatherworking | Complete — 2026-08-03 | [leatherworking.md](leatherworking.md) |
 | 5 | Cooking | Complete — 2026-08-03 | [cooking.md](cooking.md) |
 | 6 | Mining | Complete — 2026-08-03 | [mining.md](mining.md) |
-| 7 | First Aid | Small full catalog and guide-placement decision | [first-aid.md](first-aid.md) |
+| 7 | First Aid | Complete — 2026-08-03 | [first-aid.md](first-aid.md) |
 | 8 | Herbalism | Gathering-price audit; no normal crafted outputs | [herbalism.md](herbalism.md) |
 | 9 | Skinning | Gathering-price audit; conversions belong to Leatherworking | [skinning.md](skinning.md) |
 | 10 | Fishing | Gathering-price audit; finished food belongs to Cooking | [fishing.md](fishing.md) |
 
 Alchemy, Blacksmithing, Cooking, Enchanting, Engineering, Inscription,
-Jewelcrafting, Tailoring, Leatherworking, and Mining have canonical crafted
-catalogs in `data/ah-crafted-sections.json`. They remain comparison models, not
-unfinished plans. First Aid is the next suggested expansion.
+Jewelcrafting, Tailoring, Leatherworking, Mining, and First Aid have canonical
+crafted catalogs in `data/ah-crafted-sections.json`. They remain comparison
+models, not unfinished plans. Herbalism is the next suggested audit.
 
 ## Gate 0: Establish Non-Circular Baselines Before Adding Crafteds
 

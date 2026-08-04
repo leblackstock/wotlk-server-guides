@@ -15,6 +15,15 @@ GUIDES = ROOT / "guides"
 AUDIT = json.loads((ROOT / "data" / "ah-profession-use-audit.json").read_text(encoding="utf-8"))
 CRAFTED = json.loads((ROOT / "data" / "ah-crafted-sections.json").read_text(encoding="utf-8"))
 
+for filename, supplement in CRAFTED.get("guide_supplements", {}).items():
+    guide = CRAFTED["guides"][filename]
+    guide.update(supplement.get("overrides", {}))
+    guide["sections"] = (
+        supplement.get("prepend_sections", [])
+        + guide["sections"]
+        + supplement.get("append_sections", [])
+    )
+
 subprocess.run(
     [sys.executable, str(ROOT / "scripts" / "render-ah-shared-sections.py"), "--check"],
     check=True,
@@ -29,9 +38,9 @@ subprocess.run(
 hard = AUDIT["canonical_hard_requirements"]
 profession_audience = AUDIT["canonical_profession_audience"]
 general_exceptions = AUDIT["canonical_general_use_exceptions"]
-assert len(hard) == 27
+assert len(hard) == 42
 assert len(profession_audience) == 17
-assert len(general_exceptions) == 9
+assert len(general_exceptions) == 11
 assert len(AUDIT["vendor_hard_requirements"]) == 3
 assert len(AUDIT["static_hard_requirements"]) == 1
 assert len(AUDIT["static_general_use_exceptions"]) == 0
@@ -129,6 +138,27 @@ for key in ("lw-drums-of-forgotten-kings", "lw-drums-of-the-wild"):
     assert row and "No profession required:</strong>" in row.group(0)
 assert leatherworking.count("No profession required:</strong>") == 2
 
+tailoring = (GUIDES / "tailoring-cloth-ah-price-guide.html").read_text(encoding="utf-8")
+for key, rank in (
+    ("firstaid-heavy-frostweave-bandage", 400),
+    ("firstaid-heavy-netherweave-bandage", 325),
+    ("firstaid-powerful-anti-venom", 300),
+    ("firstaid-linen-bandage", 1),
+):
+    row = re.search(
+        rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>',
+        tailoring,
+        re.DOTALL,
+    )
+    assert row and f"Requires First Aid {rank} to use." in row.group(0)
+for key in ("firstaid-anti-venom", "firstaid-strong-anti-venom"):
+    row = re.search(
+        rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>',
+        tailoring,
+        re.DOTALL,
+    )
+    assert row and "No profession required:</strong>" in row.group(0)
+
 engineering_mounts = engineering[
     engineering.index('id="engineer-only-mount-components"'):
     engineering.index("<!-- AH_VENDOR_SECTION_END -->")
@@ -148,6 +178,6 @@ for excluded in AUDIT["excluded_items"]:
 
 print(
     "Profession-use audit is current: "
-    "31 hard-restricted finished items, 17 profession-or-class-audience items, "
-    "and 9 documented general-use exceptions."
+    "46 hard-restricted finished items, 17 profession-or-class-audience items, "
+    "and 11 documented general-use exceptions."
 )

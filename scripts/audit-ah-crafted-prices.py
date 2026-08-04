@@ -38,6 +38,9 @@ PROFESSION_SKILLS = {
     "fishing-cooking-materials-ah-price-guide.html": 185,
     "mining-smithing-ah-price-guide.html": 186,
 }
+ADDITIONAL_PROFESSION_SKILLS = {
+    "tailoring-cloth-ah-price-guide.html": (129,),
+}
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
     # truncates it at 300. These non-overlapping ranges return the complete set.
@@ -73,6 +76,7 @@ PROFESSION_SKILL_FILTERS = {
 PRICE_BANDS = ("quick", "target", "high")
 WOTLKDB_SKILL_URL = "https://wotlkdb.com/?spells=11.{skill_id}"
 WOTLKDB_SKILL_URLS = {
+    129: "https://wotlkdb.com/?spells=9.129",
     185: "https://wotlkdb.com/?spells=9.185",
 }
 WOTLKDB_ITEM_URL = "https://wotlkdb.com/?item={item_id}"
@@ -107,6 +111,20 @@ def profession_skill_url(skill_id: int) -> str:
     )
 
 
+def apply_guide_supplements(config: dict) -> dict:
+    for filename, supplement in config.get("guide_supplements", {}).items():
+        if filename not in config.get("guides", {}):
+            raise KeyError(f"Crafted guide supplement references unknown guide: {filename}")
+        guide = config["guides"][filename]
+        guide.update(supplement.get("overrides", {}))
+        guide["sections"] = (
+            list(supplement.get("prepend_sections", []))
+            + list(guide.get("sections", []))
+            + list(supplement.get("append_sections", []))
+        )
+    return config
+
+
 DECK_COMPLETION_MARGINS = {
     "quick": Decimal("1.03"),
     "target": Decimal("1.05"),
@@ -117,13 +135,21 @@ DECK_COMPLETION_MARGINS = {
 # entries use exact unlimited-vendor cost. Other values are explicitly low-
 # confidence fallbacks; active listings are not valuation evidence.
 REAGENT_PRICE_OVERRIDES = {
+    1475: {
+        "name": "Small Venom Sac",
+        "source_type": "market-fallback",
+        "quick": 2_000,
+        "target": 4_000,
+        "high": 8_000,
+        "reason": "Provisional low-tier mob-drop range anchored above the exact 82c vendor liquidation value; no active listing was used.",
+    },
     1288: {
         "name": "Large Venom Sac",
         "source_type": "market-fallback",
         "quick": 10_000,
         "target": 20_000,
         "high": 40_000,
-        "reason": "Unpriced legacy mob-drop reagent.",
+        "reason": "Provisional mid-tier mob-drop range anchored above the exact 1s 85c vendor liquidation value; no active listing was used.",
     },
     2901: {
         "name": "Mining Pick",
@@ -220,6 +246,14 @@ REAGENT_PRICE_OVERRIDES = {
         "target": 100_000,
         "high": 200_000,
         "reason": "Unpriced scarce open-world pickup.",
+    },
+    19441: {
+        "name": "Huge Venom Sac",
+        "source_type": "market-fallback",
+        "quick": 10_000,
+        "target": 20_000,
+        "high": 40_000,
+        "reason": "Provisional high-tier mob-drop range anchored above the exact 15s vendor liquidation value and aligned to the saved Large Venom Sac range; no active listing was used.",
     },
     39970: {
         "name": "Fire Leaf",
@@ -493,50 +527,63 @@ def refresh_recipe_audit(config: dict) -> dict:
         for section in config["guides"][filename]["sections"]:
             for key in section["items"]:
                 item_id = int(config["catalog"][key]["item_id"])
-                item_to_key[item_id] = (key, filename, skill_id)
+                item_skill_id = (
+                    129
+                    if merged_item(config, key).get("profession") == "First Aid"
+                    else skill_id
+                )
+                item_to_key[item_id] = (key, filename, item_skill_id)
 
     names: dict[int, str] = {}
     matches: dict[str, dict] = {}
     profession_spells: dict[int, dict[int, dict]] = {}
-    for filename, skill_id in PROFESSION_SKILLS.items():
-        filters = PROFESSION_SKILL_FILTERS.get(skill_id, ())
-        urls = (
-            [
-                profession_skill_url(skill_id) + f"&filter={filter_value}"
-                for filter_value in filters
-            ]
-            if filters
-            else [profession_skill_url(skill_id)]
-        )
-        spell_map: dict[int, dict] = {}
-        for url in urls:
-            source = fetch_text(url)
-            names.update(wotlkdb_item_names(source))
-            spell_map.update(
-                {int(spell["id"]): spell for spell in listview_data(source, "spells")}
+    for filename, primary_skill_id in PROFESSION_SKILLS.items():
+        skill_ids = (primary_skill_id,) + ADDITIONAL_PROFESSION_SKILLS.get(filename, ())
+        for skill_id in skill_ids:
+            filters = PROFESSION_SKILL_FILTERS.get(skill_id, ())
+            urls = (
+                [
+                    profession_skill_url(skill_id) + f"&filter={filter_value}"
+                    for filter_value in filters
+                ]
+                if filters
+                else [profession_skill_url(skill_id)]
             )
-        spells = list(spell_map.values())
-        expected_skill_records = {
-            164: 525,
-            755: 566,
-            197: 439,
-            165: 548,
-            185: 181,
-            186: 42,
-        }
-        expected_records = expected_skill_records.get(skill_id)
-        if expected_records is not None and len(spells) != expected_records:
-            raise ValueError(
-                f"Expected {expected_records} complete skill {skill_id} spell records; got {len(spells)}"
-            )
-        profession_spells[skill_id] = {int(spell["id"]): spell for spell in spells}
-        for spell in spells:
-            creates = spell.get("creates")
-            if not creates or int(creates[0]) not in item_to_key:
-                continue
-            key, item_filename, _ = item_to_key[int(creates[0])]
-            if item_filename == filename:
-                matches[key] = spell
+            spell_map: dict[int, dict] = {}
+            for url in urls:
+                source = fetch_text(url)
+                names.update(wotlkdb_item_names(source))
+                spell_map.update(
+                    {
+                        int(spell["id"]): spell
+                        for spell in listview_data(source, "spells")
+                    }
+                )
+            spells = list(spell_map.values())
+            expected_skill_records = {
+                129: 23,
+                164: 525,
+                755: 566,
+                197: 439,
+                165: 548,
+                185: 181,
+                186: 42,
+            }
+            expected_records = expected_skill_records.get(skill_id)
+            if expected_records is not None and len(spells) != expected_records:
+                raise ValueError(
+                    f"Expected {expected_records} complete skill {skill_id} spell records; got {len(spells)}"
+                )
+            profession_spells[skill_id] = {
+                int(spell["id"]): spell for spell in spells
+            }
+            for spell in spells:
+                creates = spell.get("creates")
+                if not creates or int(creates[0]) not in item_to_key:
+                    continue
+                key, item_filename, item_skill_id = item_to_key[int(creates[0])]
+                if item_filename == filename and item_skill_id == skill_id:
+                    matches[key] = spell
 
     for key, spell_id in COOKING_RECIPE_SPELL_OVERRIDES.items():
         spell = profession_spells[185].get(spell_id)
@@ -800,7 +847,9 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
             if (
-                key.startswith(("jc-", "tailor-", "lw-", "cook-", "mining-"))
+                key.startswith(
+                    ("jc-", "tailor-", "lw-", "cook-", "mining-", "firstaid-")
+                )
                 or (
                     dependency
                     and dependency.startswith(("lw-", "mining-"))
@@ -876,7 +925,16 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking", "Cooking", "Mining"}
+                if item.get("profession")
+                in {
+                    "Blacksmithing",
+                    "Jewelcrafting",
+                    "Tailoring",
+                    "Leatherworking",
+                    "Cooking",
+                    "Mining",
+                    "First Aid",
+                }
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)
@@ -1028,7 +1086,9 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    config = json.loads(CRAFTED_DATA_PATH.read_text(encoding="utf-8"))
+    config = apply_guide_supplements(
+        json.loads(CRAFTED_DATA_PATH.read_text(encoding="utf-8"))
+    )
 
     if args.refresh_recipes:
         audit = refresh_recipe_audit(config)

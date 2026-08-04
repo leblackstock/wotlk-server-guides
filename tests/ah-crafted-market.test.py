@@ -24,7 +24,7 @@ EXPECTED_GUIDE_COUNTS = {
     "enchanting-mats-ah-price-guide.html": 276,
     "blacksmithing-materials-ah-price-guide.html": 453,
     "jewelcrafting-gems-ah-price-guide.html": 497,
-    "tailoring-cloth-ah-price-guide.html": 406,
+    "tailoring-cloth-ah-price-guide.html": 423,
     "skinning-leatherworking-materials-ah-price-guide.html": 490,
     "fishing-cooking-materials-ah-price-guide.html": 167,
     "mining-smithing-ah-price-guide.html": 24,
@@ -86,6 +86,18 @@ def main() -> int:
         cwd=ROOT,
         check=True,
     )
+
+
+def apply_guide_supplements(config: dict) -> dict:
+    for filename, supplement in config.get("guide_supplements", {}).items():
+        guide = config["guides"][filename]
+        guide.update(supplement.get("overrides", {}))
+        guide["sections"] = (
+            list(supplement.get("prepend_sections", []))
+            + list(guide.get("sections", []))
+            + list(supplement.get("append_sections", []))
+        )
+    return config
     subprocess.run(
         [sys.executable, "scripts/audit-ah-crafted-prices.py", "--check"],
         cwd=ROOT,
@@ -97,7 +109,9 @@ def main() -> int:
         check=True,
     )
 
-    config = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    config = apply_guide_supplements(
+        json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    )
     recipe_audit = json.loads(RECIPE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config["catalog"]
     guides = config["guides"]
@@ -121,8 +135,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 2405:
-        fail(f"Expected 2405 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2422:
+        fail(f"Expected 2422 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -437,19 +451,62 @@ def main() -> int:
         if label not in tailoring_items:
             fail(f"Expanded Tailoring era/category coverage is missing: {label}")
     tailoring_sections = guides["tailoring-cloth-ah-price-guide.html"]["sections"]
-    if len(tailoring_sections) != 17:
-        fail(f"Expected 17 expanded Tailoring sections, found {len(tailoring_sections)}")
+    if len(tailoring_sections) != 21:
+        fail(f"Expected 21 Tailoring and First Aid sections, found {len(tailoring_sections)}")
     restricted_tailoring = [
         section
         for section in tailoring_sections
         if section.get("audience") == "profession-restricted"
     ]
-    if len(restricted_tailoring) != 1 or set(restricted_tailoring[0]["items"]) != {
+    tailor_only_sections = [
+        section
+        for section in restricted_tailoring
+        if section["items"][0].startswith("tailor-")
+    ]
+    if len(tailor_only_sections) != 1 or set(tailor_only_sections[0]["items"]) != {
         "tailor-netherweave-net",
         "tailor-heavy-netherweave-net",
         "tailor-frostweave-net",
     }:
         fail("Tailor-only nets are not isolated in one profession-restricted section")
+
+    first_aid_items = {key for key in used_keys if key.startswith("firstaid-")}
+    if len(first_aid_items) != 17:
+        fail(f"Expected 17 distinct tradeable First Aid outputs, found {len(first_aid_items)}")
+    first_aid_names = {merged_item(config, key)["name"] for key in first_aid_items}
+    for label in (
+        "Heavy Frostweave Bandage",
+        "Heavy Netherweave Bandage",
+        "Heavy Runecloth Bandage",
+        "Anti-Venom",
+        "Strong Anti-Venom",
+        "Powerful Anti-Venom",
+    ):
+        if label not in first_aid_names:
+            fail(f"Complete First Aid coverage is missing: {label}")
+    first_aid_sections = [
+        section
+        for section in tailoring_sections
+        if section["items"][0].startswith("firstaid-")
+    ]
+    if len(first_aid_sections) != 4:
+        fail(f"Expected four separate First Aid sections, found {len(first_aid_sections)}")
+    restricted_first_aid = {
+        key
+        for section in first_aid_sections
+        if section.get("audience") == "profession-restricted"
+        for key in section["items"]
+    }
+    if len(restricted_first_aid) != 15:
+        fail("The 15 skill-gated First Aid outputs are not isolated in restricted sections")
+    general_first_aid = {
+        key
+        for section in first_aid_sections
+        if section.get("audience") == "general-use"
+        for key in section["items"]
+    }
+    if general_first_aid != {"firstaid-anti-venom", "firstaid-strong-anti-venom"}:
+        fail("General-use anti-venoms are not separated from skill-gated First Aid items")
 
     leatherworking_items = {
         merged_item(config, key)["name"]: merged_item(config, key)
@@ -709,6 +766,9 @@ def main() -> int:
         "tailor-frostweave-bag": 640_000,
         "tailor-brilliant-spellthread": 850_000,
         "tailor-leggings-of-woven-death": 71_000_000,
+        "firstaid-heavy-frostweave-bandage": 11_000,
+        "firstaid-strong-anti-venom": 7_500,
+        "firstaid-powerful-anti-venom": 22_000,
         "lw-drums-of-battle": 310_000,
         "lw-drums-of-forgotten-kings": 1_050_000,
         "lw-frosthide-leg-armor": 1_450_000,
@@ -749,6 +809,9 @@ def main() -> int:
         "tailor-brilliant-spellthread": "spell power by 50 and Spirit by 20",
         "tailor-frostweave-net": "Tailoring 350 to use",
         "tailor-rich-purple-silk-shirt": "appearance and roleplay collectors",
+        "firstaid-heavy-frostweave-bandage": "Heals 5,800 damage over an 8 sec channel",
+        "firstaid-strong-anti-venom": "Cures poisons up to level 35",
+        "firstaid-powerful-anti-venom": "requires First Aid to use",
         "lw-drums-of-battle": "Cannot affect targets level 80 or higher",
         "lw-drums-of-forgotten-kings": "requires no profession to use",
         "lw-frosthide-leg-armor": "Stamina by 55 and Agility by 22",

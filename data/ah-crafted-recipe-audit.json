@@ -5,6 +5,7 @@
     "name": "WotLKDB 3.3.5a profession and item records",
     "profession_url_template": "https://wotlkdb.com/?spells=11.{skill_id}",
     "profession_url_overrides": {
+      "129": "https://wotlkdb.com/?spells=9.129",
       "185": "https://wotlkdb.com/?spells=9.185"
     },
     "item_url_template": "https://wotlkdb.com/?item={item_id}",
@@ -48,13 +49,22 @@
     "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium."
   },
   "reagent_price_overrides": {
+    "1475": {
+      "name": "Small Venom Sac",
+      "source_type": "market-fallback",
+      "quick": 2000,
+      "target": 4000,
+      "high": 8000,
+      "reason": "Provisional low-tier mob-drop range anchored above the exact 82c vendor liquidation value; no active listing was used.",
+      "confidence": "fallback"
+    },
     "1288": {
       "name": "Large Venom Sac",
       "source_type": "market-fallback",
       "quick": 10000,
       "target": 20000,
       "high": 40000,
-      "reason": "Unpriced legacy mob-drop reagent.",
+      "reason": "Provisional mid-tier mob-drop range anchored above the exact 1s 85c vendor liquidation value; no active listing was used.",
       "confidence": "fallback"
     },
     "2901": {
@@ -163,6 +173,15 @@
       "target": 100000,
       "high": 200000,
       "reason": "Unpriced scarce open-world pickup.",
+      "confidence": "fallback"
+    },
+    "19441": {
+      "name": "Huge Venom Sac",
+      "source_type": "market-fallback",
+      "quick": 10000,
+      "target": 20000,
+      "high": 40000,
+      "reason": "Provisional high-tier mob-drop range anchored above the exact 15s vendor liquidation value and aligned to the saved Large Venom Sac range; no active listing was used.",
       "confidence": "fallback"
     },
     "39970": {
@@ -28724,6 +28743,261 @@
         }
       ]
     },
+    "firstaid-heavy-frostweave-bandage": {
+      "source_spell_id": 45546,
+      "source_spell_name": "Heavy Frostweave Bandage",
+      "output_item_id": 34722,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 33470,
+          "name": "Frostweave Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-frostweave-bandage": {
+      "source_spell_id": 45545,
+      "source_spell_name": "Frostweave Bandage",
+      "output_item_id": 34721,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 33470,
+          "name": "Frostweave Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-heavy-netherweave-bandage": {
+      "source_spell_id": 27033,
+      "source_spell_name": "Heavy Netherweave Bandage",
+      "output_item_id": 21991,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 21877,
+          "name": "Netherweave Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-netherweave-bandage": {
+      "source_spell_id": 27032,
+      "source_spell_name": "Netherweave Bandage",
+      "output_item_id": 21990,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 21877,
+          "name": "Netherweave Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-powerful-anti-venom": {
+      "source_spell_id": 23787,
+      "source_spell_name": "Powerful Anti-Venom",
+      "output_item_id": 19440,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 19441,
+          "name": "Huge Venom Sac",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-heavy-runecloth-bandage": {
+      "source_spell_id": 18630,
+      "source_spell_name": "Heavy Runecloth Bandage",
+      "output_item_id": 14530,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 14047,
+          "name": "Runecloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-heavy-mageweave-bandage": {
+      "source_spell_id": 10841,
+      "source_spell_name": "Heavy Mageweave Bandage",
+      "output_item_id": 8545,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4338,
+          "name": "Mageweave Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-heavy-wool-bandage": {
+      "source_spell_id": 3278,
+      "source_spell_name": "Heavy Wool Bandage",
+      "output_item_id": 3531,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2592,
+          "name": "Wool Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-heavy-silk-bandage": {
+      "source_spell_id": 7929,
+      "source_spell_name": "Heavy Silk Bandage",
+      "output_item_id": 6451,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4306,
+          "name": "Silk Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-runecloth-bandage": {
+      "source_spell_id": 18629,
+      "source_spell_name": "Runecloth Bandage",
+      "output_item_id": 14529,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 14047,
+          "name": "Runecloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-mageweave-bandage": {
+      "source_spell_id": 10840,
+      "source_spell_name": "Mageweave Bandage",
+      "output_item_id": 8544,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4338,
+          "name": "Mageweave Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-silk-bandage": {
+      "source_spell_id": 7928,
+      "source_spell_name": "Silk Bandage",
+      "output_item_id": 6450,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4306,
+          "name": "Silk Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-wool-bandage": {
+      "source_spell_id": 3277,
+      "source_spell_name": "Wool Bandage",
+      "output_item_id": 3530,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2592,
+          "name": "Wool Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-heavy-linen-bandage": {
+      "source_spell_id": 3276,
+      "source_spell_name": "Heavy Linen Bandage",
+      "output_item_id": 2581,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2589,
+          "name": "Linen Cloth",
+          "count": 2
+        }
+      ]
+    },
+    "firstaid-linen-bandage": {
+      "source_spell_id": 3275,
+      "source_spell_name": "Linen Bandage",
+      "output_item_id": 1251,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2589,
+          "name": "Linen Cloth",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-strong-anti-venom": {
+      "source_spell_id": 7935,
+      "source_spell_name": "Strong Anti-Venom",
+      "output_item_id": 6453,
+      "output_count": 3,
+      "output_count_max": 3,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1288,
+          "name": "Large Venom Sac",
+          "count": 1
+        }
+      ]
+    },
+    "firstaid-anti-venom": {
+      "source_spell_id": 7934,
+      "source_spell_name": "Anti-Venom",
+      "output_item_id": 6452,
+      "output_count": 3,
+      "output_count_max": 3,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 1475,
+          "name": "Small Venom Sac",
+          "count": 1
+        }
+      ]
+    },
     "tailor-netherweave-net": {
       "source_spell_id": 31460,
       "source_spell_name": "Netherweave Net",
@@ -54404,6 +54678,21 @@
         }
       ]
     },
+    "mining-hardened-adamantite-bar": {
+      "source_spell_id": 29686,
+      "source_spell_name": "Smelt Hardened Adamantite",
+      "output_item_id": 23573,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23446,
+          "name": "Adamantite Bar",
+          "count": 10
+        }
+      ]
+    },
     "mining-khorium-bar": {
       "source_spell_id": 29361,
       "source_spell_name": "Smelt Khorium",
@@ -54439,18 +54728,18 @@
         }
       ]
     },
-    "mining-hardened-adamantite-bar": {
-      "source_spell_id": 29686,
-      "source_spell_name": "Smelt Hardened Adamantite",
-      "output_item_id": 23573,
+    "mining-eternium-bar": {
+      "source_spell_id": 29359,
+      "source_spell_name": "Smelt Eternium",
+      "output_item_id": 23447,
       "output_count": 1,
       "output_count_max": 1,
       "pricing_rule": "direct",
       "reagents": [
         {
-          "item_id": 23446,
-          "name": "Adamantite Bar",
-          "count": 10
+          "item_id": 23427,
+          "name": "Eternium Ore",
+          "count": 2
         }
       ]
     },
@@ -54465,21 +54754,6 @@
         {
           "item_id": 23425,
           "name": "Adamantite Ore",
-          "count": 2
-        }
-      ]
-    },
-    "mining-eternium-bar": {
-      "source_spell_id": 29359,
-      "source_spell_name": "Smelt Eternium",
-      "output_item_id": 23447,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 23427,
-          "name": "Eternium Ore",
           "count": 2
         }
       ]
@@ -54574,21 +54848,6 @@
         }
       ]
     },
-    "mining-thorium-bar": {
-      "source_spell_id": 16153,
-      "source_spell_name": "Smelt Thorium",
-      "output_item_id": 12359,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 10620,
-          "name": "Thorium Ore",
-          "count": 1
-        }
-      ]
-    },
     "mining-truesilver-bar": {
       "source_spell_id": 10098,
       "source_spell_name": "Smelt Truesilver",
@@ -54604,17 +54863,47 @@
         }
       ]
     },
-    "mining-mithril-bar": {
-      "source_spell_id": 10097,
-      "source_spell_name": "Smelt Mithril",
-      "output_item_id": 3860,
+    "mining-gold-bar": {
+      "source_spell_id": 3308,
+      "source_spell_name": "Smelt Gold",
+      "output_item_id": 3577,
       "output_count": 1,
       "output_count_max": 1,
       "pricing_rule": "direct",
       "reagents": [
         {
-          "item_id": 3858,
-          "name": "Mithril Ore",
+          "item_id": 2776,
+          "name": "Gold Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-thorium-bar": {
+      "source_spell_id": 16153,
+      "source_spell_name": "Smelt Thorium",
+      "output_item_id": 12359,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 10620,
+          "name": "Thorium Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-silver-bar": {
+      "source_spell_id": 2658,
+      "source_spell_name": "Smelt Silver",
+      "output_item_id": 2842,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2775,
+          "name": "Silver Ore",
           "count": 1
         }
       ]
@@ -54639,6 +54928,21 @@
         }
       ]
     },
+    "mining-mithril-bar": {
+      "source_spell_id": 10097,
+      "source_spell_name": "Smelt Mithril",
+      "output_item_id": 3860,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3858,
+          "name": "Mithril Ore",
+          "count": 1
+        }
+      ]
+    },
     "mining-iron-bar": {
       "source_spell_id": 3307,
       "source_spell_name": "Smelt Iron",
@@ -54650,36 +54954,6 @@
         {
           "item_id": 2772,
           "name": "Iron Ore",
-          "count": 1
-        }
-      ]
-    },
-    "mining-gold-bar": {
-      "source_spell_id": 3308,
-      "source_spell_name": "Smelt Gold",
-      "output_item_id": 3577,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 2776,
-          "name": "Gold Ore",
-          "count": 1
-        }
-      ]
-    },
-    "mining-silver-bar": {
-      "source_spell_id": 2658,
-      "source_spell_name": "Smelt Silver",
-      "output_item_id": 2842,
-      "output_count": 1,
-      "output_count_max": 1,
-      "pricing_rule": "direct",
-      "reagents": [
-        {
-          "item_id": 2775,
-          "name": "Silver Ore",
           "count": 1
         }
       ]

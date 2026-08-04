@@ -217,7 +217,7 @@
   async function initialize() {
     if (!scriptUrl) return;
     try {
-      await loadScript(new URL("ah-item-ids.js?v=20260803-mining-catalog-v1", scriptUrl).href, "data-ah-item-id-map");
+      await loadScript(new URL("ah-item-ids.js?v=20260803-first-aid-catalog-v1", scriptUrl).href, "data-ah-item-id-map");
       ensureStyles();
       decorateWithin(document);
       observeNewResults();

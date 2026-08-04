@@ -1,7 +1,7 @@
 # First Aid AH Expansion Plan
 
-- Status: `planned`
-- Existing guide: none dedicated
+- Status: `complete — 2026-08-03`
+- Existing guide: shared placement in `guides/tailoring-cloth-ah-price-guide.html`
 - Work type: small full catalog plus guide-placement decision
 - Suggested order: 7
 
@@ -59,19 +59,50 @@ because both consume cloth.
 
 ## Acceptance Checks
 
-- [ ] Current cloth/reagent price audit completed and recorded.
-- [ ] Guide placement is decided and documented.
-- [ ] Every First Aid recipe has an include/exclude decision.
-- [ ] Output quantities, effects, levels, binding, and rarity are verified.
-- [ ] Thin-market/fallback prices are clearly labeled.
-- [ ] Shared validation in `README.md` passes.
+- [x] Current cloth/reagent price audit completed and recorded.
+- [x] Guide placement is decided and documented.
+- [x] Every First Aid recipe has an include/exclude decision.
+- [x] Output quantities, effects, levels, binding, and rarity are verified.
+- [x] Thin-market/fallback prices are clearly labeled.
+- [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
 
-- Audit date:
-- Placement decision:
-- Listing concentration observations (not valuation evidence):
-- Recipe/item sources checked:
-- Server-specific findings:
-- Decisions and unresolved items:
-- Completion summary:
+- Audit date: 2026-08-03.
+- Placement decision: First Aid is a separately owned canonical catalog inside
+  `data/ah-crafted-sections.json`, rendered as four clearly labeled sections at
+  the top of the Tailoring/cloth guide. A separate page was rejected because
+  the complete catalog contains only 17 tradeable outputs and shares the cloth
+  buying path; the combined page avoids a thin guide without mislabeling First
+  Aid items as Tailoring crafts.
+- Listing concentration observations (not valuation evidence): The AH was not
+  rescanned for valuation. The user and friends are known to control at least
+  half of many markets, so active listings remain competition evidence only and
+  were excluded from every First Aid baseline and finished-price calculation.
+- Recipe/item sources checked: WotLKDB's 3.3.5 First Aid spell list and
+  individual item/recipe pages supplied spell IDs, reagents, guaranteed output,
+  effects, channels, cooldowns, and First Aid-use ranks. AzerothCore item
+  templates at commit `e0fe11ba46b885a01e4a4038001e0055822cc7ba`
+  confirmed rarity, binding, stack size, tradeability, and absence of separate
+  character-level requirements. All seven saved cloth baselines and all AH
+  guides were audited for duplicate bandage, anti-venom, and reagent coverage.
+- Server-specific findings: No Hellscream-specific First Aid override was
+  verified. The catalog therefore documents standard 3.3.5 behavior and does
+  not claim a custom recipe, output, or use requirement.
+- Decisions and unresolved items: Twenty-three First Aid spell records were
+  reviewed. Seventeen produce valid tradeable items: 14 bandages and three
+  anti-venoms. Six rank/header records produce no item and were excluded.
+  Fifteen outputs require First Aid to use and occupy dedicated restricted
+  sections; Anti-Venom and Strong Anti-Venom are separately labeled general-use
+  items. All 17 are common, unbound, tradeable, and have no separate character-
+  level requirement. Cloth prices retain the frozen pre-scan low-confidence
+  references. Small, Large, and Huge Venom Sacs received explicit fallback
+  ranges anchored above exact vendor liquidation values; no listing price was
+  used. Those three provisional ranges remain unresolved until qualifying
+  realized-sale or measured-acquisition evidence exists.
+- Completion summary: Added all 17 valid outputs with exact recipe mouseovers,
+  rarity colors, effects, use restrictions, conservative stack guidance, and
+  exact same-band craft floors. The catalog is divided into Wrath, Outland, and
+  Classic First Aid-only sections plus a general-use anti-venom section. The
+  shared page now contains 423 crafted rows across 21 sections, ordered by
+  target buyout within each section.

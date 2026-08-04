@@ -118,3 +118,11 @@ Ore. Its 10g quick band equals the exact 3.3.5 vendor liquidation value; the 20g
 target and 40g high bands are provisional scarcity ranges used only to cost
 Elementium Bar. No active listing was used, and the bands must be replaced when
 qualifying realized-sale or measured-acquisition evidence becomes available.
+
+The 2026-08-03 First Aid expansion added three fallback-confidence venom-sac
+inputs. Small Venom Sac uses 20s / 40s / 80s and is anchored above its exact 82c
+vendor liquidation value. Large and Huge Venom Sacs use 1g / 2g / 4g, anchored
+above exact 1s 85c and 15s liquidation values respectively. These provisional
+ranges make the three anti-venom recipes costable without importing active AH
+listings; they must be replaced when qualifying realized sales or measured
+acquisition evidence becomes available.
