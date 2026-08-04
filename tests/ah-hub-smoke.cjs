@@ -106,7 +106,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     await desktop.waitForSelector(".ah-search-result");
     assert.match(await desktop.locator(".ah-search-item-name").first().textContent(), /Sanguine Hibiscus/);
     assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
-    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-stack-label").textContent(), "Recommended stack");
+    assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-stack-label").textContent(), "Stack");
     assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-stack-value").textContent(), "5 / 10 / 20");
     assert.match(await desktop.locator("a.ah-search-result-primary").first().getAttribute("href"), /^\.\/guides\//);
 
@@ -120,10 +120,14 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     assert.equal(await saroniteBar.count(), 1);
     assert.match(await saroniteBar.locator(".ah-search-result-meta").textContent(), /4 entries across 3 guides/);
-    assert.equal(await saroniteBar.locator(".ah-search-location-link").count(), 4);
-    assert.equal(await saroniteBar.locator(".ah-search-stack-value").textContent(), "Varies by guide");
-    assert.equal(await saroniteBar.locator(".ah-search-location-meta", { hasText: "Stack 5 / 20" }).count(), 3);
-    assert.equal(await saroniteBar.locator(".ah-search-location-meta", { hasText: "Stack 5 / 10 / 20" }).count(), 1);
+    assert.equal(await saroniteBar.locator(".ah-search-location-link").count(), 3);
+    assert.equal(await saroniteBar.locator(".ah-search-stack-value").textContent(), "5 / 10 / 20");
+    assert.match(await saroniteBar.locator(".ah-search-result-meta").textContent(), /Very High demand/);
+    const saroniteMetaBox = await saroniteBar.locator(".ah-search-result-meta").boundingBox();
+    const saroniteStackBox = await saroniteBar.locator(".ah-search-stack-summary").boundingBox();
+    assert.ok(saroniteMetaBox && saroniteStackBox);
+    assert.ok(Math.abs(saroniteMetaBox.y - saroniteStackBox.y) <= 2);
+    assert.equal(await saroniteBar.locator(".ah-search-location-meta").count(), 0);
     await desktop.locator("#ah-search-input").press("ArrowDown");
     assert.equal(await saroniteBar.evaluate((card) => card.classList.contains("is-active")), true);
     await desktop.locator("#ah-search-input").press("ArrowDown");
@@ -136,7 +140,14 @@ async function verifyAuditedCraftedGuide(page, options) {
     assert.equal(await truesilverBar.count(), 1);
     assert.deepEqual(await truesilverBar.locator(".ah-search-target-value").allTextContents(), ["1g 49s", "1g 75s"]);
     assert.equal(await truesilverBar.locator(".ah-search-stack-value").textContent(), "1 / 5 / 10");
-    assert.equal(await truesilverBar.getByText("Varies", { exact: true }).count(), 0);
+    assert.equal(await truesilverBar.getByText(/Varies/i).count(), 0);
+
+    await desktop.locator("#ah-search-input").fill("Book of Glyph Mastery");
+    const glyphBook = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Book of Glyph Mastery$/ })
+    });
+    assert.equal(await glyphBook.count(), 1);
+    assert.equal(await glyphBook.locator(".ah-search-stack-summary").count(), 0);
 
     await desktop.locator("#ah-search-input").fill("Autumn's Glow");
     const autumnsGlow = desktop.locator(".ah-search-result", {
@@ -145,7 +156,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     assert.equal(await autumnsGlow.count(), 1);
     assert.deepEqual(await autumnsGlow.locator(".ah-search-target-value").allTextContents(), ["8g 50s", "10g"]);
     assert.equal(await autumnsGlow.locator(".ah-search-location-link").count(), 2);
-    assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 2);
+    assert.equal(await autumnsGlow.locator(".ah-search-location-meta").count(), 0);
 
     await desktop.locator("#ah-search-input").fill("Heavy Borean Leather");
     const heavyBoreanLeather = desktop.locator(".ah-search-result", {
@@ -360,8 +371,8 @@ async function verifyAuditedCraftedGuide(page, options) {
     const mobileSaroniteBar = mobile.locator(".ah-search-result", {
       has: mobile.locator(".ah-search-item-name", { hasText: /^Saronite Bar$/ })
     });
-    assert.equal(await mobileSaroniteBar.locator(".ah-search-stack-label").textContent(), "Recommended stack");
-    assert.equal(await mobileSaroniteBar.locator(".ah-search-stack-value").textContent(), "Varies by guide");
+    assert.equal(await mobileSaroniteBar.locator(".ah-search-stack-label").textContent(), "Stack");
+    assert.equal(await mobileSaroniteBar.locator(".ah-search-stack-value").textContent(), "5 / 10 / 20");
     await mobile.locator("#ah-search-input").fill("Heavy Borean Leather");
     const mobileHeavyBoreanLeather = mobile.locator(".ah-search-result", {
       has: mobile.locator(".ah-search-item-name", { hasText: /^Heavy Borean Leather$/ })

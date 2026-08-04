@@ -142,8 +142,7 @@
     return Array.from(new Set(items.map((item) => item[key] || "—")));
   }
 
-  function groupedLocations(matches, showEveryLocation) {
-    if (showEveryLocation) return matches;
+  function groupedLocations(matches) {
     const guides = new Set();
     return matches.filter((item) => {
       if (guides.has(item.guide)) return false;
@@ -219,9 +218,10 @@
         const stackValues = uniqueValues(matches, "stack");
         const demandValues = uniqueValues(matches, "demand");
         const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
-        const pricesVary = bidValues.length > 1 || buyoutValues.length > 1;
-        const stackVaries = stackValues.length > 1;
-        const demandVaries = demandValues.length > 1;
+        const targetBidValue = bidValues[0] || "—";
+        const targetBuyoutValue = buyoutValues[0] || "—";
+        const stackValue = stackValues[0] || "—";
+        const demandValue = demandValues[0] || "—";
         const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
         const card = makeElement("article", "ah-search-result");
@@ -234,27 +234,33 @@
         const targetPrice = makeElement("span", "ah-search-target-price");
         const targetBid = makeElement("span", "ah-search-target-part ah-search-target-bid");
         targetBid.append(makeElement("span", "ah-search-target-label", "Target Bid"));
-        targetBid.append(makeElement("strong", "ah-search-target-value", pricesVary ? "Varies" : bidValues[0]));
+        targetBid.append(makeElement("strong", "ah-search-target-value", targetBidValue));
         const targetBuyout = makeElement("span", "ah-search-target-part ah-search-target-buyout");
         targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
-        targetBuyout.append(makeElement("strong", "ah-search-target-value", pricesVary ? "Varies" : buyoutValues[0]));
-        const recommendedStack = makeElement("span", "ah-search-recommended-stack");
-        recommendedStack.append(makeElement("span", "ah-search-stack-label", "Recommended stack"));
-        recommendedStack.append(makeElement("strong", "ah-search-stack-value", stackVaries ? "Varies by guide" : stackValues[0]));
-        targetPrice.append(targetBid, targetBuyout, recommendedStack);
+        targetBuyout.append(makeElement("strong", "ah-search-target-value", targetBuyoutValue));
+        targetPrice.append(targetBid, targetBuyout);
         topLine.append(targetPrice);
         primary.append(topLine);
 
         const locationSummary = `${matches.length} ${matches.length === 1 ? "entry" : "entries"} across ${guideCount} ${guideCount === 1 ? "guide" : "guides"}`;
-        const meta = [grouped ? locationSummary : item.section, demandVaries ? "Demand varies by guide" : demandValues[0] !== "—" ? `${demandValues[0]} demand` : ""]
+        const demandSummary = demandValue !== "—" ? `${demandValue} demand` : "";
+        const meta = [grouped ? locationSummary : item.section, demandSummary]
           .filter(Boolean)
           .join(" · ");
-        primary.append(makeElement("span", "ah-search-result-meta", meta));
+        const detailLine = makeElement("span", "ah-search-result-detail-line");
+        detailLine.append(makeElement("span", "ah-search-result-meta", meta));
+        if (stackValue !== "1" && stackValue !== "—") {
+          const stack = makeElement("span", "ah-search-stack-summary");
+          stack.append(makeElement("span", "ah-search-stack-label", "Stack"));
+          stack.append(makeElement("strong", "ah-search-stack-value", stackValue));
+          detailLine.append(stack);
+        }
+        primary.append(detailLine);
 
         if (conversionHints.length) {
           const conversionHint = conversionHints.length === 1
             ? conversionHints[0]
-            : "Conversion estimates vary by guide.";
+            : "Multiple conversion estimates; open a guide below.";
           primary.append(makeElement("span", "ah-search-conversion-hint", `Conversion check: ${conversionHint}`));
         }
 
@@ -269,7 +275,7 @@
         if (grouped) {
           const locations = makeElement("span", "ah-search-result-locations");
           locations.append(makeElement("span", "ah-search-location-label", "Open in"));
-          const routes = groupedLocations(matches, pricesVary || stackVaries || demandVaries);
+          const routes = groupedLocations(matches);
           const guideOccurrences = new Map();
           routes.forEach((route) => guideOccurrences.set(route.guide, (guideOccurrences.get(route.guide) || 0) + 1));
           routes.forEach((route) => {
@@ -277,11 +283,6 @@
             const routeLink = makeElement("a", "ah-search-location-link");
             routeLink.href = route.href;
             routeLink.append(makeElement("span", "ah-search-location-name", routeLabel));
-            const routeMeta = [];
-            if (pricesVary) routeMeta.push(`Bid ${route.targetBid || "—"} · Buyout ${route.target || "—"}`);
-            if (stackVaries) routeMeta.push(`Stack ${route.stack || "—"}`);
-            if (demandVaries) routeMeta.push(route.demand !== "—" ? `${route.demand} demand` : "Demand —");
-            if (routeMeta.length) routeLink.append(makeElement("span", "ah-search-location-meta", routeMeta.join(" · ")));
             locations.append(routeLink);
           });
           card.append(locations);
@@ -388,7 +389,13 @@
     selectRow(targetRow, { pulse: true, scroll: true });
   }
 
-  global.AHSearchCore = { normalize, scoreItem, searchItems, slugify, uniqueItemCount };
+  global.AHSearchCore = {
+    normalize,
+    scoreItem,
+    searchItems,
+    slugify,
+    uniqueItemCount
+  };
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       initializeSearch();

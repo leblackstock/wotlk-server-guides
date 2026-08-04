@@ -6,7 +6,11 @@ globalThis.window = globalThis;
 require("../assets/ah-search.js");
 require("../assets/ah-search-index.js");
 
-const { normalize, searchItems, uniqueItemCount } = globalThis.AHSearchCore;
+const {
+  normalize,
+  searchItems,
+  uniqueItemCount
+} = globalThis.AHSearchCore;
 const index = globalThis.AH_SEARCH_INDEX;
 
 const expectedUniqueCount = new Set(index.items.map((item) => normalize(item.name))).size;
@@ -23,7 +27,8 @@ assert.equal(saroniteBar.matches.length, 4);
 assert.equal(new Set(saroniteBar.matches.map((item) => item.guide)).size, 3);
 assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.targetBid)), new Set(["1g 53s"]));
 assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.target)), new Set(["1g 80s"]));
-assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.stack)), new Set(["5 / 20", "5 / 10 / 20"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.stack)), new Set(["5 / 10 / 20"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.demand)), new Set(["Very High"]));
 
 const autumnsGlow = searchItems(index.items, "Autumn's Glow").find((item) => item.name === "Autumn's Glow");
 assert.ok(autumnsGlow);

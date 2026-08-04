@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HUB_PATH = ROOT / "auction-house.html"
 OUTPUT_PATH = ROOT / "assets" / "ah-search-index.js"
+CANONICAL_VALUES_PATH = ROOT / "data" / "ah-search-canonical-values.json"
 AH_GUIDE_SUFFIX = "ah-price-guide.html"
 
 
@@ -243,6 +244,94 @@ class AHGuideParser(HTMLParser):
         self.items.append(item)
 
 
+def load_canonical_values() -> dict[str, object]:
+    if not CANONICAL_VALUES_PATH.is_file():
+        raise FileNotFoundError(
+            f"Missing canonical AH search values: {CANONICAL_VALUES_PATH.relative_to(ROOT)}"
+        )
+    data = json.loads(CANONICAL_VALUES_PATH.read_text(encoding="utf-8"))
+    if data.get("version") != 1:
+        raise RuntimeError("Unsupported AH search canonical-values version")
+    return data
+
+
+def grouped_items(
+    items: list[dict[str, str | int]],
+) -> dict[str, list[dict[str, str | int]]]:
+    groups: dict[str, list[dict[str, str | int]]] = {}
+    for item in items:
+        groups.setdefault(item_slug(str(item["name"])), []).append(item)
+    return groups
+
+
+def apply_canonical_field(
+    groups: dict[str, list[dict[str, str | int]]],
+    entries: dict[str, dict[str, str | int]],
+    field: str,
+) -> None:
+    for name, entry in entries.items():
+        group = groups.get(item_slug(name))
+        if not group:
+            raise RuntimeError(f"Canonical {field} item is absent from the search index: {name}")
+
+        source_guide = str(entry["source_guide"])
+        value = str(entry["value"])
+        source_values = {
+            str(item[field]) for item in group if str(item["guide"]) == source_guide
+        }
+        if not source_values:
+            raise RuntimeError(
+                f"Canonical {field} source guide is absent for {name}: {source_guide}"
+            )
+        if source_values != {value}:
+            raise RuntimeError(
+                f"Canonical {field} for {name} is {value!r}, but {source_guide} has "
+                f"{sorted(source_values)!r}"
+            )
+
+        if field == "stack":
+            max_stack = int(entry["max_stack"])
+            stack_counts = [int(part.strip()) for part in value.split("/")]
+            if max_stack < 1 or any(count < 1 or count > max_stack for count in stack_counts):
+                raise RuntimeError(
+                    f"Canonical stack for {name} exceeds its verified max stack "
+                    f"{max_stack}: {value}"
+                )
+            for item in group:
+                raw_value = str(item[field])
+                raw_counts = [int(part.strip()) for part in raw_value.split("/")]
+                if any(count < 1 or count > max_stack for count in raw_counts):
+                    raise RuntimeError(
+                        f"Stack recommendation for {name} in {item['guide']} exceeds its "
+                        f"verified max stack {max_stack}: {raw_value}"
+                    )
+
+        for item in group:
+            item[field] = value
+
+
+def canonicalize_and_validate(items: list[dict[str, str | int]]) -> None:
+    canonical = load_canonical_values()
+    groups = grouped_items(items)
+    apply_canonical_field(groups, canonical.get("canonical_stack", {}), "stack")
+    apply_canonical_field(groups, canonical.get("canonical_demand", {}), "demand")
+
+    conflicts: list[str] = []
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        for field in ("targetBid", "target", "stack", "demand"):
+            values = sorted({str(item[field]) for item in group})
+            if len(values) > 1:
+                conflicts.append(f"{group[0]['name']} {field}: {values!r}")
+    if conflicts:
+        details = "\n  - ".join(conflicts)
+        raise RuntimeError(
+            "Duplicate AH search entries need a single canonical value. "
+            "Fix the source rows or data/ah-search-canonical-values.json:\n  - " + details
+        )
+
+
 def build_index() -> str:
     hub_parser = HubGuideParser()
     hub_parser.feed(HUB_PATH.read_text(encoding="utf-8"))
@@ -260,6 +349,7 @@ def build_index() -> str:
             raise RuntimeError(f"No searchable item rows found in {path.relative_to(ROOT)}")
         items.extend(parser.items)
 
+    canonicalize_and_validate(items)
     items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guide"]).casefold()))
     payload = {
         "version": 4,
