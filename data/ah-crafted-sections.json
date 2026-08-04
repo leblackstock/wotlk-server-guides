@@ -366,7 +366,8 @@
     "jc-output": {"quality":"uncommon","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1","demand":"Low","demand_class":"low","materials":"Exact 3.3.5 recipe","notes":"See the item-specific note and shared craft-cost policy."},
     "tailoring-output": {"profession":"Tailoring","quality":"common","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1","demand":"Low","demand_class":"low","materials":"Exact WotLK 3.3.5 recipe cost per minimum guaranteed output","notes":"See the item-specific note and shared craft-cost policy."},
     "leatherworking-output": {"profession":"Leatherworking","quality":"common","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1","demand":"Low","demand_class":"low","materials":"Exact WotLK 3.3.5 recipe cost per minimum guaranteed output","notes":"See the item-specific note and shared craft-cost policy."},
-    "cooking-output": {"profession":"Cooking","quality":"common","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1 / 5 / 20","demand":"Low","demand_class":"low","materials":"Exact WotLK 3.3.5 recipe cost per minimum guaranteed output","notes":"See the item-specific note and shared craft-cost policy."}
+    "cooking-output": {"profession":"Cooking","quality":"common","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1 / 5 / 20","demand":"Low","demand_class":"low","materials":"Exact WotLK 3.3.5 recipe cost per minimum guaranteed output","notes":"See the item-specific note and shared craft-cost policy."},
+    "mining-output": {"profession":"Mining","quality":"common","quick_copper":1,"target_copper":1,"high_copper":1,"stack":"1 / 5 / 20","demand":"Med","demand_class":"med","materials":"Exact WotLK 3.3.5 smelting or elemental-conversion cost per guaranteed output","notes":"See the item-specific ratio and shared non-circular pricing note."}
 
   },
   "catalog": {
@@ -3030,10 +3031,118 @@
     "cook-candied-sweet-potato": {"name":"Candied Sweet Potato","item_id":44839,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66034,"pricing_floor_copper":{"quick":12,"target":12,"high":12},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling haste rating and Stamina for 1 hour."},
     "cook-cranberry-chutney": {"name":"Cranberry Chutney","item_id":44840,"profile":"cooking-output","detail":"Seasonal foods and drinks","source_spell_id":66035,"pricing_floor_copper":{"quick":10,"target":10,"high":10},"quick_copper":500,"target_copper":500,"high_copper":500,"stack":"1 / 5 / 20","demand":"Low-Med","demand_class":"med","row_note":"Pilgrim's Bounty food with a seven-day real-time duration. Restores 4% health and mana per second for 30 seconds; eating for 10 seconds grants level-scaling spell power and Stamina for 1 hour."},
     "cook-worg-tartare": {"name":"Worg Tartare","item_id":44953,"profile":"cooking-output","detail":"Wrath level-80 personal stat foods","source_spell_id":62350,"pricing_floor_copper":{"quick":31000,"target":48000,"high":80000},"quick_copper":34000,"target_copper":60000,"high_copper":107500,"stack":"1 / 5 / 20","demand":"High","demand_class":"hi","row_note":"Requires level 70. Restores 22500 health and 19200 mana over 30 sec. If you spend at least 10 seconds eating you will become well fed and gain 40 Hit Rating and 40 Stamina for 1 hour."},
-    "cook-black-jelly": {"name":"Black Jelly","item_id":45932,"profile":"cooking-output","detail":"Wrath recovery foods and drinks","source_spell_id":64358,"pricing_floor_copper":{"quick":15000,"target":25500,"high":45000},"quick_copper":16000,"target_copper":29000,"high_copper":55000,"stack":"1 / 5 / 20","demand":"Low","demand_class":"low","row_note":"Requires level 75. Restores 45000 health and 38400 mana over 1 min. Must remain seated while eating."}
+    "cook-black-jelly": {"name":"Black Jelly","item_id":45932,"profile":"cooking-output","detail":"Wrath recovery foods and drinks","source_spell_id":64358,"pricing_floor_copper":{"quick":15000,"target":25500,"high":45000},"quick_copper":16000,"target_copper":29000,"high_copper":55000,"stack":"1 / 5 / 20","demand":"Low","demand_class":"low","row_note":"Requires level 75. Restores 45000 health and 38400 mana over 1 min. Must remain seated while eating."},
+    "mining-titansteel-bar": {"name":"Titansteel Bar","item_id":37663,"profile":"mining-output","detail":"Wrath alloy bar","source_spell_id":55208,"pricing_floor_copper":{"quick":445000,"target":667500,"high":1070000},"quick_copper":550000,"target_copper":840000,"high_copper":1500000,"quality":"uncommon","stack":"1 / 2 / 4","demand":"Very High","demand_class":"vh","row_note":"3 Titanium Bars + 1 Eternal Fire + 1 Eternal Earth + 1 Eternal Shadow → 1 bar. Major Blacksmithing and Engineering input. Standard 3.3.5 data shows no cooldown; do not add cooldown scarcity unless Hellscream displays one."},
+    "mining-saronite-bar": {"name":"Saronite Bar","item_id":36913,"profile":"mining-output","detail":"Wrath bar","source_spell_id":49258,"pricing_floor_copper":{"quick":9000,"target":14000,"high":22000},"quick_copper":10000,"target_copper":18000,"high_copper":31000,"quality":"common","stack":"5 / 10 / 20","demand":"Very High","demand_class":"vh","row_note":"2 Saronite Ore → 1 bar. Core Wrath Blacksmithing and Engineering material; stacks of 5, 10, and 20 match common leveling and gear batches."},
+    "mining-cobalt-bar": {"name":"Cobalt Bar","item_id":36916,"profile":"mining-output","detail":"Wrath bar","source_spell_id":49252,"pricing_floor_copper":{"quick":3000,"target":5000,"high":8500},"quick_copper":5500,"target_copper":8500,"high_copper":13000,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Cobalt Ore → 1 bar. Early Northrend Blacksmithing and Engineering catch-up material; the one-to-one conversion makes ore-versus-bar comparison direct."},
+    "mining-hardened-khorium": {"name":"Hardened Khorium","item_id":35128,"profile":"mining-output","detail":"Outland Sunwell alloy","source_spell_id":46353,"pricing_floor_copper":{"quick":300000,"target":450000,"high":680000},"quick_copper":700000,"target_copper":1000000,"high_copper":1500000,"quality":"uncommon","stack":"1","demand":"Low-Med","demand_class":"med","row_note":"3 Khorium Bars + 1 Hardened Adamantite Bar → 1. Sunwell-era Blacksmithing material with rare recipe access and slow turnover; make by commission or post one."},
+    "mining-khorium-bar": {"name":"Khorium Bar","item_id":23449,"profile":"mining-output","detail":"Outland rare-ore bar","source_spell_id":29361,"pricing_floor_copper":{"quick":80000,"target":120000,"high":200000},"quick_copper":85000,"target_copper":142500,"high_copper":270000,"quality":"uncommon","stack":"1 / 2 / 5","demand":"Med-High","demand_class":"hi","row_note":"2 Khorium Ore → 1 bar. Scarce Outland input for Blacksmithing, Engineering, and Jewelcrafting; lead with singles and pairs."},
+    "mining-felsteel-bar": {"name":"Felsteel Bar","item_id":23448,"profile":"mining-output","detail":"Outland alloy bar","source_spell_id":29360,"pricing_floor_copper":{"quick":40500,"target":56500,"high":97000},"quick_copper":50000,"target_copper":80000,"high_copper":125000,"quality":"uncommon","stack":"1 / 2 / 5","demand":"Med","demand_class":"med","row_note":"3 Fel Iron Bars + 2 Eternium Bars → 1. Used by legacy Blacksmithing and Engineering; price the five direct component bars before converting."},
+    "mining-hardened-adamantite-bar": {"name":"Hardened Adamantite Bar","item_id":23573,"profile":"mining-output","detail":"Outland processed bar","source_spell_id":29686,"pricing_floor_copper":{"quick":120000,"target":200000,"high":300000},"quick_copper":127500,"target_copper":230000,"high_copper":390000,"quality":"common","stack":"1 / 2 / 5","demand":"Med","demand_class":"med","row_note":"10 Adamantite Bars → 1. Large Blacksmithing and Engineering conversion; never list below the ten-bar opportunity cost."},
+    "mining-adamantite-bar": {"name":"Adamantite Bar","item_id":23446,"profile":"mining-output","detail":"Outland bar","source_spell_id":29358,"pricing_floor_copper":{"quick":5000,"target":8000,"high":15000},"quick_copper":12000,"target_copper":20000,"high_copper":30000,"quality":"common","stack":"5 / 10 / 20","demand":"Med","demand_class":"med","row_note":"2 Adamantite Ore → 1 bar. Broad Outland Blacksmithing, Engineering, and Jewelcrafting input; useful leveling stacks are 5, 10, and 20."},
+    "mining-eternium-bar": {"name":"Eternium Bar","item_id":23447,"profile":"mining-output","detail":"Outland rare-ore bar","source_spell_id":29359,"pricing_floor_copper":{"quick":18000,"target":26000,"high":45000},"quick_copper":19000,"target_copper":30000,"high_copper":60000,"quality":"uncommon","stack":"1 / 5 / 10","demand":"Med","demand_class":"med","row_note":"2 Eternium Ore → 1 bar. Direct Felsteel component and legacy profession input; the old row was below its two-ore opportunity cost and has been corrected."},
+    "mining-fel-iron-bar": {"name":"Fel Iron Bar","item_id":23445,"profile":"mining-output","detail":"Outland bar","source_spell_id":29356,"pricing_floor_copper":{"quick":3000,"target":5000,"high":10000},"quick_copper":3500,"target_copper":6000,"high_copper":14000,"quality":"common","stack":"5 / 10 / 20","demand":"Med-High","demand_class":"hi","row_note":"2 Fel Iron Ore → 1 bar. Standard Outland Blacksmithing and Engineering leveling material and a Felsteel component."},
+    "mining-mote-of-fire": {"name":"Mote of Fire","item_id":22574,"profile":"mining-output","detail":"Outland elemental breakdown","source_spell_id":35751,"pricing_floor_copper":{"quick":6000,"target":9000,"high":14000},"quick_copper":6000,"target_copper":9000,"high_copper":14000,"quality":"common","price_strategy":"shared-market-reference","stack":"10","demand":"Med","demand_class":"med","row_note":"Fire Sunder converts 1 Primal Fire → 10 Motes of Fire. This is the exact reverse of the normal ten-mote combine, so the row shares the canonical mote value without a convenience markup."},
+    "mining-mote-of-earth": {"name":"Mote of Earth","item_id":22573,"profile":"mining-output","detail":"Outland elemental breakdown","source_spell_id":35750,"pricing_floor_copper":{"quick":1000,"target":1500,"high":2500},"quick_copper":1000,"target_copper":1500,"high_copper":3000,"quality":"common","price_strategy":"shared-market-reference","stack":"10","demand":"Med","demand_class":"med","row_note":"Earth Shatter converts 1 Primal Earth → 10 Motes of Earth. This is the exact reverse of the normal ten-mote combine, so the row shares the canonical mote value without a convenience markup."},
+    "mining-elementium-bar": {"name":"Elementium Bar","item_id":17771,"profile":"mining-output","detail":"Classic legendary material","source_spell_id":22967,"pricing_floor_copper":{"quick":2170000,"target":3085000,"high":4710000},"quick_copper":2250000,"target_copper":3400000,"high_copper":5700000,"quality":"legendary","stack":"1 / 10","demand":"Low","demand_class":"low","row_note":"1 Elementium Ore + 10 Arcanite Bars + 1 Fiery Core + 3 Elemental Flux → 1. Thunderfury quest material with raid-gated inputs and specialized recipe access; arrange a commission before crafting ten."},
+    "mining-dark-iron-bar": {"name":"Dark Iron Bar","item_id":11371,"profile":"mining-output","detail":"Classic special-location bar","source_spell_id":14891,"pricing_floor_copper":{"quick":36000,"target":56000,"high":100000},"quick_copper":80000,"target_copper":120000,"high_copper":200000,"quality":"common","stack":"1 / 2 / 5","demand":"Med","demand_class":"med","row_note":"8 Dark Iron Ore → 1 bar, smelted at the Black Forge in Blackrock Depths. Legacy raid, resistance, and specialty-craft buyers pay for both ore volume and location access."},
+    "mining-thorium-bar": {"name":"Thorium Bar","item_id":12359,"profile":"mining-output","detail":"Classic high-tier bar","source_spell_id":16153,"pricing_floor_copper":{"quick":1200,"target":2000,"high":3500},"quick_copper":3500,"target_copper":5500,"high_copper":10000,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Thorium Ore → 1 bar. Major Classic Blacksmithing and Engineering leveling input and a component of Enchanting's Enchanted Thorium Bar."},
+    "mining-truesilver-bar": {"name":"Truesilver Bar","item_id":6037,"profile":"mining-output","detail":"Classic rare-ore bar","source_spell_id":10098,"pricing_floor_copper":{"quick":7000,"target":10000,"high":17500},"quick_copper":12000,"target_copper":17500,"high_copper":30000,"quality":"uncommon","stack":"1 / 5 / 10","demand":"Med","demand_class":"med","row_note":"1 Truesilver Ore → 1 bar. Bought for Enchanting rods plus legacy Blacksmithing and Engineering; post singles and fives first."},
+    "mining-mithril-bar": {"name":"Mithril Bar","item_id":3860,"profile":"mining-output","detail":"Classic mid-tier bar","source_spell_id":10097,"pricing_floor_copper":{"quick":800,"target":1400,"high":2500},"quick_copper":2500,"target_copper":4000,"high_copper":7000,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Mithril Ore → 1 bar. Frequent Blacksmithing and Engineering leveling bottleneck; sell useful recipe-sized stacks rather than only full stacks."},
+    "mining-steel-bar": {"name":"Steel Bar","item_id":3859,"profile":"mining-output","detail":"Classic alloy bar","source_spell_id":3569,"pricing_floor_copper":{"quick":2300,"target":3500,"high":5500},"quick_copper":3000,"target_copper":5000,"high_copper":8500,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Iron Bar + 1 vendor Coal → 1 Steel Bar. Blacksmithing and Engineering leveling demand is steady; Coal uses exact vendor cost, not AH asks."},
+    "mining-iron-bar": {"name":"Iron Bar","item_id":3575,"profile":"mining-output","detail":"Classic bar","source_spell_id":3307,"pricing_floor_copper":{"quick":600,"target":1000,"high":1800},"quick_copper":1800,"target_copper":3000,"high_copper":5000,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Iron Ore → 1 bar. Core Blacksmithing and Engineering leveling material and the direct input for Steel Bars."},
+    "mining-gold-bar": {"name":"Gold Bar","item_id":3577,"profile":"mining-output","detail":"Classic rare-ore bar","source_spell_id":3308,"pricing_floor_copper":{"quick":3500,"target":5500,"high":9500},"quick_copper":6500,"target_copper":10000,"high_copper":17500,"quality":"uncommon","stack":"1 / 5 / 10","demand":"Med","demand_class":"med","row_note":"1 Gold Ore → 1 bar. Legacy Engineering, Blacksmithing, and Jewelcrafting input; singles and fives fit most recipes."},
+    "mining-silver-bar": {"name":"Silver Bar","item_id":2842,"profile":"mining-output","detail":"Classic rare-ore bar","source_spell_id":2658,"pricing_floor_copper":{"quick":2000,"target":3000,"high":5500},"quick_copper":3500,"target_copper":5500,"high_copper":9000,"quality":"uncommon","stack":"1 / 5 / 10","demand":"Med","demand_class":"med","row_note":"1 Silver Ore → 1 bar. Early Enchanting rod and legacy crafting input; post singles and fives for profession catch-up."},
+    "mining-bronze-bar": {"name":"Bronze Bar","item_id":2841,"profile":"mining-output","detail":"Classic two-bar alloy","source_spell_id":2659,"pricing_floor_copper":{"quick":650,"target":1000,"high":1700},"quick_copper":1200,"target_copper":2000,"high_copper":3500,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Copper Bar + 1 Tin Bar → 2 Bronze Bars. Price per finished bar; Blacksmithing, Engineering, and Jewelcrafting levelers commonly buy 5, 10, or 20."},
+    "mining-tin-bar": {"name":"Tin Bar","item_id":3576,"profile":"mining-output","detail":"Classic bar","source_spell_id":3304,"pricing_floor_copper":{"quick":400,"target":700,"high":1200},"quick_copper":800,"target_copper":1200,"high_copper":2000,"quality":"common","stack":"5 / 10 / 20","demand":"Med","demand_class":"med","row_note":"1 Tin Ore → 1 bar. Low-level profession material and half of the two-bar Bronze recipe; compare direct Tin demand with Bronze demand."},
+    "mining-copper-bar": {"name":"Copper Bar","item_id":2840,"profile":"mining-output","detail":"Classic starter bar","source_spell_id":2657,"pricing_floor_copper":{"quick":200,"target":400,"high":800},"quick_copper":500,"target_copper":800,"high_copper":1500,"quality":"common","stack":"5 / 10 / 20","demand":"High","demand_class":"hi","row_note":"1 Copper Ore → 1 bar. Broad starter material for Blacksmithing, Engineering, and Jewelcrafting and half of the two-bar Bronze recipe."}
 
   },
   "guides": {
+    "mining-smithing-ah-price-guide.html": {
+      "intro_title": "Tradeable Mining smelts and conversions",
+      "intro_description": "This catalog covers 24 unique tradeable outputs from the standard WotLK 3.3.5 Mining spell list: every Mining-owned Wrath, Outland, and Classic smelted bar or alloy plus the two elemental breakdowns. Titanium Bar and Enchanted Thorium Bar are represented in the related-conversions table because those identical items are already owned by the canonical Alchemy and Enchanting catalogs; the other 16 Mining ranks, tracking, smelting headers, and Toughness passives create no tradeable output. Prices use exact 3.3.5 recipes and ratios, guaranteed output, saved non-circular ore, bar, elemental, and vendor baselines, and no active AH listing values.",
+      "shared_note": {
+        "id": "crafted-mining-pricing-note",
+        "marker": "*",
+        "label": "Smelting cost pricing",
+        "text": "Each band uses the exact 3.3.5 input ratio and guaranteed output. Saleable component bars and elementals use their saved opportunity-cost bands; active AH listings never set or raise these values. Most inputs remain low-confidence frozen references, and Elementium Ore uses an explicit fallback anchored to its exact 10g vendor liquidation floor rather than an observed listing. Standard 3.3.5 data shows no Titansteel cooldown, but verify Hellscream before charging for server-specific access."
+      },
+      "legacy_section_titles": [
+        "Northrend bars / alloys",
+        "Outland bars / alloys"
+      ],
+      "legacy_row_removals": {
+        "Classic bars / alloys": [
+          "Dark Iron Bar",
+          "Thorium Bar",
+          "Truesilver Bar",
+          "Mithril Bar",
+          "Steel Bar",
+          "Iron Bar",
+          "Gold Bar",
+          "Silver Bar",
+          "Bronze Bar",
+          "Tin Bar",
+          "Copper Bar"
+        ]
+      },
+      "legacy_insertion_before_title": "Classic bars / alloys",
+      "sections": [
+        {
+          "id": "wrath-smelted-bars-and-alloys",
+          "title": "Wrath smelted bars and alloys",
+          "description": "Northrend bars with exact ore and elemental inputs. The Titansteel row separates deterministic materials from any unverified server-specific cooldown behavior.",
+          "items": [
+            "mining-titansteel-bar",
+            "mining-saronite-bar",
+            "mining-cobalt-bar"
+          ]
+        },
+        {
+          "id": "outland-smelted-bars-and-alloys",
+          "title": "Outland smelted bars and alloys",
+          "description": "Burning Crusade ore bars and multi-bar alloys, including the Sunwell-era Hardened Khorium conversion.",
+          "items": [
+            "mining-hardened-khorium",
+            "mining-hardened-adamantite-bar",
+            "mining-khorium-bar",
+            "mining-felsteel-bar",
+            "mining-eternium-bar",
+            "mining-adamantite-bar",
+            "mining-fel-iron-bar"
+          ]
+        },
+        {
+          "id": "mining-elemental-breakdowns",
+          "title": "Mining elemental breakdowns",
+          "description": "Mining can reverse two Primal combines into ten matching Motes. These rows share the canonical per-Mote values rather than adding a second conversion premium.",
+          "items": [
+            "mining-mote-of-fire",
+            "mining-mote-of-earth"
+          ]
+        },
+        {
+          "id": "classic-smelted-bars-and-alloys",
+          "title": "Classic smelted bars and alloys",
+          "description": "Old-world bars from Copper through raid-gated Elementium, with exact multi-output and special-location notes.",
+          "items": [
+            "mining-elementium-bar",
+            "mining-dark-iron-bar",
+            "mining-truesilver-bar",
+            "mining-gold-bar",
+            "mining-thorium-bar",
+            "mining-silver-bar",
+            "mining-steel-bar",
+            "mining-mithril-bar",
+            "mining-iron-bar",
+            "mining-bronze-bar",
+            "mining-tin-bar",
+            "mining-copper-bar"
+          ]
+        }
+      ]
+    },
     "inscription-materials-ah-price-guide.html": {
       "intro_title": "Commonly crafted Inscription items",
       "intro_description": "Every row below is an actual tradeable item that can be posted on the Auction House. Each price band was audited from the exact 3.3.5 recipe, minimum guaranteed output, this guide set's matching reagent references, and a modest demand-sensitive crafting margin. Prices are per finished item; recheck the live AH before crafting a batch, and do not add a cooldown premium when this server shortens or removes that cooldown.",

@@ -27,6 +27,7 @@ EXPECTED_GUIDE_COUNTS = {
     "tailoring-cloth-ah-price-guide.html": 406,
     "skinning-leatherworking-materials-ah-price-guide.html": 490,
     "fishing-cooking-materials-ah-price-guide.html": 167,
+    "mining-smithing-ah-price-guide.html": 24,
 }
 
 
@@ -120,8 +121,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 2381:
-        fail(f"Expected 2381 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2405:
+        fail(f"Expected 2405 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -143,7 +144,11 @@ def main() -> int:
             ):
                 fail(f"{key}: {band} price falls below its audited craft floor")
         if item.get("price_strategy") == "shared-market-reference":
-            if "below" not in item.get("row_note", "") or "skip" not in item.get("row_note", ""):
+            note = item.get("row_note", "")
+            if key.startswith("mining-"):
+                if "canonical" not in note or "without a convenience markup" not in note:
+                    fail(f"{key}: reversible Mining conversion must explain shared pricing")
+            elif "below" not in note or "skip" not in note:
                 fail(f"{key}: shared market pricing must explain the unprofitable craft route")
 
     used_keys: list[str] = []
@@ -172,13 +177,16 @@ def main() -> int:
         shared_note = guide.get("shared_note")
         if not shared_note:
             fail(f"{filename}: every crafted guide needs one shared pricing note")
+        crafted_source = source.split("<!-- AH_CRAFTED_SECTION_START -->", 1)[1].split(
+            "<!-- AH_CRAFTED_SECTION_END -->", 1
+        )[0]
         if source.count(f'id="{shared_note["id"]}"') != 1:
             fail(f"{filename}: shared pricing note must render exactly once")
-        if source.count('class="crafted-note-ref"') != len(expected_order):
+        if crafted_source.count('class="crafted-note-ref"') != len(expected_order):
             fail(f"{filename}: every crafted row must reference the shared note")
-        if source.count('class="crafted-item-note"') != len(expected_order):
+        if crafted_source.count('class="crafted-item-note"') != len(expected_order):
             fail(f"{filename}: every crafted row must render an item-specific note")
-        if source.count('class="crafted-recipe-link ') != len(expected_order):
+        if crafted_source.count('class="crafted-recipe-link ') != len(expected_order):
             fail(f"{filename}: every crafted row must render a recipe hover link")
         if "<strong>Reagent floor:</strong>" in source:
             fail(f"{filename}: repeated row-level reagent-floor copy remains")
@@ -569,6 +577,36 @@ def main() -> int:
         "cook-thistle-tea"
     ]:
         fail("Thistle Tea is not isolated in one Rogue-only section")
+
+    mining_keys = {key for key in used_keys if key.startswith("mining-")}
+    if len(mining_keys) != 24:
+        fail(f"Expected 24 Mining-owned tradeable outputs, found {len(mining_keys)}")
+    mining_names = {merged_item(config, key)["name"] for key in mining_keys}
+    for label in (
+        "Titansteel Bar",
+        "Hardened Khorium",
+        "Elementium Bar",
+        "Mote of Fire",
+        "Mote of Earth",
+        "Bronze Bar",
+    ):
+        if label not in mining_names:
+            fail(f"Expanded Mining smelting coverage is missing: {label}")
+    for shared_label in ("Titanium Bar", "Enchanted Thorium Bar"):
+        if shared_label in mining_names:
+            fail(f"Shared cross-profession output was duplicated in Mining: {shared_label}")
+    mining_sections = guides["mining-smithing-ah-price-guide.html"]["sections"]
+    if len(mining_sections) != 4:
+        fail(f"Expected 4 Mining crafted sections, found {len(mining_sections)}")
+    mining_source = sources["mining-smithing-ah-price-guide.html"]
+    for fragment in (
+        "Related shared and non-Mining metal conversions",
+        "spell=55211",
+        "spell=70524",
+        "Elementium Ore",
+    ):
+        if fragment not in mining_source:
+            fail(f"Mining shared-output or input coverage is missing: {fragment}")
     expected_pilgrim_spells = {
         "cook-pumpkin-pie": 66036,
         "cook-slow-roasted-turkey": 66037,
@@ -678,6 +716,9 @@ def main() -> int:
         "lw-heavy-borean-leather": 65_000,
         "lw-belt-of-dragons": 5_900_000,
         "lw-lightning-infused-leggings": 68_500_000,
+        "mining-titansteel-bar": 840_000,
+        "mining-hardened-adamantite-bar": 230_000,
+        "mining-elementium-bar": 3_400_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
@@ -718,6 +759,9 @@ def main() -> int:
         "cook-fish-feast": "80 Attack Power, 46 Spell Power and 40 Stamina",
         "cook-thistle-tea": "Rogue only",
         "cook-pumpkin-pie": "seven-day real-time duration",
+        "mining-titansteel-bar": "Standard 3.3.5 data shows no cooldown",
+        "mining-hardened-adamantite-bar": "ten-bar opportunity cost",
+        "mining-elementium-bar": "Thunderfury quest material",
     }
     for key, expected_fragment in representative_non_enchanting_notes.items():
         if expected_fragment not in merged_item(config, key)["row_note"]:
@@ -731,6 +775,7 @@ def main() -> int:
         "jewelcrafting-gems-ah-price-guide.html",
         "tailoring-cloth-ah-price-guide.html",
         "skinning-leatherworking-materials-ah-price-guide.html",
+        "mining-smithing-ah-price-guide.html",
     ):
         keys = [
             key
@@ -750,6 +795,7 @@ def main() -> int:
         "tailoring-cloth-ah-price-guide.html",
         "skinning-leatherworking-materials-ah-price-guide.html",
         "fishing-cooking-materials-ah-price-guide.html",
+        "mining-smithing-ah-price-guide.html",
     ):
         if "Updated 2026-08-03" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
@@ -943,7 +989,7 @@ def main() -> int:
 
     print(
         "Crafted-market catalog, rows, prices, search metadata, and tooltip IDs "
-        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, Tailoring, Leatherworking, and Cooking."
+        "are valid for Inscription, Engineering, Alchemy, Enchanting, Blacksmithing, Jewelcrafting, Tailoring, Leatherworking, Cooking, and Mining."
     )
     return 0
 

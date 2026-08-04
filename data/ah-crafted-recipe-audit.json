@@ -54323,6 +54323,416 @@
           "count": 1
         }
       ]
+    },
+    "mining-titansteel-bar": {
+      "source_spell_id": 55208,
+      "source_spell_name": "Smelt Titansteel",
+      "output_item_id": 37663,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 41163,
+          "name": "Titanium Bar",
+          "count": 3
+        },
+        {
+          "item_id": 36860,
+          "name": "Eternal Fire",
+          "count": 1
+        },
+        {
+          "item_id": 35624,
+          "name": "Eternal Earth",
+          "count": 1
+        },
+        {
+          "item_id": 35627,
+          "name": "Eternal Shadow",
+          "count": 1
+        }
+      ]
+    },
+    "mining-saronite-bar": {
+      "source_spell_id": 49258,
+      "source_spell_name": "Smelt Saronite",
+      "output_item_id": 36913,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 36912,
+          "name": "Saronite Ore",
+          "count": 2
+        }
+      ]
+    },
+    "mining-cobalt-bar": {
+      "source_spell_id": 49252,
+      "source_spell_name": "Smelt Cobalt",
+      "output_item_id": 36916,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 36909,
+          "name": "Cobalt Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-hardened-khorium": {
+      "source_spell_id": 46353,
+      "source_spell_name": "Smelt Hardened Khorium",
+      "output_item_id": 35128,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23449,
+          "name": "Khorium Bar",
+          "count": 3
+        },
+        {
+          "item_id": 23573,
+          "name": "Hardened Adamantite Bar",
+          "count": 1
+        }
+      ]
+    },
+    "mining-khorium-bar": {
+      "source_spell_id": 29361,
+      "source_spell_name": "Smelt Khorium",
+      "output_item_id": 23449,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23426,
+          "name": "Khorium Ore",
+          "count": 2
+        }
+      ]
+    },
+    "mining-felsteel-bar": {
+      "source_spell_id": 29360,
+      "source_spell_name": "Smelt Felsteel",
+      "output_item_id": 23448,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23445,
+          "name": "Fel Iron Bar",
+          "count": 3
+        },
+        {
+          "item_id": 23447,
+          "name": "Eternium Bar",
+          "count": 2
+        }
+      ]
+    },
+    "mining-hardened-adamantite-bar": {
+      "source_spell_id": 29686,
+      "source_spell_name": "Smelt Hardened Adamantite",
+      "output_item_id": 23573,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23446,
+          "name": "Adamantite Bar",
+          "count": 10
+        }
+      ]
+    },
+    "mining-adamantite-bar": {
+      "source_spell_id": 29358,
+      "source_spell_name": "Smelt Adamantite",
+      "output_item_id": 23446,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23425,
+          "name": "Adamantite Ore",
+          "count": 2
+        }
+      ]
+    },
+    "mining-eternium-bar": {
+      "source_spell_id": 29359,
+      "source_spell_name": "Smelt Eternium",
+      "output_item_id": 23447,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23427,
+          "name": "Eternium Ore",
+          "count": 2
+        }
+      ]
+    },
+    "mining-fel-iron-bar": {
+      "source_spell_id": 29356,
+      "source_spell_name": "Smelt Fel Iron",
+      "output_item_id": 23445,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 23424,
+          "name": "Fel Iron Ore",
+          "count": 2
+        }
+      ]
+    },
+    "mining-mote-of-fire": {
+      "source_spell_id": 35751,
+      "source_spell_name": "Fire Sunder",
+      "output_item_id": 22574,
+      "output_count": 10,
+      "output_count_max": 10,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 21884,
+          "name": "Primal Fire",
+          "count": 1
+        }
+      ]
+    },
+    "mining-mote-of-earth": {
+      "source_spell_id": 35750,
+      "source_spell_name": "Earth Shatter",
+      "output_item_id": 22573,
+      "output_count": 10,
+      "output_count_max": 10,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 1
+        }
+      ]
+    },
+    "mining-elementium-bar": {
+      "source_spell_id": 22967,
+      "source_spell_name": "Smelt Elementium",
+      "output_item_id": 17771,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 18562,
+          "name": "Elementium Ore",
+          "count": 1
+        },
+        {
+          "item_id": 12360,
+          "name": "Arcanite Bar",
+          "count": 10
+        },
+        {
+          "item_id": 17010,
+          "name": "Fiery Core",
+          "count": 1
+        },
+        {
+          "item_id": 18567,
+          "name": "Elemental Flux",
+          "count": 3
+        }
+      ]
+    },
+    "mining-dark-iron-bar": {
+      "source_spell_id": 14891,
+      "source_spell_name": "Smelt Dark Iron",
+      "output_item_id": 11371,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11370,
+          "name": "Dark Iron Ore",
+          "count": 8
+        }
+      ]
+    },
+    "mining-thorium-bar": {
+      "source_spell_id": 16153,
+      "source_spell_name": "Smelt Thorium",
+      "output_item_id": 12359,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 10620,
+          "name": "Thorium Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-truesilver-bar": {
+      "source_spell_id": 10098,
+      "source_spell_name": "Smelt Truesilver",
+      "output_item_id": 6037,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 7911,
+          "name": "Truesilver Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-mithril-bar": {
+      "source_spell_id": 10097,
+      "source_spell_name": "Smelt Mithril",
+      "output_item_id": 3860,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3858,
+          "name": "Mithril Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-steel-bar": {
+      "source_spell_id": 3569,
+      "source_spell_name": "Smelt Steel",
+      "output_item_id": 3859,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 3575,
+          "name": "Iron Bar",
+          "count": 1
+        },
+        {
+          "item_id": 3857,
+          "name": "Coal",
+          "count": 1
+        }
+      ]
+    },
+    "mining-iron-bar": {
+      "source_spell_id": 3307,
+      "source_spell_name": "Smelt Iron",
+      "output_item_id": 3575,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2772,
+          "name": "Iron Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-gold-bar": {
+      "source_spell_id": 3308,
+      "source_spell_name": "Smelt Gold",
+      "output_item_id": 3577,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2776,
+          "name": "Gold Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-silver-bar": {
+      "source_spell_id": 2658,
+      "source_spell_name": "Smelt Silver",
+      "output_item_id": 2842,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2775,
+          "name": "Silver Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-bronze-bar": {
+      "source_spell_id": 2659,
+      "source_spell_name": "Smelt Bronze",
+      "output_item_id": 2841,
+      "output_count": 2,
+      "output_count_max": 2,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2840,
+          "name": "Copper Bar",
+          "count": 1
+        },
+        {
+          "item_id": 3576,
+          "name": "Tin Bar",
+          "count": 1
+        }
+      ]
+    },
+    "mining-tin-bar": {
+      "source_spell_id": 3304,
+      "source_spell_name": "Smelt Tin",
+      "output_item_id": 3576,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2771,
+          "name": "Tin Ore",
+          "count": 1
+        }
+      ]
+    },
+    "mining-copper-bar": {
+      "source_spell_id": 2657,
+      "source_spell_name": "Smelt Copper",
+      "output_item_id": 2840,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 2770,
+          "name": "Copper Ore",
+          "count": 1
+        }
+      ]
     }
   }
 }

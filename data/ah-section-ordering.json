@@ -3,7 +3,7 @@
   "scope": {
     "guide_glob": "*-ah-price-guide.html",
     "expected_guide_count": 16,
-    "expected_priced_table_count": 300
+    "expected_priced_table_count": 302
   },
   "default_order": {
     "field": "target_buyout_copper",
@@ -119,11 +119,8 @@
       "guide": "mining-smithing-ah-price-guide.html",
       "section_titles": [
         "Northrend ore",
-        "Northrend bars / alloys",
         "Outland ore",
-        "Outland bars / alloys",
         "Classic ore",
-        "Classic bars / alloys",
         "Raw stone",
         "Grinding stones",
         "Blacksmith-made Enchanting rod blanks"

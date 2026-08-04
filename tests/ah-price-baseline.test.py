@@ -40,10 +40,10 @@ def main() -> int:
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 701:
-        fail("Frozen baseline must contain 650 pre-scan references plus 51 documented profession-input fallbacks")
+    if len(baseline.get("items", {})) != 702:
+        fail("Frozen baseline must contain 650 pre-scan references plus 52 documented profession-input fallbacks")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 649, "medium": 1, "fallback": 51}):
+    if confidence != Counter({"low": 649, "medium": 1, "fallback": 52}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
@@ -147,6 +147,24 @@ def main() -> int:
     }
     if len(cooking_inputs) != 148:
         fail(f"Expected 148 direct Cooking inputs, found {len(cooking_inputs)}")
+    mining_inputs = {
+        int(reagent["item_id"])
+        for key, recipe in recipes.items()
+        if key.startswith("mining-")
+        for reagent in recipe["reagents"]
+    }
+    if len(mining_inputs) != 34:
+        fail(f"Expected 34 direct Mining inputs, found {len(mining_inputs)}")
+    elementium_ore = baseline["items"]["18562"]
+    if (
+        elementium_ore["source_type"] != "documented-fallback"
+        or elementium_ore["confidence"] != "fallback"
+        or tuple(elementium_ore[band] for band in ("quick", "target", "high"))
+        != (100_000, 200_000, 400_000)
+        or "vendor liquidation" not in elementium_ore["reason"]
+        or "No active listing was used" not in elementium_ore["reason"]
+    ):
+        fail("Elementium Ore fallback bands or provenance are missing")
     for item_id in ("12607", "15409", "15410", "20381", "25699", "25719"):
         record = baseline["items"][item_id]
         if record["source_type"] != "documented-fallback" or record["confidence"] != "fallback":
@@ -189,8 +207,8 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 701 frozen references and documented fallbacks, "
-        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, and 148 Cooking inputs covered; active scans excluded."
+        "Non-circular AH baseline is valid: 702 frozen references and documented fallbacks, "
+        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 148 Cooking, and 34 Mining inputs covered; active scans excluded."
     )
     return 0
 

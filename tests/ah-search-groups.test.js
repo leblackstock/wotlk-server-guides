@@ -21,8 +21,8 @@ const saroniteBar = saronite.find((item) => item.name === "Saronite Bar");
 assert.ok(saroniteBar);
 assert.equal(saroniteBar.matches.length, 4);
 assert.equal(new Set(saroniteBar.matches.map((item) => item.guide)).size, 3);
-assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.targetBid)), new Set(["1g 27s 50c"]));
-assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.target)), new Set(["1g 50s"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.targetBid)), new Set(["1g 53s"]));
+assert.deepEqual(new Set(saroniteBar.matches.map((item) => item.target)), new Set(["1g 80s"]));
 
 const autumnsGlow = searchItems(index.items, "Autumn's Glow").find((item) => item.name === "Autumn's Glow");
 assert.ok(autumnsGlow);

@@ -36,6 +36,7 @@ PROFESSION_SKILLS = {
     "tailoring-cloth-ah-price-guide.html": 197,
     "skinning-leatherworking-materials-ah-price-guide.html": 165,
     "fishing-cooking-materials-ah-price-guide.html": 185,
+    "mining-smithing-ah-price-guide.html": 186,
 }
 PROFESSION_SKILL_FILTERS = {
     # The unfiltered Blacksmithing list contains 525 records but WotLKDB
@@ -515,7 +516,14 @@ def refresh_recipe_audit(config: dict) -> dict:
                 {int(spell["id"]): spell for spell in listview_data(source, "spells")}
             )
         spells = list(spell_map.values())
-        expected_skill_records = {164: 525, 755: 566, 197: 439, 165: 548, 185: 181}
+        expected_skill_records = {
+            164: 525,
+            755: 566,
+            197: 439,
+            165: 548,
+            185: 181,
+            186: 42,
+        }
         expected_records = expected_skill_records.get(skill_id)
         if expected_records is not None and len(spells) != expected_records:
             raise ValueError(
@@ -792,8 +800,11 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
             if (
-                key.startswith(("jc-", "tailor-", "lw-", "cook-"))
-                or (dependency and dependency.startswith("lw-"))
+                key.startswith(("jc-", "tailor-", "lw-", "cook-", "mining-"))
+                or (
+                    dependency
+                    and dependency.startswith(("lw-", "mining-"))
+                )
             ) and item_id in baseline_prices:
                 # These catalogs consume the saved sale value of a tradeable
                 # baseline input, not merely that input's own cheapest
@@ -865,7 +876,7 @@ def recommended_prices(
                 continue
             current_price = (
                 0
-                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking", "Cooking"}
+                if item.get("profession") in {"Blacksmithing", "Jewelcrafting", "Tailoring", "Leatherworking", "Cooking", "Mining"}
                 else int(item[f"{band}_copper"])
             )
             prices[key][band] = max(current_price, int(matching_output), floor_with_margin)

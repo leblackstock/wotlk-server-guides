@@ -6343,6 +6343,15 @@
       "source_type": "documented-fallback",
       "confidence": "fallback",
       "reason": "Provisional seven-day Pilgrim's Bounty drop fallback aligned to seasonal meat scarcity; no active listing was used."
+    },
+    "18562": {
+      "name": "Elementium Ore",
+      "quick": 100000,
+      "target": 200000,
+      "high": 400000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "Provisional Blackwing Lair raid-drop fallback: the 10g quick band is anchored to the exact AzerothCore vendor liquidation value, while target and high reflect unverified scarcity. No active listing was used; replace with qualifying realized sales or measured acquisition evidence."
     }
   }
 }

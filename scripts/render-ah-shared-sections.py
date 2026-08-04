@@ -628,6 +628,7 @@ def replace_legacy_crafted_sections(
     expected: str,
     filename: str,
     titles: list[str],
+    insertion_before_title: str | None = None,
 ) -> str:
     matches: list[re.Match[str]] = []
     for title in titles:
@@ -648,8 +649,27 @@ def replace_legacy_crafted_sections(
 
     first_start = min(match.start() for match in matches)
     for match in sorted(matches, key=lambda current: current.start(), reverse=True):
-        replacement = expected if match.start() == first_start else ""
+        replacement = (
+            expected
+            if insertion_before_title is None and match.start() == first_start
+            else ""
+        )
         source = source[: match.start()] + replacement + source[match.end() :]
+
+    if insertion_before_title is not None:
+        insertion_pattern = re.compile(
+            r'<section class="common(?:\s[^"]*)?"[^>]*><h2 class="ah-category-heading">'
+            + re.escape(html.escape(insertion_before_title))
+            + r'<a class="ah-back-to-top"',
+        )
+        insertion_matches = list(insertion_pattern.finditer(source))
+        if len(insertion_matches) != 1:
+            raise ValueError(
+                f"{filename}: expected one crafted insertion section for "
+                f"{insertion_before_title}"
+            )
+        insertion_start = insertion_matches[0].start()
+        source = source[:insertion_start] + expected + "\n" + source[insertion_start:]
     return source
 
 
@@ -822,6 +842,7 @@ def transform_guide(
                 expected,
                 filename,
                 crafted_guide["legacy_section_titles"],
+                crafted_guide.get("legacy_insertion_before_title"),
             )
         else:
             raise ValueError(f"{filename}: expected one crafted-market or legacy block")

@@ -112,3 +112,9 @@ legacy meats, quest drops, Northrend fish, Northern Egg, and event-limited Wild
 Turkey. Fourteen other missing recipe inputs received exact coin-vendor records,
 including Horde Pilgrim's Bounty ingredients. The fallback bands use saved
 comparable ingredient tiers and event availability; no active listing was used.
+
+The 2026-08-03 Mining expansion added one fallback-confidence input, Elementium
+Ore. Its 10g quick band equals the exact 3.3.5 vendor liquidation value; the 20g
+target and 40g high bands are provisional scarcity ranges used only to cost
+Elementium Bar. No active listing was used, and the bands must be replaced when
+qualifying realized-sale or measured-acquisition evidence becomes available.

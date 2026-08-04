@@ -17,9 +17,9 @@ async function verifyAuditedCraftedGuide(page, options) {
   assert.equal(await page.locator(".crafted-market-section").count(), sections);
   assert.match(await page.locator(".crafted-market-intro").textContent(), /exact 3\.3\.5 (?:recipe|reagent)/);
   assert.equal(await page.locator(".crafted-market-shared-note").count(), 1);
-  assert.equal(await page.locator(".crafted-note-ref").count(), rows);
-  assert.equal(await page.locator(".crafted-item-note").count(), rows);
-  assert.equal(await page.locator(".crafted-recipe-link").count(), rows);
+  assert.equal(await page.locator(".ah-crafted-market .crafted-note-ref").count(), rows);
+  assert.equal(await page.locator(".ah-crafted-market .crafted-item-note").count(), rows);
+  assert.equal(await page.locator(".ah-crafted-market .crafted-recipe-link").count(), rows);
   assert.equal(await page.locator('[data-column="notes"] strong', { hasText: "Reagent floor:" }).count(), 0);
   const representativeRow = page.locator(`[data-crafted-key="${key}"]`);
   assert.equal(
@@ -431,8 +431,18 @@ async function verifyAuditedCraftedGuide(page, options) {
       notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
       label: "Mobile Cooking guide"
     });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "mining-smithing-ah-price-guide.html",
+      rows: 24,
+      sections: 4,
+      key: "mining-titansteel-bar",
+      target: "84g",
+      recipeSpell: 55208,
+      notePattern: /Standard 3\.3\.5 data shows no cooldown/,
+      label: "Mobile Mining guide"
+    });
 
-    console.log("Auction House hub and all nine crafted guides passed desktop/mobile smoke tests.");
+    console.log("Auction House hub and all ten crafted guides passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }
