@@ -74,10 +74,16 @@ Search results link to the exact item row. Every AH guide therefore loads `asset
 
 The two dropped-gear guides use a pinned AzerothCore WotLK database snapshot. The level-80 guide contains audited epic BoE equipment that requires level 80. The world-drop guide contains pre-80 epic BoEs plus fixed-stat rare BoEs at recognized bracket caps and levels 71–79. Random-affix items, crafted gear, vendor gear, and items without an audited loot source are excluded.
 
-Prices in this catalog are deliberately marked as provisional documented fallbacks. Active AH listings may show competition, but they never set or raise these bands. Rebuild with the pinned SQL inputs, then render and verify:
+Prices in this catalog use completed-sale evidence where it passes the documented
+gear gate. Rows without that evidence use reviewed low-pop starter estimates:
+fixed Hellscream anchors establish the gold scale, while gold-normalized
+cross-server observations establish relative rank only within comparable groups.
+No external gold value is copied, all modeled rows remain `fallback` confidence,
+and active snapshots never update a band automatically. Rebuild with the pinned
+SQL inputs, then render and verify:
 
 ```powershell
-python scripts/audit-ah-dropped-gear.py --sql-dir <pinned-sql-directory>
+python scripts/audit-ah-dropped-gear.py --source-dir <pinned-sql-directory>
 python scripts/render-ah-dropped-gear.py
 python scripts/audit-ah-dropped-gear.py --check
 python scripts/render-ah-dropped-gear.py --check

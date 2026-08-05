@@ -15,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "data" / "ah-dropped-gear.json"
 AUDIT_PATH = ROOT / "data" / "ah-dropped-gear-audit.json"
 BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
+PRICE_EVIDENCE_PATH = ROOT / "data" / "ah-dropped-gear-price-evidence.json"
+CROSS_SERVER_PATH = ROOT / "data" / "ah-dropped-gear-cross-server-diagnostics.json"
 ELIGIBILITY_PATH = ROOT / "data" / "ah-auction-eligibility-audit.json"
 CRAFTED_PATH = ROOT / "data" / "ah-crafted-sections.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
@@ -52,6 +54,8 @@ def main() -> int:
     catalog = load(CATALOG_PATH)
     audit = load(AUDIT_PATH)
     baseline = load(BASELINE_PATH)
+    price_evidence = load(PRICE_EVIDENCE_PATH)
+    cross_server = load(CROSS_SERVER_PATH)
     eligibility = load(ELIGIBILITY_PATH)
     crafted = load(CRAFTED_PATH)
     vendor = load(VENDOR_PATH)
@@ -63,6 +67,16 @@ def main() -> int:
     assert audit["fingerprint"] == AUDIT_FINGERPRINT
     assert audit["rules"]["active_listings_used_for_prices"] is False
     assert audit["included_counts"] == EXPECTED_COUNTS
+    assert price_evidence["review"]["reviewed_items"] == sum(EXPECTED_COUNTS.values())
+    assert price_evidence["review"]["cohort_model_deployed"] is False
+    assert price_evidence["review"]["starter_estimate_model_deployed"] is True
+    assert price_evidence["review"]["starter_estimate_model_version"] == "hellscream-low-pop-relative-rank-v1"
+    assert price_evidence["review"]["external_diagnostics"]["used_to_set_prices"] is False
+    assert price_evidence["review"]["external_diagnostics"]["used_for_relative_rank"] is True
+    assert cross_server["rules"]["external_asks_used_to_set_prices"] is False
+    assert cross_server["summary"]["catalog_items"] == sum(EXPECTED_COUNTS.values())
+    assert cross_server["summary"]["sources"] == 6
+    assert cross_server["summary"]["realms"] == 3
 
     entries = catalog["catalog"]
     assert len(entries) == sum(EXPECTED_COUNTS.values())
@@ -119,12 +133,23 @@ def main() -> int:
     for key, item in entries.items():
         item_id = str(item["item_id"])
         record = baseline["items"][item_id]
-        assert record["source_type"] == "documented-fallback", key
-        assert record["confidence"] == "fallback", key
+        proposal = price_evidence["items"][item_id]["proposal"]
+        assert record["source_type"] == proposal["source_type"], key
+        assert record["confidence"] == proposal["confidence"], key
+        assert {band: int(record[band]) for band in ("quick", "target", "high")} == proposal["proposed_band"], key
+        assert record["reason"] == proposal["reason"], key
         assert int(record["quick"]) <= int(record["target"]) <= int(record["high"]), key
-        assert "No active listing was used" in record["reason"], key
+        assert "Active listing prices were not used" in record["reason"] or "External asks informed relative order only" in record["reason"], key
         assert tooltips[normalize(item["name"])] == item["item_id"], key
         assert eligibility_items[item_id]["bonding"] == 2, key
+        assert cross_server["items"][item_id]["used_to_set_price"] is False, key
+
+    assert price_evidence["items"]["37752"]["proposal"]["decision"] == "accept-sparse-direct-sale"
+    assert price_evidence["items"]["44313"]["proposal"]["decision"] == "accept-sparse-direct-sale"
+    assert sum(
+        record["proposal"]["decision"] == "accept-reviewed-starter-estimate"
+        for record in price_evidence["items"].values()
+    ) == 345
 
     search_counts = Counter(item["guideId"] for item in search["items"])
     for guide_id, expected in EXPECTED_COUNTS.items():
@@ -166,8 +191,10 @@ def main() -> int:
         assert source.count(expected_columns) == len(guide["sections"])
         assert "Provisional fallback" not in source
         assert source.count('class="note ah-dropped-gear-fallback-note"') == 1
-        assert source.count("<strong>* Provisional prices:</strong>") == 1
-        assert "unverified starting band—not a confirmed market value or live-AH average" in source
+        assert source.count("<strong>* Starter-price method:</strong>") == 1
+        assert "low-confidence completed-sale evidence" in source
+        assert "External realms influence relative item rank after gold-scale normalization" in source
+        assert "reviewed Hellscream low-pop starter estimates" in source
         assert "Updated 2026-08-05" in source
         for key, item in entries.items():
             if item["guide_id"] != guide_id:

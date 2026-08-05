@@ -17,6 +17,7 @@ CATALOG_PATH = ROOT / "data" / "ah-crafted-sections.json"
 AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
 DROPPED_GEAR_PATH = ROOT / "data" / "ah-dropped-gear.json"
+DROPPED_GEAR_EVIDENCE_PATH = ROOT / "data" / "ah-dropped-gear-price-evidence.json"
 
 
 def fail(message: str) -> None:
@@ -39,15 +40,21 @@ def main() -> int:
     audit = json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
     vendor = json.loads(VENDOR_PATH.read_text(encoding="utf-8"))
     dropped_gear = json.loads(DROPPED_GEAR_PATH.read_text(encoding="utf-8"))
+    dropped_evidence = json.loads(DROPPED_GEAR_EVIDENCE_PATH.read_text(encoding="utf-8"))
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
     dropped_count = len(dropped_gear["catalog"])
     if len(baseline.get("items", {})) != 720 + dropped_count:
-        fail("Frozen baseline must contain the prior 720 references plus every audited dropped-gear fallback")
+        fail("Baseline must contain the prior 720 references plus every audited dropped-gear item")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 644, "medium": 1, "fallback": 75 + dropped_count}):
-        fail(f"Unexpected initial baseline confidence distribution: {confidence}")
+    if confidence != Counter({"low": 646, "medium": 1, "fallback": 420}):
+        fail(f"Unexpected baseline confidence distribution: {confidence}")
+    if dropped_evidence["review"]["decisions"] != {
+        "accept-reviewed-starter-estimate": 345,
+        "accept-sparse-direct-sale": 2,
+    }:
+        fail("Dropped-gear review decisions are missing or stale")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
             fail(f"{item_id}: unapproved baseline evidence {record['source_type']}")
@@ -252,7 +259,7 @@ def main() -> int:
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 720 frozen references and documented fallbacks, "
+        "Non-circular AH baseline is valid: 720 prior references plus reviewed dropped-gear evidence, "
         "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 141 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
     )
     return 0

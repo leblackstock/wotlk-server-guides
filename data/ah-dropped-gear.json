@@ -1,7 +1,7 @@
 {
   "version": 1,
   "audit_commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
-  "scope": "Drop-sourced level-80 epic BoEs plus pre-80 epic BoEs and fixed-stat rare BoEs at recognized bracket caps. Prices are provisional non-listing fallbacks.",
+  "scope": "Drop-sourced level-80 epic BoEs plus pre-80 epic BoEs and fixed-stat rare BoEs at recognized bracket caps. Prices use completed-sale evidence where available and otherwise use reviewed Hellscream low-pop starter estimates.",
   "guides": {
     "level-80-boe-epics": {
       "file": "level-80-boe-epics-ah-price-guide.html",
@@ -2893,7 +2893,7 @@
       "source": "Outland world drop",
       "buyer": "Level 70 bracket players and collectors",
       "demand": "Low-Med",
-      "notes": "Fixed-stat level 70 cloth boots for bracket players; exact-level upgrades have a narrow but motivated buyer pool. Outland world drop supply is unpredictable; list one at a time and do not treat an empty AH as proof of the high band."
+      "notes": "Fixed-stat level 70 cloth boots for bracket players; exact-level upgrades have a narrow but motivated buyer pool. Two same-price completed sales support the current low-confidence band, but they came from one buyer on one day; Outland world-drop supply is unpredictable, so post singly and keep recording sales."
     },
     "mendicants-robe-of-mendacity": {
       "item_id": 37753,
@@ -3761,7 +3761,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 trinket buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 trinket for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 trinket for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "rusted-link-spiked-gauntlets": {
       "item_id": 39194,
@@ -4083,7 +4083,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 trinket buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 trinket for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 trinket for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "krol-cleaver": {
       "item_id": 43611,
@@ -4139,7 +4139,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 ring buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 ring for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 ring for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "sash-of-jordan": {
       "item_id": 44309,
@@ -4153,7 +4153,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 cloth belt buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 cloth belt for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 cloth belt for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "namlaks-supernumerary-sticker": {
       "item_id": 44310,
@@ -4167,7 +4167,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 one-handed weapon buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 one-handed weapon for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 one-handed weapon for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "avools-sword-of-jin": {
       "item_id": 44311,
@@ -4181,7 +4181,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 one-handed weapon buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 one-handed weapon for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 one-handed weapon for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "wapachs-spaulders-of-solidarity": {
       "item_id": 44312,
@@ -4195,7 +4195,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 plate shoulder armor buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 plate shoulder armor for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 plate shoulder armor for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the starter estimate against completed sales when available."
     },
     "zoms-crackling-bulwark": {
       "item_id": 44313,
@@ -4209,7 +4209,7 @@
       "source": "Northrend world or container drop",
       "buyer": "Level-80 shield buyers",
       "demand": "Medium",
-      "notes": "Early level-80 iLvl 200 shield for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. Northrend world or container drop supply is irregular; post singly, allow a longer sale window, and validate the fallback against completed sales when available."
+      "notes": "Early level-80 iLvl 200 shield for level-80 gearing; the immediate tradeable upgrade and item level are the main reasons to pay a premium. One completed sale supports the current low-confidence band, but Northrend world-drop supply is irregular; post singly and keep recording completed sales before treating the band as stable."
     },
     "dustbringer": {
       "item_id": 44505,

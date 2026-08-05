@@ -190,13 +190,58 @@ def parse_items(sql: str) -> dict[int, dict]:
         "RandomProperty",
         "RandomSuffix",
         "SellPrice",
+        "AllowableClass",
+        "AllowableRace",
+        "RequiredSkill",
+        "RequiredSkillRank",
+        "armor",
+        "dmg_min1",
+        "dmg_max1",
+        "dmg_type1",
+        "delay",
+        "block",
+        "socketBonus",
+        "itemset",
+        "HolidayId",
     }
+    for index in range(1, 11):
+        fields.update({f"stat_type{index}", f"stat_value{index}"})
+    for index in range(1, 4):
+        fields.update({f"socketColor_{index}", f"socketContent_{index}"})
+    for index in range(1, 6):
+        fields.update({f"spellid_{index}", f"spelltrigger_{index}"})
     missing = fields - positions.keys()
     if missing:
         raise ValueError(f"item_template is missing fields: {sorted(missing)}")
     records: dict[int, dict] = {}
     for row in rows:
         item_id = int(row[positions["entry"]])
+        stats = [
+            {
+                "type": int(row[positions[f"stat_type{index}"]]),
+                "value": int(row[positions[f"stat_value{index}"]]),
+            }
+            for index in range(1, 11)
+            if int(row[positions[f"stat_type{index}"]])
+            or int(row[positions[f"stat_value{index}"]])
+        ]
+        sockets = [
+            {
+                "color": int(row[positions[f"socketColor_{index}"]]),
+                "content": int(row[positions[f"socketContent_{index}"]]),
+            }
+            for index in range(1, 4)
+            if int(row[positions[f"socketColor_{index}"]])
+            or int(row[positions[f"socketContent_{index}"]])
+        ]
+        spells = [
+            {
+                "id": int(row[positions[f"spellid_{index}"]]),
+                "trigger": int(row[positions[f"spelltrigger_{index}"]]),
+            }
+            for index in range(1, 6)
+            if int(row[positions[f"spellid_{index}"]])
+        ]
         records[item_id] = {
             "item_id": item_id,
             "name": row[positions["name"]],
@@ -212,6 +257,22 @@ def parse_items(sql: str) -> dict[int, dict]:
             "random_property": int(row[positions["RandomProperty"]]),
             "random_suffix": int(row[positions["RandomSuffix"]]),
             "sell_price": int(row[positions["SellPrice"]]),
+            "allowable_class": int(row[positions["AllowableClass"]]),
+            "allowable_race": int(row[positions["AllowableRace"]]),
+            "required_skill": int(row[positions["RequiredSkill"]]),
+            "required_skill_rank": int(row[positions["RequiredSkillRank"]]),
+            "armor": int(row[positions["armor"]]),
+            "weapon_damage_min": float(row[positions["dmg_min1"]]),
+            "weapon_damage_max": float(row[positions["dmg_max1"]]),
+            "weapon_damage_type": int(row[positions["dmg_type1"]]),
+            "weapon_delay_ms": int(row[positions["delay"]]),
+            "block": int(row[positions["block"]]),
+            "stats": stats,
+            "sockets": sockets,
+            "socket_bonus_spell": int(row[positions["socketBonus"]]),
+            "spells": spells,
+            "item_set": int(row[positions["itemset"]]),
+            "holiday_id": int(row[positions["HolidayId"]]),
         }
     return records
 
@@ -243,26 +304,50 @@ def build_loot_sources(sql_by_file: dict[str, str], items: dict[int, dict]) -> d
     positions, rows = parse_table(
         sql_by_file["reference_loot_template.sql"], "reference_loot_template"
     )
-    references: dict[int, list[tuple[int, int, str]]] = defaultdict(list)
+    references: dict[int, list[tuple[int, int, float, int, int, int, str]]] = defaultdict(list)
     for row in rows:
         references[int(row[positions["Entry"]])].append(
             (
                 int(row[positions["Item"]]),
                 int(row[positions["Reference"]]),
+                float(row[positions["Chance"]]),
+                int(row[positions["GroupId"]]),
+                int(row[positions["MinCount"]]),
+                int(row[positions["MaxCount"]]),
                 row[positions["Comment"]],
             )
         )
 
     @lru_cache(maxsize=None)
-    def expand_reference(entry: int) -> tuple[tuple[int, tuple[str, ...]], ...]:
-        expanded: list[tuple[int, tuple[str, ...]]] = []
-        for item_id, reference, comment in references.get(entry, []):
+    def expand_reference(
+        entry: int,
+    ) -> tuple[tuple[int, tuple[str, ...], float, int, int, int], ...]:
+        expanded: list[tuple[int, tuple[str, ...], float, int, int, int]] = []
+        for item_id, reference, chance, group_id, min_count, max_count, comment in references.get(entry, []):
             comments = (comment,) if comment and comment != "NULL" else ()
             if item_id:
-                expanded.append((item_id, comments))
+                expanded.append(
+                    (item_id, comments, chance, group_id, min_count, max_count)
+                )
             if reference and reference != entry:
-                for nested_id, nested_comments in expand_reference(reference):
-                    expanded.append((nested_id, comments + nested_comments))
+                for (
+                    nested_id,
+                    nested_comments,
+                    nested_chance,
+                    nested_group_id,
+                    nested_min_count,
+                    nested_max_count,
+                ) in expand_reference(reference):
+                    expanded.append(
+                        (
+                            nested_id,
+                            comments + nested_comments,
+                            nested_chance,
+                            nested_group_id,
+                            nested_min_count,
+                            nested_max_count,
+                        )
+                    )
         return tuple(expanded)
 
     creatures, gameobjects = parse_source_names(
@@ -281,6 +366,10 @@ def build_loot_sources(sql_by_file: dict[str, str], items: dict[int, dict]) -> d
             entry = int(row[positions["Entry"]])
             direct_item = int(row[positions["Item"]])
             reference = int(row[positions["Reference"]])
+            chance = float(row[positions["Chance"]])
+            group_id = int(row[positions["GroupId"]])
+            min_count = int(row[positions["MinCount"]])
+            max_count = int(row[positions["MaxCount"]])
             comment = row[positions["Comment"]]
             if labels is None:
                 entry_labels = [items.get(entry, {}).get("name", f"Item container {entry}")]
@@ -294,16 +383,35 @@ def build_loot_sources(sql_by_file: dict[str, str], items: dict[int, dict]) -> d
                     {
                         "source_type": source_type,
                         "entry": entry,
+                        "chance": chance,
+                        "group_id": group_id,
+                        "min_count": min_count,
+                        "max_count": max_count,
                         "evidence": evidence,
                     }
                 )
             if reference:
-                for item_id, reference_comments in expand_reference(reference):
+                for (
+                    item_id,
+                    reference_comments,
+                    item_chance,
+                    item_group_id,
+                    item_min_count,
+                    item_max_count,
+                ) in expand_reference(reference):
                     sources[item_id].append(
                         {
                             "source_type": source_type,
                             "entry": entry,
                             "reference": reference,
+                            "chance": chance,
+                            "group_id": group_id,
+                            "min_count": min_count,
+                            "max_count": max_count,
+                            "reference_item_chance": item_chance,
+                            "reference_item_group_id": item_group_id,
+                            "reference_item_min_count": item_min_count,
+                            "reference_item_max_count": item_max_count,
                             "evidence": evidence + list(reference_comments),
                         }
                     )
@@ -608,11 +716,25 @@ def source_guidance(source: str) -> str:
         )
     return (
         f"{source} supply is irregular; post singly, allow a longer sale window, and "
-        "validate the fallback against completed sales when available."
+        "validate the starter estimate against completed sales when available."
     )
 
 
 def selling_note(record: dict, guide_id: str, slot: str, source: str) -> str:
+    if record["item_id"] == 37752:
+        return (
+            f"{buyer_guidance(record, guide_id, slot)} Two same-price completed sales "
+            "support the current low-confidence band, but they came from one buyer on "
+            "one day; Outland world-drop supply is unpredictable, so post singly and "
+            "keep recording sales."
+        )
+    if record["item_id"] == 44313:
+        return (
+            f"{buyer_guidance(record, guide_id, slot)} One completed sale supports the "
+            "current low-confidence band, but Northrend world-drop supply is irregular; "
+            "post singly and keep recording completed sales before treating the band as "
+            "stable."
+        )
     return f"{buyer_guidance(record, guide_id, slot)} {source_guidance(source)}"
 
 
@@ -764,6 +886,16 @@ def build(source_dir: Path | None) -> tuple[dict, dict]:
             slug = f"{slug}-{item_id}"
         seen_slugs.add(slug)
         sources = loot_sources[item_id]
+        source_chances = [
+            float(source["chance"])
+            for source in sources
+            if float(source.get("chance", 0)) > 0
+        ]
+        reference_item_chances = [
+            float(source["reference_item_chance"])
+            for source in sources
+            if float(source.get("reference_item_chance", 0)) > 0
+        ]
         catalog[slug] = catalog_item(record, guide_id, sources)
         audit_items[str(item_id)] = {
             **record,
@@ -771,6 +903,22 @@ def build(source_dir: Path | None) -> tuple[dict, dict]:
             "section_id": section_for(record, guide_id),
             "source_types": sorted({source["source_type"] for source in sources}),
             "source_label": source_label(record, sources, guide_id),
+            "loot_profile": {
+                "source_rows": len(sources),
+                "distinct_source_entries": len(
+                    {(source["source_type"], source["entry"]) for source in sources}
+                ),
+                "direct_rows": sum("reference" not in source for source in sources),
+                "reference_rows": sum("reference" in source for source in sources),
+                "source_chance_min": min(source_chances) if source_chances else None,
+                "source_chance_max": max(source_chances) if source_chances else None,
+                "reference_item_chance_min": (
+                    min(reference_item_chances) if reference_item_chances else None
+                ),
+                "reference_item_chance_max": (
+                    max(reference_item_chances) if reference_item_chances else None
+                ),
+            },
             "source_evidence": sorted(
                 {
                     str(value)
@@ -795,7 +943,8 @@ def build(source_dir: Path | None) -> tuple[dict, dict]:
         "audit_commit": SOURCE_COMMIT,
         "scope": (
             "Drop-sourced level-80 epic BoEs plus pre-80 epic BoEs and fixed-stat rare "
-            "BoEs at recognized bracket caps. Prices are provisional non-listing fallbacks."
+            "BoEs at recognized bracket caps. Prices use completed-sale evidence where "
+            "available and otherwise use reviewed Hellscream low-pop starter estimates."
         ),
         "guides": {
             "level-80-boe-epics": {
@@ -935,8 +1084,14 @@ def validate(data: dict, audit: dict, baseline: dict) -> None:
         price = baseline["items"].get(item_id)
         if not price:
             raise ValueError(f"{item['name']}: price baseline is missing")
-        if price["source_type"] != "documented-fallback" or price["confidence"] != "fallback":
-            raise ValueError(f"{item['name']}: dropped-gear fallback provenance changed")
+        if price["source_type"] == "documented-fallback":
+            if price["confidence"] != "fallback":
+                raise ValueError(f"{item['name']}: fallback confidence changed")
+        elif price["source_type"] == "realized-sales-history":
+            if price["confidence"] not in {"low", "medium"}:
+                raise ValueError(f"{item['name']}: realized-sale confidence is invalid")
+        else:
+            raise ValueError(f"{item['name']}: unsupported dropped-gear provenance")
         if not int(price["quick"]) <= int(price["target"]) <= int(price["high"]):
             raise ValueError(f"{item['name']}: invalid price-band order")
         fingerprint_lines.append(

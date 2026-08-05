@@ -97,7 +97,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     has: page.locator(".ah-search-item-name", { hasText: /^Wodin's Lucky Necklace$/ }),
   });
   assert.equal(await wodin.count(), 1);
-  assert.deepEqual(await wodin.locator(".ah-search-target-value").allTextContents(), ["2,125g", "2,500g"]);
+  assert.deepEqual(await wodin.locator(".ah-search-target-value").allTextContents(), ["1,657g 50s", "1,950g"]);
   const wodinRow = page.locator('[data-dropped-gear-key="wodins-lucky-necklace"]');
   assert.match(await wodinRow.locator(".mini").textContent(), /Epic · Req 80 · iLvl 264 · Neck/);
   assert.deepEqual(await wodinRow.locator("td").evaluateAll((cells) => cells.map((cell) => cell.dataset.column)), [
@@ -106,8 +106,11 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.equal(await wodinRow.locator(".market-tag").count(), 0);
   const boeFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
   assert.equal(await boeFallbackNote.count(), 1);
-  assert.match(await boeFallbackNote.textContent(), /\* Provisional prices:/);
-  assert.match(await boeFallbackNote.textContent(), /unverified starting band/);
+  assert.match(await boeFallbackNote.textContent(), /\* Starter-price method:/);
+  assert.match(await boeFallbackNote.textContent(), /84 rows use reviewed Hellscream low-pop starter estimates/);
+  assert.match(await boeFallbackNote.textContent(), /1 row uses low-confidence completed-sale evidence/);
+  const zomsRow = page.locator('[data-dropped-gear-key="zoms-crackling-bulwark"]');
+  assert.equal(await zomsRow.locator('[data-column="target"] .buyout').textContent(), "350g");
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /ICC-era iLvl 264 necklace/);
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /Sack of Frosty Treasures supply is episodic/);
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);
@@ -135,7 +138,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     has: page.locator(".ah-search-item-name", { hasText: /^Shadowfang$/ }),
   });
   assert.equal(await shadowfang.count(), 1);
-  assert.deepEqual(await shadowfang.locator(".ah-search-target-value").allTextContents(), ["170g", "200g"]);
+  assert.deepEqual(await shadowfang.locator(".ah-search-target-value").allTextContents(), ["34g", "40g"]);
   const shadowfangRow = page.locator('[data-dropped-gear-key="shadowfang"]');
   assert.match(await shadowfangRow.locator(".mini").textContent(), /Rare · Req 19 · iLvl 24 · One-Hand/);
   assert.deepEqual(await shadowfangRow.locator("td").evaluateAll((cells) => cells.map((cell) => cell.dataset.column)), [
@@ -144,8 +147,11 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.equal(await shadowfangRow.locator(".market-tag").count(), 0);
   const worldDropFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
   assert.equal(await worldDropFallbackNote.count(), 1);
-  assert.match(await worldDropFallbackNote.textContent(), /\* Provisional prices:/);
-  assert.match(await worldDropFallbackNote.textContent(), /unverified starting band/);
+  assert.match(await worldDropFallbackNote.textContent(), /\* Starter-price method:/);
+  assert.match(await worldDropFallbackNote.textContent(), /261 rows use reviewed Hellscream low-pop starter estimates/);
+  assert.match(await worldDropFallbackNote.textContent(), /1 row uses low-confidence completed-sale evidence/);
+  const sandalsRow = page.locator('[data-dropped-gear-key="sandals-of-broken-dreams"]');
+  assert.equal(await sandalsRow.locator('[data-column="target"] .buyout').textContent(), "9g 57s");
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Fixed-stat level 19 one-handed weapon/);
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Shadowfang Keep trash farming/);
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);

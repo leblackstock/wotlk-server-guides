@@ -16,6 +16,12 @@ value, demand, or a completed sale.
    and competing asks. Use this only to decide whether, when, and how much to
    post. Never copy a listing median into the baseline.
 
+For dropped gear with no useful local sale history, a separately approved
+starter-price review may use gold-normalized cross-server listings only to rank
+items within a fixed Hellscream comparison group. The Hellscream anchor—not an
+external gold value—sets the band. These estimates remain `fallback`, are frozen
+to the reviewed evidence snapshot, and require separate report and apply steps.
+
 ## Accepted Baseline Evidence
 
 Evidence is strongest in this order:
@@ -27,8 +33,50 @@ Evidence is strongest in this order:
   transfer or one buyer controlling most of the volume.
 - `low`: a frozen pre-scan reference, limited realized history, or a conversion
   containing low-confidence inputs.
-- `fallback`: no independent price evidence; the number exists only so a rare
-  recipe can be costed and must be treated as provisional.
+- `fallback`: no qualifying independent sale evidence. The number may be a
+  documented acquisition fallback or a reviewed low-pop starter estimate, but
+  it must not be presented as a verified current value.
+
+### One-at-a-time BoE gear gate
+
+The twenty-unit material gate does not apply to non-stackable BoE equipment.
+For an individual dropped-gear item:
+
+- `medium` requires at least four completed buyouts, two distinct buyers, and
+  two distinct UTC sale days, with no buyer controlling more than 50% of sold
+  units;
+- stronger `medium` coverage begins at eight completed buyouts, four distinct
+  buyers, and four distinct UTC sale days while still passing the concentration
+  limit;
+- `low` covers one to three valid completed buyouts or a larger history that is
+  concentrated in one buyer or one day;
+- `fallback` means there is no qualifying direct completed-sale evidence.
+
+Sparse `low` evidence may support a manually reviewed item-specific band, but
+it must not train or validate a general cohort model. Active listing prices do
+not satisfy any part of this gate.
+
+### Low-pop dropped-gear starter estimates
+
+When a low-pop realm lacks enough completed sales to open a useful market, the
+reviewed starter model may provide a practical first post without claiming a
+verified sale value:
+
+1. Normalize each external realm/faction economy against shared commodities
+   with actual Hellscream completed sales.
+2. Use the normalized observations only to rank an item inside a comparable
+   item-level, era, and rarity group. Do not copy the external gold amount.
+3. Set the gold scale with a fixed, recorded Hellscream group anchor.
+4. Pull two-realm, one-realm, and missing observations toward the group midpoint
+   in proportion to coverage reliability.
+5. Round to clean posting values and provide wide Quick / Target / High bands so
+   the local market can discover the actual value.
+6. Keep the result at `fallback` confidence. Any qualifying Hellscream completed
+   sale overrides the starter model.
+
+The approved anchors, ranks, coverage weights, before/after values, and model
+version are recorded in the dropped-gear repricing review. Refreshing an active
+listing snapshot never updates these bands automatically.
 
 Measured farming or acquisition yields may establish a baseline only when the
 record includes the route, elapsed time, output quantity, and explicit gold-per-
@@ -51,14 +99,18 @@ guards does not promote listing prices into the baseline.
 
 - No script may automatically update `data/ah-price-baselines.json` from active
   listings.
+- The dropped-gear estimator consumes a frozen, sanitized relative-rank review;
+  generating proposals and applying accepted proposals are separate commands.
+  It does not fetch live listings or copy their gold values.
 - A guide-generated posting price cannot be used as evidence merely because it
   appears in a later scan.
 - Completed sales may validate the band, but baseline replacement is manual and
   must record counts, buyers, days, price range, and confidence.
 - Friend transfers, test purchases, cancelled auctions, bids, and expired
   listings are not realized-market evidence.
-- When evidence is insufficient, freeze the prior baseline and lower its
-  confidence instead of manufacturing a new current price.
+- When evidence is insufficient for a verified value, retain `fallback`
+  confidence. A user-approved low-pop starter estimate must be labeled as an
+  estimate and replaced by qualifying local completed sales.
 
 ## Price-Band Meaning
 
@@ -138,3 +190,11 @@ above exact 1s 85c and 15s liquidation values respectively. These provisional
 ranges make the three anti-venom recipes costable without importing active AH
 listings; they must be replaced when qualifying realized sales or measured
 acquisition evidence becomes available.
+
+## Recorded Follow-Up Work
+
+- [Dropped-Gear Repricing Plan](ah-dropped-gear-pricing-plan.md) — implemented
+  local evidence, fixed Hellscream starter anchors, normalized cross-server
+  relative ranks, and the complete 347-item review for the Level 80 BoE Epics
+  and Sought-After World Drops guides. Publication remains separately
+  authorized.

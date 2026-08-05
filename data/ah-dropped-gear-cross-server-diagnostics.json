@@ -1,0 +1,6639 @@
+{
+  "version": 1,
+  "refreshed": "2026-08-05",
+  "scope": "Dimensionless cross-server availability and relative-rank diagnostics. No external gold value, seller identity, or raw download is committed.",
+  "rules": {
+    "external_asks_used_to_set_prices": false,
+    "normalization": "For each realm/faction, median external-to-Hellscream unit-price ratios are calculated in log space from six shared commodity benchmarks with actual local completed sales; log outliers beyond a robust MAD threshold are excluded.",
+    "item_comparison": "External item asks are divided by their source economy index, combined by realm, then expressed only as a ratio to the saved Hellscream target.",
+    "history_limit": "The source sites expose current auctions and listing-price/volume history, but do not identify disappearance as sale versus cancellation or expiration.",
+    "stability_limit": "One snapshot per realm/faction cannot establish stable availability or turnover."
+  },
+  "benchmark_basket": {
+    "2770": {
+      "item_id": 2770,
+      "name": "Copper Ore",
+      "local_completed_buyouts": 3,
+      "local_units": 15,
+      "local_distinct_buyers": 1,
+      "local_distinct_days": 1
+    },
+    "7912": {
+      "item_id": 7912,
+      "name": "Solid Stone",
+      "local_completed_buyouts": 4,
+      "local_units": 80,
+      "local_distinct_buyers": 2,
+      "local_distinct_days": 2
+    },
+    "8170": {
+      "item_id": 8170,
+      "name": "Rugged Leather",
+      "local_completed_buyouts": 1,
+      "local_units": 26,
+      "local_distinct_buyers": 1,
+      "local_distinct_days": 1
+    },
+    "21886": {
+      "item_id": 21886,
+      "name": "Primal Life",
+      "local_completed_buyouts": 3,
+      "local_units": 3,
+      "local_distinct_buyers": 1,
+      "local_distinct_days": 1
+    },
+    "22452": {
+      "item_id": 22452,
+      "name": "Primal Earth",
+      "local_completed_buyouts": 3,
+      "local_units": 3,
+      "local_distinct_buyers": 1,
+      "local_distinct_days": 1
+    },
+    "36912": {
+      "item_id": 36912,
+      "name": "Saronite Ore",
+      "local_completed_buyouts": 79,
+      "local_units": 690,
+      "local_distinct_buyers": 2,
+      "local_distinct_days": 1
+    }
+  },
+  "sources": {
+    "icecrown-alliance": {
+      "realm": "Icecrown",
+      "faction": "Alliance",
+      "progression": "WotLK 3.3.5 end state",
+      "rates": "x7 experience and x3 gold/profession/reputation; gear shop present",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "83b88a7eb6a944a457352053824ff53eceac088824b8dbe97032d1a457102c26",
+      "latest_full_scan_timestamp": 1785955351,
+      "auction_rows": 158189,
+      "catalog_items_present": 275,
+      "scale": {
+        "external_gold_per_hellscream_gold": 12.7171,
+        "benchmarks_available": 6,
+        "benchmarks_used": 6,
+        "benchmark_ids_used": [
+          2770,
+          7912,
+          8170,
+          21886,
+          22452,
+          36912
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [],
+        "log_mad": 0.5987,
+        "confidence": "diagnostic-only"
+      }
+    },
+    "icecrown-horde": {
+      "realm": "Icecrown",
+      "faction": "Horde",
+      "progression": "WotLK 3.3.5 end state",
+      "rates": "x7 experience and x3 gold/profession/reputation; gear shop present",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "6530150a7a73487602318c82be3ab449a245b734f615a2a678169f561781d06e",
+      "latest_full_scan_timestamp": 1785948919,
+      "auction_rows": 168180,
+      "catalog_items_present": 306,
+      "scale": {
+        "external_gold_per_hellscream_gold": 13.7757,
+        "benchmarks_available": 6,
+        "benchmarks_used": 4,
+        "benchmark_ids_used": [
+          7912,
+          8170,
+          21886,
+          22452
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [
+          2770,
+          36912
+        ],
+        "log_mad": 0.2404,
+        "confidence": "diagnostic-only"
+      }
+    },
+    "lordaeron-alliance": {
+      "realm": "Lordaeron",
+      "faction": "Alliance",
+      "progression": "WotLK 3.3.5 end state",
+      "rates": "x1 realm; harder raid tuning; restricted gear shop",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "49d9a3c3680ffe72dfdec9d5be213d03cdf1eae1c2304c6dd2bd68f6f852ebf4",
+      "latest_full_scan_timestamp": 1785948969,
+      "auction_rows": 45707,
+      "catalog_items_present": 211,
+      "scale": {
+        "external_gold_per_hellscream_gold": 5.8001,
+        "benchmarks_available": 6,
+        "benchmarks_used": 6,
+        "benchmark_ids_used": [
+          2770,
+          7912,
+          8170,
+          21886,
+          22452,
+          36912
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [],
+        "log_mad": 0.7367,
+        "confidence": "diagnostic-only"
+      }
+    },
+    "lordaeron-horde": {
+      "realm": "Lordaeron",
+      "faction": "Horde",
+      "progression": "WotLK 3.3.5 end state",
+      "rates": "x1 realm; harder raid tuning; restricted gear shop",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "c374fe43a2182e6320a5fd8129dc0001a0ee6c1dd4a5e99fedc188473db96eff",
+      "latest_full_scan_timestamp": 1785941630,
+      "auction_rows": 59341,
+      "catalog_items_present": 230,
+      "scale": {
+        "external_gold_per_hellscream_gold": 9.211,
+        "benchmarks_available": 6,
+        "benchmarks_used": 6,
+        "benchmark_ids_used": [
+          2770,
+          7912,
+          8170,
+          21886,
+          22452,
+          36912
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [],
+        "log_mad": 0.7305,
+        "confidence": "diagnostic-only"
+      }
+    },
+    "onyxia-alliance": {
+      "realm": "Onyxia",
+      "faction": "Alliance",
+      "progression": "progressive realm advancing toward WotLK",
+      "rates": "x1 experience through level 80 per current Warmane FAQ",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "757ddfd8270f0e1f40f38eba33d98b2f51dc7633864164d508db7f443e164804",
+      "latest_full_scan_timestamp": 1785947283,
+      "auction_rows": 122340,
+      "catalog_items_present": 234,
+      "scale": {
+        "external_gold_per_hellscream_gold": 3.9115,
+        "benchmarks_available": 6,
+        "benchmarks_used": 6,
+        "benchmark_ids_used": [
+          2770,
+          7912,
+          8170,
+          21886,
+          22452,
+          36912
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [],
+        "log_mad": 1.0253,
+        "confidence": "diagnostic-only"
+      }
+    },
+    "onyxia-horde": {
+      "realm": "Onyxia",
+      "faction": "Horde",
+      "progression": "progressive realm advancing toward WotLK",
+      "rates": "x1 experience through level 80 per current Warmane FAQ",
+      "source_url": "https://ah.nerfed.net/servers/base?id=7",
+      "snapshot_sha256": "6a1e0481b486f428329f34652648679031cdbe9709780d79d1609d8787d90502",
+      "latest_full_scan_timestamp": 1785938973,
+      "auction_rows": 117784,
+      "catalog_items_present": 233,
+      "scale": {
+        "external_gold_per_hellscream_gold": 4.0139,
+        "benchmarks_available": 6,
+        "benchmarks_used": 6,
+        "benchmark_ids_used": [
+          2770,
+          7912,
+          8170,
+          21886,
+          22452,
+          36912
+        ],
+        "benchmark_ids_excluded_as_log_outliers": [],
+        "log_mad": 1.0323,
+        "confidence": "diagnostic-only"
+      }
+    }
+  },
+  "summary": {
+    "catalog_items": 347,
+    "sources": 6,
+    "realms": 3,
+    "items_seen_on_at_least_two_realms": 305,
+    "diagnostics": {
+      "insufficient-external-coverage": 42,
+      "normalized-asks-above-hellscream-target": 8,
+      "normalized-asks-below-hellscream-target": 270,
+      "normalized-asks-broadly-aligned": 27
+    }
+  },
+  "items": {
+    "647": {
+      "item_id": 647,
+      "name": "Destiny",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.291,
+      "normalized_ratio_range": [
+        0.109,
+        0.631
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "809": {
+      "item_id": 809,
+      "name": "Bloodrazor",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.126,
+      "normalized_ratio_range": [
+        0.085,
+        1.589
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "810": {
+      "item_id": 810,
+      "name": "Hammer of the Northern Wind",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.036,
+      "normalized_ratio_range": [
+        0.028,
+        0.067
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "811": {
+      "item_id": 811,
+      "name": "Axe of the Deep Woods",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.049,
+      "normalized_ratio_range": [
+        0.048,
+        0.166
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "812": {
+      "item_id": 812,
+      "name": "Glowing Brightwood Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.252,
+      "normalized_ratio_range": [
+        0.059,
+        7.259
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "833": {
+      "item_id": 833,
+      "name": "Lifestone",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.062,
+      "normalized_ratio_range": [
+        0.054,
+        0.329
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "867": {
+      "item_id": 867,
+      "name": "Gloves of Holy Might",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.065,
+      "normalized_ratio_range": [
+        0.037,
+        0.068
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "868": {
+      "item_id": 868,
+      "name": "Ardent Custodian",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.151,
+      "normalized_ratio_range": [
+        0.038,
+        0.221
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "869": {
+      "item_id": 869,
+      "name": "Dazzling Longsword",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.04,
+      "normalized_ratio_range": [
+        0.02,
+        0.107
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "870": {
+      "item_id": 870,
+      "name": "Fiery War Axe",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.021,
+      "normalized_ratio_range": [
+        0.02,
+        0.226
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "871": {
+      "item_id": 871,
+      "name": "Flurry Axe",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.171,
+      "normalized_ratio_range": [
+        0.156,
+        0.515
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "873": {
+      "item_id": 873,
+      "name": "Staff of Jordan",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.083,
+      "normalized_ratio_range": [
+        0.054,
+        0.218
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "890": {
+      "item_id": 890,
+      "name": "Twisted Chanter's Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.113,
+      "normalized_ratio_range": [
+        0.025,
+        0.361
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "940": {
+      "item_id": 940,
+      "name": "Robes of Insight",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.11,
+      "normalized_ratio_range": [
+        0.067,
+        0.225
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "942": {
+      "item_id": 942,
+      "name": "Freezing Band",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.281,
+      "normalized_ratio_range": [
+        0.079,
+        0.483
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "943": {
+      "item_id": 943,
+      "name": "Warden Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.018,
+      "normalized_ratio_range": [
+        0.014,
+        0.199
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "944": {
+      "item_id": 944,
+      "name": "Elemental Mage Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.093,
+      "normalized_ratio_range": [
+        0.025,
+        0.317
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1121": {
+      "item_id": 1121,
+      "name": "Feet of the Lynx",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.148,
+      "normalized_ratio_range": [
+        0.064,
+        0.658
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1168": {
+      "item_id": 1168,
+      "name": "Skullflame Shield",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.961,
+      "normalized_ratio_range": [
+        0.543,
+        1.047
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1169": {
+      "item_id": 1169,
+      "name": "Blackskull Shield",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.238,
+      "normalized_ratio_range": [
+        0.117,
+        0.326
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1203": {
+      "item_id": 1203,
+      "name": "Aegis of Stormwind",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.048,
+      "normalized_ratio_range": [
+        0.033,
+        0.06
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1204": {
+      "item_id": 1204,
+      "name": "The Green Tower",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.052,
+      "normalized_ratio_range": [
+        0.036,
+        0.054
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1263": {
+      "item_id": 1263,
+      "name": "Brain Hacker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.152,
+      "normalized_ratio_range": [
+        0.029,
+        0.215
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1315": {
+      "item_id": 1315,
+      "name": "Lei of Lilies",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.011,
+        0.17
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1443": {
+      "item_id": 1443,
+      "name": "Jeweled Amulet of Cainwyn",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.03,
+        0.079
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1447": {
+      "item_id": 1447,
+      "name": "Ring of Saviors",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.096,
+      "normalized_ratio_range": [
+        0.016,
+        0.489
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1482": {
+      "item_id": 1482,
+      "name": "Shadowfang",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.244,
+      "normalized_ratio_range": [
+        0.23,
+        0.594
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1486": {
+      "item_id": 1486,
+      "name": "Tree Bark Jacket",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.071,
+      "normalized_ratio_range": [
+        0.045,
+        0.097
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "1607": {
+      "item_id": 1607,
+      "name": "Soulkeeper",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.08,
+      "normalized_ratio_range": [
+        0.017,
+        0.221
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1715": {
+      "item_id": 1715,
+      "name": "Polished Jazeraint Armor",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.145,
+      "normalized_ratio_range": [
+        0.05,
+        0.216
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1721": {
+      "item_id": 1721,
+      "name": "Viking Warhammer",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.05,
+      "normalized_ratio_range": [
+        0.008,
+        0.13
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1728": {
+      "item_id": 1728,
+      "name": "Teebu's Blazing Longsword",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 4.9,
+      "normalized_ratio_range": [
+        3.695,
+        6.105
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "1935": {
+      "item_id": 1935,
+      "name": "Assassin's Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.189,
+      "normalized_ratio_range": [
+        0.122,
+        0.396
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1979": {
+      "item_id": 1979,
+      "name": "Wall of the Dead",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.238,
+      "normalized_ratio_range": [
+        0.217,
+        0.259
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "1980": {
+      "item_id": 1980,
+      "name": "Underworld Band",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.181,
+      "normalized_ratio_range": [
+        0.062,
+        0.204
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1981": {
+      "item_id": 1981,
+      "name": "Icemail Jerkin",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.043,
+      "normalized_ratio_range": [
+        0.038,
+        0.051
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "1982": {
+      "item_id": 1982,
+      "name": "Nightblade",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.209,
+      "normalized_ratio_range": [
+        0.151,
+        0.267
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "2059": {
+      "item_id": 2059,
+      "name": "Sentry Cloak",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.069,
+      "normalized_ratio_range": [
+        0.027,
+        0.262
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2099": {
+      "item_id": 2099,
+      "name": "Dwarven Hand Cannon",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.015,
+        0.183
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2100": {
+      "item_id": 2100,
+      "name": "Precisely Calibrated Boomstick",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.043,
+      "normalized_ratio_range": [
+        0.019,
+        0.054
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2163": {
+      "item_id": 2163,
+      "name": "Shadowblade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.113,
+      "normalized_ratio_range": [
+        0.036,
+        0.17
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2164": {
+      "item_id": 2164,
+      "name": "Gut Ripper",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.125,
+      "normalized_ratio_range": [
+        0.052,
+        0.602
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2243": {
+      "item_id": 2243,
+      "name": "Hand of Edward the Odd",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.127,
+      "normalized_ratio_range": [
+        0.084,
+        0.169
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "2244": {
+      "item_id": 2244,
+      "name": "Krol Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.093,
+      "normalized_ratio_range": [
+        0.038,
+        1.47
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "2245": {
+      "item_id": 2245,
+      "name": "Helm of Narv",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.031,
+      "normalized_ratio_range": [
+        0.021,
+        0.066
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2246": {
+      "item_id": 2246,
+      "name": "Myrmidon's Signet",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.082,
+      "normalized_ratio_range": [
+        0.044,
+        0.085
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2256": {
+      "item_id": 2256,
+      "name": "Skeletal Club",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.017,
+        0.178
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2291": {
+      "item_id": 2291,
+      "name": "Kang the Decapitator",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.1,
+      "normalized_ratio_range": [
+        0.026,
+        0.215
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2801": {
+      "item_id": 2801,
+      "name": "Blade of Hanna",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 1.442,
+      "normalized_ratio_range": [
+        0.883,
+        6.31
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "2824": {
+      "item_id": 2824,
+      "name": "Hurricane",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.186,
+      "normalized_ratio_range": [
+        0.03,
+        0.343
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "2825": {
+      "item_id": 2825,
+      "name": "Bow of Searing Arrows",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.035,
+      "normalized_ratio_range": [
+        0.02,
+        0.055
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "2915": {
+      "item_id": 2915,
+      "name": "Taran Icebreaker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.101,
+      "normalized_ratio_range": [
+        0.036,
+        0.111
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "3075": {
+      "item_id": 3075,
+      "name": "Eye of Flame",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.198,
+      "normalized_ratio_range": [
+        0.083,
+        0.458
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "3415": {
+      "item_id": 3415,
+      "name": "Staff of the Friar",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.131,
+      "normalized_ratio_range": [
+        0.011,
+        0.189
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "3475": {
+      "item_id": 3475,
+      "name": "Cloak of Flames",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.155,
+        0.155
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "7728": {
+      "item_id": 7728,
+      "name": "Beguiler Robes",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.04,
+      "normalized_ratio_range": [
+        0.035,
+        0.227
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "7730": {
+      "item_id": 7730,
+      "name": "Cobalt Crusher",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.078,
+      "normalized_ratio_range": [
+        0.006,
+        0.157
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "9395": {
+      "item_id": 9395,
+      "name": "Gloves of Old",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.084,
+      "normalized_ratio_range": [
+        0.006,
+        0.105
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "9425": {
+      "item_id": 9425,
+      "name": "Pendulum of Doom",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.19,
+      "normalized_ratio_range": [
+        0.039,
+        0.63
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "9429": {
+      "item_id": 9429,
+      "name": "Miner's Hat of the Deep",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.115,
+      "normalized_ratio_range": [
+        0.063,
+        0.139
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "12535": {
+      "item_id": 12535,
+      "name": "Doomforged Straightedge",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.007,
+        0.078
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "12546": {
+      "item_id": 12546,
+      "name": "Aristocratic Cuffs",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.03,
+      "normalized_ratio_range": [
+        0.009,
+        0.143
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "12997": {
+      "item_id": 12997,
+      "name": "Redbeard Crest",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.021,
+        0.153
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13033": {
+      "item_id": 13033,
+      "name": "Zealot Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.067,
+      "normalized_ratio_range": [
+        0.011,
+        0.104
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13051": {
+      "item_id": 13051,
+      "name": "Witchfury",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.046,
+      "normalized_ratio_range": [
+        0.004,
+        0.173
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13058": {
+      "item_id": 13058,
+      "name": "Khoo's Point",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.008,
+      "normalized_ratio_range": [
+        0.005,
+        0.156
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13063": {
+      "item_id": 13063,
+      "name": "Starfaller",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.052,
+      "normalized_ratio_range": [
+        0.01,
+        0.218
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13067": {
+      "item_id": 13067,
+      "name": "Hydralick Armor",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.112,
+      "normalized_ratio_range": [
+        0.11,
+        0.115
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "13095": {
+      "item_id": 13095,
+      "name": "Assault Band",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.061,
+      "normalized_ratio_range": [
+        0.026,
+        0.187
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13100": {
+      "item_id": 13100,
+      "name": "Furen's Boots",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.014,
+        0.079
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13108": {
+      "item_id": 13108,
+      "name": "Tigerstrike Mantle",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.068,
+      "normalized_ratio_range": [
+        0.063,
+        0.186
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13111": {
+      "item_id": 13111,
+      "name": "Sandals of the Insurgent",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.017,
+      "normalized_ratio_range": [
+        0.003,
+        0.161
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "13137": {
+      "item_id": 13137,
+      "name": "Ironweaver",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.1,
+      "normalized_ratio_range": [
+        0.052,
+        0.156
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14549": {
+      "item_id": 14549,
+      "name": "Boots of Avoidance",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.27,
+      "normalized_ratio_range": [
+        0.149,
+        0.423
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14551": {
+      "item_id": 14551,
+      "name": "Edgemaster's Handguards",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.071,
+      "normalized_ratio_range": [
+        0.045,
+        0.124
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14552": {
+      "item_id": 14552,
+      "name": "Stockade Pauldrons",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.109,
+      "normalized_ratio_range": [
+        0.095,
+        0.534
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14553": {
+      "item_id": 14553,
+      "name": "Sash of Mercy",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.049,
+      "normalized_ratio_range": [
+        0.012,
+        0.571
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14554": {
+      "item_id": 14554,
+      "name": "Cloudkeeper Legplates",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.128,
+      "normalized_ratio_range": [
+        0.116,
+        0.467
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "14555": {
+      "item_id": 14555,
+      "name": "Alcor's Sunrazor",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.173,
+        0.173
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "14557": {
+      "item_id": 14557,
+      "name": "The Lion Horn of Stormwind",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.082,
+      "normalized_ratio_range": [
+        0.07,
+        0.093
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "14558": {
+      "item_id": 14558,
+      "name": "Lady Maye's Pendant",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.337,
+      "normalized_ratio_range": [
+        0.288,
+        0.385
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16799": {
+      "item_id": 16799,
+      "name": "Arcanist Bindings",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.109,
+      "normalized_ratio_range": [
+        0.048,
+        0.171
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16802": {
+      "item_id": 16802,
+      "name": "Arcanist Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.184,
+      "normalized_ratio_range": [
+        0.166,
+        0.203
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16804": {
+      "item_id": 16804,
+      "name": "Felheart Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.078,
+      "normalized_ratio_range": [
+        0.035,
+        0.348
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "16806": {
+      "item_id": 16806,
+      "name": "Felheart Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.081,
+      "normalized_ratio_range": [
+        0.028,
+        0.135
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16817": {
+      "item_id": 16817,
+      "name": "Girdle of Prophecy",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.315,
+      "normalized_ratio_range": [
+        0.087,
+        0.544
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16819": {
+      "item_id": 16819,
+      "name": "Vambraces of Prophecy",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.297,
+      "normalized_ratio_range": [
+        0.261,
+        0.332
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16825": {
+      "item_id": 16825,
+      "name": "Nightslayer Bracelets",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.245,
+      "normalized_ratio_range": [
+        0.045,
+        0.391
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "16827": {
+      "item_id": 16827,
+      "name": "Nightslayer Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.376,
+      "normalized_ratio_range": [
+        0.245,
+        0.507
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16828": {
+      "item_id": 16828,
+      "name": "Cenarion Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.19,
+      "normalized_ratio_range": [
+        0.026,
+        0.355
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16830": {
+      "item_id": 16830,
+      "name": "Cenarion Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.168,
+      "normalized_ratio_range": [
+        0.166,
+        0.171
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16838": {
+      "item_id": 16838,
+      "name": "Earthfury Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.26,
+      "normalized_ratio_range": [
+        0.149,
+        0.372
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16840": {
+      "item_id": 16840,
+      "name": "Earthfury Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.197,
+      "normalized_ratio_range": [
+        0.135,
+        0.258
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16850": {
+      "item_id": 16850,
+      "name": "Giantstalker's Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.159,
+      "normalized_ratio_range": [
+        0.086,
+        0.232
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16851": {
+      "item_id": 16851,
+      "name": "Giantstalker's Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.065,
+      "normalized_ratio_range": [
+        0.058,
+        0.073
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16857": {
+      "item_id": 16857,
+      "name": "Lawbringer Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.048,
+      "normalized_ratio_range": [
+        0.029,
+        0.067
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16858": {
+      "item_id": 16858,
+      "name": "Lawbringer Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.135,
+      "normalized_ratio_range": [
+        0.058,
+        0.303
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "16861": {
+      "item_id": 16861,
+      "name": "Bracers of Might",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.24,
+      "normalized_ratio_range": [
+        0.044,
+        0.436
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "16864": {
+      "item_id": 16864,
+      "name": "Belt of Might",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.185,
+      "normalized_ratio_range": [
+        0.091,
+        0.283
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "17007": {
+      "item_id": 17007,
+      "name": "Stonerender Gauntlets",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.166,
+      "normalized_ratio_range": [
+        0.024,
+        0.308
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "18665": {
+      "item_id": 18665,
+      "name": "The Eye of Shadow",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.169,
+      "normalized_ratio_range": [
+        0.101,
+        0.237
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "20698": {
+      "item_id": 20698,
+      "name": "Elemental Attuned Blade",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        13.611,
+        13.611
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30722": {
+      "item_id": 30722,
+      "name": "Ethereum Nexus-Reaver",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 17.007,
+      "normalized_ratio_range": [
+        2.955,
+        21.634
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "30723": {
+      "item_id": 30723,
+      "name": "Talon of the Tempest",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 1.711,
+      "normalized_ratio_range": [
+        1.452,
+        1.97
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30724": {
+      "item_id": 30724,
+      "name": "Barrel-Blade Longrifle",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        12.12,
+        12.12
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30725": {
+      "item_id": 30725,
+      "name": "Anger-Spark Gloves",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.933,
+        0.933
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30726": {
+      "item_id": 30726,
+      "name": "Archaic Charm of Presence",
+      "realms_present": [
+        "Lordaeron"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.542,
+        0.542
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30727": {
+      "item_id": 30727,
+      "name": "Gilded Trousers of Benediction",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        1.415,
+        1.415
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30728": {
+      "item_id": 30728,
+      "name": "Fathom-Helm of the Deeps",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        1.397,
+        1.397
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30729": {
+      "item_id": 30729,
+      "name": "Black-Iron Battlecloak",
+      "realms_present": [
+        "Lordaeron"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.246,
+        0.246
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30730": {
+      "item_id": 30730,
+      "name": "Terrorweave Tunic",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 7.558,
+      "normalized_ratio_range": [
+        2.8,
+        12.315
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30731": {
+      "item_id": 30731,
+      "name": "Faceguard of the Endless Watch",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        7.431,
+        7.431
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30732": {
+      "item_id": 30732,
+      "name": "Exodar Life-Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 5.76,
+      "normalized_ratio_range": [
+        2.757,
+        8.763
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30733": {
+      "item_id": 30733,
+      "name": "Hope Ender",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        11.337,
+        11.337
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30734": {
+      "item_id": 30734,
+      "name": "Leggings of the Seventh Circle",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        1.452,
+        1.452
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30735": {
+      "item_id": 30735,
+      "name": "Ancient Spellcloak of the Highborne",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.746,
+        0.746
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30736": {
+      "item_id": 30736,
+      "name": "Ring of Flowing Light",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.492,
+      "normalized_ratio_range": [
+        0.072,
+        0.912
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30737": {
+      "item_id": 30737,
+      "name": "Gold-Leaf Wildboots",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.573,
+        0.573
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30738": {
+      "item_id": 30738,
+      "name": "Ring of Reciprocity",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.954,
+        0.954
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30739": {
+      "item_id": 30739,
+      "name": "Scaled Greaves of the Marksman",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        1.037,
+        1.037
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30740": {
+      "item_id": 30740,
+      "name": "Ripfiend Shoulderplates",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        5.133,
+        5.133
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "30741": {
+      "item_id": 30741,
+      "name": "Topaz-Studded Battlegrips",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        10.37,
+        10.37
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31290": {
+      "item_id": 31290,
+      "name": "Band of Dominion",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.116,
+      "normalized_ratio_range": [
+        0.081,
+        0.151
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31291": {
+      "item_id": 31291,
+      "name": "Crystalforged War Axe",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.128,
+      "normalized_ratio_range": [
+        0.09,
+        0.161
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31292": {
+      "item_id": 31292,
+      "name": "Crystal Pulse Shield",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.284,
+      "normalized_ratio_range": [
+        0.124,
+        0.452
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31293": {
+      "item_id": 31293,
+      "name": "Girdle of Gale Force",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.086,
+      "normalized_ratio_range": [
+        0.041,
+        0.131
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31294": {
+      "item_id": 31294,
+      "name": "Pauldrons of Surging Mana",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.061,
+      "normalized_ratio_range": [
+        0.026,
+        0.097
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31295": {
+      "item_id": 31295,
+      "name": "Chestguard of the Dark Stalker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.019,
+      "normalized_ratio_range": [
+        0.015,
+        0.265
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31297": {
+      "item_id": 31297,
+      "name": "Robe of the Crimson Order",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.036,
+      "normalized_ratio_range": [
+        0.024,
+        0.048
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31298": {
+      "item_id": 31298,
+      "name": "Legguards of the Shattered Hand",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.083,
+      "normalized_ratio_range": [
+        0.013,
+        0.235
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31303": {
+      "item_id": 31303,
+      "name": "Valanos' Longbow",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.017,
+      "normalized_ratio_range": [
+        0.015,
+        0.05
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31304": {
+      "item_id": 31304,
+      "name": "The Essence Focuser",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.024,
+      "normalized_ratio_range": [
+        0.024,
+        0.077
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31305": {
+      "item_id": 31305,
+      "name": "Ced's Carver",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.087,
+      "normalized_ratio_range": [
+        0.008,
+        0.088
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31306": {
+      "item_id": 31306,
+      "name": "Leggings of the Sacred Crest",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.031,
+      "normalized_ratio_range": [
+        0.021,
+        0.196
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31308": {
+      "item_id": 31308,
+      "name": "The Bringer of Death",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.025,
+        0.08
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31318": {
+      "item_id": 31318,
+      "name": "Singing Crystal Axe",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.361,
+      "normalized_ratio_range": [
+        0.073,
+        0.937
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31319": {
+      "item_id": 31319,
+      "name": "Band of Impenetrable Defenses",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.176,
+      "normalized_ratio_range": [
+        0.173,
+        0.18
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31320": {
+      "item_id": 31320,
+      "name": "Chestguard of Exile",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 1.211,
+      "normalized_ratio_range": [
+        0.288,
+        2.134
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31321": {
+      "item_id": 31321,
+      "name": "Choker of Repentance",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.106,
+      "normalized_ratio_range": [
+        0.015,
+        0.197
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31322": {
+      "item_id": 31322,
+      "name": "The Hammer of Destiny",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.187,
+      "normalized_ratio_range": [
+        0.06,
+        0.361
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31323": {
+      "item_id": 31323,
+      "name": "Don Santos' Famous Hunting Rifle",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.084,
+      "normalized_ratio_range": [
+        0.041,
+        0.142
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31326": {
+      "item_id": 31326,
+      "name": "Truestrike Ring",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.107,
+      "normalized_ratio_range": [
+        0.057,
+        0.224
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31328": {
+      "item_id": 31328,
+      "name": "Leggings of Beast Mastery",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.195,
+      "normalized_ratio_range": [
+        0.175,
+        0.215
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31329": {
+      "item_id": 31329,
+      "name": "Lifegiving Cloak",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.272,
+        0.272
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31330": {
+      "item_id": 31330,
+      "name": "Lightning Crown",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.204,
+      "normalized_ratio_range": [
+        0.036,
+        0.293
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31331": {
+      "item_id": 31331,
+      "name": "The Night Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.405,
+      "normalized_ratio_range": [
+        0.091,
+        0.433
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31332": {
+      "item_id": 31332,
+      "name": "Blinkstrike",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.289,
+      "normalized_ratio_range": [
+        0.212,
+        0.938
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31333": {
+      "item_id": 31333,
+      "name": "The Night Watchman",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.148,
+      "normalized_ratio_range": [
+        0.098,
+        0.199
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31334": {
+      "item_id": 31334,
+      "name": "Staff of Natural Fury",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.136,
+      "normalized_ratio_range": [
+        0.019,
+        0.253
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31335": {
+      "item_id": 31335,
+      "name": "Pants of Living Growth",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.061,
+        0.061
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31336": {
+      "item_id": 31336,
+      "name": "Blade of Wizardry",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 1.002,
+      "normalized_ratio_range": [
+        0.718,
+        1.148
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31338": {
+      "item_id": 31338,
+      "name": "Charlotte's Ivy",
+      "realms_present": [
+        "Lordaeron"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.135,
+        0.135
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31339": {
+      "item_id": 31339,
+      "name": "Lola's Eve",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.102,
+        0.102
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "31340": {
+      "item_id": 31340,
+      "name": "Will of Edward the Odd",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.072,
+      "normalized_ratio_range": [
+        0.064,
+        0.116
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31342": {
+      "item_id": 31342,
+      "name": "The Ancient Scepter of Sue-Min",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.31,
+      "normalized_ratio_range": [
+        0.144,
+        0.426
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "31343": {
+      "item_id": 31343,
+      "name": "Kamaei's Cerulean Skirt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.12,
+      "normalized_ratio_range": [
+        0.056,
+        0.126
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "32535": {
+      "item_id": 32535,
+      "name": "Gift of the Talonpriests",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.1,
+        0.1
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "32540": {
+      "item_id": 32540,
+      "name": "Terokk's Might",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.415,
+        0.415
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "32541": {
+      "item_id": 32541,
+      "name": "Terokk's Wisdom",
+      "realms_present": [],
+      "realm_count": 0,
+      "faction_snapshots_present": 0,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": null,
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "34622": {
+      "item_id": 34622,
+      "name": "Spinesever",
+      "realms_present": [
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 1.448,
+      "normalized_ratio_range": [
+        0.433,
+        2.463
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "34837": {
+      "item_id": 34837,
+      "name": "The 2 Ring",
+      "realms_present": [],
+      "realm_count": 0,
+      "faction_snapshots_present": 0,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": null,
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "35579": {
+      "item_id": 35579,
+      "name": "Vrykul Shackles",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.008,
+      "normalized_ratio_range": [
+        0.005,
+        0.012
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35580": {
+      "item_id": 35580,
+      "name": "Skein Woven Mantle",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.006,
+        0.032
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35593": {
+      "item_id": 35593,
+      "name": "Steel Bear Trap Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.017,
+        0.065
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35594": {
+      "item_id": 35594,
+      "name": "Snowmelt Silken Cinch",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.021,
+      "normalized_ratio_range": [
+        0.016,
+        0.084
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35615": {
+      "item_id": 35615,
+      "name": "Glowworm Cavern Bindings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.013,
+      "normalized_ratio_range": [
+        0.011,
+        0.016
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35616": {
+      "item_id": 35616,
+      "name": "Spored Tendrils Spaulders",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.015,
+      "normalized_ratio_range": [
+        0.01,
+        0.018
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35639": {
+      "item_id": 35639,
+      "name": "Brighthelm of Guarding",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.039,
+      "normalized_ratio_range": [
+        0.012,
+        0.09
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35640": {
+      "item_id": 35640,
+      "name": "Darkweb Bindings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.01,
+        0.053
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35641": {
+      "item_id": 35641,
+      "name": "Scytheclaw Boots",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.019,
+      "normalized_ratio_range": [
+        0.013,
+        0.022
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35652": {
+      "item_id": 35652,
+      "name": "Incessant Torch",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.029,
+      "normalized_ratio_range": [
+        0.027,
+        0.043
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35653": {
+      "item_id": 35653,
+      "name": "Girdle of the Mystical Prison",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.02,
+      "normalized_ratio_range": [
+        0.02,
+        0.02
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "35654": {
+      "item_id": 35654,
+      "name": "Bindings of the Bastille",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.024,
+      "normalized_ratio_range": [
+        0.017,
+        0.026
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35664": {
+      "item_id": 35664,
+      "name": "Unknown Archaeologist's Hammer",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.061,
+        0.061
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "35665": {
+      "item_id": 35665,
+      "name": "Soothing Lichen Wraps",
+      "realms_present": [],
+      "realm_count": 0,
+      "faction_snapshots_present": 0,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": null,
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "35666": {
+      "item_id": 35666,
+      "name": "Mark of the Spider",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.03,
+        0.03
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "35681": {
+      "item_id": 35681,
+      "name": "Unrelenting Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.015,
+      "normalized_ratio_range": [
+        0.012,
+        0.025
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35682": {
+      "item_id": 35682,
+      "name": "Rune Giant Bindings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.009,
+      "normalized_ratio_range": [
+        0.009,
+        0.014
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "35683": {
+      "item_id": 35683,
+      "name": "Palladium Ring",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.08,
+      "normalized_ratio_range": [
+        0.055,
+        0.113
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "36976": {
+      "item_id": 36976,
+      "name": "Ring-Lord's Leggings",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.076,
+      "normalized_ratio_range": [
+        0.029,
+        0.124
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "36977": {
+      "item_id": 36977,
+      "name": "Bindings of the Construct",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.034,
+      "normalized_ratio_range": [
+        0.013,
+        0.042
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "36978": {
+      "item_id": 36978,
+      "name": "Ley-Whelphide Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.045,
+      "normalized_ratio_range": [
+        0.03,
+        0.072
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "36997": {
+      "item_id": 36997,
+      "name": "Sash of the Hardened Watcher",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.015,
+      "normalized_ratio_range": [
+        0.008,
+        0.029
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "36999": {
+      "item_id": 36999,
+      "name": "Boots of the Terrestrial Guardian",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.033,
+      "normalized_ratio_range": [
+        0.03,
+        0.036
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37000": {
+      "item_id": 37000,
+      "name": "Storming Vortex Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.005,
+        0.014
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37068": {
+      "item_id": 37068,
+      "name": "Berserker's Sabatons",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.089,
+      "normalized_ratio_range": [
+        0.036,
+        0.142
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37069": {
+      "item_id": 37069,
+      "name": "Dragonflayer Seer's Bindings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.02,
+      "normalized_ratio_range": [
+        0.007,
+        0.028
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37070": {
+      "item_id": 37070,
+      "name": "Tundra Wolf Boots",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.039,
+      "normalized_ratio_range": [
+        0.025,
+        0.045
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37115": {
+      "item_id": 37115,
+      "name": "Crusader's Square Pauldrons",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.014,
+      "normalized_ratio_range": [
+        0.008,
+        0.019
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37116": {
+      "item_id": 37116,
+      "name": "Epaulets of Market Row",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.009,
+      "normalized_ratio_range": [
+        0.004,
+        0.025
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37117": {
+      "item_id": 37117,
+      "name": "King's Square Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.006,
+        0.045
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37743": {
+      "item_id": 37743,
+      "name": "Legguards of Brutalization",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.063,
+      "normalized_ratio_range": [
+        0.038,
+        0.159
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37744": {
+      "item_id": 37744,
+      "name": "Horrorblood Treads",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.006,
+        0.187
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37745": {
+      "item_id": 37745,
+      "name": "Greenhealer's Garb",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.013,
+        0.073
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37746": {
+      "item_id": 37746,
+      "name": "Helm of the Burning Soul",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.043,
+      "normalized_ratio_range": [
+        0.007,
+        0.079
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37747": {
+      "item_id": 37747,
+      "name": "Beneficent Bulwark",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.029,
+        0.315
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37748": {
+      "item_id": 37748,
+      "name": "Winterfall's Frozen Necklace",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.027,
+      "normalized_ratio_range": [
+        0.026,
+        0.033
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37749": {
+      "item_id": 37749,
+      "name": "Shocking Claws",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.015,
+      "normalized_ratio_range": [
+        0.011,
+        0.056
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37751": {
+      "item_id": 37751,
+      "name": "Tooga's Lost Toenail",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.189,
+      "normalized_ratio_range": [
+        0.024,
+        0.216
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37752": {
+      "item_id": 37752,
+      "name": "Sandals of Broken Dreams",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 1.652,
+      "normalized_ratio_range": [
+        1.26,
+        2.044
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37753": {
+      "item_id": 37753,
+      "name": "Mendicant's Robe of Mendacity",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.148,
+      "normalized_ratio_range": [
+        0.017,
+        0.264
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37754": {
+      "item_id": 37754,
+      "name": "Shimmersteel Hood",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.037,
+      "normalized_ratio_range": [
+        0.009,
+        0.077
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37755": {
+      "item_id": 37755,
+      "name": "Leggings of the Icy Heart",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.146,
+      "normalized_ratio_range": [
+        0.054,
+        0.238
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37756": {
+      "item_id": 37756,
+      "name": "Zoe's Comforting Cape",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.023,
+      "normalized_ratio_range": [
+        0.019,
+        0.757
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37757": {
+      "item_id": 37757,
+      "name": "Charlotte's Chastizing Pauldrons",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.017,
+        0.112
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37758": {
+      "item_id": 37758,
+      "name": "Raine's Choker of Combustion",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.034,
+      "normalized_ratio_range": [
+        0.017,
+        0.068
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37759": {
+      "item_id": 37759,
+      "name": "Rhie-ay's Clutching Gauntlets",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.019,
+      "normalized_ratio_range": [
+        0.009,
+        0.07
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37760": {
+      "item_id": 37760,
+      "name": "Cracklefire Wristguards",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.02,
+      "normalized_ratio_range": [
+        0.007,
+        0.029
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37761": {
+      "item_id": 37761,
+      "name": "Shimmerthread Girdle",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.009,
+      "normalized_ratio_range": [
+        0.005,
+        0.029
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37762": {
+      "item_id": 37762,
+      "name": "Many-Pocketed Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.069,
+      "normalized_ratio_range": [
+        0.049,
+        0.074
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37763": {
+      "item_id": 37763,
+      "name": "Treads of the Purifier",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.03,
+      "normalized_ratio_range": [
+        0.015,
+        0.059
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37764": {
+      "item_id": 37764,
+      "name": "Corehound Fang Shoulderpads",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.037,
+      "normalized_ratio_range": [
+        0.024,
+        0.122
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37765": {
+      "item_id": 37765,
+      "name": "Leggings of the Water Moccasin",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.029,
+      "normalized_ratio_range": [
+        0.015,
+        0.049
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37766": {
+      "item_id": 37766,
+      "name": "Bracers of Unmitigated Larceny",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.019,
+      "normalized_ratio_range": [
+        0.013,
+        0.092
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37767": {
+      "item_id": 37767,
+      "name": "Ryft's Deathgaze",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.041,
+      "normalized_ratio_range": [
+        0.038,
+        0.042
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37768": {
+      "item_id": 37768,
+      "name": "Leggings of Violent Exsanguination",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.037,
+      "normalized_ratio_range": [
+        0.028,
+        0.041
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37769": {
+      "item_id": 37769,
+      "name": "Gnarled Shovelhorn Spaulders",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.014,
+      "normalized_ratio_range": [
+        0.009,
+        0.033
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37770": {
+      "item_id": 37770,
+      "name": "Bulge-Concealing Breastplate",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.013,
+      "normalized_ratio_range": [
+        0.01,
+        0.031
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37771": {
+      "item_id": 37771,
+      "name": "Wristguards of Verdant Recovery",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.009,
+        0.071
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37772": {
+      "item_id": 37772,
+      "name": "Wub's Electrospike Spaulders",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.043,
+      "normalized_ratio_range": [
+        0.006,
+        0.137
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37773": {
+      "item_id": 37773,
+      "name": "Shock-Inducing Girdle",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.023,
+      "normalized_ratio_range": [
+        0.009,
+        0.221
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37774": {
+      "item_id": 37774,
+      "name": "Leggings of Aqueous Dissolution",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.013,
+      "normalized_ratio_range": [
+        0.008,
+        0.024
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37775": {
+      "item_id": 37775,
+      "name": "Helm of the Broken Ram",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.034,
+      "normalized_ratio_range": [
+        0.031,
+        0.149
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37776": {
+      "item_id": 37776,
+      "name": "Bracers of Accurate Fire",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.019,
+      "normalized_ratio_range": [
+        0.009,
+        0.061
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37777": {
+      "item_id": 37777,
+      "name": "Bracers of Sizzling Heat",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.008,
+        0.111
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37778": {
+      "item_id": 37778,
+      "name": "Girdle of Unerring Flight",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.019,
+        0.176
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37779": {
+      "item_id": 37779,
+      "name": "Nixod's Chain-Threshed Spaulders",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.013,
+      "normalized_ratio_range": [
+        0.007,
+        0.063
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37780": {
+      "item_id": 37780,
+      "name": "Condor-Bone Chestguard",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.02,
+      "normalized_ratio_range": [
+        0.014,
+        0.075
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37781": {
+      "item_id": 37781,
+      "name": "Grips of the Warming Heart",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.012,
+      "normalized_ratio_range": [
+        0.011,
+        0.021
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37782": {
+      "item_id": 37782,
+      "name": "Gauntlets of the Cheerful Hearth",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.062,
+      "normalized_ratio_range": [
+        0.013,
+        0.108
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37783": {
+      "item_id": 37783,
+      "name": "Blood-Tempered Spaulders",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.024,
+      "normalized_ratio_range": [
+        0.018,
+        0.302
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37785": {
+      "item_id": 37785,
+      "name": "Girdle of the Howling Berserker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.163,
+      "normalized_ratio_range": [
+        0.014,
+        0.165
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37786": {
+      "item_id": 37786,
+      "name": "Legguards of the Forlorn Seas",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.066,
+      "normalized_ratio_range": [
+        0.018,
+        0.101
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37787": {
+      "item_id": 37787,
+      "name": "Greathelm of the Unyielding Bull",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.056,
+      "normalized_ratio_range": [
+        0.028,
+        0.083
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37789": {
+      "item_id": 37789,
+      "name": "Gauntlets of Disembowelment",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.02,
+      "normalized_ratio_range": [
+        0.011,
+        0.036
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37790": {
+      "item_id": 37790,
+      "name": "Belt of Crystalline Tears",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.025,
+      "normalized_ratio_range": [
+        0.005,
+        0.044
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37792": {
+      "item_id": 37792,
+      "name": "Agin's Crushing Carapace",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.031,
+      "normalized_ratio_range": [
+        0.025,
+        0.037
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37793": {
+      "item_id": 37793,
+      "name": "Skullcage of Eternal Terror",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.021,
+      "normalized_ratio_range": [
+        0.017,
+        0.028
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37794": {
+      "item_id": 37794,
+      "name": "Torta's Oversized Choker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.015,
+      "normalized_ratio_range": [
+        0.014,
+        0.017
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37795": {
+      "item_id": 37795,
+      "name": "Grips of the Valiant Champion",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.119,
+      "normalized_ratio_range": [
+        0.018,
+        0.221
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37796": {
+      "item_id": 37796,
+      "name": "Earthbound Cape",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.071,
+      "normalized_ratio_range": [
+        0.054,
+        0.088
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37797": {
+      "item_id": 37797,
+      "name": "Cloak of the Agile Mind",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.038,
+      "normalized_ratio_range": [
+        0.037,
+        0.086
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37802": {
+      "item_id": 37802,
+      "name": "Elanor's Edge",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.03,
+      "normalized_ratio_range": [
+        0.021,
+        0.039
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37803": {
+      "item_id": 37803,
+      "name": "Lola's Lifegiving Branch",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.041,
+      "normalized_ratio_range": [
+        0.006,
+        0.05
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37804": {
+      "item_id": 37804,
+      "name": "Bloodwood Greatstaff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.05,
+      "normalized_ratio_range": [
+        0.025,
+        0.072
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37805": {
+      "item_id": 37805,
+      "name": "Melia's Magnificent Scepter",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.062,
+      "normalized_ratio_range": [
+        0.041,
+        0.111
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37806": {
+      "item_id": 37806,
+      "name": "Zabra's Misplaced Staff",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.051,
+      "normalized_ratio_range": [
+        0.047,
+        0.088
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37807": {
+      "item_id": 37807,
+      "name": "Lydia's Sharpened Swordbreaker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.242,
+      "normalized_ratio_range": [
+        0.084,
+        0.296
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37808": {
+      "item_id": 37808,
+      "name": "Dragonjaw Mauler",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.033,
+      "normalized_ratio_range": [
+        0.025,
+        0.083
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37809": {
+      "item_id": 37809,
+      "name": "Roc-Feather Longbow",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.028,
+      "normalized_ratio_range": [
+        0.022,
+        0.045
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37810": {
+      "item_id": 37810,
+      "name": "Blade-Binding Bulwark",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.028,
+      "normalized_ratio_range": [
+        0.005,
+        0.061
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37811": {
+      "item_id": 37811,
+      "name": "Captain Carver's Persuader",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.091,
+      "normalized_ratio_range": [
+        0.045,
+        0.136
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37812": {
+      "item_id": 37812,
+      "name": "Petrified Ironwood Smasher",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.053,
+      "normalized_ratio_range": [
+        0.032,
+        0.083
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37813": {
+      "item_id": 37813,
+      "name": "Banner Slicer",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.041,
+      "normalized_ratio_range": [
+        0.025,
+        0.055
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37817": {
+      "item_id": 37817,
+      "name": "Branch of Sinful Reprieve",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.111,
+      "normalized_ratio_range": [
+        0.043,
+        0.382
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37819": {
+      "item_id": 37819,
+      "name": "Milan's Mastercraft Band",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.06,
+      "normalized_ratio_range": [
+        0.036,
+        0.104
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37820": {
+      "item_id": 37820,
+      "name": "Worgen's Ring of Revitalization",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.042,
+      "normalized_ratio_range": [
+        0.021,
+        0.064
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37821": {
+      "item_id": 37821,
+      "name": "Raine's Signet of Blasting",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.026,
+      "normalized_ratio_range": [
+        0.024,
+        0.028
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "37822": {
+      "item_id": 37822,
+      "name": "Twisted Puzzle-Ring",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.018,
+      "normalized_ratio_range": [
+        0.012,
+        0.044
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37823": {
+      "item_id": 37823,
+      "name": "Draconic Choker of Ferocity",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.024,
+      "normalized_ratio_range": [
+        0.021,
+        0.026
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37824": {
+      "item_id": 37824,
+      "name": "Gwyneth's Runed Dragonwand",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.011,
+      "normalized_ratio_range": [
+        0.007,
+        0.038
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "37835": {
+      "item_id": 37835,
+      "name": "Je'Tze's Bell",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.264,
+      "normalized_ratio_range": [
+        0.198,
+        0.799
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39194": {
+      "item_id": 39194,
+      "name": "Rusted-Link Spiked Gauntlets",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 1.509,
+      "normalized_ratio_range": [
+        1.194,
+        1.823
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39235": {
+      "item_id": 39235,
+      "name": "Bone-Framed Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.13,
+      "normalized_ratio_range": [
+        0.059,
+        0.228
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "39283": {
+      "item_id": 39283,
+      "name": "Putrescent Bands",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.332,
+      "normalized_ratio_range": [
+        0.205,
+        0.46
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39310": {
+      "item_id": 39310,
+      "name": "Mantle of the Extensive Mind",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.041,
+        0.041
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39472": {
+      "item_id": 39472,
+      "name": "Chain of Latent Energies",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.77,
+      "normalized_ratio_range": [
+        0.271,
+        1.596
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "39717": {
+      "item_id": 39717,
+      "name": "Inexorable Sabatons",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.754,
+      "normalized_ratio_range": [
+        0.548,
+        0.961
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39733": {
+      "item_id": 39733,
+      "name": "Gloves of Token Respect",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.43,
+      "normalized_ratio_range": [
+        0.408,
+        0.452
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "39762": {
+      "item_id": 39762,
+      "name": "Torn Web Wrapping",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.845,
+      "normalized_ratio_range": [
+        0.447,
+        1.242
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40187": {
+      "item_id": 40187,
+      "name": "Poignant Sabatons",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.619,
+      "normalized_ratio_range": [
+        0.48,
+        0.757
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40206": {
+      "item_id": 40206,
+      "name": "Iron-Spring Jumpers",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 1.156,
+      "normalized_ratio_range": [
+        0.959,
+        1.353
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40246": {
+      "item_id": 40246,
+      "name": "Boots of Impetuous Ideals",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 1.524,
+      "normalized_ratio_range": [
+        1.4,
+        1.647
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40270": {
+      "item_id": 40270,
+      "name": "Boots of Septic Wounds",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 1.161,
+      "normalized_ratio_range": [
+        0.885,
+        1.437
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40282": {
+      "item_id": 40282,
+      "name": "Slime Stream Bands",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.424,
+      "normalized_ratio_range": [
+        0.343,
+        0.505
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40302": {
+      "item_id": 40302,
+      "name": "Benefactor's Gauntlets",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        9.389,
+        9.389
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40305": {
+      "item_id": 40305,
+      "name": "Spaulders of Egotism",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 2.087,
+      "normalized_ratio_range": [
+        1.575,
+        2.6
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40338": {
+      "item_id": 40338,
+      "name": "Bindings of Yearning",
+      "realms_present": [
+        "Onyxia"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.354,
+        0.354
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40347": {
+      "item_id": 40347,
+      "name": "Zeliek's Gauntlets",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        5.662,
+        5.662
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40362": {
+      "item_id": 40362,
+      "name": "Gloves of Fast Reactions",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        18.801,
+        18.801
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40426": {
+      "item_id": 40426,
+      "name": "Signet of the Accord",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.169,
+      "normalized_ratio_range": [
+        0.107,
+        0.23
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40439": {
+      "item_id": 40439,
+      "name": "Mantle of the Eternal Sentinel",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.905,
+        0.905
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40474": {
+      "item_id": 40474,
+      "name": "Surge Needle Ring",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.449,
+      "normalized_ratio_range": [
+        0.172,
+        0.726
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "40558": {
+      "item_id": 40558,
+      "name": "Arcanic Tramplers",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.697,
+        0.697
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "43573": {
+      "item_id": 43573,
+      "name": "Tears of Bitter Anguish",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 3.135,
+      "normalized_ratio_range": [
+        2.093,
+        4.178
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "43611": {
+      "item_id": 43611,
+      "name": "Krol Cleaver",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        3.391,
+        3.391
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "43612": {
+      "item_id": 43612,
+      "name": "Spineslicer",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        3.088,
+        3.088
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "43613": {
+      "item_id": 43613,
+      "name": "The Dusk Blade",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 4.059,
+      "normalized_ratio_range": [
+        2.371,
+        5.747
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "44308": {
+      "item_id": 44308,
+      "name": "Signet of Edward the Odd",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.101,
+      "normalized_ratio_range": [
+        0.079,
+        0.546
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44309": {
+      "item_id": 44309,
+      "name": "Sash of Jordan",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.114,
+      "normalized_ratio_range": [
+        0.056,
+        0.252
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44310": {
+      "item_id": 44310,
+      "name": "Namlak's Supernumerary Sticker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.149,
+      "normalized_ratio_range": [
+        0.079,
+        0.164
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44311": {
+      "item_id": 44311,
+      "name": "Avool's Sword of Jin",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.085,
+      "normalized_ratio_range": [
+        0.058,
+        0.404
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44312": {
+      "item_id": 44312,
+      "name": "Wapach's Spaulders of Solidarity",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.113,
+      "normalized_ratio_range": [
+        0.041,
+        0.29
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44313": {
+      "item_id": 44313,
+      "name": "Zom's Crackling Bulwark",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.128,
+      "normalized_ratio_range": [
+        0.079,
+        0.21
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "44505": {
+      "item_id": 44505,
+      "name": "Dustbringer",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        9.074,
+        9.074
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45107": {
+      "item_id": 45107,
+      "name": "Iron Riveted War Helm",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.57,
+      "normalized_ratio_range": [
+        0.258,
+        0.719
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45141": {
+      "item_id": 45141,
+      "name": "Proto-hide Leggings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.27,
+      "normalized_ratio_range": [
+        0.119,
+        0.604
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45167": {
+      "item_id": 45167,
+      "name": "Lifeforge Breastplate",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.276,
+      "normalized_ratio_range": [
+        0.065,
+        0.326
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45237": {
+      "item_id": 45237,
+      "name": "Phaelia's Vestments of the Sprouting Seed",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.274,
+      "normalized_ratio_range": [
+        0.264,
+        0.284
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45247": {
+      "item_id": 45247,
+      "name": "Signet of the Earthshaker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.631,
+      "normalized_ratio_range": [
+        0.175,
+        1.574
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45274": {
+      "item_id": 45274,
+      "name": "Leggings of the Stoneweaver",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.024,
+      "normalized_ratio_range": [
+        0.017,
+        0.239
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45291": {
+      "item_id": 45291,
+      "name": "Combustion Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.037,
+      "normalized_ratio_range": [
+        0.027,
+        0.454
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45301": {
+      "item_id": 45301,
+      "name": "Bracers of the Smothering Inferno",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.193,
+        0.193
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45316": {
+      "item_id": 45316,
+      "name": "Armbraces of the Vibrant Flame",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.4,
+      "normalized_ratio_range": [
+        0.295,
+        0.504
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45322": {
+      "item_id": 45322,
+      "name": "Cloak of the Iron Council",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 1.371,
+      "normalized_ratio_range": [
+        0.861,
+        1.881
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45435": {
+      "item_id": 45435,
+      "name": "Cowl of the Absolute",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.718,
+      "normalized_ratio_range": [
+        0.362,
+        2.476
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45450": {
+      "item_id": 45450,
+      "name": "Northern Barrier",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 2.091,
+      "normalized_ratio_range": [
+        1.64,
+        2.605
+      ],
+      "diagnostic": "normalized-asks-above-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45468": {
+      "item_id": 45468,
+      "name": "Leggings of Lost Love",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 1.013,
+      "normalized_ratio_range": [
+        0.908,
+        1.117
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45480": {
+      "item_id": 45480,
+      "name": "Nymph Heart Charm",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.453,
+      "normalized_ratio_range": [
+        0.025,
+        0.492
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45493": {
+      "item_id": 45493,
+      "name": "Asimov's Drape",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.674,
+      "normalized_ratio_range": [
+        0.369,
+        1.009
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45504": {
+      "item_id": 45504,
+      "name": "Darkcore Leggings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.334,
+      "normalized_ratio_range": [
+        0.163,
+        0.449
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45680": {
+      "item_id": 45680,
+      "name": "Armbands of the Construct",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.065,
+      "normalized_ratio_range": [
+        0.029,
+        0.114
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45704": {
+      "item_id": 45704,
+      "name": "Shawl of the Shattered Giant",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 5,
+      "normalized_ask_ratio_to_hellscream_target": 0.813,
+      "normalized_ratio_range": [
+        0.217,
+        0.839
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "45709": {
+      "item_id": 45709,
+      "name": "Nimble Climber's Belt",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.386,
+      "normalized_ratio_range": [
+        0.36,
+        0.412
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45859": {
+      "item_id": 45859,
+      "name": "The 5 Ring",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 1,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        3.174,
+        3.174
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45874": {
+      "item_id": 45874,
+      "name": "Signet of Winter",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.376,
+      "normalized_ratio_range": [
+        0.281,
+        0.471
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45927": {
+      "item_id": 45927,
+      "name": "Handwraps of Resonance",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.951,
+      "normalized_ratio_range": [
+        0.32,
+        1.582
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "45975": {
+      "item_id": 45975,
+      "name": "Cable of the Metrognome",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 6,
+      "normalized_ask_ratio_to_hellscream_target": 0.454,
+      "normalized_ratio_range": [
+        0.099,
+        0.826
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "46009": {
+      "item_id": 46009,
+      "name": "Bindings of the Depths",
+      "realms_present": [
+        "Icecrown"
+      ],
+      "realm_count": 1,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": null,
+      "normalized_ratio_range": [
+        0.701,
+        0.701
+      ],
+      "diagnostic": "insufficient-external-coverage",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "46970": {
+      "item_id": 46970,
+      "name": "Drape of the Untamed Predator",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.736,
+      "normalized_ratio_range": [
+        0.485,
+        0.937
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "47089": {
+      "item_id": 47089,
+      "name": "Cloak of Displacement",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.747,
+      "normalized_ratio_range": [
+        0.469,
+        1.005
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "47105": {
+      "item_id": 47105,
+      "name": "The Executioner's Malice",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.484,
+      "normalized_ratio_range": [
+        0.115,
+        0.852
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "47149": {
+      "item_id": 47149,
+      "name": "Signet of the Traitor King",
+      "realms_present": [
+        "Icecrown",
+        "Onyxia"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 2,
+      "normalized_ask_ratio_to_hellscream_target": 0.394,
+      "normalized_ratio_range": [
+        0.047,
+        0.741
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "47223": {
+      "item_id": 47223,
+      "name": "Ring of the Darkmender",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.307,
+      "normalized_ratio_range": [
+        0.181,
+        0.954
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "47257": {
+      "item_id": 47257,
+      "name": "Cloak of the Untamed Predator",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.47,
+      "normalized_ratio_range": [
+        0.317,
+        0.722
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "47278": {
+      "item_id": 47278,
+      "name": "Circle of the Darkmender",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.156,
+      "normalized_ratio_range": [
+        0.145,
+        0.664
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "47291": {
+      "item_id": 47291,
+      "name": "Shroud of Displacement",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.721,
+      "normalized_ratio_range": [
+        0.181,
+        0.846
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "47297": {
+      "item_id": 47297,
+      "name": "The Executioner's Vice",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.145,
+      "normalized_ratio_range": [
+        0.097,
+        0.516
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "47315": {
+      "item_id": 47315,
+      "name": "Band of the Traitor King",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron",
+        "Onyxia"
+      ],
+      "realm_count": 3,
+      "faction_snapshots_present": 3,
+      "normalized_ask_ratio_to_hellscream_target": 0.106,
+      "normalized_ratio_range": [
+        0.067,
+        0.565
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "stable-classification",
+      "used_to_set_price": false
+    },
+    "48663": {
+      "item_id": 48663,
+      "name": "Tankard O' Terror",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.023,
+      "normalized_ratio_range": [
+        0.023,
+        0.024
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "49967": {
+      "item_id": 49967,
+      "name": "Marrowgar's Frigid Eye",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.156,
+      "normalized_ratio_range": [
+        0.121,
+        0.191
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "49994": {
+      "item_id": 49994,
+      "name": "The Lady's Brittle Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.111,
+      "normalized_ratio_range": [
+        0.078,
+        0.145
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50001": {
+      "item_id": 50001,
+      "name": "Ikfirus's Sack of Wonder",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.108,
+      "normalized_ratio_range": [
+        0.08,
+        0.137
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50015": {
+      "item_id": 50015,
+      "name": "Belt of the Blood Nova",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.043,
+      "normalized_ratio_range": [
+        0.027,
+        0.058
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50020": {
+      "item_id": 50020,
+      "name": "Raging Behemoth's Shoulderplates",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.12,
+      "normalized_ratio_range": [
+        0.091,
+        0.15
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50038": {
+      "item_id": 50038,
+      "name": "Carapace of Forgotten Kings",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.051,
+      "normalized_ratio_range": [
+        0.037,
+        0.064
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50069": {
+      "item_id": 50069,
+      "name": "Professor's Bloodied Smock",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.01,
+      "normalized_ratio_range": [
+        0.007,
+        0.014
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50175": {
+      "item_id": 50175,
+      "name": "Crypt Keeper's Bracers",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.051,
+      "normalized_ratio_range": [
+        0.012,
+        0.091
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50182": {
+      "item_id": 50182,
+      "name": "Blood Queen's Crimson Choker",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.551,
+      "normalized_ratio_range": [
+        0.308,
+        0.795
+      ],
+      "diagnostic": "normalized-asks-broadly-aligned",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50444": {
+      "item_id": 50444,
+      "name": "Rowan's Rifle of Silver Bullets",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.003,
+      "normalized_ratio_range": [
+        0.002,
+        0.004
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50447": {
+      "item_id": 50447,
+      "name": "Harbinger's Bone Band",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.008,
+      "normalized_ratio_range": [
+        0.005,
+        0.012
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50449": {
+      "item_id": 50449,
+      "name": "Stiffened Corpse Shoulderpads",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.006,
+      "normalized_ratio_range": [
+        0.006,
+        0.007
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50450": {
+      "item_id": 50450,
+      "name": "Leggings of Dubious Charms",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.011,
+      "normalized_ratio_range": [
+        0.003,
+        0.019
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50451": {
+      "item_id": 50451,
+      "name": "Belt of the Lonely Noble",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.011,
+      "normalized_ratio_range": [
+        0.002,
+        0.019
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50452": {
+      "item_id": 50452,
+      "name": "Wodin's Lucky Necklace",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.021,
+      "normalized_ratio_range": [
+        0.017,
+        0.025
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50453": {
+      "item_id": 50453,
+      "name": "Ring of Rotting Sinew",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.011,
+      "normalized_ratio_range": [
+        0.01,
+        0.012
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    },
+    "50472": {
+      "item_id": 50472,
+      "name": "Nightmare Ender",
+      "realms_present": [
+        "Icecrown",
+        "Lordaeron"
+      ],
+      "realm_count": 2,
+      "faction_snapshots_present": 4,
+      "normalized_ask_ratio_to_hellscream_target": 0.155,
+      "normalized_ratio_range": [
+        0.083,
+        0.227
+      ],
+      "diagnostic": "normalized-asks-below-hellscream-target",
+      "leave_one_realm_out": "sensitive-or-insufficient",
+      "used_to_set_price": false
+    }
+  }
+}
