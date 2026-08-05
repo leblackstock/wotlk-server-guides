@@ -16,6 +16,14 @@
   "specKey": "marksmanship",
   "role": "Ranged physical damage",
   "levelLabel": "Level 80+",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
   "createClassSharedCss": true,
   "createTooltipStarter": true,
   "createEntityRegistry": true,
@@ -40,6 +48,11 @@
     {
       "key": "sting",
       "label": "Sting",
+      "titleIcon": "ability_hunter_quickshot",
+      "examples": [
+        { "name": "Serpent Sting", "type": "spell", "id": 49001, "icon": "ability_hunter_quickshot" },
+        { "name": "Chimera Shot", "type": "spell", "id": 53209, "icon": "ability_hunter_chimerashot2" }
+      ],
       "color": "#BDC96B",
       "soft": "#EDF2B5",
       "deep": "#505629",
@@ -49,6 +62,13 @@
     {
       "key": "shots",
       "label": "Shot priority",
+      "titleIcon": "ability_hunter_chimerashot2",
+      "examples": [
+        { "name": "Kill Shot", "type": "spell", "id": 61006, "icon": "ability_hunter_assassinate2" },
+        { "name": "Chimera Shot", "type": "spell", "id": 53209, "icon": "ability_hunter_chimerashot2" },
+        { "name": "Aimed Shot", "type": "spell", "id": 49050, "icon": "inv_spear_07" },
+        { "name": "Steady Shot", "type": "spell", "id": 49052, "icon": "ability_hunter_steadyshot" }
+      ],
       "color": "#78A9D4",
       "soft": "#C9E4F8",
       "deep": "#2E5270",
@@ -58,6 +78,12 @@
     {
       "key": "movement",
       "label": "Movement",
+      "titleIcon": "ability_rogue_feint",
+      "examples": [
+        { "name": "Disengage", "type": "spell", "id": 781, "icon": "ability_rogue_feint" },
+        { "name": "Auto Shot", "type": "spell", "id": 75, "icon": "ability_whirlwind" },
+        { "name": "Steady Shot", "type": "spell", "id": 49052, "icon": "ability_hunter_steadyshot" }
+      ],
       "color": "#72D7E8",
       "soft": "#C5F2F8",
       "deep": "#245966",
@@ -67,6 +93,12 @@
     {
       "key": "pet",
       "label": "Pet & utility",
+      "titleIcon": "ability_hunter_pet_wolf",
+      "examples": [
+        { "name": "Furious Howl", "type": "spell", "id": 64495, "icon": "ability_hunter_pet_wolf" },
+        { "name": "Misdirection", "type": "spell", "id": 34477, "icon": "ability_hunter_misdirection" },
+        { "name": "Tranquilizing Shot", "type": "spell", "id": 19801, "icon": "spell_nature_drowsy" }
+      ],
       "color": "#78CFA8",
       "soft": "#C8F1DE",
       "deep": "#275A46",

@@ -6,6 +6,8 @@ It captures the systems established by the Protection Paladin and Holy Paladin g
 
 Do not begin a new guide by copying one existing spec and replacing nouns. Start from this standard and the generator so every guide shares the same bones without inheriting another spec's assumptions.
 
+For a guide aimed at a newly capped level 80, `NEW_LEVEL_80_GUIDE_WORKFLOW.md` is an additional required policy. It defines the starting assumptions, self-contained talent rule, budget-before-premium gearing order, prohibited raid-ready assumptions, and automated release gate.
+
 ## 1. Output of one guide family
 
 Every full spec guide must produce these public pages:

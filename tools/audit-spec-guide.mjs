@@ -224,6 +224,25 @@ function runPlaybookAbilityIconReleaseAudit() {
   notes.push("Every ability/action chip in the spec playbook cards has a rendered WoW icon.");
 }
 
+function runFresh80ReleaseAudit() {
+  if (!release || config.guideAudience !== "fresh-80") return;
+  const analyzer = path.resolve(root, "tools/audit-fresh-80-guide.mjs");
+  const result = spawnSync(process.execPath, [analyzer, rel(configFile)], {
+    cwd: root,
+    stdio: "inherit"
+  });
+
+  if (result.error) {
+    errors.push(`Could not run the fresh-80 guide audit: ${result.error.message}`);
+    return;
+  }
+  if (result.status !== 0) {
+    errors.push("Fresh-80 audience approval failed. Correct the self-contained baseline, progression order, budget path, or later-raid framing reported above.");
+    return;
+  }
+  notes.push("Fresh-80 audience policy passed as part of the release audit.");
+}
+
 let allHtml = "";
 for (const file of pages) {
   if (!fs.existsSync(file)) {
@@ -258,7 +277,8 @@ if (!entities.length) {
 
 countEntityUsage(allHtml);
 if (release && errors.length === 0) {
-  runIconDensityReleaseAudit();
+  runFresh80ReleaseAudit();
+  if (errors.length === 0) runIconDensityReleaseAudit();
   if (errors.length === 0) runPlaybookAbilityIconReleaseAudit();
   else notes.push("Playbook ability-icon approval was deferred until the regular rendered icon-density audit passes.");
 } else if (release) {

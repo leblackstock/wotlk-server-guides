@@ -16,6 +16,25 @@ Use `spec-guide.config.example.json` as the starting point.
 - `levelLabel` — must be `Level 80+` in the standard banner
 - `updatedDate` — optional `YYYY-MM-DD` override; otherwise the generator uses the creation date
 
+## Audience policy
+
+Newly capped level-80 guides must declare:
+
+```json
+"guideAudience": "fresh-80",
+"fresh80Policy": {
+  "selfContainedTalents": true,
+  "externalRaidBuffsRequired": false,
+  "capsAreProgressionGoals": true,
+  "budgetBeforePremium": true,
+  "raidContentIsLaterProgression": true
+}
+```
+
+Create those families with `tools/create-fresh-80-spec-guide.mjs`. The wrapper rejects a missing or weakened policy before any files are written. `audit-spec-guide.mjs --release` then runs the rendered fresh-80 content audit automatically.
+
+Do not apply `guideAudience: fresh-80` to a deliberately narrow guide such as a Heroic LK25 playbook. Specialized guides use the general wrapper and must make their narrower audience obvious in the banner and description.
+
 All slug and key fields must use lower-case kebab-case.
 
 ## Shared banner

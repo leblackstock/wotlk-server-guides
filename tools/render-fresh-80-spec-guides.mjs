@@ -79,7 +79,7 @@ function shell(spec, current, title, description, jumps, body) {
   <script src="../assets/${spec.tooltipFile}?v=${spec.cacheKey}" defer></script>
   <script src="../assets/${spec.slug}.js?v=${spec.cacheKey}" defer></script>
 </head>
-<body data-guide-class="${spec.classSlug}" data-guide-spec="${spec.specKey}">
+<body data-guide-class="${spec.classSlug}" data-guide-spec="${spec.specKey}"${spec.guideAudience ? ` data-guide-audience="${esc(spec.guideAudience)}"` : ""}>
   <div class="wrap" id="top">
     ${nav(spec, current)}
     <header class="guide-hero">
@@ -126,7 +126,7 @@ function renderQuickStart(spec) {
   const summaries = spec.quick.summaries.map((card) => `<div class="summary-card"><span class="summary-label">${esc(card.label)}</span><div class="summary-value">${card.value}</div><div class="summary-detail">${card.detail}</div></div>`).join("");
   const engine = `<div class="summary-card combat-engine operating-engine"><span class="summary-label">Combat engine</span><div class="summary-value">${esc(spec.quick.engineTitle)}</div><div class="engine-grid">${spec.mechanics.map((mechanic) => `<div class="engine-step mechanic-${mechanic.key}"><strong>${icon(mechanic.titleIcon || mechanic.examples?.[0]?.icon, "ability-icon")} ${esc(mechanic.label)}</strong><p>${esc(mechanic.use)}</p>${operatingSequence(mechanic)}</div>`).join("")}</div></div>`;
   const chapters = pageOrder.slice(1).map(([key, label], index) => `<a class="chapter-card" href="${href(spec, key)}"><span class="chapter-number">${index + 1}</span><h3>${icon(spec.icons[key])} ${label}</h3><p>${esc(spec.descriptions[key])}</p><span class="chapter-topics">${esc(spec.quick.chapterTopics[key])}</span></a>`).join("");
-  const manualClass = `common operating-manual${spec.quick.summaries.length === 4 ? " operating-manual--four-summaries" : ""}`;
+  const manualClass = `common operating-manual${spec.quick.summaries.length === 4 ? " operating-manual--four-summaries" : ""}${spec.guideAudience === "fresh-80" ? " fresh-80-starting-assumptions" : ""}`;
   const body =
     section(spec, "quick-start", "Two-minute operating manual", `<div class="summary-grid">${summaries}${engine}</div>
       <details class="server-behavior"><summary>${icon("inv_misc_wrench_01", "ability-icon")} Server behavior on Hellscream</summary><p>${esc(spec.serverNote)}</p></details>
@@ -151,7 +151,7 @@ function renderPlaying(spec) {
 }
 
 function renderSetup(spec) {
-  const talent = `<div class="note spec"><strong>Recommended baseline:</strong> ${esc(spec.talent.points)} ${esc(spec.talent.name)}.</div>
+  const talent = `<div class="note spec${spec.guideAudience === "fresh-80" ? " fresh-80-self-contained-talents" : ""}"><strong>Recommended baseline:</strong> ${esc(spec.talent.points)} ${esc(spec.talent.name)}.</div>
     <div class="guide-box" style="margin-top:12px"><div class="icon-heading">${icon(spec.icons.talent, "title-icon")}<div><span class="summary-label">Fully filled baseline</span><h3 style="margin:0">${esc(spec.talent.points)} ${esc(spec.talent.name)}</h3></div></div><p class="mini-note">${esc(spec.talent.summary)}</p><div class="talent-embed-wrap"><iframe class="talent-embed" title="Fully filled ${esc(spec.talent.points)} ${esc(spec.name)} talent tree" loading="lazy" src="https://www.wowhead.com/wotlk/talent-calc/embed/${esc(spec.talent.path)}"></iframe></div><p class="talent-fallback">Tree not loading? <a href="https://www.wowhead.com/wotlk/talent-calc/${esc(spec.talent.path)}" target="_blank" rel="noopener">Open the complete build in the Wowhead calculator.</a></p></div>
     <div class="three-col" style="margin-top:12px">${spec.setup.talentGroups.map((group) => `<div class="priority-card"><h3>${icon(group.icon, "ability-icon")} ${esc(group.title)}</h3>${list(group.items)}</div>`).join("")}</div>`;
   const macros = spec.setup.macros.map((macro) => `<div class="macro-card"><h3 data-entity-icon="${esc(macro.entity)}">${esc(macro.title)}</h3><p class="macro-purpose">${esc(macro.purpose)}</p><code class="macro-code">${esc(macro.code)}</code></div>`).join("");
@@ -179,7 +179,7 @@ function renderBuilding(spec) {
   const body =
     `<div class="note spec"><strong>Ready for exact items?</strong> Open <a href="${href(spec, "equipping")}"><strong>Equipping your ${esc(spec.name)}</strong></a>.</div>` +
     section(spec, "stats", "Stats, caps, and tradeoffs", table(["Stat", "Practical priority", "What it does", "Important correction"], spec.building.stats), spec.icons.building) +
-    section(spec, "path", "Fresh-80 gearing path", stages, "inv_misc_map_01") +
+    section(spec, "path", "Fresh-80 gearing path", stages, "inv_misc_map_01", spec.guideAudience === "fresh-80" ? "common fresh-80-budget-path" : "common") +
     section(spec, "gems", "Gems", table(["Socket / job", "Default", "Alternative", "Use rule"], spec.building.gems), "inv_jewelcrafting_gem_42") +
     section(spec, "enchants", "Enchants", table(["Slot", "Recommended", "Alternative / note"], spec.building.enchants), "trade_engraving") +
     section(spec, "professions", "Professions", table(["Profession", "Combat value", "Practical verdict"], spec.building.professions), "trade_blacksmithing") +
@@ -191,7 +191,7 @@ function renderEquipping(spec) {
   const body =
     `<div class="note warning"><strong>Hellscream source warning:</strong> the named items and standard sources below are WotLK 3.3.5 references. Verify the live item tooltip, vendor, currency, difficulty, and custom alternatives before spending gold, emblems, or raid priority.</div>` +
     section(spec, "first", "First purchases and farms", table(["Priority", "Target", "Standard source", "Why it matters"], spec.equipping.first), spec.icons.equipping) +
-    section(spec, "fresh", "Fresh-80 and crafted targets", table(["Slot", "Target", "Standard source", "Upgrade logic"], spec.equipping.fresh), "inv_hammer_20") +
+    section(spec, "fresh", "Fresh-80 and crafted targets", table(["Slot", "Target", "Standard source", "Upgrade logic"], spec.equipping.fresh), "inv_hammer_20", spec.guideAudience === "fresh-80" ? "common fresh-80-immediate-targets" : "common") +
     section(spec, "emblems", "Emblems and tier", `<div class="three-col">${spec.equipping.emblems.map((group) => `<div class="guide-box"><h3>${icon(group.icon, "ability-icon")} ${esc(group.title)}</h3>${list(group.items)}</div>`).join("")}</div>`, "inv_misc_frostemblem_01") +
     section(spec, "toc", "Trial of the Crusader targets", table(["Item", "Source", "Role"], spec.equipping.toc), "achievement_boss_anubarak_01") +
     section(spec, "icc", "Icecrown Citadel targets", table(["Item", "Source", "Role"], spec.equipping.icc), "achievement_zone_icecrown_01") +
@@ -203,7 +203,7 @@ function renderEquipping(spec) {
 function renderRaiding(spec) {
   const notes = spec.raiding.notes.map((note) => `<article class="raid-encounter"><h3>${icon(note.icon, "ability-icon")} ${esc(note.encounter)}</h3><div class="raid-note" data-size="${note.size}" data-difficulty="${note.difficulty}" data-role="${note.role}"><div class="raid-note-meta"><span class="raid-note-tag">${esc(note.sizeLabel)}</span><span class="raid-note-tag">${esc(note.difficultyLabel)}</span><span class="raid-note-tag">${esc(note.roleLabel)}</span>${note.verify ? '<span class="raid-note-tag raid-note-verify">Needs Hellscream test</span>' : ""}</div><p>${note.text}</p></div></article>`).join("");
   const body =
-    (spec.raiding.entryNote ? `<div class="note spec"><strong>Where this chapter fits:</strong> ${esc(spec.raiding.entryNote)}</div>` : "") +
+    (spec.raiding.entryNote ? `<div class="note spec${spec.guideAudience === "fresh-80" ? " fresh-80-later-progression" : ""}"><strong>Where this chapter fits:</strong> ${esc(spec.raiding.entryNote)}</div>` : "") +
     `<div class="note warning"><strong>Raid scope:</strong> these are ${esc(spec.name)} responsibilities, not full encounter guides. Raid-leader assignments override a generic playbook.</div>` +
     section(spec, "prepare", "Consumables and pull preparation", `<div class="two-col"><div class="guide-box"><h3>${icon("inv_alchemy_endlessflask_05", "ability-icon")} Consumables</h3>${list(spec.raiding.consumables)}</div><div class="guide-box"><h3>${icon(spec.raiding.assignmentIcon, "ability-icon")} Confirm before pull</h3>${list(spec.raiding.prePull)}</div></div>`, "inv_alchemy_endlessflask_05") +
     section(spec, "assignments", "Assignment rules", table(["Assignment", "What success looks like", "What to call"], spec.raiding.assignments), spec.raiding.assignmentIcon) +
@@ -1010,6 +1010,14 @@ const marksmanshipHunter = {
   },
   slug: "marksmanship-hunter",
   specKey: "marksmanship",
+  guideAudience: "fresh-80",
+  fresh80Policy: {
+    selfContainedTalents: true,
+    externalRaidBuffsRequired: false,
+    capsAreProgressionGoals: true,
+    budgetBeforePremium: true,
+    raidContentIsLaterProgression: true
+  },
   tooltipFile: "hunter-tooltips.js",
   cacheKey: "20260805-marksman-v3-fresh80",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. The later WotLK Classic Trap Launcher: Explosive Trap spell is not assumed; traps are placed at the hunter's feet unless Hellscream explicitly adds a custom launcher.",
