@@ -27,6 +27,13 @@ CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-sectio
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDES_PATH = ROOT / "data" / "ah-guides.json"
 AH_STYLESHEET_VERSION = "20260804-ah-dropped-gear-v1"
+DROPPED_GEAR_GUIDES = {
+    "level-80-boe-epics-ah-price-guide.html",
+    "sought-after-world-drops-ah-price-guide.html",
+}
+DROPPED_GEAR_BASELINE_NOTE = """<!-- AH_BASELINE_NOTE_START -->
+<aside class="note ah-baseline-note"><strong>* Pricing baseline:</strong> These are reviewed Hellscream low-pop starter estimates, not live-AH medians or guaranteed sale values. Active listings show competition only and never set or raise guide prices. Cross-server listings influence relative item rank only after realm/faction gold-scale normalization; fixed Hellscream anchors set the gold bands, and no external gold value is copied. Post one at a time and let qualifying Hellscream completed sales replace the estimates.</aside>
+<!-- AH_BASELINE_NOTE_END -->"""
 SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(
@@ -844,15 +851,20 @@ def transform_guide(
     if nav_count != 1:
         raise ValueError(f"{filename}: expected exactly one guide navigation block")
 
+    expected_baseline_note = (
+        DROPPED_GEAR_BASELINE_NOTE
+        if filename in DROPPED_GEAR_GUIDES
+        else baseline_note_template
+    )
     baseline_note_matches = len(BASELINE_NOTE_BLOCK.findall(source))
     if baseline_note_matches == 1:
-        source = BASELINE_NOTE_BLOCK.sub(baseline_note_template, source, count=1)
+        source = BASELINE_NOTE_BLOCK.sub(expected_baseline_note, source, count=1)
     elif baseline_note_matches == 0:
         if source.count("</header>") != 1:
             raise ValueError(f"{filename}: expected exactly one header insertion point")
         source = source.replace(
             "</header>",
-            f"{baseline_note_template}\n</header>",
+            f"{expected_baseline_note}\n</header>",
             1,
         )
     else:
