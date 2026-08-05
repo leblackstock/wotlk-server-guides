@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "active_guide_count": 16,
+  "groups": [
+    {
+      "id": "gathering",
+      "title": "Gathering & Shared Materials",
+      "description": "Raw materials, conversions, and shared profession inputs.",
+      "order": 10
+    },
+    {
+      "id": "professions",
+      "title": "Profession Markets",
+      "description": "Crafting inputs, finished goods, and profession-specific buyer markets.",
+      "order": 20
+    },
+    {
+      "id": "drops",
+      "title": "Drops, Recipes & Turn-Ins",
+      "description": "Farmable unlocks, reputation items, quest pages, recipes, and patterns.",
+      "order": 30
+    }
+  ],
+  "guides": [
+    {
+      "id": "mining-metals",
+      "file": "mining-smithing-ah-price-guide.html",
+      "title": "Mining, Ore, Bars & Stone",
+      "description": "Ore, smelted bars, alloys, stone, grinding stones, and closely related metal-market references.",
+      "icon": "mining-smithing.svg",
+      "group": "gathering",
+      "order": 10,
+      "navigation": [
+        {"id": "mining-ore", "label": "Ore", "patterns": ["ore$"]},
+        {"id": "mining-bars", "label": "Bars & Alloys", "patterns": ["bars and alloys", "metal conversions", "smelts and conversions", "elemental breakdowns"]},
+        {"id": "mining-stone", "label": "Stone", "patterns": ["stone", "grinding"]},
+        {"id": "mining-related", "label": "Related Smithing", "patterns": ["rod blanks", "smithing reagents"]},
+        {"id": "mining-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]},
+        {"id": "mining-reference", "label": "Reference & Sources", "patterns": ["Average mining node worth", "Sources", "Disclaimer"]}
+      ]
+    },
+    {
+      "id": "herbalism",
+      "file": "herbalism-herbs-ah-price-guide.html",
+      "title": "Herbalism & Herbs",
+      "description": "Northrend, Outland, and Classic herbs with Frost Lotus, milling, potion, and flask demand context.",
+      "icon": "herbalism.svg",
+      "group": "gathering",
+      "order": 20,
+      "navigation": [
+        {"id": "herbalism-wrath", "label": "Northrend", "patterns": ["Northrend"]},
+        {"id": "herbalism-outland", "label": "Outland", "patterns": ["Outland"]},
+        {"id": "herbalism-classic", "label": "Classic", "patterns": ["Classic"]},
+        {"id": "herbalism-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "shared-materials",
+      "file": "cross-profession-materials-ah-price-guide.html",
+      "title": "Shared Crafting Materials",
+      "description": "Orbs, Eternals, Primals, pearls, elemental materials, and bottlenecks shared by several professions.",
+      "icon": "cross-profession.svg",
+      "group": "gathering",
+      "order": 30,
+      "navigation": [
+        {"id": "shared-wrath", "label": "Northrend", "patterns": ["Northrend"]},
+        {"id": "shared-outland", "label": "Outland", "patterns": ["Outland"]},
+        {"id": "shared-classic", "label": "Classic", "patterns": ["Classic"]}
+      ]
+    },
+    {
+      "id": "blacksmithing-materials",
+      "file": "blacksmithing-materials-ah-price-guide.html",
+      "title": "Blacksmithing Materials & Enhancements",
+      "description": "Blacksmithing inputs, rod blanks, keys, stones, enhancements, intermediates, and craft bottlenecks.",
+      "icon": "blacksmithing.svg",
+      "group": "professions",
+      "order": 10,
+      "crafted_source": "blacksmithing-materials-ah-price-guide.html",
+      "crafted_sections": [
+        "Wrath general-use enhancements",
+        "Blacksmith-only skeleton keys",
+        "Enchanter-only rod blanks",
+        "Outland general-use enhancements",
+        "Classic enhancements and craft intermediates"
+      ],
+      "crafted_intro_title": "Crafted Blacksmithing materials and enhancements",
+      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: Blacksmithing enhancements, keys, rod blanks, and intermediates across Wrath, Outland, and Classic. Finished armor, weapons, and shields are organized in the companion Blacksmithing Armor & Weapons guide.",
+      "navigation": [
+        {"id": "blacksmithing-inputs", "label": "Inputs", "patterns": ["inputs", "bars /", "stone$", "bottlenecks", "overlap"]},
+        {"id": "blacksmithing-tools", "label": "Rods & Keys", "patterns": ["rod blanks", "skeleton keys"]},
+        {"id": "blacksmithing-enhancements", "label": "Enhancements & Intermediates", "patterns": ["enhancements", "intermediates"]},
+        {"id": "blacksmithing-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "blacksmithing-gear",
+      "file": "blacksmithing-gear-ah-price-guide.html",
+      "title": "Blacksmithing Armor & Weapons",
+      "description": "Tradeable Blacksmithing armor, weapons, shields, raid crafts, and leveling equipment across every expansion.",
+      "icon": "blacksmithing.svg",
+      "group": "professions",
+      "order": 20,
+      "crafted_source": "blacksmithing-materials-ah-price-guide.html",
+      "crafted_sections": [
+        "Wrath ICC crafted plate",
+        "Wrath Trial of the Crusader crafted plate",
+        "Wrath Ulduar crafted plate",
+        "Wrath weapons and shields",
+        "Wrath leveling and fresh-80 armor",
+        "Outland weapons",
+        "Outland rare and epic armor",
+        "Outland leveling armor",
+        "Classic raid and premium crafts",
+        "Classic weapons — skill 1–150",
+        "Classic armor — skill 1–150",
+        "Classic weapons — skill 151–300",
+        "Classic armor — skill 151–300"
+      ],
+      "crafted_intro_title": "Crafted Blacksmithing armor and weapons",
+      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: Blacksmithing armor, weapons, shields, and premium equipment across Wrath, Outland, and Classic. Materials, enhancements, keys, and rod blanks remain in the companion Blacksmithing Materials & Enhancements guide.",
+      "navigation": [
+        {
+          "id": "blacksmithing-armor",
+          "label": "Armor",
+          "children": [
+            {"id": "blacksmithing-armor-wrath", "label": "Wrath", "patterns": ["^Wrath.*armor$", "^Wrath .*crafted plate$"]},
+            {"id": "blacksmithing-armor-outland", "label": "Outland", "patterns": ["^Outland.*armor$"]},
+            {"id": "blacksmithing-armor-classic", "label": "Classic", "patterns": ["^Classic.*armor", "Classic raid and premium crafts"]}
+          ]
+        },
+        {
+          "id": "blacksmithing-weapons",
+          "label": "Weapons & Shields",
+          "children": [
+            {"id": "blacksmithing-weapons-wrath", "label": "Wrath", "patterns": ["^Wrath weapons"]},
+            {"id": "blacksmithing-weapons-outland", "label": "Outland", "patterns": ["^Outland weapons"]},
+            {"id": "blacksmithing-weapons-classic", "label": "Classic", "patterns": ["^Classic weapons"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engineering",
+      "file": "engineering-materials-ah-price-guide.html",
+      "title": "Engineering",
+      "description": "Engineering inputs, parts, explosives, ammo, devices, mount components, tools, and utility markets.",
+      "icon": "engineering.svg",
+      "group": "professions",
+      "order": 30,
+      "navigation": [
+        {"id": "engineering-inputs", "label": "Inputs", "patterns": ["inputs", "raw metal", "raw stone"]},
+        {"id": "engineering-parts", "label": "Parts", "patterns": ["parts", "Blasting powders", "mount components"]},
+        {"id": "engineering-ammo", "label": "Ammo", "patterns": ["Ammo"]},
+        {"id": "engineering-explosives", "label": "Explosives", "patterns": ["bombs", "sapper", "decoys"]},
+        {"id": "engineering-utility", "label": "Devices & Utility", "patterns": ["utility", "tools"]},
+        {"id": "engineering-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "jewelcrafting-gems",
+      "file": "jewelcrafting-gems-ah-price-guide.html",
+      "title": "Jewelcrafting Gems & Cuts",
+      "description": "Uncut gems, prospecting inputs, meta gems, and tradeable cuts organized by expansion, quality, and color.",
+      "icon": "jewelcrafting.svg",
+      "group": "professions",
+      "order": 40,
+      "crafted_source": "jewelcrafting-gems-ah-price-guide.html",
+      "crafted_exclude_sections": [
+        "Wrath special and random crafts",
+        "Wrath BoE jewelry",
+        "Outland special and random crafts",
+        "Outland BoE jewelry",
+        "Classic Jewelcrafting components",
+        "Classic random gem conversion",
+        "Classic BoE jewelry"
+      ],
+      "crafted_intro_title": "Crafted Jewelcrafting gems and cuts",
+      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: cut and special gems across Wrath, Outland, and Classic. Jewelry, components, settings, and random sealed crafts are organized in the companion Jewelcrafting Jewelry & Components guide.",
+      "navigation": [
+        {"id": "jewelcrafting-gem-inputs", "label": "Gem Inputs", "patterns": ["Prospecting", "gems and meta bases", "Northrend gems", "Icy Prism", "old-world gems"]},
+        {
+          "id": "jewelcrafting-wrath-cuts",
+          "label": "Wrath Cuts",
+          "children": [
+            {"id": "jewelcrafting-wrath-epic", "label": "Epic", "patterns": ["Wrath epic"]},
+            {"id": "jewelcrafting-wrath-rare", "label": "Rare", "patterns": ["Wrath rare"]},
+            {"id": "jewelcrafting-wrath-uncommon", "label": "Uncommon", "patterns": ["Wrath uncommon"]},
+            {"id": "jewelcrafting-wrath-meta", "label": "Meta", "patterns": ["Wrath meta"]}
+          ]
+        },
+        {
+          "id": "jewelcrafting-outland-cuts",
+          "label": "Outland Cuts",
+          "children": [
+            {"id": "jewelcrafting-outland-epic", "label": "Epic", "patterns": ["Outland epic"]},
+            {"id": "jewelcrafting-outland-rare", "label": "Rare", "patterns": ["Outland rare"]},
+            {"id": "jewelcrafting-outland-uncommon", "label": "Uncommon", "patterns": ["Outland uncommon"]},
+            {"id": "jewelcrafting-outland-meta", "label": "Meta", "patterns": ["Outland meta"]}
+          ]
+        },
+        {"id": "jewelcrafting-special-gems", "label": "Special Gems", "patterns": ["Dragon's Eye", "popular cut metas"]}
+      ]
+    },
+    {
+      "id": "jewelcrafting-jewelry",
+      "file": "jewelcrafting-jewelry-ah-price-guide.html",
+      "title": "Jewelcrafting Jewelry & Components",
+      "description": "Tradeable jewelry, equipment, components, settings, and special Jewelcrafting outputs across every expansion.",
+      "icon": "jewelcrafting.svg",
+      "group": "professions",
+      "order": 50,
+      "crafted_source": "jewelcrafting-gems-ah-price-guide.html",
+      "crafted_sections": [
+        "Wrath special and random crafts",
+        "Wrath BoE jewelry",
+        "Outland special and random crafts",
+        "Outland BoE jewelry",
+        "Classic Jewelcrafting components",
+        "Classic random gem conversion",
+        "Classic BoE jewelry"
+      ],
+      "crafted_intro_title": "Crafted Jewelcrafting jewelry and components",
+      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: jewelry, equipment, components, settings, and sealed random-result crafts across Wrath, Outland, and Classic. Uncut gems and cut-gem markets remain in the companion Jewelcrafting Gems & Cuts guide.",
+      "navigation": [
+        {"id": "jewelcrafting-jewelry", "label": "Jewelry", "patterns": ["BoE jewelry"]},
+        {"id": "jewelcrafting-components", "label": "Components & Settings", "patterns": ["components", "settings"]},
+        {"id": "jewelcrafting-special-crafts", "label": "Special Crafts", "patterns": ["special and random", "random gem conversion"]}
+      ]
+    },
+    {
+      "id": "enchanting",
+      "file": "enchanting-mats-ah-price-guide.html",
+      "title": "Enchanting Materials & Scrolls",
+      "description": "Dusts, essences, shards, crystals, enchant scrolls, oils, wands, gems, and intermediates.",
+      "icon": "enchanting.svg",
+      "group": "professions",
+      "order": 60,
+      "navigation": [
+        {"id": "enchanting-materials", "label": "Materials", "patterns": ["mats —"]},
+        {
+          "id": "enchanting-scrolls",
+          "label": "Scrolls",
+          "children": [
+            {"id": "enchanting-scrolls-wrath", "label": "Wrath", "patterns": ["Crafted Wrath.*scrolls"]},
+            {"id": "enchanting-scrolls-outland", "label": "Outland", "patterns": ["Crafted Outland.*scrolls"]},
+            {"id": "enchanting-scrolls-classic", "label": "Classic", "patterns": ["Crafted Classic.*scrolls"]}
+          ]
+        },
+        {"id": "enchanting-oils", "label": "Oils", "patterns": ["weapon oils"]},
+        {"id": "enchanting-other", "label": "Wands & Intermediates", "patterns": ["wands", "intermediates", "prismatic"]}
+      ]
+    },
+    {
+      "id": "alchemy",
+      "file": "alchemy-materials-ah-price-guide.html",
+      "title": "Alchemy",
+      "description": "Alchemy materials, potions, elixirs, flasks, oils, intermediates, protection consumables, and transmutes.",
+      "icon": "alchemy.svg",
+      "group": "professions",
+      "order": 70,
+      "navigation": [
+        {"id": "alchemy-materials", "label": "Materials", "patterns": ["Alchemy materials", "transmute inputs"]},
+        {"id": "alchemy-potions", "label": "Potions & Cauldrons", "patterns": ["potions", "cauldrons", "Alchemist-only"]},
+        {"id": "alchemy-elixirs", "label": "Elixirs", "patterns": ["elixirs"]},
+        {"id": "alchemy-flasks", "label": "Flasks", "patterns": ["flasks"]},
+        {"id": "alchemy-transmutes", "label": "Transmutes & Intermediates", "patterns": ["transmutes", "Transmute pricing", "intermediates", "oils"]},
+        {"id": "alchemy-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "inscription",
+      "file": "inscription-materials-ah-price-guide.html",
+      "title": "Inscription",
+      "description": "Inks, pigments, milling inputs, cards, decks, glyphs, scrolls, vellums, and Inscription utility items.",
+      "icon": "inscription.svg",
+      "group": "professions",
+      "order": 80,
+      "navigation": [
+        {"id": "inscription-materials", "label": "Milling, Inks & Pigments", "patterns": ["milling inputs", "inks / pigments", "blank vellums"]},
+        {"id": "inscription-cards", "label": "Cards & Decks", "patterns": ["cards$", "decks$"]},
+        {"id": "inscription-glyphs", "label": "Glyphs", "patterns": ["glyphs$"]},
+        {"id": "inscription-scrolls", "label": "Scrolls", "patterns": ["scrolls$"]},
+        {"id": "inscription-utility", "label": "Utility", "patterns": ["utility", "BoE equipment"]},
+        {"id": "inscription-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "tailoring",
+      "file": "tailoring-cloth-ah-price-guide.html",
+      "title": "Tailoring, Cloth & First Aid",
+      "description": "Cloth, Tailoring materials and crafts, bags, spellthreads, gear, bandages, and anti-venoms.",
+      "icon": "tailoring.svg",
+      "group": "professions",
+      "order": 90,
+      "navigation": [
+        {"id": "tailoring-materials", "label": "Materials", "patterns": ["reagents", "intermediates", "silks", "Cloth drops"]},
+        {"id": "tailoring-gear", "label": "Gear", "patterns": ["cloth gear", "Cosmetic shirts"]},
+        {"id": "tailoring-bags", "label": "Bags", "patterns": ["bags$"]},
+        {"id": "tailoring-utility", "label": "Spellthreads & Utility", "patterns": ["spellthreads", "Tailoring utility", "Tailor-only nets"]},
+        {"id": "tailoring-first-aid", "label": "First Aid", "patterns": ["First Aid", "anti-venoms"]},
+        {"id": "tailoring-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "skinning-leatherworking",
+      "file": "skinning-leatherworking-materials-ah-price-guide.html",
+      "title": "Skinning & Leatherworking",
+      "description": "Skinning materials, leather conversions, armor kits, leg armors, drums, bags, utility, and leather or mail gear.",
+      "icon": "skinning-leatherworking.svg",
+      "group": "professions",
+      "order": 100,
+      "navigation": [
+        {"id": "leatherworking-materials", "label": "Skinning Materials", "patterns": ["skinning materials", "hides$", "specialty scales", "Classic leather$"]},
+        {"id": "leatherworking-intermediates", "label": "Intermediates & Conversions", "patterns": ["intermediates", "Conversion / value checks", "curing materials", "reagent overlap"]},
+        {"id": "leatherworking-leather-gear", "label": "Leather Gear", "patterns": ["leather gear"]},
+        {"id": "leatherworking-mail-gear", "label": "Mail Gear", "patterns": ["mail gear"]},
+        {"id": "leatherworking-enhancements", "label": "Armor Kits & Leg Armors", "patterns": ["armor kits", "leg armors"]},
+        {"id": "leatherworking-utility", "label": "Utility", "patterns": ["drums", "bags", "quivers", "ammo pouches", "cloaks", "utility"]},
+        {"id": "leatherworking-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
+      ]
+    },
+    {
+      "id": "fishing-cooking",
+      "file": "fishing-cooking-materials-ah-price-guide.html",
+      "title": "Fishing & Cooking",
+      "description": "Raw fish, meats, cooking ingredients, prepared foods, feasts, rare catches, utility, and vendor supplies.",
+      "icon": "fishing-cooking.svg",
+      "group": "professions",
+      "order": 110,
+      "navigation": [
+        {"id": "fishing-raw", "label": "Raw Fish", "patterns": ["raw.*fish", "Rare catches"]},
+        {"id": "cooking-ingredients", "label": "Ingredients", "patterns": ["meats", "cooking mats"]},
+        {"id": "cooking-foods", "label": "Foods", "patterns": ["foods", "stat foods", "recovery", "combat"]},
+        {"id": "cooking-feasts", "label": "Feasts & Utility", "patterns": ["feasts", "utility", "novelty", "achievement"]},
+        {"id": "fishing-low-demand", "label": "Rare & Low-Demand", "patterns": ["Low-demand", "Rare catches"]},
+        {"id": "fishing-equipment", "label": "Fishing Gear & Lures", "patterns": ["fishing poles", "devices / lures"]},
+        {"id": "cooking-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]},
+        {"id": "fishing-reference", "label": "Coverage Notes", "patterns": ["Old-world coverage notes"]}
+      ]
+    },
+    {
+      "id": "turn-ins",
+      "file": "drop-turn-in-quest-page-items-ah-price-guide.html",
+      "title": "Turn-Ins & Quest Items",
+      "description": "Reputation turn-ins, Darkmoon Faire drops, quest pages, and other farmable quest-completion items.",
+      "icon": "drop-turn-in.svg",
+      "group": "drops",
+      "order": 10,
+      "navigation": [
+        {"id": "turn-ins-overview", "label": "Start Here", "patterns": ["Best drop turn-ins to watch", "Before Buying"]},
+        {"id": "turn-ins-reputation", "label": "Reputation", "patterns": ["drops$", "reputation turn-ins", "Morrowgrain odd turn-ins"]},
+        {"id": "turn-ins-darkmoon", "label": "Darkmoon Faire", "patterns": ["Darkmoon Faire"]},
+        {"id": "turn-ins-quests", "label": "Quest Pages", "patterns": ["Quest page", "quest completion"]}
+      ]
+    },
+    {
+      "id": "recipe-pattern-drops",
+      "file": "gear-pattern-drops-ah-price-guide.html",
+      "title": "Recipe & Pattern Drops",
+      "description": "Tradeable Blacksmithing plans, Leatherworking and Tailoring patterns, Enchanting formulas, Jewelcrafting designs, Engineering schematics, Alchemy and Cooking recipes, and Book of Glyph Mastery.",
+      "icon": "gear-patterns.svg",
+      "group": "drops",
+      "order": 20,
+      "navigation": [
+        {"id": "recipe-gear", "label": "Gear Patterns", "patterns": ["gear-plan drops", "gear-pattern drops"]},
+        {"id": "recipe-utility", "label": "Utility Recipes", "patterns": ["Best utility recipe drops", "formula drops", "world-drop designs", "schematic drops"]},
+        {"id": "recipe-consumables", "label": "Consumable & Misc. Recipes", "patterns": ["Best consumable / misc recipe drops", "consumable recipe drops", "Cooking recipe drops", "Inscription misc recipe"]}
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "file": "utility-recipe-drops-ah-price-guide.html",
+      "target": "gear-pattern-drops-ah-price-guide.html#ah-category=recipe-utility",
+      "label": "Recipe & Pattern Drops — Utility Recipes"
+    },
+    {
+      "file": "consumable-misc-recipe-drops-ah-price-guide.html",
+      "target": "gear-pattern-drops-ah-price-guide.html#ah-category=recipe-consumables",
+      "label": "Recipe & Pattern Drops — Consumable & Misc. Recipes"
+    }
+  ]
+}

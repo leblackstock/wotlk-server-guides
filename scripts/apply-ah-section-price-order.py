@@ -7,6 +7,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from ah_guides import active_guide_paths
 from ah_section_ordering import load_policy, order_guide_source, validate_inventory
 
 
@@ -20,7 +21,7 @@ def main() -> int:
     args = parser.parse_args()
 
     policy = load_policy()
-    guide_paths = sorted(GUIDES_DIR.glob(policy["scope"]["guide_glob"]))
+    guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
     reports_by_guide: dict[str, list[dict]] = {}
     updates: list[tuple[Path, str, list[dict]]] = []
 

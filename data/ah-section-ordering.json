@@ -18,16 +18,7 @@
       "section_ids": [
         "blacksmith-only-skeleton-keys",
         "enchanter-only-rod-blanks",
-        "wrath-weapons-and-shields",
-        "wrath-leveling-and-fresh-80-armor",
-        "outland-weapons",
-        "outland-rare-and-epic-armor",
-        "outland-leveling-armor",
-        "classic-enhancements-and-craft-intermediates",
-        "classic-weapons-skill-1-150",
-        "classic-armor-skill-1-150",
-        "classic-weapons-skill-151-300",
-        "classic-armor-skill-151-300"
+        "classic-enhancements-and-craft-intermediates"
       ],
       "section_titles": [
         "Wrath leveling / common BS inputs",
@@ -36,7 +27,23 @@
         "Raw stone"
       ],
       "order": "profession and item-tier progression",
-      "reason": "These tables deliberately preserve skill, equipment-tier, or material-tier progression."
+      "reason": "These material and enhancement tables deliberately preserve skill or material-tier progression."
+    },
+    {
+      "guide": "blacksmithing-gear-ah-price-guide.html",
+      "section_ids": [
+        "wrath-weapons-and-shields",
+        "wrath-leveling-and-fresh-80-armor",
+        "outland-weapons",
+        "outland-rare-and-epic-armor",
+        "outland-leveling-armor",
+        "classic-weapons-skill-1-150",
+        "classic-armor-skill-1-150",
+        "classic-weapons-skill-151-300",
+        "classic-armor-skill-151-300"
+      ],
+      "order": "profession and item-tier progression",
+      "reason": "These equipment tables deliberately preserve skill and equipment-tier progression."
     },
     {
       "guide": "cross-profession-materials-ah-price-guide.html",

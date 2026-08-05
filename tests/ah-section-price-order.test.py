@@ -12,6 +12,7 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
+from ah_guides import active_guide_paths  # noqa: E402
 from ah_section_ordering import load_policy, order_guide_source, validate_inventory  # noqa: E402
 
 
@@ -21,7 +22,7 @@ def fail(message: str) -> None:
 
 policy = load_policy()
 reports_by_guide: dict[str, list[dict]] = {}
-for path in sorted((ROOT / "guides").glob(policy["scope"]["guide_glob"])):
+for path in active_guide_paths(guides_dir=ROOT / "guides"):
     source = path.read_text(encoding="utf-8")
     expected, reports = order_guide_source(source, path.name, policy)
     if expected != source:

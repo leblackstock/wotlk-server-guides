@@ -25,7 +25,7 @@ index_source = INDEX_PATH.read_text(encoding="utf-8").splitlines()[1]
 index = json.loads(
     index_source.removeprefix("window.AH_SEARCH_INDEX=").removesuffix(";")
 )
-assert index["version"] == 4
+assert index["version"] == 5
 assert index["itemCount"] == len(index["items"])
 assert index["items"]
 
@@ -58,7 +58,7 @@ for field, entries in (
     for name, entry in entries.items():
         matches = groups[name.casefold()]
         assert {item[field] for item in matches} == {entry["value"]}, name
-        assert any(item["guide"] == entry["source_guide"] for item in matches), name
+        assert any(item["guideId"] == entry["source_guide_id"] for item in matches), name
         if field == "stack":
             stack_counts = [int(part.strip()) for part in entry["value"].split("/")]
             assert all(1 <= count <= entry["max_stack"] for count in stack_counts), name

@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HUB_PATH = ROOT / "auction-house.html"
 OUTPUT_PATH = ROOT / "assets" / "ah-search-index.js"
 CANONICAL_VALUES_PATH = ROOT / "data" / "ah-search-canonical-values.json"
+GUIDE_MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 AH_GUIDE_SUFFIX = "ah-price-guide.html"
 
 
@@ -74,9 +75,10 @@ class HubGuideParser(HTMLParser):
 
 
 class AHGuideParser(HTMLParser):
-    def __init__(self, filename: str, guide_title: str) -> None:
+    def __init__(self, filename: str, guide_id: str, guide_title: str) -> None:
         super().__init__()
         self.filename = filename
+        self.guide_id = guide_id
         self.guide_title = guide_title
         self.section = "Other"
         self.capture_heading = False
@@ -227,6 +229,7 @@ class AHGuideParser(HTMLParser):
         item: dict[str, str | int] = {
             "name": name,
             "detail": clean_text(self.mini_parts),
+            "guideId": self.guide_id,
             "guide": self.guide_title,
             "section": self.section,
             "targetBid": clean_text(self.target_bid_parts) or "—",
@@ -274,10 +277,12 @@ def apply_canonical_field(
         if not group:
             raise RuntimeError(f"Canonical {field} item is absent from the search index: {name}")
 
-        source_guide = str(entry["source_guide"])
+        source_guide = str(entry.get("source_guide_id") or entry.get("source_guide"))
         value = str(entry["value"])
         source_values = {
-            str(item[field]) for item in group if str(item["guide"]) == source_guide
+            str(item[field])
+            for item in group
+            if str(item.get("guideId", item["guide"])) == source_guide
         }
         if not source_values:
             raise RuntimeError(
@@ -333,27 +338,30 @@ def canonicalize_and_validate(items: list[dict[str, str | int]]) -> None:
 
 
 def build_index() -> str:
-    hub_parser = HubGuideParser()
-    hub_parser.feed(HUB_PATH.read_text(encoding="utf-8"))
-    if not hub_parser.guides:
-        raise RuntimeError("No Auction House guide cards were found in auction-house.html")
+    manifest = json.loads(GUIDE_MANIFEST_PATH.read_text(encoding="utf-8"))
+    guides = manifest.get("guides", [])
+    if len(guides) != int(manifest.get("active_guide_count", 0)):
+        raise RuntimeError("AH guide manifest active count does not match its guide list")
 
     items: list[dict[str, str | int]] = []
-    for filename, guide_title in hub_parser.guides.items():
+    for guide in guides:
+        filename = str(guide["file"])
+        guide_id = str(guide["id"])
+        guide_title = str(guide["title"])
         path = ROOT / "guides" / filename
         if not path.is_file():
-            raise FileNotFoundError(f"Hub links to missing AH guide: {path.relative_to(ROOT)}")
-        parser = AHGuideParser(filename, guide_title)
+            raise FileNotFoundError(f"Manifest links to missing AH guide: {path.relative_to(ROOT)}")
+        parser = AHGuideParser(filename, guide_id, guide_title)
         parser.feed(path.read_text(encoding="utf-8"))
         if not parser.items:
             raise RuntimeError(f"No searchable item rows found in {path.relative_to(ROOT)}")
         items.extend(parser.items)
 
     canonicalize_and_validate(items)
-    items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guide"]).casefold()))
+    items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guideId"])))
     payload = {
-        "version": 4,
-        "guideCount": len(hub_parser.guides),
+        "version": 5,
+        "guideCount": len(guides),
         "itemCount": len(items),
         "items": items,
     }

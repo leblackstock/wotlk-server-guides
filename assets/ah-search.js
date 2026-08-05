@@ -7,7 +7,7 @@
     const current = document.currentScript || Array.from(document.scripts).find((script) => /\/ah-search\.js(?:\?|$)/.test(script.src));
     if (!current || !current.src) return;
     const tooltipScript = document.createElement("script");
-    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260804-gathering-audit-v1", current.src).href;
+    tooltipScript.src = new URL("ah-item-tooltips.js?v=20260804-ah-guide-ux-v1", current.src).href;
     tooltipScript.async = false;
     tooltipScript.dataset.ahItemTooltips = "true";
     document.head.appendChild(tooltipScript);
@@ -158,6 +158,12 @@
     return element;
   }
 
+  function resolveHref(href) {
+    const root = document.body?.dataset.ahRoot;
+    if (!root || !String(href).startsWith("./")) return href;
+    return `${root.replace(/\/?$/, "/")}${String(href).slice(2)}`;
+  }
+
   function initializeSearch() {
     const input = document.getElementById("ah-search-input");
     const resultsElement = document.getElementById("ah-search-results");
@@ -227,7 +233,7 @@
         const card = makeElement("article", "ah-search-result");
         card.classList.add(`quality-${item.quality}`);
         const primary = makeElement(grouped ? "div" : "a", "ah-search-result-primary");
-        if (!grouped) primary.href = item.href;
+        if (!grouped) primary.href = resolveHref(item.href);
 
         const topLine = makeElement("span", "ah-search-result-top");
         topLine.append(makeElement("strong", `ah-search-item-name quality-${item.quality}`, item.name));
@@ -281,7 +287,7 @@
           routes.forEach((route) => {
             const routeLabel = guideOccurrences.get(route.guide) > 1 ? `${route.guide} — ${route.section}` : route.guide;
             const routeLink = makeElement("a", "ah-search-location-link");
-            routeLink.href = route.href;
+            routeLink.href = resolveHref(route.href);
             routeLink.append(makeElement("span", "ah-search-location-name", routeLabel));
             locations.append(routeLink);
           });

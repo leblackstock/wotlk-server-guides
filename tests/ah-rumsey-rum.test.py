@@ -58,7 +58,8 @@ matches = [
 ]
 assert len(matches) == 1
 item = matches[0]
-assert item["guide"] == "Fishing + Cooking"
+assert item["guide"] == "Fishing & Cooking"
+assert item["guideId"] == "fishing-cooking"
 assert item["section"] == CATEGORY
 assert item["targetBid"] == "8s 50c"
 assert item["target"] == "10s"

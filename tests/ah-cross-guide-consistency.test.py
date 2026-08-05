@@ -6,6 +6,7 @@ from __future__ import annotations
 import html
 import json
 import re
+import sys
 import unicodedata
 from collections import defaultdict
 from pathlib import Path
@@ -14,6 +15,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
 
 INTENTIONAL_AGGREGATE_LABELS = {
     "Aldor premium drop",
@@ -149,7 +155,7 @@ def main() -> int:
         "TBC leveling gem.",
         "Lower-level world drops, lockboxes, and reward containers.",
     )
-    for path in sorted((ROOT / "guides").glob("*-ah-price-guide.html")):
+    for path in active_guide_paths(guides_dir=ROOT / "guides"):
         source = path.read_text(encoding="utf-8")
         stale_labels = [
             name

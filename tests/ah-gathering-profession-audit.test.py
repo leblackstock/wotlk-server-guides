@@ -16,6 +16,7 @@ PLANS = ROOT / "docs" / "ah-profession-plans"
 ITEM_TEMPLATE_COMMIT = "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
 SPECS = {
     "herbalism": {
+        "guide_id": "herbalism",
         "guide": "herbalism-herbs-ah-price-guide.html",
         "searchable": 52,
         "baseline": 47,
@@ -23,6 +24,7 @@ SPECS = {
         "reference": 0,
     },
     "skinning": {
+        "guide_id": "skinning-leatherworking",
         "guide": "skinning-leatherworking-materials-ah-price-guide.html",
         "searchable": 37,
         "baseline": 31,
@@ -30,6 +32,7 @@ SPECS = {
         "reference": 5,
     },
     "fishing": {
+        "guide_id": "fishing-cooking",
         "guide": "fishing-cooking-materials-ah-price-guide.html",
         "searchable": 140,
         "baseline": 127,
@@ -109,7 +112,7 @@ def main() -> int:
         if 'data-market-source="crafted"' in static_source:
             fail(f"{filename}: crafted output escaped its profession-owned block")
 
-        parser = builder.AHGuideParser(filename, profession.title())
+        parser = builder.AHGuideParser(filename, spec["guide_id"], profession.title())
         parser.feed(static_source)
         rows = parser.items
         if len(rows) != spec["searchable"]:

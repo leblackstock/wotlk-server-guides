@@ -13,6 +13,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES = ROOT / "guides"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
+
 RENDERER_PATH = ROOT / "scripts" / "render-ah-shared-sections.py"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 MONEY_SPAN = re.compile(r'<span class="(?:bid|buyout)">([^<]+)</span>')
@@ -50,7 +56,7 @@ assert renderer.format_money(14_850) == "1g 49s"
 assert renderer.format_money(14_875) == "1g 49s"
 assert renderer.format_money(999_999) == "100g"
 
-guide_paths = sorted(GUIDES.glob("*ah-price-guide.html"))
+guide_paths = active_guide_paths(guides_dir=GUIDES)
 assert len(guide_paths) == 16
 price_count = 0
 for path in guide_paths:

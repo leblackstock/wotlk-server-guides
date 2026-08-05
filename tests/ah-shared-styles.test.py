@@ -6,17 +6,24 @@ from __future__ import annotations
 import html
 import json
 import re
+import sys
 import unicodedata
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
+
 STYLES_PATH = ROOT / "assets" / "ah-price-guide.css"
 ICON_STYLES_PATH = ROOT / "assets" / "ah-guide-icons.css"
 SEARCH_STYLES_PATH = ROOT / "assets" / "style.css"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
-STYLESHEET_VERSION = "20260804-gathering-audit-v1"
+STYLESHEET_VERSION = "20260804-ah-guide-ux-v1"
 
 
 def normalize_item_name(value: str) -> str:
@@ -29,7 +36,7 @@ def normalize_item_name(value: str) -> str:
     return " ".join(re.sub(r"[^a-z0-9]+", " ", value).split())
 
 
-guide_paths = sorted(GUIDES_DIR.glob("*ah-price-guide.html"))
+guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
 assert len(guide_paths) == 16
 
 inline_style_guides = [
@@ -44,6 +51,7 @@ assert not inline_style_guides, (
 
 for path in guide_paths:
     source = path.read_text(encoding="utf-8")
+    assert '../assets/style.css' in source, f"{path.name}: shared search styles are missing"
     expected_href = f"../assets/ah-guide-icons.css?v={STYLESHEET_VERSION}"
     assert expected_href in source, f"{path.name}: shared AH stylesheet cache marker is stale"
     assert source.count("<!-- AH_BASELINE_NOTE_START -->") == 1, (

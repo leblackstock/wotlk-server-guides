@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WotLK Engineering Materials AH Price Guide — Low Pop</title>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Engineering AH Price Guide — WotLK 3.3.5 Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260804-gathering-audit-v1">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/style.css?v=20260804-ah-guide-ux-v1">
+  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260804-ah-guide-ux-v1">
 </head>
-<body data-guide-section="auction-house" data-ah-guide="engineering-materials-ah-price-guide">
+<body data-guide-section="auction-house" data-ah-guide="engineering" data-ah-root="../">
 <div class="wrap" id="top">
 <!-- AH_SHARED_NAV_START -->
 <nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
@@ -13,16 +14,53 @@
   <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
 </nav>
 <!-- AH_SHARED_NAV_END -->
-<header>
-<div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/engineering.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Engineering Materials AH Price Guide</h1>
-<p class="sub">Low-pop AH pricing sheet for <strong>Hellscream / Garrosh</strong>. Focused on Engineering parts, raw inputs, explosives, ammo, powders, mount parts, and practical catch-up materials.</p></div></div>
+<!-- AH_GUIDE_UX_START -->
+<header class="ah-guide-hero">
+  <div class="ah-guide-heading">
+    <img class="ah-guide-page-icon" src="../assets/ah-guide-icons/engineering.svg" width="64" height="64" alt="">
+    <div class="ah-guide-heading-copy">
+      <span class="ah-guide-eyebrow">WotLK 3.3.5 · Auction House</span>
+      <h1>Engineering</h1>
+      <p class="sub">Engineering inputs, parts, explosives, ammo, devices, mount components, tools, and utility markets.</p>
+    </div>
+  </div>
+</header>
+
+<section class="common ah-search-section ah-guide-search-section" aria-label="Auction House lookup">
+  <div class="ah-search-heading">
+    <span class="ah-search-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
+    <span>
+      <span class="ah-search-eyebrow">Search every AH guide</span>
+      <span class="ah-search-count" id="ah-search-count"></span>
+    </span>
+  </div>
+  <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
+  <div class="ah-search-input-wrap">
+    <span class="ah-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" focusable="false"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
+    <input id="ah-search-input" class="ah-search-input" type="search"
+      placeholder="Try Saronite Bar, Cardinal Ruby, or Frozen Orb…"
+      autocomplete="off" autocapitalize="off" spellcheck="false"
+      aria-describedby="ah-search-status" aria-controls="ah-search-results">
+  </div>
+  <nav class="ah-guide-major-nav" data-ah-major-nav aria-label="Jump to a major category"></nav>
+  <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
+  <ol class="ah-search-results" id="ah-search-results" hidden></ol>
+</section>
+
+<details class="common ah-guide-notes">
+  <summary><span>Pricing notes &amp; legend</span><span class="ah-guide-notes-hint">Read before posting</span></summary>
+  <div class="ah-guide-notes-content">
+<!-- AH_GUIDE_NOTES_CONTENT_START -->
 <div class="note"><strong>Read first:</strong> Use <strong>Target Buyout</strong> as the normal price. Post small stacks. Use <strong>Quick</strong> for fast sales and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.</div>
 <div class="note" style="border-left-color:var(--purple);background:rgba(202,167,255,.08);color:#eadcff;"><strong>Practical overlap rule:</strong> Raw bars and stones are included only when Engineers commonly buy them directly or convert them into Engineering parts.</div>
 <div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
 <!-- AH_BASELINE_NOTE_START -->
 <aside class="note ah-baseline-note"><strong>* Pricing baseline:</strong> These bands are frozen reference values, not live-AH medians. Active listings show competition only and never set or raise guide prices. Use listings to choose timing and stack size; change the baseline only from qualified completed sales, exact vendor costs, deterministic conversions, or measured acquisition evidence.</aside>
 <!-- AH_BASELINE_NOTE_END -->
-</header>
+<!-- AH_GUIDE_NOTES_CONTENT_END -->
+  </div>
+</details>
+<!-- AH_GUIDE_UX_END -->
 
 <!-- AH_CRAFTED_SECTION_START -->
 <div class="ah-crafted-market" data-ah-template="crafted-market-v1">
@@ -1023,5 +1061,12 @@
 <p class="small">I made this as an unofficial player guide, not a permanent or guaranteed price list. Treat prices as starting points and check the current AH before buying, selling, crafting, or reposting. Mistakes, outdated info, and missing items are possible. Some items may be maker-only or not resellable on this server. If something cannot actually be sold, traded, or reposted, or if an item is missing from a list, please let me know so I can update it.</p>
 </section>
 
-<footer>WotLK 3.3.5 Low-Pop Engineering Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-08-04</footer>
-</div><script src="../assets/ah-search.js?v=20260804-gathering-audit-v1" defer></script></body></html>
+<footer>WotLK 3.3.5 Engineering AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-08-04</footer>
+</div>
+<!-- AH_GUIDE_SCRIPTS_START -->
+<script src="../assets/ah-search-index.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-guide-navigation-data.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-guide-navigation.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-search.js?v=20260804-ah-guide-ux-v1" defer></script>
+<!-- AH_GUIDE_SCRIPTS_END -->
+</body></html>

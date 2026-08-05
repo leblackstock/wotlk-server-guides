@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
+MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 RECIPE_AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
@@ -114,6 +115,7 @@ def main() -> int:
     config = apply_guide_supplements(
         json.loads(DATA_PATH.read_text(encoding="utf-8"))
     )
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     recipe_audit = json.loads(RECIPE_AUDIT_PATH.read_text(encoding="utf-8"))
     catalog = config["catalog"]
     guides = config["guides"]
@@ -169,17 +171,48 @@ def main() -> int:
 
     used_keys: list[str] = []
     sources: dict[str, str] = {}
+    rendered_filename_by_key: dict[str, str] = {}
     for filename, guide in guides.items():
-        source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
-        sources[filename] = source
-        if source.count("<!-- AH_CRAFTED_SECTION_START -->") != 1:
-            fail(f"{filename}: expected one generated crafted-market block")
-
-        expected_order = [
-            key
-            for section in guide["sections"]
-            for key in section["items"]
+        page_configs = [
+            page
+            for page in manifest["guides"]
+            if page.get("crafted_source", page["file"]) == filename
         ]
+        if not page_configs:
+            fail(f"{filename}: no active rendered view exists")
+
+        expected_order: list[str] = []
+        source_parts: list[str] = []
+        crafted_parts: list[str] = []
+        for page in page_configs:
+            source_part = (ROOT / "guides" / page["file"]).read_text(encoding="utf-8")
+            if source_part.count("<!-- AH_CRAFTED_SECTION_START -->") != 1:
+                fail(f"{page['file']}: expected one generated crafted-market block")
+            sections = guide["sections"]
+            if page.get("crafted_sections"):
+                included = set(page["crafted_sections"])
+                sections = [section for section in sections if section["title"] in included]
+            elif page.get("crafted_exclude_sections"):
+                excluded = set(page["crafted_exclude_sections"])
+                sections = [section for section in sections if section["title"] not in excluded]
+            view_order = [key for section in sections for key in section["items"]]
+            actual_view_order = re.findall(r'data-crafted-key="([^"]+)"', source_part)
+            if len(actual_view_order) != len(view_order) or set(actual_view_order) != set(view_order):
+                fail(f"{page['file']}: rendered rows do not match its canonical filtered view")
+            for key in view_order:
+                if key in rendered_filename_by_key:
+                    fail(f"{key}: crafted output is duplicated across active guide views")
+                rendered_filename_by_key[key] = page["file"]
+            expected_order.extend(view_order)
+            source_parts.append(source_part)
+            crafted_parts.append(
+                source_part.split("<!-- AH_CRAFTED_SECTION_START -->", 1)[1].split(
+                    "<!-- AH_CRAFTED_SECTION_END -->", 1
+                )[0]
+            )
+
+        source = "\n".join(source_parts)
+        sources[filename] = source
         if len(expected_order) != EXPECTED_GUIDE_COUNTS[filename]:
             fail(
                 f"{filename}: expected {EXPECTED_GUIDE_COUNTS[filename]} configured "
@@ -193,11 +226,9 @@ def main() -> int:
         shared_note = guide.get("shared_note")
         if not shared_note:
             fail(f"{filename}: every crafted guide needs one shared pricing note")
-        crafted_source = source.split("<!-- AH_CRAFTED_SECTION_START -->", 1)[1].split(
-            "<!-- AH_CRAFTED_SECTION_END -->", 1
-        )[0]
-        if source.count(f'id="{shared_note["id"]}"') != 1:
-            fail(f"{filename}: shared pricing note must render exactly once")
+        crafted_source = "\n".join(crafted_parts)
+        if source.count(f'id="{shared_note["id"]}"') != len(page_configs):
+            fail(f"{filename}: shared pricing note must render once per active view")
         if crafted_source.count('class="crafted-note-ref"') != len(expected_order):
             fail(f"{filename}: every crafted row must reference the shared note")
         if crafted_source.count('class="crafted-item-note"') != len(expected_order):
@@ -287,7 +318,9 @@ def main() -> int:
                 entry
                 for entry in index["items"]
                 if entry["name"] == item["name"]
-                and entry["href"].startswith(f"./guides/{filename}#")
+                and entry["href"].startswith(
+                    f"./guides/{rendered_filename_by_key[key]}#"
+                )
                 and entry["marketSource"] == "crafted"
                 and entry["profession"] == item["profession"]
             ]

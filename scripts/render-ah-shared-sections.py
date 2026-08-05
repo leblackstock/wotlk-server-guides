@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import html
 import json
 import re
@@ -24,8 +25,8 @@ BASELINE_NOTE_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "baseline-note.h
 VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-section.html"
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
-AH_GUIDE_GLOB = "*ah-price-guide.html"
-AH_STYLESHEET_VERSION = "20260804-gathering-audit-v1"
+AH_GUIDES_PATH = ROOT / "data" / "ah-guides.json"
+AH_STYLESHEET_VERSION = "20260804-ah-guide-ux-v1"
 SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(
@@ -829,6 +830,7 @@ def render_dropped_scroll_section(template: str, guide: dict, config: dict) -> s
 def transform_guide(
     source: str,
     filename: str,
+    page_config: dict,
     nav_template: str,
     baseline_note_template: str,
     vendor_template: str,
@@ -856,7 +858,8 @@ def transform_guide(
     else:
         raise ValueError(f"{filename}: expected at most one pricing-baseline note")
 
-    guide_config = vendor_config["guides"].get(filename)
+    vendor_source = page_config.get("vendor_source", filename)
+    guide_config = vendor_config["guides"].get(vendor_source)
     vendor_matches = len(VENDOR_BLOCK.findall(source))
     if guide_config:
         source = remove_legacy_vendor_sections(source, guide_config, filename)
@@ -877,14 +880,48 @@ def transform_guide(
     elif vendor_matches:
         raise ValueError(f"{filename}: vendor section exists but is absent from canonical data")
 
-    crafted_guide = crafted_config["guides"].get(filename)
+    crafted_source = page_config.get("crafted_source", filename)
+    crafted_guide = crafted_config["guides"].get(crafted_source)
+    if crafted_guide:
+        crafted_guide = copy.deepcopy(crafted_guide)
+        included_sections = page_config.get("crafted_sections")
+        excluded_sections = set(page_config.get("crafted_exclude_sections", []))
+        if included_sections:
+            included = set(included_sections)
+            available = {section["title"] for section in crafted_guide["sections"]}
+            missing = sorted(included - available)
+            if missing:
+                raise ValueError(
+                    f"{filename}: unknown crafted section filters from {crafted_source}: {missing}"
+                )
+            crafted_guide["sections"] = [
+                section for section in crafted_guide["sections"] if section["title"] in included
+            ]
+        elif excluded_sections:
+            available = {section["title"] for section in crafted_guide["sections"]}
+            missing = sorted(excluded_sections - available)
+            if missing:
+                raise ValueError(
+                    f"{filename}: unknown crafted section exclusions from {crafted_source}: {missing}"
+                )
+            crafted_guide["sections"] = [
+                section
+                for section in crafted_guide["sections"]
+                if section["title"] not in excluded_sections
+            ]
+        if not crafted_guide["sections"]:
+            raise ValueError(f"{filename}: crafted section filter produced an empty guide")
+        if page_config.get("crafted_intro_title"):
+            crafted_guide["intro_title"] = page_config["crafted_intro_title"]
+        if page_config.get("crafted_intro_description"):
+            crafted_guide["intro_description"] = page_config["crafted_intro_description"]
     crafted_matches = len(CRAFTED_BLOCK.findall(source))
     if crafted_guide:
         expected = render_crafted_market(crafted_template, crafted_guide, crafted_config)
         if crafted_matches == 1:
             source = CRAFTED_BLOCK.sub(expected, source, count=1)
         elif (
-            filename == "inscription-materials-ah-price-guide.html"
+            crafted_source == "inscription-materials-ah-price-guide.html"
             and crafted_matches == 0
             and len(LEGACY_INSCRIPTION_CRAFTED_BLOCK.findall(source)) == 1
         ):
@@ -949,17 +986,27 @@ def main() -> int:
     vendor_template = VENDOR_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     crafted_template = CRAFTED_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
     dropped_scroll_template = DROPPED_SCROLL_TEMPLATE_PATH.read_text(encoding="utf-8").strip()
+    guide_manifest = json.loads(AH_GUIDES_PATH.read_text(encoding="utf-8"))
     changed: list[str] = []
 
-    guide_paths = sorted(GUIDES_DIR.glob(AH_GUIDE_GLOB))
-    if len(guide_paths) != 16:
-        raise ValueError(f"Expected 16 AH guides, found {len(guide_paths)}")
+    page_configs = {guide["file"]: guide for guide in guide_manifest["guides"]}
+    expected_guide_count = int(guide_manifest["active_guide_count"])
+    if len(page_configs) != expected_guide_count:
+        raise ValueError(
+            f"Expected {expected_guide_count} active AH guides, found {len(page_configs)}"
+        )
+    guide_paths = [GUIDES_DIR / filename for filename in page_configs]
+    missing_paths = [path for path in guide_paths if not path.is_file()]
+    if missing_paths:
+        labels = ", ".join(str(path.relative_to(ROOT)) for path in missing_paths)
+        raise FileNotFoundError(f"Missing active AH guide pages: {labels}")
 
     for path in guide_paths:
         source = path.read_text(encoding="utf-8")
         expected = transform_guide(
             source,
             path.name,
+            page_configs[path.name],
             nav_template,
             baseline_note_template,
             vendor_template,

@@ -12,6 +12,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES = ROOT / "guides"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
+
 AUDIT = json.loads((ROOT / "data" / "ah-profession-use-audit.json").read_text(encoding="utf-8"))
 CRAFTED = json.loads((ROOT / "data" / "ah-crafted-sections.json").read_text(encoding="utf-8"))
 
@@ -45,6 +51,11 @@ assert len(AUDIT["vendor_hard_requirements"]) == 3
 assert len(AUDIT["static_hard_requirements"]) == 1
 assert len(AUDIT["static_general_use_exceptions"]) == 0
 assert len(AUDIT["excluded_items"]) == 6
+active_paths = active_guide_paths(guides_dir=GUIDES)
+active_sources = {
+    path.name: path.read_text(encoding="utf-8")
+    for path in active_paths
+}
 
 locations: dict[str, tuple[str, dict]] = {}
 for filename, guide in CRAFTED["guides"].items():
@@ -59,11 +70,15 @@ for key, requirement in hard.items():
         f"{key} is not in a profession-restricted section"
     )
     assert int(CRAFTED["catalog"][key]["item_id"]) == int(requirement["item_id"])
-    source = (GUIDES / filename).read_text(encoding="utf-8")
-    row = re.search(
-        rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>', source, re.DOTALL
-    )
-    assert row, f"Missing rendered crafted row: {key}"
+    rows = [
+        row
+        for source in active_sources.values()
+        if (row := re.search(
+            rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>', source, re.DOTALL
+        ))
+    ]
+    assert len(rows) == 1, f"Expected one rendered crafted row for {key}, found {len(rows)}"
+    row = rows[0]
     action = "place" if CRAFTED["catalog"][key]["name"].endswith("Feast") else "use"
     expected = f'Requires {requirement["skill"]} {requirement["rank"]} to {action}.'
     assert row.group(0).count(expected) == 1, f"Missing exact requirement note: {key}"
@@ -170,8 +185,8 @@ for key, requirement in AUDIT["vendor_hard_requirements"].items():
 assert "Mount / expensive special components" not in engineering
 
 all_guide_source = "\n".join(
-    path.read_text(encoding="utf-8")
-    for path in sorted(GUIDES.glob("*ah-price-guide.html"))
+    active_sources[path.name]
+    for path in active_paths
 )
 for excluded in AUDIT["excluded_items"]:
     assert excluded["name"] not in all_guide_source, excluded["name"]

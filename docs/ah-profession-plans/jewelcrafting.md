@@ -1,7 +1,9 @@
 # Jewelcrafting AH Expansion Plan
 
 - Status: `complete` — 2026-08-03
-- Existing guide: `guides/jewelcrafting-gems-ah-price-guide.html`
+- Active guides:
+  - `guides/jewelcrafting-gems-ah-price-guide.html`
+  - `guides/jewelcrafting-jewelry-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 2
 
@@ -104,3 +106,9 @@
   mouseover link, exact recipe floor, and a reference to one shared `*`
   craft-cost note. The six generic pricing rows and eleven duplicate legacy
   crafted rows were removed from the static portion of the guide.
+- Presentation split: on 2026-08-04, the 560-row indexed guide was split into
+  `Jewelcrafting Gems & Cuts` (418 indexed rows, including 360 canonical crafted
+  outputs) and `Jewelcrafting Jewelry & Components` (142 indexed rows, including
+  137 canonical crafted outputs). Both pages remain filtered views of the same
+  canonical Jewelcrafting catalog, so all recipe, pricing, and profession-use
+  audits continue to run against one source of truth.

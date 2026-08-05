@@ -37,6 +37,55 @@ async function verifyAuditedCraftedGuide(page, options) {
   await noOverflow(page, label);
 }
 
+async function verifyGuideNavigation(page) {
+  await page.goto(`${base}/guides/alchemy-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
+  assert.equal(await page.locator(".ah-guide-hero").count(), 1);
+  assert.equal(await page.locator(".ah-guide-page-icon").getAttribute("width"), "64");
+  assert.equal(await page.locator("details.ah-guide-notes").getAttribute("open"), null);
+  assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 6);
+  const heroBox = await page.locator(".ah-guide-hero").boundingBox();
+  const searchBox = await page.locator(".ah-guide-search-section").boundingBox();
+  const inputBox = await page.locator("#ah-search-input").boundingBox();
+  const chipsBox = await page.locator("[data-ah-major-nav]").boundingBox();
+  assert.ok(heroBox && searchBox && inputBox && chipsBox);
+  assert.ok(heroBox.height <= 150, `Compact guide banner is ${heroBox.height}px tall`);
+  assert.ok(heroBox.y + heroBox.height <= searchBox.y + 1, "Guide search must follow the banner");
+  assert.ok(inputBox.y + inputBox.height <= chipsBox.y + 1, "Major-category chips must follow the search field");
+
+  const potions = page.locator('[data-ah-major-nav] .ah-category-chip', { hasText: /^Potions & Cauldrons$/ });
+  const potionsTarget = (await potions.getAttribute("href")).slice(1);
+  assert.ok(await page.locator(`#${potionsTarget}`).count());
+  assert.ok(await page.locator(`#${potionsTarget} .ah-category-chip`).count() >= 2);
+
+  await page.locator("#ah-search-input").fill("Saronite Bar");
+  await page.waitForSelector(".ah-search-result");
+  const guideSaroniteBar = page.locator(".ah-search-result", {
+    has: page.locator(".ah-search-item-name", { hasText: /^Saronite Bar$/ }),
+  });
+  assert.match(
+    await guideSaroniteBar.locator("a.ah-search-location-link").first().getAttribute("href"),
+    /^\.\.\/guides\//,
+    "Guide-level search results must resolve from the guides directory",
+  );
+
+  await page.goto(`${base}/guides/jewelcrafting-gems-ah-price-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForSelector("#jewelcrafting-wrath-cuts .ah-category-chip");
+  assert.equal(await page.locator("#jewelcrafting-wrath-cuts > .ah-category-chip-nav .ah-category-chip").count(), 4);
+  const epicTarget = (
+    await page.locator('#jewelcrafting-wrath-cuts .ah-category-chip', { hasText: /^Epic$/ }).getAttribute("href")
+  ).slice(1);
+  assert.ok(await page.locator(`#${epicTarget} .ah-category-chip`).count() >= 6);
+  const firstEpicLeaf = page.locator(`#${epicTarget} .ah-category-chip`).first();
+  const firstEpicLeafTarget = (await firstEpicLeaf.getAttribute("href")).slice(1);
+  assert.equal(await page.locator(`#${firstEpicLeafTarget} .ah-back-to-parent`).count(), 1);
+
+  await page.goto(`${base}/guides/utility-recipe-drops-ah-price-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForURL(/gear-pattern-drops-ah-price-guide\.html#ah-category=recipe-utility$/);
+  await page.goto(`${base}/guides/consumable-misc-recipe-drops-ah-price-guide.html#ah-item=book-of-glyph-mastery`, { waitUntil: "networkidle" });
+  await page.waitForURL(/gear-pattern-drops-ah-price-guide\.html#ah-item=book-of-glyph-mastery$/);
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   try {
@@ -207,6 +256,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
     assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-04/);
     await noOverflow(desktop, "Desktop Enchanting guide");
+    await verifyGuideNavigation(desktop);
 
     await verifyAuditedCraftedGuide(desktop, {
       filename: "inscription-materials-ah-price-guide.html",
@@ -240,23 +290,43 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "blacksmithing-materials-ah-price-guide.html",
-      rows: 453,
-      sections: 18,
+      rows: 52,
+      sections: 5,
       key: "bs-eternal-belt-buckle",
       target: "35g",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      label: "Desktop Blacksmithing guide"
+      label: "Desktop Blacksmithing materials guide"
+    });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "blacksmithing-gear-ah-price-guide.html",
+      rows: 401,
+      sections: 13,
+      key: "bs-puresteel-legplates",
+      target: "7,650g",
+      recipeSpell: 70562,
+      notePattern: /ICC-era raid gearing/,
+      label: "Desktop Blacksmithing gear guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "jewelcrafting-gems-ah-price-guide.html",
-      rows: 497,
-      sections: 45,
+      rows: 360,
+      sections: 38,
       key: "jc-delicate-cardinal-ruby",
       target: "150g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
-      label: "Desktop Jewelcrafting guide"
+      label: "Desktop Jewelcrafting gems guide"
+    });
+    await verifyAuditedCraftedGuide(desktop, {
+      filename: "jewelcrafting-jewelry-ah-price-guide.html",
+      rows: 137,
+      sections: 7,
+      key: "jc-bloodstone-band",
+      target: "2g",
+      recipeSpell: 56193,
+      notePattern: /physical-DPS gearing/,
+      label: "Desktop Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "tailoring-cloth-ah-price-guide.html",
@@ -425,23 +495,43 @@ async function verifyAuditedCraftedGuide(page, options) {
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "blacksmithing-materials-ah-price-guide.html",
-      rows: 453,
-      sections: 18,
+      rows: 52,
+      sections: 5,
       key: "bs-eternal-belt-buckle",
       target: "35g",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      label: "Mobile Blacksmithing guide"
+      label: "Mobile Blacksmithing materials guide"
+    });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "blacksmithing-gear-ah-price-guide.html",
+      rows: 401,
+      sections: 13,
+      key: "bs-puresteel-legplates",
+      target: "7,650g",
+      recipeSpell: 70562,
+      notePattern: /ICC-era raid gearing/,
+      label: "Mobile Blacksmithing gear guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "jewelcrafting-gems-ah-price-guide.html",
-      rows: 497,
-      sections: 45,
+      rows: 360,
+      sections: 38,
       key: "jc-delicate-cardinal-ruby",
       target: "150g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
-      label: "Mobile Jewelcrafting guide"
+      label: "Mobile Jewelcrafting gems guide"
+    });
+    await verifyAuditedCraftedGuide(mobile, {
+      filename: "jewelcrafting-jewelry-ah-price-guide.html",
+      rows: 137,
+      sections: 7,
+      key: "jc-bloodstone-band",
+      target: "2g",
+      recipeSpell: 56193,
+      notePattern: /physical-DPS gearing/,
+      label: "Mobile Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "tailoring-cloth-ah-price-guide.html",
@@ -484,7 +574,7 @@ async function verifyAuditedCraftedGuide(page, options) {
       label: "Mobile Mining guide"
     });
 
-    console.log("Auction House hub and all ten crafted guides, including the shared First Aid catalog, passed desktop/mobile smoke tests.");
+    console.log("Auction House hub, compact guide UX, nested category chips, redirects, and all twelve crafted guide views passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

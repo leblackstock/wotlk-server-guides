@@ -1,7 +1,9 @@
 # Blacksmithing AH Expansion Plan
 
 - Status: `complete` — 2026-08-02
-- Existing guide: `guides/blacksmithing-materials-ah-price-guide.html`
+- Active guides:
+  - `guides/blacksmithing-materials-ah-price-guide.html`
+  - `guides/blacksmithing-gear-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 1
 
@@ -101,3 +103,8 @@
   increased from frozen historical output references, and 350 were unchanged.
   Duplicate rod and grinding-stone rows in Mining + Smithing remain synchronized
   to the canonical output prices and recipe links.
+- Presentation split: on 2026-08-04, the single 511-row indexed guide was split
+  into `Blacksmithing Materials & Enhancements` (110 indexed rows, including 52
+  canonical crafted outputs) and `Blacksmithing Armor & Weapons` (401 crafted
+  outputs). Both pages are filtered views of the same canonical Blacksmithing
+  catalog, so the split introduces no duplicate source data or pricing path.

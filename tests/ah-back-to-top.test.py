@@ -11,6 +11,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
 
 
 subprocess.run(
@@ -19,7 +24,7 @@ subprocess.run(
     check=True,
 )
 
-paths = sorted(GUIDES_DIR.glob("*ah-price-guide.html"))
+paths = active_guide_paths(guides_dir=GUIDES_DIR)
 assert len(paths) == 16
 
 category_count = 0

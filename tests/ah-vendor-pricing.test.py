@@ -12,9 +12,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from ah_guides import active_guide_paths  # noqa: E402
+
 DATA_PATH = ROOT / "data" / "ah-vendor-sections.json"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
-AH_GUIDE_GLOB = "*ah-price-guide.html"
 
 
 def fail(message: str) -> None:
@@ -59,7 +64,7 @@ def main() -> int:
     config = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     catalog = config["catalog"]
     configured_guides = config["guides"]
-    guide_paths = sorted(GUIDES_DIR.glob(AH_GUIDE_GLOB))
+    guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
     if len(guide_paths) != 16:
         fail(f"Expected 16 AH guides, found {len(guide_paths)}")
     if len(configured_guides) != 10:

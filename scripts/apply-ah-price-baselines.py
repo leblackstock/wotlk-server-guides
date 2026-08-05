@@ -12,6 +12,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from ah_guides import active_guide_paths
+
 from ah_section_ordering import load_policy, order_guide_source
 
 
@@ -170,7 +172,7 @@ def main() -> int:
     stale: list[str] = []
     total_changed = 0
     total_reordered = 0
-    for path in sorted(GUIDES_DIR.glob("*ah-price-guide.html")):
+    for path in active_guide_paths(guides_dir=GUIDES_DIR):
         source = path.read_text(encoding="utf-8")
         updated, changed = transform(source, prices, item_ids, renderer)
         updated, ordering_reports = order_guide_source(

@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WotLK Enchanting AH Price Guide — Mats + Crafted Scrolls — Low Pop</title>
+<title>Enchanting Materials &amp; Scrolls AH Price Guide — WotLK 3.3.5 Low Pop</title>
   <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
 
-  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260804-gathering-audit-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260804-ah-guide-ux-v1">
+  <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260804-ah-guide-ux-v1">
 </head>
-<body data-guide-section="auction-house" data-ah-guide="enchanting-mats-ah-price-guide">
+<body data-guide-section="auction-house" data-ah-guide="enchanting" data-ah-root="../">
 <div class="wrap" id="top">
 <!-- AH_SHARED_NAV_START -->
 <nav class="site-nav ah-guide-nav" aria-label="Guide navigation">
@@ -18,24 +19,50 @@
   <a class="ah-hub-link" href="../auction-house.html">AH Hub</a>
 </nav>
 <!-- AH_SHARED_NAV_END -->
-<header>
-<div class="ah-guide-heading"><img class="ah-guide-page-icon" src="../assets/ah-guide-icons/enchanting.svg" width="88" height="88" alt=""><div class="ah-guide-heading-copy"><h1>WotLK 3.3.5 Enchanting Mats + Crafted Scrolls AH Price Guide</h1>
-<p class="sub">Low-pop AH pricing for Enchanting materials, enchant scrolls, oils, wands, and intermediates on <strong>Hellscream / Garrosh</strong>.</p></div></div>
+<!-- AH_GUIDE_UX_START -->
+<header class="ah-guide-hero">
+  <div class="ah-guide-heading">
+    <img class="ah-guide-page-icon" src="../assets/ah-guide-icons/enchanting.svg" width="64" height="64" alt="">
+    <div class="ah-guide-heading-copy">
+      <span class="ah-guide-eyebrow">WotLK 3.3.5 · Auction House</span>
+      <h1>Enchanting Materials &amp; Scrolls</h1>
+      <p class="sub">Dusts, essences, shards, crystals, enchant scrolls, oils, wands, gems, and intermediates.</p>
+    </div>
+  </div>
+</header>
 
-<div class="note compact-note">
-  <strong>Read first:</strong> Post materials in small stacks and finished scrolls mostly as singles. Use <strong>Quick</strong> to move stock, <strong>Target</strong> for normal sales, and <strong>High</strong> only when supply is scarce. AH durations are <strong>4× normal</strong>: 12h ≈ 2 days, 48h ≈ 8 days.
-</div>
+<section class="common ah-search-section ah-guide-search-section" aria-label="Auction House lookup">
+  <div class="ah-search-heading">
+    <span class="ah-search-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" focusable="false"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
+    <span>
+      <span class="ah-search-eyebrow">Search every AH guide</span>
+      <span class="ah-search-count" id="ah-search-count"></span>
+    </span>
+  </div>
+  <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
+  <div class="ah-search-input-wrap">
+    <span class="ah-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" focusable="false"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
+    <input id="ah-search-input" class="ah-search-input" type="search"
+      placeholder="Try Saronite Bar, Cardinal Ruby, or Frozen Orb…"
+      autocomplete="off" autocapitalize="off" spellcheck="false"
+      aria-describedby="ah-search-status" aria-controls="ah-search-results">
+  </div>
+  <nav class="ah-guide-major-nav" data-ah-major-nav aria-label="Jump to a major category"></nav>
+  <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
+  <ol class="ah-search-results" id="ah-search-results" hidden></ol>
+</section>
 
-<div class="legend compact-legend">
-<span class="pill p-quick">Quick</span>
-<span class="pill p-bid">Target Bid</span>
-<span class="pill p-target">Target Buyout</span>
-<span class="pill p-watch">High / scarce</span>
-</div>
+<details class="common ah-guide-notes">
+  <summary><span>Pricing notes &amp; legend</span><span class="ah-guide-notes-hint">Read before posting</span></summary>
+  <div class="ah-guide-notes-content">
+<!-- AH_GUIDE_NOTES_CONTENT_START -->
 <!-- AH_BASELINE_NOTE_START -->
 <aside class="note ah-baseline-note"><strong>* Pricing baseline:</strong> These bands are frozen reference values, not live-AH medians. Active listings show competition only and never set or raise guide prices. Use listings to choose timing and stack size; change the baseline only from qualified completed sales, exact vendor costs, deterministic conversions, or measured acquisition evidence.</aside>
 <!-- AH_BASELINE_NOTE_END -->
-</header>
+<!-- AH_GUIDE_NOTES_CONTENT_END -->
+  </div>
+</details>
+<!-- AH_GUIDE_UX_END -->
 
 <section class="common"><h2 class="ah-category-heading">Northrend / WotLK mats — 375–450<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="table-wrap"><table class="ah-market-table ah-market-table--standard" data-table-family="market"><thead><tr><th data-column="item">Item</th><th data-column="target">Target Price</th><th data-column="quick">Quick Price</th><th data-column="high">High / Scarce</th><th data-column="stack">Stack Size</th><th data-column="demand">Demand</th><th data-column="notes">Use / Selling Notes</th></tr></thead><tbody><tr><td data-column="item" data-label="Item"><strong class="q-common">Infinite Dust</strong><div class="mini">Northrend 375–450</div></td><td data-column="target" data-label="Target Price">
       <div class="pricepair target">
@@ -3411,8 +3438,13 @@
 <p class="small">I made this as an unofficial player guide, not a permanent or guaranteed price list. Treat prices as starting points and check the current AH before buying, selling, crafting, or reposting. Mistakes, outdated info, and missing items are possible. Some items may be maker-only or not resellable on this server. If something cannot actually be sold, traded, or reposted, or if an item is missing from a list, please let me know so I can update it.</p>
 </section>
 
-<footer>WotLK 3.3.5 Low-Pop Enchanting Materials AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-08-04</footer>
+<footer>WotLK 3.3.5 Enchanting Materials &amp; Scrolls AH Guide • Hellscream / Garrosh • Created by Valdora • Updated 2026-08-04</footer>
 </div>
-<script src="../assets/ah-search.js?v=20260804-two-currency-v1" defer></script>
+<!-- AH_GUIDE_SCRIPTS_START -->
+<script src="../assets/ah-search-index.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-guide-navigation-data.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-guide-navigation.js?v=20260804-ah-guide-ux-v1" defer></script>
+<script src="../assets/ah-search.js?v=20260804-ah-guide-ux-v1" defer></script>
+<!-- AH_GUIDE_SCRIPTS_END -->
 </body>
 </html>
