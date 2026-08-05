@@ -26,7 +26,7 @@
   "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
   "entityIconMode": "selective",
   "allowDenseEntityIcons": false,
-  "cacheKey": "20260726-marksman-v2-color-icons",
+  "cacheKey": "20260805-marksman-v3-fresh80",
   "guideDescription": "A fresh-level-80 path into Marksmanship Hunter dungeon and raid damage on Hellscream.",
   "classAccent": "#AAD372",
   "classAccentSoft": "#DDF2BE",
@@ -88,9 +88,9 @@
   },
   "talent": {
     "points": "7/57/7",
-    "name": "Fresh-80 Careful Aim raid build",
-    "summary": "Start with Focused Aim while gear is short on hit, then move only the points your actual character sheet no longer needs.",
-    "wowheadPath": "hunter/502-035335131030013233035031051-5000002"
+    "name": "Fresh-80 self-contained Careful Aim build",
+    "summary": "Start with 3/3 Focused Aim, 1/1 Trueshot Aura, and 2/3 Improved Hunter's Mark. This baseline assumes no external 10% attack-power buff; change that aura point only after a raid leader confirms equivalent coverage.",
+    "wowheadPath": "hunter/502-035325131030013233135031051-5000002"
   },
   "pageDescriptions": {
     "quickStart": "Start at level 80 with the hit cap, Agility-first gearing rule, shot priority, pet checklist, and complete guide path.",

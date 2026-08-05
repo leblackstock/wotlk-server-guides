@@ -68,5 +68,11 @@ hunter_pages = "\n".join(
 assert "Trap Launcher: Explosive Trap" in hunter_pages
 assert "traps are placed at the hunter's feet" in hunter_pages
 assert "spell=82941" not in hunter_pages
+assert "hunter/502-035325131030013233135031051-5000002" in hunter_pages
+assert "hunter/502-035335131030013233035031051-5000002" not in hunter_pages
+assert "1/1 Trueshot Aura" in hunter_pages
+assert "2/3 Improved Hunter's Mark" in hunter_pages
+assert "later progression chapter, not the starting expectation" in hunter_pages
+assert hunter_pages.count("Updated 2026-08-05") == len(SUFFIXES)
 
 print("Validated 18 complete fresh-80 Priest and Hunter pages, hub cards, and local links.")

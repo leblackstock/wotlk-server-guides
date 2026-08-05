@@ -3,6 +3,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
+const updatedDate = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/New_York",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+}).format(new Date());
 const esc = (value) => String(value)
   .replaceAll("&", "&amp;")
   .replaceAll("<", "&lt;")
@@ -83,7 +89,7 @@ function shell(spec, current, title, description, jumps, body) {
     </header>
     <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page">${jumps.map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join("")}</nav>
     <main>${body}${pager(spec, current)}</main>
-    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-07-31</footer>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated ${updatedDate}</footer>
   </div>
 </body>
 </html>
@@ -139,7 +145,7 @@ function renderPlaying(spec) {
     section(spec, "engine", "Core decision engine", engine, spec.icons.playing) +
     section(spec, "playbooks", "Situation playbooks", `<p class="muted">Select a card header to focus on one situation. Select it again—or press Escape—to restore all cards.</p><div class="spec-playbook-grid">${cards}</div>`, spec.icons.playing) +
     section(spec, "utility", "Cooldowns and utility", table(["Tool", "Primary job", "Timing rule"], spec.playing.utility), spec.icons.class) +
-    section(spec, "mistakes", "Mistakes that cost pulls", `<div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong>${list(spec.playing.mistakes.slice(0, Math.ceil(spec.playing.mistakes.length / 2)))}</div><div class="note danger"><strong>Raid mistakes</strong>${list(spec.playing.mistakes.slice(Math.ceil(spec.playing.mistakes.length / 2)))}</div></div>`, "ability_creature_cursed_03") +
+    section(spec, "mistakes", "Mistakes that cost pulls", `<div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong>${list(spec.playing.mistakes.slice(0, Math.ceil(spec.playing.mistakes.length / 2)))}</div><div class="note danger"><strong>${esc(spec.playing.mistakeGroupLabel || "Raid mistakes")}</strong>${list(spec.playing.mistakes.slice(Math.ceil(spec.playing.mistakes.length / 2)))}</div></div>`, "ability_creature_cursed_03") +
     section(spec, "sources", "Sources and verification", sourceList(spec.sources.playing), "inv_misc_book_11");
   return shell(spec, "playing", `Playing your ${spec.name}`, spec.descriptions.playing, [["engine", "Combat engine"], ["playbooks", "Playbooks"], ["utility", "Cooldowns"], ["mistakes", "Mistakes"], ["sources", "Sources"]], body);
 }
@@ -197,6 +203,7 @@ function renderEquipping(spec) {
 function renderRaiding(spec) {
   const notes = spec.raiding.notes.map((note) => `<article class="raid-encounter"><h3>${icon(note.icon, "ability-icon")} ${esc(note.encounter)}</h3><div class="raid-note" data-size="${note.size}" data-difficulty="${note.difficulty}" data-role="${note.role}"><div class="raid-note-meta"><span class="raid-note-tag">${esc(note.sizeLabel)}</span><span class="raid-note-tag">${esc(note.difficultyLabel)}</span><span class="raid-note-tag">${esc(note.roleLabel)}</span>${note.verify ? '<span class="raid-note-tag raid-note-verify">Needs Hellscream test</span>' : ""}</div><p>${note.text}</p></div></article>`).join("");
   const body =
+    (spec.raiding.entryNote ? `<div class="note spec"><strong>Where this chapter fits:</strong> ${esc(spec.raiding.entryNote)}</div>` : "") +
     `<div class="note warning"><strong>Raid scope:</strong> these are ${esc(spec.name)} responsibilities, not full encounter guides. Raid-leader assignments override a generic playbook.</div>` +
     section(spec, "prepare", "Consumables and pull preparation", `<div class="two-col"><div class="guide-box"><h3>${icon("inv_alchemy_endlessflask_05", "ability-icon")} Consumables</h3>${list(spec.raiding.consumables)}</div><div class="guide-box"><h3>${icon(spec.raiding.assignmentIcon, "ability-icon")} Confirm before pull</h3>${list(spec.raiding.prePull)}</div></div>`, "inv_alchemy_endlessflask_05") +
     section(spec, "assignments", "Assignment rules", table(["Assignment", "What success looks like", "What to call"], spec.raiding.assignments), spec.raiding.assignmentIcon) +
@@ -1004,7 +1011,7 @@ const marksmanshipHunter = {
   slug: "marksmanship-hunter",
   specKey: "marksmanship",
   tooltipFile: "hunter-tooltips.js",
-  cacheKey: "20260726-marksman-v2-color-icons",
+  cacheKey: "20260805-marksman-v3-fresh80",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. The later WotLK Classic Trap Launcher: Explosive Trap spell is not assumed; traps are placed at the hunter's feet unless Hellscream explicitly adds a custom launcher.",
   icons: {
     class: "inv_weapon_bow_07",
@@ -1076,9 +1083,9 @@ const marksmanshipHunter = {
   ],
   talent: {
     points: "7/57/7",
-    name: "Fresh-80 Careful Aim raid build",
-    summary: "Start with Focused Aim while gear is short on hit, then move only the points your actual character sheet no longer needs.",
-    path: "hunter/502-035335131030013233035031051-5000002"
+    name: "Fresh-80 self-contained Careful Aim build",
+    summary: "Start with 3/3 Focused Aim, 1/1 Trueshot Aura, and 2/3 Improved Hunter's Mark. This baseline assumes no external 10% attack-power buff; change that aura point only after a raid leader confirms equivalent coverage.",
+    path: "hunter/502-035325131030013233135031051-5000002"
   },
   roleFilters: [
     ["boss-damage", "Boss damage"],
@@ -1089,9 +1096,9 @@ const marksmanshipHunter = {
   ],
   quick: {
     summaries: [
-      { label: "Boss hit cap", value: '<span class="must">8% / 263 rating</span>', detail: "Subtract 1% for each point in Focused Aim; 3/3 leaves 5% from gear, or 164 rating." },
+      { label: "Level-83 hit goal", value: '<span class="must">8% / 263 rating</span>', detail: "With 3/3 Focused Aim, work toward 5% from gear, or 164 rating. Start normal and heroic dungeons while you build toward it." },
       { label: "Fresh-80 rule", value: "Agility first", detail: "Cap hit, then build a coherent Agility set. Do not gem Armor Penetration because an endgame list does." },
-      { label: "Pet", value: "Wolf • Ferocity", detail: `${entity("Furious Howl")} and ${entity("Call of the Wild")} add real raid damage; a dead or passive pet does not.` },
+      { label: "Pet", value: "Wolf • Ferocity", detail: `${entity("Furious Howl")} and ${entity("Call of the Wild")} add real group damage; a dead or passive pet does not.` },
       { label: "Core glyphs", value: `${item("Glyph of Serpent Sting", "q-rare")} • ${item("Glyph of Steady Shot", "q-rare")}`, detail: `${item("Glyph of Chimera Shot", "q-rare")} is the usual third major when latency permits the shorter cycle.` }
     ],
     engineTitle: "Sting → priority shots → movement weave → pet",
@@ -1099,14 +1106,14 @@ const marksmanshipHunter = {
     firstIcon: "inv_misc_coin_01",
     before: [
       `${entity("Aspect of the Dragonhawk")} active; switch to ${entity("Aspect of the Viper")} only when mana requires it.`,
-      `${entity("Trueshot Aura")} covered, ammo stocked, weapon durability checked, and the correct tracking type enabled.`,
+      `${entity("Trueshot Aura")} learned and active, ammo stocked, weapon durability checked, and the correct tracking type enabled.`,
       `Wolf summoned, fed, talented, healed, and on the intended passive/defensive setting.`,
-      `${entity("Hunter's Mark")} ownership and ${entity("Misdirection")} target agreed before the countdown.`,
-      "Hit cap checked against a level-83 target after talents, racial party aura, food, and gear."
+      `${entity("Hunter's Mark")} applied by you unless the group assigns another hunter; set the tank as your ${entity("Misdirection")} focus.`,
+      "Current hit checked after talents and gear. Count Heroic Presence only while a Draenei is actually in your party."
     ],
     firstMoves: [
       `Buy or farm a reliable ranged weapon; weapon DPS dominates small secondary-stat debates.`,
-      `Reach the correct hit cap without wasting rating above it.`,
+      `Build toward the level-83 hit cap without delaying normal or heroic dungeons while early gear fills in.`,
       `Learn ${entity("Serpent Sting")} → ${entity("Chimera Shot")} refresh timing on a target dummy.`,
       `Bind pet attack, pet follow, ${entity("Misdirection")}, ${entity("Feign Death")}, and ${entity("Tranquilizing Shot")}.`,
       `Practice moving during instant shots and stopping long enough for ${entity("Auto Shot")} and ${entity("Steady Shot")}.`
@@ -1120,12 +1127,13 @@ const marksmanshipHunter = {
     }
   },
   playing: {
+    mistakeGroupLabel: "Group / raid mistakes",
     priority: `${entity("Kill Shot")} when usable → keep ${entity("Serpent Sting")} active through ${entity("Chimera Shot")} → ${entity("Chimera Shot")} → ${entity("Aimed Shot")} → ${entity("Arcane Shot")} in a fresh/low-Armor-Penetration set → ${entity("Steady Shot")}. Fire ${entity("Silencing Shot")} for damage only when it is not reserved for an interrupt.`,
     openerIcon: "ability_hunter_chimerashot2",
     trackingIcon: "ability_hunter_mastermarksman",
     opener: [
-      `Pre-mark with ${entity("Hunter's Mark")} if assigned and set the tank as focus.`,
-      `Use ${entity("Misdirection")} during the countdown and pre-pot ${item("Potion of Speed")}.`,
+      `Apply ${entity("Hunter's Mark")} yourself unless the group assigns another hunter, and set the tank as focus.`,
+      `Use ${entity("Misdirection")} during the countdown. Pre-pot ${item("Potion of Speed")} only for a planned boss attempt where the cost is worthwhile.`,
       `Send the pet, apply ${entity("Serpent Sting")}, then fire ${entity("Chimera Shot")} and ${entity("Aimed Shot")}.`,
       `Use ${entity("Rapid Fire")} and racial/on-use cooldowns in the first stable damage window.`,
       `After the first cooldown cycle, use ${entity("Readiness")} to reset key shots and ${entity("Rapid Fire")}; do not waste already-ready cooldowns.`
@@ -1176,7 +1184,7 @@ const marksmanshipHunter = {
         rules: [
           `Do not press ${entity("Readiness")} while ${entity("Rapid Fire")} and both main shots are already available.`,
           `Keep enough fight time after the reset to realize the second haste window.`,
-          `A progression mechanic can be a better Readiness anchor than the pull.`
+          `A later boss mechanic can be a better Readiness anchor than the pull.`
         ],
         failure: "Resetting unused cooldowns or activating Rapid Fire immediately before forced movement."
       },
@@ -1218,7 +1226,7 @@ const marksmanshipHunter = {
         rules: [
           `${entity("Aspect of the Viper")} is a temporary recovery state with a large damage penalty.`,
           `Use ${entity("Mend Pet")} before lethal pet damage, not after the wolf is already dead.`,
-          `${entity("Call of the Wild")} belongs in the raid's burst plan rather than on an arbitrary trash pull.`
+          `${entity("Call of the Wild")} belongs in a planned boss burst window rather than on an arbitrary trash pull; coordinate it once you begin raiding.`
         ],
         failure: "Leaving Viper active, losing the pet to avoidable damage, or letting the pet attack the wrong add."
       }
@@ -1246,8 +1254,8 @@ const marksmanshipHunter = {
   },
   setup: {
     talentGroups: [
-      { title: "Marksmanship core", icon: "ability_hunter_chimerashot2", items: [`${entity("Chimera Shot")}, ${entity("Aimed Shot")}, and ${entity("Readiness")} define the cycle.`, `${entity("Trueshot Aura")} covers the physical raid buff when no stronger equivalent is present.`, "Piercing Shots, Wild Quiver, and Improved Steady Shot reward clean weapon uptime."] },
-      { title: "Fresh-80 support", icon: "ability_hunter_focusedaim", items: ["3/3 Focused Aim removes 3% from the gear hit requirement.", "Careful Aim converts Intellect into attack power and favors coherent mail upgrades.", "Reallocate Focused Aim only after the character remains capped in the actual boss set."] },
+      { title: "Marksmanship core", icon: "ability_hunter_chimerashot2", items: [`${entity("Chimera Shot")}, ${entity("Aimed Shot")}, and ${entity("Readiness")} define the cycle.`, `${entity("Trueshot Aura")} is included because a fresh 80 cannot assume another class supplies the 10% attack-power buff.`, "Piercing Shots, Wild Quiver, and Improved Steady Shot reward clean weapon uptime."] },
+      { title: "Fresh-80 support", icon: "ability_hunter_focusedaim", items: ["3/3 Focused Aim removes 3% from the level-83 hit requirement.", "Use 2/3 Improved Hunter's Mark so the self-contained build can include Trueshot Aura.", "Reallocate Focused Aim only after the character remains capped in the actual boss set."] },
       { title: "Survival branch", icon: "ability_hunter_lockandload", items: ["Improved Tracking rewards selecting the correct creature tracking.", "Survival Instincts improves core shots and survivability.", "This baseline avoids modern talents or Classic-era trap-launcher assumptions."] }
     ],
     extraSection: {
@@ -1255,7 +1263,7 @@ const marksmanshipHunter = {
       short: "Pet",
       title: "Wolf and Ferocity setup",
       icon: "ability_hunter_pet_wolf",
-      body: `<div class="two-col"><div class="guide-box"><h3>${icon("ability_hunter_pet_wolf", "ability-icon")} Recommended raid pet</h3>${list([
+      body: `<div class="two-col"><div class="guide-box"><h3>${icon("ability_hunter_pet_wolf", "ability-icon")} Recommended level-80 pet</h3>${list([
         `Wolf for ${entity("Furious Howl")}. Keep it alive, fed, and in range.`,
         `Use a level-80 Ferocity build centered on Cobra Reflexes, Dash, Bloodthirsty, Spiked Collar, Boar's Speed, Culling the Herd, Spider's Bite, Rabid, and ${entity("Call of the Wild")}.`,
         `${entity("Heart of the Phoenix")} is a strong progression recovery point; move only with a deliberate alternate plan.`
@@ -1263,7 +1271,7 @@ const marksmanshipHunter = {
         `Bind pet attack and pet follow separately. Do not make every ability permanently issue /petattack.`,
         `Keep Growl off for bosses. Leave ${entity("Cower")} off autocast unless pet survival demands it.`,
         `Use ${entity("Mend Pet")} early and pull the pet out of lethal ground effects.`,
-        `Save ${entity("Call of the Wild")} for the pull or the raid's chosen burst phase.`
+        `Save ${entity("Call of the Wild")} for a planned boss burst; follow the raid's timing later when one is assigned.`
       ])}</div></div>`
     },
     glyphs: [
@@ -1296,24 +1304,24 @@ const marksmanshipHunter = {
   },
   building: {
     stats: [
-      ["Hit", '<span class="must">Cap first: 8%</span>', "Prevents ranged attacks from missing a level-83 raid boss.", "8% is 262.32 rating, so use 263. Each Focused Aim point removes 1%; 3/3 leaves 5%, or 164 rating. A Draenei aura can remove another 1% when actually present."],
+      ["Hit", '<span class="must">Build toward 8%</span>', "Prevents ranged attacks from missing a level-83 raid boss.", "8% is 262.32 rating, so use 263. With 3/3 Focused Aim, the eventual gear target is 5%, or 164 rating. Do not postpone normal or heroic dungeons while building it; count Heroic Presence only when the Draenei is in your party."],
       ["Weapon DPS", '<span class="must">Highest upgrade lever</span>', "Scales Auto Shot and weapon-based shots.", "A strong ranged-weapon upgrade can beat a cosmetically perfect secondary-stat item."],
-      ["Agility", "Fresh-80 default", "Adds attack power, crit, and scales with raid buffs.", "Gem Agility until a real simulation and sufficiently strong native-ArP set justify changing strategy."],
+      ["Agility", "Fresh-80 default", "Adds attack power and crit, and scales with percentage buffs when they are present.", "Gem Agility until a real simulation and sufficiently strong native-ArP set justify changing strategy."],
       ["Armor Penetration", "Powerful only with enough gear", "Raises physical damage by bypassing armor, up to 1,400 rating for 100%.", "Do not treat 1,400 as a fresh-80 target. Common proc soft caps are 722 with Needle-Encrusted Scorpion, 735 with Mjolnir Runestone, and 788 with Grim Toll."],
       ["Critical Strike", "Strong secondary", "Increases direct-shot damage and supports Piercing Shots.", "Crit remains valuable but does not replace hit or weapon DPS."],
       ["Attack Power", "Reliable throughput", "Raises shot, Auto Shot, and pet damage.", "Agility usually offers a stronger fresh-80 package after raid scaling."],
       ["Haste", "Lower priority", "Speeds Auto Shot and Steady Shot.", "Once Steady approaches the one-second global floor with raid effects, extra haste loses much of its filler value."]
     ],
     stages: [
-      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Reach the hit cap and secure a credible ranged weapon.", "Gem Agility, not an endgame Armor Penetration target.", "Enchant every piece expected to survive more than a few runs."] },
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Start normal and heroic dungeons while building toward the level-83 hit cap and a credible ranged weapon.", "Gem Agility, not an endgame Armor Penetration target.", "Use budget gems and enchants on temporary pieces; spend premium materials only on upgrades that will last."] },
       { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Maintain 100% Serpent Sting through Chimera Shot.", "Keep the wolf alive and active for a full heroic or target-dummy session.", "Carry ammo, pet food, flasks, food, and speed potions."] },
       { title: "ArP transition", icon: "inv_misc_gear_01", items: ["Acquire strong native Armor Penetration gear first.", "Model the exact set, buffs, trinket proc, and latency before regemming.", "Keep the Agility gems if the tested gain is small or the set changes frequently."] }
     ],
     gems: [
-      ["Meta", item("Relentless Earthsiege Diamond", "q-rare"), "None for raid damage", `Activate efficiently with one ${item("Nightmare Tear")}.`],
-      ["Red", item("Delicate Cardinal Ruby"), item("Fractured Cardinal Ruby"), "Agility by default; Fractured only after a validated Armor Penetration transition."],
-      ["Yellow", item("Deadly Ametrine"), item("Rigid King's Amber"), "Match strong Agility/crit bonuses or use hit only until capped."],
-      ["Blue", item("Nightmare Tear"), "Delicate Cardinal Ruby in a red-equivalent socket", "Use one Tear to activate the meta; ignore weak blue bonuses."],
+      ["Meta", item("Relentless Earthsiege Diamond", "q-rare"), "Keep the current meta on a temporary helm", `Activate cheaply with ${item("Shifting Twilight Opal", "q-rare")} plus ${item("Deadly Monarch Topaz", "q-rare")}; use one ${item("Nightmare Tear")} later when the convenience is worth the cost.`],
+      ["Red", item("Delicate Scarlet Ruby", "q-rare"), `${item("Delicate Cardinal Ruby")} on lasting gear`, "Use Agility by default. Consider Fractured Cardinal Ruby only after a validated Armor Penetration transition."],
+      ["Yellow", item("Deadly Monarch Topaz", "q-rare"), `${item("Deadly Ametrine")} or a hit gem when needed`, "Match worthwhile Agility/crit bonuses or use hit only until capped; keep rare gems in temporary gear."],
+      ["Blue", item("Shifting Twilight Opal", "q-rare"), item("Nightmare Tear"), "Use one efficient blue activator for the meta; ignore weak blue bonuses and do not overspend on a temporary item."],
       ["Profession", "Delicate Dragon's Eye", "Fractured Dragon's Eye", "Keep the same Agility-versus-ArP logic as ordinary gems."]
     ],
     enchants: [
@@ -1322,12 +1330,12 @@ const marksmanshipHunter = {
       ["Back", entity("Enchant Cloak - Major Agility", "enchant-name"), "Flexweave Underlay is a practical Engineering alternative."],
       ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Use a cheaper stats enchant on a temporary chest."],
       ["Wrists", entity("Enchant Bracers - Greater Assault", "enchant-name"), "Attack power is the standard damage option."],
-      ["Hands", entity("Enchant Gloves - Crusher", "enchant-name"), "Hyperspeed Accelerators for Engineering."],
+      ["Hands", entity("Enchant Gloves - Crusher", "enchant-name"), `${entity("Enchant Gloves - Greater Assault", "enchant-name")} is the budget option; use Hyperspeed Accelerators for Engineering.`],
       ["Waist", item("Eternal Belt Buckle", "q-rare"), "Always add the extra socket to a lasting belt."],
-      ["Legs", item("Icescale Leg Armor"), "Premium attack power and crit leg enchant."],
+      ["Legs", item("Icescale Leg Armor"), `${item("Nerubian Leg Armor", "q-rare")} is the fresh-80 budget option.`],
       ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), `${entity("Enchant Boots - Icewalker", "enchant-name")} only when the hit is genuinely needed.`],
-      ["Two-handed weapon", entity("Enchant 2H Weapon - Massacre", "enchant-name"), "Scourgebane is only a narrow undead alternative."],
-      ["Ranged weapon", item("Heartseeker Scope"), "Use the best available scope on a weapon that will last."]
+      ["Two-handed weapon", entity("Enchant 2H Weapon - Massacre", "enchant-name"), `${entity("Enchant 2H Weapon - Greater Savagery", "enchant-name")} is the budget option; Scourgebane is only a narrow undead alternative.`],
+      ["Ranged weapon", item("Heartseeker Scope"), "Use a cheaper valid scope on a temporary weapon; save Heartseeker for one that will last."]
     ],
     professions: [
       ["Engineering", "Hyperspeed Accelerators, Nitro Boosts, bombs, and Flexweave.", "Exceptional control and movement for a ranged physical DPS."],
@@ -1380,6 +1388,7 @@ const marksmanshipHunter = {
   },
   raiding: {
     assignmentIcon: "ability_hunter_misdirection",
+    entryNote: "This is a later progression chapter, not the starting expectation for a new level 80. Finish the self-contained setup, practice in normal and heroic dungeons, and enter raids only after the character and player are ready.",
     consumables: [
       `${item("Flask of Endless Rage")} for attack power.`,
       `${item("Blackened Dragonfin")} for Agility or ${item("Hearty Rhino")} for Armor Penetration only when the set's model supports it.`,
@@ -1427,7 +1436,7 @@ const marksmanshipHunter = {
     ],
     setup: [
       ["Marksmanship Hunter 7/57/7 talent and glyph reference", "https://www.wowhead.com/wotlk/guide/classes/hunter/marksmanship/dps-talent-builds-glyphs-pve"],
-      ["Filled 7/57/7 talent calculator", "https://www.wowhead.com/wotlk/talent-calc/hunter/502-035335131030013233035031051-5000002"],
+      ["Filled fresh-80 7/57/7 talent calculator", "https://www.wowhead.com/wotlk/talent-calc/hunter/502-035325131030013233135031051-5000002"],
       ["Wolf pet family record", "https://www.wowhead.com/wotlk/pet=1/wolf"]
     ],
     building: [
@@ -1459,16 +1468,23 @@ const renderers = {
   raiding: renderRaiding
 };
 
-const quickStartOnly = process.argv.slice(2).includes("--quick-start-only");
+const cliArgs = process.argv.slice(2);
+const quickStartOnly = cliArgs.includes("--quick-start-only");
+const specArg = cliArgs.find((arg) => arg.startsWith("--spec="));
+const requestedSpec = specArg?.slice("--spec=".length);
+const selectedSpecs = requestedSpec ? specs.filter((spec) => spec.slug === requestedSpec) : specs;
+if (requestedSpec && selectedSpecs.length === 0) {
+  throw new Error(`Unknown spec slug: ${requestedSpec}`);
+}
 const selectedPages = quickStartOnly
   ? pageOrder.filter(([pageKey]) => pageKey === "quickStart")
   : pageOrder;
 
-for (const spec of specs) {
+for (const spec of selectedSpecs) {
   for (const [pageKey, , fileSuffix] of selectedPages) {
     const destination = path.join(root, "guides", `${spec.slug}-${fileSuffix}.html`);
     fs.writeFileSync(destination, renderers[pageKey](spec), "utf8");
   }
 }
 
-console.log(`Rendered ${specs.length * selectedPages.length} complete fresh-80 guide pages.`);
+console.log(`Rendered ${selectedSpecs.length * selectedPages.length} complete fresh-80 guide pages.`);

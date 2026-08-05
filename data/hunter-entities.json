@@ -4,15 +4,18 @@
   "classSlug": "hunter",
   "items": [
     {"id": 41398, "names": ["Relentless Earthsiege Diamond"], "icon": "inv_jewelcrafting_shadowspirit_02", "category": "gem"},
+    {"id": 39997, "names": ["Delicate Scarlet Ruby"], "icon": "inv_jewelcrafting_gem_17", "category": "gem"},
     {"id": 40112, "names": ["Delicate Cardinal Ruby"], "icon": "inv_jewelcrafting_gem_37", "category": "gem"},
     {"id": 40117, "names": ["Fractured Cardinal Ruby"], "icon": "inv_jewelcrafting_gem_37", "category": "gem"},
     {"id": 40147, "names": ["Deadly Ametrine"], "icon": "inv_jewelcrafting_gem_39", "category": "gem"},
-    {"id": 40125, "names": ["Rigid King's Amber", "Rigid King’s Amber"], "icon": "inv_jewelcrafting_gem_38", "category": "gem"},
+    {"id": 40043, "names": ["Deadly Monarch Topaz"], "icon": "inv_jewelcrafting_gem_19", "category": "gem"},
+    {"id": 40023, "names": ["Shifting Twilight Opal"], "icon": "inv_jewelcrafting_gem_18", "category": "gem"},
     {"id": 49110, "names": ["Nightmare Tear"], "icon": "inv_misc_gem_pearl_12", "category": "gem"},
     {"id": 44149, "names": ["Arcanum of Torment"], "icon": "ability_warrior_bloodfrenzy", "category": "enchant-item"},
     {"id": 44133, "names": ["Greater Inscription of the Axe"], "icon": "inv_inscription_tradeskill01", "category": "enchant-item"},
     {"id": 41611, "names": ["Eternal Belt Buckle"], "icon": "inv_belt_36", "category": "enchant-item"},
     {"id": 38374, "names": ["Icescale Leg Armor"], "icon": "inv_misc_armorkit_29", "category": "enchant-item"},
+    {"id": 38372, "names": ["Nerubian Leg Armor"], "icon": "inv_misc_armorkit_27", "category": "enchant-item"},
     {"id": 41167, "names": ["Heartseeker Scope"], "icon": "inv_misc_spyglass_03", "category": "enchant-item"},
     {"id": 46377, "names": ["Flask of Endless Rage"], "icon": "inv_alchemy_endlessflask_06", "category": "consumable"},
     {"id": 40211, "names": ["Potion of Speed"], "icon": "inv_alchemy_elixir_04", "category": "consumable"},
@@ -84,9 +87,11 @@
     {"id": 60692, "names": ["Enchant Chest - Powerful Stats"], "icon": "trade_engraving", "category": "enchant"},
     {"id": 44575, "names": ["Enchant Bracers - Greater Assault"], "icon": "trade_engraving", "category": "enchant"},
     {"id": 60668, "names": ["Enchant Gloves - Crusher"], "icon": "trade_engraving", "category": "enchant"},
+    {"id": 44513, "names": ["Enchant Gloves - Greater Assault"], "icon": "trade_engraving", "category": "enchant"},
     {"id": 47901, "names": ["Enchant Boots - Tuskarr's Vitality", "Enchant Boots - Tuskarr’s Vitality"], "icon": "trade_engraving", "category": "enchant"},
     {"id": 60623, "names": ["Enchant Boots - Icewalker"], "icon": "trade_engraving", "category": "enchant"},
-    {"id": 60691, "names": ["Enchant 2H Weapon - Massacre"], "icon": "trade_engraving", "category": "enchant"}
+    {"id": 60691, "names": ["Enchant 2H Weapon - Massacre"], "icon": "trade_engraving", "category": "enchant"},
+    {"id": 44630, "names": ["Enchant 2H Weapon - Greater Savagery"], "icon": "trade_engraving", "category": "enchant"}
   ],
   "skills": []
 }

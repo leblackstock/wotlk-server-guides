@@ -36,7 +36,8 @@ const families = {
   "marksmanship-hunter": {
     specName: "Marksmanship Hunter",
     nickname: "Marks Hunter",
-    raidType: "Raid DPS Guide"
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-05"
   }
 };
 const pageTypes = {
@@ -229,7 +230,8 @@ for (const [prefix, expected] of Object.entries(operatingManuals)) {
   assert.ok(manual?.querySelector(".server-behavior"), `${relative}: collapsed server behavior is missing`);
   assert.ok(manual?.querySelector(".guide-box .checklist"), `${relative}: checkmark list is missing`);
   assert.ok(manual?.querySelector(".guide-box .priority-list"), `${relative}: numbered list is missing`);
-  assert.match(document.querySelector(".wrap > footer")?.textContent || "", /Updated 2026-07-31$/, `${relative}: footer date is stale`);
+  const expectedFooterDate = families[prefix].quickStartUpdated || "2026-07-31";
+  assert.match(document.querySelector(".wrap > footer")?.textContent || "", new RegExp(`Updated ${expectedFooterDate}$`), `${relative}: footer date is stale`);
 }
 
 const tankadinPreviewDocument = new JSDOM(
