@@ -451,9 +451,11 @@ def item_slot(record: dict) -> str:
 def buyer_label(record: dict, guide_id: str) -> str:
     slot = item_slot(record)
     if guide_id == "level-80-boe-epics":
-        return f"Level-80 {slot.casefold()} buyers"
+        return f"Level-80 {slot_sales_phrase(slot)} buyers"
     if record["quality"] == 3:
-        return f"Level {record['required_level']} twinks and collectors"
+        if record["required_level"] >= 71:
+            return "Northrend leveling and pre-80 gearing"
+        return f"Level {record['required_level']} bracket players and collectors"
     if record["required_level"] >= 70:
         return "Legacy endgame gearing and collectors"
     return "Legacy leveling and collectors"
@@ -473,6 +475,145 @@ def demand_label(record: dict, guide_id: str) -> str:
     if record["quality"] == 4:
         return "Medium"
     return "Low-Med"
+
+
+def slot_sales_phrase(slot: str) -> str:
+    exact = {
+        "One-Hand": "one-handed weapon",
+        "Two-Hand": "two-handed weapon",
+        "Main-Hand": "main-hand weapon",
+        "Off-Hand": "off-hand weapon",
+        "Held In Off-Hand": "caster off-hand",
+        "Ranged": "ranged weapon",
+        "Thrown": "thrown weapon",
+        "Shield": "shield",
+        "Finger": "ring",
+        "Neck": "necklace",
+        "Trinket": "trinket",
+        "Back": "cloak",
+    }
+    if slot in exact:
+        return exact[slot]
+    armor, _, position = slot.partition(" ")
+    armor_positions = {
+        "head": "headpiece",
+        "shoulders": "shoulder armor",
+        "chest": "chestpiece",
+        "robe": "robe",
+        "waist": "belt",
+        "legs": "leg armor",
+        "feet": "boots",
+        "wrists": "bracers",
+        "hands": "gloves",
+    }
+    if position in armor_positions:
+        return f"{armor.casefold()} {armor_positions[position]}"
+    return slot.casefold()
+
+
+def buyer_guidance(record: dict, guide_id: str, slot: str) -> str:
+    phrase = slot_sales_phrase(slot)
+    if guide_id == "level-80-boe-epics":
+        item_level = record["item_level"]
+        if item_level >= 264:
+            tier = "ICC-era iLvl 264"
+        elif item_level >= 245:
+            tier = "Trial-era iLvl 245"
+        elif item_level >= 226:
+            tier = "iLvl 226"
+        elif item_level >= 219:
+            tier = "iLvl 219"
+        elif item_level >= 213:
+            tier = "Naxx-era iLvl 213"
+        else:
+            tier = f"Early level-80 iLvl {item_level}"
+        return (
+            f"{tier} {phrase} for level-80 gearing; the immediate tradeable upgrade "
+            "and item level are the main reasons to pay a premium."
+        )
+
+    required_level = record["required_level"]
+    if record["quality"] == 3 and required_level >= 71:
+        return (
+            f"Fixed-stat level {required_level} {phrase} for Northrend leveling and "
+            "pre-80 gearing; sell on immediate upgrade value, not collector scarcity alone."
+        )
+    if record["quality"] == 3:
+        return (
+            f"Fixed-stat level {required_level} {phrase} for bracket players; exact-level "
+            "upgrades have a narrow but motivated buyer pool."
+        )
+    if required_level >= 70:
+        return (
+            f"Required-level {required_level} epic {phrase} for legacy endgame gearing and "
+            "collectors; expect selective demand rather than a routine leveling sale."
+        )
+    return (
+        f"Required-level {required_level} epic {phrase} for legacy leveling sets and "
+        "collectors; epic quality draws attention, but the sale may take time."
+    )
+
+
+def source_guidance(source: str) -> str:
+    if source == "Brewfest treasure chest":
+        return (
+            "Brewfest treasure chest supply is seasonal; outside the event, hold for a "
+            "patient buyer instead of racing a lone listing."
+        )
+    if source == "Sack of Frosty Treasures":
+        return (
+            "Sack of Frosty Treasures supply is episodic; list one at a time and wait "
+            "through temporary clusters of competing auctions."
+        )
+    if source in {
+        "Reinforced Junkbox",
+        "Strong Junkbox",
+        "Tiny Titanium Lockbox",
+        "Fishing treasure bag",
+    }:
+        return (
+            f"{source} supply follows farming and opening volume; post singly and do not "
+            "treat a temporarily empty AH as proof of the high band."
+        )
+    if source in {"Shadowfang Keep trash", "Uldaman trash", "Molten Core trash"}:
+        return (
+            f"{source} farming can create short supply bursts; list one and wait rather "
+            "than chasing every undercut."
+        )
+    if source in {
+        "Icecrown Citadel",
+        "Trial of the Crusader",
+        "Ulduar",
+        "Obsidian Sanctum",
+        "Naxxramas",
+    }:
+        return (
+            f"{source} BoE supply can arrive in raid-farm bursts; list singly and avoid "
+            "repricing from one competing auction."
+        )
+    if source == "Outland world boss":
+        return (
+            "Outland world-boss supply is gated and sporadic; allow a longer sale window "
+            "and compare completed sales when available."
+        )
+    if source == "Terokk":
+        return (
+            "Terokk farming controls supply; use a patient one-at-a-time listing and do "
+            "not infer value from an empty AH."
+        )
+    if "world drop" in source.casefold():
+        return (
+            f"{source} supply is unpredictable; list one at a time and do not treat an "
+            "empty AH as proof of the high band."
+        )
+    return (
+        f"{source} supply is irregular; post singly, allow a longer sale window, and "
+        "validate the fallback against completed sales when available."
+    )
+
+
+def selling_note(record: dict, guide_id: str, slot: str, source: str) -> str:
+    return f"{buyer_guidance(record, guide_id, slot)} {source_guidance(source)}"
 
 
 def fallback_band(record: dict, guide_id: str) -> tuple[int, int, int]:
@@ -519,6 +660,8 @@ def fallback_band(record: dict, guide_id: str) -> tuple[int, int, int]:
 
 
 def catalog_item(record: dict, guide_id: str, sources: list[dict]) -> dict:
+    slot = item_slot(record)
+    source = source_label(record, sources, guide_id)
     return {
         "item_id": record["item_id"],
         "name": record["name"],
@@ -527,14 +670,11 @@ def catalog_item(record: dict, guide_id: str, sources: list[dict]) -> dict:
         "quality": QUALITY_NAMES[record["quality"]],
         "required_level": record["required_level"],
         "item_level": record["item_level"],
-        "slot": item_slot(record),
-        "source": source_label(record, sources, guide_id),
+        "slot": slot,
+        "source": source,
         "buyer": buyer_label(record, guide_id),
         "demand": demand_label(record, guide_id),
-        "notes": (
-            "Provisional fallback band. Post one at a time and validate against completed sales; "
-            "an empty AH does not prove the high price."
-        ),
+        "notes": selling_note(record, guide_id, slot, source),
     }
 
 
@@ -754,6 +894,7 @@ def validate(data: dict, audit: dict, baseline: dict) -> None:
     if guide_counts != audit.get("included_counts"):
         raise ValueError(f"Dropped-gear guide counts are stale: {guide_counts}")
     fingerprint_lines: list[str] = []
+    distinct_notes: set[str] = set()
     for item in catalog.values():
         item_id = str(item["item_id"])
         record = audit_items[item_id]
@@ -775,6 +916,22 @@ def validate(data: dict, audit: dict, baseline: dict) -> None:
                 raise ValueError(f"{item['name']}: random-affix world drop leaked into the catalog")
         if not record.get("source_types"):
             raise ValueError(f"{item['name']}: audited loot source is missing")
+        note = str(item.get("notes", ""))
+        if not 180 <= len(note) <= 340:
+            raise ValueError(f"{item['name']}: selling note is missing or poorly sized")
+        if "Provisional fallback band. Post one at a time" in note:
+            raise ValueError(f"{item['name']}: generic placeholder selling note returned")
+        if "supply" not in note.casefold():
+            raise ValueError(f"{item['name']}: selling note lacks source-supply guidance")
+        if item["guide_id"] == "level-80-boe-epics":
+            if f"iLvl {record['item_level']}" not in note or "level-80 gearing" not in note:
+                raise ValueError(f"{item['name']}: level-80 note lacks item-level buyer guidance")
+        elif record["quality"] == 3:
+            if f"Fixed-stat level {record['required_level']}" not in note:
+                raise ValueError(f"{item['name']}: rare note lacks fixed-stat level guidance")
+        elif f"Required-level {record['required_level']} epic" not in note:
+            raise ValueError(f"{item['name']}: epic note lacks required-level guidance")
+        distinct_notes.add(note)
         price = baseline["items"].get(item_id)
         if not price:
             raise ValueError(f"{item['name']}: price baseline is missing")
@@ -790,6 +947,8 @@ def validate(data: dict, audit: dict, baseline: dict) -> None:
     ).hexdigest()
     if fingerprint != audit.get("fingerprint"):
         raise ValueError("Dropped-gear audited item fingerprint changed")
+    if len(distinct_notes) < 250:
+        raise ValueError("Dropped-gear selling notes are not sufficiently item-specific")
 
 
 def main() -> int:

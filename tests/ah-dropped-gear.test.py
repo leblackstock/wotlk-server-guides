@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import html
 import json
 import re
 import unicodedata
@@ -80,6 +81,20 @@ def main() -> int:
     assert set(section_counts) == declared_sections
     assert all(section_counts[section_id] > 0 for section_id in declared_sections)
 
+    notes = [item["notes"] for item in entries.values()]
+    assert len(set(notes)) >= 250, "Dropped-gear notes are not sufficiently item-specific"
+    assert all(180 <= len(note) <= 340 for note in notes)
+    assert all("supply" in note.casefold() for note in notes)
+    assert all("Provisional fallback band. Post one at a time" not in note for note in notes)
+    assert entries["shadowfang"]["notes"].startswith(
+        "Fixed-stat level 19 one-handed weapon for bracket players"
+    )
+    assert "Shadowfang Keep trash farming" in entries["shadowfang"]["notes"]
+    assert entries["wodins-lucky-necklace"]["notes"].startswith(
+        "ICC-era iLvl 264 necklace for level-80 gearing"
+    )
+    assert "Sack of Frosty Treasures supply" in entries["wodins-lucky-necklace"]["notes"]
+
     for item_id, item in audit["items"].items():
         assert item["bonding"] == 2, f"{item_id}: not bind-on-equip"
         assert item["duration"] == 0, f"{item_id}: temporary item"
@@ -129,13 +144,14 @@ def main() -> int:
         assert source.count('data-market-source="dropped"') == expected
         assert source.count('data-dropped-gear-key="') == expected
         assert source.count("Provisional fallback") >= expected
-        assert "Updated 2026-08-04" in source
+        assert "Updated 2026-08-05" in source
         for key, item in entries.items():
             if item["guide_id"] != guide_id:
                 continue
             assert f'data-dropped-gear-key="{key}"' in source
             assert f"Req {item['required_level']}" in source
             assert f"iLvl {item['item_level']}" in source
+            assert html.escape(item["notes"]) in source
 
     print("Dropped-gear audit passed: 85 level-80 epic BoEs and 262 sought-after pre-80 drops are locked to canonical output.")
     return 0

@@ -20,7 +20,6 @@ MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 ASSET_VERSION = "20260804-ah-dropped-gear-v1"
 HUB_STYLE_VERSION = "20260804-ah-dropped-gear-hub-v1"
-UPDATED_DATE = "2026-08-04"
 
 UX_BLOCK = re.compile(
     r"<!-- AH_GUIDE_UX_START -->.*?<!-- AH_GUIDE_UX_END -->",
@@ -194,9 +193,13 @@ def transform_page(source: str, guide: dict) -> str:
         raise ValueError(f"{filename}: expected exactly one body closing tag")
     source = source.replace("</body>", f"{scripts}\n</body>", 1)
 
+    footer_match = re.search(r"<footer>.*?Updated (\d{4}-\d{2}-\d{2})</footer>", source, re.DOTALL)
+    if not footer_match:
+        raise ValueError(f"{filename}: expected an Updated footer date")
+    updated_date = footer_match.group(1)
     footer = (
         f'<footer>WotLK 3.3.5 {html.escape(guide["title"])} AH Guide '
-        f'• Hellscream / Garrosh • Created by Valdora • Updated {UPDATED_DATE}</footer>'
+        f'• Hellscream / Garrosh • Created by Valdora • Updated {updated_date}</footer>'
     )
     source, footer_count = re.subn(r"<footer>.*?</footer>", footer, source, count=1, flags=re.DOTALL)
     if footer_count != 1:

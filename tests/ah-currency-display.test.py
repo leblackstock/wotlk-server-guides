@@ -62,7 +62,16 @@ price_count = 0
 for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
-    assert "Updated 2026-08-04" in source, path.name
+    expected_date = (
+        "2026-08-05"
+        if path.name
+        in {
+            "level-80-boe-epics-ah-price-guide.html",
+            "sought-after-world-drops-ah-price-guide.html",
+        }
+        else "2026-08-04"
+    )
+    assert f"Updated {expected_date}" in source, path.name
     for label in MONEY_SPAN.findall(source):
         units = re.findall(r"[gsc]", label)
         assert len(units) <= 2, (path.name, label)

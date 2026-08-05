@@ -101,6 +101,9 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   const wodinRow = page.locator('[data-dropped-gear-key="wodins-lucky-necklace"]');
   assert.match(await wodinRow.locator(".mini").textContent(), /Epic · Req 80 · iLvl 264 · Neck/);
   assert.equal(await wodinRow.locator(".market-tag").textContent(), "Provisional fallback");
+  assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /ICC-era iLvl 264 necklace/);
+  assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /Sack of Frosty Treasures supply is episodic/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);
   await noOverflow(page, `${labelPrefix} Level 80 BoE guide`);
 
   await page.goto(`${base}/guides/sought-after-world-drops-ah-price-guide.html`, { waitUntil: "networkidle" });
@@ -119,6 +122,9 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   const shadowfangRow = page.locator('[data-dropped-gear-key="shadowfang"]');
   assert.match(await shadowfangRow.locator(".mini").textContent(), /Rare · Req 19 · iLvl 24 · One-Hand/);
   assert.equal(await shadowfangRow.locator(".market-tag").textContent(), "Provisional fallback");
+  assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Fixed-stat level 19 one-handed weapon/);
+  assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Shadowfang Keep trash farming/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);
   await noOverflow(page, `${labelPrefix} world-drop guide`);
 }
 

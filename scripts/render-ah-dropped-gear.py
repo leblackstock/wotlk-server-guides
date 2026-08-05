@@ -9,6 +9,7 @@ import json
 import re
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 
@@ -20,6 +21,7 @@ BLOCK = re.compile(
     r"<!-- AH_DROPPED_GEAR_SECTIONS_START -->.*?<!-- AH_DROPPED_GEAR_SECTIONS_END -->",
     re.DOTALL,
 )
+FOOTER_DATE = re.compile(r"(Updated )\d{4}-\d{2}-\d{2}(</footer>)")
 
 
 def display_money_copper(copper: int) -> int:
@@ -181,6 +183,17 @@ def transform(source: str, guide_id: str, guide: dict, catalog: dict, baseline: 
     return BLOCK.sub(block, source, count=1)
 
 
+def update_footer_date(source: str) -> str:
+    updated, count = FOOTER_DATE.subn(
+        rf"\g<1>{date.today().isoformat()}\g<2>",
+        source,
+        count=1,
+    )
+    if count != 1:
+        raise ValueError("Dropped-gear guide is missing its Updated footer date")
+    return updated
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail if rendered guide sections are stale")
@@ -196,6 +209,8 @@ def main() -> int:
         source = path.read_text(encoding="utf-8")
         expected = transform(source, guide_id, guide, data["catalog"], baseline)
         if expected != source:
+            if not args.check:
+                expected = update_footer_date(expected)
             stale.append(str(path.relative_to(ROOT)))
             updates.append((path, expected))
     if args.check:
