@@ -9,10 +9,10 @@ import json
 import re
 import statistics
 import sys
+import urllib.error
+import urllib.request
 from datetime import date
 from pathlib import Path
-
-import requests
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,13 +117,10 @@ def fetch_observation(task: tuple[str, int, str, int, int, float]) -> tuple[str,
     last_error: Exception | None = None
     for _ in range(3):
         try:
-            response = requests.get(
-                url,
-                headers={"User-Agent": USER_AGENT},
-                timeout=(8, 25),
-            )
-            response.raise_for_status()
-            source = response.text
+            request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=25) as response:
+                charset = response.headers.get_content_charset() or "utf-8"
+                source = response.read().decode(charset, errors="replace")
             median_fragment = row_fragment(source, "Median Buyout Price")
             quantity_fragment = row_fragment(source, "Quantity On AH")
             median = parse_money(median_fragment or "")
@@ -145,7 +142,7 @@ def fetch_observation(task: tuple[str, int, str, int, int, float]) -> tuple[str,
                 "economy_scale": scale,
                 "source_url": url,
             }
-        except (requests.RequestException, ValueError) as exc:
+        except (urllib.error.URLError, TimeoutError, ValueError) as exc:
             last_error = exc
     raise RuntimeError(f"Could not fetch {name} from {source_key}: {last_error}")
 
