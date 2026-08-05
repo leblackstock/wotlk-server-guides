@@ -100,7 +100,14 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.deepEqual(await wodin.locator(".ah-search-target-value").allTextContents(), ["2,125g", "2,500g"]);
   const wodinRow = page.locator('[data-dropped-gear-key="wodins-lucky-necklace"]');
   assert.match(await wodinRow.locator(".mini").textContent(), /Epic · Req 80 · iLvl 264 · Neck/);
-  assert.equal(await wodinRow.locator(".market-tag").textContent(), "Provisional fallback");
+  assert.deepEqual(await wodinRow.locator("td").evaluateAll((cells) => cells.map((cell) => cell.dataset.column)), [
+    "item", "target", "quick", "high", "notes", "demand", "market", "source",
+  ]);
+  assert.equal(await wodinRow.locator(".market-tag").count(), 0);
+  const boeFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
+  assert.equal(await boeFallbackNote.count(), 1);
+  assert.match(await boeFallbackNote.textContent(), /\* Provisional prices:/);
+  assert.match(await boeFallbackNote.textContent(), /unverified starting band/);
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /ICC-era iLvl 264 necklace/);
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /Sack of Frosty Treasures supply is episodic/);
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);
@@ -110,7 +117,17 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
   assert.equal(await page.locator('[data-market-source="dropped"]').count(), 262);
   assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 3);
-  for (const category of ["world-classic", "world-outland", "world-northrend"]) {
+  assert.deepEqual(await page.locator("[data-ah-major-nav] .ah-category-chip").allTextContents(), [
+    "Northrend: Levels 71–79", "Outland: Levels 61–70", "Classic: Levels 1–60",
+  ]);
+  assert.deepEqual(await page.locator("[data-dropped-gear-section]").evaluateAll((sections) => sections.map(
+    (section) => section.dataset.droppedGearSection,
+  )), [
+    "world-northrend-weapons", "world-northrend-armor", "world-northrend-accessories",
+    "world-outland-weapons", "world-outland-armor", "world-outland-accessories",
+    "world-classic-weapons", "world-classic-armor", "world-classic-accessories",
+  ]);
+  for (const category of ["world-northrend", "world-outland", "world-classic"]) {
     assert.equal(await page.locator(`#${category} > .ah-category-chip-nav .ah-category-chip`).count(), 3);
   }
   await page.locator("#ah-search-input").fill("Shadowfang");
@@ -121,7 +138,14 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.deepEqual(await shadowfang.locator(".ah-search-target-value").allTextContents(), ["170g", "200g"]);
   const shadowfangRow = page.locator('[data-dropped-gear-key="shadowfang"]');
   assert.match(await shadowfangRow.locator(".mini").textContent(), /Rare · Req 19 · iLvl 24 · One-Hand/);
-  assert.equal(await shadowfangRow.locator(".market-tag").textContent(), "Provisional fallback");
+  assert.deepEqual(await shadowfangRow.locator("td").evaluateAll((cells) => cells.map((cell) => cell.dataset.column)), [
+    "item", "target", "quick", "high", "notes", "demand", "market", "source",
+  ]);
+  assert.equal(await shadowfangRow.locator(".market-tag").count(), 0);
+  const worldDropFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
+  assert.equal(await worldDropFallbackNote.count(), 1);
+  assert.match(await worldDropFallbackNote.textContent(), /\* Provisional prices:/);
+  assert.match(await worldDropFallbackNote.textContent(), /unverified starting band/);
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Fixed-stat level 19 one-handed weapon/);
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Shadowfang Keep trash farming/);
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-05/);

@@ -163,6 +163,13 @@ assert.deepEqual(
   Object.keys(navContext.window.AH_GUIDE_NAVIGATION.guides).sort(),
   manifest.guides.map((guide) => guide.id).sort(),
 );
+assert.deepEqual(
+  Array.from(
+    navContext.window.AH_GUIDE_NAVIGATION.guides["sought-after-world-drops"].navigation,
+    (entry) => entry.id,
+  ),
+  ["world-northrend", "world-outland", "world-classic"],
+);
 
 const indexContext = { window: {} };
 vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);

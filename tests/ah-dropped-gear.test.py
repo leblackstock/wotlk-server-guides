@@ -129,6 +129,20 @@ def main() -> int:
     search_counts = Counter(item["guideId"] for item in search["items"])
     for guide_id, expected in EXPECTED_COUNTS.items():
         assert search_counts[guide_id] == expected
+    assert [
+        section["id"]
+        for section in catalog["guides"]["sought-after-world-drops"]["sections"]
+    ] == [
+        "world-northrend-weapons",
+        "world-northrend-armor",
+        "world-northrend-accessories",
+        "world-outland-weapons",
+        "world-outland-armor",
+        "world-outland-accessories",
+        "world-classic-weapons",
+        "world-classic-armor",
+        "world-classic-accessories",
+    ]
     for key, item in entries.items():
         matches = [
             row
@@ -143,7 +157,17 @@ def main() -> int:
         expected = EXPECTED_COUNTS[guide_id]
         assert source.count('data-market-source="dropped"') == expected
         assert source.count('data-dropped-gear-key="') == expected
-        assert source.count("Provisional fallback") >= expected
+        expected_columns = (
+            '<th data-column="item">Item</th><th data-column="target">Target Price</th>'
+            '<th data-column="quick">Quick Price</th><th data-column="high">High / Scarce</th>'
+            '<th data-column="notes">Use / Selling Notes</th><th data-column="demand">Demand</th>'
+            '<th data-column="market">Market</th><th data-column="source">Source</th>'
+        )
+        assert source.count(expected_columns) == len(guide["sections"])
+        assert "Provisional fallback" not in source
+        assert source.count('class="note ah-dropped-gear-fallback-note"') == 1
+        assert source.count("<strong>* Provisional prices:</strong>") == 1
+        assert "unverified starting band—not a confirmed market value or live-AH average" in source
         assert "Updated 2026-08-05" in source
         for key, item in entries.items():
             if item["guide_id"] != guide_id:

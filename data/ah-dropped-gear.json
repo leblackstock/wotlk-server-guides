@@ -56,16 +56,16 @@
       "file": "sought-after-world-drops-ah-price-guide.html",
       "sections": [
         {
-          "id": "world-classic-weapons",
-          "title": "Classic weapons"
+          "id": "world-northrend-weapons",
+          "title": "Northrend 71–79 weapons"
         },
         {
-          "id": "world-classic-armor",
-          "title": "Classic armor"
+          "id": "world-northrend-armor",
+          "title": "Northrend 71–79 armor"
         },
         {
-          "id": "world-classic-accessories",
-          "title": "Classic jewelry and accessories"
+          "id": "world-northrend-accessories",
+          "title": "Northrend 71–79 jewelry and accessories"
         },
         {
           "id": "world-outland-weapons",
@@ -80,16 +80,16 @@
           "title": "Outland jewelry and accessories"
         },
         {
-          "id": "world-northrend-weapons",
-          "title": "Northrend 71–79 weapons"
+          "id": "world-classic-weapons",
+          "title": "Classic weapons"
         },
         {
-          "id": "world-northrend-armor",
-          "title": "Northrend 71–79 armor"
+          "id": "world-classic-armor",
+          "title": "Classic armor"
         },
         {
-          "id": "world-northrend-accessories",
-          "title": "Northrend 71–79 jewelry and accessories"
+          "id": "world-classic-accessories",
+          "title": "Classic jewelry and accessories"
         }
       ]
     }

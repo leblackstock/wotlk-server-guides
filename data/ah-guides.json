@@ -497,12 +497,12 @@
       "order": 40,
       "navigation": [
         {
-          "id": "world-classic",
-          "label": "Classic: Levels 1–60",
+          "id": "world-northrend",
+          "label": "Northrend: Levels 71–79",
           "children": [
-            {"id": "world-classic-weapons", "label": "Weapons", "patterns": ["^Classic weapons$"]},
-            {"id": "world-classic-armor", "label": "Armor", "patterns": ["^Classic armor$"]},
-            {"id": "world-classic-accessories", "label": "Jewelry & Accessories", "patterns": ["^Classic jewelry and accessories$"]}
+            {"id": "world-northrend-weapons", "label": "Weapons", "patterns": ["^Northrend 71–79 weapons$"]},
+            {"id": "world-northrend-armor", "label": "Armor", "patterns": ["^Northrend 71–79 armor$"]},
+            {"id": "world-northrend-accessories", "label": "Jewelry & Accessories", "patterns": ["^Northrend 71–79 jewelry and accessories$"]}
           ]
         },
         {
@@ -515,12 +515,12 @@
           ]
         },
         {
-          "id": "world-northrend",
-          "label": "Northrend: Levels 71–79",
+          "id": "world-classic",
+          "label": "Classic: Levels 1–60",
           "children": [
-            {"id": "world-northrend-weapons", "label": "Weapons", "patterns": ["^Northrend 71–79 weapons$"]},
-            {"id": "world-northrend-armor", "label": "Armor", "patterns": ["^Northrend 71–79 armor$"]},
-            {"id": "world-northrend-accessories", "label": "Jewelry & Accessories", "patterns": ["^Northrend 71–79 jewelry and accessories$"]}
+            {"id": "world-classic-weapons", "label": "Weapons", "patterns": ["^Classic weapons$"]},
+            {"id": "world-classic-armor", "label": "Armor", "patterns": ["^Classic armor$"]},
+            {"id": "world-classic-accessories", "label": "Jewelry & Accessories", "patterns": ["^Classic jewelry and accessories$"]}
           ]
         }
       ]

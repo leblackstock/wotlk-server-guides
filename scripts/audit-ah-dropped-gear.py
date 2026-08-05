@@ -97,9 +97,9 @@ LEVEL_80_SECTIONS = (
 WORLD_SECTIONS = tuple(
     (f"world-{era}-{kind}", f"{label} {title}")
     for era, label in (
-        ("classic", "Classic"),
-        ("outland", "Outland"),
         ("northrend", "Northrend 71–79"),
+        ("outland", "Outland"),
+        ("classic", "Classic"),
     )
     for kind, title in (
         ("weapons", "weapons"),

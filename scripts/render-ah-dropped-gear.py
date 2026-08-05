@@ -80,7 +80,6 @@ def render_row(key: str, item: dict, baseline: dict) -> str:
     price = baseline[str(item["item_id"])]
     quality = html.escape(item["quality"])
     quality_label = "Epic" if item["quality"] == "epic" else "Rare"
-    chip_class = "ah-chip--accent" if item["quality"] == "epic" else "ah-chip--success"
     metadata = (
         f'{quality_label} · Req {item["required_level"]} · '
         f'iLvl {item["item_level"]} · {item["slot"]}'
@@ -88,15 +87,14 @@ def render_row(key: str, item: dict, baseline: dict) -> str:
     return (
         f'<tr data-dropped-gear-key="{html.escape(key)}" data-market-source="dropped">'
         f'<td data-column="item" data-label="Item"><strong class="q-{quality}">{html.escape(item["name"])}</strong>'
-        f'<div class="mini">{html.escape(metadata)}</div>'
-        f'<div class="market-tag ah-chip {chip_class}">Provisional fallback</div></td>'
+        f'<div class="mini">{html.escape(metadata)}</div></td>'
         f'<td data-column="target" data-label="Target Price">{render_price_pair("target", int(price["target"]))}</td>'
         f'<td data-column="quick" data-label="Quick Price">{render_price_pair("quick", int(price["quick"]))}</td>'
         f'<td data-column="high" data-label="High / Scarce">{render_price_pair("high", int(price["high"]))}</td>'
+        f'<td data-column="notes" data-label="Use / Selling Notes">{html.escape(item["notes"])}</td>'
+        f'<td data-column="demand" data-label="Demand"><span class="demand {demand_class(item["demand"])}">{html.escape(item["demand"])}</span></td>'
         f'<td data-column="market" data-label="Market">{html.escape(item["buyer"])}</td>'
         f'<td data-column="source" data-label="Source">{html.escape(item["source"])}</td>'
-        f'<td data-column="demand" data-label="Demand"><span class="demand {demand_class(item["demand"])}">{html.escape(item["demand"])}</span></td>'
-        f'<td data-column="notes" data-label="Use / Selling Notes">{html.escape(item["notes"])}</td>'
         "</tr>"
     )
 
@@ -127,7 +125,9 @@ def render_snapshot(guide_id: str, items: list[dict], baseline: dict) -> str:
         '<section class="common ah-dropped-gear-summary">'
         + category_heading("Guide snapshot")
         + f'<div class="ah-summary-grid">{rendered_cards}</div>'
-        '<p class="small">All displayed price bands are documented fallbacks—not live-AH medians. Replace them only with qualifying completed-sale or measured-acquisition evidence.</p>'
+        '<aside class="note ah-dropped-gear-fallback-note"><strong>* Provisional prices:</strong> '
+        'Every Quick, Target, and High / Scarce price in this guide is an unverified starting band—not a confirmed market value or live-AH average. '
+        'Active listings show competition only; replace a band only with qualifying completed-sale or measured-acquisition evidence.</aside>'
         "</section>"
     )
 
@@ -165,8 +165,8 @@ def render_sections(guide_id: str, guide: dict, catalog: dict, baseline: dict) -
             '<div class="table-wrap"><table class="ah-market-table ah-market-table--extended" data-table-family="market">'
             '<thead><tr><th data-column="item">Item</th><th data-column="target">Target Price</th>'
             '<th data-column="quick">Quick Price</th><th data-column="high">High / Scarce</th>'
-            '<th data-column="market">Market</th><th data-column="source">Source</th>'
-            '<th data-column="demand">Demand</th><th data-column="notes">Use / Selling Notes</th></tr></thead>'
+            '<th data-column="notes">Use / Selling Notes</th><th data-column="demand">Demand</th>'
+            '<th data-column="market">Market</th><th data-column="source">Source</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div></section>'
         )
     return (
