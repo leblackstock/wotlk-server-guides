@@ -23,7 +23,7 @@ STYLES_PATH = ROOT / "assets" / "ah-price-guide.css"
 ICON_STYLES_PATH = ROOT / "assets" / "ah-guide-icons.css"
 SEARCH_STYLES_PATH = ROOT / "assets" / "style.css"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
-STYLESHEET_VERSION = "20260804-ah-guide-ux-v1"
+STYLESHEET_VERSION = "20260804-ah-dropped-gear-v1"
 
 
 def normalize_item_name(value: str) -> str:
@@ -37,7 +37,7 @@ def normalize_item_name(value: str) -> str:
 
 
 guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
-assert len(guide_paths) == 16
+assert len(guide_paths) == 18
 
 inline_style_guides = [
     path.name
@@ -113,5 +113,5 @@ for path in guide_paths:
 
 print(
     f"Validated shared, scoped styling and rarity colors for "
-    f"{checked_item_names} item names across 16 AH guides."
+    f"{checked_item_names} item names across 18 AH guides."
 )

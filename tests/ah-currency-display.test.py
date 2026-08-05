@@ -57,7 +57,7 @@ assert renderer.format_money(14_875) == "1g 49s"
 assert renderer.format_money(999_999) == "100g"
 
 guide_paths = active_guide_paths(guides_dir=GUIDES)
-assert len(guide_paths) == 16
+assert len(guide_paths) == 18
 price_count = 0
 for path in guide_paths:
     source = path.read_text(encoding="utf-8")

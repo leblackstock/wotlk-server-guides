@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refreshed": "2026-08-04",
+  "refreshed": "2026-08-05",
   "item_template_source": {
     "name": "AzerothCore WotLK item_template",
     "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
@@ -16,11 +16,11 @@
     "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search."
   },
   "source_counts": {
-    "search_item_ids": 3268,
+    "search_item_ids": 3615,
     "crafted_item_ids": 2693,
     "vendor_item_ids": 44,
-    "baseline_item_ids": 720,
-    "unique_audited_item_ids": 3341
+    "baseline_item_ids": 1067,
+    "unique_audited_item_ids": 3688
   },
   "items": {
     "118": {
@@ -33,6 +33,12 @@
       "name": "Refreshing Spring Water",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "647": {
+      "name": "Destiny",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "723": {
@@ -113,10 +119,40 @@
       "bonding": 0,
       "duration": 0
     },
+    "809": {
+      "name": "Bloodrazor",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "810": {
+      "name": "Hammer of the Northern Wind",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "811": {
+      "name": "Axe of the Deep Woods",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "812": {
+      "name": "Glowing Brightwood Staff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "818": {
       "name": "Tigerseye",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "833": {
+      "name": "Lifestone",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "858": {
@@ -125,10 +161,76 @@
       "bonding": 0,
       "duration": 0
     },
+    "867": {
+      "name": "Gloves of Holy Might",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "868": {
+      "name": "Ardent Custodian",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "869": {
+      "name": "Dazzling Longsword",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "870": {
+      "name": "Fiery War Axe",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "871": {
+      "name": "Flurry Axe",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "873": {
+      "name": "Staff of Jordan",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "890": {
+      "name": "Twisted Chanter's Staff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "929": {
       "name": "Healing Potion",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "940": {
+      "name": "Robes of Insight",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "942": {
+      "name": "Freezing Band",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "943": {
+      "name": "Warden Staff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "944": {
+      "name": "Elemental Mage Staff",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "954": {
@@ -173,6 +275,24 @@
       "bonding": 0,
       "duration": 0
     },
+    "1121": {
+      "name": "Feet of the Lynx",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1168": {
+      "name": "Skullflame Shield",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1169": {
+      "name": "Blackskull Shield",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "1179": {
       "name": "Ice Cold Milk",
       "flags": 0,
@@ -189,6 +309,18 @@
       "name": "Scroll of Spirit",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "1203": {
+      "name": "Aegis of Stormwind",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1204": {
+      "name": "The Green Tower",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "1206": {
@@ -209,10 +341,34 @@
       "bonding": 0,
       "duration": 0
     },
+    "1263": {
+      "name": "Brain Hacker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "1288": {
       "name": "Large Venom Sac",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "1315": {
+      "name": "Lei of Lilies",
+      "flags": 64,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1443": {
+      "name": "Jeweled Amulet of Cainwyn",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1447": {
+      "name": "Ring of Saviors",
+      "flags": 524288,
+      "bonding": 2,
       "duration": 0
     },
     "1468": {
@@ -239,10 +395,28 @@
       "bonding": 0,
       "duration": 0
     },
+    "1482": {
+      "name": "Shadowfang",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1486": {
+      "name": "Tree Bark Jacket",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "1529": {
       "name": "Jade",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "1607": {
+      "name": "Soulkeeper",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "1705": {
@@ -269,10 +443,118 @@
       "bonding": 0,
       "duration": 0
     },
+    "1715": {
+      "name": "Polished Jazeraint Armor",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1721": {
+      "name": "Viking Warhammer",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1728": {
+      "name": "Teebu's Blazing Longsword",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1935": {
+      "name": "Assassin's Blade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1979": {
+      "name": "Wall of the Dead",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1980": {
+      "name": "Underworld Band",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1981": {
+      "name": "Icemail Jerkin",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "1982": {
+      "name": "Nightblade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2059": {
+      "name": "Sentry Cloak",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2099": {
+      "name": "Dwarven Hand Cannon",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2100": {
+      "name": "Precisely Calibrated Boomstick",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2163": {
+      "name": "Shadowblade",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2164": {
+      "name": "Gut Ripper",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2243": {
+      "name": "Hand of Edward the Odd",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2244": {
+      "name": "Krol Blade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2245": {
+      "name": "Helm of Narv",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2246": {
+      "name": "Myrmidon's Signet",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
     "2251": {
       "name": "Gooey Spider Leg",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "2256": {
+      "name": "Skeletal Club",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "2289": {
@@ -285,6 +567,12 @@
       "name": "Scroll of Intellect II",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "2291": {
+      "name": "Kang the Decapitator",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "2300": {
@@ -737,6 +1025,24 @@
       "bonding": 0,
       "duration": 0
     },
+    "2801": {
+      "name": "Blade of Hanna",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2824": {
+      "name": "Hurricane",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "2825": {
+      "name": "Bow of Searing Arrows",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "2835": {
       "name": "Rough Stone",
       "flags": 0,
@@ -917,6 +1223,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "2915": {
+      "name": "Taran Icebreaker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "2924": {
       "name": "Crocolisk Meat",
       "flags": 0,
@@ -951,6 +1263,12 @@
       "name": "Scroll of Protection",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "3075": {
+      "name": "Eye of Flame",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "3164": {
@@ -1121,6 +1439,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "3415": {
+      "name": "Staff of the Friar",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "3466": {
       "name": "Strong Flux",
       "flags": 0,
@@ -1159,6 +1483,12 @@
     },
     "3474": {
       "name": "Gemmed Copper Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "3475": {
+      "name": "Cloak of Flames",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -3455,6 +3785,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "7728": {
+      "name": "Beguiler Robes",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "7730": {
+      "name": "Cobalt Crusher",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "7742": {
       "name": "Schematic: Gnomish Cloaking Device",
       "flags": 64,
@@ -4315,6 +4657,24 @@
     },
     "9366": {
       "name": "Golden Scale Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "9395": {
+      "name": "Gloves of Old",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "9425": {
+      "name": "Pendulum of Doom",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "9429": {
+      "name": "Miner's Hat of the Deep",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -5255,6 +5615,18 @@
       "bonding": 2,
       "duration": 0
     },
+    "12535": {
+      "name": "Doomforged Straightedge",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "12546": {
+      "name": "Aristocratic Cuffs",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "12607": {
       "name": "Brilliant Chromatic Scale",
       "flags": 0,
@@ -5565,6 +5937,72 @@
       "name": "Plans: Arcanite Reaper",
       "flags": 64,
       "bonding": 0,
+      "duration": 0
+    },
+    "12997": {
+      "name": "Redbeard Crest",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13033": {
+      "name": "Zealot Blade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13051": {
+      "name": "Witchfury",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13058": {
+      "name": "Khoo's Point",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13063": {
+      "name": "Starfaller",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13067": {
+      "name": "Hydralick Armor",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13095": {
+      "name": "Assault Band",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13100": {
+      "name": "Furen's Boots",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13108": {
+      "name": "Tigerstrike Mantle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13111": {
+      "name": "Sandals of the Insurgent",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "13137": {
+      "name": "Ironweaver",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "13422": {
@@ -6233,6 +6671,54 @@
       "bonding": 0,
       "duration": 0
     },
+    "14549": {
+      "name": "Boots of Avoidance",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14551": {
+      "name": "Edgemaster's Handguards",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14552": {
+      "name": "Stockade Pauldrons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14553": {
+      "name": "Sash of Mercy",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14554": {
+      "name": "Cloudkeeper Legplates",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14555": {
+      "name": "Alcor's Sunrazor",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14557": {
+      "name": "The Lion Horn of Stormwind",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "14558": {
+      "name": "Lady Maye's Pendant",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "15045": {
       "name": "Green Dragonscale Breastplate",
       "flags": 0,
@@ -6779,6 +7265,114 @@
       "bonding": 0,
       "duration": 0
     },
+    "16799": {
+      "name": "Arcanist Bindings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16802": {
+      "name": "Arcanist Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16804": {
+      "name": "Felheart Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16806": {
+      "name": "Felheart Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16817": {
+      "name": "Girdle of Prophecy",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16819": {
+      "name": "Vambraces of Prophecy",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16825": {
+      "name": "Nightslayer Bracelets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16827": {
+      "name": "Nightslayer Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16828": {
+      "name": "Cenarion Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16830": {
+      "name": "Cenarion Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16838": {
+      "name": "Earthfury Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16840": {
+      "name": "Earthfury Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16850": {
+      "name": "Giantstalker's Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16851": {
+      "name": "Giantstalker's Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16857": {
+      "name": "Lawbringer Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16858": {
+      "name": "Lawbringer Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16861": {
+      "name": "Bracers of Might",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "16864": {
+      "name": "Belt of Might",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "16979": {
       "name": "Flarecore Gloves",
       "flags": 0,
@@ -6817,6 +7411,12 @@
     },
     "16989": {
       "name": "Fiery Chain Girdle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "17007": {
+      "name": "Stonerender Gauntlets",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -7155,6 +7755,12 @@
       "name": "Heavy Leather Ball",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "18665": {
+      "name": "The Eye of Shadow",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "18944": {
@@ -7627,6 +8233,12 @@
     },
     "20575": {
       "name": "Black Whelp Tunic",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "20698": {
+      "name": "Elemental Attuned Blade",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -11321,6 +11933,126 @@
       "bonding": 2,
       "duration": 0
     },
+    "30722": {
+      "name": "Ethereum Nexus-Reaver",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30723": {
+      "name": "Talon of the Tempest",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30724": {
+      "name": "Barrel-Blade Longrifle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30725": {
+      "name": "Anger-Spark Gloves",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30726": {
+      "name": "Archaic Charm of Presence",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30727": {
+      "name": "Gilded Trousers of Benediction",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30728": {
+      "name": "Fathom-Helm of the Deeps",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30729": {
+      "name": "Black-Iron Battlecloak",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30730": {
+      "name": "Terrorweave Tunic",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30731": {
+      "name": "Faceguard of the Endless Watch",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30732": {
+      "name": "Exodar Life-Staff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30733": {
+      "name": "Hope Ender",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30734": {
+      "name": "Leggings of the Seventh Circle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30735": {
+      "name": "Ancient Spellcloak of the Highborne",
+      "flags": 4096,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30736": {
+      "name": "Ring of Flowing Light",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30737": {
+      "name": "Gold-Leaf Wildboots",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30738": {
+      "name": "Ring of Reciprocity",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30739": {
+      "name": "Scaled Greaves of the Marksman",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30740": {
+      "name": "Ripfiend Shoulderplates",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30741": {
+      "name": "Topaz-Studded Battlegrips",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "30804": {
       "name": "Bronze Band of Force",
       "flags": 524288,
@@ -11383,6 +12115,210 @@
     },
     "31154": {
       "name": "Bronze Torc",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31290": {
+      "name": "Band of Dominion",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31291": {
+      "name": "Crystalforged War Axe",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31292": {
+      "name": "Crystal Pulse Shield",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31293": {
+      "name": "Girdle of Gale Force",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31294": {
+      "name": "Pauldrons of Surging Mana",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31295": {
+      "name": "Chestguard of the Dark Stalker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31297": {
+      "name": "Robe of the Crimson Order",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31298": {
+      "name": "Legguards of the Shattered Hand",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31303": {
+      "name": "Valanos' Longbow",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31304": {
+      "name": "The Essence Focuser",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31305": {
+      "name": "Ced's Carver",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31306": {
+      "name": "Leggings of the Sacred Crest",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31308": {
+      "name": "The Bringer of Death",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31318": {
+      "name": "Singing Crystal Axe",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31319": {
+      "name": "Band of Impenetrable Defenses",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31320": {
+      "name": "Chestguard of Exile",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31321": {
+      "name": "Choker of Repentance",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31322": {
+      "name": "The Hammer of Destiny",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31323": {
+      "name": "Don Santos' Famous Hunting Rifle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31326": {
+      "name": "Truestrike Ring",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31328": {
+      "name": "Leggings of Beast Mastery",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31329": {
+      "name": "Lifegiving Cloak",
+      "flags": 4096,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31330": {
+      "name": "Lightning Crown",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31331": {
+      "name": "The Night Blade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31332": {
+      "name": "Blinkstrike",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31333": {
+      "name": "The Night Watchman",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31334": {
+      "name": "Staff of Natural Fury",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31335": {
+      "name": "Pants of Living Growth",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31336": {
+      "name": "Blade of Wizardry",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31338": {
+      "name": "Charlotte's Ivy",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31339": {
+      "name": "Lola's Eve",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31340": {
+      "name": "Will of Edward the Odd",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31342": {
+      "name": "The Ancient Scepter of Sue-Min",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "31343": {
+      "name": "Kamaei's Cerulean Skirt",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -11927,6 +12863,24 @@
       "bonding": 2,
       "duration": 0
     },
+    "32535": {
+      "name": "Gift of the Talonpriests",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "32540": {
+      "name": "Terokk's Might",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "32541": {
+      "name": "Terokk's Wisdom",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "32568": {
       "name": "Swiftsteel Bracers",
       "flags": 0,
@@ -12413,6 +13367,12 @@
       "bonding": 2,
       "duration": 0
     },
+    "34622": {
+      "name": "Spinesever",
+      "flags": 4194304,
+      "bonding": 2,
+      "duration": 0
+    },
     "34664": {
       "name": "Sunmote",
       "flags": 0,
@@ -12581,6 +13541,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "34837": {
+      "name": "The 2 Ring",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "35128": {
       "name": "Hardened Khorium",
       "flags": 0,
@@ -12635,6 +13601,42 @@
       "bonding": 0,
       "duration": 0
     },
+    "35579": {
+      "name": "Vrykul Shackles",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35580": {
+      "name": "Skein Woven Mantle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35593": {
+      "name": "Steel Bear Trap Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35594": {
+      "name": "Snowmelt Silken Cinch",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35615": {
+      "name": "Glowworm Cavern Bindings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35616": {
+      "name": "Spored Tendrils Spaulders",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "35622": {
       "name": "Eternal Water",
       "flags": 1024,
@@ -12663,6 +13665,78 @@
       "name": "Eternal Shadow",
       "flags": 1024,
       "bonding": 0,
+      "duration": 0
+    },
+    "35639": {
+      "name": "Brighthelm of Guarding",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35640": {
+      "name": "Darkweb Bindings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35641": {
+      "name": "Scytheclaw Boots",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35652": {
+      "name": "Incessant Torch",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35653": {
+      "name": "Girdle of the Mystical Prison",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35654": {
+      "name": "Bindings of the Bastille",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35664": {
+      "name": "Unknown Archaeologist's Hammer",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35665": {
+      "name": "Soothing Lichen Wraps",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35666": {
+      "name": "Mark of the Spider",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35681": {
+      "name": "Unrelenting Blade",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35682": {
+      "name": "Rune Giant Bindings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "35683": {
+      "name": "Palladium Ring",
+      "flags": 524288,
+      "bonding": 2,
       "duration": 0
     },
     "35707": {
@@ -12941,6 +14015,60 @@
       "bonding": 0,
       "duration": 0
     },
+    "36976": {
+      "name": "Ring-Lord's Leggings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "36977": {
+      "name": "Bindings of the Construct",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "36978": {
+      "name": "Ley-Whelphide Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "36997": {
+      "name": "Sash of the Hardened Watcher",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "36999": {
+      "name": "Boots of the Terrestrial Guardian",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37000": {
+      "name": "Storming Vortex Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37068": {
+      "name": "Berserker's Sabatons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37069": {
+      "name": "Dragonflayer Seer's Bindings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37070": {
+      "name": "Tundra Wolf Boots",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "37091": {
       "name": "Scroll of Intellect VII",
       "flags": 0,
@@ -12975,6 +14103,24 @@
       "name": "Scroll of Spirit VIII",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "37115": {
+      "name": "Crusader's Square Pauldrons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37116": {
+      "name": "Epaulets of Market Row",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37117": {
+      "name": "King's Square Bracers",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "37330": {
@@ -13059,6 +14205,432 @@
       "name": "Crystallized Water",
       "flags": 1024,
       "bonding": 0,
+      "duration": 0
+    },
+    "37743": {
+      "name": "Legguards of Brutalization",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37744": {
+      "name": "Horrorblood Treads",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37745": {
+      "name": "Greenhealer's Garb",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37746": {
+      "name": "Helm of the Burning Soul",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37747": {
+      "name": "Beneficent Bulwark",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37748": {
+      "name": "Winterfall's Frozen Necklace",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37749": {
+      "name": "Shocking Claws",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37751": {
+      "name": "Tooga's Lost Toenail",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37752": {
+      "name": "Sandals of Broken Dreams",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37753": {
+      "name": "Mendicant's Robe of Mendacity",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37754": {
+      "name": "Shimmersteel Hood",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37755": {
+      "name": "Leggings of the Icy Heart",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37756": {
+      "name": "Zoe's Comforting Cape",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37757": {
+      "name": "Charlotte's Chastizing Pauldrons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37758": {
+      "name": "Raine's Choker of Combustion",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37759": {
+      "name": "Rhie-ay's Clutching Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37760": {
+      "name": "Cracklefire Wristguards",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37761": {
+      "name": "Shimmerthread Girdle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37762": {
+      "name": "Many-Pocketed Belt",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37763": {
+      "name": "Treads of the Purifier",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37764": {
+      "name": "Corehound Fang Shoulderpads",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37765": {
+      "name": "Leggings of the Water Moccasin",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37766": {
+      "name": "Bracers of Unmitigated Larceny",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37767": {
+      "name": "Ryft's Deathgaze",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37768": {
+      "name": "Leggings of Violent Exsanguination",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37769": {
+      "name": "Gnarled Shovelhorn Spaulders",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37770": {
+      "name": "Bulge-Concealing Breastplate",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37771": {
+      "name": "Wristguards of Verdant Recovery",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37772": {
+      "name": "Wub's Electrospike Spaulders",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37773": {
+      "name": "Shock-Inducing Girdle",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37774": {
+      "name": "Leggings of Aqueous Dissolution",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37775": {
+      "name": "Helm of the Broken Ram",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37776": {
+      "name": "Bracers of Accurate Fire",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37777": {
+      "name": "Bracers of Sizzling Heat",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37778": {
+      "name": "Girdle of Unerring Flight",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37779": {
+      "name": "Nixod's Chain-Threshed Spaulders",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37780": {
+      "name": "Condor-Bone Chestguard",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37781": {
+      "name": "Grips of the Warming Heart",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37782": {
+      "name": "Gauntlets of the Cheerful Hearth",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37783": {
+      "name": "Blood-Tempered Spaulders",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37785": {
+      "name": "Girdle of the Howling Berserker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37786": {
+      "name": "Legguards of the Forlorn Seas",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37787": {
+      "name": "Greathelm of the Unyielding Bull",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37789": {
+      "name": "Gauntlets of Disembowelment",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37790": {
+      "name": "Belt of Crystalline Tears",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37792": {
+      "name": "Agin's Crushing Carapace",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37793": {
+      "name": "Skullcage of Eternal Terror",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37794": {
+      "name": "Torta's Oversized Choker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37795": {
+      "name": "Grips of the Valiant Champion",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37796": {
+      "name": "Earthbound Cape",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37797": {
+      "name": "Cloak of the Agile Mind",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37802": {
+      "name": "Elanor's Edge",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37803": {
+      "name": "Lola's Lifegiving Branch",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37804": {
+      "name": "Bloodwood Greatstaff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37805": {
+      "name": "Melia's Magnificent Scepter",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37806": {
+      "name": "Zabra's Misplaced Staff",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37807": {
+      "name": "Lydia's Sharpened Swordbreaker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37808": {
+      "name": "Dragonjaw Mauler",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37809": {
+      "name": "Roc-Feather Longbow",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37810": {
+      "name": "Blade-Binding Bulwark",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37811": {
+      "name": "Captain Carver's Persuader",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37812": {
+      "name": "Petrified Ironwood Smasher",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37813": {
+      "name": "Banner Slicer",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37817": {
+      "name": "Branch of Sinful Reprieve",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37819": {
+      "name": "Milan's Mastercraft Band",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37820": {
+      "name": "Worgen's Ring of Revitalization",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37821": {
+      "name": "Raine's Signet of Blasting",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37822": {
+      "name": "Twisted Puzzle-Ring",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37823": {
+      "name": "Draconic Choker of Ferocity",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37824": {
+      "name": "Gwyneth's Runed Dragonwand",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "37835": {
+      "name": "Je'Tze's Bell",
+      "flags": 4096,
+      "bonding": 2,
       "duration": 0
     },
     "37921": {
@@ -14831,6 +16403,30 @@
       "bonding": 2,
       "duration": 0
     },
+    "39194": {
+      "name": "Rusted-Link Spiked Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39235": {
+      "name": "Bone-Framed Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39283": {
+      "name": "Putrescent Bands",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39310": {
+      "name": "Mantle of the Extensive Mind",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "39342": {
       "name": "Nether Pigment",
       "flags": 0,
@@ -14853,6 +16449,12 @@
       "name": "Moonglow Ink",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "39472": {
+      "name": "Chain of Latent Energies",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "39501": {
@@ -14907,6 +16509,24 @@
       "name": "Volatile Blasting Trigger",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "39717": {
+      "name": "Inexorable Sabatons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39733": {
+      "name": "Gloves of Token Respect",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39762": {
+      "name": "Torn Web Wrapping",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "39774": {
@@ -16301,6 +17921,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "40187": {
+      "name": "Poignant Sabatons",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "40195": {
       "name": "Pygmy Oil",
       "flags": 0,
@@ -16311,6 +17937,12 @@
       "name": "Pygmy Suckerfish",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "40206": {
+      "name": "Iron-Spring Jumpers",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "40211": {
@@ -16355,10 +17987,58 @@
       "bonding": 0,
       "duration": 0
     },
+    "40246": {
+      "name": "Boots of Impetuous Ideals",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "40248": {
       "name": "Eternal Might",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "40270": {
+      "name": "Boots of Septic Wounds",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40282": {
+      "name": "Slime Stream Bands",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40302": {
+      "name": "Benefactor's Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40305": {
+      "name": "Spaulders of Egotism",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40338": {
+      "name": "Bindings of Yearning",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40347": {
+      "name": "Zeliek's Gauntlets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40362": {
+      "name": "Gloves of Fast Reactions",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "40411": {
@@ -16367,10 +18047,34 @@
       "bonding": 0,
       "duration": 0
     },
+    "40426": {
+      "name": "Signet of the Accord",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40439": {
+      "name": "Mantle of the Eternal Sentinel",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "40474": {
+      "name": "Surge Needle Ring",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
     "40536": {
       "name": "Explosive Decoy",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "40558": {
+      "name": "Arcanic Tramplers",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "40668": {
@@ -18551,6 +20255,12 @@
       "bonding": 2,
       "duration": 0
     },
+    "43573": {
+      "name": "Tears of Bitter Anguish",
+      "flags": 4096,
+      "bonding": 2,
+      "duration": 0
+    },
     "43582": {
       "name": "Titanium Frostguard Ring",
       "flags": 524288,
@@ -18625,6 +20335,24 @@
     },
     "43595": {
       "name": "Icy Scale Boots",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "43611": {
+      "name": "Krol Cleaver",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "43612": {
+      "name": "Spineslicer",
+      "flags": 4194304,
+      "bonding": 2,
+      "duration": 0
+    },
+    "43613": {
+      "name": "The Dusk Blade",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -18965,6 +20693,42 @@
       "bonding": 0,
       "duration": 0
     },
+    "44308": {
+      "name": "Signet of Edward the Odd",
+      "flags": 524480,
+      "bonding": 2,
+      "duration": 0
+    },
+    "44309": {
+      "name": "Sash of Jordan",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "44310": {
+      "name": "Namlak's Supernumerary Sticker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "44311": {
+      "name": "Avool's Sword of Jin",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "44312": {
+      "name": "Wapach's Spaulders of Solidarity",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "44313": {
+      "name": "Zom's Crackling Bulwark",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "44325": {
       "name": "Elixir of Accuracy",
       "flags": 0,
@@ -19185,6 +20949,12 @@
       "name": "Goblin-machined Piston",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "44505": {
+      "name": "Dustbringer",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "44684": {
@@ -19415,6 +21185,102 @@
       "bonding": 0,
       "duration": 0
     },
+    "45107": {
+      "name": "Iron Riveted War Helm",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45141": {
+      "name": "Proto-hide Leggings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45167": {
+      "name": "Lifeforge Breastplate",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45237": {
+      "name": "Phaelia's Vestments of the Sprouting Seed",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45247": {
+      "name": "Signet of the Earthshaker",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45274": {
+      "name": "Leggings of the Stoneweaver",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45291": {
+      "name": "Combustion Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45301": {
+      "name": "Bracers of the Smothering Inferno",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45316": {
+      "name": "Armbraces of the Vibrant Flame",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45322": {
+      "name": "Cloak of the Iron Council",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45435": {
+      "name": "Cowl of the Absolute",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45450": {
+      "name": "Northern Barrier",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45468": {
+      "name": "Leggings of Lost Love",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45480": {
+      "name": "Nymph Heart Charm",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45493": {
+      "name": "Asimov's Drape",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45504": {
+      "name": "Darkcore Leggings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "45550": {
       "name": "Belt of the Titans",
       "flags": 0,
@@ -19563,6 +21429,24 @@
       "name": "Scroll of Enchant Boots - Lesser Accuracy",
       "flags": 268435520,
       "bonding": 0,
+      "duration": 0
+    },
+    "45680": {
+      "name": "Armbands of the Construct",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45704": {
+      "name": "Shawl of the Shattered Giant",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45709": {
+      "name": "Nimble Climber's Belt",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "45731": {
@@ -19733,6 +21617,18 @@
       "bonding": 2,
       "duration": 0
     },
+    "45859": {
+      "name": "The 5 Ring",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "45874": {
+      "name": "Signet of Winter",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
     "45909": {
       "name": "Giant Darkwater Clam",
       "flags": 64,
@@ -19745,10 +21641,28 @@
       "bonding": 0,
       "duration": 0
     },
+    "45927": {
+      "name": "Handwraps of Resonance",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "45932": {
       "name": "Black Jelly",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "45975": {
+      "name": "Cable of the Metrognome",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "46009": {
+      "name": "Bindings of the Depths",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "46026": {
@@ -19785,6 +21699,66 @@
       "name": "Flask of Stoneblood",
       "flags": 0,
       "bonding": 0,
+      "duration": 0
+    },
+    "46970": {
+      "name": "Drape of the Untamed Predator",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47089": {
+      "name": "Cloak of Displacement",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47105": {
+      "name": "The Executioner's Malice",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47149": {
+      "name": "Signet of the Traitor King",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47223": {
+      "name": "Ring of the Darkmender",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47257": {
+      "name": "Cloak of the Untamed Predator",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47278": {
+      "name": "Circle of the Darkmender",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47291": {
+      "name": "Shroud of Displacement",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47297": {
+      "name": "The Executioner's Vice",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "47315": {
+      "name": "Band of the Traitor King",
+      "flags": 524288,
+      "bonding": 2,
       "duration": 0
     },
     "47556": {
@@ -19897,6 +21871,12 @@
     },
     "47606": {
       "name": "Royal Moonshroud Robe",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "48663": {
+      "name": "Tankard O' Terror",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -20039,6 +22019,48 @@
       "bonding": 0,
       "duration": 0
     },
+    "49967": {
+      "name": "Marrowgar's Frigid Eye",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "49994": {
+      "name": "The Lady's Brittle Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50001": {
+      "name": "Ikfirus's Sack of Wonder",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50015": {
+      "name": "Belt of the Blood Nova",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50020": {
+      "name": "Raging Behemoth's Shoulderplates",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50038": {
+      "name": "Carapace of Forgotten Kings",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50069": {
+      "name": "Professor's Bloodied Smock",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "50077": {
       "name": "Glyph of Quick Decay",
       "flags": 64,
@@ -20049,6 +22071,66 @@
       "name": "Glyph of Rapid Rejuvenation",
       "flags": 64,
       "bonding": 0,
+      "duration": 0
+    },
+    "50175": {
+      "name": "Crypt Keeper's Bracers",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50182": {
+      "name": "Blood Queen's Crimson Choker",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50444": {
+      "name": "Rowan's Rifle of Silver Bullets",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50447": {
+      "name": "Harbinger's Bone Band",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50449": {
+      "name": "Stiffened Corpse Shoulderpads",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50450": {
+      "name": "Leggings of Dubious Charms",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50451": {
+      "name": "Belt of the Lonely Noble",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50452": {
+      "name": "Wodin's Lucky Necklace",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50453": {
+      "name": "Ring of Rotting Sinew",
+      "flags": 524288,
+      "bonding": 2,
+      "duration": 0
+    },
+    "50472": {
+      "name": "Nightmare Ender",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "50816": {

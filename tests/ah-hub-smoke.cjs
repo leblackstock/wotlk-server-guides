@@ -86,6 +86,42 @@ async function verifyGuideNavigation(page) {
   await page.waitForURL(/gear-pattern-drops-ah-price-guide\.html#ah-item=book-of-glyph-mastery$/);
 }
 
+async function verifyDroppedGearGuides(page, labelPrefix) {
+  await page.goto(`${base}/guides/level-80-boe-epics-ah-price-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
+  assert.equal(await page.locator('[data-market-source="dropped"]').count(), 85);
+  assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 3);
+  assert.equal(await page.locator("#boe80-armor > .ah-category-chip-nav .ah-category-chip").count(), 5);
+  await page.locator("#ah-search-input").fill("Wodin's Lucky Necklace");
+  const wodin = page.locator(".ah-search-result", {
+    has: page.locator(".ah-search-item-name", { hasText: /^Wodin's Lucky Necklace$/ }),
+  });
+  assert.equal(await wodin.count(), 1);
+  assert.deepEqual(await wodin.locator(".ah-search-target-value").allTextContents(), ["2,125g", "2,500g"]);
+  const wodinRow = page.locator('[data-dropped-gear-key="wodins-lucky-necklace"]');
+  assert.match(await wodinRow.locator(".mini").textContent(), /Epic · Req 80 · iLvl 264 · Neck/);
+  assert.equal(await wodinRow.locator(".market-tag").textContent(), "Provisional fallback");
+  await noOverflow(page, `${labelPrefix} Level 80 BoE guide`);
+
+  await page.goto(`${base}/guides/sought-after-world-drops-ah-price-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
+  assert.equal(await page.locator('[data-market-source="dropped"]').count(), 262);
+  assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 3);
+  for (const category of ["world-classic", "world-outland", "world-northrend"]) {
+    assert.equal(await page.locator(`#${category} > .ah-category-chip-nav .ah-category-chip`).count(), 3);
+  }
+  await page.locator("#ah-search-input").fill("Shadowfang");
+  const shadowfang = page.locator(".ah-search-result", {
+    has: page.locator(".ah-search-item-name", { hasText: /^Shadowfang$/ }),
+  });
+  assert.equal(await shadowfang.count(), 1);
+  assert.deepEqual(await shadowfang.locator(".ah-search-target-value").allTextContents(), ["170g", "200g"]);
+  const shadowfangRow = page.locator('[data-dropped-gear-key="shadowfang"]');
+  assert.match(await shadowfangRow.locator(".mini").textContent(), /Rare · Req 19 · iLvl 24 · One-Hand/);
+  assert.equal(await shadowfangRow.locator(".market-tag").textContent(), "Provisional fallback");
+  await noOverflow(page, `${labelPrefix} world-drop guide`);
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   try {
@@ -146,8 +182,8 @@ async function verifyGuideNavigation(page) {
 
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
-    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 15, "Auction House hub should present sixteen guides across fifteen cards");
-    assert.equal(await desktop.locator(".ah-hub-route-card").count(), 3);
+    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should present eighteen guides across sixteen cards");
+    assert.equal(await desktop.locator(".ah-hub-route-card").count(), 4);
     assert.equal(await desktop.locator(".ah-hub-link-card").count(), 1);
     const blacksmithingCard = desktop.locator('[data-ah-hub-card="blacksmithing"]');
     assert.equal(await blacksmithingCard.evaluate((node) => node.tagName), "ARTICLE");
@@ -159,6 +195,11 @@ async function verifyGuideNavigation(page) {
     assert.deepEqual(
       (await jewelcraftingCard.locator(".ah-hub-card-chip").allTextContents()).map((label) => label.replace("→", "").trim()),
       ["Gems & Cuts", "Jewelry & Components"],
+    );
+    const boeDropsCard = desktop.locator('[data-ah-hub-card="boe-gear-drops"]');
+    assert.deepEqual(
+      (await boeDropsCard.locator(".ah-hub-card-chip").allTextContents()).map((label) => label.replace("→", "").trim()),
+      ["Level 80 BoE Epics", "Sought-After World Drops"],
     );
     const skinningLinkCard = desktop.locator('[data-ah-hub-card="skinning-materials-link"]');
     const skinningMaterialsChip = skinningLinkCard.locator(".ah-hub-card-chip");
@@ -172,7 +213,7 @@ async function verifyGuideNavigation(page) {
     await desktop.waitForSelector("#ah-search-input");
     assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 5);
     const expectedUniqueItems = await desktop.evaluate(() => window.AHSearchCore.uniqueItemCount(window.AH_SEARCH_INDEX.items));
-    assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 16 guides`);
+    assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 18 guides`);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
     await desktop.waitForSelector(".ah-search-result");
@@ -280,6 +321,7 @@ async function verifyGuideNavigation(page) {
     assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-04/);
     await noOverflow(desktop, "Desktop Enchanting guide");
     await verifyGuideNavigation(desktop);
+    await verifyDroppedGearGuides(desktop, "Desktop");
 
     await verifyAuditedCraftedGuide(desktop, {
       filename: "inscription-materials-ah-price-guide.html",
@@ -458,8 +500,8 @@ async function verifyGuideNavigation(page) {
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
-    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 15);
-    assert.equal(await mobile.locator(".ah-hub-card-chip").count(), 5);
+    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
+    assert.equal(await mobile.locator(".ah-hub-card-chip").count(), 7);
     await mobile.locator("#ah-search-input").fill("saronite");
     assert.equal(await mobile.locator(".ah-search-result").count(), 12);
     const mobileSaroniteBar = mobile.locator(".ah-search-result", {
@@ -477,6 +519,7 @@ async function verifyGuideNavigation(page) {
       "Conversion check: 6 Borean ≈4g 20s → target 6g 50s"
     );
     await noOverflow(mobile, "Mobile Auction House hub");
+    await verifyDroppedGearGuides(mobile, "Mobile");
 
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator('[data-crafted-key^="ench-"]').count(), 276);
@@ -598,7 +641,7 @@ async function verifyGuideNavigation(page) {
       label: "Mobile Mining guide"
     });
 
-    console.log("Auction House hub, compact guide UX, nested category chips, redirects, and all twelve crafted guide views passed desktop/mobile smoke tests.");
+    console.log("Auction House hub, both dropped-gear guides, compact guide UX, nested category chips, redirects, and all twelve crafted guide views passed desktop/mobile smoke tests.");
   } finally {
     await browser.close();
   }

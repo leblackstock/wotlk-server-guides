@@ -26,7 +26,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDES_PATH = ROOT / "data" / "ah-guides.json"
-AH_STYLESHEET_VERSION = "20260804-ah-guide-ux-v1"
+AH_STYLESHEET_VERSION = "20260804-ah-dropped-gear-v1"
 SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(

@@ -7,16 +7,16 @@ const { JSDOM } = require("jsdom");
 const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
-const version = "20260804-ah-guide-ux-v1";
+const version = "20260804-ah-dropped-gear-v1";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 
 assert.equal(manifest.version, 1);
-assert.equal(manifest.active_guide_count, 16);
-assert.equal(manifest.guides.length, 16);
+assert.equal(manifest.active_guide_count, 18);
+assert.equal(manifest.guides.length, 18);
 assert.equal(manifest.groups.length, 3);
-assert.equal(new Set(manifest.guides.map((guide) => guide.id)).size, 16);
-assert.equal(new Set(manifest.guides.map((guide) => guide.file)).size, 16);
+assert.equal(new Set(manifest.guides.map((guide) => guide.id)).size, 18);
+assert.equal(new Set(manifest.guides.map((guide) => guide.file)).size, 18);
 assert.equal(
   manifest.redirects.some((redirect) => manifest.guides.some((guide) => guide.file === redirect.file)),
   false,
@@ -24,9 +24,11 @@ assert.equal(
 );
 
 const hub = new JSDOM(read("auction-house.html")).window.document;
+assert.match(hub.querySelector("header .sub").textContent, /all 18 pricing guides/);
 const hubGroups = [...hub.querySelectorAll("[data-ah-guide-group]")];
 assert.equal(hubGroups.length, manifest.groups.length);
-assert.ok(hub.querySelector('link[href="./assets/style.css?v=20260804-ah-hub-route-cards-v1"]'));
+assert.ok(hub.querySelector('link[href="./assets/style.css?v=20260804-ah-dropped-gear-hub-v1"]'));
+assert.ok(hub.querySelector('link[href="./assets/ah-guide-icons.css?v=20260804-ah-dropped-gear-v1"]'));
 assert.deepEqual(
   hubGroups.map((group) => group.dataset.ahGuideGroup),
   [...manifest.groups].sort((a, b) => a.order - b.order).map((group) => group.id),
@@ -37,9 +39,11 @@ const groupedGuideIds = new Set(multiGuideCards.flatMap((card) => card.links.map
 const expectedHubCardCount = manifest.guides.length - groupedGuideIds.size + manifest.hub_cards.length;
 const hubCards = [...hub.querySelectorAll(".guide-card.has-guide-icon")];
 assert.equal(hubCards.length, expectedHubCardCount);
-assert.equal(hub.querySelectorAll(".ah-hub-route-card").length, 3);
-assert.equal(hub.querySelectorAll(".ah-hub-route-card:not(.ah-hub-link-card)").length, 2);
+assert.equal(hub.querySelectorAll(".ah-hub-route-card").length, 4);
+assert.equal(hub.querySelectorAll(".ah-hub-route-card:not(.ah-hub-link-card)").length, 3);
 assert.equal(hub.querySelectorAll(".ah-hub-link-card").length, 1);
+assert.ok(hub.querySelector('script[src="./assets/ah-search-index.js?v=20260804-ah-dropped-gear-v1"]'));
+assert.ok(hub.querySelector('script[src="./assets/ah-search.js?v=20260804-ah-dropped-gear-v1"]'));
 for (const guide of manifest.guides) {
   if (groupedGuideIds.has(guide.id)) {
     const chip = hub.querySelector(`.ah-hub-card-chip[data-ah-guide-id="${guide.id}"]`);
@@ -132,6 +136,7 @@ for (const guide of manifest.guides) {
   const uncovered = [...runtimeDocument.querySelectorAll("section.common")]
     .filter((section) => !section.classList.contains("ah-guide-search-section"))
     .filter((section) => !section.classList.contains("ah-category-banner"))
+    .filter((section) => !section.classList.contains("ah-dropped-gear-summary"))
     .filter((section) => !section.classList.contains("crafted-market-intro"))
     .filter((section) => [...section.children].some((child) => child.tagName === "H2"))
     .filter((section) => !/^(Sources|Disclaimer)$/.test(sectionTitle(section)))
@@ -160,10 +165,10 @@ const indexContext = { window: {} };
 vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
-assert.equal(searchIndex.guideCount, 16);
-assert.equal(searchIndex.itemCount, 3513);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3287);
-assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 16);
+assert.equal(searchIndex.guideCount, 18);
+assert.equal(searchIndex.itemCount, 3860);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3634);
+assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 18);
 
 const counts = Object.fromEntries(
   manifest.guides.map((guide) => [
@@ -176,5 +181,7 @@ assert.equal(counts["blacksmithing-gear"], 401);
 assert.equal(counts["jewelcrafting-gems"], 418);
 assert.equal(counts["jewelcrafting-jewelry"], 142);
 assert.equal(counts["recipe-pattern-drops"], 90);
+assert.equal(counts["level-80-boe-epics"], 85);
+assert.equal(counts["sought-after-world-drops"], 262);
 
 console.log("AH manifest, hub cards, compact guide UX, redirects, and split/merged index counts are current.");

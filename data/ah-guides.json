@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "active_guide_count": 16,
+  "active_guide_count": 18,
   "groups": [
     {
       "id": "gathering",
@@ -76,6 +76,26 @@
         {
           "label": "Jewelry & Components",
           "guide_id": "jewelcrafting-jewelry"
+        }
+      ]
+    },
+    {
+      "id": "boe-gear-drops",
+      "type": "multi-guide",
+      "title": "BoE Gear Drops",
+      "description": "Tradeable dropped gear for level-80 gearing, twink brackets, leveling characters, and legacy collectors.",
+      "icon": "boe-gear-drops.svg",
+      "group": "drops",
+      "order": 30,
+      "badge": "Choose a guide",
+      "links": [
+        {
+          "label": "Level 80 BoE Epics",
+          "guide_id": "level-80-boe-epics"
+        },
+        {
+          "label": "Sought-After World Drops",
+          "guide_id": "sought-after-world-drops"
         }
       ]
     }
@@ -425,6 +445,84 @@
         {"id": "recipe-gear", "label": "Gear Patterns", "patterns": ["gear-plan drops", "gear-pattern drops"]},
         {"id": "recipe-utility", "label": "Utility Recipes", "patterns": ["Best utility recipe drops", "formula drops", "world-drop designs", "schematic drops"]},
         {"id": "recipe-consumables", "label": "Consumable & Misc. Recipes", "patterns": ["Best consumable / misc recipe drops", "consumable recipe drops", "Cooking recipe drops", "Inscription misc recipe"]}
+      ]
+    },
+    {
+      "id": "level-80-boe-epics",
+      "file": "level-80-boe-epics-ah-price-guide.html",
+      "title": "Level 80 BoE Epics",
+      "description": "High-value tradeable epic weapons, armor, jewelry, and accessories dropped in level-80 content.",
+      "icon": "boe-gear-drops.svg",
+      "group": "drops",
+      "order": 30,
+      "navigation": [
+        {
+          "id": "boe80-weapons",
+          "label": "Weapons",
+          "children": [
+            {"id": "boe80-weapons-one-hand", "label": "One-Handed", "patterns": ["^Level 80 one-handed weapons$"]},
+            {"id": "boe80-weapons-ranged", "label": "Ranged & Wands", "patterns": ["^Level 80 ranged weapons and wands$"]}
+          ]
+        },
+        {
+          "id": "boe80-armor",
+          "label": "Armor",
+          "children": [
+            {"id": "boe80-armor-plate", "label": "Plate", "patterns": ["^Level 80 plate armor$"]},
+            {"id": "boe80-armor-mail", "label": "Mail", "patterns": ["^Level 80 mail armor$"]},
+            {"id": "boe80-armor-leather", "label": "Leather", "patterns": ["^Level 80 leather armor$"]},
+            {"id": "boe80-armor-cloth", "label": "Cloth", "patterns": ["^Level 80 cloth armor$"]},
+            {"id": "boe80-armor-cloaks", "label": "Cloaks", "patterns": ["^Level 80 cloaks$"]}
+          ]
+        },
+        {
+          "id": "boe80-accessories",
+          "label": "Jewelry & Accessories",
+          "children": [
+            {"id": "boe80-accessories-neck", "label": "Necklaces", "patterns": ["^Level 80 necklaces$"]},
+            {"id": "boe80-accessories-rings", "label": "Rings", "patterns": ["^Level 80 rings$"]},
+            {"id": "boe80-accessories-trinkets", "label": "Trinkets", "patterns": ["^Level 80 trinkets$"]},
+            {"id": "boe80-accessories-offhands", "label": "Shields & Off-Hands", "patterns": ["^Level 80 shields and off-hands$"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sought-after-world-drops",
+      "file": "sought-after-world-drops-ah-price-guide.html",
+      "title": "Sought-After World Drops",
+      "description": "Pre-level-80 epic BoEs, twink-bracket rares, and fixed-stat Northrend leveling drops with real buyer use.",
+      "icon": "boe-gear-drops.svg",
+      "group": "drops",
+      "order": 40,
+      "navigation": [
+        {
+          "id": "world-classic",
+          "label": "Classic: Levels 1–60",
+          "children": [
+            {"id": "world-classic-weapons", "label": "Weapons", "patterns": ["^Classic weapons$"]},
+            {"id": "world-classic-armor", "label": "Armor", "patterns": ["^Classic armor$"]},
+            {"id": "world-classic-accessories", "label": "Jewelry & Accessories", "patterns": ["^Classic jewelry and accessories$"]}
+          ]
+        },
+        {
+          "id": "world-outland",
+          "label": "Outland: Levels 61–70",
+          "children": [
+            {"id": "world-outland-weapons", "label": "Weapons", "patterns": ["^Outland weapons$"]},
+            {"id": "world-outland-armor", "label": "Armor", "patterns": ["^Outland armor$"]},
+            {"id": "world-outland-accessories", "label": "Jewelry & Accessories", "patterns": ["^Outland jewelry and accessories$"]}
+          ]
+        },
+        {
+          "id": "world-northrend",
+          "label": "Northrend: Levels 71–79",
+          "children": [
+            {"id": "world-northrend-weapons", "label": "Weapons", "patterns": ["^Northrend 71–79 weapons$"]},
+            {"id": "world-northrend-armor", "label": "Armor", "patterns": ["^Northrend 71–79 armor$"]},
+            {"id": "world-northrend-accessories", "label": "Jewelry & Accessories", "patterns": ["^Northrend 71–79 jewelry and accessories$"]}
+          ]
+        }
       ]
     }
   ],

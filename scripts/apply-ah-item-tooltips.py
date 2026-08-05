@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 SEARCH_PATH = ROOT / "assets" / "ah-search.js"
 OUTPUT_PATH = ROOT / "assets" / "ah-item-ids.js"
+DROPPED_GEAR_PATH = ROOT / "data" / "ah-dropped-gear.json"
 ITEM_TEMPLATE_COMMIT = "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
 ITEM_TEMPLATE_URL = (
     "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/"
@@ -156,8 +157,27 @@ def build_candidates(sql: str) -> dict[str, list[tuple[int, int, int]]]:
     return candidates
 
 
-def choose_item_id(key: str, candidates: list[tuple[int, int, int]]) -> int:
-    override = MANUAL_OVERRIDES.get(key)
+def dropped_gear_overrides() -> dict[str, int]:
+    if not DROPPED_GEAR_PATH.is_file():
+        return {}
+    data = json.loads(DROPPED_GEAR_PATH.read_text(encoding="utf-8"))
+    overrides: dict[str, int] = {}
+    for item in data.get("catalog", {}).values():
+        key = normalize(str(item["name"]))
+        item_id = int(item["item_id"])
+        existing = overrides.get(key)
+        if existing is not None and existing != item_id:
+            raise ValueError(f"Dropped-gear catalog has ambiguous item name {item['name']!r}")
+        overrides[key] = item_id
+    return overrides
+
+
+def choose_item_id(
+    key: str,
+    candidates: list[tuple[int, int, int]],
+    overrides: dict[str, int],
+) -> int:
+    override = overrides.get(key)
     if override and any(item_id == override for item_id, _, _ in candidates):
         return override
 
@@ -176,6 +196,12 @@ def build_payload(index: dict, candidates: dict[str, list[tuple[int, int, int]]]
     unresolved: list[str] = []
     ambiguous = 0
     aliases = 0
+    overrides = dict(MANUAL_OVERRIDES)
+    for key, item_id in dropped_gear_overrides().items():
+        existing = overrides.get(key)
+        if existing is not None and existing != item_id:
+            raise ValueError(f"Dropped-gear item ID conflicts with manual override for {key!r}")
+        overrides[key] = item_id
 
     for key in indexed_names:
         lookup_key = NAME_ALIASES.get(key, key)
@@ -187,7 +213,7 @@ def build_payload(index: dict, candidates: dict[str, list[tuple[int, int, int]]]
             aliases += 1
         if len({item_id for item_id, _, _ in matches}) > 1:
             ambiguous += 1
-        resolved[key] = choose_item_id(lookup_key, matches)
+        resolved[key] = choose_item_id(lookup_key, matches, overrides)
 
     meta = {
         "version": 1,

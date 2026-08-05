@@ -13,11 +13,15 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 - `data/ah-price-baselines.json` - frozen non-circular material and posting baselines with confidence
 - `data/ah-profession-use-audit.json` - finished-item profession requirements and general-use exceptions
 - `data/ah-section-ordering.json` - price-first row policy and documented fixed-order sections
+- `data/ah-dropped-gear.json` - canonical catalog for the level-80 BoE epic and sought-after world-drop guides
+- `data/ah-dropped-gear-audit.json` - pinned AzerothCore inclusion, exclusion, and loot-source evidence
 - `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
 - `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
 - `scripts/apply-ah-price-baselines.py` - reconciles static rows to frozen baselines and shared crafted outputs
 - `scripts/apply-ah-profession-use-sections.py` - moves static restricted items into canonical sections
 - `scripts/apply-ah-section-price-order.py` - sorts eligible AH sections by target buyout, highest first
+- `scripts/audit-ah-dropped-gear.py` - rebuilds and verifies the pinned dropped-gear scope
+- `scripts/render-ah-dropped-gear.py` - renders both dropped-gear guides from the canonical catalog
 - `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
 - `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
 - `README.md` - maintenance notes
@@ -65,6 +69,20 @@ python scripts/build-ah-search-index.py --check
 ```
 
 Search results link to the exact item row. Every AH guide therefore loads `assets/ah-search.js`, which handles the row highlight after navigation.
+
+## Update Dropped-Gear Guides
+
+The two dropped-gear guides use a pinned AzerothCore WotLK database snapshot. The level-80 guide contains audited epic BoE equipment that requires level 80. The world-drop guide contains pre-80 epic BoEs plus fixed-stat rare BoEs at recognized bracket caps and levels 71–79. Random-affix items, crafted gear, vendor gear, and items without an audited loot source are excluded.
+
+Prices in this catalog are deliberately marked as provisional documented fallbacks. Active AH listings may show competition, but they never set or raise these bands. Rebuild with the pinned SQL inputs, then render and verify:
+
+```powershell
+python scripts/audit-ah-dropped-gear.py --sql-dir <pinned-sql-directory>
+python scripts/render-ah-dropped-gear.py
+python scripts/audit-ah-dropped-gear.py --check
+python scripts/render-ah-dropped-gear.py --check
+python tests/ah-dropped-gear.test.py
+```
 
 ## Maintain AH Section Order
 

@@ -25,7 +25,7 @@ subprocess.run(
 )
 
 paths = active_guide_paths(guides_dir=GUIDES_DIR)
-assert len(paths) == 16
+assert len(paths) == 18
 
 category_count = 0
 for path in paths:

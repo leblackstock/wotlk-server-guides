@@ -18,8 +18,8 @@ GUIDES_DIR = ROOT / "guides"
 HUB_PATH = ROOT / "auction-house.html"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
-ASSET_VERSION = "20260804-ah-guide-ux-v1"
-HUB_STYLE_VERSION = "20260804-ah-hub-route-cards-v1"
+ASSET_VERSION = "20260804-ah-dropped-gear-v1"
+HUB_STYLE_VERSION = "20260804-ah-dropped-gear-hub-v1"
 UPDATED_DATE = "2026-08-04"
 
 UX_BLOCK = re.compile(

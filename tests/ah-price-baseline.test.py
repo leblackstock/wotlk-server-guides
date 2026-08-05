@@ -16,6 +16,7 @@ BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
 CATALOG_PATH = ROOT / "data" / "ah-crafted-sections.json"
 AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
+DROPPED_GEAR_PATH = ROOT / "data" / "ah-dropped-gear.json"
 
 
 def fail(message: str) -> None:
@@ -37,13 +38,15 @@ def main() -> int:
     config = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
     audit = json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
     vendor = json.loads(VENDOR_PATH.read_text(encoding="utf-8"))
+    dropped_gear = json.loads(DROPPED_GEAR_PATH.read_text(encoding="utf-8"))
 
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
-    if len(baseline.get("items", {})) != 720:
-        fail("Frozen baseline must contain 645 valid pre-scan references plus 75 documented profession-input fallbacks")
+    dropped_count = len(dropped_gear["catalog"])
+    if len(baseline.get("items", {})) != 720 + dropped_count:
+        fail("Frozen baseline must contain the prior 720 references plus every audited dropped-gear fallback")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 644, "medium": 1, "fallback": 75}):
+    if confidence != Counter({"low": 644, "medium": 1, "fallback": 75 + dropped_count}):
         fail(f"Unexpected initial baseline confidence distribution: {confidence}")
     for item_id, record in baseline["items"].items():
         if record["source_type"] not in baseline["allowed_evidence"]:
