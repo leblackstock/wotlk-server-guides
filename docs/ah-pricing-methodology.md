@@ -1,5 +1,7 @@
 # Non-Circular AH Pricing Methodology
 
+**Short name:** Evidence Pricing
+
 The guide must not learn its prices from auctions posted from the guide. Active
 Auction House listings describe competition and availability; they do not prove
 value, demand, or a completed sale.
@@ -125,6 +127,15 @@ For crafted items, exact same-band reagent cost and minimum guaranteed output
 come first. Demand margins are modest and deterministic. Current competitors
 may tell the player not to craft or not to post, but they do not rewrite the
 cost model.
+
+An explicitly reviewed **Evidence Pricing** market-value override may be used
+when low-confidence input baselines make the calculated replacement cost a poor
+sale-value estimate. The override must preserve the reagent floor as a separate
+craftability diagnostic, use fixed Hellscream cohort anchors, use external asks
+for within-cohort rank only, remain `fallback` confidence, and warn the player
+not to craft from purchased inputs when the proposed sale band is below that
+diagnostic floor. External gold values and active Hellscream listings still may
+not be copied into the price.
 
 ## Display Currency Rule
 

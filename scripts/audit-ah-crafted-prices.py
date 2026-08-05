@@ -697,6 +697,9 @@ def recommended_prices(
                     )
                 prices[key][band] = int(matching_output)
                 continue
+            if item.get("price_strategy") == "evidence-pricing-market-value":
+                prices[key][band] = int(item[f"{band}_copper"])
+                continue
             current_price = (
                 0
                 if item.get("profession")

@@ -11,7 +11,17 @@ async function noOverflow(page, label) {
 }
 
 async function verifyAuditedCraftedGuide(page, options) {
-  const { filename, rows, sections, key, target, recipeSpell, notePattern, label } = options;
+  const {
+    filename,
+    rows,
+    sections,
+    key,
+    target,
+    recipeSpell,
+    notePattern,
+    label,
+    footerDate = "2026-08-04"
+  } = options;
   await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
   assert.equal(await page.locator(".crafted-market-section").count(), sections);
@@ -33,7 +43,7 @@ async function verifyAuditedCraftedGuide(page, options) {
   assert.equal(await recipeLink.getAttribute("data-wowhead"), `spell=${recipeSpell}&domain=wotlk`);
   assert.equal(await recipeLink.getAttribute("target"), "_blank");
   assert.equal(await recipeLink.getAttribute("rel"), "noopener");
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-04/);
+  assert.match(await page.locator("footer").textContent(), new RegExp(`Updated ${footerDate}`));
   await noOverflow(page, label);
 }
 
@@ -391,6 +401,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "120g",
       recipeSpell: 66659,
       notePattern: /Uncut red epic gem/,
+      footerDate: "2026-08-05",
       label: "Desktop Alchemy guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -598,6 +609,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "120g",
       recipeSpell: 66659,
       notePattern: /Uncut red epic gem/,
+      footerDate: "2026-08-05",
       label: "Mobile Alchemy guide"
     });
     await verifyAuditedCraftedGuide(mobile, {

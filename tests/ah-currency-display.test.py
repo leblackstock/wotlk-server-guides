@@ -66,6 +66,7 @@ for path in guide_paths:
         "2026-08-05"
         if path.name
         in {
+            "alchemy-materials-ah-price-guide.html",
             "level-80-boe-epics-ah-price-guide.html",
             "sought-after-world-drops-ah-price-guide.html",
         }

@@ -474,13 +474,8 @@ def load_dropped_scroll_config() -> dict:
 def render_price_pair(
     kind: str,
     buyout_copper: int,
-    bid_copper: int | None = None,
 ) -> str:
-    bid = format_money(
-        target_bid(buyout_copper)
-        if bid_copper is None
-        else int(bid_copper)
-    )
+    bid = format_money(target_bid(buyout_copper))
     buyout = format_money(buyout_copper)
     return (
         f'<div class="pricepair {kind}">\n'
@@ -574,11 +569,11 @@ def render_crafted_row(
         f'<td data-column="item" data-label="Item"><strong class="q-{quality}">{name}</strong>'
         f'<div class="mini">{detail}</div></td>'
         f'<td data-column="target" data-label="Target Price">'
-        f'{render_price_pair("target", int(item["target_copper"]), item.get("target_bid_copper"))}</td>'
+        f'{render_price_pair("target", int(item["target_copper"]))}</td>'
         f'<td data-column="quick" data-label="Quick Price">'
-        f'{render_price_pair("quick", int(item["quick_copper"]), item.get("quick_bid_copper"))}</td>'
+        f'{render_price_pair("quick", int(item["quick_copper"]))}</td>'
         f'<td data-column="high" data-label="High / Scarce">'
-        f'{render_price_pair("high", int(item["high_copper"]), item.get("high_bid_copper"))}</td>'
+        f'{render_price_pair("high", int(item["high_copper"]))}</td>'
         f'<td data-column="stack" data-label="Stack Size">{stack}</td>'
         f'<td data-column="demand" data-label="Demand">'
         f'<span class="demand {demand_class}">{demand}</span></td>'

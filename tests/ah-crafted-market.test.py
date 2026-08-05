@@ -157,7 +157,8 @@ def main() -> int:
             fail(f"{key}: audited price floors are missing")
         for band in ("quick", "target", "high"):
             if (
-                item.get("price_strategy") != "shared-market-reference"
+                item.get("price_strategy")
+                not in {"shared-market-reference", "evidence-pricing-market-value"}
                 and int(item[f"{band}_copper"]) < int(floors[band])
             ):
                 fail(f"{key}: {band} price falls below its audited craft floor")
@@ -168,6 +169,9 @@ def main() -> int:
                     fail(f"{key}: reversible Mining conversion must explain shared pricing")
             elif "below" not in note or "skip" not in note:
                 fail(f"{key}: shared market pricing must explain the unprofitable craft route")
+        elif item.get("price_strategy") == "evidence-pricing-market-value":
+            if not key.startswith("alch-"):
+                fail(f"{key}: Evidence Pricing override is outside the reviewed Alchemy scope")
 
     used_keys: list[str] = []
     sources: dict[str, str] = {}
@@ -864,6 +868,9 @@ def main() -> int:
         if expected_fragment not in merged_item(config, key)["row_note"]:
             fail(f"{key}: expected item-specific use or market context is missing")
 
+    crafted_footer_dates = {
+        "alchemy-materials-ah-price-guide.html": "2026-08-05",
+    }
     for filename in (
         "inscription-materials-ah-price-guide.html",
         "engineering-materials-ah-price-guide.html",
@@ -894,7 +901,8 @@ def main() -> int:
         "fishing-cooking-materials-ah-price-guide.html",
         "mining-smithing-ah-price-guide.html",
     ):
-        if "Updated 2026-08-04" not in sources[filename]:
+        expected_date = crafted_footer_dates.get(filename, "2026-08-04")
+        if f"Updated {expected_date}" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
         if not re.search(r"exact 3\.3\.5 (?:recipe|reagent)", sources[filename]):
             fail(f"{filename}: recipe-level pricing method is not explained")
