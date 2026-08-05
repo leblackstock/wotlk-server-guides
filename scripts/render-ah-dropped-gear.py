@@ -29,7 +29,7 @@ PRICING_STATUS = re.compile(
     r'<div class="rarity-audit ah-info-panel ah-info-panel--rare"><strong>Pricing status:</strong>.*?</div>'
 )
 STARTER_BASELINE_NOTE = """<!-- AH_BASELINE_NOTE_START -->
-<aside class="note ah-baseline-note"><strong>* Pricing baseline:</strong> These are reviewed Hellscream low-pop starter estimates, not live-AH medians or guaranteed sale values. Active listings show competition only and never set or raise guide prices. Cross-server listings influence relative item rank only after realm/faction gold-scale normalization; fixed Hellscream anchors set the gold bands, and no external gold value is copied. Post one at a time and let qualifying Hellscream completed sales replace the estimates.</aside>
+<aside class="note ah-baseline-note"><strong>* BoE pricing note:</strong> Target is the recommended opening listing, Quick is for a faster sale, and High / Scarce is for patient one-at-a-time posting when supply is genuinely thin. These are reviewed starting values for Hellscream's low-pop market—not guaranteed sale prices. Most rows are modeled estimates; only a few have local completed-sale evidence. Active listings show competition only and never set or raise guide prices. Do not raise a price merely because the AH is empty or one competing auction is expensive. Record completed sales and revise from actual Hellscream results.</aside>
 <!-- AH_BASELINE_NOTE_END -->"""
 FOOTER_DATE = re.compile(r"(Updated )\d{4}-\d{2}-\d{2}(</footer>)")
 
@@ -109,45 +109,6 @@ def render_row(key: str, item: dict, baseline: dict) -> str:
     )
 
 
-def render_snapshot(guide_id: str, items: list[dict], baseline: dict) -> str:
-    highest = max(items, key=lambda item: int(baseline[str(item["item_id"])]["target"]))
-    highest_price = format_money(int(baseline[str(highest["item_id"])]["target"]))
-    sales_backed = sum(
-        baseline[str(item["item_id"])]["source_type"] == "realized-sales-history"
-        for item in items
-    )
-    if guide_id == "level-80-boe-epics":
-        epic_264 = sum(item["item_level"] >= 264 for item in items)
-        cards = (
-            ("Items tracked", str(len(items)), "Every row is audited as epic, BoE, required level 80, and drop-sourced."),
-            ("Top item level", f"{max(item['item_level'] for item in items)}", f"{epic_264} audited iLvl 264 entries are included."),
-            ("Highest target", highest_price, f"{highest['name']} currently has the highest target band."),
-        )
-    else:
-        qualities = Counter(item["quality"] for item in items)
-        northrend = sum(71 <= item["required_level"] <= 79 for item in items)
-        cards = (
-            ("Items tracked", str(len(items)), "Epic drops plus fixed-stat rare drops at twink caps and levels 71–79."),
-            ("Epic drops", str(qualities["epic"]), "Legacy epic BoEs remain a patient collector and gearing market."),
-            ("Northrend 71–79", str(northrend), "Fresh-80 bridge gear is separated from the older bracket markets."),
-        )
-    rendered_cards = "\n".join(
-        f'<div class="ah-summary-card"><h3>{html.escape(title)}</h3><div class="big">{html.escape(value)}</div><p>{html.escape(note)}</p></div>'
-        for title, value, note in cards
-    )
-    return (
-        '<section class="common ah-dropped-gear-summary">'
-        + category_heading("Guide snapshot")
-        + f'<div class="ah-summary-grid">{rendered_cards}</div>'
-        '<aside class="note ah-dropped-gear-fallback-note"><strong>* Starter-price method:</strong> '
-        f'{len(items) - sales_backed} rows use reviewed Hellscream low-pop starter estimates. '
-        f'{sales_backed} row{" uses" if sales_backed == 1 else "s use"} low-confidence completed-sale evidence. '
-        'External realms influence relative item rank after gold-scale normalization, but their gold prices are not copied. '
-        'Post one at a time, record completed sales, and let Hellscream replace these estimates.</aside>'
-        "</section>"
-    )
-
-
 def render_sections(guide_id: str, guide: dict, catalog: dict, baseline: dict) -> str:
     guide_items = [item for item in catalog.values() if item["guide_id"] == guide_id]
     if not guide_items:
@@ -169,7 +130,7 @@ def render_sections(guide_id: str, guide: dict, catalog: dict, baseline: dict) -
         )
         by_section[section["id"]] = section_items
 
-    sections = [render_snapshot(guide_id, guide_items, baseline)]
+    sections = []
     for section in guide["sections"]:
         rows = "\n".join(
             render_row(key, item, baseline)
@@ -200,12 +161,11 @@ def transform(source: str, guide_id: str, guide: dict, catalog: dict, baseline: 
         raise ValueError(f"{guide['file']}: missing pricing-baseline note markers")
     if not PRICING_STATUS.search(source):
         raise ValueError(f"{guide['file']}: missing pricing-status panel")
-    comparison_group = "item-level" if guide_id == "level-80-boe-epics" else "era-and-rarity"
     pricing_status = (
         '<div class="rarity-audit ah-info-panel ah-info-panel--rare">'
-        '<strong>Pricing status:</strong> Bands are reviewed Hellscream low-pop starter estimates '
-        f'ranked within {comparison_group} groups, with direct completed-sale overrides where '
-        'available. They are starting points for price discovery, so post one copy and record the result.</div>'
+        '<strong>Pricing status:</strong> Use Target for the first listing, Quick when you want a '
+        'faster sale, and High / Scarce only when the item is genuinely scarce and you are willing '
+        'to wait. Post one copy at a time and record whether it sells.</div>'
     )
     source = PRICING_STATUS.sub(pricing_status, source, count=1)
     source = BASELINE_NOTE.sub(STARTER_BASELINE_NOTE, source, count=1)

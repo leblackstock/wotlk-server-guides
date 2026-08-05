@@ -139,7 +139,6 @@ for (const guide of manifest.guides) {
   const uncovered = [...runtimeDocument.querySelectorAll("section.common")]
     .filter((section) => !section.classList.contains("ah-guide-search-section"))
     .filter((section) => !section.classList.contains("ah-category-banner"))
-    .filter((section) => !section.classList.contains("ah-dropped-gear-summary"))
     .filter((section) => !section.classList.contains("crafted-market-intro"))
     .filter((section) => [...section.children].some((child) => child.tagName === "H2"))
     .filter((section) => !/^(Sources|Disclaimer)$/.test(sectionTitle(section)))

@@ -104,11 +104,13 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     "item", "target", "quick", "high", "notes", "demand", "market", "source",
   ]);
   assert.equal(await wodinRow.locator(".market-tag").count(), 0);
-  const boeFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
-  assert.equal(await boeFallbackNote.count(), 1);
-  assert.match(await boeFallbackNote.textContent(), /\* Starter-price method:/);
-  assert.match(await boeFallbackNote.textContent(), /84 rows use reviewed Hellscream low-pop starter estimates/);
-  assert.match(await boeFallbackNote.textContent(), /1 row uses low-confidence completed-sale evidence/);
+  assert.equal(await page.locator(".ah-dropped-gear-summary").count(), 0);
+  assert.equal(await page.getByText("Guide snapshot", { exact: true }).count(), 0);
+  const boePricingNote = page.locator(".ah-baseline-note");
+  assert.equal(await boePricingNote.count(), 1);
+  assert.match(await boePricingNote.textContent(), /\* BoE pricing note:/);
+  assert.match(await boePricingNote.textContent(), /Target is the recommended opening listing/);
+  assert.match(await boePricingNote.textContent(), /Do not raise a price merely because the AH is empty/);
   const zomsRow = page.locator('[data-dropped-gear-key="zoms-crackling-bulwark"]');
   assert.equal(await zomsRow.locator('[data-column="target"] .buyout').textContent(), "350g");
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /ICC-era iLvl 264 necklace/);
@@ -145,11 +147,13 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     "item", "target", "quick", "high", "notes", "demand", "market", "source",
   ]);
   assert.equal(await shadowfangRow.locator(".market-tag").count(), 0);
-  const worldDropFallbackNote = page.locator(".ah-dropped-gear-fallback-note");
-  assert.equal(await worldDropFallbackNote.count(), 1);
-  assert.match(await worldDropFallbackNote.textContent(), /\* Starter-price method:/);
-  assert.match(await worldDropFallbackNote.textContent(), /261 rows use reviewed Hellscream low-pop starter estimates/);
-  assert.match(await worldDropFallbackNote.textContent(), /1 row uses low-confidence completed-sale evidence/);
+  assert.equal(await page.locator(".ah-dropped-gear-summary").count(), 0);
+  assert.equal(await page.getByText("Guide snapshot", { exact: true }).count(), 0);
+  const worldDropPricingNote = page.locator(".ah-baseline-note");
+  assert.equal(await worldDropPricingNote.count(), 1);
+  assert.match(await worldDropPricingNote.textContent(), /\* BoE pricing note:/);
+  assert.match(await worldDropPricingNote.textContent(), /Most rows are modeled estimates/);
+  assert.match(await worldDropPricingNote.textContent(), /Record completed sales and revise from actual Hellscream results/);
   const sandalsRow = page.locator('[data-dropped-gear-key="sandals-of-broken-dreams"]');
   assert.equal(await sandalsRow.locator('[data-column="target"] .buyout').textContent(), "9g 57s");
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Fixed-stat level 19 one-handed weapon/);

@@ -190,11 +190,13 @@ def main() -> int:
         )
         assert source.count(expected_columns) == len(guide["sections"])
         assert "Provisional fallback" not in source
-        assert source.count('class="note ah-dropped-gear-fallback-note"') == 1
-        assert source.count("<strong>* Starter-price method:</strong>") == 1
-        assert "low-confidence completed-sale evidence" in source
-        assert "External realms influence relative item rank after gold-scale normalization" in source
-        assert "reviewed Hellscream low-pop starter estimates" in source
+        assert "Guide snapshot" not in source
+        assert 'class="common ah-dropped-gear-summary"' not in source
+        assert 'class="note ah-dropped-gear-fallback-note"' not in source
+        assert source.count("<strong>* BoE pricing note:</strong>") == 1
+        assert "Target is the recommended opening listing" in source
+        assert "Most rows are modeled estimates" in source
+        assert "Do not raise a price merely because the AH is empty" in source
         assert "Updated 2026-08-05" in source
         for key, item in entries.items():
             if item["guide_id"] != guide_id:

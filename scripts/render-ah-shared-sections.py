@@ -32,7 +32,7 @@ DROPPED_GEAR_GUIDES = {
     "sought-after-world-drops-ah-price-guide.html",
 }
 DROPPED_GEAR_BASELINE_NOTE = """<!-- AH_BASELINE_NOTE_START -->
-<aside class="note ah-baseline-note"><strong>* Pricing baseline:</strong> These are reviewed Hellscream low-pop starter estimates, not live-AH medians or guaranteed sale values. Active listings show competition only and never set or raise guide prices. Cross-server listings influence relative item rank only after realm/faction gold-scale normalization; fixed Hellscream anchors set the gold bands, and no external gold value is copied. Post one at a time and let qualifying Hellscream completed sales replace the estimates.</aside>
+<aside class="note ah-baseline-note"><strong>* BoE pricing note:</strong> Target is the recommended opening listing, Quick is for a faster sale, and High / Scarce is for patient one-at-a-time posting when supply is genuinely thin. These are reviewed starting values for Hellscream's low-pop market—not guaranteed sale prices. Most rows are modeled estimates; only a few have local completed-sale evidence. Active listings show competition only and never set or raise guide prices. Do not raise a price merely because the AH is empty or one competing auction is expensive. Record completed sales and revise from actual Hellscream results.</aside>
 <!-- AH_BASELINE_NOTE_END -->"""
 SECTION_ORDERING_POLICY = load_policy()
 
