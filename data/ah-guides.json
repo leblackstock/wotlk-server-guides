@@ -21,6 +21,65 @@
       "order": 30
     }
   ],
+  "hub_cards": [
+    {
+      "id": "skinning-materials-link",
+      "type": "category-link",
+      "title": "Skinning & Leather Materials",
+      "description": "Jump directly to hides, leather, scraps, scales, and material conversions inside the combined Skinning & Leatherworking guide.",
+      "icon": "skinning-leatherworking.svg",
+      "group": "gathering",
+      "order": 40,
+      "badge": "Quick link",
+      "links": [
+        {
+          "label": "Browse materials",
+          "guide_id": "skinning-leatherworking",
+          "category": "leatherworking-materials"
+        }
+      ]
+    },
+    {
+      "id": "blacksmithing",
+      "type": "multi-guide",
+      "title": "Blacksmithing",
+      "description": "Choose Blacksmithing materials and enhancements or finished armor and weapons.",
+      "icon": "blacksmithing.svg",
+      "group": "professions",
+      "order": 10,
+      "badge": "Choose a guide",
+      "links": [
+        {
+          "label": "Materials & Enhancements",
+          "guide_id": "blacksmithing-materials"
+        },
+        {
+          "label": "Armor & Weapons",
+          "guide_id": "blacksmithing-gear"
+        }
+      ]
+    },
+    {
+      "id": "jewelcrafting",
+      "type": "multi-guide",
+      "title": "Jewelcrafting",
+      "description": "Choose gem inputs and cuts or finished jewelry and components.",
+      "icon": "jewelcrafting.svg",
+      "group": "professions",
+      "order": 40,
+      "badge": "Choose a guide",
+      "links": [
+        {
+          "label": "Gems & Cuts",
+          "guide_id": "jewelcrafting-gems"
+        },
+        {
+          "label": "Jewelry & Components",
+          "guide_id": "jewelcrafting-jewelry"
+        }
+      ]
+    }
+  ],
   "guides": [
     {
       "id": "mining-metals",

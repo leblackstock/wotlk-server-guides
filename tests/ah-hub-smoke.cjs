@@ -146,7 +146,30 @@ async function verifyGuideNavigation(page) {
 
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
-    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should list all sixteen guides");
+    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 15, "Auction House hub should present sixteen guides across fifteen cards");
+    assert.equal(await desktop.locator(".ah-hub-route-card").count(), 3);
+    assert.equal(await desktop.locator(".ah-hub-link-card").count(), 1);
+    const blacksmithingCard = desktop.locator('[data-ah-hub-card="blacksmithing"]');
+    assert.equal(await blacksmithingCard.evaluate((node) => node.tagName), "ARTICLE");
+    assert.deepEqual(
+      (await blacksmithingCard.locator(".ah-hub-card-chip").allTextContents()).map((label) => label.replace("→", "").trim()),
+      ["Materials & Enhancements", "Armor & Weapons"],
+    );
+    const jewelcraftingCard = desktop.locator('[data-ah-hub-card="jewelcrafting"]');
+    assert.deepEqual(
+      (await jewelcraftingCard.locator(".ah-hub-card-chip").allTextContents()).map((label) => label.replace("→", "").trim()),
+      ["Gems & Cuts", "Jewelry & Components"],
+    );
+    const skinningLinkCard = desktop.locator('[data-ah-hub-card="skinning-materials-link"]');
+    const skinningMaterialsChip = skinningLinkCard.locator(".ah-hub-card-chip");
+    assert.equal(await skinningMaterialsChip.getAttribute("href"), "./guides/skinning-leatherworking-materials-ah-price-guide.html#ah-category=leatherworking-materials");
+    await skinningMaterialsChip.click();
+    await desktop.waitForURL(/skinning-leatherworking-materials-ah-price-guide\.html#ah-category=leatherworking-materials$/);
+    await desktop.waitForSelector("#leatherworking-materials");
+    const skinningCategoryBox = await desktop.locator("#leatherworking-materials").boundingBox();
+    assert.ok(skinningCategoryBox && skinningCategoryBox.y >= 0 && skinningCategoryBox.y < 160, "Skinning link card must scroll to its materials category");
+    await desktop.goBack({ waitUntil: "networkidle" });
+    await desktop.waitForSelector("#ah-search-input");
     assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 5);
     const expectedUniqueItems = await desktop.evaluate(() => window.AHSearchCore.uniqueItemCount(window.AH_SEARCH_INDEX.items));
     assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 16 guides`);
@@ -435,7 +458,8 @@ async function verifyGuideNavigation(page) {
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
-    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
+    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 15);
+    assert.equal(await mobile.locator(".ah-hub-card-chip").count(), 5);
     await mobile.locator("#ah-search-input").fill("saronite");
     assert.equal(await mobile.locator(".ah-search-result").count(), 12);
     const mobileSaroniteBar = mobile.locator(".ah-search-result", {

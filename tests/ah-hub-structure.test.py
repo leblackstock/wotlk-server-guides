@@ -18,13 +18,23 @@ class PageParser(HTMLParser):
         super().__init__()
         self.ids: list[str] = []
         self.links: list[tuple[str, set[str]]] = []
+        self.guide_card_count = 0
+        self.route_card_count = 0
+        self.link_card_count = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = {key: value or "" for key, value in attrs}
         if values.get("id"):
             self.ids.append(values["id"])
+        classes = set(values.get("class", "").split())
+        if "guide-card" in classes:
+            self.guide_card_count += 1
+        if "ah-hub-route-card" in classes:
+            self.route_card_count += 1
+        if "ah-hub-link-card" in classes:
+            self.link_card_count += 1
         if tag == "a" and values.get("href"):
-            self.links.append((values["href"], set(values.get("class", "").split())))
+            self.links.append((values["href"], classes))
 
 
 def parse(path: Path) -> PageParser:
@@ -110,12 +120,26 @@ def main() -> int:
     ah_cards = [
         href
         for href, classes in ah_hub.links
-        if "guide-card" in classes and href.endswith("ah-price-guide.html")
+        if ("guide-card" in classes or "ah-hub-card-chip" in classes)
+        and urlparse(href).path.endswith("ah-price-guide.html")
     ]
-    if len(ah_cards) != 16:
-        errors.append(f"auction-house.html must contain 16 AH guide cards; found {len(ah_cards)}")
-    if len(ah_cards) != len(set(ah_cards)):
-        errors.append("auction-house.html contains duplicate AH guide links")
+    ah_card_paths = [urlparse(href).path for href in ah_cards]
+    if ah_hub.guide_card_count != 15:
+        errors.append(f"auction-house.html must contain 15 visible cards; found {ah_hub.guide_card_count}")
+    if ah_hub.route_card_count != 3 or ah_hub.link_card_count != 1:
+        errors.append("auction-house.html must contain two grouped cards and one category link card")
+    if len(ah_cards) != 17 or len(set(ah_card_paths)) != 16:
+        errors.append(
+            "auction-house.html must expose 16 active guide routes plus the Skinning category link"
+        )
+    skinning_path = "./guides/skinning-leatherworking-materials-ah-price-guide.html"
+    if ah_card_paths.count(skinning_path) != 2:
+        errors.append("Skinning & Leatherworking must have one full-guide route and one materials shortcut")
+    if (
+        skinning_path + "#ah-category=leatherworking-materials"
+        not in ah_cards
+    ):
+        errors.append("Gathering must link directly to the Skinning materials category")
 
     for page, parsed in ((MAIN_HUB, main_hub), (AH_HUB, ah_hub)):
         for href, _ in parsed.links:
@@ -129,7 +153,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print("Hub validation passed: matching AH and Addon searches, quick chips, and 16-guide AH browser.")
+    print("Hub validation passed: 16 active guides across 15 cards, including grouped profession cards and the Skinning shortcut.")
     return 0
 
 

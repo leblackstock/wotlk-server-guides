@@ -7,7 +7,7 @@
   <link rel="icon" href="./assets/brand/hellscream-server-logo.ico" sizes="any">
   <link rel="icon" type="image/png" href="./assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="./assets/brand/hellscream-server-logo-180.png">
-  <link rel="stylesheet" href="./assets/style.css?v=20260804-ah-guide-ux-v1">
+  <link rel="stylesheet" href="./assets/style.css?v=20260804-ah-hub-route-cards-v1">
   <link rel="stylesheet" href="./assets/ah-guide-icons.css?v=20260804-ah-guide-ux-v1">
 <script src="./assets/ah-search-index.js?v=20260804-ah-guide-ux-v1" defer></script>
 <script src="./assets/ah-search.js?v=20260804-ah-guide-ux-v1" defer></script>
@@ -88,25 +88,33 @@
     <section class="common ah-guide-group" data-ah-guide-group="gathering">
       <h2>Gathering &amp; Shared Materials</h2>
       <p class="small ah-guide-group-description">Raw materials, conversions, and shared profession inputs.</p>
-      <div class="guide-grid">
-        <a class="guide-card has-guide-icon" href="./guides/mining-smithing-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/mining-smithing.svg" width="56" height="56" alt="">
+      <div class="guide-grid compact-grid">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="mining-metals" href="./guides/mining-smithing-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/mining-smithing.svg" width="56" height="56" alt="">
           <span class="badge gold">Materials</span>
           <span class="guide-title">Mining, Ore, Bars &amp; Stone</span>
           <span class="guide-note">Ore, smelted bars, alloys, stone, grinding stones, and closely related metal-market references.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/herbalism-herbs-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/herbalism.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="herbalism" href="./guides/herbalism-herbs-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/herbalism.svg" width="56" height="56" alt="">
           <span class="badge gold">Materials</span>
           <span class="guide-title">Herbalism &amp; Herbs</span>
           <span class="guide-note">Northrend, Outland, and Classic herbs with Frost Lotus, milling, potion, and flask demand context.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/cross-profession-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/cross-profession.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="shared-materials" href="./guides/cross-profession-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/cross-profession.svg" width="56" height="56" alt="">
           <span class="badge gold">Materials</span>
           <span class="guide-title">Shared Crafting Materials</span>
           <span class="guide-note">Orbs, Eternals, Primals, pearls, elemental materials, and bottlenecks shared by several professions.</span>
           <span class="guide-action">Open guide →</span>
         </a>
+        <article class="guide-card has-guide-icon ah-hub-route-card ah-hub-link-card" data-ah-hub-card="skinning-materials-link"><img class="guide-card-icon" src="./assets/ah-guide-icons/skinning-leatherworking.svg" width="56" height="56" alt="">
+          <span class="badge gold">Quick link</span>
+          <span class="guide-title">Skinning &amp; Leather Materials</span>
+          <span class="guide-note">Jump directly to hides, leather, scraps, scales, and material conversions inside the combined Skinning &amp; Leatherworking guide.</span>
+          <nav class="ah-hub-card-links" aria-label="Skinning &amp; Leather Materials destinations">
+            <a class="ah-hub-card-chip" data-ah-guide-id="skinning-leatherworking" href="./guides/skinning-leatherworking-materials-ah-price-guide.html#ah-category=leatherworking-materials">Browse materials <span aria-hidden="true">→</span></a>
+          </nav>
+        </article>
       </div>
     </section>
 
@@ -114,67 +122,61 @@
       <h2>Profession Markets</h2>
       <p class="small ah-guide-group-description">Crafting inputs, finished goods, and profession-specific buyer markets.</p>
       <div class="guide-grid">
-        <a class="guide-card has-guide-icon" href="./guides/blacksmithing-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/blacksmithing.svg" width="56" height="56" alt="">
-          <span class="badge purple">Profession</span>
-          <span class="guide-title">Blacksmithing Materials &amp; Enhancements</span>
-          <span class="guide-note">Blacksmithing inputs, rod blanks, keys, stones, enhancements, intermediates, and craft bottlenecks.</span>
-          <span class="guide-action">Open guide →</span>
-        </a>
-        <a class="guide-card has-guide-icon" href="./guides/blacksmithing-gear-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/blacksmithing.svg" width="56" height="56" alt="">
-          <span class="badge purple">Profession</span>
-          <span class="guide-title">Blacksmithing Armor &amp; Weapons</span>
-          <span class="guide-note">Tradeable Blacksmithing armor, weapons, shields, raid crafts, and leveling equipment across every expansion.</span>
-          <span class="guide-action">Open guide →</span>
-        </a>
-        <a class="guide-card has-guide-icon" href="./guides/engineering-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/engineering.svg" width="56" height="56" alt="">
+        <article class="guide-card has-guide-icon ah-hub-route-card" data-ah-hub-card="blacksmithing"><img class="guide-card-icon" src="./assets/ah-guide-icons/blacksmithing.svg" width="56" height="56" alt="">
+          <span class="badge purple">Choose a guide</span>
+          <span class="guide-title">Blacksmithing</span>
+          <span class="guide-note">Choose Blacksmithing materials and enhancements or finished armor and weapons.</span>
+          <nav class="ah-hub-card-links" aria-label="Blacksmithing destinations">
+            <a class="ah-hub-card-chip" data-ah-guide-id="blacksmithing-materials" href="./guides/blacksmithing-materials-ah-price-guide.html">Materials &amp; Enhancements <span aria-hidden="true">→</span></a>
+            <a class="ah-hub-card-chip" data-ah-guide-id="blacksmithing-gear" href="./guides/blacksmithing-gear-ah-price-guide.html">Armor &amp; Weapons <span aria-hidden="true">→</span></a>
+          </nav>
+        </article>
+        <a class="guide-card has-guide-icon" data-ah-guide-card="engineering" href="./guides/engineering-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/engineering.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Engineering</span>
           <span class="guide-note">Engineering inputs, parts, explosives, ammo, devices, mount components, tools, and utility markets.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/jewelcrafting-gems-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/jewelcrafting.svg" width="56" height="56" alt="">
-          <span class="badge purple">Profession</span>
-          <span class="guide-title">Jewelcrafting Gems &amp; Cuts</span>
-          <span class="guide-note">Uncut gems, prospecting inputs, meta gems, and tradeable cuts organized by expansion, quality, and color.</span>
-          <span class="guide-action">Open guide →</span>
-        </a>
-        <a class="guide-card has-guide-icon" href="./guides/jewelcrafting-jewelry-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/jewelcrafting.svg" width="56" height="56" alt="">
-          <span class="badge purple">Profession</span>
-          <span class="guide-title">Jewelcrafting Jewelry &amp; Components</span>
-          <span class="guide-note">Tradeable jewelry, equipment, components, settings, and special Jewelcrafting outputs across every expansion.</span>
-          <span class="guide-action">Open guide →</span>
-        </a>
-        <a class="guide-card has-guide-icon" href="./guides/enchanting-mats-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/enchanting.svg" width="56" height="56" alt="">
+        <article class="guide-card has-guide-icon ah-hub-route-card" data-ah-hub-card="jewelcrafting"><img class="guide-card-icon" src="./assets/ah-guide-icons/jewelcrafting.svg" width="56" height="56" alt="">
+          <span class="badge purple">Choose a guide</span>
+          <span class="guide-title">Jewelcrafting</span>
+          <span class="guide-note">Choose gem inputs and cuts or finished jewelry and components.</span>
+          <nav class="ah-hub-card-links" aria-label="Jewelcrafting destinations">
+            <a class="ah-hub-card-chip" data-ah-guide-id="jewelcrafting-gems" href="./guides/jewelcrafting-gems-ah-price-guide.html">Gems &amp; Cuts <span aria-hidden="true">→</span></a>
+            <a class="ah-hub-card-chip" data-ah-guide-id="jewelcrafting-jewelry" href="./guides/jewelcrafting-jewelry-ah-price-guide.html">Jewelry &amp; Components <span aria-hidden="true">→</span></a>
+          </nav>
+        </article>
+        <a class="guide-card has-guide-icon" data-ah-guide-card="enchanting" href="./guides/enchanting-mats-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/enchanting.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Enchanting Materials &amp; Scrolls</span>
           <span class="guide-note">Dusts, essences, shards, crystals, enchant scrolls, oils, wands, gems, and intermediates.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/alchemy-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/alchemy.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="alchemy" href="./guides/alchemy-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/alchemy.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Alchemy</span>
           <span class="guide-note">Alchemy materials, potions, elixirs, flasks, oils, intermediates, protection consumables, and transmutes.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/inscription-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/inscription.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="inscription" href="./guides/inscription-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/inscription.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Inscription</span>
           <span class="guide-note">Inks, pigments, milling inputs, cards, decks, glyphs, scrolls, vellums, and Inscription utility items.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/tailoring-cloth-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/tailoring.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="tailoring" href="./guides/tailoring-cloth-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/tailoring.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Tailoring, Cloth &amp; First Aid</span>
           <span class="guide-note">Cloth, Tailoring materials and crafts, bags, spellthreads, gear, bandages, and anti-venoms.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/skinning-leatherworking-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/skinning-leatherworking.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="skinning-leatherworking" href="./guides/skinning-leatherworking-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/skinning-leatherworking.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Skinning &amp; Leatherworking</span>
           <span class="guide-note">Skinning materials, leather conversions, armor kits, leg armors, drums, bags, utility, and leather or mail gear.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/fishing-cooking-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/fishing-cooking.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="fishing-cooking" href="./guides/fishing-cooking-materials-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/fishing-cooking.svg" width="56" height="56" alt="">
           <span class="badge purple">Profession</span>
           <span class="guide-title">Fishing &amp; Cooking</span>
           <span class="guide-note">Raw fish, meats, cooking ingredients, prepared foods, feasts, rare catches, utility, and vendor supplies.</span>
@@ -187,13 +189,13 @@
       <h2>Drops, Recipes &amp; Turn-Ins</h2>
       <p class="small ah-guide-group-description">Farmable unlocks, reputation items, quest pages, recipes, and patterns.</p>
       <div class="guide-grid compact-grid">
-        <a class="guide-card has-guide-icon" href="./guides/drop-turn-in-quest-page-items-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/drop-turn-in.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="turn-ins" href="./guides/drop-turn-in-quest-page-items-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/drop-turn-in.svg" width="56" height="56" alt="">
           <span class="badge green">Drops</span>
           <span class="guide-title">Turn-Ins &amp; Quest Items</span>
           <span class="guide-note">Reputation turn-ins, Darkmoon Faire drops, quest pages, and other farmable quest-completion items.</span>
           <span class="guide-action">Open guide →</span>
         </a>
-        <a class="guide-card has-guide-icon" href="./guides/gear-pattern-drops-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/gear-patterns.svg" width="56" height="56" alt="">
+        <a class="guide-card has-guide-icon" data-ah-guide-card="recipe-pattern-drops" href="./guides/gear-pattern-drops-ah-price-guide.html"><img class="guide-card-icon" src="./assets/ah-guide-icons/gear-patterns.svg" width="56" height="56" alt="">
           <span class="badge green">Drops</span>
           <span class="guide-title">Recipe &amp; Pattern Drops</span>
           <span class="guide-note">Tradeable Blacksmithing plans, Leatherworking and Tailoring patterns, Enchanting formulas, Jewelcrafting designs, Engineering schematics, Alchemy and Cooking recipes, and Book of Glyph Mastery.</span>

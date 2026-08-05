@@ -1309,6 +1309,47 @@ footer a {
   outline: none;
 }
 
+.ah-hub-card-links {
+  grid-column: 1 / -1;
+  grid-row: 4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.ah-hub-card-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid rgba(var(--section-ah-rgb), 0.32);
+  border-radius: 999px;
+  background: rgba(var(--section-ah-rgb), 0.08);
+  color: var(--section-ah-soft);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+}
+
+.ah-hub-card-chip:hover,
+.ah-hub-card-chip:focus-visible {
+  border-color: rgba(var(--section-ah-rgb), 0.78);
+  background: rgba(var(--section-ah-rgb), 0.16);
+  color: #fff;
+  outline: none;
+}
+
+.ah-hub-link-card {
+  border-style: dashed;
+  background: linear-gradient(135deg, #121820, rgba(var(--section-ah-rgb), 0.055));
+}
+
 .talent-tree-primary-link {
   margin: 12px 0 0;
   color: var(--muted);

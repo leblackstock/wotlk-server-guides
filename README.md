@@ -50,15 +50,17 @@ quantities.
 
 ## Update The AH Search Index
 
-The main-hub and Auction House searches read a generated index of every item row in the AH guides. The generator discovers those guides from `auction-house.html`. Regenerate it after adding, removing, renaming, or repricing AH items:
+The main-hub and Auction House searches read a generated index of every item row in the AH guides. Active guide routes and hub-card groupings live in `data/ah-guides.json`; the hub HTML, hierarchical navigation data, and search index are generated from that manifest. Regenerate them after adding, removing, grouping, renaming, or repricing AH items:
 
 ```powershell
+python scripts/render-ah-guide-ux.py
 python scripts/build-ah-search-index.py
 ```
 
 Verify that the committed index is current:
 
 ```powershell
+python scripts/render-ah-guide-ux.py --check
 python scripts/build-ah-search-index.py --check
 ```
 
@@ -115,14 +117,14 @@ python tests/ah-section-price-order.test.py
 1. Save the guide HTML in `guides/`.
 2. Use a clean lowercase kebab-case filename, such as `alchemy-materials-ah-price-guide.html`.
 3. Keep the guide self-contained unless it intentionally uses a shared asset.
-4. Add AH pricing guides to `auction-house.html`; add gameplay or reference guides to `index.html`.
+4. Add AH pricing guides and their hub placement to `data/ah-guides.json`; add gameplay or reference guides to `index.html`.
 5. Include the standard player-made disclaimer near the bottom of the guide.
 6. Use public wording such as `our server`, `this server`, or `the server`. Avoid second-person server wording.
 
 ## Rename Files Safely
 
 1. Rename the file in `guides/` using lowercase kebab-case.
-2. Update the matching link in `auction-house.html` or `index.html`.
+2. Update the matching route in `data/ah-guides.json` or `index.html`.
 3. Search the repo for the old filename and update any remaining references.
 4. Open the hub locally and click the renamed guide link.
 

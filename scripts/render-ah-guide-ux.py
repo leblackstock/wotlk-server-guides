@@ -10,6 +10,8 @@ import re
 import sys
 from pathlib import Path
 
+from ah_guides import load_guide_manifest
+
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDES_DIR = ROOT / "guides"
@@ -17,6 +19,7 @@ HUB_PATH = ROOT / "auction-house.html"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 ASSET_VERSION = "20260804-ah-guide-ux-v1"
+HUB_STYLE_VERSION = "20260804-ah-hub-route-cards-v1"
 UPDATED_DATE = "2026-08-04"
 
 UX_BLOCK = re.compile(
@@ -221,28 +224,76 @@ def navigation_asset(manifest: dict) -> str:
 
 
 def render_hub_cards(manifest: dict) -> str:
-    guides_by_group: dict[str, list[dict]] = {}
+    guides_by_id = {guide["id"]: guide for guide in manifest["guides"]}
+    grouped_guide_ids = {
+        link["guide_id"]
+        for card in manifest.get("hub_cards", [])
+        if card["type"] == "multi-guide"
+        for link in card["links"]
+    }
+    entries_by_group: dict[str, list[dict]] = {}
     for guide in manifest["guides"]:
-        guides_by_group.setdefault(guide["group"], []).append(guide)
+        if guide["id"] in grouped_guide_ids:
+            continue
+        entries_by_group.setdefault(guide["group"], []).append(
+            {"type": "guide", "order": guide["order"], "id": guide["id"], "guide": guide}
+        )
+    for card in manifest.get("hub_cards", []):
+        entries_by_group.setdefault(card["group"], []).append(
+            {"type": card["type"], "order": card["order"], "id": card["id"], "card": card}
+        )
+
     group_badges = {
         "gathering": ("Materials", "gold"),
         "professions": ("Profession", "purple"),
         "drops": ("Drops", "green"),
     }
     sections: list[str] = []
-    for group in sorted(manifest["groups"], key=lambda entry: int(entry["order"])):
+    for group in sorted(manifest["groups"], key=lambda item: int(item["order"])):
         cards: list[str] = []
         badge, badge_class = group_badges[group["id"]]
-        for guide in sorted(guides_by_group.get(group["id"], []), key=lambda entry: int(entry["order"])):
-            cards.append(
-                f'''        <a class="guide-card has-guide-icon" href="./guides/{html.escape(guide["file"])}"><img class="guide-card-icon" src="./assets/ah-guide-icons/{html.escape(guide["icon"])}" width="56" height="56" alt="">
+        entries = sorted(
+            entries_by_group.get(group["id"], []),
+            key=lambda item: (int(item["order"]), str(item["id"])),
+        )
+        for entry in entries:
+            if entry["type"] == "guide":
+                guide = entry["guide"]
+                cards.append(
+                    f'''        <a class="guide-card has-guide-icon" data-ah-guide-card="{html.escape(guide["id"])}" href="./guides/{html.escape(guide["file"])}"><img class="guide-card-icon" src="./assets/ah-guide-icons/{html.escape(guide["icon"])}" width="56" height="56" alt="">
           <span class="badge {badge_class}">{badge}</span>
           <span class="guide-title">{html.escape(guide["title"])}</span>
           <span class="guide-note">{html.escape(guide["description"])}</span>
           <span class="guide-action">Open guide →</span>
         </a>'''
+                )
+                continue
+
+            card = entry["card"]
+            card_classes = "guide-card has-guide-icon ah-hub-route-card"
+            if card["type"] == "category-link":
+                card_classes += " ah-hub-link-card"
+            links: list[str] = []
+            for link in card["links"]:
+                guide = guides_by_id[link["guide_id"]]
+                href = f'./guides/{html.escape(guide["file"])}'
+                if link.get("category"):
+                    href += f'#ah-category={html.escape(str(link["category"]))}'
+                links.append(
+                    f'''            <a class="ah-hub-card-chip" data-ah-guide-id="{html.escape(guide["id"])}" href="{href}">{html.escape(link["label"])} <span aria-hidden="true">→</span></a>'''
+                )
+            cards.append(
+                f'''        <article class="{card_classes}" data-ah-hub-card="{html.escape(card["id"])}"><img class="guide-card-icon" src="./assets/ah-guide-icons/{html.escape(card["icon"])}" width="56" height="56" alt="">
+          <span class="badge {badge_class}">{html.escape(card["badge"])}</span>
+          <span class="guide-title">{html.escape(card["title"])}</span>
+          <span class="guide-note">{html.escape(card["description"])}</span>
+          <nav class="ah-hub-card-links" aria-label="{html.escape(card["title"])} destinations">
+{chr(10).join(links)}
+          </nav>
+        </article>'''
             )
-        compact = " compact-grid" if group["id"] == "drops" else ""
+
+        compact = " compact-grid" if group["id"] in {"gathering", "drops"} else ""
         sections.append(
             f'''    <section class="common ah-guide-group" data-ah-guide-group="{html.escape(group["id"])}">
       <h2>{html.escape(group["title"])}</h2>
@@ -258,13 +309,20 @@ def render_hub_cards(manifest: dict) -> str:
 def transform_hub(source: str, manifest: dict) -> str:
     block = render_hub_cards(manifest)
     if HUB_GUIDE_BLOCK.search(source):
-        return HUB_GUIDE_BLOCK.sub(block, source, count=1)
-    start_token = '    <section class="common">\n      <h2>Core Materials &amp; Professions</h2>'
-    start = source.find(start_token)
-    end = source.find("\n\n    <footer>", start)
-    if start < 0 or end < 0:
-        raise ValueError("auction-house.html: could not find the legacy AH guide-card block")
-    return source[:start] + block + source[end:]
+        source = HUB_GUIDE_BLOCK.sub(block, source, count=1)
+    else:
+        start_token = '    <section class="common">\n      <h2>Core Materials &amp; Professions</h2>'
+        start = source.find(start_token)
+        end = source.find("\n\n    <footer>", start)
+        if start < 0 or end < 0:
+            raise ValueError("auction-house.html: could not find the legacy AH guide-card block")
+        source = source[:start] + block + source[end:]
+    return re.sub(
+        r"style\.css\?v=[^\"\s]+",
+        f"style.css?v={HUB_STYLE_VERSION}",
+        source,
+        count=1,
+    )
 
 
 def main() -> int:
@@ -272,7 +330,7 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="Fail when guide UX is stale")
     args = parser.parse_args()
 
-    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    manifest = load_guide_manifest(MANIFEST_PATH)
     if len(manifest["guides"]) != int(manifest["active_guide_count"]):
         raise ValueError("AH guide manifest active count does not match its guide list")
 
