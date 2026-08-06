@@ -2914,15 +2914,19 @@
         "client": "3.3.5a",
         "hellscreamTested": true,
         "hellscreamTestedDate": "2026-07-23",
-        "lastReviewed": "2026-07-23",
+        "lastReviewed": "2026-08-05",
         "downloadVersion": "9.6.2-335",
         "verifiedDownload": true,
         "serverSensitive": true,
         "maintenanceState": "maintained-port",
+        "importantNotes": [
+          "The installed Carbonite 3.34 and Questie 9.6.2-335 builds each work on the 3.3.5a client when used separately, but they are incompatible with each other. Do not enable both at the same time.",
+          "Hellscream-specific quests can trigger Questie 9.6.2-335's '[ERROR] The quest <ID> is missing from Questie's database. Please report this on GitHub or Discord!' message while the quest is in your quest log. This means Questie lacks data for that server-custom quest; it does not by itself mean the quest is broken."
+        ],
         "notes": [
           "Hellscream test on July 23, 2026: the addon loaded normally, several standard quests were completed, and Swatter recorded no Lua errors.",
-          "The test environment included only Questie and Swatter, so broader addon compatibility and conflict testing is not yet confirmed.",
-          "Custom quests, party progress sharing, and large addon combinations remain unverified."
+          "The test environment included only Questie and Swatter, so broader addon compatibility and conflict testing beyond the confirmed Carbonite 3.34 conflict is not yet confirmed.",
+          "Hellscream-specific quest behavior beyond the confirmed missing-database warning, party progress sharing, and large addon combinations remain unverified."
         ]
       },
       "download": {
