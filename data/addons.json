@@ -2925,7 +2925,8 @@
         ],
         "notes": [
           "Hellscream test on July 23, 2026: the addon loaded normally, several standard quests were completed, and Swatter recorded no Lua errors.",
-          "The test environment included only Questie and Swatter, so broader addon compatibility and conflict testing beyond the confirmed Carbonite 3.34 conflict is not yet confirmed.",
+          "The installed Questie 9.6.2-335 and Mapster 1.3.9 builds can be enabled together on Hellscream; no conflict between those versions was observed.",
+          "The July 23 focused test environment included only Questie and Swatter. Later use confirmed Mapster 1.3.9 compatibility and a Carbonite 3.34 conflict, but broader addon-combination testing is not yet complete.",
           "Hellscream-specific quest behavior beyond the confirmed missing-database warning, party progress sharing, and large addon combinations remain unverified."
         ]
       },
