@@ -2914,7 +2914,7 @@
         "client": "3.3.5a",
         "hellscreamTested": true,
         "hellscreamTestedDate": "2026-07-23",
-        "lastReviewed": "2026-08-05",
+        "lastReviewed": "2026-08-06",
         "downloadVersion": "9.6.2-335",
         "verifiedDownload": true,
         "serverSensitive": true,
@@ -2925,8 +2925,8 @@
         ],
         "notes": [
           "Hellscream test on July 23, 2026: the addon loaded normally, several standard quests were completed, and Swatter recorded no Lua errors.",
-          "The installed Questie 9.6.2-335 and Mapster 1.3.9 builds can be enabled together on Hellscream; no conflict between those versions was observed.",
-          "The July 23 focused test environment included only Questie and Swatter. Later use confirmed Mapster 1.3.9 compatibility and a Carbonite 3.34 conflict, but broader addon-combination testing is not yet complete.",
+          "The installed Mapster 1.3.9, Questie 9.6.2-335, Atlas 1.17.0, GatherMate v1.25, Routes v1.2.8a, and GatherMate_Data package v2.25 (TOC version 1.0) builds can be enabled together on Hellscream; no conflicts were observed in this combination.",
+          "The July 23 focused test environment included only Questie and Swatter. Later use confirmed the Mapster, Atlas, GatherMate, Routes, and GatherMate_Data combination above and a Carbonite 3.34 conflict, but broader addon-combination testing is not yet complete.",
           "Hellscream-specific quest behavior beyond the confirmed missing-database warning, party progress sharing, and large addon combinations remain unverified."
         ]
       },
