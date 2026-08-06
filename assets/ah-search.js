@@ -222,11 +222,13 @@
         const bidValues = uniqueValues(matches, "targetBid");
         const buyoutValues = uniqueValues(matches, "target");
         const stackValues = uniqueValues(matches, "stack");
+        const priceBasisValues = Array.from(new Set(matches.map((match) => match.priceBasis).filter(Boolean)));
         const demandValues = uniqueValues(matches, "demand");
         const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
         const targetBidValue = bidValues[0] || "—";
         const targetBuyoutValue = buyoutValues[0] || "—";
         const stackValue = stackValues[0] || "—";
+        const priceBasisValue = priceBasisValues[0] || "";
         const demandValue = demandValues[0] || "—";
         const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
@@ -255,12 +257,17 @@
           .join(" · ");
         const detailLine = makeElement("span", "ah-search-result-detail-line");
         detailLine.append(makeElement("span", "ah-search-result-meta", meta));
+        const stackDetails = makeElement("span", "ah-search-stack-details");
+        if (priceBasisValue) {
+          stackDetails.append(makeElement("span", "ah-price-stack-chip ah-search-price-stack-chip", priceBasisValue));
+        }
         if (stackValue !== "1" && stackValue !== "—") {
           const stack = makeElement("span", "ah-search-stack-summary");
           stack.append(makeElement("span", "ah-search-stack-label", "Stack"));
           stack.append(makeElement("strong", "ah-search-stack-value", stackValue));
-          detailLine.append(stack);
+          stackDetails.append(stack);
         }
+        if (stackDetails.childElementCount) detailLine.append(stackDetails);
         primary.append(detailLine);
 
         if (conversionHints.length) {

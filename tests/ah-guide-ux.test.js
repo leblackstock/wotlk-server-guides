@@ -92,9 +92,11 @@ for (const guide of manifest.guides) {
   assert.equal(document.querySelector("details.ah-guide-notes").hasAttribute("open"), false, guide.file);
   assert.equal(document.querySelectorAll(".ah-baseline-note").length, 1, guide.file);
   assert.equal(document.querySelectorAll("footer").length, 1, guide.file);
-  const expectedUpdatedDate = new Set(["alchemy", "level-80-boe-epics", "sought-after-world-drops"]).has(guide.id)
-    ? "2026-08-05"
-    : "2026-08-04";
+  const expectedUpdatedDate = guide.id === "engineering"
+    ? "2026-08-06"
+    : new Set(["alchemy", "level-80-boe-epics", "sought-after-world-drops"]).has(guide.id)
+      ? "2026-08-05"
+      : "2026-08-04";
   assert.ok(document.querySelector("footer").textContent.endsWith(`Updated ${expectedUpdatedDate}`), guide.file);
   assert.equal(document.title, `${guide.title} AH Price Guide — WotLK 3.3.5 Low Pop`, guide.file);
   assert.ok(

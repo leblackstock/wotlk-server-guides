@@ -870,6 +870,7 @@ def main() -> int:
 
     crafted_footer_dates = {
         "alchemy-materials-ah-price-guide.html": "2026-08-05",
+        "engineering-materials-ah-price-guide.html": "2026-08-06",
     }
     for filename in (
         "inscription-materials-ah-price-guide.html",

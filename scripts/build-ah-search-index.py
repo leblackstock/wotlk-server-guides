@@ -95,6 +95,8 @@ class AHGuideParser(HTMLParser):
         self.name_parts: list[str] = []
         self.capture_mini = False
         self.mini_parts: list[str] = []
+        self.capture_price_basis = False
+        self.price_basis_parts: list[str] = []
         self.capture_target_bid = False
         self.target_bid_parts: list[str] = []
         self.capture_target_buyout = False
@@ -138,6 +140,7 @@ class AHGuideParser(HTMLParser):
             self.current_cell_column = ""
             self.name_parts = []
             self.mini_parts = []
+            self.price_basis_parts = []
             self.target_bid_parts = []
             self.target_buyout_parts = []
             self.quality = "common"
@@ -152,6 +155,13 @@ class AHGuideParser(HTMLParser):
             self.capture_name = True
         elif tag == "div" and self.in_row and self.cell_index == 0 and "mini" in classes:
             self.capture_mini = True
+        elif (
+            tag == "span"
+            and self.in_row
+            and self.cell_index == 0
+            and "ah-price-stack-chip" in classes
+        ):
+            self.capture_price_basis = True
         elif (
             tag == "span"
             and self.in_row
@@ -180,6 +190,8 @@ class AHGuideParser(HTMLParser):
             self.capture_name = False
         elif tag == "div" and self.capture_mini:
             self.capture_mini = False
+        elif tag == "span" and self.capture_price_basis:
+            self.capture_price_basis = False
         elif tag == "span" and self.capture_target_bid:
             self.capture_target_bid = False
         elif tag == "span" and self.capture_target_buyout:
@@ -201,6 +213,8 @@ class AHGuideParser(HTMLParser):
             self.name_parts.append(data)
         if self.capture_mini:
             self.mini_parts.append(data)
+        if self.capture_price_basis:
+            self.price_basis_parts.append(data)
         if self.capture_target_bid:
             self.target_bid_parts.append(data)
         if self.capture_target_buyout:
@@ -244,6 +258,9 @@ class AHGuideParser(HTMLParser):
         }
         if self.search_hint:
             item["conversionHint"] = self.search_hint
+        price_basis = clean_text(self.price_basis_parts)
+        if price_basis:
+            item["priceBasis"] = price_basis
         self.items.append(item)
 
 

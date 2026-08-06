@@ -776,6 +776,34 @@ h1 {
   font-size: 13px;
 }
 
+.ah-price-stack-chip {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 2px 7px;
+  border: 1px solid rgba(114, 227, 255, 0.38);
+  border-radius: 999px;
+  background: rgba(114, 227, 255, 0.10);
+  color: #bceffc;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.ah-search-stack-details {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ah-search-price-stack-chip {
+  margin-top: 0;
+}
+
 .ah-search-stack-summary {
   display: flex;
   flex: 0 0 auto;

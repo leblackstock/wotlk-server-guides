@@ -498,6 +498,7 @@ def render_crafted_row(
     config: dict,
     key: str,
     shared_note: dict | None = None,
+    price_basis_stack: int | None = None,
 ) -> str:
     item = crafted_item(config, key)
     profession = html.escape(item["profession"])
@@ -514,6 +515,14 @@ def render_crafted_row(
     search_hint_attribute = (
         f' data-search-hint="{search_hint}"' if search_hint else ""
     )
+    price_basis_chip = ""
+    if price_basis_stack is not None:
+        if price_basis_stack < 1:
+            raise ValueError(f"{key}: price-basis stack must be positive")
+        price_basis_chip = (
+            f'<span class="ah-price-stack-chip">'
+            f'Stack of {price_basis_stack:,}</span>'
+        )
     requirement = config["_profession_use_audit"].get(
         "canonical_hard_requirements", {}
     ).get(key)
@@ -567,7 +576,7 @@ def render_crafted_row(
         f'<tr data-crafted-key="{html.escape(key)}" data-market-source="crafted" '
         f'data-profession="{profession}"{search_hint_attribute}>'
         f'<td data-column="item" data-label="Item"><strong class="q-{quality}">{name}</strong>'
-        f'<div class="mini">{detail}</div></td>'
+        f'<div class="mini">{detail}</div>{price_basis_chip}</td>'
         f'<td data-column="target" data-label="Target Price">'
         f'{render_price_pair("target", int(item["target_copper"]))}</td>'
         f'<td data-column="quick" data-label="Quick Price">'
@@ -594,8 +603,9 @@ def render_crafted_section(
     audience_attribute = (
         f' data-use-audience="{html.escape(audience)}"' if audience else ""
     )
+    price_basis_stack = section.get("price_basis_stack")
     rows = "\n".join(
-        render_crafted_row(config, key, shared_note)
+        render_crafted_row(config, key, shared_note, price_basis_stack)
         for key in section["items"]
     )
     return (

@@ -216,6 +216,13 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     assert.deepEqual(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-label").allTextContents(), ["Target Bid", "Buyout"]);
     assert.equal(await desktop.locator(".ah-search-result").first().locator(".ah-search-target-value").count(), 2);
     assert.match(await desktop.locator("a.ah-search-result-primary").first().getAttribute("href"), /^\.\/guides\//);
+
+    await desktop.locator("#ah-search-input").fill("Crafted Light Shot");
+    const craftedLightShot = desktop.locator(".ah-search-result", {
+      has: desktop.locator(".ah-search-item-name", { hasText: /^Crafted Light Shot$/ }),
+    });
+    assert.equal(await craftedLightShot.locator(".ah-search-price-stack-chip").textContent(), "Stack of 200");
+    assert.equal(await craftedLightShot.locator(".ah-search-stack-value").textContent(), "200 / 1000");
     await noOverflow(desktop, "Desktop main hub");
 
     await desktop.locator("#addon-hub-search-input").fill("healbt");
@@ -391,6 +398,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "52g",
       recipeSpell: 30308,
       notePattern: /used in high-end devices/,
+      footerDate: "2026-08-06",
       label: "Desktop Engineering guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -599,6 +607,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "52g",
       recipeSpell: 30308,
       notePattern: /used in high-end devices/,
+      footerDate: "2026-08-06",
       label: "Mobile Engineering guide"
     });
     await verifyAuditedCraftedGuide(mobile, {

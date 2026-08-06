@@ -63,9 +63,10 @@ for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
     expected_date = (
-        "2026-08-05"
-        if path.name
-        in {
+        "2026-08-06"
+        if path.name == "engineering-materials-ah-price-guide.html"
+        else "2026-08-05"
+        if path.name in {
             "alchemy-materials-ah-price-guide.html",
             "level-80-boe-epics-ah-price-guide.html",
             "sought-after-world-drops-ah-price-guide.html",
