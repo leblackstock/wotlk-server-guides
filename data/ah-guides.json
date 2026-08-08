@@ -537,6 +537,9 @@
       "title": "Bags & Containers",
       "description": "Compare every verified auctionable bag, profession container, quiver, and ammo pouch by capacity, contents, source, expansion, and canonical guide price.",
       "icon": "bags-containers.svg",
+      "group": "drops",
+      "order": 40,
+      "badge": "Collection",
       "source_audit": "data/ah-container-audit.json"
     }
   ],

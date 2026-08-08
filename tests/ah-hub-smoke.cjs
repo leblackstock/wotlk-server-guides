@@ -178,22 +178,44 @@ async function verifyContainerCollection(page, labelPrefix) {
   assert.equal(await page.locator("[data-container-row]").count(), 93);
   assert.deepEqual(await page.locator(".container-summary-grid strong").allTextContents(), ["93", "48", "27", "18"]);
   assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 93);
-  assert.equal(await page.locator("#container-result-count").textContent(), "Showing 93 of 93");
+  assert.equal(await page.locator("#container-result-count").textContent(), "Showing 93 of 93 containers");
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-08/);
+  assert.deepEqual(
+    await page.locator("[data-container-row]").evaluateAll((rows) => rows.slice(0, 5).map((row) => row.dataset.capacity)),
+    ["32", "32", "32", "32", "32"],
+  );
 
-  await page.locator("#container-category").selectOption("profession");
-  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 27 of 93");
-  assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 27);
+  const skinningChip = page.locator('[data-container-restriction="skinning-leatherworking"]');
+  const quiverChip = page.locator('[data-container-restriction="quiver"]');
+  await skinningChip.click();
+  await quiverChip.click();
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 12 of 93 containers");
+  assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 12);
+  assert.equal(await skinningChip.getAttribute("aria-pressed"), "true");
+  assert.equal(await quiverChip.getAttribute("aria-pressed"), "true");
+  assert.deepEqual(await page.locator(".container-active-filter").allTextContents(), ["Skinning / Leatherworking ×", "Quiver ×"]);
+
+  await page.locator(".container-more-filters summary").click();
+  await page.locator("#container-source").selectOption("crafted");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 9 of 93 containers");
+  await page.locator("#container-expansion").selectOption("wrath");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 2 of 93 containers");
+  assert.equal(await page.locator(".container-active-filter").count(), 4);
+  assert.equal(await skinningChip.locator("[data-container-chip-count]").textContent(), "1");
+  assert.equal(await quiverChip.locator("[data-container-chip-count]").textContent(), "1");
 
   await page.locator(".container-reset").click();
-  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 93 of 93");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 93 of 93 containers");
+  assert.equal(await page.locator('.container-filter-chip[aria-pressed="true"]').count(), 0);
+  assert.equal(await page.locator(".container-active-filter").count(), 0);
+  await page.locator(".container-more-filters summary").click();
   await page.locator("#container-source").selectOption("vendor");
-  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 19 of 93");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 19 of 93 containers");
   assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 19);
 
   await page.locator(".container-reset").click();
   await page.locator("#container-search").fill("Portable Hole");
-  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 1 of 93");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 1 of 93 containers");
   const portableHole = page.locator('[data-container-row][data-item-id="51809"]');
   assert.equal(await portableHole.locator('[data-column="slots"]').textContent(), "24");
   assert.equal(await portableHole.locator('[data-column="target"] .container-price').textContent(), "3,150g");
@@ -202,8 +224,23 @@ async function verifyContainerCollection(page, labelPrefix) {
   assert.equal(await portableHole.locator(".container-item-link").getAttribute("data-wowhead"), "item=51809&domain=wotlk");
 
   await page.locator(".container-reset").click();
-  await page.locator("#container-sort").selectOption("target-desc");
-  assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Portable Hole");
+  if (labelPrefix === "Mobile") {
+    assert.equal(await page.locator(".container-mobile-sort").isVisible(), true);
+    await page.locator("#container-mobile-sort").selectOption("target-desc");
+    assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Portable Hole");
+  } else {
+    const slotsHeading = page.locator('[data-container-sort-key="slots"]');
+    assert.equal(await slotsHeading.locator("xpath=ancestor::th[1]").getAttribute("aria-sort"), "descending");
+    await slotsHeading.click();
+    assert.equal(await slotsHeading.locator("xpath=ancestor::th[1]").getAttribute("aria-sort"), "ascending");
+    assert.equal(await page.locator("[data-container-row]").first().getAttribute("data-capacity"), "6");
+    await slotsHeading.click();
+    assert.equal(await page.locator("[data-container-row]").first().getAttribute("data-capacity"), "32");
+    await page.locator('[data-container-sort-key="target"]').click();
+    assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Portable Hole");
+    await page.locator('[data-container-sort-key="name"]').click();
+    assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Abyssal Bag");
+  }
   await noOverflow(page, `${labelPrefix} Bags & Containers collection`);
 }
 
@@ -274,7 +311,7 @@ async function verifyContainerCollection(page, labelPrefix) {
 
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
-    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 16, "Auction House hub should present eighteen guides across sixteen cards");
+    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 17, "Auction House hub should present eighteen guides plus one collection across seventeen cards");
     assert.equal(await desktop.locator(".ah-hub-route-card").count(), 4);
     assert.equal(await desktop.locator(".ah-hub-link-card").count(), 1);
     const blacksmithingCard = desktop.locator('[data-ah-hub-card="blacksmithing"]');
@@ -293,6 +330,13 @@ async function verifyContainerCollection(page, labelPrefix) {
       (await boeDropsCard.locator(".ah-hub-card-chip").allTextContents()).map((label) => label.replace("→", "").trim()),
       ["Level 80 BoE Epics", "Sought-After World Drops"],
     );
+    const containerCollectionCard = desktop.locator('[data-ah-collection-card="bags-containers"]');
+    assert.equal(await containerCollectionCard.evaluate((node) => node.tagName), "A");
+    assert.equal(await containerCollectionCard.getAttribute("href"), "./guides/bags-containers-ah-guide.html");
+    assert.equal(await containerCollectionCard.locator(".guide-title").textContent(), "Bags & Containers");
+    assert.equal(await containerCollectionCard.locator(".badge").textContent(), "Collection");
+    assert.equal(await containerCollectionCard.locator("xpath=ancestor::*[@data-ah-guide-group][1]").getAttribute("data-ah-guide-group"), "drops");
+
     const skinningLinkCard = desktop.locator('[data-ah-hub-card="skinning-materials-link"]');
     const skinningMaterialsChip = skinningLinkCard.locator(".ah-hub-card-chip");
     assert.equal(await skinningMaterialsChip.getAttribute("href"), "./guides/skinning-leatherworking-materials-ah-price-guide.html#ah-category=leatherworking-materials");
@@ -615,7 +659,7 @@ async function verifyContainerCollection(page, labelPrefix) {
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
-    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 16);
+    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 17);
     assert.equal(await mobile.locator(".ah-hub-card-chip").count(), 7);
     await mobile.locator("#ah-search-input").fill("saronite");
     assert.equal(await mobile.locator(".ah-search-result").count(), 12);

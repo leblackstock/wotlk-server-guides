@@ -36,7 +36,8 @@ assert.deepEqual(
 
 const multiGuideCards = manifest.hub_cards.filter((card) => card.type === "multi-guide");
 const groupedGuideIds = new Set(multiGuideCards.flatMap((card) => card.links.map((link) => link.guide_id)));
-const expectedHubCardCount = manifest.guides.length - groupedGuideIds.size + manifest.hub_cards.length;
+const groupedCollections = manifest.collections.filter((collection) => collection.group);
+const expectedHubCardCount = manifest.guides.length - groupedGuideIds.size + manifest.hub_cards.length + groupedCollections.length;
 const hubCards = [...hub.querySelectorAll(".guide-card.has-guide-icon")];
 assert.equal(hubCards.length, expectedHubCardCount);
 assert.equal(hub.querySelectorAll(".ah-hub-route-card").length, 4);
@@ -73,6 +74,17 @@ for (const cardConfig of manifest.hub_cards) {
     assert.equal(chips[index].textContent.replace(/→/g, "").trim(), link.label);
     assert.equal(chips[index].getAttribute("href"), `./guides/${guide.file}${fragment}`);
   });
+}
+for (const collection of groupedCollections) {
+  const card = hub.querySelector(`[data-ah-collection-card="${collection.id}"]`);
+  assert.ok(card, `${collection.file}: missing hub collection card`);
+  assert.equal(card.tagName, "A");
+  assert.equal(card.getAttribute("href"), `./guides/${collection.file}`);
+  assert.equal(card.querySelector(".guide-title").textContent.trim(), collection.title);
+  assert.equal(card.querySelector(".guide-note").textContent.trim(), collection.description);
+  assert.equal(card.querySelector(".badge").textContent.trim(), collection.badge);
+  assert.equal(card.querySelector("img").getAttribute("src"), `./assets/ah-guide-icons/${collection.icon}`);
+  assert.equal(card.closest("[data-ah-guide-group]").dataset.ahGuideGroup, collection.group);
 }
 assert.match(read("assets/style.css"), /\.ah-hub-card-chip\s*\{/);
 

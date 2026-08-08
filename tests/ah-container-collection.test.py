@@ -56,6 +56,19 @@ assert Counter(row["category_key"] for row in canonical_rows) == {
     "profession": 27,
     "hunter": 18,
 }
+assert Counter(row["restriction_key"] for row in canonical_rows) == {
+    "general": 48,
+    "ammo-pouch": 9,
+    "quiver": 9,
+    "enchanting": 6,
+    "soul-shards": 5,
+    "herbs": 5,
+    "mining": 3,
+    "skinning-leatherworking": 3,
+    "inscription": 2,
+    "jewelcrafting": 2,
+    "engineering": 1,
+}
 assert {row["expansion"] for row in canonical_rows} == {"Classic", "Outland", "Wrath"}
 assert all(row["quick_copper"] <= row["target_copper"] for row in canonical_rows)
 assert all(
@@ -76,20 +89,34 @@ assert source.count('class="container-owner-link"') == 93
 assert source.count('data-column="target" data-label="Target"') == 93
 assert source.count('data-column="slots" data-label="Slots"') == 93
 assert source.count('data-column="item" data-label="Item"') == 93
+assert source.count('data-restriction="') == 93
 assert source.count('data-ah-container-collection-link') == 0
 assert "data-stack" not in source
+assert 'id="container-category"' not in source
+assert 'id="container-subtype"' not in source
+assert 'id="container-min-slots"' not in source
+assert source.count('data-container-restriction="') == 11
+assert source.count('data-container-sort-key="') == 8
+assert '<th data-column="slots" aria-sort="descending">' in source
+assert 'id="container-mobile-sort"' in source
+assert 'id="container-active-filters"' in source
+assert "Selected types are combined with OR" in source
+assert "Showing 93 of 93 containers" in source
 assert "One collection, one price owner" in source
 assert "Vendor cost" in source
 assert "Updated 2026-08-08</footer>" in source
-assert '../assets/ah-containers.css?v=20260808-container-collection-v1' in source
-assert '../assets/ah-containers.js?v=20260808-container-collection-v1' in source
-assert '../assets/ah-item-tooltips.js?v=20260808-container-collection-v1' in source
+assert '../assets/ah-containers.css?v=20260808-container-collection-v2' in source
+assert '../assets/ah-containers.js?v=20260808-container-collection-v2' in source
+assert '../assets/ah-item-tooltips.js?v=20260808-container-collection-v2' in source
 for quality in {row["quality"] for row in canonical_rows}:
     assert f'class="q-{quality}"' in source
 
 collections = [item for item in manifest["collections"] if item["id"] == "bags-containers"]
 assert len(collections) == 1
 assert collections[0]["file"] == PAGE_PATH.name
+assert collections[0]["group"] == "drops"
+assert collections[0]["order"] == 40
+assert collections[0]["badge"] == "Collection"
 assert PAGE_PATH.name not in {guide["file"] for guide in manifest["guides"]}
 
 vendor_ids = {
@@ -105,6 +132,10 @@ for filename in ("index.html", "auction-house.html"):
     hub = (ROOT / filename).read_text(encoding="utf-8")
     assert hub.count("data-ah-container-collection-link") == 1
     assert 'href="./guides/bags-containers-ah-guide.html">Bags</a>' in hub
+
+ah_hub = (ROOT / "auction-house.html").read_text(encoding="utf-8")
+assert ah_hub.count('data-ah-collection-card="bags-containers"') == 1
+assert 'class="guide-card has-guide-icon ah-hub-collection-card"' in ah_hub
 
 print(
     "Bags & Containers collection is current: 93 canonical rows, four source types, "

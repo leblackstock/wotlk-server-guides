@@ -274,6 +274,17 @@ def render_hub_cards(manifest: dict) -> str:
         entries_by_group.setdefault(card["group"], []).append(
             {"type": card["type"], "order": card["order"], "id": card["id"], "card": card}
         )
+    for collection in manifest.get("collections", []):
+        if not collection.get("group"):
+            continue
+        entries_by_group.setdefault(collection["group"], []).append(
+            {
+                "type": "collection",
+                "order": collection["order"],
+                "id": collection["id"],
+                "collection": collection,
+            }
+        )
 
     group_badges = {
         "gathering": ("Materials", "gold"),
@@ -297,6 +308,18 @@ def render_hub_cards(manifest: dict) -> str:
           <span class="guide-title">{html.escape(guide["title"])}</span>
           <span class="guide-note">{html.escape(guide["description"])}</span>
           <span class="guide-action">Open guide →</span>
+        </a>'''
+                )
+                continue
+
+            if entry["type"] == "collection":
+                collection = entry["collection"]
+                cards.append(
+                    f'''        <a class="guide-card has-guide-icon ah-hub-collection-card" data-ah-collection-card="{html.escape(collection["id"])}" href="./guides/{html.escape(collection["file"])}"><img class="guide-card-icon" src="./assets/ah-guide-icons/{html.escape(collection["icon"])}" width="56" height="56" alt="">
+          <span class="badge {badge_class}">{html.escape(collection.get("badge", "Collection"))}</span>
+          <span class="guide-title">{html.escape(collection["title"])}</span>
+          <span class="guide-note">{html.escape(collection["description"])}</span>
+          <span class="guide-action">Open collection →</span>
         </a>'''
                 )
                 continue

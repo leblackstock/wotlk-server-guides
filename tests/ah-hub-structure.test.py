@@ -126,8 +126,8 @@ def main() -> int:
         and urlparse(href).path.endswith("ah-price-guide.html")
     ]
     ah_card_paths = [urlparse(href).path for href in ah_cards]
-    if ah_hub.guide_card_count != 16:
-        errors.append(f"auction-house.html must contain 16 visible cards; found {ah_hub.guide_card_count}")
+    if ah_hub.guide_card_count != 17:
+        errors.append(f"auction-house.html must contain 17 visible cards; found {ah_hub.guide_card_count}")
     if ah_hub.route_card_count != 4 or ah_hub.link_card_count != 1:
         errors.append("auction-house.html must contain three grouped cards and one category link card")
     if len(ah_cards) != 19 or len(set(ah_card_paths)) != 18:
@@ -142,6 +142,13 @@ def main() -> int:
         not in ah_cards
     ):
         errors.append("Gathering must link directly to the Skinning materials category")
+    container_cards = [
+        href
+        for href, classes in ah_hub.links
+        if "ah-hub-collection-card" in classes
+    ]
+    if container_cards != ["./guides/bags-containers-ah-guide.html"]:
+        errors.append("Drops must contain one Bags & Containers collection card")
 
     for page, parsed in ((MAIN_HUB, main_hub), (AH_HUB, ah_hub)):
         for href, _ in parsed.links:
@@ -155,7 +162,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print("Hub validation passed: 18 active guides across 16 cards, including grouped guide cards and the Skinning shortcut.")
+    print("Hub validation passed: 18 active guides plus the Bags & Containers collection across 17 cards.")
     return 0
 
 

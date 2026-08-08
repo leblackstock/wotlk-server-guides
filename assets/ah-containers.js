@@ -5,18 +5,33 @@
   const tbody = document.querySelector("[data-container-rows]");
   const status = document.getElementById("container-result-count");
   const empty = document.getElementById("container-empty-state");
-  if (!form || !tbody || !status || !empty) return;
+  const activeFilters = document.getElementById("container-active-filters");
+  const activeFilterList = document.getElementById("container-active-filter-list");
+  if (!form || !tbody || !status || !empty || !activeFilters || !activeFilterList) return;
 
   const controls = {
     search: document.getElementById("container-search"),
-    category: document.getElementById("container-category"),
-    subtype: document.getElementById("container-subtype"),
     source: document.getElementById("container-source"),
     expansion: document.getElementById("container-expansion"),
-    minSlots: document.getElementById("container-min-slots"),
-    sort: document.getElementById("container-sort")
+    mobileSort: document.getElementById("container-mobile-sort")
   };
   const rows = Array.from(tbody.querySelectorAll("[data-container-row]"));
+  const restrictionChips = Array.from(form.querySelectorAll("[data-container-restriction]"));
+  const sortHeadings = Array.from(document.querySelectorAll("[data-container-sort-key]"));
+  const moreFilters = form.querySelector(".container-more-filters");
+  const defaultDirections = {
+    name: "asc",
+    slots: "desc",
+    type: "asc",
+    expansion: "desc",
+    source: "asc",
+    quick: "desc",
+    target: "desc",
+    high: "desc"
+  };
+  const expansionRanks = { classic: 1, outland: 2, wrath: 3 };
+  let sortKey = "slots";
+  let sortDirection = "desc";
 
   function normalize(value) {
     return String(value || "")
@@ -28,47 +43,183 @@
       .trim();
   }
 
-  function number(row, key) {
-    return Number.parseInt(row.dataset[key] || "0", 10) || 0;
+  function number(row, key, optional) {
+    const raw = row.dataset[key];
+    if (optional && !raw) return null;
+    return Number.parseInt(raw || "0", 10) || 0;
   }
 
-  function compareRows(left, right, sort) {
-    const nameOrder = left.dataset.name.localeCompare(right.dataset.name);
-    if (sort === "target-desc") return number(right, "target") - number(left, "target") || nameOrder;
-    if (sort === "target-asc") return number(left, "target") - number(right, "target") || nameOrder;
-    if (sort === "name-asc") return nameOrder;
-    return number(right, "capacity") - number(left, "capacity") ||
-      number(right, "target") - number(left, "target") || nameOrder;
+  function compareStrings(left, right, direction) {
+    const order = left.localeCompare(right);
+    return direction === "asc" ? order : -order;
+  }
+
+  function compareNumbers(left, right, direction) {
+    if (left === null && right === null) return 0;
+    if (left === null) return 1;
+    if (right === null) return -1;
+    return direction === "asc" ? left - right : right - left;
+  }
+
+  function compareRows(left, right) {
+    const normalizedLeftName = normalize(left.dataset.name);
+    const normalizedRightName = normalize(right.dataset.name);
+    const nameOrder = normalizedLeftName.localeCompare(normalizedRightName);
+    let order = 0;
+    if (sortKey === "name") order = compareStrings(normalizedLeftName, normalizedRightName, sortDirection);
+    if (sortKey === "slots") order = compareNumbers(number(left, "capacity"), number(right, "capacity"), sortDirection);
+    if (sortKey === "type") order = compareStrings(left.dataset.subtype, right.dataset.subtype, sortDirection);
+    if (sortKey === "expansion") {
+      order = compareNumbers(expansionRanks[left.dataset.expansion], expansionRanks[right.dataset.expansion], sortDirection);
+    }
+    if (sortKey === "source") order = compareStrings(left.dataset.source, right.dataset.source, sortDirection);
+    if (sortKey === "quick") order = compareNumbers(number(left, "quick"), number(right, "quick"), sortDirection);
+    if (sortKey === "target") order = compareNumbers(number(left, "target"), number(right, "target"), sortDirection);
+    if (sortKey === "high") order = compareNumbers(number(left, "high", true), number(right, "high", true), sortDirection);
+    if (order) return order;
+    if (sortKey === "slots") {
+      return compareNumbers(number(left, "target"), number(right, "target"), "desc") || nameOrder;
+    }
+    return nameOrder;
+  }
+
+  function selectedRestrictions() {
+    return new Set(
+      restrictionChips
+        .filter((chip) => chip.getAttribute("aria-pressed") === "true")
+        .map((chip) => chip.dataset.containerRestriction)
+    );
+  }
+
+  function matchesBaseFilters(row) {
+    const query = normalize(controls.search.value);
+    return (!query || normalize(row.dataset.name).includes(query)) &&
+      (!controls.source.value || row.dataset.source === controls.source.value) &&
+      (!controls.expansion.value || row.dataset.expansion === controls.expansion.value);
+  }
+
+  function updateChipCounts() {
+    restrictionChips.forEach((chip) => {
+      const count = rows.filter((row) =>
+        matchesBaseFilters(row) && row.dataset.restriction === chip.dataset.containerRestriction
+      ).length;
+      const counter = chip.querySelector("[data-container-chip-count]");
+      if (counter) counter.textContent = String(count);
+    });
+  }
+
+  function cleanOptionLabel(control) {
+    return control.selectedOptions[0]?.textContent.replace(/\s+\(\d+\)$/, "") || "";
+  }
+
+  function addActiveFilter(label, type, value) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "container-active-filter";
+    button.dataset.containerRemoveFilter = type;
+    button.dataset.filterValue = value;
+    button.textContent = `${label} ×`;
+    button.setAttribute("aria-label", `Remove ${label} filter`);
+    activeFilterList.appendChild(button);
+  }
+
+  function updateActiveFilters(restrictions) {
+    activeFilterList.replaceChildren();
+    restrictionChips
+      .filter((chip) => restrictions.has(chip.dataset.containerRestriction))
+      .forEach((chip) => {
+        addActiveFilter(
+          chip.querySelector("span")?.textContent || chip.textContent,
+          "restriction",
+          chip.dataset.containerRestriction
+        );
+      });
+    if (controls.source.value) addActiveFilter(cleanOptionLabel(controls.source), "source", controls.source.value);
+    if (controls.expansion.value) addActiveFilter(cleanOptionLabel(controls.expansion), "expansion", controls.expansion.value);
+    activeFilters.hidden = activeFilterList.childElementCount === 0;
+  }
+
+  function updateSortControls() {
+    const sortValue = `${sortKey}-${sortDirection}`;
+    if (controls.mobileSort.value !== sortValue) controls.mobileSort.value = sortValue;
+    sortHeadings.forEach((button) => {
+      const heading = button.closest("th");
+      const active = button.dataset.containerSortKey === sortKey;
+      heading.setAttribute("aria-sort", active ? (sortDirection === "asc" ? "ascending" : "descending") : "none");
+      const indicator = button.querySelector("span");
+      if (indicator) indicator.textContent = active ? (sortDirection === "asc" ? "↑" : "↓") : "↕";
+    });
+  }
+
+  function setSort(nextKey, nextDirection) {
+    sortKey = nextKey;
+    sortDirection = nextDirection;
+    updateSortControls();
+    apply();
   }
 
   function apply() {
-    const query = normalize(controls.search.value);
-    const category = controls.category.value;
-    const subtype = controls.subtype.value;
-    const source = controls.source.value;
-    const expansion = controls.expansion.value;
-    const minSlots = Number.parseInt(controls.minSlots.value || "0", 10) || 0;
-    const sort = controls.sort.value;
+    const restrictions = selectedRestrictions();
     let shown = 0;
 
-    rows.sort((left, right) => compareRows(left, right, sort)).forEach((row) => {
-      const matches = (!query || normalize(row.dataset.name).includes(query)) &&
-        (!category || row.dataset.category === category) &&
-        (!subtype || row.dataset.subtype === subtype) &&
-        (!source || row.dataset.source === source) &&
-        (!expansion || row.dataset.expansion === expansion) &&
-        number(row, "capacity") >= minSlots;
+    rows.sort(compareRows).forEach((row) => {
+      const matches = matchesBaseFilters(row) &&
+        (restrictions.size === 0 || restrictions.has(row.dataset.restriction));
       row.hidden = !matches;
       if (matches) shown += 1;
       tbody.appendChild(row);
     });
 
-    status.textContent = `Showing ${shown} of ${rows.length}`;
+    status.textContent = `Showing ${shown} of ${rows.length} containers`;
     empty.hidden = shown !== 0;
+    updateChipCounts();
+    updateActiveFilters(restrictions);
   }
 
+  restrictionChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      apply();
+    });
+  });
+  sortHeadings.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextKey = button.dataset.containerSortKey;
+      const nextDirection = nextKey === sortKey
+        ? (sortDirection === "asc" ? "desc" : "asc")
+        : defaultDirections[nextKey];
+      setSort(nextKey, nextDirection);
+    });
+  });
+  controls.mobileSort.addEventListener("change", () => {
+    const separator = controls.mobileSort.value.lastIndexOf("-");
+    setSort(controls.mobileSort.value.slice(0, separator), controls.mobileSort.value.slice(separator + 1));
+  });
+  activeFilterList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-container-remove-filter]");
+    if (!button) return;
+    if (button.dataset.containerRemoveFilter === "restriction") {
+      const chip = restrictionChips.find((candidate) =>
+        candidate.dataset.containerRestriction === button.dataset.filterValue
+      );
+      if (chip) chip.setAttribute("aria-pressed", "false");
+    } else {
+      controls[button.dataset.containerRemoveFilter].value = "";
+    }
+    apply();
+  });
   form.addEventListener("input", apply);
   form.addEventListener("change", apply);
-  form.addEventListener("reset", () => window.setTimeout(apply, 0));
+  form.addEventListener("reset", () => {
+    restrictionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
+    sortKey = "slots";
+    sortDirection = "desc";
+    if (moreFilters) moreFilters.open = false;
+    window.setTimeout(() => {
+      updateSortControls();
+      apply();
+    }, 0);
+  });
+  updateSortControls();
   apply();
 })();

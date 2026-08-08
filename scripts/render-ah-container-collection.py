@@ -21,7 +21,7 @@ CONTAINER_PATH = ROOT / "data" / "ah-container-sections.json"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 GUIDES_DIR = ROOT / "guides"
 HUB_PATHS = (ROOT / "index.html", ROOT / "auction-house.html")
-ASSET_VERSION = "20260808-container-collection-v1"
+ASSET_VERSION = "20260808-container-collection-v2"
 COLLECTION_LINK = (
     '<a class="library-hub-chip" data-ah-container-collection-link '
     'href="./guides/bags-containers-ah-guide.html">Bags</a>'
@@ -36,18 +36,32 @@ HERBS_LINK_PATTERN = re.compile(
 
 
 BAG_FAMILIES = {
-    0: ("General bag", "General bags", "general"),
-    1: ("Quiver", "Hunter ammo", "hunter"),
-    2: ("Ammo pouch", "Hunter ammo", "hunter"),
-    4: ("Soul shard bag", "Profession bags", "profession"),
-    8: ("Leatherworking bag", "Profession bags", "profession"),
-    16: ("Inscription bag", "Profession bags", "profession"),
-    32: ("Herb bag", "Profession bags", "profession"),
-    64: ("Enchanting bag", "Profession bags", "profession"),
-    128: ("Engineering bag", "Profession bags", "profession"),
-    512: ("Jewelcrafting bag", "Profession bags", "profession"),
-    1024: ("Mining bag", "Profession bags", "profession"),
+    0: ("General bag", "General bags", "general", "general"),
+    1: ("Quiver", "Hunter ammo", "hunter", "quiver"),
+    2: ("Ammo pouch", "Hunter ammo", "hunter", "ammo-pouch"),
+    4: ("Soul shard bag", "Profession bags", "profession", "soul-shards"),
+    8: ("Leatherworking bag", "Profession bags", "profession", "skinning-leatherworking"),
+    16: ("Inscription bag", "Profession bags", "profession", "inscription"),
+    32: ("Herb bag", "Profession bags", "profession", "herbs"),
+    64: ("Enchanting bag", "Profession bags", "profession", "enchanting"),
+    128: ("Engineering bag", "Profession bags", "profession", "engineering"),
+    512: ("Jewelcrafting bag", "Profession bags", "profession", "jewelcrafting"),
+    1024: ("Mining bag", "Profession bags", "profession", "mining"),
 }
+
+RESTRICTION_CHIPS = (
+    ("general", "General"),
+    ("enchanting", "Enchanting"),
+    ("engineering", "Engineering"),
+    ("herbs", "Herbs"),
+    ("inscription", "Inscription"),
+    ("jewelcrafting", "Jewelcrafting"),
+    ("skinning-leatherworking", "Skinning / Leatherworking"),
+    ("mining", "Mining"),
+    ("soul-shards", "Soul Shards"),
+    ("quiver", "Quiver"),
+    ("ammo-pouch", "Ammo Pouch"),
+)
 
 
 def load(path: Path) -> dict:
@@ -178,7 +192,7 @@ def build_rows() -> tuple[dict, list[dict]]:
         family = BAG_FAMILIES.get(int(audited["bag_family"]))
         if family is None:
             raise ValueError(f"Unknown bag family {audited['bag_family']} for {item_id}")
-        subtype, category_label, category_key = family
+        subtype, category_label, category_key, restriction_key = family
         rows.append(
             {
                 "item_id": item_id,
@@ -188,6 +202,7 @@ def build_rows() -> tuple[dict, list[dict]]:
                 "subtype": subtype,
                 "category": category_label,
                 "category_key": category_key,
+                "restriction_key": restriction_key,
                 "expansion": expansion,
                 "source_type": source_type,
                 "source_label": {
@@ -232,6 +247,7 @@ def render_row(row: dict) -> str:
         f'data-name="{html.escape(row["name"].casefold(), quote=True)}" '
         f'data-category="{row["category_key"]}" '
         f'data-subtype="{html.escape(row["subtype"], quote=True)}" '
+        f'data-restriction="{row["restriction_key"]}" '
         f'data-source="{row["source_type"]}" '
         f'data-expansion="{row["expansion"].lower()}" '
         f'data-capacity="{row["capacity"]}" '
@@ -259,9 +275,14 @@ def render_row(row: dict) -> str:
 def render_page(collection: dict, rows: list[dict]) -> str:
     source_counts = Counter(row["source_type"] for row in rows)
     category_counts = Counter(row["category_key"] for row in rows)
-    subtype_options = "".join(
-        f'<option value="{html.escape(value, quote=True)}">{html.escape(value)}</option>'
-        for value in sorted({row["subtype"] for row in rows})
+    restriction_counts = Counter(row["restriction_key"] for row in rows)
+    restriction_chips = "\n".join(
+        f'          <button class="container-filter-chip" type="button" '
+        f'data-container-restriction="{key}" aria-pressed="false">'
+        f'<span>{html.escape(label)}</span>'
+        f'<span class="container-filter-chip-count" data-container-chip-count>{restriction_counts[key]}</span>'
+        f'</button>'
+        for key, label in RESTRICTION_CHIPS
     )
     rendered_rows = "\n".join(render_row(row) for row in rows)
     today = date.today().isoformat()
@@ -311,88 +332,101 @@ def render_page(collection: dict, rows: list[dict]) -> str:
           <span class="container-browser-kicker">Compare all containers</span>
           <h2 id="container-browser-heading">Find the right capacity and contents</h2>
         </div>
-        <p class="container-result-count" id="container-result-count" role="status" aria-live="polite">Showing {len(rows)} of {len(rows)}</p>
+        <p class="container-result-count" id="container-result-count" role="status" aria-live="polite">Showing {len(rows)} of {len(rows)} containers</p>
       </div>
 
       <form class="container-filters" data-container-filters>
-        <label class="container-filter container-filter-search">
-          <span>Search</span>
-          <input id="container-search" type="search" placeholder="Bag or container name" autocomplete="off" spellcheck="false">
-        </label>
-        <label class="container-filter">
-          <span>Category</span>
-          <select id="container-category">
-            <option value="">All categories</option>
-            <option value="general">General bags</option>
-            <option value="profession">Profession bags</option>
-            <option value="hunter">Hunter ammo</option>
-          </select>
-        </label>
-        <label class="container-filter">
-          <span>Contents</span>
-          <select id="container-subtype"><option value="">All contents</option>{subtype_options}</select>
-        </label>
-        <label class="container-filter">
-          <span>Source</span>
-          <select id="container-source">
-            <option value="">All sources</option>
-            <option value="crafted">Crafted ({source_counts["crafted"]})</option>
-            <option value="vendor">Vendor ({source_counts["vendor"]})</option>
-            <option value="drop">Drop ({source_counts["drop"]})</option>
-            <option value="quest-reward">Quest reward ({source_counts["quest-reward"]})</option>
-          </select>
-        </label>
-        <label class="container-filter">
-          <span>Expansion</span>
-          <select id="container-expansion">
-            <option value="">All expansions</option>
-            <option value="wrath">Wrath</option>
-            <option value="outland">Outland</option>
-            <option value="classic">Classic</option>
-          </select>
-        </label>
-        <label class="container-filter">
-          <span>Minimum slots</span>
-          <select id="container-min-slots">
-            <option value="0">Any capacity</option>
-            <option value="10">10+</option><option value="14">14+</option>
-            <option value="16">16+</option><option value="20">20+</option>
-            <option value="24">24+</option><option value="28">28+</option>
-            <option value="32">32</option>
-          </select>
-        </label>
-        <label class="container-filter">
-          <span>Sort</span>
-          <select id="container-sort">
-            <option value="slots-desc">Slots: high to low</option>
-            <option value="target-desc">Target: high to low</option>
-            <option value="target-asc">Target: low to high</option>
-            <option value="name-asc">Name: A to Z</option>
-          </select>
-        </label>
-        <button class="container-reset" type="reset">Clear filters</button>
+        <div class="container-primary-controls">
+          <label class="container-filter container-filter-search">
+            <span>Search</span>
+            <input id="container-search" type="search" placeholder="Bag or container name" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="container-filter container-mobile-sort">
+            <span>Sort by</span>
+            <select id="container-mobile-sort">
+              <option value="slots-desc">Slots: high to low</option>
+              <option value="slots-asc">Slots: low to high</option>
+              <option value="name-asc">Item: A to Z</option>
+              <option value="name-desc">Item: Z to A</option>
+              <option value="type-asc">Contents: A to Z</option>
+              <option value="type-desc">Contents: Z to A</option>
+              <option value="expansion-desc">Expansion: Wrath to Classic</option>
+              <option value="expansion-asc">Expansion: Classic to Wrath</option>
+              <option value="source-asc">Source: A to Z</option>
+              <option value="source-desc">Source: Z to A</option>
+              <option value="quick-desc">Quick / Cost: high to low</option>
+              <option value="quick-asc">Quick / Cost: low to high</option>
+              <option value="target-desc">Target: high to low</option>
+              <option value="target-asc">Target: low to high</option>
+              <option value="high-desc">High: high to low</option>
+              <option value="high-asc">High: low to high</option>
+            </select>
+          </label>
+          <button class="container-reset" type="reset">Clear all</button>
+        </div>
+
+        <fieldset class="container-restriction-filter">
+          <legend>Container restrictions <span>Select one or more. Selected types are combined with OR.</span></legend>
+          <div class="container-filter-chip-row">
+{restriction_chips}
+          </div>
+        </fieldset>
+
+        <details class="container-more-filters">
+          <summary><span>More filters</span><span class="container-more-filter-summary">Source and expansion</span></summary>
+          <div class="container-advanced-grid">
+            <label class="container-filter">
+              <span>Source</span>
+              <select id="container-source">
+                <option value="">All sources</option>
+                <option value="crafted">Crafted ({source_counts["crafted"]})</option>
+                <option value="vendor">Vendor ({source_counts["vendor"]})</option>
+                <option value="drop">Drop ({source_counts["drop"]})</option>
+                <option value="quest-reward">Quest reward ({source_counts["quest-reward"]})</option>
+              </select>
+            </label>
+            <label class="container-filter">
+              <span>Expansion</span>
+              <select id="container-expansion">
+                <option value="">All expansions</option>
+                <option value="wrath">Wrath</option>
+                <option value="outland">Outland</option>
+                <option value="classic">Classic</option>
+              </select>
+            </label>
+          </div>
+        </details>
+
+        <div class="container-active-filters" id="container-active-filters" hidden>
+          <span class="container-active-filter-label">Active filters</span>
+          <div class="container-active-filter-list" id="container-active-filter-list"></div>
+        </div>
       </form>
 
       <div class="container-table-wrap">
         <table class="container-collection-table">
           <thead><tr>
-            <th data-column="item">Item</th><th data-column="slots">Slots</th>
-            <th data-column="type">Contents</th><th data-column="expansion">Expansion</th>
-            <th data-column="source">Source</th><th data-column="quick">Quick / Cost</th>
-            <th data-column="target">Target</th><th data-column="high">High</th>
+            <th data-column="item" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="name">Item<span aria-hidden="true">↕</span></button></th>
+            <th data-column="slots" aria-sort="descending"><button class="container-sort-heading" type="button" data-container-sort-key="slots">Slots<span aria-hidden="true">↓</span></button></th>
+            <th data-column="type" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="type">Contents<span aria-hidden="true">↕</span></button></th>
+            <th data-column="expansion" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="expansion">Expansion<span aria-hidden="true">↕</span></button></th>
+            <th data-column="source" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="source">Source<span aria-hidden="true">↕</span></button></th>
+            <th data-column="quick" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="quick">Quick / Cost<span aria-hidden="true">↕</span></button></th>
+            <th data-column="target" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="target">Target<span aria-hidden="true">↕</span></button></th>
+            <th data-column="high" aria-sort="none"><button class="container-sort-heading" type="button" data-container-sort-key="high">High<span aria-hidden="true">↕</span></button></th>
             <th data-column="owner">Canonical guide</th>
           </tr></thead>
           <tbody data-container-rows>
 {rendered_rows}
           </tbody>
         </table>
-        <p class="container-empty-state" id="container-empty-state" hidden>No containers match those filters.</p>
+        <p class="container-empty-state" id="container-empty-state" hidden>No containers match the selected types with the current search, source, and expansion filters.</p>
       </div>
     </section>
 
     <section class="common container-collection-help">
       <h2>How to use this collection</h2>
-      <p>Compare slots first, then check whether the bag accepts general inventory, profession supplies, arrows, or bullets. Select the item name or Canonical guide link for its full pricing and acquisition note. Crafted rows retain their recipe and materials mouseover in the owning profession guide.</p>
+      <p>Sort the Slots heading to keep equal capacities together. Restriction chips show any selected type, while Search, Source, and Expansion narrow those results together. Select the item name or Canonical guide link for its full pricing and acquisition note. Crafted rows retain their recipe and materials mouseover in the owning profession guide.</p>
     </section>
 
     <footer>WotLK 3.3.5 Bags &amp; Containers AH Collection • Hellscream / Garrosh • Created by Valdora • Updated {today}</footer>
