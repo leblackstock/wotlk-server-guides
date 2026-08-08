@@ -5,7 +5,6 @@
   <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">  <link rel="stylesheet" href="../assets/style.css?v=20260804-ah-dropped-gear-v1">
   <link rel="stylesheet" href="../assets/ah-guide-icons.css?v=20260804-ah-dropped-gear-v1">
-  <link rel="stylesheet" href="../assets/ah-gem-finder.css?v=20260808-cut-gem-finder-v1">
 </head>
 <body data-guide-section="auction-house" data-ah-guide="jewelcrafting-gems" data-ah-root="../">
 <div class="wrap" id="top">
@@ -653,96 +652,6 @@
 <div><span class="label">Bid</span><span class="bid">8s 50c</span></div>
 <div><span class="label">Buyout</span><span class="buyout">10s</span></div>
 </div></td><td data-column="stack" data-label="Stack Size">5 / 10</td><td data-column="demand" data-label="Demand"><span class="demand med">Low-Med</span></td><td data-column="notes" data-label="Use / Selling Notes">Early gem. Low price, but can sell to levelers.</td></tr></tbody></table></div></section>
-<section class="ah-gem-finder" aria-labelledby="ah-gem-finder-title" data-ah-gem-finder>
-  <div class="ah-gem-finder-heading">
-    <span class="ah-gem-finder-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" focusable="false"><path d="m7 3-4 6 9 12 9-12-4-6H7Z"></path><path d="m3 9 9 3 9-3M7 3l5 9 5-9"></path></svg>
-    </span>
-    <div>
-      <h2 id="ah-gem-finder-title">Cut Gem Finder</h2>
-      <p>Search cut names or exact effects, combine popular stats, and narrow by quality or matching socket. Multiple stat chips use exact <strong>AND</strong> matching.</p>
-    </div>
-  </div>
-
-  <label class="visually-hidden" for="ah-gem-search-input">Search cut gem names or effects</label>
-  <div class="ah-gem-search-wrap">
-    <span class="ah-gem-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" focusable="false"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
-    <input id="ah-gem-search-input" class="ah-gem-search-input" type="search"
-      placeholder="Try armor penetration, hit stamina, Runed, ArP, or MP5…"
-      autocomplete="off" autocapitalize="off" spellcheck="false"
-      aria-describedby="ah-gem-status" aria-controls="ah-gem-results">
-  </div>
-
-  <fieldset class="ah-gem-filter-set">
-    <legend>Popular stats</legend>
-    <div class="ah-gem-chip-row">
-      <button class="ah-gem-chip" type="button" data-gem-stat="strength" aria-pressed="false">Strength</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="agility" aria-pressed="false">Agility</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="spell-power" aria-pressed="false">Spell Power</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="hit" aria-pressed="false">Hit</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="haste" aria-pressed="false">Haste</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="crit" aria-pressed="false">Crit</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="armor-penetration" aria-pressed="false">Armor Pen</button>
-      <button class="ah-gem-chip" type="button" data-gem-stat="stamina" aria-pressed="false">Stamina</button>
-      <button class="ah-gem-more-button" id="ah-gem-more-stats" type="button" aria-expanded="false" aria-controls="ah-gem-extra-stats">More…</button>
-    </div>
-    <div class="ah-gem-extra-stats" id="ah-gem-extra-stats" hidden>
-      <div class="ah-gem-chip-row">
-        <button class="ah-gem-chip" type="button" data-gem-stat="attack-power" aria-pressed="false">Attack Power</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="expertise" aria-pressed="false">Expertise</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="defense" aria-pressed="false">Defense</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="dodge" aria-pressed="false">Dodge</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="parry" aria-pressed="false">Parry</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="resilience" aria-pressed="false">Resilience</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="intellect" aria-pressed="false">Intellect</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="spirit" aria-pressed="false">Spirit</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="mana-regen" aria-pressed="false">Mana Regen</button>
-        <button class="ah-gem-chip" type="button" data-gem-stat="spell-penetration" aria-pressed="false">Spell Pen</button>
-      </div>
-    </div>
-  </fieldset>
-
-  <div class="ah-gem-controls">
-    <fieldset class="ah-gem-filter-set">
-      <legend>Tier</legend>
-      <div class="ah-gem-chip-row">
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="tier" data-gem-filter-value="all" aria-pressed="true">All</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="tier" data-gem-filter-value="epic" aria-pressed="false">Epic</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="tier" data-gem-filter-value="rare" aria-pressed="false">Rare</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="tier" data-gem-filter-value="uncommon" aria-pressed="false">Uncommon</button>
-      </div>
-    </fieldset>
-    <fieldset class="ah-gem-filter-set">
-      <legend>Matching socket</legend>
-      <div class="ah-gem-chip-row">
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="socket" data-gem-filter-value="any" aria-pressed="true">Any</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="socket" data-gem-filter-value="red" aria-pressed="false">Red</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="socket" data-gem-filter-value="yellow" aria-pressed="false">Yellow</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="socket" data-gem-filter-value="blue" aria-pressed="false">Blue</button>
-        <button class="ah-gem-chip" type="button" data-gem-filter-group="socket" data-gem-filter-value="meta" aria-pressed="false">Meta</button>
-      </div>
-    </fieldset>
-    <label class="ah-gem-sort-label" for="ah-gem-sort">
-      <span>Sort</span>
-      <select class="ah-gem-sort" id="ah-gem-sort">
-        <option value="demand">Demand</option>
-        <option value="price-high">Price: high to low</option>
-        <option value="price-low">Price: low to high</option>
-        <option value="name">Name</option>
-      </select>
-    </label>
-  </div>
-
-  <div class="ah-gem-active-row" id="ah-gem-active-row" hidden>
-    <span class="ah-gem-active-label">Active</span>
-    <div class="ah-gem-active-filters" id="ah-gem-active-filters"></div>
-    <button class="ah-gem-clear-button" id="ah-gem-clear" type="button" hidden>Clear all</button>
-  </div>
-  <p class="ah-gem-status" id="ah-gem-status" role="status" aria-live="polite"></p>
-  <ol class="ah-gem-results" id="ah-gem-results" hidden></ol>
-  <noscript><p class="small">JavaScript is required for the finder. The complete cut tables remain available below.</p></noscript>
-</section>
-
 <!-- AH_CRAFTED_SECTION_START -->
 <div class="ah-crafted-market" data-ah-template="crafted-market-v1">
   <section class="common crafted-market-intro" id="crafted-items">
@@ -4562,5 +4471,4 @@
 <script src="../assets/ah-guide-navigation.js?v=20260804-ah-dropped-gear-v1" defer></script>
 <script src="../assets/ah-search.js?v=20260804-ah-dropped-gear-v1" defer></script>
 <!-- AH_GUIDE_SCRIPTS_END -->
-<script src="../assets/ah-gem-finder.js?v=20260808-cut-gem-finder-v1" defer></script>
 </body></html>
