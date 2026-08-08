@@ -386,20 +386,25 @@
       });
     });
 
-    if (!global.location || !global.location.hash.startsWith("#ah-item=")) return;
-    const params = new URLSearchParams(global.location.hash.slice(1));
-    const requestedSlug = params.get("ah-item");
-    const requestedOccurrence = Math.max(1, Number.parseInt(params.get("occurrence") || "1", 10));
-    if (!requestedSlug) return;
+    function selectRowFromHash() {
+      if (!global.location || !global.location.hash.startsWith("#ah-item=")) return;
+      const params = new URLSearchParams(global.location.hash.slice(1));
+      const requestedSlug = params.get("ah-item");
+      const requestedOccurrence = Math.max(1, Number.parseInt(params.get("occurrence") || "1", 10));
+      if (!requestedSlug) return;
 
-    let occurrence = 0;
-    const targetRow = rows.find((row) => {
-      const name = row.querySelector("td:first-child strong");
-      if (!name || slugify(name.textContent) !== requestedSlug) return false;
-      occurrence += 1;
-      return occurrence === requestedOccurrence;
-    });
-    selectRow(targetRow, { pulse: true, scroll: true });
+      let occurrence = 0;
+      const targetRow = rows.find((row) => {
+        const name = row.querySelector("td:first-child strong");
+        if (!name || slugify(name.textContent) !== requestedSlug) return false;
+        occurrence += 1;
+        return occurrence === requestedOccurrence;
+      });
+      selectRow(targetRow, { pulse: true, scroll: true });
+    }
+
+    global.addEventListener("hashchange", selectRowFromHash);
+    selectRowFromHash();
   }
 
   global.AHSearchCore = {

@@ -1,6 +1,9 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const { JSDOM } = require("jsdom");
 
 globalThis.window = globalThis;
 require("../assets/ah-search.js");
@@ -39,4 +42,25 @@ const broadSearch = searchItems(index.items, "bar");
 assert.equal(broadSearch.length, 12);
 assert.equal(new Set(broadSearch.map((item) => normalize(item.name))).size, broadSearch.length);
 
-console.log("Auction House search groups duplicate item rows into unique results.");
+const root = path.resolve(__dirname, "..");
+const engineeringGuide = fs.readFileSync(path.join(root, "guides", "engineering-materials-ah-price-guide.html"), "utf8");
+const searchSource = fs.readFileSync(path.join(root, "assets", "ah-search.js"), "utf8");
+const runtime = new JSDOM(engineeringGuide, {
+  runScripts: "outside-only",
+  url: "http://127.0.0.1/guides/engineering-materials-ah-price-guide.html",
+});
+runtime.window.HTMLElement.prototype.scrollIntoView = () => {};
+runtime.window.eval(searchSource);
+runtime.window.document.dispatchEvent(new runtime.window.Event("DOMContentLoaded"));
+
+assert.equal(runtime.window.document.querySelector("tr.ah-row-selected"), null);
+runtime.window.location.hash = "#ah-item=elemental-blasting-powder";
+runtime.window.dispatchEvent(new runtime.window.Event("hashchange"));
+
+const selectedRow = runtime.window.document.querySelector("tr.ah-row-selected");
+assert.ok(selectedRow, "Same-page AH item links should select their destination row after the hash changes");
+assert.equal(selectedRow.querySelector("td:first-child strong").textContent.trim(), "Elemental Blasting Powder");
+assert.equal(selectedRow.getAttribute("aria-selected"), "true");
+runtime.window.close();
+
+console.log("Auction House search groups duplicate item rows and follows same-page item links.");
