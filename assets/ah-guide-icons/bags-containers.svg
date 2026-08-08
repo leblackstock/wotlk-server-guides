@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Bags and containers</title>
+  <desc id="desc">A reinforced adventurer satchel</desc>
+  <defs>
+    <linearGradient id="bag" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d79a4a"/>
+      <stop offset="1" stop-color="#80502d"/>
+    </linearGradient>
+  </defs>
+  <path d="M19 21v-4c0-8 5-12 13-12s13 4 13 12v4" fill="none" stroke="#f4ce83" stroke-width="5" stroke-linecap="round"/>
+  <path d="M10 22c0-3 2-5 5-5h34c3 0 5 2 5 5l-3 31c0 4-3 6-7 6H20c-4 0-7-2-7-6z" fill="url(#bag)" stroke="#f4ce83" stroke-width="2"/>
+  <path d="M12 29h40M18 18v11m28-11v11" fill="none" stroke="#61391f" stroke-width="3"/>
+  <path d="M25 29h14v12c0 3-2 5-5 5h-4c-3 0-5-2-5-5z" fill="#bb7c35" stroke="#f4ce83" stroke-width="2"/>
+  <circle cx="32" cy="37" r="2" fill="#ffe0a3"/>
+  <path d="M16 51h32" fill="none" stroke="#61391f" stroke-width="3" stroke-linecap="round"/>
+</svg>

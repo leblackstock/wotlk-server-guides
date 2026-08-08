@@ -68,3 +68,8 @@ Herbalism rows.
   fallback confidence, including every manually accepted Target change over
   50%. Duplicate Alchemy and Inscription input rows were synchronized locally;
   no finished profession output was repriced and nothing was published.
+- Container coverage addendum — 2026-08-08: Added Herb Pouch as an unlimited
+  vendor-owned 12-slot herb container. It has no hard Herbalism requirement,
+  but the row labels the actual herb-storage buyer and keeps the Target tied to
+  the exact 10s vendor route. No herb baseline changed and nothing was
+  published.

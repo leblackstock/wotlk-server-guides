@@ -93,6 +93,11 @@ for (const guide of manifest.guides) {
   assert.equal(document.querySelectorAll(".ah-baseline-note").length, 1, guide.file);
   assert.equal(document.querySelectorAll("footer").length, 1, guide.file);
   const updatedOnAugustEighth = new Set([
+    "herbalism",
+    "engineering",
+    "jewelcrafting-gems",
+    "enchanting",
+    "inscription",
     "tailoring",
     "skinning-leatherworking",
     "fishing-cooking",
@@ -178,7 +183,7 @@ assert.deepEqual(
     navContext.window.AH_GUIDE_NAVIGATION.guides["sought-after-world-drops"].navigation,
     (entry) => entry.id,
   ),
-  ["world-northrend", "world-outland", "world-classic"],
+  ["world-northrend", "world-outland", "world-classic", "world-containers"],
 );
 
 const indexContext = { window: {} };
@@ -186,8 +191,8 @@ vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
 assert.equal(searchIndex.guideCount, 18);
-assert.equal(searchIndex.itemCount, 3908);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3679);
+assert.equal(searchIndex.itemCount, 3949);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3720);
 assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 18);
 
 const counts = Object.fromEntries(
@@ -198,11 +203,11 @@ const counts = Object.fromEntries(
 );
 assert.equal(counts["blacksmithing-materials"], 110);
 assert.equal(counts["blacksmithing-gear"], 401);
-assert.equal(counts["jewelcrafting-gems"], 418);
+assert.equal(counts["jewelcrafting-gems"], 419);
 assert.equal(counts["jewelcrafting-jewelry"], 142);
-assert.equal(counts["turn-ins"], 74);
+assert.equal(counts["turn-ins"], 75);
 assert.equal(counts["recipe-pattern-drops"], 90);
 assert.equal(counts["level-80-boe-epics"], 85);
-assert.equal(counts["sought-after-world-drops"], 262);
+assert.equal(counts["sought-after-world-drops"], 283);
 
 console.log("AH manifest, hub cards, compact guide UX, redirects, and split/merged index counts are current.");

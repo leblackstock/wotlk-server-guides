@@ -92,3 +92,8 @@
   All 13 ammunition rows were normalized to the displayed stack of 200. The
   guide, search index, tooltips, ordering, notes, and recipe links were
   regenerated locally. Nothing was published.
+- Container coverage addendum — 2026-08-08: Added Heavy Toolbox as a
+  vendor-owned 20-slot Engineering-supplies container. The pinned source is
+  limited to one per vendor with a 2-hour restock at Fabian Lanzonelli and
+  12-hour restocks at the other listed innkeepers. Exact vendor cost sets the
+  floor; active listings did not set value. Nothing was published.

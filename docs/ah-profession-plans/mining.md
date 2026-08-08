@@ -123,3 +123,8 @@
   within-cohort rank only, fixed Hellscream anchors set gold, and 10:1 elemental
   forms remained exact. Accepted bands and duplicate references were applied
   locally; no active Hellscream ask was used and nothing was published.
+- Container coverage addendum — 2026-08-08: Added Mining Sack as a
+  vendor-owned 20-slot mining-material container. Pinned stock is one with a
+  2-hour restock at Fabian Lanzonelli and 12-hour restocks at the other listed
+  innkeepers. Exact 10g vendor cost anchors the 15g convenience Target; no
+  Mining output or ore baseline changed and nothing was published.

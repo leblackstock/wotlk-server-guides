@@ -20,7 +20,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     recipeSpell,
     notePattern,
     label,
-    footerDate = "2026-08-06"
+    footerDate = "2026-08-08"
   } = options;
   await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
@@ -131,9 +131,9 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   await page.goto(`${base}/guides/sought-after-world-drops-ah-price-guide.html`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
   assert.equal(await page.locator('[data-market-source="dropped"]').count(), 262);
-  assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 3);
+  assert.equal(await page.locator("[data-ah-major-nav] .ah-category-chip").count(), 4);
   assert.deepEqual(await page.locator("[data-ah-major-nav] .ah-category-chip").allTextContents(), [
-    "Northrend: Levels 71–79", "Outland: Levels 61–70", "Classic: Levels 1–60",
+    "Northrend: Levels 71–79", "Outland: Levels 61–70", "Classic: Levels 1–60", "Containers",
   ]);
   assert.deepEqual(await page.locator("[data-dropped-gear-section]").evaluateAll((sections) => sections.map(
     (section) => section.dataset.droppedGearSection,
@@ -172,6 +172,41 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   await noOverflow(page, `${labelPrefix} world-drop guide`);
 }
 
+async function verifyContainerCollection(page, labelPrefix) {
+  await page.goto(`${base}/guides/bags-containers-ah-guide.html`, { waitUntil: "networkidle" });
+  await page.waitForSelector("[data-container-row]");
+  assert.equal(await page.locator("[data-container-row]").count(), 93);
+  assert.deepEqual(await page.locator(".container-summary-grid strong").allTextContents(), ["93", "48", "27", "18"]);
+  assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 93);
+  assert.equal(await page.locator("#container-result-count").textContent(), "Showing 93 of 93");
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-08/);
+
+  await page.locator("#container-category").selectOption("profession");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 27 of 93");
+  assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 27);
+
+  await page.locator(".container-reset").click();
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 93 of 93");
+  await page.locator("#container-source").selectOption("vendor");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 19 of 93");
+  assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 19);
+
+  await page.locator(".container-reset").click();
+  await page.locator("#container-search").fill("Portable Hole");
+  await page.waitForFunction(() => document.querySelector("#container-result-count")?.textContent === "Showing 1 of 93");
+  const portableHole = page.locator('[data-container-row][data-item-id="51809"]');
+  assert.equal(await portableHole.locator('[data-column="slots"]').textContent(), "24");
+  assert.equal(await portableHole.locator('[data-column="target"] .container-price').textContent(), "3,150g");
+  assert.match(await portableHole.locator(".container-owner-link").getAttribute("href"), /tailoring-cloth-ah-price-guide\.html#ah-item=portable-hole$/);
+  await page.waitForSelector('[data-container-row][data-item-id="51809"] .container-item-link[data-wowhead]');
+  assert.equal(await portableHole.locator(".container-item-link").getAttribute("data-wowhead"), "item=51809&domain=wotlk");
+
+  await page.locator(".container-reset").click();
+  await page.locator("#container-sort").selectOption("target-desc");
+  assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Portable Hole");
+  await noOverflow(page, `${labelPrefix} Bags & Containers collection`);
+}
+
 (async () => {
   const browser = await chromium.launch({ headless: true });
   try {
@@ -190,7 +225,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
 
     assert.equal(await desktop.locator(".ah-hub-browse").getAttribute("href"), "./auction-house.html");
     assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 0, "AH guide cards should not remain on the main hub");
-    assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 5);
+    assert.equal(await desktop.locator(".library-hub-ah .library-hub-chip").count(), 6);
     assert.equal(await desktop.locator(".library-hub-addons .library-hub-chip").count(), 4);
 
     const merchantGuildLink = desktop.locator(".library-hub-secret-link");
@@ -268,7 +303,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     assert.ok(skinningCategoryBox && skinningCategoryBox.y >= 0 && skinningCategoryBox.y < 160, "Skinning link card must scroll to its materials category");
     await desktop.goBack({ waitUntil: "networkidle" });
     await desktop.waitForSelector("#ah-search-input");
-    assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 5);
+    assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 6);
     const expectedUniqueItems = await desktop.evaluate(() => window.AHSearchCore.uniqueItemCount(window.AH_SEARCH_INDEX.items));
     assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 18 guides`);
 
@@ -375,10 +410,11 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     }));
     assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
-    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-06/);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-08/);
     await noOverflow(desktop, "Desktop Enchanting guide");
     await verifyGuideNavigation(desktop);
     await verifyDroppedGearGuides(desktop, "Desktop");
+    await verifyContainerCollection(desktop, "Desktop");
 
     await verifyAuditedCraftedGuide(desktop, {
       filename: "inscription-materials-ah-price-guide.html",
@@ -419,6 +455,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
+      footerDate: "2026-08-06",
       label: "Desktop Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -450,6 +487,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "2g 20s",
       recipeSpell: 56193,
       notePattern: /item level 138/,
+      footerDate: "2026-08-06",
       label: "Desktop Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -597,6 +635,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
     );
     await noOverflow(mobile, "Mobile Auction House hub");
     await verifyDroppedGearGuides(mobile, "Mobile");
+    await verifyContainerCollection(mobile, "Mobile");
 
     await mobile.goto(`${base}/guides/enchanting-mats-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await mobile.locator('[data-crafted-key^="ench-"]').count(), 276);
@@ -646,6 +685,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
+      footerDate: "2026-08-06",
       label: "Mobile Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -677,6 +717,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
       target: "2g 20s",
       recipeSpell: 56193,
       notePattern: /item level 138/,
+      footerDate: "2026-08-06",
       label: "Mobile Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(mobile, {

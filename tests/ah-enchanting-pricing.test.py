@@ -136,7 +136,7 @@ def test_rendered_guide_has_one_shared_note_and_all_recipe_links():
     assert source.count("Evidence Pricing and craft diagnostics") == 277
     assert source.count('class="crafted-recipe-link ') == 276
     assert "Reagent floor and pricing" not in source
-    assert "Updated 2026-08-06" in source
+    assert "Updated 2026-08-08" in source
 
 
 if __name__ == "__main__":

@@ -153,7 +153,8 @@ def main() -> int:
 
     search_counts = Counter(item["guideId"] for item in search["items"])
     for guide_id, expected in EXPECTED_COUNTS.items():
-        assert search_counts[guide_id] == expected
+        expected_search = expected + (21 if guide_id == "sought-after-world-drops" else 0)
+        assert search_counts[guide_id] == expected_search
     assert [
         section["id"]
         for section in catalog["guides"]["sought-after-world-drops"]["sections"]
@@ -188,7 +189,10 @@ def main() -> int:
             '<th data-column="notes">Use / Selling Notes</th><th data-column="demand">Demand</th>'
             '<th data-column="market">Market</th><th data-column="source">Source</th>'
         )
-        assert source.count(expected_columns) == len(guide["sections"])
+        expected_tables = len(guide["sections"]) + (
+            1 if guide_id == "sought-after-world-drops" else 0
+        )
+        assert source.count(expected_columns) == expected_tables
         assert "Provisional fallback" not in source
         assert "Guide snapshot" not in source
         assert 'class="common ah-dropped-gear-summary"' not in source

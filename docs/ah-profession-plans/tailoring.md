@@ -120,3 +120,9 @@
   search metadata, and the guide footer were refreshed locally. Refresh this
   phase when useful Hellscream completed-sale history becomes available or a
   later scheduled evidence refresh is due. Nothing was published.
+- Container coverage addendum — 2026-08-08: Reconciled every pinned storage
+  item with the 33 existing Tailoring-crafted containers. All recipe-backed
+  Tailoring bags were already present. Added seven general vendor bags to this
+  guide as deterministic convenience references, including the mixed-source
+  Small Brown Pouch, whose unlimited 5s vendor route prevents drop-scarcity
+  pricing. No crafted Tailoring band changed and nothing was published.

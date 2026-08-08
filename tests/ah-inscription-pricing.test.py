@@ -221,7 +221,7 @@ assert "Preserved Book of Glyph Mastery Target: `25g`" in report
 assert "Publication status: `local only — not published`" in report
 
 guide = GUIDE_PATH.read_text(encoding="utf-8")
-assert "Updated 2026-08-06" in guide
+assert "Updated 2026-08-08" in guide
 assert guide.count("<strong>* Evidence Pricing and craft diagnostics:</strong>") == 1
 assert guide.count('class="crafted-recipe-link ') == 107
 assert guide.count('class="crafted-note-ref"') == 107

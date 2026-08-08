@@ -16,11 +16,11 @@
     "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search."
   },
   "source_counts": {
-    "search_item_ids": 3679,
+    "search_item_ids": 3720,
     "crafted_item_ids": 2693,
-    "vendor_item_ids": 44,
+    "vendor_item_ids": 63,
     "baseline_item_ids": 1129,
-    "unique_audited_item_ids": 3750
+    "unique_audited_item_ids": 3791
   },
   "items": {
     "118": {
@@ -119,6 +119,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "804": {
+      "name": "Large Blue Sack",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "805": {
+      "name": "Small Red Pouch",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "809": {
       "name": "Bloodrazor",
       "flags": 0,
@@ -149,10 +161,28 @@
       "bonding": 0,
       "duration": 0
     },
+    "828": {
+      "name": "Small Blue Pouch",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "833": {
       "name": "Lifestone",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "856": {
+      "name": "Blue Leather Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "857": {
+      "name": "Large Red Sack",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "858": {
@@ -205,6 +235,18 @@
     },
     "929": {
       "name": "Healing Potion",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "932": {
+      "name": "Fel Steed Saddlebags",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "933": {
+      "name": "Large Rucksack",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -377,6 +419,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "1470": {
+      "name": "Murloc Skin Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "1475": {
       "name": "Small Venom Sac",
       "flags": 0,
@@ -419,6 +467,18 @@
       "bonding": 2,
       "duration": 0
     },
+    "1652": {
+      "name": "Sturdy Lunchbox",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "1685": {
+      "name": "Troll-hide Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "1705": {
       "name": "Lesser Moonstone",
       "flags": 0,
@@ -453,6 +513,12 @@
       "name": "Viking Warhammer",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "1725": {
+      "name": "Large Knapsack",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "1728": {
@@ -507,6 +573,18 @@
       "name": "Precisely Calibrated Boomstick",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "2101": {
+      "name": "Light Quiver",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2102": {
+      "name": "Small Ammo Pouch",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "2163": {
@@ -901,6 +979,12 @@
     },
     "2605": {
       "name": "Green Dye",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2657": {
+      "name": "Red Leather Bag",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -1393,6 +1477,12 @@
     },
     "3220": {
       "name": "Blood Sausage",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "3233": {
+      "name": "Gnoll Hide Sack",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -2005,6 +2095,12 @@
     },
     "3864": {
       "name": "Citrine",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "3914": {
+      "name": "Journeyman's Backpack",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -2633,6 +2729,36 @@
       "bonding": 0,
       "duration": 0
     },
+    "4496": {
+      "name": "Small Brown Pouch",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "4497": {
+      "name": "Heavy Brown Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "4498": {
+      "name": "Brown Leather Satchel",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "4499": {
+      "name": "Huge Brown Sack",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "4500": {
+      "name": "Traveler's Backpack",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "4582": {
       "name": "Soft Bushy Tail",
       "flags": 0,
@@ -2737,6 +2863,18 @@
     },
     "5373": {
       "name": "Lucky Charm",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5439": {
+      "name": "Small Quiver",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5441": {
+      "name": "Small Shot Pouch",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -2889,6 +3027,42 @@
       "name": "Pearl-clasped Cloak",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "5571": {
+      "name": "Small Black Pouch",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5572": {
+      "name": "Small Green Pouch",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5573": {
+      "name": "Green Leather Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5574": {
+      "name": "White Leather Bag",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5575": {
+      "name": "Large Green Sack",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5576": {
+      "name": "Large Brown Sack",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "5631": {
@@ -5373,6 +5547,18 @@
       "name": "Greater Mystic Wand",
       "flags": 32768,
       "bonding": 2,
+      "duration": 0
+    },
+    "11362": {
+      "name": "Medium Quiver",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11363": {
+      "name": "Medium Shot Pouch",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "11370": {
@@ -8123,6 +8309,12 @@
       "bonding": 2,
       "duration": 0
     },
+    "19291": {
+      "name": "Darkmoon Storage Box",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "19440": {
       "name": "Powerful Anti-Venom",
       "flags": 64,
@@ -9313,6 +9505,12 @@
     },
     "22249": {
       "name": "Big Bag of Enchantment",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "22250": {
+      "name": "Herb Pouch",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -12413,6 +12611,36 @@
       "bonding": 2,
       "duration": 0
     },
+    "30744": {
+      "name": "Draenic Leather Pack",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30745": {
+      "name": "Heavy Toolbox",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30746": {
+      "name": "Mining Sack",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30747": {
+      "name": "Gem Pouch",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "30748": {
+      "name": "Enchanter's Satchel",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "30804": {
       "name": "Bronze Band of Force",
       "flags": 524288,
@@ -15011,6 +15239,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "38082": {
+      "name": "\"Gigantique\" Bag",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
     "38225": {
       "name": "Mycah's Botanical Bag",
       "flags": 0,
@@ -16825,6 +17059,12 @@
     },
     "39472": {
       "name": "Chain of Latent Energies",
+      "flags": 0,
+      "bonding": 2,
+      "duration": 0
+    },
+    "39489": {
+      "name": "Scribe's Satchel",
       "flags": 0,
       "bonding": 2,
       "duration": 0
@@ -22509,6 +22749,12 @@
       "name": "Scroll of Enchant Gloves - Angler",
       "flags": 268435520,
       "bonding": 0,
+      "duration": 0
+    },
+    "51809": {
+      "name": "Portable Hole",
+      "flags": 0,
+      "bonding": 2,
       "duration": 0
     },
     "52020": {

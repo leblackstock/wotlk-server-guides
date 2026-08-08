@@ -2,6 +2,7 @@
 
 ## AH Profession Expansion Plans
 
+- Before adding an individual item or item group to any AH guide, read `docs/ah-item-addition-workflow.md` and create a work order from `docs/ah-item-additions/_template.md`.
 - Before adding or expanding profession-crafted AH content, read `docs/ah-profession-plans/README.md` and the matching profession plan.
 - Complete the plan's non-circular baseline audit before adding crafted rows. Reconcile duplicate prices across guides and verify the saved ingredient baselines used for craft-cost calculations.
 - Active AH listings are competition evidence only and must never automatically set a baseline. Record source type and confidence in `data/ah-price-baselines.json` under `docs/ah-pricing-methodology.md`.

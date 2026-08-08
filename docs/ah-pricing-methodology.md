@@ -196,6 +196,12 @@ published AH guides and search cards use no more than two currency units:
 
 ## Required Workflow
 
+Use the operational [AH Item Addition Workflow](ah-item-addition-workflow.md)
+and its [work-order template](ah-item-additions/_template.md) for individual and
+grouped additions. The steps below are the pricing-method summary; the linked
+workflow owns canonical routing, review/apply separation, rendering, tests, and
+publishing gates.
+
 1. Audit baseline coverage and confidence before adding a profession.
 2. Record BeanCounter realized-sale coverage separately from active scans.
 3. Record scan concentration without importing scan prices.

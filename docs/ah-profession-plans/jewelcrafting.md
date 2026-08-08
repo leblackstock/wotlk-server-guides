@@ -172,3 +172,8 @@
   baselines were synchronized. Repeated sales boilerplate was removed from all
   121 BoE notes, while exact slot, level, stats, effects, and random-suffix
   warnings remain. Work remains local and nothing has been published.
+- Container coverage addendum — 2026-08-08: Added Gem Pouch as a vendor-owned
+  20-slot gem container. Pinned stock is one with a 2-hour restock at Fabian
+  Lanzonelli and 12-hour restocks at the other listed innkeepers. Exact 12g
+  vendor cost anchors the 18g convenience Target; no gem cut, jewelry, or
+  material baseline changed and nothing was published.

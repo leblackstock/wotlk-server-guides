@@ -9,6 +9,7 @@ import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 from ah_section_ordering import load_policy, order_guide_source
@@ -81,6 +82,7 @@ MONEY_VALUE_SPAN = re.compile(
     r'(<span class="(?:bid|buyout)">)(.*?)(</span>)',
     re.DOTALL,
 )
+FOOTER_DATE = re.compile(r"(Updated )\d{4}-\d{2}-\d{2}(</footer>)")
 
 
 def display_money_copper(copper: int) -> int:
@@ -160,6 +162,8 @@ def render_vendor_row(key: str, item: dict, use_audit: dict) -> str:
     bid = format_money(target_bid(target_copper))
     target = format_money(target_copper)
     stack = html.escape(item["stack"])
+    demand = html.escape(item.get("demand", "Low"))
+    demand_class = html.escape(item.get("demand_class", "low"))
     notes = html.escape(item["notes"])
     cost = source_cost(item)
     requirement = use_audit.get("vendor_hard_requirements", {}).get(key)
@@ -187,7 +191,7 @@ def render_vendor_row(key: str, item: dict, use_audit: dict) -> str:
         f'          </div></td>\n'
         f'          <td data-column="stack" data-label="Stack Size">{stack}</td>\n'
         f'          <td data-column="demand" data-label="Demand">'
-        f'<span class="demand low">Low</span></td>\n'
+        f'<span class="demand {demand_class}">{demand}</span></td>\n'
         f'          <td data-column="notes" data-label="Use / Selling Notes">'
         f'{requirement_note}<strong>Source / cost:</strong> {cost}. {notes}</td>\n'
         f"        </tr>"
@@ -892,15 +896,20 @@ def transform_guide(
                 raise ValueError(f"{filename}: expected at most one vendor section")
             source = VENDOR_BLOCK.sub("", source, count=1)
         else:
-            if vendor_matches != 1:
-                raise ValueError(f"{filename}: expected exactly one vendor section")
             expected = render_vendor_section(
                 vendor_template,
                 guide_config,
                 vendor_config["catalog"],
                 vendor_config["_profession_use_audit"],
             )
-            source = VENDOR_BLOCK.sub(expected, source, count=1)
+            if vendor_matches == 1:
+                source = VENDOR_BLOCK.sub(expected, source, count=1)
+            elif vendor_matches == 0:
+                if source.count("<footer>") != 1:
+                    raise ValueError(f"{filename}: expected one vendor insertion point")
+                source = source.replace("<footer>", expected + "\n<footer>", 1)
+            else:
+                raise ValueError(f"{filename}: expected at most one vendor section")
     elif vendor_matches:
         raise ValueError(f"{filename}: vendor section exists but is absent from canonical data")
 
@@ -1045,6 +1054,11 @@ def main() -> int:
         if args.check:
             print(f"Stale generated AH blocks: {path.relative_to(ROOT)}", file=sys.stderr)
             return 1
+        expected, footer_count = FOOTER_DATE.subn(
+            rf"\g<1>{date.today().isoformat()}\g<2>", expected, count=1
+        )
+        if footer_count != 1:
+            raise ValueError(f"{path.name}: missing Updated footer date")
         path.write_text(expected, encoding="utf-8", newline="\n")
         changed.append(str(path.relative_to(ROOT)))
 

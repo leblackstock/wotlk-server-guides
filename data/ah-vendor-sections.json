@@ -498,6 +498,291 @@
       "target_copper": 3000,
       "stack": "5 / 20",
       "notes": "Kungaloosh ingredient. Vendor cost is 85s per bundle of five."
+    },
+    "small-brown-pouch": {
+      "name": "Small Brown Pouch",
+      "item_id": 4496,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited bag vendor; also an early world drop",
+      "vendor_cost_copper": 500,
+      "vendor_buy_count": 1,
+      "target_copper": 1000,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "6-slot general bag. The unlimited 5s vendor route prevents scarcity pricing even though the same item can drop from low-level creatures."
+    },
+    "brown-leather-satchel": {
+      "name": "Brown Leather Satchel",
+      "item_id": 4498,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited bag vendor",
+      "vendor_cost_copper": 2500,
+      "vendor_buy_count": 1,
+      "target_copper": 4000,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "8-slot general bag. This is a convenience listing for buyers who do not want to visit a bag vendor."
+    },
+    "heavy-brown-bag": {
+      "name": "Heavy Brown Bag",
+      "item_id": 4497,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited bag vendor",
+      "vendor_cost_copper": 20000,
+      "vendor_buy_count": 1,
+      "target_copper": 25000,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "10-slot general bag. Keep the markup modest because many bag vendors carry it without a stock limit."
+    },
+    "huge-brown-sack": {
+      "name": "Huge Brown Sack",
+      "item_id": 4499,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited bag vendor",
+      "vendor_cost_copper": 100000,
+      "vendor_buy_count": 1,
+      "target_copper": 125000,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "12-slot general bag. Competes with cheap crafted Classic bags, so do not price it as a rare container."
+    },
+    "draenic-leather-pack": {
+      "name": "Draenic Leather Pack",
+      "item_id": 30744,
+      "expansion": "Outland",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited Outland innkeeper",
+      "vendor_cost_copper": 120000,
+      "vendor_buy_count": 1,
+      "target_copper": 150000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "14-slot general bag. The source is unlimited, so the 15g Target is a travel-convenience price rather than a scarcity premium."
+    },
+    "gigantique-bag": {
+      "name": "\"Gigantique\" Bag",
+      "item_id": 38082,
+      "expansion": "Wrath",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited Haris Pilton vendor",
+      "vendor_cost_copper": 12000000,
+      "vendor_buy_count": 1,
+      "target_copper": 12600000,
+      "quality": "epic",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "22-slot general bag. The 1,260g Target is a 5% convenience margin over the normal 1,200g vendor cost."
+    },
+    "portable-hole": {
+      "name": "Portable Hole",
+      "item_id": 51809,
+      "expansion": "Wrath",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited Haris Pilton vendor",
+      "vendor_cost_copper": 30000000,
+      "vendor_buy_count": 1,
+      "target_copper": 31500000,
+      "quality": "epic",
+      "stack": "1",
+      "demand": "Medium",
+      "demand_class": "med",
+      "notes": "24-slot general bag. The 3,150g Target is a 5% convenience margin over the normal 3,000g vendor cost."
+    },
+    "light-quiver": {
+      "name": "Light Quiver",
+      "item_id": 2101,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 4,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "6-slot arrow container for Hunters. List only as a one-silver starter convenience item."
+    },
+    "small-ammo-pouch": {
+      "name": "Small Ammo Pouch",
+      "item_id": 2102,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 4,
+      "vendor_buy_count": 1,
+      "target_copper": 100,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "6-slot bullet container for Hunters. List only as a one-silver starter convenience item."
+    },
+    "small-quiver": {
+      "name": "Small Quiver",
+      "item_id": 5439,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 100,
+      "vendor_buy_count": 1,
+      "target_copper": 200,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "8-slot arrow container for Hunters. The source is unlimited and widely available."
+    },
+    "small-shot-pouch": {
+      "name": "Small Shot Pouch",
+      "item_id": 5441,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 1000,
+      "vendor_buy_count": 1,
+      "target_copper": 1500,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "8-slot bullet container for Hunters. Use only a modest convenience markup over the unlimited 10s source."
+    },
+    "medium-quiver": {
+      "name": "Medium Quiver",
+      "item_id": 11362,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 1000,
+      "vendor_buy_count": 1,
+      "target_copper": 1500,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "10-slot arrow container for Hunters. This is common vendor stock, not a scarce Leatherworking substitute."
+    },
+    "medium-shot-pouch": {
+      "name": "Medium Shot Pouch",
+      "item_id": 11363,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited weapon vendor",
+      "vendor_cost_copper": 1000,
+      "vendor_buy_count": 1,
+      "target_copper": 1500,
+      "quality": "common",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "10-slot bullet container for Hunters. This is common vendor stock, not a scarce Leatherworking substitute."
+    },
+    "herb-pouch": {
+      "name": "Herb Pouch",
+      "item_id": 22250,
+      "expansion": "Classic",
+      "source_type": "coin-vendor",
+      "source_label": "Unlimited herb-supply vendor",
+      "vendor_cost_copper": 1000,
+      "vendor_buy_count": 1,
+      "target_copper": 2000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "12-slot herb-only bag. It does not require Herbalism to equip, but its practical buyer is a character storing herbs."
+    },
+    "heavy-toolbox": {
+      "name": "Heavy Toolbox",
+      "item_id": 30745,
+      "expansion": "Outland",
+      "source_type": "coin-vendor",
+      "source_label": "Limited Outland innkeeper stock",
+      "vendor_cost_copper": 140000,
+      "vendor_buy_count": 1,
+      "target_copper": 210000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "20-slot Engineering-supplies bag. Pinned stock is one, with a 2-hour restock at Fabian Lanzonelli and 12 hours at the other listed innkeepers."
+    },
+    "mining-sack": {
+      "name": "Mining Sack",
+      "item_id": 30746,
+      "expansion": "Outland",
+      "source_type": "coin-vendor",
+      "source_label": "Limited Outland innkeeper stock",
+      "vendor_cost_copper": 100000,
+      "vendor_buy_count": 1,
+      "target_copper": 150000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "20-slot mining-material bag. Pinned stock is one, with a 2-hour restock at Fabian Lanzonelli and 12 hours at the other listed innkeepers."
+    },
+    "gem-pouch": {
+      "name": "Gem Pouch",
+      "item_id": 30747,
+      "expansion": "Outland",
+      "source_type": "coin-vendor",
+      "source_label": "Limited Outland innkeeper stock",
+      "vendor_cost_copper": 120000,
+      "vendor_buy_count": 1,
+      "target_copper": 180000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "20-slot gem-only bag. Pinned stock is one, with a 2-hour restock at Fabian Lanzonelli and 12 hours at the other listed innkeepers."
+    },
+    "enchanters-satchel": {
+      "name": "Enchanter's Satchel",
+      "item_id": 30748,
+      "expansion": "Outland",
+      "source_type": "coin-vendor",
+      "source_label": "Limited Outland innkeeper stock",
+      "vendor_cost_copper": 140000,
+      "vendor_buy_count": 1,
+      "target_copper": 210000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low-Med",
+      "demand_class": "med",
+      "notes": "20-slot Enchanting-supplies bag. Pinned stock is one, with a 2-hour restock at Fabian Lanzonelli and 12 hours at the other listed innkeepers."
+    },
+    "scribes-satchel": {
+      "name": "Scribe's Satchel",
+      "item_id": 39489,
+      "expansion": "Wrath",
+      "source_type": "coin-vendor",
+      "source_label": "Limited Inscription-supply vendor",
+      "vendor_cost_copper": 5000,
+      "vendor_buy_count": 1,
+      "target_copper": 10000,
+      "quality": "uncommon",
+      "stack": "1",
+      "demand": "Low",
+      "demand_class": "low",
+      "notes": "10-slot Inscription-supplies bag. Pinned vendors hold two or three with a 2.5-hour restock; post only as a convenience listing."
     }
   },
   "guides": {
@@ -523,7 +808,8 @@
       "items": [
         "weak-flux",
         "heavy-stock",
-        "simple-wood"
+        "simple-wood",
+        "heavy-toolbox"
       ],
       "restricted_sections": [
         {
@@ -564,7 +850,13 @@
         "imbued-vial",
         "enchanted-vial",
         "light-parchment",
-        "resilient-parchment"
+        "resilient-parchment",
+        "herb-pouch"
+      ]
+    },
+    "enchanting-mats-ah-price-guide.html": {
+      "items": [
+        "enchanters-satchel"
       ]
     },
     "inscription-materials-ah-price-guide.html": {
@@ -572,19 +864,22 @@
         "light-parchment",
         "common-parchment",
         "heavy-parchment",
-        "resilient-parchment"
+        "resilient-parchment",
+        "scribes-satchel"
       ]
     },
     "jewelcrafting-gems-ah-price-guide.html": {
-      "items": [],
-      "remove": true
+      "items": [
+        "gem-pouch"
+      ]
     },
     "mining-smithing-ah-price-guide.html": {
       "items": [
         "coal",
         "weak-flux",
         "strong-flux",
-        "elemental-flux"
+        "elemental-flux",
+        "mining-sack"
       ]
     },
     "skinning-leatherworking-materials-ah-price-guide.html": {
@@ -594,7 +889,13 @@
         "silken-thread",
         "heavy-silken-thread",
         "fine-thread",
-        "salt"
+        "salt",
+        "light-quiver",
+        "small-ammo-pouch",
+        "small-quiver",
+        "small-shot-pouch",
+        "medium-quiver",
+        "medium-shot-pouch"
       ]
     },
     "tailoring-cloth-ah-price-guide.html": {
@@ -607,7 +908,14 @@
         "red-dye",
         "green-dye",
         "gray-dye",
-        "bleach"
+        "bleach",
+        "small-brown-pouch",
+        "brown-leather-satchel",
+        "heavy-brown-bag",
+        "huge-brown-sack",
+        "draenic-leather-pack",
+        "gigantique-bag",
+        "portable-hole"
       ]
     }
   }

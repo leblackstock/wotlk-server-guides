@@ -102,3 +102,8 @@
   uses one shared Evidence Pricing note, exact recipe mouseovers, corrected
   level-80 use notes, rarity colors, target-price ordering, and current search
   metadata. Work remains local and nothing has been published.
+- Container coverage addendum — 2026-08-08: Added Enchanter's Satchel as a
+  vendor-owned 20-slot Enchanting-supplies container. Pinned cost, stock-one
+  status, and 2-hour/12-hour vendor restocks are saved as deterministic
+  evidence. No Enchanting craft or material band changed and nothing was
+  published.

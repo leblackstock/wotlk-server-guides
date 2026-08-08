@@ -7,6 +7,11 @@ profession to the next.
 
 ## Required Use
 
+For any individual or grouped AH item addition, first follow the
+[AH Item Addition Workflow](../ah-item-addition-workflow.md) and create a work
+order from [`docs/ah-item-additions/_template.md`](../ah-item-additions/_template.md).
+The profession plan remains required when the addition is profession-owned.
+
 For the next AH addition:
 
 1. Read this file and the matching profession plan.
@@ -159,6 +164,7 @@ When a guide changes:
 
 ```powershell
 python scripts/render-ah-shared-sections.py --check
+python scripts/render-ah-container-collection.py --check
 python scripts/apply-ah-profession-use-sections.py --check
 python scripts/apply-ah-price-baselines.py --check
 python scripts/build-ah-search-index.py --check

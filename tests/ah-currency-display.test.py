@@ -65,6 +65,11 @@ for path in guide_paths:
     expected_date = (
         "2026-08-08"
         if path.name in {
+            "engineering-materials-ah-price-guide.html",
+            "herbalism-herbs-ah-price-guide.html",
+            "enchanting-mats-ah-price-guide.html",
+            "inscription-materials-ah-price-guide.html",
+            "jewelcrafting-gems-ah-price-guide.html",
             "tailoring-cloth-ah-price-guide.html",
             "skinning-leatherworking-materials-ah-price-guide.html",
             "fishing-cooking-materials-ah-price-guide.html",

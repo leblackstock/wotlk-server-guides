@@ -1,0 +1,1422 @@
+{
+  "version": 1,
+  "reviewed": "2026-08-08",
+  "model_version": "container-capacity-evidence-pricing-v1",
+  "scope": "The 21 verified drop-owned containers and one verified quest-reward container missing from the AH guides.",
+  "rules": {
+    "active_listings_used_to_set_prices": false,
+    "external_gold_values_copied": false,
+    "external_role": "Gold-normalized cross-server observations set within-capacity relative rank only; fixed Hellscream comparable anchors set the gold scale.",
+    "comparison_retry_rule": "Initial batch plus failed-request retries after 2, 5, and 10 seconds.",
+    "nonstackable_rule": "Every container has max stack 1; no stack recommendation is rendered."
+  },
+  "fixed_capacity_anchors": {
+    "6": {
+      "target_copper": 20000,
+      "comparables": {
+        "4238": 20500,
+        "5762": 19500
+      }
+    },
+    "8": {
+      "target_copper": 23000,
+      "comparables": {
+        "4240": 23000,
+        "4241": 26500,
+        "5763": 22000
+      }
+    },
+    "10": {
+      "target_copper": 25500,
+      "comparables": {
+        "4245": 27500,
+        "5764": 25500,
+        "5765": 24000
+      }
+    },
+    "12": {
+      "target_copper": 30000,
+      "comparables": {
+        "10050": 29000,
+        "10051": 31000
+      }
+    },
+    "14": {
+      "target_copper": 30000,
+      "comparables": {
+        "14046": 30000
+      }
+    },
+    "16": {
+      "target_copper": 33500,
+      "comparables": {
+        "14155": 33500
+      }
+    }
+  },
+  "quest_reward_anchor": {
+    "target_copper": 35000,
+    "reason": "The 14-slot Classic crafted-container anchor is 3g; the 50-ticket Darkmoon reward route receives only a modest acquisition premium because the bag still competes on ordinary 14-slot utility."
+  },
+  "source_snapshots": {
+    "beancounter": {
+      "provided": true,
+      "sha256": "73413503714f0ae1baffd9d9da035bedde44c0e0e0983146d65cf61c3e40df3e",
+      "modified_utc": "2026-08-08T19:23:54+00:00",
+      "raw_path_saved": false,
+      "identity_names_saved": false,
+      "records_seen_for_batch_items": 0,
+      "valid_completed_buyouts": 0,
+      "excluded_records": {},
+      "owned_character_exclusions_available": true,
+      "known_friend_or_guild_exclusions_available": false,
+      "buyer_names_saved": false
+    },
+    "auction_scan": {
+      "provided": true,
+      "sha256": "1d49dade4429c6b0d937d1d1542d99f92e6567f3e749a19df193c97a9aa6476d",
+      "modified_utc": "2026-08-08T19:23:54+00:00",
+      "raw_path_saved": false,
+      "identity_names_saved": false,
+      "auction_rows_in_snapshot": 4741,
+      "malformed_rows": 0,
+      "faction_scan_dates_utc": {
+        "Horde": "2026-08-08"
+      },
+      "listing_prices_saved": false,
+      "listing_prices_used_to_set_baselines": false,
+      "known_account_exclusions_available": true,
+      "known_friend_or_guild_exclusions_available": false
+    },
+    "external_comparisons": {
+      "source": "https://ah.nerfed.net/servers/base?id=7",
+      "retry_summary": {
+        "initial_requests": 132,
+        "retry_delays_seconds": [
+          2,
+          5,
+          10
+        ],
+        "retry_rounds_used": 0,
+        "final_failed_requests": 0
+      },
+      "nominal_gold_saved": false
+    }
+  },
+  "summary": {
+    "items_reviewed": 22,
+    "decisions": {
+      "capacity-cohort-starter-estimate": 22
+    },
+    "items_with_completed_sales": 0,
+    "items_present_in_current_supply_snapshot": 3,
+    "items_seen_on_at_least_two_external_realms": 22,
+    "final_failed_comparison_requests": 0
+  },
+  "items": {
+    "804": {
+      "item_id": 804,
+      "name": "Large Blue Sack",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0604,
+        "normalized_ratio_range": [
+          0.0588,
+          0.1316
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 16000,
+          "target": 21500,
+          "high": 32500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "805": {
+      "item_id": 805,
+      "name": "Small Red Pouch",
+      "primary_source": "drop",
+      "capacity": 6,
+      "quality": "common",
+      "cohort": "classic-drop/6-slot",
+      "fixed_anchor": {
+        "target_copper": 20000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4238": 20500,
+          "5762": 19500
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.666667,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0372,
+        "normalized_ratio_range": [
+          0.0092,
+          0.0687
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 16000,
+          "target": 21000,
+          "high": 31500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g classic-drop/6-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "828": {
+      "item_id": 828,
+      "name": "Small Blue Pouch",
+      "primary_source": "drop",
+      "capacity": 6,
+      "quality": "common",
+      "cohort": "classic-drop/6-slot",
+      "fixed_anchor": {
+        "target_copper": 20000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4238": 20500,
+          "5762": 19500
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0433,
+        "normalized_ratio_range": [
+          0.0149,
+          0.048
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 17500,
+          "target": 23000,
+          "high": 34500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g classic-drop/6-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "856": {
+      "item_id": 856,
+      "name": "Blue Leather Bag",
+      "primary_source": "drop",
+      "capacity": 8,
+      "quality": "common",
+      "cohort": "classic-drop/8-slot",
+      "fixed_anchor": {
+        "target_copper": 23000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4240": 23000,
+          "4241": 26500,
+          "5763": 22000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 1,
+        "units": 1,
+        "distinct_sellers": 1,
+        "largest_seller_unit_share": 1.0,
+        "rows_with_buyout": 1,
+        "owned_account_rows_excluded": 1,
+        "owned_account_units_excluded": 1,
+        "classification": "present-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0205,
+        "normalized_ratio_range": [
+          0.0154,
+          0.0691
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 14500,
+          "target": 19500,
+          "high": 29500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 30s classic-drop/8-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "857": {
+      "item_id": 857,
+      "name": "Large Red Sack",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 1,
+        "owned_account_units_excluded": 1,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.333333,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0662,
+        "normalized_ratio_range": [
+          0.0525,
+          0.2021
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 18000,
+          "target": 24000,
+          "high": 36000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "932": {
+      "item_id": 932,
+      "name": "Fel Steed Saddlebags",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 1.4198,
+        "normalized_ratio_range": [
+          0.4949,
+          2.1996
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 22000,
+          "target": 29500,
+          "high": 44500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "933": {
+      "item_id": 933,
+      "name": "Large Rucksack",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.666667,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.1637,
+        "normalized_ratio_range": [
+          0.0463,
+          0.3959
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 20500,
+          "target": 27000,
+          "high": 40500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "1470": {
+      "item_id": 1470,
+      "name": "Murloc Skin Bag",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.833333,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.2925,
+        "normalized_ratio_range": [
+          0.0479,
+          0.3439
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 21000,
+          "target": 28000,
+          "high": 42000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "1652": {
+      "item_id": 1652,
+      "name": "Sturdy Lunchbox",
+      "primary_source": "drop",
+      "capacity": 12,
+      "quality": "common",
+      "cohort": "classic-drop/12-slot",
+      "fixed_anchor": {
+        "target_copper": 30000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "10050": 29000,
+          "10051": 31000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 18.537,
+        "normalized_ratio_range": [
+          0.1043,
+          21.0329
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 26000,
+          "target": 34500,
+          "high": 52000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g classic-drop/12-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "1685": {
+      "item_id": 1685,
+      "name": "Troll-hide Bag",
+      "primary_source": "drop",
+      "capacity": 14,
+      "quality": "common",
+      "cohort": "classic-drop/14-slot",
+      "fixed_anchor": {
+        "target_copper": 30000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "14046": 30000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.3757,
+        "normalized_ratio_range": [
+          0.1873,
+          0.4207
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 19000,
+          "target": 25500,
+          "high": 38500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g classic-drop/14-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "1725": {
+      "item_id": 1725,
+      "name": "Large Knapsack",
+      "primary_source": "drop",
+      "capacity": 12,
+      "quality": "common",
+      "cohort": "classic-drop/12-slot",
+      "fixed_anchor": {
+        "target_copper": 30000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "10050": 29000,
+          "10051": 31000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 1,
+        "units": 1,
+        "distinct_sellers": 1,
+        "largest_seller_unit_share": 1.0,
+        "rows_with_buyout": 1,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "present-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.2186,
+        "normalized_ratio_range": [
+          0.1857,
+          0.2987
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 19000,
+          "target": 25500,
+          "high": 38500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g classic-drop/12-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "2657": {
+      "item_id": 2657,
+      "name": "Red Leather Bag",
+      "primary_source": "drop",
+      "capacity": 8,
+      "quality": "common",
+      "cohort": "classic-drop/8-slot",
+      "fixed_anchor": {
+        "target_copper": 23000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4240": 23000,
+          "4241": 26500,
+          "5763": 22000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.25,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0223,
+        "normalized_ratio_range": [
+          0.013,
+          0.0271
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 16000,
+          "target": 21500,
+          "high": 32500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 30s classic-drop/8-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "3233": {
+      "item_id": 3233,
+      "name": "Gnoll Hide Sack",
+      "primary_source": "drop",
+      "capacity": 8,
+      "quality": "common",
+      "cohort": "classic-drop/8-slot",
+      "fixed_anchor": {
+        "target_copper": 23000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4240": 23000,
+          "4241": 26500,
+          "5763": 22000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 5,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.075,
+        "normalized_ratio_range": [
+          0.0549,
+          0.2053
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 20000,
+          "target": 26500,
+          "high": 40000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 30s classic-drop/8-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "3914": {
+      "item_id": 3914,
+      "name": "Journeyman's Backpack",
+      "primary_source": "drop",
+      "capacity": 14,
+      "quality": "common",
+      "cohort": "classic-drop/14-slot",
+      "fixed_anchor": {
+        "target_copper": 30000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "14046": 30000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 1,
+        "owned_account_units_excluded": 1,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.3881,
+        "normalized_ratio_range": [
+          0.3125,
+          0.8329
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 26000,
+          "target": 34500,
+          "high": 52000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g classic-drop/14-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "4500": {
+      "item_id": 4500,
+      "name": "Traveler's Backpack",
+      "primary_source": "drop",
+      "capacity": 16,
+      "quality": "uncommon",
+      "cohort": "classic-drop/16-slot",
+      "fixed_anchor": {
+        "target_copper": 33500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "14155": 33500
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.5,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.4978,
+        "normalized_ratio_range": [
+          0.493,
+          1.1226
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 25000,
+          "target": 33500,
+          "high": 50500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g 35s classic-drop/16-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5571": {
+      "item_id": 5571,
+      "name": "Small Black Pouch",
+      "primary_source": "drop",
+      "capacity": 6,
+      "quality": "common",
+      "cohort": "classic-drop/6-slot",
+      "fixed_anchor": {
+        "target_copper": 20000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4238": 20500,
+          "5762": 19500
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.333333,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.018,
+        "normalized_ratio_range": [
+          0.0102,
+          0.1249
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 14500,
+          "target": 19000,
+          "high": 28500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g classic-drop/6-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5572": {
+      "item_id": 5572,
+      "name": "Small Green Pouch",
+      "primary_source": "drop",
+      "capacity": 6,
+      "quality": "common",
+      "cohort": "classic-drop/6-slot",
+      "fixed_anchor": {
+        "target_copper": 20000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4238": 20500,
+          "5762": 19500
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0154,
+        "normalized_ratio_range": [
+          0.0138,
+          0.0334
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 13000,
+          "target": 17000,
+          "high": 25500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g classic-drop/6-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5573": {
+      "item_id": 5573,
+      "name": "Green Leather Bag",
+      "primary_source": "drop",
+      "capacity": 8,
+      "quality": "common",
+      "cohort": "classic-drop/8-slot",
+      "fixed_anchor": {
+        "target_copper": 23000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4240": 23000,
+          "4241": 26500,
+          "5763": 22000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.5,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0307,
+        "normalized_ratio_range": [
+          0.0144,
+          0.0543
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 17500,
+          "target": 23000,
+          "high": 34500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 30s classic-drop/8-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5574": {
+      "item_id": 5574,
+      "name": "White Leather Bag",
+      "primary_source": "drop",
+      "capacity": 8,
+      "quality": "common",
+      "cohort": "classic-drop/8-slot",
+      "fixed_anchor": {
+        "target_copper": 23000,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4240": 23000,
+          "4241": 26500,
+          "5763": 22000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 1,
+        "units": 1,
+        "distinct_sellers": 1,
+        "largest_seller_unit_share": 1.0,
+        "rows_with_buyout": 1,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "present-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.75,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.032,
+        "normalized_ratio_range": [
+          0.0166,
+          0.0509
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 18500,
+          "target": 24500,
+          "high": 37000
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 30s classic-drop/8-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5575": {
+      "item_id": 5575,
+      "name": "Large Green Sack",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.5,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0989,
+        "normalized_ratio_range": [
+          0.045,
+          0.6308
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 19000,
+          "target": 25500,
+          "high": 38500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "5576": {
+      "item_id": 5576,
+      "name": "Large Brown Sack",
+      "primary_source": "drop",
+      "capacity": 10,
+      "quality": "common",
+      "cohort": "classic-drop/10-slot",
+      "fixed_anchor": {
+        "target_copper": 25500,
+        "source": "Frozen 2026-08-08 reviewed Classic crafted-container comparables.",
+        "comparables": {
+          "4245": 27500,
+          "5764": 25500,
+          "5765": 24000
+        }
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 1,
+        "owned_account_units_excluded": 1,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.166667,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 0.0639,
+        "normalized_ratio_range": [
+          0.0483,
+          0.1366
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 17500,
+          "target": 23000,
+          "high": 34500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 2g 55s classic-drop/10-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    },
+    "19291": {
+      "item_id": 19291,
+      "name": "Darkmoon Storage Box",
+      "primary_source": "quest-reward",
+      "capacity": 14,
+      "quality": "common",
+      "cohort": "quest-reward/14-slot",
+      "fixed_anchor": {
+        "target_copper": 35000,
+        "source": "The 14-slot Classic crafted-container anchor is 3g; the 50-ticket Darkmoon reward route receives only a modest acquisition premium because the bag still competes on ordinary 14-slot utility.",
+        "comparables": {}
+      },
+      "local_completed_sales": null,
+      "current_supply": {
+        "auction_rows": 0,
+        "units": 0,
+        "distinct_sellers": 0,
+        "largest_seller_unit_share": null,
+        "rows_with_buyout": 0,
+        "owned_account_rows_excluded": 0,
+        "owned_account_units_excluded": 0,
+        "classification": "absent-one-snapshot",
+        "diagnostic_only": true
+      },
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.5,
+        "coverage_weight": 1.0,
+        "normalized_ask_ratio_to_fixed_anchor": 5.037,
+        "normalized_ratio_range": [
+          0.4014,
+          46.7292
+        ],
+        "used_to_set_gold_value": false,
+        "external_gold_value_copied": false
+      },
+      "proposal": {
+        "band": {
+          "quick": 26500,
+          "target": 35000,
+          "high": 52500
+        },
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "decision": "capacity-cohort-starter-estimate",
+        "sales_weight": null,
+        "reason": "Evidence Pricing used the fixed 3g 50s quest-reward/14-slot Hellscream anchor and 3-realm relative rank; external gold was not copied and the active Hellscream snapshot did not set price.",
+        "reviewer_decision": "accept"
+      }
+    }
+  }
+}

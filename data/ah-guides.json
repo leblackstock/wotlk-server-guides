@@ -278,7 +278,8 @@
             {"id": "jewelcrafting-outland-meta", "label": "Meta", "patterns": ["Outland meta"]}
           ]
         },
-        {"id": "jewelcrafting-special-gems", "label": "Special Gems", "patterns": ["Dragon's Eye", "popular cut metas"]}
+        {"id": "jewelcrafting-special-gems", "label": "Special Gems", "patterns": ["Dragon's Eye", "popular cut metas"]},
+        {"id": "jewelcrafting-gems-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
       ]
     },
     {
@@ -327,7 +328,8 @@
           ]
         },
         {"id": "enchanting-oils", "label": "Oils", "patterns": ["weapon oils"]},
-        {"id": "enchanting-other", "label": "Wands & Intermediates", "patterns": ["wands", "intermediates", "prismatic"]}
+        {"id": "enchanting-other", "label": "Wands & Intermediates", "patterns": ["wands", "intermediates", "prismatic"]},
+        {"id": "enchanting-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
       ]
     },
     {
@@ -422,7 +424,7 @@
       "id": "turn-ins",
       "file": "drop-turn-in-quest-page-items-ah-price-guide.html",
       "title": "Turn-Ins & Quest Items",
-      "description": "74 exact tradeable reputation, Darkmoon Faire, and quest-page items with audited turn-in quantities and stack limits.",
+      "description": "75 exact tradeable reputation, Darkmoon Faire, quest-page, and quest-reward items with audited use and acquisition facts.",
       "icon": "drop-turn-in.svg",
       "group": "drops",
       "order": 10,
@@ -430,7 +432,8 @@
         {"id": "turn-ins-overview", "label": "Start Here", "patterns": ["Best drop turn-ins to watch", "Before Buying"]},
         {"id": "turn-ins-reputation", "label": "Reputation", "patterns": ["drops$", "reputation turn-ins", "Morrowgrain odd turn-ins"]},
         {"id": "turn-ins-darkmoon", "label": "Darkmoon Faire", "patterns": ["Darkmoon Faire"]},
-        {"id": "turn-ins-quests", "label": "Quest Pages", "patterns": ["Quest page", "quest completion"]}
+        {"id": "turn-ins-quests", "label": "Quest Pages", "patterns": ["Quest page", "quest completion"]},
+        {"id": "turn-ins-containers", "label": "Containers", "patterns": ["Tradeable quest-reward containers"]}
       ]
     },
     {
@@ -491,7 +494,7 @@
       "id": "sought-after-world-drops",
       "file": "sought-after-world-drops-ah-price-guide.html",
       "title": "Sought-After World Drops",
-      "description": "Pre-level-80 epic BoEs, twink-bracket rares, and fixed-stat Northrend leveling drops with real buyer use.",
+      "description": "Pre-level-80 epic BoEs, twink-bracket rares, fixed-stat Northrend leveling drops, and verified Classic dropped bags.",
       "icon": "boe-gear-drops.svg",
       "group": "drops",
       "order": 40,
@@ -522,8 +525,19 @@
             {"id": "world-classic-armor", "label": "Armor", "patterns": ["^Classic armor$"]},
             {"id": "world-classic-accessories", "label": "Jewelry & Accessories", "patterns": ["^Classic jewelry and accessories$"]}
           ]
-        }
+        },
+        {"id": "world-containers", "label": "Containers", "patterns": ["Dropped bags and containers"]}
       ]
+    }
+  ],
+  "collections": [
+    {
+      "id": "bags-containers",
+      "file": "bags-containers-ah-guide.html",
+      "title": "Bags & Containers",
+      "description": "Compare every verified auctionable bag, profession container, quiver, and ammo pouch by capacity, contents, source, expansion, and canonical guide price.",
+      "icon": "bags-containers.svg",
+      "source_audit": "data/ah-container-audit.json"
     }
   ],
   "redirects": [

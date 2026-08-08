@@ -130,12 +130,13 @@ for evidence in (turn_evidence, recipe_evidence):
         assert baseline[item_id]["confidence"] == proposal["confidence"]
 
 search_counts = Counter(item["guideId"] for item in index["items"])
-assert search_counts["turn-ins"] == 74
+assert search_counts["turn-ins"] == 75
 assert search_counts["recipe-pattern-drops"] == 90
 for guide_id, evidence in (("turn-ins", turn_evidence), ("recipe-pattern-drops", recipe_evidence)):
     names = {record["name"] for record in evidence["items"].values()}
     indexed = {item["name"] for item in index["items"] if item["guideId"] == guide_id}
-    assert indexed == names
+    expected_indexed = names | ({"Darkmoon Storage Box"} if guide_id == "turn-ins" else set())
+    assert indexed == expected_indexed
     for name in names:
         assert item_ids.get(normalize(name))
 
@@ -148,7 +149,7 @@ recipe_guide = (ROOT / "guides/gear-pattern-drops-ah-price-guide.html").read_tex
 assert "Timbermaw repeatable drops" not in turn_guide
 assert "Every priced row is one real auctionable item" in turn_guide
 assert "non-stackable Shredder pages show no stack recommendation" in turn_guide
-assert turn_guide.count("<tbody><tr") == 10
+assert turn_guide.count("<tbody><tr") == 11
 assert recipe_guide.count("Limited vendor:") == 5
 assert "Eighty-five have pinned loot paths; five limited-vendor recipes" in recipe_guide
 assert "Requires Inscription 425" in recipe_guide

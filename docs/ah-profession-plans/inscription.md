@@ -120,3 +120,8 @@
   mouseovers, item-specific effects, rarity colors, fixed Ace-through-Eight card
   order, target-price ordering elsewhere, and current search metadata. Work
   remains local and nothing has been published.
+- Container coverage addendum — 2026-08-08: Added Scribe's Satchel as a
+  vendor-owned 10-slot Inscription-supplies container. The pinned vendors carry
+  two or three with a 2.5-hour restock, so the 1g Target is a limited-stock
+  convenience reference rather than a crafted or scarcity claim. No crafted
+  Inscription band changed and nothing was published.

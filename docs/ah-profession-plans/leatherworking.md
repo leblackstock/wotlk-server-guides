@@ -117,3 +117,9 @@
   six retain exact vendor pricing, and 38 newly reviewed material bands changed.
   Finished Leatherworking outputs remain outside this phase except material
   intermediates explicitly owned by the input market.
+- Container coverage addendum — 2026-08-08: Reconciled all 19 existing
+  Leatherworking-crafted bags, quivers, and ammo pouches against the complete
+  pinned container inventory. None was missing. Added six unlimited
+  vendor-owned Hunter ammunition containers to the guide with exact source
+  costs, capacity, and modest convenience Targets. No crafted Leatherworking
+  band changed and nothing was published.

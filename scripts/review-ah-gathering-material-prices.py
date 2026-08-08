@@ -26,6 +26,7 @@ GUIDES_DIR = ROOT / "guides"
 BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
 CRAFTED_PATH = ROOT / "data" / "ah-crafted-sections.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
+CONTAINER_AUDIT_PATH = ROOT / "data" / "ah-container-audit.json"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 CROSS_SERVER_PATH = ROOT / "data" / "ah-dropped-gear-cross-server-diagnostics.json"
 IMPORTER_PATH = ROOT / "scripts" / "import-ah-dropped-gear-evidence.py"
@@ -436,6 +437,11 @@ def row_band(row: str) -> dict[str, int]:
 def inventory() -> dict[int, dict]:
     item_ids = load_item_ids()
     baseline = load(BASELINE_PATH)["items"]
+    container_vendor_ids = {
+        int(item_id)
+        for item_id, item in load(CONTAINER_AUDIT_PATH)["items"].items()
+        if item["primary_source"] == "vendor"
+    }
     crafted_config = load(CRAFTED_PATH)
     crafted = merged_catalog(crafted_config)
     vendors = {
@@ -468,6 +474,8 @@ def inventory() -> dict[int, dict]:
             item_id = item_ids.get(normalize(name))
             if not item_id:
                 raise ValueError(f"Could not resolve item ID for {name}")
+            if item_id in container_vendor_ids:
+                continue
             occurrences += 1
             catalog_entry = crafted.get(item_id)
             if item_id in vendors:

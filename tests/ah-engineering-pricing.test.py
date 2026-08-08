@@ -124,7 +124,7 @@ assert "Manually reviewed Target changes over 50%: `11`" in report
 assert "Publication status: `local only — not published`" in report
 
 guide = GUIDE_PATH.read_text(encoding="utf-8")
-assert "Updated 2026-08-06" in guide
+assert "Updated 2026-08-08" in guide
 assert guide.count("Evidence Pricing and craft floor") >= 1
 assert guide.count('class="crafted-recipe-link ') == 55
 assert guide.count('class="crafted-note-ref"') == 55

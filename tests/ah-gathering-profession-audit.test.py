@@ -18,17 +18,17 @@ SPECS = {
     "herbalism": {
         "guide_id": "herbalism",
         "guide": "herbalism-herbs-ah-price-guide.html",
-        "searchable": 52,
+        "searchable": 53,
         "baseline": 47,
-        "vendor": 5,
+        "vendor": 6,
         "reference": 0,
     },
     "skinning": {
         "guide_id": "skinning-leatherworking",
         "guide": "skinning-leatherworking-materials-ah-price-guide.html",
-        "searchable": 37,
+        "searchable": 43,
         "baseline": 31,
-        "vendor": 6,
+        "vendor": 12,
         "reference": 5,
     },
     "fishing": {
@@ -168,6 +168,7 @@ def main() -> int:
         expected_footer = (
             "Updated 2026-08-08"
             if filename in {
+                "herbalism-herbs-ah-price-guide.html",
                 "skinning-leatherworking-materials-ah-price-guide.html",
                 "fishing-cooking-materials-ah-price-guide.html",
                 "mining-smithing-ah-price-guide.html",
@@ -197,11 +198,11 @@ def main() -> int:
     if ITEM_TEMPLATE_COMMIT not in tooltip_builder or '"master/data/' in tooltip_builder:
         fail("AH tooltip item-template source is not pinned to the audited commit")
 
-    if (total_searchable, total_baseline, total_vendor) != (229, 205, 24):
+    if (total_searchable, total_baseline, total_vendor) != (236, 205, 31):
         fail("Gathering audit totals drifted")
     print(
-        "Gathering profession audits are complete: 229 searchable rows, "
-        "205 frozen baselines, 24 canonical vendor rows, and 9 reference checks."
+        "Gathering profession audits are complete: 236 searchable rows, "
+        "205 frozen baselines, 31 canonical vendor rows, and 9 reference checks."
     )
     return 0
 

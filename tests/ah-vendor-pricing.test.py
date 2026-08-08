@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import html
 import re
 import subprocess
 import sys
@@ -67,8 +68,8 @@ def main() -> int:
     guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
     if len(guide_paths) != 18:
         fail(f"Expected 18 AH guides, found {len(guide_paths)}")
-    if len(configured_guides) != 10:
-        fail(f"Expected 10 vendor configurations, found {len(configured_guides)}")
+    if len(configured_guides) != 11:
+        fail(f"Expected 11 vendor configurations, found {len(configured_guides)}")
 
     used_keys: set[str] = set()
     for path in guide_paths:
@@ -134,14 +135,20 @@ def main() -> int:
                 fail(f"{path.name}: missing row for {key}")
             row = row_match.group(1)
             expected_quality = item.get("quality", "common")
-            if f'<strong class="q-{expected_quality}">{item["name"]}</strong>' not in row:
+            escaped_name = html.escape(item["name"])
+            if f'<strong class="q-{expected_quality}">{escaped_name}</strong>' not in row:
                 fail(f"{path.name}: wrong rarity class for {item['name']}")
             if '<div class="pricepair target">' not in row:
                 fail(f"{path.name}: {item['name']} does not use the standard price box")
             if f'<span class="buyout">{expected_target}</span>' not in row:
                 fail(f"{path.name}: wrong target for {item['name']}")
-            if '<span class="demand low">Low</span>' not in row:
-                fail(f"{path.name}: {item['name']} is missing the standard demand badge")
+            expected_demand = item.get("demand", "Low")
+            expected_demand_class = item.get("demand_class", "low")
+            expected_badge = (
+                f'<span class="demand {expected_demand_class}">{expected_demand}</span>'
+            )
+            if expected_badge not in row:
+                fail(f"{path.name}: {item['name']} is missing its configured demand badge")
             if "<strong>Source / cost:</strong>" not in row:
                 fail(f"{path.name}: {item['name']} is missing source cost in its notes")
 
