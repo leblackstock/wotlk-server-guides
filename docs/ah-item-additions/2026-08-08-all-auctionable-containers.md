@@ -1,7 +1,7 @@
 # AH Item Addition Work Order — All Auctionable Containers
 
 - **Date:** 2026-08-08
-- **Status:** complete locally — publication authorized 2026-08-08
+- **Status:** complete and published — 2026-08-08
 - **Requested scope:** coupled batch
 - **Market type:** vendor | crafted | quest reward | world drop
 - **Target guide and section:** Profession guides, Sought-After World Drops, and Drop / Turn-In / Quest-Page Items
@@ -117,23 +117,23 @@ No new crafted rows are being introduced. Existing recipe-backed containers reta
 - **Large changes reviewed:** not applicable to new rows; no existing Target moved
 - **Comparison requests and final failures:** 132 requests; zero final failures
 - **Search/index result:** 3,949 guide rows and 3,720 unique item names; all 93 included containers resolve to one canonical owner guide with a tooltip ID
-- **Local or live status:** release in progress; public verification required
+- **Local or live status:** live; current public desktop/mobile verification passed
 - **Unrelated worktree changes left untouched:** yes
 
 ## Publication Record
 
 Complete only after explicit authorization.
 
-- **Commit:** pending release commit
+- **Commits:** `e388667` (container release) and `0d99cac` (canonical scope correction)
 - **Push target:** `origin/main`
-- **Ahead/behind:** `0 0` before staging
-- **Pages deployment:** pending
-- **Public smoke result:** pending
+- **Ahead/behind:** `0 0` after the final release push
+- **Pages deployment:** pass for `0d99cac`
+- **Public smoke result:** pass — 93 collection rows plus desktop/mobile filters, sorting, tooltips, owner links, and all AH guide views
 - **Live URL:** `https://leblackstock.github.io/wotlk-server-guides/guides/bags-containers-ah-guide.html`
 
 ## Collection View Follow-up — 2026-08-08
 
-- **Status:** complete locally — publication authorized 2026-08-08
+- **Status:** live — published and publicly verified 2026-08-08
 - **Generated page:** `guides/bags-containers-ah-guide.html`
 - **Canonical renderer:** `scripts/render-ah-container-collection.py`
 - **Canonical inputs:** The existing container audit plus crafted, vendor, drop/quest, and guide-manifest owners; the collection does not own a second price record.
