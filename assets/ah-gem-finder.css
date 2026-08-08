@@ -1,0 +1,404 @@
+body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder {
+  position: relative;
+  overflow: hidden;
+  margin: 22px 0;
+  padding: 20px;
+  border: 1px solid rgba(114, 227, 255, 0.28);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(114, 227, 255, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(30, 38, 48, 0.98), rgba(20, 27, 34, 0.98));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--cyan), var(--purple), var(--q-epic));
+  content: "";
+}
+
+.ah-gem-finder-heading {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.ah-gem-finder-mark {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(114, 227, 255, 0.38);
+  border-radius: 12px;
+  background: rgba(114, 227, 255, 0.09);
+  color: var(--cyan);
+}
+
+.ah-gem-finder-mark svg {
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
+}
+
+.ah-gem-finder-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
+.ah-gem-finder-heading p {
+  max-width: 760px;
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.ah-gem-search-wrap {
+  position: relative;
+}
+
+.ah-gem-search-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  display: grid;
+  color: var(--muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.ah-gem-search-icon svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.ah-gem-search-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px 11px 44px;
+  border: 1px solid rgba(114, 227, 255, 0.32);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(9, 14, 19, 0.76);
+  color: var(--text);
+  font: inherit;
+}
+
+.ah-gem-search-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(114, 227, 255, 0.12);
+}
+
+.ah-gem-filter-set {
+  min-width: 0;
+  margin: 15px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.ah-gem-filter-set legend,
+.ah-gem-sort-label > span,
+.ah-gem-active-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #c6d2de;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.ah-gem-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ah-gem-chip,
+.ah-gem-more-button,
+.ah-gem-active-chip,
+.ah-gem-clear-button {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid rgba(174, 184, 194, 0.26);
+  border-radius: 999px;
+  background: rgba(12, 18, 24, 0.72);
+  color: #dce5ed;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ah-gem-chip:hover,
+.ah-gem-more-button:hover,
+.ah-gem-active-chip:hover,
+.ah-gem-clear-button:hover {
+  border-color: rgba(114, 227, 255, 0.65);
+  color: #fff;
+}
+
+.ah-gem-chip[aria-pressed="true"] {
+  border-color: var(--cyan);
+  background: rgba(114, 227, 255, 0.15);
+  color: #e7fbff;
+  box-shadow: inset 0 0 0 1px rgba(114, 227, 255, 0.12);
+}
+
+.ah-gem-extra-stats {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid rgba(174, 184, 194, 0.15);
+  border-radius: 12px;
+  background: rgba(9, 14, 19, 0.36);
+}
+
+.ah-gem-extra-stats[hidden] {
+  display: none;
+}
+
+.ah-gem-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(160px, 0.65fr);
+  gap: 16px;
+  align-items: end;
+}
+
+.ah-gem-sort-label {
+  display: block;
+  min-width: 0;
+  margin-top: 15px;
+}
+
+.ah-gem-sort {
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 34px 7px 10px;
+  border: 1px solid rgba(174, 184, 194, 0.26);
+  border-radius: 10px;
+  background: #10171e;
+  color: var(--text);
+  font: inherit;
+}
+
+.ah-gem-active-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(174, 184, 194, 0.14);
+}
+
+.ah-gem-active-row[hidden] {
+  display: none;
+}
+
+.ah-gem-active-label {
+  margin: 0;
+}
+
+.ah-gem-active-filters {
+  display: flex;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ah-gem-active-chip {
+  min-height: 30px;
+  padding: 5px 10px;
+  border-color: rgba(202, 167, 255, 0.4);
+  background: rgba(202, 167, 255, 0.11);
+  color: #eadfff;
+  font-size: 0.78rem;
+}
+
+.ah-gem-clear-button {
+  min-height: 30px;
+  padding: 5px 10px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ah-gem-status {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.ah-gem-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ah-gem-results[hidden] {
+  display: none;
+}
+
+.ah-gem-result {
+  display: flex;
+  height: 100%;
+  min-height: 132px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 13px 14px;
+  border: 1px solid rgba(174, 184, 194, 0.19);
+  border-left: 3px solid var(--q-common);
+  border-radius: 12px;
+  background: rgba(8, 13, 18, 0.58);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.ah-gem-result.quality-uncommon { border-left-color: var(--q-uncommon); }
+.ah-gem-result.quality-rare { border-left-color: var(--q-rare); }
+.ah-gem-result.quality-epic { border-left-color: var(--q-epic); }
+
+.ah-gem-result:hover,
+.ah-gem-result:focus-visible {
+  border-color: rgba(114, 227, 255, 0.58);
+  background: rgba(18, 28, 37, 0.82);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.ah-gem-result-top {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.ah-gem-result-name {
+  line-height: 1.25;
+}
+
+.ah-gem-result-price {
+  display: grid;
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.ah-gem-result-price-label {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ah-gem-result-price-value {
+  color: var(--gold2);
+  font-size: 0.88rem;
+}
+
+.ah-gem-result-effect {
+  flex: 1 1 auto;
+  color: #c5d1dc;
+  font-size: 0.84rem;
+}
+
+.ah-gem-result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.ah-gem-result-tag,
+.ah-gem-result-demand {
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: rgba(174, 184, 194, 0.08);
+}
+
+.ah-gem-result-demand {
+  color: #ccefd0;
+}
+
+.ah-gem-result-arrow {
+  margin-left: auto;
+  color: var(--cyan);
+  font-size: 1rem;
+}
+
+.ah-gem-empty {
+  grid-column: 1 / -1;
+  padding: 18px;
+  border: 1px dashed rgba(174, 184, 194, 0.25);
+  border-radius: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .ah-gem-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ah-gem-sort-label {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder {
+    padding: 17px 14px;
+    border-radius: 13px;
+  }
+
+  .ah-gem-finder-heading {
+    gap: 10px;
+  }
+
+  .ah-gem-finder-mark {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .ah-gem-controls,
+  .ah-gem-results {
+    grid-template-columns: 1fr;
+  }
+
+  .ah-gem-sort-label {
+    grid-column: auto;
+  }
+
+  .ah-gem-result {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ah-gem-result {
+    transition: none;
+  }
+}
+
+@media print {
+  .ah-gem-finder {
+    display: none !important;
+  }
+}

@@ -64,3 +64,4 @@ assert.equal(selectedRow.getAttribute("aria-selected"), "true");
 runtime.window.close();
 
 console.log("Auction House search groups duplicate item rows and follows same-page item links.");
+require("./ah-gem-finder.test.js");

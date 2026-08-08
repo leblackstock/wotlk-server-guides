@@ -18,11 +18,22 @@ GUIDES_DIR = ROOT / "guides"
 HUB_PATH = ROOT / "auction-house.html"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
+GEM_FINDER_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "gem-finder.html"
 ASSET_VERSION = "20260804-ah-dropped-gear-v1"
 HUB_STYLE_VERSION = "20260804-ah-dropped-gear-hub-v1"
+PAGE_SPECIFIC_ASSETS = {
+    "jewelcrafting-gems-ah-price-guide.html": {
+        "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v1")],
+        "scripts": [("ah-gem-finder.js", "20260808-cut-gem-finder-v1")],
+    },
+}
 
 UX_BLOCK = re.compile(
     r"<!-- AH_GUIDE_UX_START -->.*?<!-- AH_GUIDE_UX_END -->",
+    re.DOTALL,
+)
+GEM_FINDER_BLOCK = re.compile(
+    r'\s*<section class="ah-gem-finder"[^>]*data-ah-gem-finder.*?</section>',
     re.DOTALL,
 )
 HEADER_BLOCK = re.compile(r"<header(?:\s[^>]*)?>.*?</header>", re.DOTALL)
@@ -85,6 +96,9 @@ def render_ux(guide: dict, notes: str) -> str:
     title = html.escape(guide["title"])
     description = html.escape(guide["description"])
     icon = html.escape(guide["icon"])
+    page_feature = ""
+    if guide["file"] == "jewelcrafting-gems-ah-price-guide.html":
+        page_feature = f'\n\n{GEM_FINDER_TEMPLATE_PATH.read_text(encoding="utf-8").strip()}'
     return f'''<!-- AH_GUIDE_UX_START -->
 <header class="ah-guide-hero">
   <div class="ah-guide-heading">
@@ -116,7 +130,7 @@ def render_ux(guide: dict, notes: str) -> str:
   <nav class="ah-guide-major-nav" data-ah-major-nav aria-label="Jump to a major category"></nav>
   <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
   <ol class="ah-search-results" id="ah-search-results" hidden></ol>
-</section>
+</section>{page_feature}
 
 <details class="common ah-guide-notes">
   <summary><span>Pricing notes &amp; legend</span><span class="ah-guide-notes-hint">Read before posting</span></summary>
@@ -129,18 +143,23 @@ def render_ux(guide: dict, notes: str) -> str:
 <!-- AH_GUIDE_UX_END -->'''
 
 
-def render_scripts() -> str:
+def render_scripts(guide: dict) -> str:
+    extra_scripts = "".join(
+        f'\n<script src="../assets/{html.escape(filename)}?v={html.escape(version)}" defer></script>'
+        for filename, version in PAGE_SPECIFIC_ASSETS.get(guide["file"], {}).get("scripts", [])
+    )
     return f'''<!-- AH_GUIDE_SCRIPTS_START -->
 <script src="../assets/ah-search-index.js?v={ASSET_VERSION}" defer></script>
 <script src="../assets/ah-guide-navigation-data.js?v={ASSET_VERSION}" defer></script>
 <script src="../assets/ah-guide-navigation.js?v={ASSET_VERSION}" defer></script>
-<script src="../assets/ah-search.js?v={ASSET_VERSION}" defer></script>
+<script src="../assets/ah-search.js?v={ASSET_VERSION}" defer></script>{extra_scripts}
 <!-- AH_GUIDE_SCRIPTS_END -->'''
 
 
 def transform_page(source: str, guide: dict) -> str:
     filename = guide["file"]
     notes = extract_notes(source, filename)
+    source = GEM_FINDER_BLOCK.sub("", source)
     ux = render_ux(guide, notes)
     if UX_BLOCK.search(source):
         source, count = UX_BLOCK.subn(ux, source, count=1)
@@ -186,9 +205,19 @@ def transform_page(source: str, guide: dict) -> str:
             source,
             count=1,
         )
+    for filename, version in PAGE_SPECIFIC_ASSETS.get(guide["file"], {}).get("stylesheets", []):
+        asset_pattern = rf"{re.escape(filename)}(?:\?v=[^\"\s]+)?"
+        asset_value = f"{filename}?v={version}"
+        if re.search(asset_pattern, source):
+            source = re.sub(asset_pattern, asset_value, source, count=1)
+        else:
+            stylesheet = f'  <link rel="stylesheet" href="../assets/{asset_value}">\n'
+            if source.count("</head>") != 1:
+                raise ValueError(f"{guide['file']}: expected one head closing tag")
+            source = source.replace("</head>", f"{stylesheet}</head>", 1)
     source = SCRIPT_BLOCK.sub("", source)
     source = LEGACY_SEARCH_SCRIPT.sub("", source)
-    scripts = render_scripts()
+    scripts = render_scripts(guide)
     if source.count("</body>") != 1:
         raise ValueError(f"{filename}: expected exactly one body closing tag")
     source = source.replace("</body>", f"{scripts}\n</body>", 1)
