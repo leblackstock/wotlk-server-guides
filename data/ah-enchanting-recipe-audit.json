@@ -1,0 +1,7483 @@
+{
+  "version": 1,
+  "refreshed": "2026-08-06",
+  "scope": "All 276 tradeable finished Enchanting outputs in the canonical AH guide",
+  "recipe_source": {
+    "name": "WotLKDB Enchanting skill 333",
+    "urls": [
+      "https://wotlkdb.com/?spells=11.333&filter=maxrs=300",
+      "https://wotlkdb.com/?spells=11.333&filter=minrs=301;maxrs=350",
+      "https://wotlkdb.com/?spells=11.333&filter=minrs=351;maxrs=450"
+    ],
+    "records": 306,
+    "role": "Exact WotLK 3.3.5 spell IDs, reagents, output item IDs, and minimum guaranteed output counts."
+  },
+  "pricing_policy": {
+    "active_hellscream_listings_used": false,
+    "baseline_role": "Frozen non-circular ingredient bands or exact unlimited-vendor prices.",
+    "crafted_input_role": "Saved Evidence Pricing bands are the opportunity cost for tradeable crafted inputs consumed by an enchant recipe.",
+    "vellum_role": "Each scroll adds one exact cheapest compatible vellum, priced from that vellum's own deterministic two-output Inscription recipe.",
+    "floor_role": "Recipe floors are craftability diagnostics and do not set finished-output sale value."
+  },
+  "exact_vendor_inputs": {
+    "3371": {
+      "name": "Empty Vial",
+      "unit_copper": 20
+    },
+    "3372": {
+      "name": "Leaded Vial",
+      "unit_copper": 200
+    },
+    "4470": {
+      "name": "Simple Wood",
+      "unit_copper": 38
+    },
+    "8925": {
+      "name": "Crystal Vial",
+      "unit_copper": 2500
+    },
+    "10648": {
+      "name": "Common Parchment",
+      "unit_copper": 125
+    },
+    "11291": {
+      "name": "Star Wood",
+      "unit_copper": 4500
+    },
+    "17034": {
+      "name": "Maple Seed",
+      "unit_copper": 200
+    },
+    "17035": {
+      "name": "Stranglethorn Seed",
+      "unit_copper": 400
+    },
+    "18256": {
+      "name": "Imbued Vial",
+      "unit_copper": 20000
+    },
+    "39354": {
+      "name": "Light Parchment",
+      "unit_copper": 15
+    },
+    "39501": {
+      "name": "Heavy Parchment",
+      "unit_copper": 1250
+    },
+    "39502": {
+      "name": "Resilient Parchment",
+      "unit_copper": 5000
+    }
+  },
+  "vellum_recipes": {
+    "armor-1": {
+      "kind": "armor",
+      "rank": 1,
+      "item_id": 38682,
+      "name": "Armor Vellum",
+      "source_spell_id": 52739,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 39469,
+          "name": "Moonglow Ink",
+          "count": 1
+        },
+        {
+          "item_id": 39354,
+          "name": "Light Parchment",
+          "count": 2
+        }
+      ]
+    },
+    "armor-2": {
+      "kind": "armor",
+      "rank": 2,
+      "item_id": 37602,
+      "name": "Armor Vellum II",
+      "source_spell_id": 59499,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 43120,
+          "name": "Celestial Ink",
+          "count": 1
+        },
+        {
+          "item_id": 10648,
+          "name": "Common Parchment",
+          "count": 2
+        }
+      ]
+    },
+    "armor-3": {
+      "kind": "armor",
+      "rank": 3,
+      "item_id": 43145,
+      "name": "Armor Vellum III",
+      "source_spell_id": 59500,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 43126,
+          "name": "Ink of the Sea",
+          "count": 1
+        },
+        {
+          "item_id": 39502,
+          "name": "Resilient Parchment",
+          "count": 2
+        }
+      ]
+    },
+    "weapon-1": {
+      "kind": "weapon",
+      "rank": 1,
+      "item_id": 39349,
+      "name": "Weapon Vellum",
+      "source_spell_id": 52840,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 39774,
+          "name": "Midnight Ink",
+          "count": 3
+        },
+        {
+          "item_id": 39354,
+          "name": "Light Parchment",
+          "count": 2
+        }
+      ]
+    },
+    "weapon-2": {
+      "kind": "weapon",
+      "rank": 2,
+      "item_id": 39350,
+      "name": "Weapon Vellum II",
+      "source_spell_id": 59488,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 43121,
+          "name": "Fiery Ink",
+          "count": 1
+        },
+        {
+          "item_id": 39501,
+          "name": "Heavy Parchment",
+          "count": 2
+        },
+        {
+          "item_id": 43120,
+          "name": "Celestial Ink",
+          "count": 1
+        }
+      ]
+    },
+    "weapon-3": {
+      "kind": "weapon",
+      "rank": 3,
+      "item_id": 43146,
+      "name": "Weapon Vellum III",
+      "source_spell_id": 59501,
+      "output_count": 2,
+      "reagents": [
+        {
+          "item_id": 43126,
+          "name": "Ink of the Sea",
+          "count": 3
+        },
+        {
+          "item_id": 39502,
+          "name": "Resilient Parchment",
+          "count": 2
+        }
+      ]
+    }
+  },
+  "recipes": {
+    "ench-scroll-of-enchant-staff-greater-spellpower": {
+      "source_spell_id": 62948,
+      "source_spell_name": "Enchant Staff - Greater Spellpower",
+      "output_item_id": 45056,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 40
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 6
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-black-magic": {
+      "source_spell_id": 59625,
+      "source_spell_name": "Enchant Weapon - Black Magic",
+      "output_item_id": 43987,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 6
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 6
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-exceptional-spellpower": {
+      "source_spell_id": 44629,
+      "source_spell_name": "Enchant Weapon - Exceptional Spellpower",
+      "output_item_id": 38991,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-lifeward": {
+      "source_spell_id": 44576,
+      "source_spell_name": "Enchant Weapon - Lifeward",
+      "output_item_id": 38972,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 1
+        },
+        {
+          "item_id": 35625,
+          "name": "Eternal Life",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-mighty-spellpower": {
+      "source_spell_id": 60714,
+      "source_spell_name": "Enchant Weapon - Mighty Spellpower",
+      "output_item_id": 44467,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 30
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 6
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-exceptional-agility": {
+      "source_spell_id": 44633,
+      "source_spell_name": "Enchant Weapon - Exceptional Agility",
+      "output_item_id": 38995,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 35623,
+          "name": "Eternal Air",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-icebreaker": {
+      "source_spell_id": 44524,
+      "source_spell_name": "Enchant Weapon - Icebreaker",
+      "output_item_id": 38965,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 36860,
+          "name": "Eternal Fire",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-greater-savagery": {
+      "source_spell_id": 44630,
+      "source_spell_name": "Enchant 2H Weapon - Greater Savagery",
+      "output_item_id": 38992,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-giant-slayer": {
+      "source_spell_id": 44621,
+      "source_spell_name": "Enchant Weapon - Giant Slayer",
+      "output_item_id": 38988,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-scourgebane": {
+      "source_spell_id": 44595,
+      "source_spell_name": "Enchant 2H Weapon - Scourgebane",
+      "output_item_id": 38981,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-staff-spellpower": {
+      "source_spell_id": 62959,
+      "source_spell_name": "Enchant Staff - Spellpower",
+      "output_item_id": 45060,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 12
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-blade-ward": {
+      "source_spell_id": 64441,
+      "source_spell_name": "Enchant Weapon - Blade Ward",
+      "output_item_id": 46026,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 4
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 8
+        },
+        {
+          "item_id": 37663,
+          "name": "Titansteel Bar",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-blood-draining": {
+      "source_spell_id": 64579,
+      "source_spell_name": "Enchant Weapon - Blood Draining",
+      "output_item_id": 46098,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 4
+        },
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 40
+        },
+        {
+          "item_id": 36918,
+          "name": "Scarlet Ruby",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-exceptional-spirit": {
+      "source_spell_id": 44510,
+      "source_spell_name": "Enchant Weapon - Exceptional Spirit",
+      "output_item_id": 38963,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 16
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-titanguard": {
+      "source_spell_id": 62257,
+      "source_spell_name": "Enchant Weapon - Titanguard",
+      "output_item_id": 44946,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 37663,
+          "name": "Titansteel Bar",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-massacre": {
+      "source_spell_id": 60691,
+      "source_spell_name": "Enchant 2H Weapon - Massacre",
+      "output_item_id": 44463,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 40
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 6
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-berserking": {
+      "source_spell_id": 59621,
+      "source_spell_name": "Enchant Weapon - Berserking",
+      "output_item_id": 44493,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 12
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-superior-potency": {
+      "source_spell_id": 60707,
+      "source_spell_name": "Enchant Weapon - Superior Potency",
+      "output_item_id": 44466,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-accuracy": {
+      "source_spell_id": 59619,
+      "source_spell_name": "Enchant Weapon - Accuracy",
+      "output_item_id": 44497,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 20
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-greater-potency": {
+      "source_spell_id": 60621,
+      "source_spell_name": "Enchant Weapon - Greater Potency",
+      "output_item_id": 44453,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 2
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-chest-super-health": {
+      "source_spell_id": 47900,
+      "source_spell_name": "Enchant Chest - Super Health",
+      "output_item_id": 39005,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 20
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-super-stats": {
+      "source_spell_id": 44623,
+      "source_spell_name": "Enchant Chest - Super Stats",
+      "output_item_id": 38989,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 4
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-exceptional-resilience": {
+      "source_spell_id": 44588,
+      "source_spell_name": "Enchant Chest - Exceptional Resilience",
+      "output_item_id": 38975,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-greater-defense": {
+      "source_spell_id": 47766,
+      "source_spell_name": "Enchant Chest - Greater Defense",
+      "output_item_id": 39002,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        },
+        {
+          "item_id": 35624,
+          "name": "Eternal Earth",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-mighty-health": {
+      "source_spell_id": 44492,
+      "source_spell_name": "Enchant Chest - Mighty Health",
+      "output_item_id": 38955,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-powerful-stats": {
+      "source_spell_id": 60692,
+      "source_spell_name": "Enchant Chest - Powerful Stats",
+      "output_item_id": 44465,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-greater-mana-restoration": {
+      "source_spell_id": 44509,
+      "source_spell_name": "Enchant Chest - Greater Mana Restoration",
+      "output_item_id": 38962,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 4
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-defense": {
+      "source_spell_id": 46594,
+      "source_spell_name": "Enchant Chest - Defense",
+      "output_item_id": 38999,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        },
+        {
+          "item_id": 23427,
+          "name": "Eternium Ore",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-speed": {
+      "source_spell_id": 47898,
+      "source_spell_name": "Enchant Cloak - Greater Speed",
+      "output_item_id": 39003,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 16
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-shadow-armor": {
+      "source_spell_id": 44631,
+      "source_spell_name": "Enchant Cloak - Shadow Armor",
+      "output_item_id": 38993,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 12
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-titanweave": {
+      "source_spell_id": 44591,
+      "source_spell_name": "Enchant Cloak - Titanweave",
+      "output_item_id": 38978,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 41163,
+          "name": "Titanium Bar",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-wisdom": {
+      "source_spell_id": 47899,
+      "source_spell_name": "Enchant Cloak - Wisdom",
+      "output_item_id": 39004,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 6
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-agility": {
+      "source_spell_id": 44500,
+      "source_spell_name": "Enchant Cloak - Superior Agility",
+      "output_item_id": 38959,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 9
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-arcane-resistance": {
+      "source_spell_id": 44596,
+      "source_spell_name": "Enchant Cloak - Superior Arcane Resistance",
+      "output_item_id": 38982,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 20
+        },
+        {
+          "item_id": 35624,
+          "name": "Eternal Earth",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-fire-resistance": {
+      "source_spell_id": 44556,
+      "source_spell_name": "Enchant Cloak - Superior Fire Resistance",
+      "output_item_id": 38969,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 35622,
+          "name": "Eternal Water",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-frost-resistance": {
+      "source_spell_id": 44483,
+      "source_spell_name": "Enchant Cloak - Superior Frost Resistance",
+      "output_item_id": 38950,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 3
+        },
+        {
+          "item_id": 36860,
+          "name": "Eternal Fire",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-nature-resistance": {
+      "source_spell_id": 44494,
+      "source_spell_name": "Enchant Cloak - Superior Nature Resistance",
+      "output_item_id": 38956,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 15
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 35627,
+          "name": "Eternal Shadow",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-shadow-resistance": {
+      "source_spell_id": 44590,
+      "source_spell_name": "Enchant Cloak - Superior Shadow Resistance",
+      "output_item_id": 38977,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 35625,
+          "name": "Eternal Life",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-spell-piercing": {
+      "source_spell_id": 44582,
+      "source_spell_name": "Enchant Cloak - Spell Piercing",
+      "output_item_id": 38973,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 15
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-major-agility": {
+      "source_spell_id": 60663,
+      "source_spell_name": "Enchant Cloak - Major Agility",
+      "output_item_id": 44457,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-speed": {
+      "source_spell_id": 60609,
+      "source_spell_name": "Enchant Cloak - Speed",
+      "output_item_id": 44456,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-cloak-mighty-armor": {
+      "source_spell_id": 47672,
+      "source_spell_name": "Enchant Cloak - Mighty Armor",
+      "output_item_id": 39001,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 15
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-greater-spellpower": {
+      "source_spell_id": 44635,
+      "source_spell_name": "Enchant Bracers - Greater Spellpower",
+      "output_item_id": 38997,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracer-expertise": {
+      "source_spell_id": 44598,
+      "source_spell_name": "Enchant Bracers - Expertise",
+      "output_item_id": 38984,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 14
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracer-major-stamina": {
+      "source_spell_id": 62256,
+      "source_spell_name": "Enchant Bracers - Major Stamina",
+      "output_item_id": 44947,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34057,
+          "name": "Abyss Crystal",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-greater-stats": {
+      "source_spell_id": 44616,
+      "source_spell_name": "Enchant Bracers - Greater Stats",
+      "output_item_id": 38987,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 16
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-major-spirit": {
+      "source_spell_id": 44593,
+      "source_spell_name": "Enchant Bracers - Major Spirit",
+      "output_item_id": 38980,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 16
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-exceptional-intellect": {
+      "source_spell_id": 44555,
+      "source_spell_name": "Enchant Bracers - Exceptional Intellect",
+      "output_item_id": 38968,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracer-superior-spellpower": {
+      "source_spell_id": 60767,
+      "source_spell_name": "Enchant Bracers - Superior Spellpower",
+      "output_item_id": 44470,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 6
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-greater-assault": {
+      "source_spell_id": 44575,
+      "source_spell_name": "Enchant Bracers - Greater Assault",
+      "output_item_id": 44815,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 24
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-bracers-striking": {
+      "source_spell_id": 60616,
+      "source_spell_name": "Enchant Bracers - Striking",
+      "output_item_id": 38971,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-armsman": {
+      "source_spell_id": 44625,
+      "source_spell_name": "Enchant Gloves - Armsman",
+      "output_item_id": 38990,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        },
+        {
+          "item_id": 35624,
+          "name": "Eternal Earth",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-crusher": {
+      "source_spell_id": 60668,
+      "source_spell_name": "Enchant Gloves - Crusher",
+      "output_item_id": 44458,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 20
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-exceptional-spellpower": {
+      "source_spell_id": 44592,
+      "source_spell_name": "Enchant Gloves - Exceptional Spellpower",
+      "output_item_id": 38979,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 4
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-major-agility": {
+      "source_spell_id": 44529,
+      "source_spell_name": "Enchant Gloves - Major Agility",
+      "output_item_id": 38967,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-greater-assault": {
+      "source_spell_id": 44513,
+      "source_spell_name": "Enchant Gloves - Greater Assault",
+      "output_item_id": 38964,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-greater-blasting": {
+      "source_spell_id": 44612,
+      "source_spell_name": "Enchant Gloves - Greater Blasting",
+      "output_item_id": 38985,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 30
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-precision": {
+      "source_spell_id": 44488,
+      "source_spell_name": "Enchant Gloves - Precision",
+      "output_item_id": 38953,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-gatherer": {
+      "source_spell_id": 44506,
+      "source_spell_name": "Enchant Gloves - Gatherer",
+      "output_item_id": 38960,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-expertise": {
+      "source_spell_id": 44484,
+      "source_spell_name": "Enchant Gloves - Expertise",
+      "output_item_id": 38951,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 12
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-gloves-angler": {
+      "source_spell_id": 71692,
+      "source_spell_name": "Enchant Gloves - Angler",
+      "output_item_id": 50816,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 1
+        },
+        {
+          "item_id": 44958,
+          "name": "Ethereal Oil",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-icewalker": {
+      "source_spell_id": 60623,
+      "source_spell_name": "Enchant Boots - Icewalker",
+      "output_item_id": 38986,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 37705,
+          "name": "Crystallized Water",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-tuskarrs-vitality": {
+      "source_spell_id": 47901,
+      "source_spell_name": "Enchant Boots - Tuskarr's Vitality",
+      "output_item_id": 39006,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-superior-agility": {
+      "source_spell_id": 44589,
+      "source_spell_name": "Enchant Boots - Superior Agility",
+      "output_item_id": 38976,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 16
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-fortitude": {
+      "source_spell_id": 44528,
+      "source_spell_name": "Enchant Boots - Greater Fortitude",
+      "output_item_id": 38966,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 3
+        },
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-vitality": {
+      "source_spell_id": 44584,
+      "source_spell_name": "Enchant Boots - Greater Vitality",
+      "output_item_id": 38974,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 8
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-assault": {
+      "source_spell_id": 60763,
+      "source_spell_name": "Enchant Boots - Greater Assault",
+      "output_item_id": 44469,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 4
+        },
+        {
+          "item_id": 34052,
+          "name": "Dream Shard",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-assault": {
+      "source_spell_id": 60606,
+      "source_spell_name": "Enchant Boots - Assault",
+      "output_item_id": 44449,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 4
+        },
+        {
+          "item_id": 34056,
+          "name": "Lesser Cosmic Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-spirit": {
+      "source_spell_id": 44508,
+      "source_spell_name": "Enchant Boots - Greater Spirit",
+      "output_item_id": 38961,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 10
+        },
+        {
+          "item_id": 34055,
+          "name": "Greater Cosmic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-boots-lesser-accuracy": {
+      "source_spell_id": 63746,
+      "source_spell_name": "Enchant Boots - Lesser Accuracy",
+      "output_item_id": 45628,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 4
+        },
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-greater-intellect": {
+      "source_spell_id": 60653,
+      "source_spell_name": "Enchant Shield - Greater Intellect",
+      "output_item_id": 44455,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 12
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-shield-defense": {
+      "source_spell_id": 44489,
+      "source_spell_name": "Enchant Shield - Defense",
+      "output_item_id": 38954,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        },
+        {
+          "item_id": 35624,
+          "name": "Eternal Earth",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-weapon-executioner": {
+      "source_spell_id": 42974,
+      "source_spell_name": "Enchant Weapon - Executioner",
+      "output_item_id": 38948,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 6
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 10
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 6
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 30
+        },
+        {
+          "item_id": 22824,
+          "name": "Elixir of Major Strength",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-weapon-mongoose": {
+      "source_spell_id": 27984,
+      "source_spell_name": "Enchant Weapon - Mongoose",
+      "output_item_id": 38925,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 6
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 10
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 40
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-soulfrost": {
+      "source_spell_id": 27982,
+      "source_spell_name": "Enchant Weapon - Soulfrost",
+      "output_item_id": 38924,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 12
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 10
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 6
+        },
+        {
+          "item_id": 22456,
+          "name": "Primal Shadow",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-sunfire": {
+      "source_spell_id": 27981,
+      "source_spell_name": "Enchant Weapon - Sunfire",
+      "output_item_id": 38923,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 12
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 10
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 21884,
+          "name": "Primal Fire",
+          "count": 6
+        },
+        {
+          "item_id": 23571,
+          "name": "Primal Might",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-deathfrost": {
+      "source_spell_id": 46578,
+      "source_spell_name": "Enchant Weapon - Deathfrost",
+      "output_item_id": 38998,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22456,
+          "name": "Primal Shadow",
+          "count": 2
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 3,
+        "item_id": 43146,
+        "name": "Weapon Vellum III",
+        "source_spell_id": 59501
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-major-agility": {
+      "source_spell_id": 27977,
+      "source_spell_name": "Enchant 2H Weapon - Major Agility",
+      "output_item_id": 38922,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 6
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 20
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-battlemaster": {
+      "source_spell_id": 28004,
+      "source_spell_name": "Enchant Weapon - Battlemaster",
+      "output_item_id": 38927,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 8
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-spellsurge": {
+      "source_spell_id": 28003,
+      "source_spell_name": "Enchant Weapon - Spellsurge",
+      "output_item_id": 38926,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 12
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 10
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 20
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-savagery": {
+      "source_spell_id": 27971,
+      "source_spell_name": "Enchant 2H Weapon - Savagery",
+      "output_item_id": 38919,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 40
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-greater-agility": {
+      "source_spell_id": 42620,
+      "source_spell_name": "Enchant Weapon - Greater Agility",
+      "output_item_id": 38947,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 6
+        },
+        {
+          "item_id": 22451,
+          "name": "Primal Air",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-major-healing": {
+      "source_spell_id": 34010,
+      "source_spell_name": "Enchant Weapon - Major Healing",
+      "output_item_id": 38946,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 8
+        },
+        {
+          "item_id": 21886,
+          "name": "Primal Life",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-major-spellpower": {
+      "source_spell_id": 27975,
+      "source_spell_name": "Enchant Weapon - Major Spellpower",
+      "output_item_id": 38921,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-potency": {
+      "source_spell_id": 27972,
+      "source_spell_name": "Enchant Weapon - Potency",
+      "output_item_id": 38920,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 5
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 20
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-major-intellect": {
+      "source_spell_id": 27968,
+      "source_spell_name": "Enchant Weapon - Major Intellect",
+      "output_item_id": 38918,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-weapon-major-striking": {
+      "source_spell_id": 27967,
+      "source_spell_name": "Enchant Weapon - Major Striking",
+      "output_item_id": 38917,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 6
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 2,
+        "item_id": 39350,
+        "name": "Weapon Vellum II",
+        "source_spell_id": 59488
+      }
+    },
+    "ench-scroll-of-enchant-chest-exceptional-mana": {
+      "source_spell_id": 27958,
+      "source_spell_name": "Enchant Chest - Exceptional Mana",
+      "output_item_id": 38912,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 34054,
+          "name": "Infinite Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 3,
+        "item_id": 43145,
+        "name": "Armor Vellum III",
+        "source_spell_id": 59500
+      }
+    },
+    "ench-scroll-of-enchant-chest-exceptional-stats": {
+      "source_spell_id": 27960,
+      "source_spell_name": "Enchant Chest - Exceptional Stats",
+      "output_item_id": 38913,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 4
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-chest-major-resilience": {
+      "source_spell_id": 33992,
+      "source_spell_name": "Enchant Chest - Major Resilience",
+      "output_item_id": 38930,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-chest-major-spirit": {
+      "source_spell_id": 33990,
+      "source_spell_name": "Enchant Chest - Major Spirit",
+      "output_item_id": 38928,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-chest-exceptional-health": {
+      "source_spell_id": 27957,
+      "source_spell_name": "Enchant Chest - Exceptional Health",
+      "output_item_id": 38911,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        },
+        {
+          "item_id": 13446,
+          "name": "Major Healing Potion",
+          "count": 4
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-chest-restore-mana-prime": {
+      "source_spell_id": 33991,
+      "source_spell_name": "Enchant Chest - Restore Mana Prime",
+      "output_item_id": 38929,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22447,
+          "name": "Lesser Planar Essence",
+          "count": 2
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-steelweave": {
+      "source_spell_id": 47051,
+      "source_spell_name": "Enchant Cloak - Steelweave",
+      "output_item_id": 39000,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-arcane-resistance": {
+      "source_spell_id": 34005,
+      "source_spell_name": "Enchant Cloak - Greater Arcane Resistance",
+      "output_item_id": 38941,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22457,
+          "name": "Primal Mana",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-shadow-resistance": {
+      "source_spell_id": 34006,
+      "source_spell_name": "Enchant Cloak - Greater Shadow Resistance",
+      "output_item_id": 38942,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22456,
+          "name": "Primal Shadow",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-major-resistance": {
+      "source_spell_id": 27962,
+      "source_spell_name": "Enchant Cloak - Major Resistance",
+      "output_item_id": 38915,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 21884,
+          "name": "Primal Fire",
+          "count": 4
+        },
+        {
+          "item_id": 22451,
+          "name": "Primal Air",
+          "count": 4
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 4
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-spell-penetration": {
+      "source_spell_id": 34003,
+      "source_spell_name": "Enchant Cloak - Spell Penetration",
+      "output_item_id": 38939,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 2
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        },
+        {
+          "item_id": 22457,
+          "name": "Primal Mana",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-agility": {
+      "source_spell_id": 34004,
+      "source_spell_name": "Enchant Cloak - Greater Agility",
+      "output_item_id": 38940,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 1
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 4
+        },
+        {
+          "item_id": 22451,
+          "name": "Primal Air",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-major-armor": {
+      "source_spell_id": 27961,
+      "source_spell_name": "Enchant Cloak - Major Armor",
+      "output_item_id": 38914,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-spellpower": {
+      "source_spell_id": 27917,
+      "source_spell_name": "Enchant Bracer - Spellpower",
+      "output_item_id": 38903,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 6
+        },
+        {
+          "item_id": 21884,
+          "name": "Primal Fire",
+          "count": 6
+        },
+        {
+          "item_id": 21885,
+          "name": "Primal Water",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-fortitude": {
+      "source_spell_id": 27914,
+      "source_spell_name": "Enchant Bracer - Fortitude",
+      "output_item_id": 38902,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 1
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 10
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 20
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-restore-mana-prime": {
+      "source_spell_id": 27913,
+      "source_spell_name": "Enchant Bracer - Restore Mana Prime",
+      "output_item_id": 38901,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-superior-healing": {
+      "source_spell_id": 27911,
+      "source_spell_name": "Enchant Bracer - Superior Healing",
+      "output_item_id": 38900,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 21886,
+          "name": "Primal Life",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-major-defense": {
+      "source_spell_id": 27906,
+      "source_spell_name": "Enchant Bracer - Major Defense",
+      "output_item_id": 38899,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-stats": {
+      "source_spell_id": 27905,
+      "source_spell_name": "Enchant Bracer - Stats",
+      "output_item_id": 38898,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        },
+        {
+          "item_id": 22447,
+          "name": "Lesser Planar Essence",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-brawn": {
+      "source_spell_id": 27899,
+      "source_spell_name": "Enchant Bracer - Brawn",
+      "output_item_id": 38897,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-major-intellect": {
+      "source_spell_id": 34001,
+      "source_spell_name": "Enchant Bracer - Major Intellect",
+      "output_item_id": 38937,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22447,
+          "name": "Lesser Planar Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-bracer-assault": {
+      "source_spell_id": 34002,
+      "source_spell_name": "Enchant Bracer - Assault",
+      "output_item_id": 38938,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-major-spellpower": {
+      "source_spell_id": 33997,
+      "source_spell_name": "Enchant Gloves - Major Spellpower",
+      "output_item_id": 38935,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 6
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 6
+        },
+        {
+          "item_id": 22457,
+          "name": "Primal Mana",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-precise-strikes": {
+      "source_spell_id": 33994,
+      "source_spell_name": "Enchant Gloves - Precise Strikes",
+      "output_item_id": 38932,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 2
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-major-healing": {
+      "source_spell_id": 33999,
+      "source_spell_name": "Enchant Gloves - Major Healing",
+      "output_item_id": 38936,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 6
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 6
+        },
+        {
+          "item_id": 21886,
+          "name": "Primal Life",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-major-strength": {
+      "source_spell_id": 33995,
+      "source_spell_name": "Enchant Gloves - Major Strength",
+      "output_item_id": 38933,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 12
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-assault": {
+      "source_spell_id": 33996,
+      "source_spell_name": "Enchant Gloves - Assault",
+      "output_item_id": 38934,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-gloves-blasting": {
+      "source_spell_id": 33993,
+      "source_spell_name": "Enchant Gloves - Blasting",
+      "output_item_id": 38931,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22447,
+          "name": "Lesser Planar Essence",
+          "count": 1
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-surefooted": {
+      "source_spell_id": 27954,
+      "source_spell_name": "Enchant Boots - Surefooted",
+      "output_item_id": 38910,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 2
+        },
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-boars-speed": {
+      "source_spell_id": 34008,
+      "source_spell_name": "Enchant Boots - Boar's Speed",
+      "output_item_id": 38944,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-cats-swiftness": {
+      "source_spell_id": 34007,
+      "source_spell_name": "Enchant Boots - Cat's Swiftness",
+      "output_item_id": 38943,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 8
+        },
+        {
+          "item_id": 22451,
+          "name": "Primal Air",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-dexterity": {
+      "source_spell_id": 27951,
+      "source_spell_name": "Enchant Boots - Dexterity",
+      "output_item_id": 37603,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 8
+        },
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-fortitude": {
+      "source_spell_id": 27950,
+      "source_spell_name": "Enchant Boots - Fortitude",
+      "output_item_id": 38909,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 12
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-boots-vitality": {
+      "source_spell_id": 27948,
+      "source_spell_name": "Enchant Boots - Vitality",
+      "output_item_id": 38908,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        },
+        {
+          "item_id": 13446,
+          "name": "Major Healing Potion",
+          "count": 4
+        },
+        {
+          "item_id": 13444,
+          "name": "Major Mana Potion",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-resistance": {
+      "source_spell_id": 27947,
+      "source_spell_name": "Enchant Shield - Resistance",
+      "output_item_id": 38907,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 22573,
+          "name": "Mote of Earth",
+          "count": 1
+        },
+        {
+          "item_id": 22574,
+          "name": "Mote of Fire",
+          "count": 1
+        },
+        {
+          "item_id": 22572,
+          "name": "Mote of Air",
+          "count": 1
+        },
+        {
+          "item_id": 22578,
+          "name": "Mote of Water",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-shield-block": {
+      "source_spell_id": 27946,
+      "source_spell_name": "Enchant Shield - Shield Block",
+      "output_item_id": 38906,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 12
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-resilience": {
+      "source_spell_id": 44383,
+      "source_spell_name": "Enchant Shield - Resilience",
+      "output_item_id": 38949,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 1
+        },
+        {
+          "item_id": 22447,
+          "name": "Lesser Planar Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-intellect": {
+      "source_spell_id": 27945,
+      "source_spell_name": "Enchant Shield - Intellect",
+      "output_item_id": 38905,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-major-stamina": {
+      "source_spell_id": 34009,
+      "source_spell_name": "Enchant Shield - Major Stamina",
+      "output_item_id": 38945,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 15
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-shield-tough-shield": {
+      "source_spell_id": 27944,
+      "source_spell_name": "Enchant Shield - Tough Shield",
+      "output_item_id": 38904,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 6
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-weapon-mighty-intellect": {
+      "source_spell_id": 23804,
+      "source_spell_name": "Enchant Weapon - Mighty Intellect",
+      "output_item_id": 38884,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 6
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 5
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 20
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-mighty-spirit": {
+      "source_spell_id": 23803,
+      "source_spell_name": "Enchant Weapon - Mighty Spirit",
+      "output_item_id": 38883,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 6
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 12
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-major-spirit": {
+      "source_spell_id": 20035,
+      "source_spell_name": "Enchant 2H Weapon - Major Spirit",
+      "output_item_id": 38874,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-lifestealing": {
+      "source_spell_id": 20032,
+      "source_spell_name": "Enchant Weapon - Lifestealing",
+      "output_item_id": 38871,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 12808,
+          "name": "Essence of Undeath",
+          "count": 4
+        },
+        {
+          "item_id": 12803,
+          "name": "Living Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-crusader": {
+      "source_spell_id": 20034,
+      "source_spell_name": "Enchant Weapon - Crusader",
+      "output_item_id": 38873,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 12811,
+          "name": "Righteous Orb",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-major-intellect": {
+      "source_spell_id": 20036,
+      "source_spell_name": "Enchant 2H Weapon - Major Intellect",
+      "output_item_id": 38875,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-healing-power": {
+      "source_spell_id": 22750,
+      "source_spell_name": "Enchant Weapon - Healing Power",
+      "output_item_id": 38878,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 7080,
+          "name": "Essence of Water",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-spellpower": {
+      "source_spell_id": 22749,
+      "source_spell_name": "Enchant Weapon - Spellpower",
+      "output_item_id": 38877,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 6
+        },
+        {
+          "item_id": 13926,
+          "name": "Golden Pearl",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-superior-striking": {
+      "source_spell_id": 20031,
+      "source_spell_name": "Enchant Weapon - Superior Striking",
+      "output_item_id": 38870,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-superior-impact": {
+      "source_spell_id": 20030,
+      "source_spell_name": "Enchant 2H Weapon - Superior Impact",
+      "output_item_id": 38869,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-unholy-weapon": {
+      "source_spell_id": 20033,
+      "source_spell_name": "Enchant Weapon - Unholy Weapon",
+      "output_item_id": 38872,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 12808,
+          "name": "Essence of Undeath",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-agility": {
+      "source_spell_id": 27837,
+      "source_spell_name": "Enchant 2H Weapon - Agility",
+      "output_item_id": 38896,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 8
+        },
+        {
+          "item_id": 7082,
+          "name": "Essence of Air",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-agility": {
+      "source_spell_id": 23800,
+      "source_spell_name": "Enchant Weapon - Agility",
+      "output_item_id": 38880,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 7082,
+          "name": "Essence of Air",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-strength": {
+      "source_spell_id": 23799,
+      "source_spell_name": "Enchant Weapon - Strength",
+      "output_item_id": 38879,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 7076,
+          "name": "Essence of Earth",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-icy-chill": {
+      "source_spell_id": 20029,
+      "source_spell_name": "Enchant Weapon - Icy Chill",
+      "output_item_id": 38868,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14343,
+          "name": "Small Brilliant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 7080,
+          "name": "Essence of Water",
+          "count": 1
+        },
+        {
+          "item_id": 7082,
+          "name": "Essence of Air",
+          "count": 1
+        },
+        {
+          "item_id": 13467,
+          "name": "Icecap",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-fiery-weapon": {
+      "source_spell_id": 13898,
+      "source_spell_name": "Enchant Weapon - Fiery Weapon",
+      "output_item_id": 38838,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11177,
+          "name": "Small Radiant Shard",
+          "count": 4
+        },
+        {
+          "item_id": 7078,
+          "name": "Essence of Fire",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-greater-striking": {
+      "source_spell_id": 13943,
+      "source_spell_name": "Enchant Weapon - Greater Striking",
+      "output_item_id": 38848,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-greater-impact": {
+      "source_spell_id": 13937,
+      "source_spell_name": "Enchant 2H Weapon - Greater Impact",
+      "output_item_id": 38845,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-demonslaying": {
+      "source_spell_id": 13915,
+      "source_spell_name": "Enchant Weapon - Demonslaying",
+      "output_item_id": 38840,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11177,
+          "name": "Small Radiant Shard",
+          "count": 1
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 2
+        },
+        {
+          "item_id": 9224,
+          "name": "Elixir of Demonslaying",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-impact": {
+      "source_spell_id": 13695,
+      "source_spell_name": "Enchant 2H Weapon - Impact",
+      "output_item_id": 38822,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 4
+        },
+        {
+          "item_id": 11139,
+          "name": "Large Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-striking": {
+      "source_spell_id": 13693,
+      "source_spell_name": "Enchant Weapon - Striking",
+      "output_item_id": 38821,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 11139,
+          "name": "Large Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-winters-might": {
+      "source_spell_id": 21931,
+      "source_spell_name": "Enchant Weapon - Winter's Might",
+      "output_item_id": 38876,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 3
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        },
+        {
+          "item_id": 11139,
+          "name": "Large Glowing Shard",
+          "count": 1
+        },
+        {
+          "item_id": 3819,
+          "name": "Wintersbite",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-lesser-beastslayer": {
+      "source_spell_id": 13653,
+      "source_spell_name": "Enchant Weapon - Lesser Beastslayer",
+      "output_item_id": 38813,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 5637,
+          "name": "Large Fang",
+          "count": 2
+        },
+        {
+          "item_id": 11138,
+          "name": "Small Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-lesser-elemental-slayer": {
+      "source_spell_id": 13655,
+      "source_spell_name": "Enchant Weapon - Lesser Elemental Slayer",
+      "output_item_id": 38814,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 7067,
+          "name": "Elemental Earth",
+          "count": 1
+        },
+        {
+          "item_id": 11138,
+          "name": "Small Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-lesser-impact": {
+      "source_spell_id": 13529,
+      "source_spell_name": "Enchant 2H Weapon - Lesser Impact",
+      "output_item_id": 38796,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 3
+        },
+        {
+          "item_id": 11084,
+          "name": "Large Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-lesser-striking": {
+      "source_spell_id": 13503,
+      "source_spell_name": "Enchant Weapon - Lesser Striking",
+      "output_item_id": 38794,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 2
+        },
+        {
+          "item_id": 11084,
+          "name": "Large Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-lesser-spirit": {
+      "source_spell_id": 13380,
+      "source_spell_name": "Enchant 2H Weapon - Lesser Spirit",
+      "output_item_id": 38788,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-lesser-intellect": {
+      "source_spell_id": 7793,
+      "source_spell_name": "Enchant 2H Weapon - Lesser Intellect",
+      "output_item_id": 38781,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-2h-weapon-minor-impact": {
+      "source_spell_id": 7745,
+      "source_spell_name": "Enchant 2H Weapon - Minor Impact",
+      "output_item_id": 38772,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 4
+        },
+        {
+          "item_id": 10978,
+          "name": "Small Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-minor-beastslayer": {
+      "source_spell_id": 7786,
+      "source_spell_name": "Enchant Weapon - Minor Beastslayer",
+      "output_item_id": 38779,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 4
+        },
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-weapon-minor-striking": {
+      "source_spell_id": 7788,
+      "source_spell_name": "Enchant Weapon - Minor Striking",
+      "output_item_id": 38780,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10978,
+          "name": "Small Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "weapon",
+        "rank": 1,
+        "item_id": 39349,
+        "name": "Weapon Vellum",
+        "source_spell_id": 52840
+      }
+    },
+    "ench-scroll-of-enchant-chest-greater-stats": {
+      "source_spell_id": 20025,
+      "source_spell_name": "Enchant Chest - Greater Stats",
+      "output_item_id": 38865,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-major-mana": {
+      "source_spell_id": 20028,
+      "source_spell_name": "Enchant Chest - Major Mana",
+      "output_item_id": 38867,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-major-health": {
+      "source_spell_id": 20026,
+      "source_spell_name": "Enchant Chest - Major Health",
+      "output_item_id": 38866,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14343,
+          "name": "Small Brilliant Shard",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-stats": {
+      "source_spell_id": 13941,
+      "source_spell_name": "Enchant Chest - Stats",
+      "output_item_id": 38847,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 1
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 3
+        },
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-superior-mana": {
+      "source_spell_id": 13917,
+      "source_spell_name": "Enchant Chest - Superior Mana",
+      "output_item_id": 38841,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-superior-health": {
+      "source_spell_id": 13858,
+      "source_spell_name": "Enchant Chest - Superior Health",
+      "output_item_id": 38833,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-lesser-stats": {
+      "source_spell_id": 13700,
+      "source_spell_name": "Enchant Chest - Lesser Stats",
+      "output_item_id": 38824,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 2
+        },
+        {
+          "item_id": 11139,
+          "name": "Large Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-greater-mana": {
+      "source_spell_id": 13663,
+      "source_spell_name": "Enchant Chest - Greater Mana",
+      "output_item_id": 38818,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-greater-health": {
+      "source_spell_id": 13640,
+      "source_spell_name": "Enchant Chest - Greater Health",
+      "output_item_id": 38808,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-minor-stats": {
+      "source_spell_id": 13626,
+      "source_spell_name": "Enchant Chest - Minor Stats",
+      "output_item_id": 38804,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11082,
+          "name": "Greater Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        },
+        {
+          "item_id": 11084,
+          "name": "Large Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-mana": {
+      "source_spell_id": 13607,
+      "source_spell_name": "Enchant Chest - Mana",
+      "output_item_id": 38799,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11082,
+          "name": "Greater Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-lesser-absorption": {
+      "source_spell_id": 13538,
+      "source_spell_name": "Enchant Chest - Lesser Absorption",
+      "output_item_id": 38798,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 11082,
+          "name": "Greater Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11084,
+          "name": "Large Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-health": {
+      "source_spell_id": 7857,
+      "source_spell_name": "Enchant Chest - Health",
+      "output_item_id": 38782,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 4
+        },
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-lesser-mana": {
+      "source_spell_id": 7776,
+      "source_spell_name": "Enchant Chest - Lesser Mana",
+      "output_item_id": 38776,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-lesser-health": {
+      "source_spell_id": 7748,
+      "source_spell_name": "Enchant Chest - Lesser Health",
+      "output_item_id": 38773,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-minor-absorption": {
+      "source_spell_id": 7426,
+      "source_spell_name": "Enchant Chest - Minor Absorption",
+      "output_item_id": 38767,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-minor-mana": {
+      "source_spell_id": 7443,
+      "source_spell_name": "Enchant Chest - Minor Mana",
+      "output_item_id": 38769,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-chest-minor-health": {
+      "source_spell_id": 7420,
+      "source_spell_name": "Enchant Chest - Minor Health",
+      "output_item_id": 38766,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-dodge": {
+      "source_spell_id": 25086,
+      "source_spell_name": "Enchant Cloak - Dodge",
+      "output_item_id": 38895,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 3
+        },
+        {
+          "item_id": 22452,
+          "name": "Primal Earth",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 2,
+        "item_id": 37602,
+        "name": "Armor Vellum II",
+        "source_spell_id": 59499
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-fire-resistance": {
+      "source_spell_id": 25081,
+      "source_spell_name": "Enchant Cloak - Greater Fire Resistance",
+      "output_item_id": 38891,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 3
+        },
+        {
+          "item_id": 7078,
+          "name": "Essence of Fire",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-nature-resistance": {
+      "source_spell_id": 25082,
+      "source_spell_name": "Enchant Cloak - Greater Nature Resistance",
+      "output_item_id": 38892,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 3
+        },
+        {
+          "item_id": 12803,
+          "name": "Living Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-stealth": {
+      "source_spell_id": 25083,
+      "source_spell_name": "Enchant Cloak - Stealth",
+      "output_item_id": 38893,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 3
+        },
+        {
+          "item_id": 22794,
+          "name": "Fel Lotus",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-subtlety": {
+      "source_spell_id": 25084,
+      "source_spell_name": "Enchant Cloak - Subtlety",
+      "output_item_id": 38894,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 2
+        },
+        {
+          "item_id": 22456,
+          "name": "Primal Shadow",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-superior-defense": {
+      "source_spell_id": 20015,
+      "source_spell_name": "Enchant Cloak - Superior Defense",
+      "output_item_id": 38859,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-resistance": {
+      "source_spell_id": 20014,
+      "source_spell_name": "Enchant Cloak - Greater Resistance",
+      "output_item_id": 38858,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 7077,
+          "name": "Heart of Fire",
+          "count": 1
+        },
+        {
+          "item_id": 7075,
+          "name": "Core of Earth",
+          "count": 1
+        },
+        {
+          "item_id": 7079,
+          "name": "Globe of Water",
+          "count": 1
+        },
+        {
+          "item_id": 7081,
+          "name": "Breath of Wind",
+          "count": 1
+        },
+        {
+          "item_id": 7972,
+          "name": "Ichor of Undeath",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-lesser-agility": {
+      "source_spell_id": 13882,
+      "source_spell_name": "Enchant Cloak - Lesser Agility",
+      "output_item_id": 38835,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-greater-defense": {
+      "source_spell_id": 13746,
+      "source_spell_name": "Enchant Cloak - Greater Defense",
+      "output_item_id": 38825,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-resistance": {
+      "source_spell_id": 13794,
+      "source_spell_name": "Enchant Cloak - Resistance",
+      "output_item_id": 38826,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-fire-resistance": {
+      "source_spell_id": 13657,
+      "source_spell_name": "Enchant Cloak - Fire Resistance",
+      "output_item_id": 38815,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 7068,
+          "name": "Elemental Fire",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-defense": {
+      "source_spell_id": 13635,
+      "source_spell_name": "Enchant Cloak - Defense",
+      "output_item_id": 38806,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11138,
+          "name": "Small Glowing Shard",
+          "count": 1
+        },
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-lesser-shadow-resistance": {
+      "source_spell_id": 13522,
+      "source_spell_name": "Enchant Cloak - Lesser Shadow Resistance",
+      "output_item_id": 38795,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11082,
+          "name": "Greater Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 6048,
+          "name": "Shadow Protection Potion",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-lesser-fire-resistance": {
+      "source_spell_id": 7861,
+      "source_spell_name": "Enchant Cloak - Lesser Fire Resistance",
+      "output_item_id": 38784,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 6371,
+          "name": "Fire Oil",
+          "count": 1
+        },
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-lesser-protection": {
+      "source_spell_id": 13421,
+      "source_spell_name": "Enchant Cloak - Lesser Protection",
+      "output_item_id": 38790,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 6
+        },
+        {
+          "item_id": 10978,
+          "name": "Small Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-minor-agility": {
+      "source_spell_id": 13419,
+      "source_spell_name": "Enchant Cloak - Minor Agility",
+      "output_item_id": 38789,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-minor-protection": {
+      "source_spell_id": 7771,
+      "source_spell_name": "Enchant Cloak - Minor Protection",
+      "output_item_id": 38775,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 3
+        },
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-cloak-minor-resistance": {
+      "source_spell_id": 7454,
+      "source_spell_name": "Enchant Cloak - Minor Resistance",
+      "output_item_id": 38770,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 1
+        },
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-healing-power": {
+      "source_spell_id": 23802,
+      "source_spell_name": "Enchant Bracer - Healing Power",
+      "output_item_id": 38882,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 4
+        },
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-superior-stamina": {
+      "source_spell_id": 20011,
+      "source_spell_name": "Enchant Bracer - Superior Stamina",
+      "output_item_id": 38855,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 10
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-superior-strength": {
+      "source_spell_id": 20010,
+      "source_spell_name": "Enchant Bracer - Superior Strength",
+      "output_item_id": 38854,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 6
+        },
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-mana-regeneration": {
+      "source_spell_id": 23801,
+      "source_spell_name": "Enchant Bracer - Mana Regeneration",
+      "output_item_id": 38881,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 4
+        },
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 7080,
+          "name": "Essence of Water",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-superior-spirit": {
+      "source_spell_id": 20009,
+      "source_spell_name": "Enchant Bracer - Superior Spirit",
+      "output_item_id": 38853,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 3
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-greater-intellect": {
+      "source_spell_id": 20008,
+      "source_spell_name": "Enchant Bracer - Greater Intellect",
+      "output_item_id": 38852,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-greater-stamina": {
+      "source_spell_id": 13945,
+      "source_spell_name": "Enchant Bracer - Greater Stamina",
+      "output_item_id": 38849,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-greater-strength": {
+      "source_spell_id": 13939,
+      "source_spell_name": "Enchant Bracer - Greater Strength",
+      "output_item_id": 38846,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 2
+        },
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-deflection": {
+      "source_spell_id": 13931,
+      "source_spell_name": "Enchant Bracer - Deflection",
+      "output_item_id": 38842,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-greater-spirit": {
+      "source_spell_id": 13846,
+      "source_spell_name": "Enchant Bracer - Greater Spirit",
+      "output_item_id": 38832,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 3
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-intellect": {
+      "source_spell_id": 13822,
+      "source_spell_name": "Enchant Bracer - Intellect",
+      "output_item_id": 38829,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-strength": {
+      "source_spell_id": 13661,
+      "source_spell_name": "Enchant Bracer - Strength",
+      "output_item_id": 38817,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-lesser-deflection": {
+      "source_spell_id": 13646,
+      "source_spell_name": "Enchant Bracer - Lesser Deflection",
+      "output_item_id": 38811,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-stamina": {
+      "source_spell_id": 13648,
+      "source_spell_name": "Enchant Bracer - Stamina",
+      "output_item_id": 38812,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-spirit": {
+      "source_spell_id": 13642,
+      "source_spell_name": "Enchant Bracer - Spirit",
+      "output_item_id": 38809,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-lesser-intellect": {
+      "source_spell_id": 13622,
+      "source_spell_name": "Enchant Bracer - Lesser Intellect",
+      "output_item_id": 38803,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11082,
+          "name": "Greater Astral Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-lesser-strength": {
+      "source_spell_id": 13536,
+      "source_spell_name": "Enchant Bracer - Lesser Strength",
+      "output_item_id": 38797,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-lesser-stamina": {
+      "source_spell_id": 13501,
+      "source_spell_name": "Enchant Bracer - Lesser Stamina",
+      "output_item_id": 38793,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-lesser-spirit": {
+      "source_spell_id": 7859,
+      "source_spell_name": "Enchant Bracer - Lesser Spirit",
+      "output_item_id": 38783,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-agility": {
+      "source_spell_id": 7779,
+      "source_spell_name": "Enchant Bracer - Minor Agility",
+      "output_item_id": 38777,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-strength": {
+      "source_spell_id": 7782,
+      "source_spell_name": "Enchant Bracer - Minor Strength",
+      "output_item_id": 38778,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-spirit": {
+      "source_spell_id": 7766,
+      "source_spell_name": "Enchant Bracer - Minor Spirit",
+      "output_item_id": 38774,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-stamina": {
+      "source_spell_id": 7457,
+      "source_spell_name": "Enchant Bracer - Minor Stamina",
+      "output_item_id": 38771,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-deflection": {
+      "source_spell_id": 7428,
+      "source_spell_name": "Enchant Bracer - Minor Deflection",
+      "output_item_id": 38768,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-bracer-minor-health": {
+      "source_spell_id": 7418,
+      "source_spell_name": "Enchant Bracer - Minor Health",
+      "output_item_id": 38679,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-fire-power": {
+      "source_spell_id": 25078,
+      "source_spell_name": "Enchant Gloves - Fire Power",
+      "output_item_id": 38888,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 2
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 10
+        },
+        {
+          "item_id": 7078,
+          "name": "Essence of Fire",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-frost-power": {
+      "source_spell_id": 25074,
+      "source_spell_name": "Enchant Gloves - Frost Power",
+      "output_item_id": 38887,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 10
+        },
+        {
+          "item_id": 7080,
+          "name": "Essence of Water",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-healing-power": {
+      "source_spell_id": 25079,
+      "source_spell_name": "Enchant Gloves - Healing Power",
+      "output_item_id": 38889,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 8
+        },
+        {
+          "item_id": 12811,
+          "name": "Righteous Orb",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-shadow-power": {
+      "source_spell_id": 25073,
+      "source_spell_name": "Enchant Gloves - Shadow Power",
+      "output_item_id": 38886,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 10
+        },
+        {
+          "item_id": 12808,
+          "name": "Essence of Undeath",
+          "count": 6
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-superior-agility": {
+      "source_spell_id": 25080,
+      "source_spell_name": "Enchant Gloves - Superior Agility",
+      "output_item_id": 38890,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 3
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 3
+        },
+        {
+          "item_id": 22451,
+          "name": "Primal Air",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-threat": {
+      "source_spell_id": 25072,
+      "source_spell_name": "Enchant Gloves - Threat",
+      "output_item_id": 38885,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 22448,
+          "name": "Small Prismatic Shard",
+          "count": 4
+        },
+        {
+          "item_id": 22446,
+          "name": "Greater Planar Essence",
+          "count": 2
+        },
+        {
+          "item_id": 21886,
+          "name": "Primal Life",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-greater-strength": {
+      "source_spell_id": 20013,
+      "source_spell_name": "Enchant Gloves - Greater Strength",
+      "output_item_id": 38857,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 4
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-greater-agility": {
+      "source_spell_id": 20012,
+      "source_spell_name": "Enchant Gloves - Greater Agility",
+      "output_item_id": 38856,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 2
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-minor-haste": {
+      "source_spell_id": 13948,
+      "source_spell_name": "Enchant Gloves - Minor Haste",
+      "output_item_id": 38851,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 8153,
+          "name": "Wildvine",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-riding-skill": {
+      "source_spell_id": 13947,
+      "source_spell_name": "Enchant Gloves - Riding Skill",
+      "output_item_id": 38850,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-advanced-herbalism": {
+      "source_spell_id": 13868,
+      "source_spell_name": "Enchant Gloves - Advanced Herbalism",
+      "output_item_id": 38834,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        },
+        {
+          "item_id": 8838,
+          "name": "Sungrass",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-strength": {
+      "source_spell_id": 13887,
+      "source_spell_name": "Enchant Gloves - Strength",
+      "output_item_id": 38836,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 2
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-advanced-mining": {
+      "source_spell_id": 13841,
+      "source_spell_name": "Enchant Gloves - Advanced Mining",
+      "output_item_id": 38831,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        },
+        {
+          "item_id": 6037,
+          "name": "Truesilver Bar",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-agility": {
+      "source_spell_id": 13815,
+      "source_spell_name": "Enchant Gloves - Agility",
+      "output_item_id": 38827,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-skinning": {
+      "source_spell_id": 13698,
+      "source_spell_name": "Enchant Gloves - Skinning",
+      "output_item_id": 38823,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        },
+        {
+          "item_id": 7392,
+          "name": "Green Whelp Scale",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-fishing": {
+      "source_spell_id": 13620,
+      "source_spell_name": "Enchant Gloves - Fishing",
+      "output_item_id": 38802,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        },
+        {
+          "item_id": 6370,
+          "name": "Blackmouth Oil",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-herbalism": {
+      "source_spell_id": 13617,
+      "source_spell_name": "Enchant Gloves - Herbalism",
+      "output_item_id": 38801,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        },
+        {
+          "item_id": 3356,
+          "name": "Kingsblood",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-gloves-mining": {
+      "source_spell_id": 13612,
+      "source_spell_name": "Enchant Gloves - Mining",
+      "output_item_id": 38800,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        },
+        {
+          "item_id": 2772,
+          "name": "Iron Ore",
+          "count": 3
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-agility": {
+      "source_spell_id": 20023,
+      "source_spell_name": "Enchant Boots - Greater Agility",
+      "output_item_id": 38863,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 2
+        },
+        {
+          "item_id": 8153,
+          "name": "Wildvine",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-spirit": {
+      "source_spell_id": 20024,
+      "source_spell_name": "Enchant Boots - Spirit",
+      "output_item_id": 38864,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-greater-stamina": {
+      "source_spell_id": 20020,
+      "source_spell_name": "Enchant Boots - Greater Stamina",
+      "output_item_id": 38862,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-agility": {
+      "source_spell_id": 13935,
+      "source_spell_name": "Enchant Boots - Agility",
+      "output_item_id": 38844,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-minor-speed": {
+      "source_spell_id": 13890,
+      "source_spell_name": "Enchant Boots - Minor Speed",
+      "output_item_id": 38837,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11177,
+          "name": "Small Radiant Shard",
+          "count": 1
+        },
+        {
+          "item_id": 7909,
+          "name": "Aquamarine",
+          "count": 1
+        },
+        {
+          "item_id": 11174,
+          "name": "Lesser Nether Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-stamina": {
+      "source_spell_id": 13836,
+      "source_spell_name": "Enchant Boots - Stamina",
+      "output_item_id": 38830,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-lesser-spirit": {
+      "source_spell_id": 13687,
+      "source_spell_name": "Enchant Boots - Lesser Spirit",
+      "output_item_id": 38819,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-lesser-stamina": {
+      "source_spell_id": 13644,
+      "source_spell_name": "Enchant Boots - Lesser Stamina",
+      "output_item_id": 38810,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-lesser-agility": {
+      "source_spell_id": 13637,
+      "source_spell_name": "Enchant Boots - Lesser Agility",
+      "output_item_id": 38807,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        },
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-minor-agility": {
+      "source_spell_id": 7867,
+      "source_spell_name": "Enchant Boots - Minor Agility",
+      "output_item_id": 38786,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 6
+        },
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-boots-minor-stamina": {
+      "source_spell_id": 7863,
+      "source_spell_name": "Enchant Boots - Minor Stamina",
+      "output_item_id": 38785,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 8
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-vitality": {
+      "source_spell_id": 20016,
+      "source_spell_name": "Enchant Shield - Vitality",
+      "output_item_id": 38860,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 16203,
+          "name": "Greater Eternal Essence",
+          "count": 1
+        },
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-greater-stamina": {
+      "source_spell_id": 20017,
+      "source_spell_name": "Enchant Shield - Greater Stamina",
+      "output_item_id": 38861,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-frost-resistance": {
+      "source_spell_id": 13933,
+      "source_spell_name": "Enchant Shield - Frost Resistance",
+      "output_item_id": 38843,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11178,
+          "name": "Large Radiant Shard",
+          "count": 1
+        },
+        {
+          "item_id": 3829,
+          "name": "Frost Oil",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-greater-spirit": {
+      "source_spell_id": 13905,
+      "source_spell_name": "Enchant Shield - Greater Spirit",
+      "output_item_id": 38839,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11175,
+          "name": "Greater Nether Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-stamina": {
+      "source_spell_id": 13817,
+      "source_spell_name": "Enchant Shield - Stamina",
+      "output_item_id": 38828,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 5
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-lesser-block": {
+      "source_spell_id": 13689,
+      "source_spell_name": "Enchant Shield - Lesser Block",
+      "output_item_id": 38820,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 2
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 2
+        },
+        {
+          "item_id": 11139,
+          "name": "Large Glowing Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-spirit": {
+      "source_spell_id": 13659,
+      "source_spell_name": "Enchant Shield - Spirit",
+      "output_item_id": 38816,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-lesser-stamina": {
+      "source_spell_id": 13631,
+      "source_spell_name": "Enchant Shield - Lesser Stamina",
+      "output_item_id": 38805,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-lesser-spirit": {
+      "source_spell_id": 13485,
+      "source_spell_name": "Enchant Shield - Lesser Spirit",
+      "output_item_id": 38792,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 2
+        },
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 4
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-lesser-protection": {
+      "source_spell_id": 13464,
+      "source_spell_name": "Enchant Shield - Lesser Protection",
+      "output_item_id": 38791,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 1
+        },
+        {
+          "item_id": 10978,
+          "name": "Small Glimmering Shard",
+          "count": 1
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-scroll-of-enchant-shield-minor-stamina": {
+      "source_spell_id": 13378,
+      "source_spell_name": "Enchant Shield - Minor Stamina",
+      "output_item_id": 38787,
+      "output_count": 1,
+      "pricing_rule": "enchant-scroll-plus-vellum",
+      "reagents": [
+        {
+          "item_id": 10998,
+          "name": "Lesser Astral Essence",
+          "count": 1
+        },
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        }
+      ],
+      "vellum": {
+        "kind": "armor",
+        "rank": 1,
+        "item_id": 38682,
+        "name": "Armor Vellum",
+        "source_spell_id": 52739
+      }
+    },
+    "ench-brilliant-wizard-oil": {
+      "source_spell_id": 25129,
+      "source_spell_name": "Brilliant Wizard Oil",
+      "output_item_id": 20749,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 4625,
+          "name": "Firebloom",
+          "count": 3
+        },
+        {
+          "item_id": 18256,
+          "name": "Imbued Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-brilliant-mana-oil": {
+      "source_spell_id": 25130,
+      "source_spell_name": "Brilliant Mana Oil",
+      "output_item_id": 20748,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 14344,
+          "name": "Large Brilliant Shard",
+          "count": 2
+        },
+        {
+          "item_id": 8831,
+          "name": "Purple Lotus",
+          "count": 3
+        },
+        {
+          "item_id": 18256,
+          "name": "Imbued Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-wizard-oil": {
+      "source_spell_id": 25128,
+      "source_spell_name": "Wizard Oil",
+      "output_item_id": 20750,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 16204,
+          "name": "Illusion Dust",
+          "count": 3
+        },
+        {
+          "item_id": 4625,
+          "name": "Firebloom",
+          "count": 2
+        },
+        {
+          "item_id": 8925,
+          "name": "Crystal Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-lesser-wizard-oil": {
+      "source_spell_id": 25126,
+      "source_spell_name": "Lesser Wizard Oil",
+      "output_item_id": 20746,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 3
+        },
+        {
+          "item_id": 17035,
+          "name": "Stranglethorn Seed",
+          "count": 2
+        },
+        {
+          "item_id": 3372,
+          "name": "Leaded Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-lesser-mana-oil": {
+      "source_spell_id": 25127,
+      "source_spell_name": "Lesser Mana Oil",
+      "output_item_id": 20747,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 3
+        },
+        {
+          "item_id": 8831,
+          "name": "Purple Lotus",
+          "count": 2
+        },
+        {
+          "item_id": 8925,
+          "name": "Crystal Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-minor-wizard-oil": {
+      "source_spell_id": 25124,
+      "source_spell_name": "Minor Wizard Oil",
+      "output_item_id": 20744,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 10940,
+          "name": "Strange Dust",
+          "count": 2
+        },
+        {
+          "item_id": 17034,
+          "name": "Maple Seed",
+          "count": 1
+        },
+        {
+          "item_id": 3371,
+          "name": "Empty Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-minor-mana-oil": {
+      "source_spell_id": 25125,
+      "source_spell_name": "Minor Mana Oil",
+      "output_item_id": 20745,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 3
+        },
+        {
+          "item_id": 17034,
+          "name": "Maple Seed",
+          "count": 2
+        },
+        {
+          "item_id": 3372,
+          "name": "Leaded Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-superior-wizard-oil": {
+      "source_spell_id": 28019,
+      "source_spell_name": "Superior Wizard Oil",
+      "output_item_id": 22522,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 3
+        },
+        {
+          "item_id": 22792,
+          "name": "Nightmare Vine",
+          "count": 1
+        },
+        {
+          "item_id": 18256,
+          "name": "Imbued Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-superior-mana-oil": {
+      "source_spell_id": 28016,
+      "source_spell_name": "Superior Mana Oil",
+      "output_item_id": 22521,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22445,
+          "name": "Arcane Dust",
+          "count": 3
+        },
+        {
+          "item_id": 22791,
+          "name": "Netherbloom",
+          "count": 1
+        },
+        {
+          "item_id": 18256,
+          "name": "Imbued Vial",
+          "count": 1
+        }
+      ]
+    },
+    "ench-greater-mystic-wand": {
+      "source_spell_id": 14810,
+      "source_spell_name": "Greater Mystic Wand",
+      "output_item_id": 11290,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11291,
+          "name": "Star Wood",
+          "count": 1
+        },
+        {
+          "item_id": 11135,
+          "name": "Greater Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11137,
+          "name": "Vision Dust",
+          "count": 1
+        }
+      ]
+    },
+    "ench-lesser-mystic-wand": {
+      "source_spell_id": 14809,
+      "source_spell_name": "Lesser Mystic Wand",
+      "output_item_id": 11289,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 11291,
+          "name": "Star Wood",
+          "count": 1
+        },
+        {
+          "item_id": 11134,
+          "name": "Lesser Mystic Essence",
+          "count": 1
+        },
+        {
+          "item_id": 11083,
+          "name": "Soul Dust",
+          "count": 1
+        }
+      ]
+    },
+    "ench-greater-magic-wand": {
+      "source_spell_id": 14807,
+      "source_spell_name": "Greater Magic Wand",
+      "output_item_id": 11288,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4470,
+          "name": "Simple Wood",
+          "count": 1
+        },
+        {
+          "item_id": 10939,
+          "name": "Greater Magic Essence",
+          "count": 1
+        }
+      ]
+    },
+    "ench-lesser-magic-wand": {
+      "source_spell_id": 14293,
+      "source_spell_name": "Lesser Magic Wand",
+      "output_item_id": 11287,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 4470,
+          "name": "Simple Wood",
+          "count": 1
+        },
+        {
+          "item_id": 10938,
+          "name": "Lesser Magic Essence",
+          "count": 1
+        }
+      ]
+    },
+    "ench-enchanted-thorium-bar": {
+      "source_spell_id": 17180,
+      "source_spell_name": "Enchanted Thorium",
+      "output_item_id": 12655,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 12359,
+          "name": "Thorium Bar",
+          "count": 1
+        },
+        {
+          "item_id": 11176,
+          "name": "Dream Dust",
+          "count": 3
+        }
+      ]
+    },
+    "ench-enchanted-leather": {
+      "source_spell_id": 17181,
+      "source_spell_name": "Enchanted Leather",
+      "output_item_id": 12810,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 8170,
+          "name": "Rugged Leather",
+          "count": 1
+        },
+        {
+          "item_id": 16202,
+          "name": "Lesser Eternal Essence",
+          "count": 1
+        }
+      ]
+    },
+    "ench-void-sphere": {
+      "source_spell_id": 28028,
+      "source_spell_name": "Void Sphere",
+      "output_item_id": 22459,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22450,
+          "name": "Void Crystal",
+          "count": 2
+        }
+      ]
+    },
+    "ench-prismatic-sphere": {
+      "source_spell_id": 28027,
+      "source_spell_name": "Prismatic Sphere",
+      "output_item_id": 22460,
+      "output_count": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {
+          "item_id": 22449,
+          "name": "Large Prismatic Shard",
+          "count": 4
+        }
+      ]
+    }
+  }
+}

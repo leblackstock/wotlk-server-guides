@@ -1,6 +1,6 @@
 # Dropped-Gear Repricing Plan
 
-- Status: `implemented locally — low-pop starter repricing complete; not published`
+- Status: `Phase 3 revalidated locally on 2026-08-08 — not published`
 - Recorded: `2026-08-05`
 - Guides:
   - `guides/level-80-boe-epics-ah-price-guide.html`
@@ -430,3 +430,17 @@ separate from raw private exports and visible guide content.
 - 2026-08-05: All AH Python tests, static Node tests, guide-banner tests, ordering
   checks, generated-asset checks, and the desktop/mobile Auction House browser
   smoke suite passed.
+- 2026-08-08: Reimported today's privacy-preserving Hellscream BeanCounter and
+  Auctioneer snapshot. The same two items retain sparse completed-sale evidence;
+  no item reached the medium gate. Independent supply presence increased from
+  23 to 33 items but remains diagnostic only.
+- 2026-08-08: Refreshed all 2,082 Lordaeron, Icecrown, and Onyxia item-page
+  comparisons. Every request resolved on the initial pass under the required
+  2-, 5-, and 10-second retry rule, improving at-least-two-realm coverage from
+  305 to all 347 items. No external gold value was stored or copied.
+- 2026-08-08: Revalidated all 347 bands and accepted nine Target changes over
+  50% after explicit slot, stats/socket/effect, buyer, acquisition-cohort, and
+  three-realm review. Seventy of 85 Level-80 bands and 239 of 262 world-drop
+  bands changed. Separate buyer/source cohorts now cover Northrend leveling,
+  Classic brackets/iconics, Outland level-70/leveling, containers, world bosses,
+  raid trash, special summons, and other level-80 drops. Changes remain local.

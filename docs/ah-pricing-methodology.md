@@ -58,6 +58,14 @@ Sparse `low` evidence may support a manually reviewed item-specific band, but
 it must not train or validate a general cohort model. Active listing prices do
 not satisfy any part of this gate.
 
+For stackable materials, a low-confidence sale history does not automatically
+replace the cohort fallback. If all recorded volume comes from one buyer or one
+UTC day, the direct-sale band receives 25% weight and the fixed reviewed cohort
+estimate receives 75%. A low-confidence history with broader buyers and days
+but another failed medium gate may receive 50% weight. Record this combined
+source as `realized-sales-history-plus-documented-fallback`; it remains `low`
+confidence and must exclude current listing prices.
+
 ### Low-pop dropped-gear starter estimates
 
 When a low-pop realm lacks enough completed sales to open a useful market, the
@@ -114,6 +122,19 @@ guards does not promote listing prices into the baseline.
   confidence. A user-approved low-pop starter estimate must be labeled as an
   estimate and replaced by qualifying local completed sales.
 
+## Comparison Fetch Retry Rule
+
+- Do not report a comparison request as failed after its first unsuccessful
+  pass. After the initial batch, wait and retry only the failed requests three
+  times, using 2-second, 5-second, and 10-second waits.
+- Preserve every successful response while retrying failures. Record a final
+  failure only after all three waited retries fail.
+- If a later retry still leaves incomplete coverage, keep the strongest saved
+  non-circular evidence snapshot. Never replace stronger saved coverage with a
+  weaker refresh merely because it is newer.
+- A resolved request with no listing is valid absence evidence, not a fetch
+  failure. It may lower coverage, but it must not be described as a host error.
+
 ## Price-Band Meaning
 
 - **Quick:** conservative sale band or exact recipe floor plus the smallest
@@ -136,6 +157,30 @@ for within-cohort rank only, remain `fallback` confidence, and warn the player
 not to craft from purchased inputs when the proposed sale band is below that
 diagnostic floor. External gold values and active Hellscream listings still may
 not be copied into the price.
+
+## Phase 3 Turn-In, Recipe, and Drop Rules
+
+- Turn-in pricing is item-specific. A generic group label may not hide different
+  item IDs, binding, maximum stacks, quest quantities, or page requirements.
+- Quest quantity, reputation or ticket value, repeatability, standing range,
+  faction choice, and event access are buyer-use evidence. They do not
+  automatically set a sale price.
+- Bind-on-pickup, self-only, temporary, or otherwise nontradeable turn-in items
+  stay out of the AH catalog even when a grouped label previously concealed them.
+- Recipe profession, required skill, learned-output value, loot path, rarity, and
+  buyer pool are recorded separately from sale evidence.
+- A pinned limited-vendor recipe uses exact vendor cost and restock as an
+  acquisition anchor. Its AH premium is labeled convenience/restock value, not
+  drop scarcity; an active reseller ask cannot establish the band.
+- Dropped gear keeps numerical item-level/era anchors separate from buyer/source
+  cohorts such as Northrend leveling, Classic brackets/iconics, Outland level 70,
+  containers, world bosses, raid trash, and special summons.
+- A dropped-gear Target move over 50% requires an explicit slot, stats/socket/
+  effect, buyer-use, source-cohort, and coverage review. Current local supply is
+  diagnostic only.
+- Every Phase 3 comparison batch uses the shared initial pass plus 2-, 5-, and
+  10-second failed-request retries. Successful responses are preserved, and
+  nominal external gold is never committed or copied.
 
 ## Display Currency Rule
 
@@ -204,6 +249,9 @@ acquisition evidence becomes available.
 
 ## Recorded Follow-Up Work
 
+- [AH Evidence Pricing Library Audit Plan](ah-evidence-pricing-library-plan.md) —
+  planned evidence refresh for all 18 AH guides in dependency order: gathering
+  and materials first, professions second, and drops last.
 - [Dropped-Gear Repricing Plan](ah-dropped-gear-pricing-plan.md) — implemented
   local evidence, fixed Hellscream starter anchors, normalized cross-server
   relative ranks, and the complete 347-item review for the Level 80 BoE Epics

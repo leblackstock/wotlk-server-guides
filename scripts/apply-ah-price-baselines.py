@@ -91,7 +91,6 @@ def replace_row_prices(row: str, prices: dict[str, int], renderer) -> str:
         replacement = renderer.render_price_pair(
             band,
             int(prices[band]),
-            prices.get(f"{band}_bid_copper"),
         )
         row, count = re.subn(
             rf'<div class="pricepair {band}">.*?</div>\s*</div>',

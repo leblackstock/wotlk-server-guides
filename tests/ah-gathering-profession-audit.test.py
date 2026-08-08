@@ -98,6 +98,16 @@ def main() -> int:
     baselines = json.loads(
         (ROOT / "data" / "ah-price-baselines.json").read_text(encoding="utf-8")
     )["items"]
+    gathering_evidence = json.loads(
+        (ROOT / "data" / "ah-gathering-material-price-evidence.json").read_text(
+            encoding="utf-8"
+        )
+    )["items"]
+    profession_material_evidence = json.loads(
+        (ROOT / "data" / "ah-profession-material-price-evidence.json").read_text(
+            encoding="utf-8"
+        )
+    )["items"]
     vendor = json.loads(
         (ROOT / "data" / "ah-vendor-sections.json").read_text(encoding="utf-8")
     )
@@ -134,7 +144,17 @@ def main() -> int:
             record = baselines.get(str(item_id))
             if not record:
                 fail(f"{filename}: {row['name']} lacks a frozen baseline")
-            if record["source_type"] != "frozen-pre-scan-guide" or record["confidence"] != "low":
+            reviewed = profession_material_evidence.get(
+                str(item_id)
+            ) or gathering_evidence.get(str(item_id))
+            if reviewed:
+                proposal = reviewed["proposal"]
+                if (
+                    record["source_type"] != proposal["source_type"]
+                    or record["confidence"] != proposal["confidence"]
+                ):
+                    fail(f"{filename}: reviewed evidence layer is stale for {row['name']}")
+            elif record["source_type"] != "frozen-pre-scan-guide" or record["confidence"] != "low":
                 fail(f"{filename}: unexpected evidence layer for {row['name']}")
             if not int(record["quick"]) <= int(record["target"]) <= int(record["high"]):
                 fail(f"{filename}: invalid price-band order for {row['name']}")
@@ -145,7 +165,16 @@ def main() -> int:
                 f"{filename}: expected {spec['baseline']} baselines and {spec['vendor']} "
                 f"vendor rows, found {baseline_count} and {vendor_count}"
             )
-        if "Updated 2026-08-04" not in source:
+        expected_footer = (
+            "Updated 2026-08-08"
+            if filename in {
+                "skinning-leatherworking-materials-ah-price-guide.html",
+                "fishing-cooking-materials-ah-price-guide.html",
+                "mining-smithing-ah-price-guide.html",
+            }
+            else "Updated 2026-08-06"
+        )
+        if expected_footer not in source:
             fail(f"{filename}: footer date is stale")
 
         plan = (PLANS / f"{profession}.md").read_text(encoding="utf-8")

@@ -34,6 +34,14 @@ DROPPED_GEAR_GUIDES = {
 DROPPED_GEAR_BASELINE_NOTE = """<!-- AH_BASELINE_NOTE_START -->
 <aside class="note ah-baseline-note"><strong>* BoE pricing note:</strong> Target is the recommended opening listing, Quick is for a faster sale, and High / Scarce is for patient one-at-a-time posting when supply is genuinely thin. These are reviewed starting values for Hellscream's low-pop market—not guaranteed sale prices. Most rows are modeled estimates; only a few have local completed-sale evidence. Active listings show competition only and never set or raise guide prices. Do not raise a price merely because the AH is empty or one competing auction is expensive. Record completed sales and revise from actual Hellscream results.</aside>
 <!-- AH_BASELINE_NOTE_END -->"""
+PHASE3_BASELINE_NOTES = {
+    "drop-turn-in-quest-page-items-ah-price-guide.html": """<!-- AH_BASELINE_NOTE_START -->
+<aside class="note ah-baseline-note"><strong>* Evidence Pricing:</strong> Exact quest quantities, stack limits, event or standing restrictions, and pinned tradeability are use facts—not automatic sale values. Qualified completed sales take precedence; otherwise fixed Hellscream cohort anchors and gold-normalized cross-server relative rank provide fallback bands. Active listings show competition only and never set or raise guide prices.</aside>
+<!-- AH_BASELINE_NOTE_END -->""",
+    "gear-pattern-drops-ah-price-guide.html": """<!-- AH_BASELINE_NOTE_START -->
+<aside class="note ah-baseline-note"><strong>* Evidence Pricing:</strong> Profession skill, learned-output value, pinned loot paths, recipe rarity, and exact limited-vendor cost are reviewed separately from sale evidence. Qualified completed sales take precedence; fixed Hellscream cohort anchors and gold-normalized cross-server relative rank provide fallback bands. Active listings show competition only and never set or raise guide prices.</aside>
+<!-- AH_BASELINE_NOTE_END -->""",
+}
 SECTION_ORDERING_POLICY = load_policy()
 
 NAV_BLOCK = re.compile(
@@ -856,10 +864,9 @@ def transform_guide(
     if nav_count != 1:
         raise ValueError(f"{filename}: expected exactly one guide navigation block")
 
-    expected_baseline_note = (
-        DROPPED_GEAR_BASELINE_NOTE
-        if filename in DROPPED_GEAR_GUIDES
-        else baseline_note_template
+    expected_baseline_note = PHASE3_BASELINE_NOTES.get(
+        filename,
+        DROPPED_GEAR_BASELINE_NOTE if filename in DROPPED_GEAR_GUIDES else baseline_note_template,
     )
     baseline_note_matches = len(BASELINE_NOTE_BLOCK.findall(source))
     if baseline_note_matches == 1:

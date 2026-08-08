@@ -606,6 +606,32 @@ def validate(evidence: dict, *, require_applied: bool) -> None:
             raise ValueError(f"{record['name']}: external gold leaked into input pricing")
 
 
+def refresh_dependency_diagnostics(evidence: dict) -> None:
+    """Refresh saved floors/inputs without changing ranks or market proposals."""
+    config = load(CRAFTED_PATH)
+    baseline = load(BASELINE_PATH)["items"]
+    for record in evidence["items"].values():
+        item = merged_item(config, record["canonical_key"])
+        floor = {
+            name: int(item["pricing_floor_copper"][name]) for name in PRICE_BANDS
+        }
+        record["reagent_floor"] = floor
+        proposal = record["proposal"]["proposed_band"]
+        record["proposal"]["below_reagent_floor_bands"] = [
+            name for name in PRICE_BANDS if int(proposal[name]) < floor[name]
+        ]
+    for item_id, record in evidence["inputs"].items():
+        current = baseline[item_id]
+        record["baseline_band"] = {
+            name: int(current[name]) for name in PRICE_BANDS
+        }
+        record["source_type"] = current["source_type"]
+        record["confidence"] = current["confidence"]
+        if current.get("evidence_ref"):
+            record["evidence_ref"] = current["evidence_ref"]
+    evidence["dependency_diagnostics_refreshed"] = date.today().isoformat()
+
+
 def apply_catalog(evidence: dict) -> None:
     config = load(CRAFTED_PATH)
     source = CRAFTED_PATH.read_text(encoding="utf-8")
@@ -669,6 +695,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--refresh", action="store_true", help="Refresh public relative-rank evidence")
+    group.add_argument(
+        "--refresh-dependencies",
+        action="store_true",
+        help="Refresh saved reagent floors and input baselines without changing prices",
+    )
     group.add_argument("--apply", action="store_true", help="Apply the saved reviewed potion prices")
     group.add_argument("--check", action="store_true", help="Validate saved evidence and report")
     args = parser.parse_args()
@@ -686,6 +717,17 @@ def main() -> int:
         return 0
 
     evidence = load(EVIDENCE_PATH)
+    if args.refresh_dependencies:
+        refresh_dependency_diagnostics(evidence)
+        EVIDENCE_PATH.write_text(
+            json.dumps(evidence, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        REPORT_PATH.write_text(render_report(evidence), encoding="utf-8", newline="\n")
+        validate(evidence, require_applied=True)
+        print("Refreshed Alchemy potion reagent-floor and input diagnostics.")
+        return 0
     if args.apply:
         validate(evidence, require_applied=False)
         apply_catalog(evidence)

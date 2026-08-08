@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refreshed": "2026-08-05",
+  "refreshed": "2026-08-08",
   "item_template_source": {
     "name": "AzerothCore WotLK item_template",
     "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
@@ -16,11 +16,11 @@
     "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search."
   },
   "source_counts": {
-    "search_item_ids": 3615,
+    "search_item_ids": 3679,
     "crafted_item_ids": 2693,
     "vendor_item_ids": 44,
-    "baseline_item_ids": 1067,
-    "unique_audited_item_ids": 3688
+    "baseline_item_ids": 1129,
+    "unique_audited_item_ids": 3750
   },
   "items": {
     "118": {
@@ -991,6 +991,96 @@
     },
     "2692": {
       "name": "Hot Spices",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2725": {
+      "name": "Green Hills of Stranglethorn - Page 1",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2728": {
+      "name": "Green Hills of Stranglethorn - Page 4",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2730": {
+      "name": "Green Hills of Stranglethorn - Page 6",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2732": {
+      "name": "Green Hills of Stranglethorn - Page 8",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2734": {
+      "name": "Green Hills of Stranglethorn - Page 10",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2735": {
+      "name": "Green Hills of Stranglethorn - Page 11",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2738": {
+      "name": "Green Hills of Stranglethorn - Page 14",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2740": {
+      "name": "Green Hills of Stranglethorn - Page 16",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2742": {
+      "name": "Green Hills of Stranglethorn - Page 18",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2744": {
+      "name": "Green Hills of Stranglethorn - Page 20",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2745": {
+      "name": "Green Hills of Stranglethorn - Page 21",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2748": {
+      "name": "Green Hills of Stranglethorn - Page 24",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2749": {
+      "name": "Green Hills of Stranglethorn - Page 25",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2750": {
+      "name": "Green Hills of Stranglethorn - Page 26",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "2751": {
+      "name": "Green Hills of Stranglethorn - Page 27",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -2543,6 +2633,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "4582": {
+      "name": "Soft Bushy Tail",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "4589": {
       "name": "Long Elegant Feather",
       "flags": 0,
@@ -2623,6 +2719,18 @@
     },
     "5095": {
       "name": "Rainbow Fin Albacore",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5117": {
+      "name": "Vibrant Plume",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "5134": {
+      "name": "Small Furry Paw",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -5285,6 +5393,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "11404": {
+      "name": "Evil Bat Eye",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11407": {
+      "name": "Torn Bear Pelt",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "11605": {
       "name": "Dark Iron Shoulders",
       "flags": 0,
@@ -7259,6 +7379,78 @@
       "bonding": 0,
       "duration": 0
     },
+    "16645": {
+      "name": "Shredder Operating Manual - Page 1",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16646": {
+      "name": "Shredder Operating Manual - Page 2",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16647": {
+      "name": "Shredder Operating Manual - Page 3",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16648": {
+      "name": "Shredder Operating Manual - Page 4",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16649": {
+      "name": "Shredder Operating Manual - Page 5",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16650": {
+      "name": "Shredder Operating Manual - Page 6",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16651": {
+      "name": "Shredder Operating Manual - Page 7",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16652": {
+      "name": "Shredder Operating Manual - Page 8",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16653": {
+      "name": "Shredder Operating Manual - Page 9",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16654": {
+      "name": "Shredder Operating Manual - Page 10",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16655": {
+      "name": "Shredder Operating Manual - Page 11",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
+    "16656": {
+      "name": "Shredder Operating Manual - Page 12",
+      "flags": 1088,
+      "bonding": 0,
+      "duration": 0
+    },
     "16766": {
       "name": "Undermine Clam Chowder",
       "flags": 0,
@@ -8027,6 +8219,114 @@
       "bonding": 2,
       "duration": 0
     },
+    "19698": {
+      "name": "Zulian Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19699": {
+      "name": "Razzashi Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19700": {
+      "name": "Hakkari Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19701": {
+      "name": "Gurubashi Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19702": {
+      "name": "Vilebranch Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19703": {
+      "name": "Witherbark Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19704": {
+      "name": "Sandfury Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19705": {
+      "name": "Skullsplitter Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19706": {
+      "name": "Bloodscalp Coin",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19707": {
+      "name": "Red Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19708": {
+      "name": "Blue Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19709": {
+      "name": "Yellow Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19710": {
+      "name": "Orange Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19711": {
+      "name": "Green Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19712": {
+      "name": "Purple Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19713": {
+      "name": "Bronze Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19714": {
+      "name": "Silver Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19715": {
+      "name": "Gold Hakkari Bijou",
+      "flags": 32832,
+      "bonding": 0,
+      "duration": 0
+    },
     "19726": {
       "name": "Bloodvine",
       "flags": 0,
@@ -8053,6 +8353,12 @@
     },
     "19931": {
       "name": "Gurubashi Mojo Madness",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "19933": {
+      "name": "Glowing Scorpid Blood",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -9131,6 +9437,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "22525": {
+      "name": "Crypt Fiend Parts",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22526": {
+      "name": "Bone Fragments",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "22527": {
       "name": "Core of Elements",
       "flags": 0,
@@ -9139,6 +9457,12 @@
     },
     "22528": {
       "name": "Dark Iron Scraps",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22529": {
+      "name": "Savage Frond",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -10841,6 +11165,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "24368": {
+      "name": "Coilfang Armaments",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "24401": {
+      "name": "Unidentified Plant Parts",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "24477": {
       "name": "Jaggal Clam Meat",
       "flags": 0,
@@ -11561,6 +11897,18 @@
       "bonding": 2,
       "duration": 0
     },
+    "29425": {
+      "name": "Mark of Kil'jaeden",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29426": {
+      "name": "Firewing Signet",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "29483": {
       "name": "Shadow Armor Kit",
       "flags": 64,
@@ -11813,6 +12161,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "29739": {
+      "name": "Arcane Tome",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29740": {
+      "name": "Fel Armament",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "30032": {
       "name": "Red Belt of Battle",
       "flags": 0,
@@ -12057,6 +12417,18 @@
       "name": "Bronze Band of Force",
       "flags": 524288,
       "bonding": 2,
+      "duration": 0
+    },
+    "30809": {
+      "name": "Mark of Sargeras",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "30810": {
+      "name": "Sunfury Signet",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "30816": {

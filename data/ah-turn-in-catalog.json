@@ -1,0 +1,3417 @@
+{
+  "version": 1,
+  "audited": "2026-08-08",
+  "source": {
+    "type": "pinned AzerothCore 3.3.5 database",
+    "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
+    "files": [
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/item_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/quest_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/quest_template_addon.sql"
+    ]
+  },
+  "scope": "Exact tradeable items replacing the grouped Turn-ins and Quest Items guide rows.",
+  "rules": {
+    "bonding_allowed": [
+      0
+    ],
+    "duration_required": 0,
+    "nonstackable_stack_suggestion": null,
+    "active_listings_used_to_set_prices": false
+  },
+  "removed_nonauctionable": [
+    {
+      "item_id": 24407,
+      "name": "Uncatalogued Species",
+      "reason": "bonding=1 (Bind on Pickup), so it cannot be auctioned"
+    },
+    {
+      "item_id": 21377,
+      "name": "Deadwood Headdress Feather",
+      "reason": "bonding=1 (Bind on Pickup), so it cannot be auctioned"
+    },
+    {
+      "item_id": 21383,
+      "name": "Winterfall Spirit Beads",
+      "reason": "bonding=1 (Bind on Pickup), so it cannot be auctioned"
+    }
+  ],
+  "sections": [
+    {
+      "id": "northrend-reputation-turn-ins",
+      "title": "Northrend reputation turn-ins",
+      "items": [
+        42780
+      ]
+    },
+    {
+      "id": "aldor-scryer-drops",
+      "title": "Aldor / Scryer drops",
+      "items": [
+        29740,
+        29739,
+        30809,
+        30810,
+        29425,
+        29426
+      ]
+    },
+    {
+      "id": "cenarion-expedition-lower-city-drops",
+      "title": "Cenarion Expedition / Lower City drops",
+      "items": [
+        24368,
+        24401,
+        25719
+      ]
+    },
+    {
+      "id": "sporeggar-underbog-drops",
+      "title": "Sporeggar / Underbog drops",
+      "items": [
+        24246
+      ]
+    },
+    {
+      "id": "darkmoon-faire-drop-turn-ins-only",
+      "title": "Darkmoon Faire drop turn-ins only",
+      "items": [
+        5134,
+        11407,
+        4582,
+        5117,
+        11404,
+        19933
+      ]
+    },
+    {
+      "id": "argent-dawn-plaguelands-drops",
+      "title": "Argent Dawn / Plaguelands drops",
+      "items": [
+        22525,
+        22526,
+        22527,
+        22528,
+        22529
+      ]
+    },
+    {
+      "id": "zandalar-tribe-zulgurub-drops",
+      "title": "Zandalar Tribe / Zul'Gurub drops",
+      "items": [
+        19707,
+        19708,
+        19709,
+        19710,
+        19711,
+        19712,
+        19713,
+        19714,
+        19715,
+        19698,
+        19699,
+        19700,
+        19701,
+        19702,
+        19703,
+        19704,
+        19705,
+        19706
+      ]
+    },
+    {
+      "id": "thorium-brotherhood-blackrock-drops",
+      "title": "Thorium Brotherhood / Blackrock drops",
+      "items": [
+        17010,
+        17011,
+        11382,
+        17012,
+        18944,
+        18945
+      ]
+    },
+    {
+      "id": "ungoro-morrowgrain-odd-turn-ins",
+      "title": "Un'Goro / Morrowgrain odd turn-ins",
+      "items": [
+        11018
+      ]
+    },
+    {
+      "id": "quest-page-drops-buyable-quest-completion-items",
+      "title": "Quest page drops / buyable quest completion items",
+      "items": [
+        2725,
+        2728,
+        2730,
+        2732,
+        2734,
+        2735,
+        2738,
+        2740,
+        2742,
+        2744,
+        2745,
+        2748,
+        2749,
+        2750,
+        2751,
+        16645,
+        16646,
+        16647,
+        16648,
+        16649,
+        16650,
+        16651,
+        16652,
+        16653,
+        16654,
+        16655,
+        16656
+      ]
+    }
+  ],
+  "summary": {
+    "auctionable_items": 74,
+    "removed_nonauctionable": 3,
+    "sections": 10
+  },
+  "items": {
+    "42780": {
+      "item_id": 42780,
+      "name": "Relic of Ulduar",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 200,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Northrend reputation turn-ins",
+      "cohort": "northrend-reputation",
+      "detail": "Sons of Hodir • Storm Peaks drop",
+      "recommended_stack": "10 / 50 / 100 / 200",
+      "demand": "High",
+      "restriction": "Requires the Sons of Hodir quest chain; the repeatable turn-in consumes 10.",
+      "seed_band": {
+        "quick": 5000,
+        "target": 10000,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 12870,
+          "title": "Ancient Relics",
+          "required_count": 10,
+          "minimum_level": 77,
+          "reward_faction_id": 1068,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 12882,
+          "title": "Ancient Relics",
+          "required_count": 10,
+          "minimum_level": 77,
+          "reward_faction_id": 1085,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 13559,
+          "title": "Hodir's Tribute",
+          "required_count": 10,
+          "minimum_level": 77,
+          "reward_faction_id": 1119,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "29740": {
+      "item_id": 29740,
+      "name": "Fel Armament",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-premium-reputation",
+      "detail": "Aldor / Scryer premium reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Very High",
+      "restriction": "Faction choice is mutually exclusive; each repeatable turn-in consumes 1.",
+      "seed_band": {
+        "quick": 50000,
+        "target": 90000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 10420,
+          "title": "A Cleansing Light",
+          "required_count": 1,
+          "minimum_level": 64,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 6,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10421,
+          "title": "Fel Armaments",
+          "required_count": 1,
+          "minimum_level": 64,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 6,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "29739": {
+      "item_id": 29739,
+      "name": "Arcane Tome",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-premium-reputation",
+      "detail": "Aldor / Scryer premium reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Very High",
+      "restriction": "Faction choice is mutually exclusive; each repeatable turn-in consumes 1.",
+      "seed_band": {
+        "quick": 50000,
+        "target": 90000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 10416,
+          "title": "Synthesis of Power",
+          "required_count": 1,
+          "minimum_level": 64,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 6,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10419,
+          "title": "Arcane Tomes",
+          "required_count": 1,
+          "minimum_level": 64,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 6,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "30809": {
+      "item_id": 30809,
+      "name": "Mark of Sargeras",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-high-reputation",
+      "detail": "Aldor / Scryer high-tier reputation item",
+      "recommended_stack": "10 / 50 / 100 / 250",
+      "demand": "High",
+      "restriction": "Faction choice is mutually exclusive; bulk repeatables consume 10 and single-item quests exist.",
+      "seed_band": {
+        "quick": 3500,
+        "target": 6500,
+        "high": 12000
+      },
+      "quests": [
+        {
+          "quest_id": 10653,
+          "title": "Marks of Sargeras",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10654,
+          "title": "More Marks of Sargeras",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10655,
+          "title": "Single Mark of Sargeras",
+          "required_count": 1,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10826,
+          "title": "Marks of Sargeras",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10827,
+          "title": "More Marks of Sargeras",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10828,
+          "title": "Single Mark of Sargeras",
+          "required_count": 1,
+          "minimum_level": 68,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "30810": {
+      "item_id": 30810,
+      "name": "Sunfury Signet",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-high-reputation",
+      "detail": "Aldor / Scryer high-tier reputation item",
+      "recommended_stack": "10 / 50 / 100 / 250",
+      "demand": "High",
+      "restriction": "Faction choice is mutually exclusive; bulk repeatables consume 10 and single-item quests exist.",
+      "seed_band": {
+        "quick": 3500,
+        "target": 6500,
+        "high": 12000
+      },
+      "quests": [
+        {
+          "quest_id": 10656,
+          "title": "Sunfury Signets",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10658,
+          "title": "More Sunfury Signets",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10659,
+          "title": "Single Sunfury Signet",
+          "required_count": 1,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10822,
+          "title": "Single Sunfury Signet",
+          "required_count": 1,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10823,
+          "title": "More Sunfury Signets",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10824,
+          "title": "Sunfury Signets",
+          "required_count": 10,
+          "minimum_level": 68,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "29425": {
+      "item_id": 29425,
+      "name": "Mark of Kil'jaeden",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-low-reputation",
+      "detail": "Aldor / Scryer lower-tier reputation item",
+      "recommended_stack": "10 / 50 / 100 / 250",
+      "demand": "Med-High",
+      "restriction": "Faction choice is mutually exclusive and standing-limited; bulk repeatables consume 10.",
+      "seed_band": {
+        "quick": 1500,
+        "target": 3000,
+        "high": 6000
+      },
+      "quests": [
+        {
+          "quest_id": 10325,
+          "title": "Marks of Kil'jaeden",
+          "required_count": 10,
+          "minimum_level": 62,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10326,
+          "title": "More Marks of Kil'jaeden",
+          "required_count": 10,
+          "minimum_level": 62,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10327,
+          "title": "Single Mark of Kil'jaeden",
+          "required_count": 1,
+          "minimum_level": 62,
+          "reward_faction_id": 932,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "29426": {
+      "item_id": 29426,
+      "name": "Firewing Signet",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Aldor / Scryer drops",
+      "cohort": "outland-low-reputation",
+      "detail": "Aldor / Scryer lower-tier reputation item",
+      "recommended_stack": "10 / 50 / 100 / 250",
+      "demand": "Med-High",
+      "restriction": "Faction choice is mutually exclusive and standing-limited; bulk repeatables consume 10.",
+      "seed_band": {
+        "quick": 1500,
+        "target": 3000,
+        "high": 6000
+      },
+      "quests": [
+        {
+          "quest_id": 10412,
+          "title": "Firewing Signets",
+          "required_count": 10,
+          "minimum_level": 62,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10414,
+          "title": "Single Firewing Signet",
+          "required_count": 1,
+          "minimum_level": 64,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 10415,
+          "title": "More Firewing Signets",
+          "required_count": 10,
+          "minimum_level": 64,
+          "reward_faction_id": 934,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "24368": {
+      "item_id": 24368,
+      "name": "Coilfang Armaments",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 200,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 2000,
+      "sell_price": 500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Cenarion Expedition / Lower City drops",
+      "cohort": "outland-premium-reputation",
+      "detail": "Cenarion Expedition reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "High",
+      "restriction": "The repeatable turn-in consumes 1 after the introductory quest.",
+      "seed_band": {
+        "quick": 30000,
+        "target": 50000,
+        "high": 90000
+      },
+      "quests": [
+        {
+          "quest_id": 9765,
+          "title": "Preparing for War",
+          "required_count": 1,
+          "minimum_level": 67,
+          "reward_faction_id": 942,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9766,
+          "title": "Coilfang Armaments",
+          "required_count": 1,
+          "minimum_level": 67,
+          "reward_faction_id": 942,
+          "reward_faction_value_index": 3,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "24401": {
+      "item_id": 24401,
+      "name": "Unidentified Plant Parts",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 200,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 3000,
+      "sell_price": 750,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Cenarion Expedition / Lower City drops",
+      "cohort": "outland-bulk-reputation",
+      "detail": "Cenarion Expedition early reputation item",
+      "recommended_stack": "10 / 50 / 100 / 200",
+      "demand": "High",
+      "restriction": "The repeatable turn-in consumes 10 and is standing-limited.",
+      "seed_band": {
+        "quick": 3500,
+        "target": 7000,
+        "high": 15000
+      },
+      "quests": [
+        {
+          "quest_id": 9784,
+          "title": "Identify Plant Parts",
+          "required_count": 10,
+          "minimum_level": 60,
+          "reward_faction_id": 942,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 9802,
+          "title": "Plants of Zangarmarsh",
+          "required_count": 10,
+          "minimum_level": 60,
+          "reward_faction_id": 942,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "25719": {
+      "item_id": 25719,
+      "name": "Arakkoa Feather",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 868,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Cenarion Expedition / Lower City drops",
+      "cohort": "outland-bulk-reputation",
+      "detail": "Lower City reputation item",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "High",
+      "restriction": "The repeatable turn-in consumes 30 and is useful only through Honored.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 5000,
+        "high": 10000
+      },
+      "quests": [
+        {
+          "quest_id": 9988,
+          "title": "A Dandy's Best Friend",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9989,
+          "title": "Alien Spirits",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10195,
+          "title": "Mercenary See, Mercenary Do",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10196,
+          "title": "More Arakkoa Feathers",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10917,
+          "title": "The Outcast's Plight",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 1011,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 10918,
+          "title": "More Feathers",
+          "required_count": 30,
+          "minimum_level": 62,
+          "reward_faction_id": 1011,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "24246": {
+      "item_id": 24246,
+      "name": "Sanguine Hibiscus",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 200,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1600,
+      "sell_price": 400,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Sporeggar / Underbog drops",
+      "cohort": "outland-bulk-reputation",
+      "detail": "Sporeggar • Underbog drop and ground spawn",
+      "recommended_stack": "5 / 20 / 50 / 200",
+      "demand": "Med-High",
+      "restriction": "At Friendly, the repeatable turn-in consumes 5 for 750 reputation and remains available through Exalted.",
+      "seed_band": {
+        "quick": 5000,
+        "target": 10000,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 9714,
+          "title": "Bring Me Another Shrubbery!",
+          "required_count": 5,
+          "minimum_level": 63,
+          "reward_faction_id": 970,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 75000,
+          "repeatable": true
+        },
+        {
+          "quest_id": 9715,
+          "title": "Bring Me A Shrubbery!",
+          "required_count": 5,
+          "minimum_level": 63,
+          "reward_faction_id": 970,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 75000,
+          "repeatable": false
+        }
+      ]
+    },
+    "5134": {
+      "item_id": 5134,
+      "name": "Small Furry Paw",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 5,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 370,
+      "sell_price": 92,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire tier 1 animal part",
+      "recommended_stack": "5",
+      "demand": "Low",
+      "restriction": "Faire event only; consumes 5 for 1 ticket and is reputation-tier limited.",
+      "seed_band": {
+        "quick": 500,
+        "target": 1000,
+        "high": 2000
+      },
+      "quests": [
+        {
+          "quest_id": 7899,
+          "title": "Small Furry Paws",
+          "required_count": 5,
+          "minimum_level": 1,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "11407": {
+      "item_id": 11407,
+      "name": "Torn Bear Pelt",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 435,
+      "sell_price": 108,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire tier 2 animal part",
+      "recommended_stack": "5 / 10",
+      "demand": "Low-Med",
+      "restriction": "Faire event only; consumes 5 for 4 tickets and is reputation-tier limited.",
+      "seed_band": {
+        "quick": 2000,
+        "target": 4000,
+        "high": 8000
+      },
+      "quests": [
+        {
+          "quest_id": 7900,
+          "title": "Torn Bear Pelts",
+          "required_count": 5,
+          "minimum_level": 10,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 12001,
+          "title": "zzOLDHunting Tarot: Lesser Beasts",
+          "required_count": 12,
+          "minimum_level": 5,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "4582": {
+      "item_id": 4582,
+      "name": "Soft Bushy Tail",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 5,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 2980,
+      "sell_price": 745,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire tier 3 animal part",
+      "recommended_stack": "5",
+      "demand": "Med",
+      "restriction": "Faire event only; consumes 5 for 8 tickets and is reputation-tier limited.",
+      "seed_band": {
+        "quick": 3500,
+        "target": 7000,
+        "high": 15000
+      },
+      "quests": [
+        {
+          "quest_id": 7901,
+          "title": "Soft Bushy Tails",
+          "required_count": 5,
+          "minimum_level": 20,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "5117": {
+      "item_id": 5117,
+      "name": "Vibrant Plume",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 3300,
+      "sell_price": 825,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire tier 4 animal part",
+      "recommended_stack": "5 / 10",
+      "demand": "Med-High",
+      "restriction": "Faire event only; consumes 5 for 12 tickets and is reputation-tier limited.",
+      "seed_band": {
+        "quick": 4500,
+        "target": 8000,
+        "high": 15000
+      },
+      "quests": [
+        {
+          "quest_id": 7902,
+          "title": "Vibrant Plumes",
+          "required_count": 5,
+          "minimum_level": 30,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "11404": {
+      "item_id": 11404,
+      "name": "Evil Bat Eye",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 8320,
+      "sell_price": 2080,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire repeatable animal part",
+      "recommended_stack": "10",
+      "demand": "Med-High",
+      "restriction": "Faire event only; consumes 10 for 20 tickets and remains repeatable.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 7903,
+          "title": "Evil Bat Eyes",
+          "required_count": 10,
+          "minimum_level": 40,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 7943,
+          "title": "More Bat Eyes",
+          "required_count": 10,
+          "minimum_level": 40,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19933": {
+      "item_id": 19933,
+      "name": "Glowing Scorpid Blood",
+      "item_class": 15,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 8320,
+      "sell_price": 2080,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Darkmoon Faire drop turn-ins only",
+      "cohort": "darkmoon-animal-parts",
+      "detail": "Darkmoon Faire repeatable animal part",
+      "recommended_stack": "10",
+      "demand": "Med-High",
+      "restriction": "Faire event only; consumes 10 for 20 tickets and remains repeatable.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8222,
+          "title": "Glowing Scorpid Blood",
+          "required_count": 10,
+          "minimum_level": 40,
+          "reward_faction_id": 909,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 8223,
+          "title": "More Glowing Scorpid Blood",
+          "required_count": 10,
+          "minimum_level": 40,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "22525": {
+      "item_id": 22525,
+      "name": "Crypt Fiend Parts",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Argent Dawn / Plaguelands drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Argent Dawn / Light's Hope turn-in",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "Med",
+      "restriction": "The repeatable turn-in consumes 30 after the one-time introduction.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 9124,
+          "title": "Cryptstalker Armor Doesn't Make Itself...",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9125,
+          "title": "Crypt Fiend Parts",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 1,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "22526": {
+      "item_id": 22526,
+      "name": "Bone Fragments",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Argent Dawn / Plaguelands drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Argent Dawn / Light's Hope turn-in",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "Med",
+      "restriction": "The repeatable turn-in consumes 30 after the one-time introduction.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 9126,
+          "title": "Bonescythe Digs",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9127,
+          "title": "Bone Fragments",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 1,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "22527": {
+      "item_id": 22527,
+      "name": "Core of Elements",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Argent Dawn / Plaguelands drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Argent Dawn / Light's Hope turn-in",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "Med",
+      "restriction": "The repeatable turn-in consumes 30 after the one-time introduction.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 9128,
+          "title": "The Elemental Equation",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9129,
+          "title": "Core of Elements",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 1,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "22528": {
+      "item_id": 22528,
+      "name": "Dark Iron Scraps",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Argent Dawn / Plaguelands drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Argent Dawn / Light's Hope turn-in",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "Med",
+      "restriction": "The repeatable turn-in consumes 30 after the one-time introduction.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 9131,
+          "title": "Binding the Dreadnaught",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9132,
+          "title": "Dark Iron Scraps",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 1,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "22529": {
+      "item_id": 22529,
+      "name": "Savage Frond",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 800,
+      "sell_price": 200,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Argent Dawn / Plaguelands drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Argent Dawn / Light's Hope turn-in",
+      "recommended_stack": "30 / 60 / 120 / 250",
+      "demand": "Med",
+      "restriction": "The repeatable turn-in consumes 30 after the one-time introduction.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 9136,
+          "title": "Savage Flora",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 9137,
+          "title": "Savage Fronds",
+          "required_count": 30,
+          "minimum_level": 55,
+          "reward_faction_id": 529,
+          "reward_faction_value_index": 1,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19707": {
+      "item_id": 19707,
+      "name": "Red Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19708": {
+      "item_id": 19708,
+      "name": "Blue Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19709": {
+      "item_id": 19709,
+      "name": "Yellow Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19710": {
+      "item_id": 19710,
+      "name": "Orange Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19711": {
+      "item_id": 19711,
+      "name": "Green Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19712": {
+      "item_id": 19712,
+      "name": "Purple Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19713": {
+      "item_id": 19713,
+      "name": "Bronze Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19714": {
+      "item_id": 19714,
+      "name": "Silver Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19715": {
+      "item_id": 19715,
+      "name": "Gold Hakkari Bijou",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 32832,
+      "required_level": 58,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        24377
+      ],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-bijou",
+      "detail": "Zandalar Tribe reputation item",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Destroy 1 at the altar for reputation and a Zandalar Honor Token; no exact color set is required.",
+      "seed_band": {
+        "quick": 20000,
+        "target": 40000,
+        "high": 80000
+      },
+      "quests": []
+    },
+    "19698": {
+      "item_id": 19698,
+      "name": "Zulian Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8195,
+          "title": "Zulian, Razzashi, and Hakkari Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19699": {
+      "item_id": 19699,
+      "name": "Razzashi Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8195,
+          "title": "Zulian, Razzashi, and Hakkari Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19700": {
+      "item_id": 19700,
+      "name": "Hakkari Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8195,
+          "title": "Zulian, Razzashi, and Hakkari Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19701": {
+      "item_id": 19701,
+      "name": "Gurubashi Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8238,
+          "title": "Gurubashi, Vilebranch, and Witherbark Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19702": {
+      "item_id": 19702,
+      "name": "Vilebranch Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8238,
+          "title": "Gurubashi, Vilebranch, and Witherbark Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19703": {
+      "item_id": 19703,
+      "name": "Witherbark Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8238,
+          "title": "Gurubashi, Vilebranch, and Witherbark Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19704": {
+      "item_id": 19704,
+      "name": "Sandfury Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8239,
+          "title": "Sandfury, Skullsplitter, and Bloodscalp Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19705": {
+      "item_id": 19705,
+      "name": "Skullsplitter Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8239,
+          "title": "Sandfury, Skullsplitter, and Bloodscalp Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "19706": {
+      "item_id": 19706,
+      "name": "Bloodscalp Coin",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 250,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Zandalar Tribe / Zul'Gurub drops",
+      "cohort": "zg-coins",
+      "detail": "Zandalar Tribe three-coin set component",
+      "recommended_stack": "1 / 5 / 10",
+      "demand": "Med-High",
+      "restriction": "Each repeatable quest consumes one coin from its exact three-coin set.",
+      "seed_band": {
+        "quick": 7500,
+        "target": 15000,
+        "high": 30000
+      },
+      "quests": [
+        {
+          "quest_id": 8239,
+          "title": "Sandfury, Skullsplitter, and Bloodscalp Coins",
+          "required_count": 1,
+          "minimum_level": 58,
+          "reward_faction_id": 270,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "17010": {
+      "item_id": 17010,
+      "name": "Fiery Core",
+      "item_class": 7,
+      "item_subclass": 11,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 8000,
+      "sell_price": 2000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-premium-reputation",
+      "detail": "Thorium Brotherhood premium turn-in and crafting material",
+      "recommended_stack": "1 / 2 / 5",
+      "demand": "Med",
+      "restriction": "Revered-to-Exalted repeatables consume 1; crafting demand is the primary price comparison.",
+      "seed_band": {
+        "quick": 40000,
+        "target": 80000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 6643,
+          "title": "Favor Amongst the Brotherhood, Fiery Core",
+          "required_count": 1,
+          "minimum_level": 60,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "17011": {
+      "item_id": 17011,
+      "name": "Lava Core",
+      "item_class": 7,
+      "item_subclass": 11,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 8000,
+      "sell_price": 2000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-premium-reputation",
+      "detail": "Thorium Brotherhood premium turn-in and crafting material",
+      "recommended_stack": "1 / 2 / 5",
+      "demand": "Med",
+      "restriction": "Revered-to-Exalted repeatables consume 1; crafting demand is the primary price comparison.",
+      "seed_band": {
+        "quick": 40000,
+        "target": 80000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 6644,
+          "title": "Favor Amongst the Brotherhood, Lava Core",
+          "required_count": 1,
+          "minimum_level": 60,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "11382": {
+      "item_id": 11382,
+      "name": "Blood of the Mountain",
+      "item_class": 3,
+      "item_subclass": 7,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 3000,
+      "sell_price": 750,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-premium-reputation",
+      "detail": "Thorium Brotherhood premium turn-in and crafting material",
+      "recommended_stack": "1",
+      "demand": "Med",
+      "restriction": "Revered-to-Exalted repeatables consume 1; crafting demand is the primary price comparison.",
+      "seed_band": {
+        "quick": 40000,
+        "target": 80000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 6646,
+          "title": "Favor Amongst the Brotherhood, Blood of the Mountain",
+          "required_count": 1,
+          "minimum_level": 60,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "17012": {
+      "item_id": 17012,
+      "name": "Core Leather",
+      "item_class": 7,
+      "item_subclass": 6,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 4000,
+      "sell_price": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-premium-reputation",
+      "detail": "Thorium Brotherhood turn-in and crafting material",
+      "recommended_stack": "2 / 10 / 20",
+      "demand": "Med",
+      "restriction": "The repeatable consumes 2; crafting demand is the primary price comparison.",
+      "seed_band": {
+        "quick": 40000,
+        "target": 80000,
+        "high": 160000
+      },
+      "quests": [
+        {
+          "quest_id": 6645,
+          "title": "Favor Amongst the Brotherhood, Core Leather",
+          "required_count": 2,
+          "minimum_level": 60,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 6,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "18944": {
+      "item_id": 18944,
+      "name": "Incendosaur Scale",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 100,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 123,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Thorium Brotherhood early reputation item",
+      "recommended_stack": "2 / 10 / 20 / 100",
+      "demand": "Med",
+      "restriction": "Neutral-to-Friendly repeatables consume 2 plus the named companion materials.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 7736,
+          "title": "Restoring Fiery Flux Supplies via Kingsblood",
+          "required_count": 2,
+          "minimum_level": 45,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 8241,
+          "title": "Restoring Fiery Flux Supplies via Iron",
+          "required_count": 2,
+          "minimum_level": 45,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        },
+        {
+          "quest_id": 8242,
+          "title": "Restoring Fiery Flux Supplies via Heavy Leather",
+          "required_count": 2,
+          "minimum_level": 45,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 0,
+          "repeatable": true
+        }
+      ]
+    },
+    "18945": {
+      "item_id": 18945,
+      "name": "Dark Iron Residue",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 100,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 0,
+      "sell_price": 100,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Thorium Brotherhood / Blackrock drops",
+      "cohort": "classic-bulk-reputation",
+      "detail": "Thorium Brotherhood Friendly-to-Honored item",
+      "recommended_stack": "4 / 20 / 100",
+      "demand": "Med",
+      "restriction": "After What the Flux?, turn in 4 for 25 reputation or 100 for 625.",
+      "seed_band": {
+        "quick": 2500,
+        "target": 6000,
+        "high": 12500
+      },
+      "quests": [
+        {
+          "quest_id": 7737,
+          "title": "Gaining Even More Acceptance",
+          "required_count": 100,
+          "minimum_level": 45,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 7,
+          "reward_faction_override": 62500,
+          "repeatable": true
+        },
+        {
+          "quest_id": 13662,
+          "title": "Gaining Acceptance",
+          "required_count": 4,
+          "minimum_level": 45,
+          "reward_faction_id": 59,
+          "reward_faction_value_index": 2,
+          "reward_faction_override": 2500,
+          "repeatable": true
+        }
+      ]
+    },
+    "11018": {
+      "item_id": 11018,
+      "name": "Un'Goro Soil",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 100,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 585,
+      "sell_price": 146,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Un'Goro / Morrowgrain odd turn-ins",
+      "cohort": "classic-quest-convenience",
+      "detail": "Un'Goro quest and Morrowgrain input",
+      "recommended_stack": "5 / 20 / 100",
+      "demand": "Low-Med",
+      "restriction": "Direct quests consume 5 or 20; Evergreen Pouch use also consumes soil with seeds.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2000,
+        "high": 4000
+      },
+      "quests": [
+        {
+          "quest_id": 3761,
+          "title": "Un'Goro Soil",
+          "required_count": 20,
+          "minimum_level": 47,
+          "reward_faction_id": 81,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 3764,
+          "title": "Un'Goro Soil",
+          "required_count": 20,
+          "minimum_level": 47,
+          "reward_faction_id": 69,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        },
+        {
+          "quest_id": 4496,
+          "title": "Bungle in the Jungle",
+          "required_count": 5,
+          "minimum_level": 50,
+          "reward_faction_id": 369,
+          "reward_faction_value_index": 5,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2725": {
+      "item_id": 2725,
+      "name": "Green Hills of Stranglethorn - Page 1",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 339,
+          "title": "Chapter I",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2728": {
+      "item_id": 2728,
+      "name": "Green Hills of Stranglethorn - Page 4",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 339,
+          "title": "Chapter I",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2730": {
+      "item_id": 2730,
+      "name": "Green Hills of Stranglethorn - Page 6",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 339,
+          "title": "Chapter I",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2732": {
+      "item_id": 2732,
+      "name": "Green Hills of Stranglethorn - Page 8",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 339,
+          "title": "Chapter I",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2734": {
+      "item_id": 2734,
+      "name": "Green Hills of Stranglethorn - Page 10",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 340,
+          "title": "Chapter II",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2735": {
+      "item_id": 2735,
+      "name": "Green Hills of Stranglethorn - Page 11",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 340,
+          "title": "Chapter II",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2738": {
+      "item_id": 2738,
+      "name": "Green Hills of Stranglethorn - Page 14",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 340,
+          "title": "Chapter II",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2740": {
+      "item_id": 2740,
+      "name": "Green Hills of Stranglethorn - Page 16",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 340,
+          "title": "Chapter II",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2742": {
+      "item_id": 2742,
+      "name": "Green Hills of Stranglethorn - Page 18",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 341,
+          "title": "Chapter III",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2744": {
+      "item_id": 2744,
+      "name": "Green Hills of Stranglethorn - Page 20",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 341,
+          "title": "Chapter III",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2745": {
+      "item_id": 2745,
+      "name": "Green Hills of Stranglethorn - Page 21",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 341,
+          "title": "Chapter III",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2748": {
+      "item_id": 2748,
+      "name": "Green Hills of Stranglethorn - Page 24",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 341,
+          "title": "Chapter III",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2749": {
+      "item_id": 2749,
+      "name": "Green Hills of Stranglethorn - Page 25",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 342,
+          "title": "Chapter IV",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2750": {
+      "item_id": 2750,
+      "name": "Green Hills of Stranglethorn - Page 26",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 342,
+          "title": "Chapter IV",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "2751": {
+      "item_id": 2751,
+      "name": "Green Hills of Stranglethorn - Page 27",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 10,
+      "flags": 0,
+      "required_level": 0,
+      "buy_price": 1500,
+      "sell_price": 375,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Green Hills of Stranglethorn chapter page",
+      "recommended_stack": "1",
+      "demand": "Med-High",
+      "restriction": "Each chapter quest consumes one copy of its four pages, except Chapter IV, which consumes three.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 3500,
+        "high": 20000
+      },
+      "quests": [
+        {
+          "quest_id": 342,
+          "title": "Chapter IV",
+          "required_count": 1,
+          "minimum_level": 30,
+          "reward_faction_id": 0,
+          "reward_faction_value_index": 0,
+          "reward_faction_override": 0,
+          "repeatable": false
+        }
+      ]
+    },
+    "16645": {
+      "item_id": 16645,
+      "name": "Shredder Operating Manual - Page 1",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20529
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16646": {
+      "item_id": 16646,
+      "name": "Shredder Operating Manual - Page 2",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20529
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16647": {
+      "item_id": 16647,
+      "name": "Shredder Operating Manual - Page 3",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20529
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16648": {
+      "item_id": 16648,
+      "name": "Shredder Operating Manual - Page 4",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20529
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16649": {
+      "item_id": 16649,
+      "name": "Shredder Operating Manual - Page 5",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20530
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16650": {
+      "item_id": 16650,
+      "name": "Shredder Operating Manual - Page 6",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20530
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16651": {
+      "item_id": 16651,
+      "name": "Shredder Operating Manual - Page 7",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20530
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16652": {
+      "item_id": 16652,
+      "name": "Shredder Operating Manual - Page 8",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20530
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16653": {
+      "item_id": 16653,
+      "name": "Shredder Operating Manual - Page 9",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20531
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16654": {
+      "item_id": 16654,
+      "name": "Shredder Operating Manual - Page 10",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20531
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16655": {
+      "item_id": 16655,
+      "name": "Shredder Operating Manual - Page 11",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20531
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    },
+    "16656": {
+      "item_id": 16656,
+      "name": "Shredder Operating Manual - Page 12",
+      "item_class": 12,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "flags": 1088,
+      "required_level": 0,
+      "buy_price": 250,
+      "sell_price": 62,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "spell_ids": [
+        20531
+      ],
+      "section": "Quest page drops / buyable quest completion items",
+      "cohort": "classic-quest-pages",
+      "detail": "Ashenvale Shredder Operating Manual page",
+      "recommended_stack": null,
+      "demand": "Med",
+      "restriction": "Use pages 1–4, 5–8, or 9–12 to assemble a chapter; the pages do not stack.",
+      "seed_band": {
+        "quick": 1000,
+        "target": 2500,
+        "high": 10000
+      },
+      "quests": []
+    }
+  }
+}

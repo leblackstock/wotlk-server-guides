@@ -23,6 +23,11 @@ def load(path: Path) -> dict:
 
 def main() -> int:
     subprocess.run(
+        [sys.executable, "scripts/refresh-ah-dropped-gear-comparisons.py", "--check"],
+        cwd=ROOT,
+        check=True,
+    )
+    subprocess.run(
         [sys.executable, "scripts/estimate-ah-dropped-gear-prices.py", "--check"],
         cwd=ROOT,
         check=True,
@@ -79,7 +84,14 @@ def main() -> int:
         assert scale["benchmarks_used"] >= 3
         assert scale["confidence"] == "diagnostic-only"
 
-    assert cross["summary"]["items_seen_on_at_least_two_realms"] == 305
+    assert cross["summary"]["items_seen_on_at_least_two_realms"] == 347
+    assert cross["summary"]["final_failed_comparison_requests"] == 0
+    assert cross["comparison_page_refresh"]["retry_summary"] == {
+        "initial_requests": 2082,
+        "retry_delays_seconds": [2, 5, 10],
+        "retry_rounds_used": 0,
+        "final_failed_requests": 0,
+    }
     assert sum(cross["summary"]["diagnostics"].values()) == 347
     for item_id, record in evidence["items"].items():
         proposal = record["proposal"]
@@ -90,6 +102,9 @@ def main() -> int:
         assert {key: int(applied[key]) for key in ("quick", "target", "high")} == proposal["proposed_band"]
         assert applied["source_type"] == proposal["source_type"]
         assert applied["confidence"] == proposal["confidence"]
+        assert proposal["features"]["market_cohort"]
+        if proposal["requires_large_change_review"]:
+            assert proposal["reviewer_decision"] == "accept"
         if proposal["decision"] == "accept-reviewed-starter-estimate":
             model = proposal["starter_model"]
             assert model["version"] == "hellscream-low-pop-relative-rank-v1"

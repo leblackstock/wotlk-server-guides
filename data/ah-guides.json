@@ -164,7 +164,7 @@
         "Classic enhancements and craft intermediates"
       ],
       "crafted_intro_title": "Crafted Blacksmithing materials and enhancements",
-      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: Blacksmithing enhancements, keys, rod blanks, and intermediates across Wrath, Outland, and Classic. Finished armor, weapons, and shields are organized in the companion Blacksmithing Armor & Weapons guide.",
+      "crafted_intro_description": "Evidence-priced Blacksmithing enhancements, keys, rod blanks, and intermediates across Wrath, Outland, and Classic. Exact recipe floors remain visible as craftability diagnostics; finished armor, weapons, and shields are organized in the companion Blacksmithing Armor & Weapons guide.",
       "navigation": [
         {"id": "blacksmithing-inputs", "label": "Inputs", "patterns": ["inputs", "bars /", "stone$", "bottlenecks", "overlap"]},
         {"id": "blacksmithing-tools", "label": "Rods & Keys", "patterns": ["rod blanks", "skeleton keys"]},
@@ -197,7 +197,7 @@
         "Classic armor — skill 151–300"
       ],
       "crafted_intro_title": "Crafted Blacksmithing armor and weapons",
-      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: Blacksmithing armor, weapons, shields, and premium equipment across Wrath, Outland, and Classic. Materials, enhancements, keys, and rod blanks remain in the companion Blacksmithing Materials & Enhancements guide.",
+      "crafted_intro_description": "Evidence-priced Blacksmithing armor, weapons, shields, and premium equipment across Wrath, Outland, and Classic. Exact recipe floors remain separate from sale-value estimates; materials, enhancements, keys, and rod blanks remain in the companion Blacksmithing Materials & Enhancements guide.",
       "navigation": [
         {
           "id": "blacksmithing-armor",
@@ -255,7 +255,7 @@
         "Classic BoE jewelry"
       ],
       "crafted_intro_title": "Crafted Jewelcrafting gems and cuts",
-      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: cut and special gems across Wrath, Outland, and Classic. Jewelry, components, settings, and random sealed crafts are organized in the companion Jewelcrafting Jewelry & Components guide.",
+      "crafted_intro_description": "Evidence-priced cut and special gems across Wrath, Outland, and Classic. Each exact uncut-gem opportunity cost remains a separate craftability diagnostic; Evidence-priced jewelry, components, settings, and sealed random crafts are in the companion Jewelcrafting Jewelry & Components guide.",
       "navigation": [
         {"id": "jewelcrafting-gem-inputs", "label": "Gem Inputs", "patterns": ["Prospecting", "gems and meta bases", "Northrend gems", "Icy Prism", "old-world gems"]},
         {
@@ -300,7 +300,7 @@
         "Classic BoE jewelry"
       ],
       "crafted_intro_title": "Crafted Jewelcrafting jewelry and components",
-      "crafted_intro_description": "Tradeable outputs from exact 3.3.5 recipes: jewelry, equipment, components, settings, and sealed random-result crafts across Wrath, Outland, and Classic. Uncut gems and cut-gem markets remain in the companion Jewelcrafting Gems & Cuts guide.",
+      "crafted_intro_description": "Evidence-priced jewelry, equipment, components, settings, utilities, and sealed random-result crafts across Wrath, Outland, and Classic. Exact recipe costs remain separate craftability diagnostics; uncut gems and cut-gem markets are in the companion Jewelcrafting Gems & Cuts guide.",
       "navigation": [
         {"id": "jewelcrafting-jewelry", "label": "Jewelry", "patterns": ["BoE jewelry"]},
         {"id": "jewelcrafting-components", "label": "Components & Settings", "patterns": ["components", "settings"]},
@@ -311,7 +311,7 @@
       "id": "enchanting",
       "file": "enchanting-mats-ah-price-guide.html",
       "title": "Enchanting Materials & Scrolls",
-      "description": "Dusts, essences, shards, crystals, enchant scrolls, oils, wands, gems, and intermediates.",
+      "description": "Reviewed dusts, essences, shards, and crystals plus Evidence-priced enchant scrolls, oils, wands, gems, and intermediates; exact recipes remain separate craft diagnostics.",
       "icon": "enchanting.svg",
       "group": "professions",
       "order": 60,
@@ -422,7 +422,7 @@
       "id": "turn-ins",
       "file": "drop-turn-in-quest-page-items-ah-price-guide.html",
       "title": "Turn-Ins & Quest Items",
-      "description": "Reputation turn-ins, Darkmoon Faire drops, quest pages, and other farmable quest-completion items.",
+      "description": "74 exact tradeable reputation, Darkmoon Faire, and quest-page items with audited turn-in quantities and stack limits.",
       "icon": "drop-turn-in.svg",
       "group": "drops",
       "order": 10,

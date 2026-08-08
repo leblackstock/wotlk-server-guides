@@ -1,6 +1,6 @@
 # Leatherworking AH Expansion Plan
 
-- Status: `complete — 2026-08-03`
+- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
 - Existing guide: `guides/skinning-leatherworking-materials-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 4
@@ -62,6 +62,28 @@
 
 ## Evidence Log
 
+- Phase 2 start — 2026-08-08: Froze all 490 tradeable Leatherworking outputs
+  across 29 sections. Fourteen leather and cured-hide intermediates retain
+  completed Phase 1B material evidence, leaving 476 finished outputs for this
+  review. Phase 1 inputs remain frozen, active Hellscream listings remain
+  competition-only evidence, and exact recipe cost remains a separate
+  craftability diagnostic. The shared comparison fetcher now waits and retries
+  failed requests three times before recording a final failure. Nothing has
+  been published.
+- Phase 2 completion — 2026-08-08: Reviewed all 476 finished outputs. All
+  2,856 comparison requests resolved on the initial pass, so no waited retry
+  was needed. Coverage reached all three realms for 394 outputs, two realms for
+  67, one realm for nine, and no realm listings for six. One Tough Scorpid
+  Shoulders sale was low-confidence and received 25% weight; no sale passed the
+  medium-confidence gate. Of 128 Target candidates whose movement exceeded
+  50%, 125 had at least two-realm support and were accepted, while three lacked
+  enough coverage and retained their frozen bands. The pass changed 473 price
+  bands; 231 Targets rose, 220 fell, and 25 stayed unchanged. Two hundred
+  eighty-four final estimates remain below at least one exact recipe-floor band
+  and retain shared do-not-craft guidance. The 14 Phase 1B leather and
+  cured-hide intermediates remained unchanged. Evidence references, shared
+  notes, exact recipes, profession-use sections, ordering, search metadata, and
+  the guide footer were refreshed locally. Nothing was published.
 - Audit date: 2026-08-03.
 - Listing concentration observations (not valuation evidence): The saved Horde
   scan remains unusable for valuation because the user and friends control at
@@ -90,3 +112,8 @@
   search index, price ordering, profession-use sections, and the 2026-08-03
   footer were regenerated. All Python tests, `npm test`, and the desktop/mobile
   Playwright smoke test passed. Cooking is the next planned profession.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked 51 leather, hide,
+  scale, scrap, salt, combine, and vendor references. Seven inherit Phase 1A,
+  six retain exact vendor pricing, and 38 newly reviewed material bands changed.
+  Finished Leatherworking outputs remain outside this phase except material
+  intermediates explicitly owned by the input market.

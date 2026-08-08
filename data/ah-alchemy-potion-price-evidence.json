@@ -71,9 +71,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Med",
       "reagent_floor": {
-        "quick": 22000,
-        "target": 32000,
-        "high": 49000
+        "quick": 33000,
+        "target": 42000,
+        "high": 61000
       },
       "before_band": {
         "quick": 24000,
@@ -90,7 +90,11 @@
         "confidence": "fallback",
         "anchor_target_copper": 50000,
         "rank_multiplier": 0.7,
-        "below_reagent_floor_bands": [],
+        "below_reagent_floor_bands": [
+          "quick",
+          "target",
+          "high"
+        ],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
       "external_relative_review": {
@@ -173,9 +177,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Med",
       "reagent_floor": {
-        "quick": 26000,
+        "quick": 28000,
         "target": 36000,
-        "high": 59000
+        "high": 52000
       },
       "before_band": {
         "quick": 28000,
@@ -275,9 +279,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Med",
       "reagent_floor": {
-        "quick": 35000,
-        "target": 50000,
-        "high": 81500
+        "quick": 42500,
+        "target": 55000,
+        "high": 80500
       },
       "before_band": {
         "quick": 37000,
@@ -294,7 +298,9 @@
         "confidence": "fallback",
         "anchor_target_copper": 50000,
         "rank_multiplier": 1.1,
-        "below_reagent_floor_bands": [],
+        "below_reagent_floor_bands": [
+          "quick"
+        ],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
       "external_relative_review": {
@@ -382,9 +388,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "High",
       "reagent_floor": {
-        "quick": 74000,
-        "target": 104000,
-        "high": 164000
+        "quick": 53000,
+        "target": 69000,
+        "high": 102000
       },
       "before_band": {
         "quick": 80000,
@@ -488,9 +494,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Very High",
       "reagent_floor": {
-        "quick": 61500,
-        "target": 86000,
-        "high": 134000
+        "quick": 93500,
+        "target": 123500,
+        "high": 183500
       },
       "before_band": {
         "quick": 67500,
@@ -599,9 +605,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Very High",
       "reagent_floor": {
-        "quick": 91500,
-        "target": 136000,
-        "high": 204000
+        "quick": 119500,
+        "target": 158500,
+        "high": 238500
       },
       "before_band": {
         "quick": 100000,
@@ -710,9 +716,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "Med",
       "reagent_floor": {
-        "quick": 106000,
-        "target": 156000,
-        "high": 239000
+        "quick": 129000,
+        "target": 171000,
+        "high": 257000
       },
       "before_band": {
         "quick": 112500,
@@ -821,9 +827,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "High",
       "reagent_floor": {
-        "quick": 83000,
-        "target": 118000,
-        "high": 186500
+        "quick": 67500,
+        "target": 88000,
+        "high": 130500
       },
       "before_band": {
         "quick": 90000,
@@ -932,9 +938,9 @@
       "cohort": "Crafted Wrath combat and recovery potions",
       "demand": "High",
       "reagent_floor": {
-        "quick": 93000,
-        "target": 138000,
-        "high": 206500
+        "quick": 119500,
+        "target": 158000,
+        "high": 237500
       },
       "before_band": {
         "quick": 100000,
@@ -1043,9 +1049,9 @@
       "cohort": "Crafted Wrath protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 9000,
-        "target": 11000,
-        "high": 15000
+        "quick": 10800,
+        "target": 13100,
+        "high": 17700
       },
       "before_band": {
         "quick": 9500,
@@ -1145,9 +1151,9 @@
       "cohort": "Crafted Wrath protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 14000,
-        "target": 19000,
-        "high": 26000
+        "quick": 12300,
+        "target": 15100,
+        "high": 20700
       },
       "before_band": {
         "quick": 15000,
@@ -1247,9 +1253,9 @@
       "cohort": "Crafted Wrath protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 28000,
-        "target": 36000,
-        "high": 52000
+        "quick": 18200,
+        "target": 22900,
+        "high": 32500
       },
       "before_band": {
         "quick": 30000,
@@ -1349,9 +1355,9 @@
       "cohort": "Crafted Wrath protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 10000,
-        "target": 13000,
-        "high": 18000
+        "quick": 16700,
+        "target": 20900,
+        "high": 29500
       },
       "before_band": {
         "quick": 11000,
@@ -1451,9 +1457,9 @@
       "cohort": "Crafted Wrath protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 13000,
+        "quick": 13800,
         "target": 17000,
-        "high": 24000
+        "high": 23500
       },
       "before_band": {
         "quick": 14000,
@@ -1553,9 +1559,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 61000,
-        "target": 92500,
-        "high": 154000
+        "quick": 46500,
+        "target": 60500,
+        "high": 88800
       },
       "before_band": {
         "quick": 65000,
@@ -1669,9 +1675,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 16500,
-        "target": 24000,
-        "high": 39000
+        "quick": 21500,
+        "target": 27500,
+        "high": 39500
       },
       "before_band": {
         "quick": 18000,
@@ -1780,9 +1786,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 21500,
-        "target": 33000,
-        "high": 54000
+        "quick": 31500,
+        "target": 41000,
+        "high": 60000
       },
       "before_band": {
         "quick": 23000,
@@ -1891,9 +1897,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 21500,
-        "target": 33000,
-        "high": 54000
+        "quick": 31500,
+        "target": 41000,
+        "high": 60000
       },
       "before_band": {
         "quick": 23000,
@@ -2002,9 +2008,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 31000,
-        "target": 49000,
-        "high": 86500
+        "quick": 52000,
+        "target": 68500,
+        "high": 101500
       },
       "before_band": {
         "quick": 33000,
@@ -2108,9 +2114,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 29500,
-        "target": 48000,
-        "high": 79000
+        "quick": 47500,
+        "target": 62000,
+        "high": 91000
       },
       "before_band": {
         "quick": 31000,
@@ -2219,9 +2225,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 32000,
-        "target": 51500,
-        "high": 86500
+        "quick": 52000,
+        "target": 68500,
+        "high": 101500
       },
       "before_band": {
         "quick": 34000,
@@ -2330,9 +2336,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 23500,
-        "target": 35000,
-        "high": 59000
+        "quick": 21300,
+        "target": 27000,
+        "high": 38600
       },
       "before_band": {
         "quick": 25000,
@@ -2441,9 +2447,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 60000,
-        "target": 97000,
-        "high": 154000
+        "quick": 61000,
+        "target": 79500,
+        "high": 118000
       },
       "before_band": {
         "quick": 62500,
@@ -2552,9 +2558,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 44000,
-        "target": 71500,
-        "high": 114000
+        "quick": 50000,
+        "target": 65000,
+        "high": 96000
       },
       "before_band": {
         "quick": 46000,
@@ -2663,9 +2669,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 32000,
-        "target": 51500,
-        "high": 89000
+        "quick": 54000,
+        "target": 71000,
+        "high": 105000
       },
       "before_band": {
         "quick": 34000,
@@ -2774,9 +2780,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 34500,
-        "target": 54000,
-        "high": 94000
+        "quick": 48000,
+        "target": 63000,
+        "high": 93000
       },
       "before_band": {
         "quick": 36000,
@@ -2885,9 +2891,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 26000,
-        "target": 40000,
-        "high": 64000
+        "quick": 22900,
+        "target": 29000,
+        "high": 41800
       },
       "before_band": {
         "quick": 28000,
@@ -2996,9 +3002,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 54000,
-        "target": 84000,
-        "high": 134000
+        "quick": 41800,
+        "target": 54000,
+        "high": 79500
       },
       "before_band": {
         "quick": 57500,
@@ -3107,9 +3113,9 @@
       "cohort": "Crafted Outland potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 32000,
-        "target": 48500,
-        "high": 83000
+        "quick": 31900,
+        "target": 40500,
+        "high": 58150
       },
       "before_band": {
         "quick": 34000,
@@ -3218,9 +3224,9 @@
       "cohort": "Alchemist-only potions",
       "demand": "Med",
       "reagent_floor": {
-        "quick": 22000,
-        "target": 32000,
-        "high": 49000
+        "quick": 33000,
+        "target": 42000,
+        "high": 61000
       },
       "before_band": {
         "quick": 24000,
@@ -3239,7 +3245,8 @@
         "rank_multiplier": 1.4,
         "below_reagent_floor_bands": [
           "quick",
-          "target"
+          "target",
+          "high"
         ],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
@@ -3323,9 +3330,9 @@
       "cohort": "Alchemist-only potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 12500,
-        "target": 20500,
-        "high": 35500
+        "quick": 20500,
+        "target": 27500,
+        "high": 41500
       },
       "before_band": {
         "quick": 13000,
@@ -3429,9 +3436,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 21000,
-        "target": 30000,
-        "high": 46000
+        "quick": 17280,
+        "target": 21700,
+        "high": 30600
       },
       "before_band": {
         "quick": 23000,
@@ -3540,9 +3547,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 28000,
-        "target": 40000,
-        "high": 62000
+        "quick": 13780,
+        "target": 17000,
+        "high": 23500
       },
       "before_band": {
         "quick": 29000,
@@ -3559,11 +3566,7 @@
         "confidence": "fallback",
         "anchor_target_copper": 15000,
         "rank_multiplier": 1.4,
-        "below_reagent_floor_bands": [
-          "quick",
-          "target",
-          "high"
-        ],
+        "below_reagent_floor_bands": [],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
       "external_relative_review": {
@@ -3651,9 +3654,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 21000,
-        "target": 30000,
-        "high": 46000
+        "quick": 16580,
+        "target": 20700,
+        "high": 29100
       },
       "before_band": {
         "quick": 22000,
@@ -3762,9 +3765,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 20000,
-        "target": 28000,
-        "high": 44000
+        "quick": 14980,
+        "target": 17800,
+        "high": 23800
       },
       "before_band": {
         "quick": 21000,
@@ -3873,9 +3876,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 20000,
-        "target": 28000,
-        "high": 44000
+        "quick": 14980,
+        "target": 17800,
+        "high": 23800
       },
       "before_band": {
         "quick": 21000,
@@ -3984,9 +3987,9 @@
       "cohort": "Crafted Outland protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 20400,
-        "target": 29000,
-        "high": 45000
+        "quick": 14480,
+        "target": 17900,
+        "high": 24900
       },
       "before_band": {
         "quick": 22000,
@@ -4003,11 +4006,7 @@
         "confidence": "fallback",
         "anchor_target_copper": 15000,
         "rank_multiplier": 1.24,
-        "below_reagent_floor_bands": [
-          "quick",
-          "target",
-          "high"
-        ],
+        "below_reagent_floor_bands": [],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
       "external_relative_review": {
@@ -4095,9 +4094,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 9000,
-        "target": 15500,
-        "high": 28000
+        "quick": 11600,
+        "target": 17400,
+        "high": 29500
       },
       "before_band": {
         "quick": 9500,
@@ -4206,9 +4205,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 14000,
-        "target": 23000,
-        "high": 38000
+        "quick": 21800,
+        "target": 28700,
+        "high": 42500
       },
       "before_band": {
         "quick": 15000,
@@ -4312,9 +4311,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 16000,
-        "target": 27000,
-        "high": 45500
+        "quick": 18900,
+        "target": 25200,
+        "high": 37800
       },
       "before_band": {
         "quick": 17000,
@@ -4423,9 +4422,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 22500,
-        "target": 38000,
-        "high": 65500
+        "quick": 25000,
+        "target": 33200,
+        "high": 49800
       },
       "before_band": {
         "quick": 24000,
@@ -4534,9 +4533,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 24500,
-        "target": 38000,
-        "high": 68000
+        "quick": 26300,
+        "target": 35000,
+        "high": 53000
       },
       "before_band": {
         "quick": 26000,
@@ -4640,9 +4639,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 23500,
-        "target": 38500,
-        "high": 65500
+        "quick": 18300,
+        "target": 24100,
+        "high": 35900
       },
       "before_band": {
         "quick": 25000,
@@ -4751,9 +4750,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 31500,
-        "target": 51500,
-        "high": 90500
+        "quick": 33500,
+        "target": 45000,
+        "high": 68000
       },
       "before_band": {
         "quick": 33000,
@@ -4862,9 +4861,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 26500,
-        "target": 42500,
-        "high": 75500
+        "quick": 33500,
+        "target": 45000,
+        "high": 68000
       },
       "before_band": {
         "quick": 28000,
@@ -4973,9 +4972,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 17700,
-        "target": 32500,
-        "high": 59000
+        "quick": 14400,
+        "target": 18900,
+        "high": 28300
       },
       "before_band": {
         "quick": 19000,
@@ -5084,9 +5083,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 62500,
-        "target": 110500,
-        "high": 205500
+        "quick": 81500,
+        "target": 122500,
+        "high": 204500
       },
       "before_band": {
         "quick": 65000,
@@ -5200,9 +5199,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 48500,
-        "target": 80500,
-        "high": 135500
+        "quick": 67500,
+        "target": 90500,
+        "high": 136500
       },
       "before_band": {
         "quick": 52500,
@@ -5311,9 +5310,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 54500,
-        "target": 90500,
-        "high": 160500
+        "quick": 70000,
+        "target": 94000,
+        "high": 142000
       },
       "before_band": {
         "quick": 57500,
@@ -5422,9 +5421,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 90000,
-        "target": 148000,
-        "high": 264000
+        "quick": 100000,
+        "target": 140000,
+        "high": 220000
       },
       "before_band": {
         "quick": 95000,
@@ -5538,9 +5537,9 @@
       "cohort": "Crafted Classic endgame potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 28250,
-        "target": 52750,
-        "high": 96500
+        "quick": 23000,
+        "target": 30350,
+        "high": 45750
       },
       "before_band": {
         "quick": 30000,
@@ -5644,9 +5643,9 @@
       "cohort": "Crafted Classic endgame protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 14300,
-        "target": 23000,
-        "high": 39500
+        "quick": 13200,
+        "target": 17600,
+        "high": 26400
       },
       "before_band": {
         "quick": 15000,
@@ -5755,9 +5754,9 @@
       "cohort": "Crafted Classic endgame protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 15000,
-        "target": 24500,
-        "high": 43000
+        "quick": 13800,
+        "target": 18400,
+        "high": 27600
       },
       "before_band": {
         "quick": 16000,
@@ -5867,8 +5866,8 @@
       "demand": "Low-Med",
       "reagent_floor": {
         "quick": 14500,
-        "target": 24000,
-        "high": 41500
+        "target": 19300,
+        "high": 29000
       },
       "before_band": {
         "quick": 16000,
@@ -5885,10 +5884,7 @@
         "confidence": "fallback",
         "anchor_target_copper": 12500,
         "rank_multiplier": 1.4,
-        "below_reagent_floor_bands": [
-          "target",
-          "high"
-        ],
+        "below_reagent_floor_bands": [],
         "reason": "Reviewed low-pop starter estimate using the fixed Hellscream cohort anchor and the gold-normalized within-cohort external rank. External gold was not copied. Where the market estimate is below the low-confidence reagent replacement cost, the row is sale-value guidance and a warning not to craft from purchased inputs at the saved baseline."
       },
       "external_relative_review": {
@@ -5976,9 +5972,9 @@
       "cohort": "Crafted Classic endgame protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 14000,
-        "target": 23000,
-        "high": 40500
+        "quick": 15800,
+        "target": 21100,
+        "high": 31700
       },
       "before_band": {
         "quick": 15000,
@@ -6087,9 +6083,9 @@
       "cohort": "Crafted Classic endgame protection potions",
       "demand": "Low-Med",
       "reagent_floor": {
-        "quick": 64540,
-        "target": 106540,
-        "high": 185540
+        "quick": 51640,
+        "target": 68440,
+        "high": 103640
       },
       "before_band": {
         "quick": 67500,
@@ -6198,9 +6194,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8000,
-        "target": 13000,
-        "high": 23000
+        "quick": 11800,
+        "target": 15600,
+        "high": 23200
       },
       "before_band": {
         "quick": 8500,
@@ -6309,9 +6305,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 1604,
-        "target": 2804,
-        "high": 5004
+        "quick": 2704,
+        "target": 3604,
+        "high": 5504
       },
       "before_band": {
         "quick": 2000,
@@ -6420,9 +6416,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 2304,
+        "quick": 2904,
         "target": 3904,
-        "high": 7004
+        "high": 5904
       },
       "before_band": {
         "quick": 2500,
@@ -6531,9 +6527,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 3804,
-        "target": 6404,
-        "high": 11504
+        "quick": 5204,
+        "target": 6904,
+        "high": 10404
       },
       "before_band": {
         "quick": 4000,
@@ -6642,9 +6638,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 5804,
-        "target": 11404,
-        "high": 22504
+        "quick": 6604,
+        "target": 12104,
+        "high": 23204
       },
       "before_band": {
         "quick": 6000,
@@ -6753,9 +6749,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 3604,
-        "target": 6304,
-        "high": 11004
+        "quick": 5004,
+        "target": 6604,
+        "high": 10004
       },
       "before_band": {
         "quick": 4000,
@@ -6961,9 +6957,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8004,
-        "target": 13504,
-        "high": 23504
+        "quick": 8904,
+        "target": 11804,
+        "high": 17504
       },
       "before_band": {
         "quick": 8500,
@@ -7072,9 +7068,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 13004,
-        "target": 22004,
-        "high": 37504
+        "quick": 17204,
+        "target": 22804,
+        "high": 34004
       },
       "before_band": {
         "quick": 14000,
@@ -7183,9 +7179,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 4040,
-        "target": 7040,
-        "high": 12040
+        "quick": 4340,
+        "target": 5740,
+        "high": 8640
       },
       "before_band": {
         "quick": 4500,
@@ -7294,9 +7290,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8504,
-        "target": 14504,
-        "high": 25504
+        "quick": 10504,
+        "target": 14004,
+        "high": 20804
       },
       "before_band": {
         "quick": 9000,
@@ -7405,9 +7401,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 5504,
-        "target": 9504,
-        "high": 16504
+        "quick": 8904,
+        "target": 11904,
+        "high": 18104
       },
       "before_band": {
         "quick": 6000,
@@ -7517,8 +7513,8 @@
       "demand": "Low",
       "reagent_floor": {
         "quick": 12040,
-        "target": 23540,
-        "high": 46040
+        "target": 22740,
+        "high": 44140
       },
       "before_band": {
         "quick": 13000,
@@ -7627,9 +7623,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 18040,
-        "target": 31040,
-        "high": 52040
+        "quick": 28340,
+        "target": 37540,
+        "high": 56540
       },
       "before_band": {
         "quick": 19000,
@@ -7738,9 +7734,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8040,
-        "target": 13540,
-        "high": 22540
+        "quick": 8840,
+        "target": 11740,
+        "high": 17640
       },
       "before_band": {
         "quick": 8500,
@@ -7849,9 +7845,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 7540,
-        "target": 13040,
-        "high": 22040
+        "quick": 11840,
+        "target": 15740,
+        "high": 23840
       },
       "before_band": {
         "quick": 8000,
@@ -7960,9 +7956,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 9540,
-        "target": 16040,
-        "high": 27040
+        "quick": 11340,
+        "target": 15040,
+        "high": 22540
       },
       "before_band": {
         "quick": 10000,
@@ -8071,9 +8067,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 5540,
-        "target": 9540,
-        "high": 16040
+        "quick": 6740,
+        "target": 9740,
+        "high": 15340
       },
       "before_band": {
         "quick": 6000,
@@ -8182,9 +8178,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 10540,
+        "quick": 13140,
         "target": 17540,
-        "high": 30040
+        "high": 26540
       },
       "before_band": {
         "quick": 11000,
@@ -8293,9 +8289,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 9500,
-        "target": 15500,
-        "high": 25500
+        "quick": 13200,
+        "target": 17400,
+        "high": 26000
       },
       "before_band": {
         "quick": 10000,
@@ -8404,9 +8400,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 6840,
+        "quick": 8640,
         "target": 11440,
-        "high": 20040
+        "high": 17140
       },
       "before_band": {
         "quick": 7500,
@@ -8515,9 +8511,9 @@
       "cohort": "Crafted Classic leveling potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 10500,
-        "target": 17000,
-        "high": 28000
+        "quick": 10000,
+        "target": 13200,
+        "high": 19800
       },
       "before_band": {
         "quick": 11000,
@@ -8626,9 +8622,9 @@
       "cohort": "Crafted Classic leveling protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 15000,
-        "target": 25000,
-        "high": 43500
+        "quick": 15200,
+        "target": 20200,
+        "high": 30300
       },
       "before_band": {
         "quick": 16000,
@@ -8730,9 +8726,9 @@
       "cohort": "Crafted Classic leveling protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8004,
-        "target": 13504,
-        "high": 23504
+        "quick": 8604,
+        "target": 11504,
+        "high": 17104
       },
       "before_band": {
         "quick": 8500,
@@ -8841,9 +8837,9 @@
       "cohort": "Crafted Classic leveling protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 11040,
-        "target": 18540,
-        "high": 32540
+        "quick": 8440,
+        "target": 11140,
+        "high": 16740
       },
       "before_band": {
         "quick": 12000,
@@ -8953,8 +8949,8 @@
       "demand": "Low",
       "reagent_floor": {
         "quick": 15040,
-        "target": 25040,
-        "high": 45040
+        "target": 22040,
+        "high": 38040
       },
       "before_band": {
         "quick": 16000,
@@ -9063,9 +9059,9 @@
       "cohort": "Crafted Classic leveling protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 11040,
+        "quick": 12540,
         "target": 20040,
-        "high": 37540
+        "high": 35040
       },
       "before_band": {
         "quick": 12000,
@@ -9174,9 +9170,9 @@
       "cohort": "Crafted Classic leveling protection potions",
       "demand": "Low",
       "reagent_floor": {
-        "quick": 8540,
-        "target": 14540,
-        "high": 24540
+        "quick": 11240,
+        "target": 15040,
+        "high": 22840
       },
       "before_band": {
         "quick": 9000,
@@ -9284,12 +9280,12 @@
       "item_id": 36901,
       "name": "Goldclover",
       "baseline_band": {
-        "quick": 9000,
-        "target": 14000,
-        "high": 22500
+        "quick": 14500,
+        "target": 19000,
+        "high": 28500
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9307,18 +9303,19 @@
           0.2876
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/36901"
     },
     "36903": {
       "item_id": 36903,
       "name": "Adder's Tongue",
       "baseline_band": {
-        "quick": 25000,
-        "target": 35000,
-        "high": 55000
+        "quick": 37500,
+        "target": 50000,
+        "high": 75000
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9336,18 +9333,19 @@
           0.3939
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/36903"
     },
     "36905": {
       "item_id": 36905,
       "name": "Lichbloom",
       "baseline_band": {
-        "quick": 40000,
-        "target": 60000,
-        "high": 90000
+        "quick": 50500,
+        "target": 67500,
+        "high": 102500
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9365,18 +9363,19 @@
           0.3949
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/36905"
     },
     "36906": {
       "item_id": 36906,
       "name": "Icethorn",
       "baseline_band": {
-        "quick": 35000,
-        "target": 50000,
-        "high": 80000
+        "quick": 24500,
+        "target": 32500,
+        "high": 49000
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9394,18 +9393,19 @@
           0.0848
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/36906"
     },
     "36907": {
       "item_id": 36907,
       "name": "Talandra's Rose",
       "baseline_band": {
-        "quick": 11000,
+        "quick": 12000,
         "target": 16000,
-        "high": 27500
+        "high": 24000
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9423,18 +9423,19 @@
           0.2286
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/36907"
     },
     "40199": {
       "item_id": 40199,
       "name": "Pygmy Suckerfish",
       "baseline_band": {
-        "quick": 7500,
-        "target": 12000,
-        "high": 20000
+        "quick": 14500,
+        "target": 19500,
+        "high": 29500
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
       "external_relative_review": {
         "realms_present": [
           "Icecrown",
@@ -9452,7 +9453,9 @@
           1.0432
         ],
         "used_to_set_gold_value": false
-      }
+      },
+      "evidence_ref": "data/ah-profession-material-price-evidence.json#items/40199"
     }
-  }
+  },
+  "dependency_diagnostics_refreshed": "2026-08-08"
 }

@@ -21,29 +21,6 @@ if str(SCRIPTS) not in sys.path:
 
 from ah_guides import active_guide_paths  # noqa: E402
 
-INTENTIONAL_AGGREGATE_LABELS = {
-    "Aldor premium drop",
-    "Ashenvale Shredder Manual pages",
-    "Blackrock / Core drops",
-    "Cenarion Expedition armaments",
-    "Cenarion Expedition plant drops",
-    "Darkmoon Tier 1 animal parts",
-    "Darkmoon Tier 2 animal parts",
-    "Darkmoon Tier 3 animal parts",
-    "Darkmoon Tier 4 animal parts",
-    "Darkmoon Tier 5 animal parts",
-    "Green Hills of Stranglethorn pages",
-    "Hakkari Bijous",
-    "High-tier marks/signets",
-    "Low-tier marks/signets",
-    "Lower City feather drops",
-    "Other Argent Dawn parts",
-    "Scryer premium drop",
-    "Timbermaw repeatable drops",
-    "ZG coin sets",
-}
-
-
 def fail(message: str) -> None:
     raise AssertionError(message)
 
@@ -141,13 +118,8 @@ def main() -> int:
         for entry in index["items"]
         if normalized_item_name(entry["name"]) not in item_ids
     }
-    if unresolved != INTENTIONAL_AGGREGATE_LABELS:
-        missing = sorted(INTENTIONAL_AGGREGATE_LABELS - unresolved)
-        unexpected = sorted(unresolved - INTENTIONAL_AGGREGATE_LABELS)
-        fail(
-            "Tooltip resolution drifted; "
-            f"missing intentional labels={missing}, unexpected unresolved items={unexpected}"
-        )
+    if unresolved:
+        fail(f"Tooltip resolution drifted; unresolved items={sorted(unresolved)}")
 
     short_notes: list[str] = []
     forbidden_copy = (

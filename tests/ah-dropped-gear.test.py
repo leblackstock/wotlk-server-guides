@@ -197,7 +197,7 @@ def main() -> int:
         assert "Target is the recommended opening listing" in source
         assert "Most rows are modeled estimates" in source
         assert "Do not raise a price merely because the AH is empty" in source
-        assert "Updated 2026-08-05" in source
+        assert "Updated 2026-08-08" in source
         for key, item in entries.items():
             if item["guide_id"] != guide_id:
                 continue

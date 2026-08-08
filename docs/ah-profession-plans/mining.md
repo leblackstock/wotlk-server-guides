@@ -1,6 +1,6 @@
 # Mining AH Expansion Plan
 
-- Status: `complete — 2026-08-03`
+- Status: `complete — Phase 2 Evidence Pricing coverage, 2026-08-08`
 - Existing guide: `guides/mining-smithing-ah-price-guide.html`
 - Work type: smelting-output catalog
 - Suggested order: 6
@@ -60,6 +60,23 @@
 
 ## Evidence Log
 
+- Phase 2 completion — 2026-08-08: Revalidated all 24 Mining-owned outputs.
+  Twenty-two bars and alloys still match their saved Phase 1A Evidence Pricing
+  decisions, all with three-realm relative-rank coverage; 18 bands changed in
+  that saved review, while four retained their prior values. The remaining two
+  outputs, Mote of Fire and Mote of Earth, still match their exact reversible
+  10:1 conversion decisions. Six saved Target changes over 50% retain explicit
+  reviewer acceptance. Five current market estimates sit below at least one
+  exact smelting floor and retain shared do-not-smelt guidance. No new price was
+  needed during this closeout. Recipes, duplicates, notes, ordering, search
+  metadata, and the guide footer were refreshed locally. Nothing was published.
+- Phase 2 closeout start — 2026-08-08: Froze all 24 Mining-owned outputs.
+  Twenty-two bars and alloys already retain completed Phase 1A Evidence Pricing
+  decisions; Mote of Fire and Mote of Earth retain exact reversible 10:1
+  conversion decisions. This pass audits those saved prices, exact recipes,
+  duplicate guide rows, notes, ordering, and search metadata without fetching a
+  redundant second market snapshot. Active Hellscream listings remain excluded,
+  and nothing has been published.
 - Audit date: 2026-08-03.
 - Listing concentration observations (not valuation evidence): The AH was not
   rescanned for valuation. The previously recorded warning that the user and
@@ -97,3 +114,12 @@
   Felsteel, Hardened Adamantite, Eternium, Fel Iron, and Elementium bars, then
   reconciled the duplicate bar prices in the Blacksmithing and Engineering
   guides. All prices derive from saved non-circular inputs, not current listings.
+- Evidence Pricing refresh: On 2026-08-05 the Phase 1A review rechecked every
+  Mining, bar, alloy, stone, and rod-reference row as part of the 189-item
+  gathering/material batch. Sanitized completed Hellscream buyouts set the
+  Cobalt, Copper, Saronite, and Solid Stone decisions; Saronite moved from a 70s
+  Target to 1g 10s on 730 completed units, but remains low confidence because
+  one buyer accounts for 83.56% of units. Six external faction observations set
+  within-cohort rank only, fixed Hellscream anchors set gold, and 10:1 elemental
+  forms remained exact. Accepted bands and duplicate references were applied
+  locally; no active Hellscream ask was used and nothing was published.

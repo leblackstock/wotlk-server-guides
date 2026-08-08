@@ -1,6 +1,6 @@
 # Blacksmithing AH Expansion Plan
 
-- Status: `complete` — 2026-08-02
+- Status: `complete` — Phase 2 Evidence Pricing, 2026-08-06
 - Active guides:
   - `guides/blacksmithing-materials-ah-price-guide.html`
   - `guides/blacksmithing-gear-ah-price-guide.html`
@@ -108,3 +108,23 @@
   canonical crafted outputs) and `Blacksmithing Armor & Weapons` (401 crafted
   outputs). Both pages are filtered views of the same canonical Blacksmithing
   catalog, so the split introduces no duplicate source data or pricing path.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked 58 Blacksmithing
+  material references. Forty-seven inherit the completed Phase 1A review, five
+  retain exact vendor pricing, and six newly reviewed overlapping material
+  bands changed. Finished Blacksmithing outputs remain outside this phase.
+- Phase 2 Evidence Pricing started — 2026-08-06: the 52 materials/enhancement
+  outputs and 401 armor/weapon outputs are being reviewed as one coupled batch
+  against the completed Phase 1 material baseline. Active Hellscream listings
+  remain competition-only evidence; completed sales and normalized external
+  comparisons are recorded separately.
+- Phase 2 Evidence Pricing completed — 2026-08-06: all 453 tradeable outputs
+  received saved before/after bands, exact current recipe floors, sanitized
+  completed-sale aggregates, six-source comparison coverage, confidence, and
+  an explicit decision. Four sparse-sale items were shrunk toward their
+  comparable cohorts; no local sale qualified for medium confidence. Of 100
+  model candidates over the 50% review threshold, 93 with at least two-realm
+  support were accepted and seven with weaker coverage retained their prior
+  bands. The accepted pass changed 445 bands and flagged 222 outputs whose
+  estimated sale value is below at least one exact recipe-cost band. Twenty-nine
+  duplicate baseline records and 12 Mining + Smithing display rows were
+  synchronized to the reviewed Blacksmithing values. Work remains local.

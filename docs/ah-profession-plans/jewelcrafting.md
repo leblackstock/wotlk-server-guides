@@ -1,6 +1,6 @@
 # Jewelcrafting AH Expansion Plan
 
-- Status: `complete` — 2026-08-03
+- Status: `complete` — Phase 2 gems and jewelry complete locally, 2026-08-06
 - Active guides:
   - `guides/jewelcrafting-gems-ah-price-guide.html`
   - `guides/jewelcrafting-jewelry-ah-price-guide.html`
@@ -60,6 +60,21 @@
 - [x] BoP and jewelcrafter-only non-AH outputs are excluded.
 - [x] Shared validation in `README.md` passes.
 
+## Phase 2 Gem Evidence Pricing Acceptance
+
+- [x] All 360 cut and special-gem outputs have a saved before/after review.
+- [x] Every cut consumes exactly one reviewed uncut gem and preserves that
+  opportunity cost as a separate diagnostic.
+- [x] Same expansion, quality, and color define each comparison cohort.
+- [x] All Target candidates over 50% have an explicit reviewer decision.
+- [x] Six duplicated meta-gem baselines remain synchronized.
+- [x] Repeated cut-gem boilerplate is removed while exact stats, socket colors,
+  and meta activation requirements remain.
+- [x] Gem guide, search, ordering, tooltip, currency, rarity, eligibility, and
+  desktop/mobile validation pass.
+- [x] The 137 jewelry, component, setting, and sealed random-result outputs have
+  completed their separate Phase 2 review.
+
 ## Evidence Log
 
 - Audit date: 2026-08-03.
@@ -112,3 +127,48 @@
   137 canonical crafted outputs). Both pages remain filtered views of the same
   canonical Jewelcrafting catalog, so all recipe, pricing, and profession-use
   audits continue to run against one source of truth.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked 58 ore, raw-gem,
+  uncut-gem, meta-base, and Dragon's Eye references. Ten ore inputs inherit the
+  completed Phase 1A review and 48 newly reviewed gem/material bands changed.
+  Cut gems and finished jewelry remain outside this phase.
+- Phase 2 gem Evidence Pricing started — 2026-08-06: the gem-view inventory is
+  frozen at 360 tradeable cut outputs across 38 sections. The 137 jewelry,
+  component, setting, and sealed random-result outputs are reserved for the
+  following phase. Exact uncut-gem opportunity costs remain separate
+  craftability diagnostics; current Hellscream listings remain competition-only
+  evidence. Six cut metas duplicate legacy baseline rows and must remain
+  synchronized. Work is local and nothing has been published.
+- Phase 2 gem Evidence Pricing completed — 2026-08-06: all 360 cut outputs
+  received saved before/after bands, exact uncut-gem opportunity-cost
+  diagnostics, sanitized completed-sale coverage, six-source comparison
+  coverage, confidence, and explicit reviewer decisions. No cut had qualifying
+  local completed-sale history. Three hundred forty-two cuts had all-three-realm
+  comparison coverage and 18 had two-realm coverage. All three Target candidates
+  over 50% had three-realm support and were accepted. Every price band changed;
+  171 Targets rose, 174 fell, and 15 stayed unchanged. One hundred twenty-eight
+  final estimates are below at least one uncut opportunity-cost band and retain
+  do-not-cut guidance. Six legacy meta-gem baselines were synchronized. Repeated
+  row boilerplate was removed from all 360 cuts, while exact effects, socket
+  matching, meta requirements, and nine true same-stat aliases remain explicit.
+  The 137 companion jewelry/component outputs were not repriced. Work remains
+  local and nothing has been published.
+- Phase 2 jewelry Evidence Pricing started — 2026-08-06: the companion
+  inventory is frozen at 137 tradeable jewelry, component, setting, utility,
+  weapon, and sealed random-result outputs across seven sections. Phase 1
+  ingredient baselines remain frozen, current Hellscream listings remain
+  competition-only evidence, and exact recipe cost remains a separate
+  craftability diagnostic. Work is local and nothing has been published.
+- Phase 2 jewelry Evidence Pricing completed — 2026-08-06: all 137 outputs
+  received saved before/after bands, exact recipe-cost diagnostics, sanitized
+  completed-sale coverage, six-source comparison coverage, confidence, and
+  explicit reviewer decisions. Six outputs had completed-sale history; one
+  passed the medium-confidence gate and five remained sparse, shrunk evidence.
+  One hundred thirteen outputs had all-three-realm comparison coverage, 12 had
+  two-realm coverage, seven had one-realm coverage, and five had none. All 38
+  Target candidates over 50% had at least two-realm support and were accepted.
+  One hundred thirty-two price bands changed; 61 Targets rose, 58 fell, and 18
+  stayed unchanged. Fifty-five final estimates are below at least one exact
+  recipe-floor band and retain shared do-not-craft guidance. Five legacy
+  baselines were synchronized. Repeated sales boilerplate was removed from all
+  121 BoE notes, while exact slot, level, stats, effects, and random-suffix
+  warnings remain. Work remains local and nothing has been published.

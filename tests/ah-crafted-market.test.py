@@ -16,6 +16,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "data" / "ah-crafted-sections.json"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 RECIPE_AUDIT_PATH = ROOT / "data" / "ah-crafted-recipe-audit.json"
+GATHERING_EVIDENCE_PATH = ROOT / "data" / "ah-gathering-material-price-evidence.json"
+PROFESSION_MATERIAL_EVIDENCE_PATH = ROOT / "data" / "ah-profession-material-price-evidence.json"
+BLACKSMITHING_EVIDENCE_PATH = ROOT / "data" / "ah-blacksmithing-price-evidence.json"
+ENGINEERING_EVIDENCE_PATH = ROOT / "data" / "ah-engineering-price-evidence.json"
+JEWELCRAFTING_GEM_EVIDENCE_PATH = ROOT / "data" / "ah-jewelcrafting-gem-price-evidence.json"
+JEWELCRAFTING_JEWELRY_EVIDENCE_PATH = ROOT / "data" / "ah-jewelcrafting-jewelry-price-evidence.json"
+INSCRIPTION_EVIDENCE_PATH = ROOT / "data" / "ah-inscription-price-evidence.json"
+TAILORING_EVIDENCE_PATH = ROOT / "data" / "ah-tailoring-price-evidence.json"
+LEATHERWORKING_EVIDENCE_PATH = ROOT / "data" / "ah-leatherworking-price-evidence.json"
+COOKING_EVIDENCE_PATH = ROOT / "data" / "ah-cooking-price-evidence.json"
+FIRST_AID_EVIDENCE_PATH = ROOT / "data" / "ah-first-aid-price-evidence.json"
 INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
@@ -117,6 +128,77 @@ def main() -> int:
     )
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     recipe_audit = json.loads(RECIPE_AUDIT_PATH.read_text(encoding="utf-8"))
+    gathering_evidence = json.loads(
+        GATHERING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    profession_material_evidence = json.loads(
+        PROFESSION_MATERIAL_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    blacksmithing_evidence = json.loads(
+        BLACKSMITHING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    engineering_evidence = json.loads(
+        ENGINEERING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    jewelcrafting_gem_evidence = json.loads(
+        JEWELCRAFTING_GEM_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    jewelcrafting_jewelry_evidence = json.loads(
+        JEWELCRAFTING_JEWELRY_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    inscription_evidence = json.loads(
+        INSCRIPTION_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    tailoring_evidence = json.loads(
+        TAILORING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    leatherworking_evidence = json.loads(
+        LEATHERWORKING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    cooking_evidence = json.loads(
+        COOKING_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    first_aid_evidence = json.loads(
+        FIRST_AID_EVIDENCE_PATH.read_text(encoding="utf-8")
+    )
+    gathering_override_keys = {
+        record["canonical_key"]
+        for evidence in (gathering_evidence, profession_material_evidence)
+        for record in evidence["items"].values()
+        if record["owner"] == "crafted"
+    }
+    blacksmithing_override_keys = {
+        record["canonical_key"] for record in blacksmithing_evidence["items"].values()
+    }
+    engineering_override_keys = {
+        record["canonical_key"] for record in engineering_evidence["items"].values()
+    }
+    jewelcrafting_gem_override_keys = {
+        record["canonical_key"]
+        for record in jewelcrafting_gem_evidence["items"].values()
+    }
+    jewelcrafting_jewelry_override_keys = {
+        record["canonical_key"]
+        for record in jewelcrafting_jewelry_evidence["items"].values()
+    }
+    inscription_override_keys = {
+        record["canonical_key"]
+        for record in inscription_evidence["items"].values()
+    }
+    tailoring_override_keys = {
+        record["canonical_key"]
+        for record in tailoring_evidence["items"].values()
+    }
+    leatherworking_override_keys = {
+        record["canonical_key"]
+        for record in leatherworking_evidence["items"].values()
+    }
+    cooking_override_keys = {
+        record["canonical_key"] for record in cooking_evidence["items"].values()
+    }
+    first_aid_override_keys = {
+        record["canonical_key"] for record in first_aid_evidence["items"].values()
+    }
     catalog = config["catalog"]
     guides = config["guides"]
     index = generated_json(INDEX_PATH, "AH_SEARCH_INDEX")
@@ -157,6 +239,8 @@ def main() -> int:
             fail(f"{key}: audited price floors are missing")
         for band in ("quick", "target", "high"):
             if (
+                not config["pricing_policy"]["preserve_unreviewed_market_prices"]
+                and
                 item.get("price_strategy")
                 not in {"shared-market-reference", "evidence-pricing-market-value"}
                 and int(item[f"{band}_copper"]) < int(floors[band])
@@ -170,8 +254,20 @@ def main() -> int:
             elif "below" not in note or "skip" not in note:
                 fail(f"{key}: shared market pricing must explain the unprofitable craft route")
         elif item.get("price_strategy") == "evidence-pricing-market-value":
-            if not key.startswith("alch-"):
-                fail(f"{key}: Evidence Pricing override is outside the reviewed Alchemy scope")
+            if (
+                not key.startswith("alch-")
+                and key not in gathering_override_keys
+                and key not in blacksmithing_override_keys
+                and key not in engineering_override_keys
+                and key not in jewelcrafting_gem_override_keys
+                and key not in jewelcrafting_jewelry_override_keys
+                and key not in inscription_override_keys
+                and key not in tailoring_override_keys
+                and key not in leatherworking_override_keys
+                and key not in cooking_override_keys
+                and key not in first_aid_override_keys
+            ):
+                fail(f"{key}: Evidence Pricing override is outside a reviewed scope")
 
     used_keys: list[str] = []
     sources: dict[str, str] = {}
@@ -788,46 +884,56 @@ def main() -> int:
         fail(f"Expected 21 expanded Alchemy sections, found {len(alchemy_sections)}")
 
     representative_non_enchanting_prices = {
-        "chaos-deck": 10_250_000,
-        "eng-khorium-power-core": 520_000,
-        "alch-flask-endless-rage": 550_000,
-        "alch-flask-frost-wyrm": 600_000,
-        "alch-cardinal-ruby": 1_200_000,
-        "bs-eternal-belt-buckle": 350_000,
-        "bs-puresteel-legplates": 76_500_000,
-        "jc-delicate-cardinal-ruby": 1_500_000,
-        "jc-chaotic-skyflare-diamond": 400_000,
+        "chaos-deck": 6_750_000,
+        "eng-khorium-power-core": 202_500,
+        "alch-flask-endless-rage": 600_000,
+        "alch-flask-frost-wyrm": 530_000,
+        "alch-cardinal-ruby": 847_500,
+        "bs-eternal-belt-buckle": 422_500,
+        "bs-puresteel-legplates": 76_900_000,
+        "jc-delicate-cardinal-ruby": 1_900_000,
+        "jc-chaotic-skyflare-diamond": 385_000,
         "jc-nightmare-tear": 1_300_000,
-        "jc-titanium-impact-band": 6_200_000,
+        "jc-titanium-impact-band": 6_550_000,
         "jc-prismatic-black-diamond": 12_000,
-        "tailor-spellweave": 520_000,
-        "tailor-frostweave-bag": 640_000,
-        "tailor-brilliant-spellthread": 850_000,
-        "tailor-leggings-of-woven-death": 71_000_000,
+        "tailor-spellweave": 350_000,
+        "tailor-frostweave-bag": 1_750_000,
+        "tailor-brilliant-spellthread": 550_000,
+        "tailor-leggings-of-woven-death": 60_850_000,
         "firstaid-heavy-frostweave-bandage": 11_000,
-        "firstaid-strong-anti-venom": 7_500,
-        "firstaid-powerful-anti-venom": 22_000,
-        "lw-drums-of-battle": 310_000,
-        "lw-drums-of-forgotten-kings": 1_050_000,
-        "lw-frosthide-leg-armor": 1_450_000,
-        "lw-mammoth-mining-bag": 630_000,
+        "firstaid-strong-anti-venom": 6_100,
+        "firstaid-powerful-anti-venom": 2_000,
+        "lw-drums-of-battle": 175_000,
+        "lw-drums-of-forgotten-kings": 1_300_000,
+        "lw-frosthide-leg-armor": 1_950_000,
+        "lw-mammoth-mining-bag": 850_000,
         "lw-heavy-borean-leather": 65_000,
-        "lw-belt-of-dragons": 5_900_000,
-        "lw-lightning-infused-leggings": 68_500_000,
+        "lw-belt-of-dragons": 7_550_000,
+        "lw-lightning-infused-leggings": 68_800_000,
+        "cook-fish-feast": 122_500,
+        "cook-dragonfin-filet": 57_000,
+        "cook-delicious-chocolate-cake": 17_500,
+        "cook-thistle-tea": 12_000,
         "mining-titansteel-bar": 840_000,
-        "mining-hardened-adamantite-bar": 230_000,
+        "mining-hardened-adamantite-bar": 142_500,
         "mining-elementium-bar": 3_400_000,
     }
     for key, expected_target in representative_non_enchanting_prices.items():
         if int(merged_item(config, key)["target_copper"]) != expected_target:
             fail(f"{key}: audited target price changed unexpectedly")
     cardinal_cut = merged_item(config, "jc-delicate-cardinal-ruby")
-    if int(cardinal_cut["pricing_floor_copper"]["target"]) != 1_200_000:
+    if int(cardinal_cut["pricing_floor_copper"]["target"]) != 847_500:
         fail("Cardinal Ruby cut does not preserve the uncut gem's saved target opportunity cost")
     for key in ("jc-prismatic-black-diamond", "jc-icy-prism", "jc-brilliant-glass"):
         recipe = recipe_audit["recipes"][key]
         if int(recipe["output_count"]) != 1:
             fail(f"{key}: random sealed craft must use one guaranteed finished output")
+    for key in ("nobles-deck", "chaos-deck", "prisms-deck", "undeath-deck"):
+        item = merged_item(config, key)
+        if item.get("price_strategy") == "evidence-pricing-market-value":
+            expected_ref = f"data/ah-inscription-price-evidence.json#items/{item['item_id']}"
+            if item.get("price_evidence_ref") != expected_ref:
+                fail(f"{key}: Evidence-priced deck reference is stale")
 
     representative_non_enchanting_notes = {
         "glyph-disease": "refreshes disease durations",
@@ -868,10 +974,6 @@ def main() -> int:
         if expected_fragment not in merged_item(config, key)["row_note"]:
             fail(f"{key}: expected item-specific use or market context is missing")
 
-    crafted_footer_dates = {
-        "alchemy-materials-ah-price-guide.html": "2026-08-05",
-        "engineering-materials-ah-price-guide.html": "2026-08-06",
-    }
     for filename in (
         "inscription-materials-ah-price-guide.html",
         "engineering-materials-ah-price-guide.html",
@@ -902,10 +1004,23 @@ def main() -> int:
         "fishing-cooking-materials-ah-price-guide.html",
         "mining-smithing-ah-price-guide.html",
     ):
-        expected_date = crafted_footer_dates.get(filename, "2026-08-04")
+        expected_date = (
+            "2026-08-08"
+            if filename in {
+                "tailoring-cloth-ah-price-guide.html",
+                "skinning-leatherworking-materials-ah-price-guide.html",
+                "fishing-cooking-materials-ah-price-guide.html",
+                "mining-smithing-ah-price-guide.html",
+            }
+            else "2026-08-06"
+        )
         if f"Updated {expected_date}" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
-        if not re.search(r"exact 3\.3\.5 (?:recipe|reagent)", sources[filename]):
+        if not re.search(
+            r"exact 3\.3\.5 (?:recipe|reagent)",
+            sources[filename],
+            flags=re.IGNORECASE,
+        ):
             fail(f"{filename}: recipe-level pricing method is not explained")
 
     alchemy_source = sources["alchemy-materials-ah-price-guide.html"]
@@ -979,7 +1094,7 @@ def main() -> int:
         fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
 
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
-    if "Updated 2026-08-04" not in enchanting_source:
+    if "Updated 2026-08-06" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
     if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
         fail("Enchanting guide must contain exactly one shared pricing note")
@@ -991,10 +1106,10 @@ def main() -> int:
         fail("Every Enchanting crafted row must render a recipe hover link")
     if enchanting_source.count("Recipe &amp; mats ↗</a>") != 276:
         fail("Every Enchanting recipe link must use the compact shared label")
-    if enchanting_source.count("<strong>* Reagent floor and pricing:</strong>") != 1:
-        fail("Enchanting reagent-floor copy must appear exactly once")
-    if "Each price band was recalculated per item" not in enchanting_source:
-        fail("Enchanting shared note must explain the per-item price method")
+    if enchanting_source.count("<strong>* Evidence Pricing and craft diagnostics:</strong>") != 1:
+        fail("Enchanting Evidence Pricing copy must appear exactly once")
+    if "Exact 3.3.5 spell reagents plus the cheapest compatible vellum" not in enchanting_source:
+        fail("Enchanting shared note must separate market value from exact craft diagnostics")
     for repeated_copy in (
         "Exact Northrend dust, essence, shard, crystal, and Weapon Vellum III cost",
         "Wrath weapon-enchant scroll. Prices vary sharply by recipe",
@@ -1026,9 +1141,15 @@ def main() -> int:
         floors = item.get("pricing_floor_copper")
         if set(floors or {}) != {"quick", "target", "high"}:
             fail(f"{key}: audited price floors are missing")
-        for band in ("quick", "target", "high"):
-            if int(item[f"{band}_copper"]) < int(floors[band]):
-                fail(f"{key}: {band} price falls below its audited craft floor")
+        if item.get("price_strategy") != "evidence-pricing-market-value":
+            fail(f"{key}: finished Enchanting output is missing Evidence Pricing")
+        expected_ref = (
+            "data/ah-gathering-material-price-evidence.json#items/12655"
+            if int(item["item_id"]) == 12655
+            else f"data/ah-enchanting-price-evidence.json#items/{item['item_id']}"
+        )
+        if item.get("price_evidence_ref") != expected_ref:
+            fail(f"{key}: finished Enchanting evidence reference is stale")
         if item["name"].startswith("Scroll of ") and item.get("vellum_rank") not in {
             1,
             2,
@@ -1051,7 +1172,7 @@ def main() -> int:
 
     representative_enchants = {
         "ench-scroll-of-enchant-weapon-berserking": (
-            5_100_000,
+            5_000_000,
             "Premium raid melee-DPS staple",
         ),
         "ench-scroll-of-enchant-chest-powerful-stats": (

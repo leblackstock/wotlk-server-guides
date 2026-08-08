@@ -60,3 +60,11 @@ Herbalism rows.
 - Server-specific gathering findings: No measured route or qualifying realized-sale dataset was available. No custom-server farming rate, spawn claim, or active-listing median was introduced.
 - Decisions and unresolved items: No price bands changed; all 52 rows already matched the accepted frozen/vendor evidence. Corrected Frost Lotus, Fel Lotus, and Black Lotus to uncommon rarity in both Herbalism and Alchemy, and replaced three generic herb notes with specific flask, pigment, and milling demand.
 - Completion summary: Herbalism remains a 52-row gathering/supply guide with no invented crafted outputs. Baselines, duplicate prices, ownership, rarity, stacks, demand notes, and dependent Alchemy/Inscription references passed validation.
+- Evidence Pricing refresh: On 2026-08-05 all 52 Herbalism rows were reviewed as
+  part of the 189-item Phase 1A gathering/material batch. No herb had qualifying
+  direct Hellscream sale history. Six current external faction observations set
+  relative order inside fixed Hellscream herb cohorts only; no external gold or
+  active Hellscream ask was copied. All rank-modeled herb decisions remain
+  fallback confidence, including every manually accepted Target change over
+  50%. Duplicate Alchemy and Inscription input rows were synchronized locally;
+  no finished profession output was repriced and nothing was published.

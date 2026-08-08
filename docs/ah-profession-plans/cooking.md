@@ -1,6 +1,6 @@
 # Cooking AH Expansion Plan
 
-- Status: `complete` — 2026-08-03
+- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
 - Existing guide: `guides/fishing-cooking-materials-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 5
@@ -62,6 +62,26 @@
 
 ## Evidence Log
 
+- Phase 2 completion — 2026-08-08: Reviewed all 162 auctionable Cooking
+  outputs. All 972 comparison requests resolved on the initial pass; coverage
+  reached all three realms for 159 outputs and two realms for three. No
+  completed-sale history was available. All 70 Target changes over 50% had at
+  least two-realm support and were accepted. The pass changed all 162 price
+  bands; 88 Targets rose, 71 fell, and three stayed unchanged. Fifty final
+  estimates fall below at least one exact recipe-floor band and retain shared
+  do-not-craft guidance. The four Cook-required feasts and Rogue-only Thistle
+  Tea remain isolated in their correct buyer sections. Evidence references,
+  exact recipes, notes, ordering, search metadata, and the guide footer were
+  refreshed locally. Nothing was published.
+- Phase 2 start — 2026-08-08: Froze all 162 auctionable Cooking outputs across
+  13 sections. Phase 1B already reviewed the 118 fish, meat, egg, spice,
+  clam/pearl, and vendor references shared with Fishing; no finished Cooking
+  output is owned by that material batch, so all 162 outputs enter this review.
+  The four feast objects remain isolated in the Cook-required section and
+  Thistle Tea remains Rogue-only. Phase 1 inputs stay frozen, current Hellscream
+  listings remain competition-only evidence, exact batch yields remain in the
+  recipe floor, and failed comparisons receive the required 2-, 5-, and
+  10-second waited retries. Nothing has been published.
 - Audit date: 2026-08-03
 - Listing concentration observations (not valuation evidence): The saved Horde
   scan remains unusable for valuation because the user and friends account for
@@ -102,3 +122,7 @@
   AzerothCore
   auction-eligibility audit to prevent duration, conjured, or invalid-binding
   items from returning.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked 118 fish, meat,
+  egg, spice, clam/pearl, and vendor references shared with Fishing. Four
+  inherit Phase 1A, 13 retain exact vendor pricing, and 101 newly reviewed
+  material bands changed. Finished Cooking outputs remain outside this phase.

@@ -1,6 +1,6 @@
 # First Aid AH Expansion Plan
 
-- Status: `complete — 2026-08-03`
+- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
 - Existing guide: shared placement in `guides/tailoring-cloth-ah-price-guide.html`
 - Work type: small full catalog plus guide-placement decision
 - Suggested order: 7
@@ -68,6 +68,25 @@ because both consume cloth.
 
 ## Evidence Log
 
+- Phase 2 completion — 2026-08-08: Reviewed all 17 tradeable First Aid
+  outputs. All 102 comparison requests resolved on the initial pass, and every
+  item had three-realm relative-rank coverage. No completed-sale history was
+  available. All five Target changes over 50% passed the coverage safeguard and
+  were accepted. The pass changed all 17 bands; nine Targets rose, seven fell,
+  and one stayed unchanged. Four final estimates fall below at least one exact
+  recipe-floor band and retain shared do-not-craft guidance. The 15 hard First
+  Aid requirements remain in three restricted sections; Anti-Venom and Strong
+  Anti-Venom remain general-use. Evidence references, exact output quantities,
+  notes, ordering, search metadata, and the shared guide copy were refreshed
+  locally. Nothing was published.
+- Phase 2 start — 2026-08-08: Froze all 17 tradeable First Aid outputs across
+  four sections: 14 bandages and three anti-venoms. All seven cloth inputs retain
+  their completed Phase 1B evidence, and the three venom-sac inputs retain their
+  documented non-circular fallbacks. This batch reviews finished-output sale
+  value separately from exact per-output recipe cost, excludes active Hellscream
+  listings and external nominal gold, and uses the required 2-, 5-, and
+  10-second waited retries for failed comparison requests. Nothing has been
+  published.
 - Audit date: 2026-08-03.
 - Placement decision: First Aid is a separately owned canonical catalog inside
   `data/ah-crafted-sections.json`, rendered as four clearly labeled sections at

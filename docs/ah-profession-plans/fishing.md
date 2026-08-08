@@ -64,3 +64,9 @@ source. Do not describe these as Fishing-crafted items.
 - Server-specific fishing findings: No measured catch dataset or qualifying realized-sale dataset was available. No custom-server pool, catch-rate, or active-listing median was introduced.
 - Decisions and unresolved items: No price bands changed; all 146 searchable rows already matched the accepted frozen/vendor evidence. Restored the exact item name Chunk o' Basilisk; corrected Dark Herring and Siren's Tear rarity, Hot/Soothing Spices rarity, and impossible Bear Flank/Okra stack sizes. Random clam contents remain value context only, never guaranteed pearl output.
 - Completion summary: Fishing remains the gathering/source side of the combined guide; all finished food stays Cooking-owned. Baseline coverage, duplicate prices, unit handling, item metadata, ownership, vendor separation, rare-catch notes, and Cooking dependencies passed validation.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked the combined
+  guide's 118 fish, meat, egg, spice, clam/pearl, and vendor references. Four
+  inherit Phase 1A, 13 retain exact vendor pricing, and 101 newly reviewed
+  material bands changed. Dark Herring, Sea Turtle, and Giant Sewer Rat remain
+  excluded from material valuation because they are not auctionable recipe
+  inputs.

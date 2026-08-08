@@ -40,7 +40,13 @@ for item in index["items"]:
     assert item["targetBid"], item["name"]
     assert item["target"], item["name"]
     assert item["stack"], item["name"]
-    assert item["stack"] != "—", item["name"]
+
+nonstackable_pages = [
+    item for item in index["items"]
+    if item["name"].startswith("Shredder Operating Manual - Page ")
+]
+assert len(nonstackable_pages) == 12
+assert {item["stack"] for item in nonstackable_pages} == {"—"}
 
 ammo_names = {
     "Iceblade Arrow",
@@ -118,6 +124,7 @@ assert "summarizePriceValues" not in search_script
 assert "summarizeStackValues" not in search_script
 assert "summarizeDemandValues" not in search_script
 assert 'stackValue !== "1"' in search_script
+assert 'stackValue !== "—"' in search_script
 assert '"ah-price-stack-chip ah-search-price-stack-chip"' in search_script
 
 search_styles = SEARCH_STYLES_PATH.read_text(encoding="utf-8")

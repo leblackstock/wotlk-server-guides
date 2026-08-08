@@ -45,10 +45,10 @@ def main() -> int:
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
     dropped_count = len(dropped_gear["catalog"])
-    if len(baseline.get("items", {})) != 720 + dropped_count:
-        fail("Baseline must contain the prior 720 references plus every audited dropped-gear item")
+    if len(baseline.get("items", {})) != 782 + dropped_count:
+        fail("Baseline must contain the 782 material and Phase 3 static references plus every audited dropped-gear item")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"low": 646, "medium": 1, "fallback": 420}):
+    if confidence != Counter({"fallback": 1023, "low": 106}):
         fail(f"Unexpected baseline confidence distribution: {confidence}")
     if dropped_evidence["review"]["decisions"] != {
         "accept-reviewed-starter-estimate": 345,
@@ -91,10 +91,10 @@ def main() -> int:
     ):
         fail("Book of Glyph Mastery provenance or original baseline note is missing")
     expected_inputs = {
-        "36912": (4_500, 7_000, 11_000),
-        "36913": (9_000, 15_000, 22_000),
-        "2835": (100, 200, 400),
-        "4338": (700, 1_000, 1_600),
+        "36912": (9_400, 11_000, 15_000),
+        "36913": (13_500, 18_000, 27_000),
+        "2835": (250, 350, 550),
+        "4338": (1_100, 1_400, 2_100),
         "32227": (80_000, 120_000, 200_000),
         "32229": (70_000, 100_000, 180_000),
         "24243": (10_000, 20_000, 37_500),
@@ -103,7 +103,7 @@ def main() -> int:
         record = baseline["items"][item_id]
         actual = tuple(int(record[band]) for band in ("quick", "target", "high"))
         if actual != expected:
-            fail(f"{record['name']}: frozen pre-scan baseline drifted")
+            fail(f"{record['name']}: canonical input baseline drifted")
 
     forbidden = "Current Garrosh-Horde full scan"
     if forbidden in AUDIT_PATH.read_text(encoding="utf-8"):
@@ -239,11 +239,11 @@ def main() -> int:
             fail(f"{record['name']}: Cooking fallback evidence is mislabeled")
 
     representative_targets = {
-        "bs-eternal-belt-buckle": 350_000,
-        "bs-titanium-rod": 180_000,
-        "bs-saronite-defender": 125_000,
-        "bs-puresteel-legplates": 76_500_000,
-        "bs-rough-grinding-stone": 800,
+        "bs-eternal-belt-buckle": 422_500,
+        "bs-titanium-rod": 125_000,
+        "bs-saronite-defender": 177_500,
+        "bs-puresteel-legplates": 76_900_000,
+        "bs-rough-grinding-stone": 1_500,
     }
     for key, expected in representative_targets.items():
         actual = int(merged_item(config, key)["target_copper"])
@@ -252,14 +252,14 @@ def main() -> int:
 
     guide = config["guides"]["blacksmithing-materials-ah-price-guide.html"]
     note = guide["shared_note"]["text"]
-    if "Active AH listings never set or raise the baseline" not in note:
+    if "Active Hellscream listings never set prices" not in note:
         fail("Blacksmithing guide does not explain the listing-price guard")
     methodology = (ROOT / "docs" / "ah-pricing-methodology.md").read_text(encoding="utf-8")
     if not re.search(r"No script may automatically update.*active\s+listings", methodology, re.DOTALL):
         fail("Saved methodology does not prohibit automatic listing repricing")
 
     print(
-        "Non-circular AH baseline is valid: 720 prior references plus reviewed dropped-gear evidence, "
+        "Non-circular AH baseline is valid: 782 material and Phase 3 static references plus reviewed dropped-gear evidence, "
         "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 141 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
     )
     return 0

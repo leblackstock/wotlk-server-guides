@@ -27,22 +27,35 @@ be presented as a verified current price.
 | Order | Profession | Work type | Plan |
 |---:|---|---|---|
 | 1 | Blacksmithing | Complete — 2026-08-02 | [blacksmithing.md](blacksmithing.md) |
-| 2 | Jewelcrafting | Complete — 2026-08-03 | [jewelcrafting.md](jewelcrafting.md) |
-| 3 | Tailoring | Complete — 2026-08-03 | [tailoring.md](tailoring.md) |
-| 4 | Leatherworking | Complete — 2026-08-03 | [leatherworking.md](leatherworking.md) |
-| 5 | Cooking | Complete — 2026-08-03 | [cooking.md](cooking.md) |
-| 6 | Mining | Complete — 2026-08-03 | [mining.md](mining.md) |
-| 7 | First Aid | Complete — 2026-08-03 | [first-aid.md](first-aid.md) |
+| 2 | Jewelcrafting | Expansion and Phase 2 complete — 2026-08-06 | [jewelcrafting.md](jewelcrafting.md) |
+| 3 | Tailoring | Complete — Phase 2 Evidence Pricing, 2026-08-08 | [tailoring.md](tailoring.md) |
+| 4 | Leatherworking | Complete — Phase 2 Evidence Pricing, 2026-08-08 | [leatherworking.md](leatherworking.md) |
+| 5 | Cooking | Complete — Phase 2 Evidence Pricing, 2026-08-08 | [cooking.md](cooking.md) |
+| 6 | Mining | Complete — Phase 2 Evidence Pricing coverage, 2026-08-08 | [mining.md](mining.md) |
+| 7 | First Aid | Complete — Phase 2 Evidence Pricing, 2026-08-08 | [first-aid.md](first-aid.md) |
 | 8 | Herbalism | Complete — 2026-08-04 | [herbalism.md](herbalism.md) |
 | 9 | Skinning | Complete — 2026-08-04 | [skinning.md](skinning.md) |
 | 10 | Fishing | Complete — 2026-08-04 | [fishing.md](fishing.md) |
+| 11 | Engineering | Complete — 2026-08-06 | [engineering.md](engineering.md) |
+| 12 | Enchanting | Complete — Phase 2 Evidence Pricing, 2026-08-06 | [enchanting.md](enchanting.md) |
+| 13 | Alchemy | Complete — Phase 2 Evidence Pricing, 2026-08-06 | [alchemy.md](alchemy.md) |
+| 14 | Inscription | Complete — Phase 2 Evidence Pricing, 2026-08-06 | [inscription.md](inscription.md) |
 
 Alchemy, Blacksmithing, Cooking, Enchanting, Engineering, Inscription,
 Jewelcrafting, Tailoring, Leatherworking, Mining, and First Aid have canonical
 crafted catalogs in `data/ah-crafted-sections.json`. Herbalism, Skinning, and
-Fishing have completed gathering-domain audits. No profession plan remains
-unfinished; future work should refresh evidence or address a newly discovered
-catalog issue rather than invent another profession expansion.
+Fishing have completed gathering-domain audits. Enchanting's finished-output
+Evidence Pricing review is complete, and Alchemy's 206 crafts are now fully
+covered by its saved potion, material/intermediate, and finished-output reviews.
+Inscription's 107 crafts are fully covered by its saved vellum and finished-
+output reviews, with the separate Book of Glyph Mastery user baseline preserved.
+Cooking's 162 auctionable outputs are fully covered by its saved finished-output
+review, with exact batch yields retained as separate craftability diagnostics.
+Mining's 24 outputs are fully covered by 22 saved Phase 1A market decisions and
+two exact reversible conversions. First Aid's 17 outputs are fully covered by
+its saved finished-output review.
+All profession plans remain the saved reference for later AH additions and
+evidence refreshes.
 
 ## Gate 0: Establish Non-Circular Baselines Before Adding Crafteds
 

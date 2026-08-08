@@ -1,0 +1,2267 @@
+{
+  "version": 1,
+  "refreshed": "2026-08-08",
+  "scope": "All 17 tradeable First Aid outputs across four sections",
+  "method": "Evidence Pricing",
+  "model_version": "first-aid-evidence-pricing-v1",
+  "rules": {
+    "active_hellscream_listing_prices_used": false,
+    "external_gold_values_copied": false,
+    "external_role": "Gold-normalized within-comparable-cohort relative rank only.",
+    "gold_scale": "Fixed frozen Hellscream cohort anchors or qualified completed sales.",
+    "reagent_floor_role": "Exact audited 3.3.5 recipe cost is a separate craftability diagnostic and does not automatically set market value.",
+    "sparse_sale_rule": "Low-confidence completed sales receive 25% weight, or 50% when they span at least two buyers and two UTC days; the balance remains the reviewed cohort fallback.",
+    "stackable_medium_gate": "At least 20 units across four completed auctions, two buyers, and two UTC days, with largest-buyer unit share at most 0.50.",
+    "boe_medium_gate": "At least four completed buyouts, two buyers, and two UTC days, with largest-buyer unit share at most 0.50.",
+    "comparison_retry_rule": "After the initial batch, wait 2, 5, and 10 seconds and retry only failed comparison requests before recording a final failure.",
+    "preserved_phase1b_intermediates": 0,
+    "first_aid_included": true,
+    "batch_yield_rule": "Bandages and Powerful Anti-Venom create one finished item; Anti-Venom and Strong Anti-Venom create three. Exact recipe cost is divided by the minimum guaranteed output."
+  },
+  "sources": {
+    "beancounter": {
+      "provided": true,
+      "sha256": "73ef24e475c44a2e35dae3dc847e502eee4c9a874b8fd59e4b3633daff335ac3",
+      "modified_utc": "2026-08-08T15:53:19+00:00",
+      "records_seen_for_batch_items": 0,
+      "valid_completed_buyouts": 0,
+      "excluded_records": {},
+      "owned_character_exclusions_available": true,
+      "known_friend_or_guild_exclusions_available": false,
+      "raw_path_saved": false,
+      "buyer_names_saved": false
+    },
+    "external": {
+      "icecrown-alliance": {
+        "realm": "Icecrown",
+        "faction": "Alliance",
+        "economy_scale": 12.7171,
+        "scale_snapshot_sha256": "83b88a7eb6a944a457352053824ff53eceac088824b8dbe97032d1a457102c26",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      },
+      "icecrown-horde": {
+        "realm": "Icecrown",
+        "faction": "Horde",
+        "economy_scale": 13.7757,
+        "scale_snapshot_sha256": "6530150a7a73487602318c82be3ab449a245b734f615a2a678169f561781d06e",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      },
+      "lordaeron-alliance": {
+        "realm": "Lordaeron",
+        "faction": "Alliance",
+        "economy_scale": 5.8001,
+        "scale_snapshot_sha256": "49d9a3c3680ffe72dfdec9d5be213d03cdf1eae1c2304c6dd2bd68f6f852ebf4",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      },
+      "lordaeron-horde": {
+        "realm": "Lordaeron",
+        "faction": "Horde",
+        "economy_scale": 9.211,
+        "scale_snapshot_sha256": "c374fe43a2182e6320a5fd8129dc0001a0ee6c1dd4a5e99fedc188473db96eff",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      },
+      "onyxia-alliance": {
+        "realm": "Onyxia",
+        "faction": "Alliance",
+        "economy_scale": 3.9115,
+        "scale_snapshot_sha256": "757ddfd8270f0e1f40f38eba33d98b2f51dc7633864164d508db7f443e164804",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      },
+      "onyxia-horde": {
+        "realm": "Onyxia",
+        "faction": "Horde",
+        "economy_scale": 4.0139,
+        "scale_snapshot_sha256": "6a1e0481b486f428329f34652648679031cdbe9709780d79d1609d8787d90502",
+        "price_source": "https://ah.nerfed.net/servers/base?id=7"
+      }
+    },
+    "comparison_retry_summary": {
+      "initial_requests": 102,
+      "retry_delays_seconds": [
+        2,
+        5,
+        10
+      ],
+      "retry_rounds_used": 0,
+      "final_failed_requests": 0
+    }
+  },
+  "cohorts": {
+    "First Aid-only Wrath bandages": {
+      "keys": [
+        "firstaid-heavy-frostweave-bandage",
+        "firstaid-frostweave-bandage"
+      ],
+      "view": "wrath-bandages",
+      "anchor_target_copper": 8300,
+      "item_count": 2,
+      "anchor_source": "Rounded median Target from the frozen pre-Phase-2 Blacksmithing band inside this comparable cohort."
+    },
+    "First Aid-only Outland bandages": {
+      "keys": [
+        "firstaid-heavy-netherweave-bandage",
+        "firstaid-netherweave-bandage"
+      ],
+      "view": "outland-bandages",
+      "anchor_target_copper": 2000,
+      "item_count": 2,
+      "anchor_source": "Rounded median Target from the frozen pre-Phase-2 Blacksmithing band inside this comparable cohort."
+    },
+    "First Aid-only Classic bandages and poison cure": {
+      "keys": [
+        "firstaid-powerful-anti-venom",
+        "firstaid-heavy-runecloth-bandage",
+        "firstaid-heavy-mageweave-bandage",
+        "firstaid-heavy-wool-bandage",
+        "firstaid-heavy-silk-bandage",
+        "firstaid-runecloth-bandage",
+        "firstaid-mageweave-bandage",
+        "firstaid-silk-bandage",
+        "firstaid-wool-bandage",
+        "firstaid-heavy-linen-bandage",
+        "firstaid-linen-bandage"
+      ],
+      "view": "classic-supplies",
+      "anchor_target_copper": 1500,
+      "item_count": 11,
+      "anchor_source": "Rounded median Target from the frozen pre-Phase-2 Blacksmithing band inside this comparable cohort."
+    },
+    "General-use anti-venoms": {
+      "keys": [
+        "firstaid-strong-anti-venom",
+        "firstaid-anti-venom"
+      ],
+      "view": "general-anti-venoms",
+      "anchor_target_copper": 4500,
+      "item_count": 2,
+      "anchor_source": "Rounded median Target from the frozen pre-Phase-2 Blacksmithing band inside this comparable cohort."
+    }
+  },
+  "summary": {
+    "items_reviewed": 17,
+    "preserved_material_intermediates": 0,
+    "view_counts": {
+      "classic-supplies": 11,
+      "general-anti-venoms": 2,
+      "outland-bandages": 2,
+      "wrath-bandages": 2
+    },
+    "section_counts": {
+      "First Aid-only Classic bandages and poison cure": 11,
+      "First Aid-only Outland bandages": 2,
+      "First Aid-only Wrath bandages": 2,
+      "General-use anti-venoms": 2
+    },
+    "bands_changed": 17,
+    "completed_sale_items": 0,
+    "medium_confidence_sale_items": 0,
+    "items_seen_on_three_realms": 17,
+    "items_seen_on_two_realms": 0,
+    "items_seen_on_one_realm": 0,
+    "items_seen_on_no_realms": 0,
+    "fetch_failed_observations": 0,
+    "items_retained_for_source_unavailability": 0,
+    "target_changes_over_fifty_percent": 5,
+    "proposals_below_reagent_floor": 4,
+    "targets_raised": 9,
+    "targets_lowered": 7,
+    "targets_unchanged": 1,
+    "decision_counts": {
+      "cohort-rank-starter-estimate": 17
+    },
+    "external_gold_values_copied": false
+  },
+  "items": {
+    "34722": {
+      "item_id": 34722,
+      "canonical_key": "firstaid-heavy-frostweave-bandage",
+      "name": "Heavy Frostweave Bandage",
+      "view": "wrath-bandages",
+      "section": "First Aid-only Wrath bandages",
+      "cohort": "First Aid-only Wrath bandages",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Med-High",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 6500,
+        "target": 11000,
+        "high": 20000
+      },
+      "reagent_floor": {
+        "quick": 6800,
+        "target": 9000,
+        "high": 13600
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 1.0,
+        "normalized_ask_ratio_to_before_target": 0.0757,
+        "normalized_ratio_range": [
+          0.0525,
+          0.1709
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 1055,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 140,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 180,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 97,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 111,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 111,
+          "source_url": "https://ah.nerfed.net/item/index?id=34722&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 45546,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 33470,
+            "name": "Frostweave Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 8300,
+          "target": 11000,
+          "high": 16500
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 8300,
+          "target": 11000,
+          "high": 16500
+        },
+        "fallback_band_before_sales": {
+          "quick": 8300,
+          "target": 11000,
+          "high": 16500
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 8300,
+        "direct_sale_weight": null,
+        "target_change_copper": 0,
+        "target_change_percent": 0.0,
+        "model_target_change_percent": 0.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "34721": {
+      "item_id": 34721,
+      "canonical_key": "firstaid-frostweave-bandage",
+      "name": "Frostweave Bandage",
+      "view": "wrath-bandages",
+      "section": "First Aid-only Wrath bandages",
+      "cohort": "First Aid-only Wrath bandages",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low-Med",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 3500,
+        "target": 5500,
+        "high": 9500
+      },
+      "reagent_floor": {
+        "quick": 3400,
+        "target": 4500,
+        "high": 6800
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.0,
+        "normalized_ask_ratio_to_before_target": 0.1089,
+        "normalized_ratio_range": [
+          0.0585,
+          0.1606
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 06:11:27",
+          "quantity": 189,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 53,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 100,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 102,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 63,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 63,
+          "source_url": "https://ah.nerfed.net/item/index?id=34721&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 45545,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 33470,
+            "name": "Frostweave Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 4100,
+          "target": 5400,
+          "high": 8100
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 4100,
+          "target": 5400,
+          "high": 8100
+        },
+        "fallback_band_before_sales": {
+          "quick": 4100,
+          "target": 5400,
+          "high": 8100
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 8300,
+        "direct_sale_weight": null,
+        "target_change_copper": -100,
+        "target_change_percent": -1.8182,
+        "model_target_change_percent": -1.8182,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "21991": {
+      "item_id": 21991,
+      "canonical_key": "firstaid-heavy-netherweave-bandage",
+      "name": "Heavy Netherweave Bandage",
+      "view": "outland-bandages",
+      "section": "First Aid-only Outland bandages",
+      "cohort": "First Aid-only Outland bandages",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low-Med",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1500,
+        "target": 2500,
+        "high": 4500
+      },
+      "reagent_floor": {
+        "quick": 1500,
+        "target": 2000,
+        "high": 3000
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 1.0,
+        "normalized_ask_ratio_to_before_target": 0.3245,
+        "normalized_ratio_range": [
+          0.1285,
+          0.9894
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 127,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 160,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 54,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 54,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 117,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 97,
+          "source_url": "https://ah.nerfed.net/item/index?id=21991&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 27033,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 21877,
+            "name": "Netherweave Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 2000,
+          "target": 2700,
+          "high": 4100
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 2000,
+          "target": 2700,
+          "high": 4100
+        },
+        "fallback_band_before_sales": {
+          "quick": 2000,
+          "target": 2700,
+          "high": 4100
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 2000,
+        "direct_sale_weight": null,
+        "target_change_copper": 200,
+        "target_change_percent": 8.0,
+        "model_target_change_percent": 8.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "21990": {
+      "item_id": 21990,
+      "canonical_key": "firstaid-netherweave-bandage",
+      "name": "Netherweave Bandage",
+      "view": "outland-bandages",
+      "section": "First Aid-only Outland bandages",
+      "cohort": "First Aid-only Outland bandages",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1500,
+        "high": 2500
+      },
+      "reagent_floor": {
+        "quick": 750,
+        "target": 1000,
+        "high": 1500
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.0,
+        "normalized_ask_ratio_to_before_target": 0.3365,
+        "normalized_ratio_range": [
+          0.1678,
+          0.567
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 13,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-06 22:11:45",
+          "quantity": 3,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 35,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 14,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 128,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 128,
+          "source_url": "https://ah.nerfed.net/item/index?id=21990&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 27032,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 21877,
+            "name": "Netherweave Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "fallback_band_before_sales": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 2000,
+        "direct_sale_weight": null,
+        "target_change_copper": -200,
+        "target_change_percent": -13.3333,
+        "model_target_change_percent": -13.3333,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "19440": {
+      "item_id": 19440,
+      "canonical_key": "firstaid-powerful-anti-venom",
+      "name": "Powerful Anti-Venom",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 11000,
+        "target": 22000,
+        "high": 48000
+      },
+      "reagent_floor": {
+        "quick": 10000,
+        "target": 20000,
+        "high": 40000
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 1.0,
+        "normalized_ask_ratio_to_before_target": 0.5736,
+        "normalized_ratio_range": [
+          0.0854,
+          0.6116
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-03-13 00:18:50",
+          "quantity": 5,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 14,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-07-22 18:37:52",
+          "quantity": 1,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2025-10-27 22:49:36",
+          "quantity": 2,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-04-16 13:28:05",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-04-16 09:58:01",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=19440&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 23787,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 19441,
+            "name": "Huge Venom Sac",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1500,
+          "target": 2000,
+          "high": 3000
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1500,
+          "target": 2000,
+          "high": 3000
+        },
+        "fallback_band_before_sales": {
+          "quick": 1500,
+          "target": 2000,
+          "high": 3000
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": -20000,
+        "target_change_percent": -90.9091,
+        "model_target_change_percent": -90.9091,
+        "below_reagent_floor_bands": [
+          "quick",
+          "target",
+          "high"
+        ],
+        "requires_large_change_review": true,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review: at least two comparison realms support the within-cohort direction, external gold is excluded, and the exact recipe floor remains a separate no-craft warning.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10"
+    },
+    "14530": {
+      "item_id": 14530,
+      "canonical_key": "firstaid-heavy-runecloth-bandage",
+      "name": "Heavy Runecloth Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1500,
+        "target": 2500,
+        "high": 4500
+      },
+      "reagent_floor": {
+        "quick": 1000,
+        "target": 1300,
+        "high": 2000
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.9,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.9,
+        "normalized_ask_ratio_to_before_target": 0.445,
+        "normalized_ratio_range": [
+          0.2019,
+          0.5928
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 26,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 240,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 43,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 41,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 66,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 66,
+          "source_url": "https://ah.nerfed.net/item/index?id=14530&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 18630,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 14047,
+            "name": "Runecloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1400,
+          "target": 1900,
+          "high": 2900
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1400,
+          "target": 1900,
+          "high": 2900
+        },
+        "fallback_band_before_sales": {
+          "quick": 1400,
+          "target": 1900,
+          "high": 2900
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": -600,
+        "target_change_percent": -24.0,
+        "model_target_change_percent": -24.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "8545": {
+      "item_id": 8545,
+      "canonical_key": "firstaid-heavy-mageweave-bandage",
+      "name": "Heavy Mageweave Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1500,
+        "target": 2500,
+        "high": 4000
+      },
+      "reagent_floor": {
+        "quick": 2200,
+        "target": 2800,
+        "high": 4200
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.1,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.1,
+        "normalized_ask_ratio_to_before_target": 0.0909,
+        "normalized_ratio_range": [
+          0.0668,
+          0.1962
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 04:38:33",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-05 11:18:01",
+          "quantity": 11,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 55,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 129,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 129,
+          "source_url": "https://ah.nerfed.net/item/index?id=8545&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 10841,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 4338,
+            "name": "Mageweave Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 850,
+          "target": 1100,
+          "high": 1700
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 850,
+          "target": 1100,
+          "high": 1700
+        },
+        "fallback_band_before_sales": {
+          "quick": 850,
+          "target": 1100,
+          "high": 1700
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": -1400,
+        "target_change_percent": -56.0,
+        "model_target_change_percent": -56.0,
+        "below_reagent_floor_bands": [
+          "quick",
+          "target",
+          "high"
+        ],
+        "requires_large_change_review": true,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review: at least two comparison realms support the within-cohort direction, external gold is excluded, and the exact recipe floor remains a separate no-craft warning.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "3531": {
+      "item_id": 3531,
+      "canonical_key": "firstaid-heavy-wool-bandage",
+      "name": "Heavy Wool Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1500,
+        "target": 2000,
+        "high": 3000
+      },
+      "reagent_floor": {
+        "quick": 1400,
+        "target": 1900,
+        "high": 2800
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.4,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.4,
+        "normalized_ask_ratio_to_before_target": 0.2076,
+        "normalized_ratio_range": [
+          0.1836,
+          1.3125
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 82,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 29,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 60,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 21,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 86,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 86,
+          "source_url": "https://ah.nerfed.net/item/index?id=3531&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 3278,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 2592,
+            "name": "Wool Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1100,
+          "target": 1400,
+          "high": 2100
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1100,
+          "target": 1400,
+          "high": 2100
+        },
+        "fallback_band_before_sales": {
+          "quick": 1100,
+          "target": 1400,
+          "high": 2100
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": -600,
+        "target_change_percent": -30.0,
+        "model_target_change_percent": -30.0,
+        "below_reagent_floor_bands": [
+          "quick",
+          "target",
+          "high"
+        ],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "6451": {
+      "item_id": 6451,
+      "canonical_key": "firstaid-heavy-silk-bandage",
+      "name": "Heavy Silk Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1500,
+        "high": 2500
+      },
+      "reagent_floor": {
+        "quick": 700,
+        "target": 900,
+        "high": 1400
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.8,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.8,
+        "normalized_ask_ratio_to_before_target": 0.5388,
+        "normalized_ratio_range": [
+          0.0693,
+          0.6225
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 60,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 83,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 35,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 46,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 158,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 161,
+          "source_url": "https://ah.nerfed.net/item/index?id=6451&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 7929,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 4306,
+            "name": "Silk Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1400,
+          "target": 1800,
+          "high": 2700
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1400,
+          "target": 1800,
+          "high": 2700
+        },
+        "fallback_band_before_sales": {
+          "quick": 1400,
+          "target": 1800,
+          "high": 2700
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 300,
+        "target_change_percent": 20.0,
+        "model_target_change_percent": 20.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "14529": {
+      "item_id": 14529,
+      "canonical_key": "firstaid-runecloth-bandage",
+      "name": "Runecloth Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1500,
+        "high": 2500
+      },
+      "reagent_floor": {
+        "quick": 500,
+        "target": 650,
+        "high": 1000
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.7,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.7,
+        "normalized_ask_ratio_to_before_target": 0.3365,
+        "normalized_ratio_range": [
+          0.1538,
+          0.5142
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 2,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-07 21:25:17",
+          "quantity": 1,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 83,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 83,
+          "source_url": "https://ah.nerfed.net/item/index?id=14529&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 18629,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 14047,
+            "name": "Runecloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1300,
+          "target": 1700,
+          "high": 2600
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1300,
+          "target": 1700,
+          "high": 2600
+        },
+        "fallback_band_before_sales": {
+          "quick": 1300,
+          "target": 1700,
+          "high": 2600
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 200,
+        "target_change_percent": 13.3333,
+        "model_target_change_percent": 13.3333,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "8544": {
+      "item_id": 8544,
+      "canonical_key": "firstaid-mageweave-bandage",
+      "name": "Mageweave Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1500,
+        "high": 2000
+      },
+      "reagent_floor": {
+        "quick": 1100,
+        "target": 1400,
+        "high": 2100
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.6,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.6,
+        "normalized_ask_ratio_to_before_target": 0.3206,
+        "normalized_ratio_range": [
+          0.2337,
+          4.7975
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 49,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 37,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 58,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-07 14:45:40",
+          "quantity": 21,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 54,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 54,
+          "source_url": "https://ah.nerfed.net/item/index?id=8544&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 10840,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 4338,
+            "name": "Mageweave Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1200,
+          "target": 1600,
+          "high": 2400
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1200,
+          "target": 1600,
+          "high": 2400
+        },
+        "fallback_band_before_sales": {
+          "quick": 1200,
+          "target": 1600,
+          "high": 2400
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 100,
+        "target_change_percent": 6.6667,
+        "model_target_change_percent": 6.6667,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "6450": {
+      "item_id": 6450,
+      "canonical_key": "firstaid-silk-bandage",
+      "name": "Silk Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 500,
+        "target": 1000,
+        "high": 1500
+      },
+      "reagent_floor": {
+        "quick": 350,
+        "target": 450,
+        "high": 700
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.5,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.5,
+        "normalized_ask_ratio_to_before_target": 0.4295,
+        "normalized_ratio_range": [
+          0.1162,
+          0.5192
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 52,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 32,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 04:53:01",
+          "quantity": 72,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 58,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 85,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 85,
+          "source_url": "https://ah.nerfed.net/item/index?id=6450&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 7928,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 4306,
+            "name": "Silk Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1100,
+          "target": 1500,
+          "high": 2300
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1100,
+          "target": 1500,
+          "high": 2300
+        },
+        "fallback_band_before_sales": {
+          "quick": 1100,
+          "target": 1500,
+          "high": 2300
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 500,
+        "target_change_percent": 50.0,
+        "model_target_change_percent": 50.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "3530": {
+      "item_id": 3530,
+      "canonical_key": "firstaid-wool-bandage",
+      "name": "Wool Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1000,
+        "high": 1500
+      },
+      "reagent_floor": {
+        "quick": 700,
+        "target": 950,
+        "high": 1400
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.3,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.3,
+        "normalized_ask_ratio_to_before_target": 0.3778,
+        "normalized_ratio_range": [
+          0.0051,
+          1.3502
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 06:11:27",
+          "quantity": 113,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 74,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-02 04:13:05",
+          "quantity": 40,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-07 21:25:17",
+          "quantity": 20,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 164,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 117,
+          "source_url": "https://ah.nerfed.net/item/index?id=3530&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 3277,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 2592,
+            "name": "Wool Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "fallback_band_before_sales": {
+          "quick": 1000,
+          "target": 1300,
+          "high": 2000
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 300,
+        "target_change_percent": 30.0,
+        "model_target_change_percent": 30.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "2581": {
+      "item_id": 2581,
+      "canonical_key": "firstaid-heavy-linen-bandage",
+      "name": "Heavy Linen Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 500,
+        "target": 500,
+        "high": 1000
+      },
+      "reagent_floor": {
+        "quick": 300,
+        "target": 400,
+        "high": 600
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 5,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.0,
+        "normalized_ask_ratio_to_before_target": 0.2146,
+        "normalized_ratio_range": [
+          0.1726,
+          2.322
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 69,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 76,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": false,
+          "scan_timestamp": null,
+          "quantity": 0,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 226,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 99,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 119,
+          "source_url": "https://ah.nerfed.net/item/index?id=2581&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 3276,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 2589,
+            "name": "Linen Cloth",
+            "count": 2
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 750,
+          "target": 1000,
+          "high": 1500
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 750,
+          "target": 1000,
+          "high": 1500
+        },
+        "fallback_band_before_sales": {
+          "quick": 750,
+          "target": 1000,
+          "high": 1500
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 500,
+        "target_change_percent": 100.0,
+        "model_target_change_percent": 100.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": true,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review: at least two comparison realms support the within-cohort direction, external gold is excluded, and the exact recipe floor remains a separate no-craft warning.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "1251": {
+      "item_id": 1251,
+      "canonical_key": "firstaid-linen-bandage",
+      "name": "Linen Bandage",
+      "view": "classic-supplies",
+      "section": "First Aid-only Classic bandages and poison cure",
+      "cohort": "First Aid-only Classic bandages and poison cure",
+      "cohort_item_count": 11,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 500,
+        "target": 500,
+        "high": 500
+      },
+      "reagent_floor": {
+        "quick": 150,
+        "target": 200,
+        "high": 300
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.2,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.2,
+        "normalized_ask_ratio_to_before_target": 0.5335,
+        "normalized_ratio_range": [
+          0.0066,
+          0.7271
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 12:12:54",
+          "quantity": 19,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 80,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:51:53",
+          "quantity": 21,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 81,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 100,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 60,
+          "source_url": "https://ah.nerfed.net/item/index?id=1251&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 3275,
+        "output_count": 1,
+        "reagents": [
+          {
+            "item_id": 2589,
+            "name": "Linen Cloth",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 900,
+          "target": 1200,
+          "high": 1800
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 900,
+          "target": 1200,
+          "high": 1800
+        },
+        "fallback_band_before_sales": {
+          "quick": 900,
+          "target": 1200,
+          "high": 1800
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 1500,
+        "direct_sale_weight": null,
+        "target_change_copper": 700,
+        "target_change_percent": 140.0,
+        "model_target_change_percent": 140.0,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": true,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review: at least two comparison realms support the within-cohort direction, external gold is excluded, and the exact recipe floor remains a separate no-craft warning.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "1 / 5 / 10 / 20"
+    },
+    "6453": {
+      "item_id": 6453,
+      "canonical_key": "firstaid-strong-anti-venom",
+      "name": "Strong Anti-Venom",
+      "view": "general-anti-venoms",
+      "section": "General-use anti-venoms",
+      "cohort": "General-use anti-venoms",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 3500,
+        "target": 7500,
+        "high": 17000
+      },
+      "reagent_floor": {
+        "quick": 3334,
+        "target": 6667,
+        "high": 13334
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 1.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 1.0,
+        "normalized_ask_ratio_to_before_target": 0.3766,
+        "normalized_ratio_range": [
+          0.0673,
+          0.4169
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-07-29 02:41:07",
+          "quantity": 3,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 10,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-07-26 11:29:58",
+          "quantity": 15,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 130,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-07-29 21:50:05",
+          "quantity": 14,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-07-29 22:00:53",
+          "quantity": 14,
+          "source_url": "https://ah.nerfed.net/item/index?id=6453&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 7935,
+        "output_count": 3,
+        "reagents": [
+          {
+            "item_id": 1288,
+            "name": "Large Venom Sac",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 4600,
+          "target": 6100,
+          "high": 9200
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 4600,
+          "target": 6100,
+          "high": 9200
+        },
+        "fallback_band_before_sales": {
+          "quick": 4600,
+          "target": 6100,
+          "high": 9200
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 4500,
+        "direct_sale_weight": null,
+        "target_change_copper": -1400,
+        "target_change_percent": -18.6667,
+        "model_target_change_percent": -18.6667,
+        "below_reagent_floor_bands": [
+          "target",
+          "high"
+        ],
+        "requires_large_change_review": false,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "3 / 5 / 10 / 20"
+    },
+    "6452": {
+      "item_id": 6452,
+      "canonical_key": "firstaid-anti-venom",
+      "name": "Anti-Venom",
+      "view": "general-anti-venoms",
+      "section": "General-use anti-venoms",
+      "cohort": "General-use anti-venoms",
+      "cohort_item_count": 2,
+      "quality": "common",
+      "item_level": 0,
+      "demand": "Low",
+      "pricing_unit": "per finished item",
+      "before_band": {
+        "quick": 1000,
+        "target": 1500,
+        "high": 3500
+      },
+      "reagent_floor": {
+        "quick": 667,
+        "target": 1334,
+        "high": 2667
+      },
+      "local_completed_sales": null,
+      "external_relative_review": {
+        "realms_present": [
+          "Icecrown",
+          "Lordaeron",
+          "Onyxia"
+        ],
+        "realm_count": 3,
+        "faction_snapshots_present": 6,
+        "raw_relative_rank_percentile": 0.0,
+        "coverage_weight": 1.0,
+        "adjusted_relative_rank_percentile": 0.0,
+        "normalized_ask_ratio_to_before_target": 0.9848,
+        "normalized_ratio_range": [
+          0.3785,
+          1.7923
+        ],
+        "used_to_set_gold_value": false
+      },
+      "source_observations": {
+        "icecrown-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-05 12:37:59",
+          "quantity": 54,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=2&realm=15"
+        },
+        "icecrown-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 10:40:40",
+          "quantity": 13,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=1&realm=15"
+        },
+        "lordaeron-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-07 04:50:18",
+          "quantity": 3,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=2&realm=14"
+        },
+        "lordaeron-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 15:12:12",
+          "quantity": 12,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=1&realm=14"
+        },
+        "onyxia-alliance": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 16:16:39",
+          "quantity": 24,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=2&realm=17"
+        },
+        "onyxia-horde": {
+          "present": true,
+          "scan_timestamp": "2026-08-08 13:54:21",
+          "quantity": 42,
+          "source_url": "https://ah.nerfed.net/item/index?id=6452&faction=1&realm=17"
+        }
+      },
+      "recipe": {
+        "source_spell_id": 7934,
+        "output_count": 3,
+        "reagents": [
+          {
+            "item_id": 1475,
+            "name": "Small Venom Sac",
+            "count": 1
+          }
+        ]
+      },
+      "proposal": {
+        "proposed_band": {
+          "quick": 2200,
+          "target": 2900,
+          "high": 4400
+        },
+        "model_proposed_band_before_manual_review": {
+          "quick": 2200,
+          "target": 2900,
+          "high": 4400
+        },
+        "fallback_band_before_sales": {
+          "quick": 2200,
+          "target": 2900,
+          "high": 4400
+        },
+        "decision": "cohort-rank-starter-estimate",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "anchor_target_copper": 4500,
+        "direct_sale_weight": null,
+        "target_change_copper": 1400,
+        "target_change_percent": 93.3333,
+        "model_target_change_percent": 93.3333,
+        "below_reagent_floor_bands": [],
+        "requires_large_change_review": true,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review: at least two comparison realms support the within-cohort direction, external gold is excluded, and the exact recipe floor remains a separate no-craft warning.",
+        "reason": "Reviewed First Aid Evidence Pricing band. Qualified Hellscream completed sales set market value when available; sparse sales are shrunk toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact per-output recipe cost remains a separate craftability diagnostic."
+      },
+      "stack": "3 / 5 / 10 / 20"
+    }
+  },
+  "manual_review_completed": "2026-08-08",
+  "dependency_diagnostics_refreshed": "2026-08-08"
+}

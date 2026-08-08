@@ -92,11 +92,20 @@ for (const guide of manifest.guides) {
   assert.equal(document.querySelector("details.ah-guide-notes").hasAttribute("open"), false, guide.file);
   assert.equal(document.querySelectorAll(".ah-baseline-note").length, 1, guide.file);
   assert.equal(document.querySelectorAll("footer").length, 1, guide.file);
-  const expectedUpdatedDate = guide.id === "engineering"
-    ? "2026-08-06"
-    : new Set(["alchemy", "level-80-boe-epics", "sought-after-world-drops"]).has(guide.id)
-      ? "2026-08-05"
-      : "2026-08-04";
+  const updatedOnAugustEighth = new Set([
+    "tailoring",
+    "skinning-leatherworking",
+    "fishing-cooking",
+    "mining-metals",
+    "shared-materials",
+    "turn-ins",
+    "recipe-pattern-drops",
+    "level-80-boe-epics",
+    "sought-after-world-drops",
+  ]);
+  const expectedUpdatedDate = updatedOnAugustEighth.has(guide.id)
+    ? "2026-08-08"
+    : "2026-08-06";
   assert.ok(document.querySelector("footer").textContent.endsWith(`Updated ${expectedUpdatedDate}`), guide.file);
   assert.equal(document.title, `${guide.title} AH Price Guide — WotLK 3.3.5 Low Pop`, guide.file);
   assert.ok(
@@ -177,8 +186,8 @@ vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
 assert.equal(searchIndex.guideCount, 18);
-assert.equal(searchIndex.itemCount, 3860);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3634);
+assert.equal(searchIndex.itemCount, 3908);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3679);
 assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 18);
 
 const counts = Object.fromEntries(
@@ -191,6 +200,7 @@ assert.equal(counts["blacksmithing-materials"], 110);
 assert.equal(counts["blacksmithing-gear"], 401);
 assert.equal(counts["jewelcrafting-gems"], 418);
 assert.equal(counts["jewelcrafting-jewelry"], 142);
+assert.equal(counts["turn-ins"], 74);
 assert.equal(counts["recipe-pattern-drops"], 90);
 assert.equal(counts["level-80-boe-epics"], 85);
 assert.equal(counts["sought-after-world-drops"], 262);

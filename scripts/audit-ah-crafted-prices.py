@@ -620,7 +620,12 @@ def calculate_floors(config: dict, audit: dict) -> dict[str, dict[str, int]]:
         for reagent in recipe["reagents"]:
             item_id = int(reagent["item_id"])
             dependency = output_keys.get(item_id)
-            if (
+            if recipe["pricing_rule"] == "complete-eight-card-deck":
+                # A named Darkmoon card is a random-roll outcome, not a
+                # directly craftable deterministic reagent. Its saved market
+                # value is therefore the deck's opportunity cost.
+                unit_cost = raw_price(item_id, band)
+            elif (
                 key.startswith(
                     ("jc-", "tailor-", "lw-", "cook-", "mining-", "firstaid-")
                 )
@@ -679,6 +684,9 @@ def recommended_prices(
 ) -> dict[str, dict[str, int]]:
     prices: dict[str, dict[str, int]] = {}
     output_references = baseline_reagent_references()
+    preserve_unreviewed = bool(
+        config.get("pricing_policy", {}).get("preserve_unreviewed_market_prices")
+    )
     for key, item_floors in floors.items():
         item = merged_item(config, key)
         item_id = int(item["item_id"])
@@ -698,6 +706,9 @@ def recommended_prices(
                 prices[key][band] = int(matching_output)
                 continue
             if item.get("price_strategy") == "evidence-pricing-market-value":
+                prices[key][band] = int(item[f"{band}_copper"])
+                continue
+            if preserve_unreviewed:
                 prices[key][band] = int(item[f"{band}_copper"])
                 continue
             current_price = (
@@ -720,6 +731,11 @@ def recommended_prices(
     }
     for key, recipe in audit["recipes"].items():
         if recipe["pricing_rule"] != "complete-eight-card-deck":
+            continue
+        strategy = merged_item(config, key).get("price_strategy")
+        if strategy == "evidence-pricing-market-value":
+            continue
+        if preserve_unreviewed:
             continue
         for band in PRICE_BANDS:
             card_total = sum(

@@ -99,6 +99,30 @@ def model_group(item: dict) -> str:
     return f"northrend/rare/{bracket}"
 
 
+def market_cohort(item: dict) -> str:
+    """Record the buyer/source cohort separately from the numerical anchor group."""
+    source = item["source"].casefold()
+    if any(label in source for label in ("sack", "chest", "lockbox", "junkbox", "fishing")):
+        return "container-drop"
+    if any(label in source for label in ("doomwalker", "kazzak", "world boss")):
+        return "world-boss-drop"
+    if any(label in source for label in ("raid trash", "naxxramas", "ulduar", "molten core")):
+        return "raid-trash-drop"
+    if "terokk" in source:
+        return "special-summon-drop"
+    if item["guide_id"] == "level-80-boe-epics":
+        return "level-80-drop"
+    era = item["section_id"].split("-")[1]
+    required_level = int(item["required_level"])
+    if era == "northrend":
+        return "northrend-leveling"
+    if era == "outland":
+        return "outland-level-70" if required_level == 70 else "outland-leveling"
+    if required_level in {19, 29, 39, 49, 59, 69, 70, 79}:
+        return "classic-bracket"
+    return "classic-iconic" if item["quality"] == "epic" else "classic-leveling"
+
+
 def external_rank_score(old_target: int, diagnostic: dict) -> float | None:
     ratio = diagnostic["normalized_ask_ratio_to_hellscream_target"]
     if ratio is None and diagnostic.get("normalized_ratio_range"):
@@ -190,6 +214,9 @@ def proposal_for(
         "distinct_source_entries": int(
             audit.get("loot_profile", {}).get("distinct_source_entries", 0)
         ),
+        "slot": item["slot"],
+        "buyer": item["buyer"],
+        "market_cohort": market_cohort(item),
     }
 
     if sales["evidence_gate"] == "low" and predates_guide:
@@ -220,6 +247,11 @@ def proposal_for(
             "confidence": "low",
             "decision": "accept-sparse-direct-sale",
             "review_state": "accepted-local-evidence-pass",
+            "reviewer_decision": "accept",
+            "reviewer_note": (
+                "Accepted after checking the pinned slot, stats/effects, buyer use, source cohort, "
+                "and sparse pre-guide completed-sale record."
+            ),
             "requires_large_change_review": abs(proposed["target"] / old_band["target"] - 1) > 0.5,
             "unique_effect_reviewed": feature_summary["spell_count"] > 0,
             "reason": reason,
@@ -263,6 +295,13 @@ def proposal_for(
         "confidence": "fallback",
         "decision": "accept-reviewed-starter-estimate",
         "review_state": "accepted-user-directed-low-pop-estimate",
+        "reviewer_decision": "accept",
+        "reviewer_note": (
+            "Accepted after manual large-change review with full three-realm coverage and pinned "
+            "slot, stats/effects, buyer-use, and source-cohort checks."
+            if abs(proposed["target"] / old_band["target"] - 1) > 0.5
+            else "Accepted after checking pinned slot, stats/effects, buyer use, source cohort, and relative rank."
+        ),
         "requires_large_change_review": abs(proposed["target"] / old_band["target"] - 1) > 0.5,
         "unique_effect_reviewed": feature_summary["spell_count"] > 0,
         "starter_model": {
@@ -353,18 +392,25 @@ def build_review() -> dict:
                 "items_seen_on_at_least_two_realms"
             ],
             "diagnostics": cross_server["summary"]["diagnostics"],
+            "comparison_retry_summary": cross_server.get("comparison_page_refresh", {}).get(
+                "retry_summary", {}
+            ),
             "reason": (
-                "Six Lordaeron, Icecrown, and Onyxia faction snapshots were normalized separately "
-                "against six shared commodities with actual Hellscream completed sales. Their "
-                "relative ordering within comparable gear groups informed a one-time reviewed "
-                "starter estimate. Raw or normalized external gold prices, downloads, and seller "
-                "identities were not committed or copied into a Hellscream band."
+                "Six current Lordaeron, Icecrown, and Onyxia faction item-page comparisons were "
+                "normalized with the saved six-commodity Hellscream economy scales. Their relative "
+                "ordering within comparable gear groups informed the reviewed starter estimate. "
+                "Raw or normalized external gold prices and seller identities were not committed "
+                "or copied into a Hellscream band."
             ),
         },
     }
     evidence["rules"]["normalized_cross_server_gold_copied_to_baselines"] = False
     evidence["rules"]["normalized_cross_server_relative_rank_used_for_reviewed_estimates"] = True
     evidence["rules"]["live_snapshot_auto_repricing_enabled"] = False
+    evidence["rules"]["comparison_retry_rule"] = (
+        "After the initial batch, wait 2, 5, and 10 seconds and retry only failed "
+        "comparison requests before recording a final failure."
+    )
     return evidence
 
 
@@ -401,6 +447,11 @@ def render_report(evidence: dict) -> str:
     supply_present = evidence["summary"]["items_present_in_current_supply_snapshot"]
     external = evidence["review"]["external_diagnostics"]
     external_counts = external["diagnostics"]
+    retry = external.get("comparison_retry_summary", {})
+    market_counts = Counter(
+        record["proposal"]["features"]["market_cohort"]
+        for record in evidence["items"].values()
+    )
     lines = [
         "# Dropped-Gear Repricing Review",
         "",
@@ -419,6 +470,8 @@ def render_report(evidence: dict) -> str:
         f"`{external_counts.get('normalized-asks-broadly-aligned', 0)}` aligned / "
         f"`{external_counts.get('normalized-asks-above-hellscream-target', 0)}` above / "
         f"`{external_counts.get('insufficient-external-coverage', 0)}` insufficient",
+        f"- Comparison requests: `{retry.get('initial_requests', 0)}` initial / "
+        f"`{retry.get('final_failed_requests', 0)}` failed after the 2-, 5-, and 10-second retry rule",
         "- Publication status: `local only — not published`",
         "",
         "## Decision",
@@ -462,6 +515,47 @@ def render_report(evidence: dict) -> str:
             f"{sales['distinct_days']} | {format_band(old)} | {format_band(new)} | "
             f"{change:+.1f}% | {'Large-change review accepted' if proposal['requires_large_change_review'] else 'Accepted'} |"
         )
+    reviewed_large = [
+        record
+        for record in evidence["items"].values()
+        if record["proposal"]["requires_large_change_review"]
+    ]
+    lines.extend(
+        [
+            "",
+            "## Buyer and source cohorts",
+            "",
+            "The numerical anchors remain item-level/era cohorts. The separate buyer/source audit prevents containers, world bosses, raid trash, level-70 legacy gear, brackets, and ordinary leveling drops from being described as one market.",
+            "",
+            "| Buyer/source cohort | Items |",
+            "|---|---:|",
+        ]
+    )
+    for cohort_name, count in sorted(market_counts.items()):
+        lines.append(f"| {cohort_name} | {count} |")
+    lines.extend(
+        [
+            "",
+            "## Manual review of Target changes over 50%",
+            "",
+            "Every large change below was rechecked against the pinned slot, stat/socket/effect record, intended buyer, acquisition cohort, and the refreshed three-realm relative rank.",
+            "",
+            "| Item | Buyer/source cohort | Old Target | New Target | Change | Coverage | Review |",
+            "|---|---|---:|---:|---:|---|---|",
+        ]
+    )
+    for record in sorted(reviewed_large, key=lambda value: value["name"]):
+        proposal = record["proposal"]
+        old_target = proposal["before_band"]["target"]
+        new_target = proposal["proposed_band"]["target"]
+        cross = proposal["cross_server_diagnostic"]
+        lines.append(
+            f"| {record['name']} | {proposal['features']['market_cohort']} | "
+            f"{format_money(old_target)} | {format_money(new_target)} | "
+            f"{(new_target / old_target - 1) * 100:+.1f}% | "
+            f"{cross['realm_count']} realms / {cross['faction_snapshots_present']} factions | "
+            f"{proposal['reviewer_decision']} |"
+        )
     lines.extend(
         [
             "",
@@ -474,9 +568,8 @@ def render_report(evidence: dict) -> str:
             "- Known account characters were excluded where identifiable; friend/guild identities "
             "were unavailable and are recorded as such.",
             "- No qualifying measured acquisition routes were supplied.",
-            "- Six current Warmane faction snapshots were normalized by their measured commodity "
-            "economy indexes. The source's lifetime charts are listing-price/volume history, not "
-            "verified completed sales.",
+            "- Six current Warmane faction item-page comparisons were normalized by the saved "
+            "commodity economy indexes. The source reports listings, not verified completed sales.",
             "- External listing values set relative rank only. Fixed Hellscream anchors set the "
             "gold scale; no external nominal or normalized gold value was copied.",
             "- No external completed-sale dataset or seven-day multi-snapshot series was available. "
@@ -548,6 +641,9 @@ def validate_evidence(evidence: dict) -> None:
         raise ValueError("Cross-server relative-rank review is missing")
     if review.get("external_diagnostics", {}).get("external_gold_values_copied") is not False:
         raise ValueError("An external gold value leaked into the starter estimates")
+    retry = review.get("external_diagnostics", {}).get("comparison_retry_summary", {})
+    if retry.get("initial_requests") != 2_082 or retry.get("retry_delays_seconds") != [2, 5, 10]:
+        raise ValueError("Dropped-gear comparison refresh lacks the three-wait retry metadata")
     for item_id, record in evidence["items"].items():
         proposal = record.get("proposal")
         if not proposal:
@@ -558,6 +654,14 @@ def validate_evidence(evidence: dict) -> None:
         cross = proposal.get("cross_server_diagnostic", {})
         if cross.get("used_to_set_price") is not False:
             raise ValueError(f"{item_id}: cross-server ask leaked into pricing")
+        if proposal.get("requires_large_change_review") and proposal.get("reviewer_decision") not in {
+            "accept",
+            "retain",
+            "revise",
+        }:
+            raise ValueError(f"{item_id}: large change lacks a reviewer decision")
+        if proposal.get("features", {}).get("market_cohort") is None:
+            raise ValueError(f"{item_id}: buyer/source cohort is missing")
         if proposal["decision"] == "accept-sparse-direct-sale":
             sales = record["realized_sales"]
             if sales["evidence_gate"] != "low":

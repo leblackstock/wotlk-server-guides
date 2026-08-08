@@ -63,15 +63,19 @@ for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
     expected_date = (
-        "2026-08-06"
-        if path.name == "engineering-materials-ah-price-guide.html"
-        else "2026-08-05"
+        "2026-08-08"
         if path.name in {
-            "alchemy-materials-ah-price-guide.html",
+            "tailoring-cloth-ah-price-guide.html",
+            "skinning-leatherworking-materials-ah-price-guide.html",
+            "fishing-cooking-materials-ah-price-guide.html",
+            "mining-smithing-ah-price-guide.html",
+            "cross-profession-materials-ah-price-guide.html",
+            "drop-turn-in-quest-page-items-ah-price-guide.html",
+            "gear-pattern-drops-ah-price-guide.html",
             "level-80-boe-epics-ah-price-guide.html",
             "sought-after-world-drops-ah-price-guide.html",
         }
-        else "2026-08-04"
+        else "2026-08-06"
     )
     assert f"Updated {expected_date}" in source, path.name
     for label in MONEY_SPAN.findall(source):
@@ -86,8 +90,8 @@ index = json.loads(
 )
 truesilver = [item for item in index["items"] if item["name"] == "Truesilver Bar"]
 assert len(truesilver) == 2
-assert {item["targetBid"] for item in truesilver} == {"1g 49s"}
-assert {item["target"] for item in truesilver} == {"1g 75s"}
+assert {item["targetBid"] for item in truesilver} == {"55s 25c"}
+assert {item["target"] for item in truesilver} == {"65s"}
 
 print(
     f"Two-currency display rule passed for {price_count} AH bid/buyout values; "

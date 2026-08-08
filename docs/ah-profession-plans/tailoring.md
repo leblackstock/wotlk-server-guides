@@ -1,6 +1,6 @@
 # Tailoring AH Expansion Plan
 
-- Status: `complete — 2026-08-03`
+- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
 - Existing guide: `guides/tailoring-cloth-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 3
@@ -89,3 +89,34 @@
   cosmetic shirts, and utility. All 406 rows have rarity-colored names, exact
   recipe-mat mouseovers, one shared pricing note, and item-specific use or market
   notes. The complete Python, Node, desktop, and mobile validation suites passed.
+- Material-baseline refresh — 2026-08-06: Phase 1B rechecked 58 cloth, bolt,
+  specialty-cloth, silk, thread, dye, and overlapping reagent references.
+  Eleven inherit Phase 1A, eleven retain exact vendor pricing, and 36 newly
+  reviewed material bands changed. Finished Tailoring outputs remain outside
+  this phase except material intermediates explicitly owned by the input market.
+- Phase 2 start — 2026-08-08: Froze all 406 tradeable Tailoring outputs across
+  17 sections. The 17 cloth intermediates retain their completed Phase 1B
+  evidence, leaving 389 finished outputs for this review: three Tailor-only
+  nets, 33 bags, eight spellthreads, 314 cloth gear pieces, 30 cosmetic shirts,
+  and one tradeable utility item. All 406 outputs retain exact saved recipes;
+  the three nets remain isolated in the profession-restricted section. The 17
+  First Aid outputs sharing this guide remain outside this Tailoring batch.
+  Phase 1 input baselines stay frozen, current listings remain competition-only
+  evidence, and exact recipe cost remains a separate craftability diagnostic.
+  Nothing has been published.
+- Phase 2 completion — 2026-08-08: Completed the final comparison retry for all
+  389 finished Tailoring outputs, and all 2,334 comparison requests resolved.
+  No item had completed-sale evidence. The retry recovered usable relative-rank
+  evidence for 377 outputs: 331 had three-realm support, 38 had two-realm
+  support, eight had one-realm support, and 12 had no listings on the comparison
+  realms. The pass changed 384 price bands; 183 Targets rose, 190 fell, and 16
+  stayed unchanged. Of the 144 Target candidates whose movement exceeded 50%,
+  139 had at least two-realm support and were accepted, while five lacked enough
+  coverage and retained their frozen bands. One hundred ninety-two final
+  estimates remain below at least one exact
+  recipe-floor band and retain the shared do-not-craft warning. The 17 Phase 1B
+  cloth intermediates and all 17 First Aid outputs remained unchanged. Evidence
+  references, shared notes, exact recipes, profession-use sections, ordering,
+  search metadata, and the guide footer were refreshed locally. Refresh this
+  phase when useful Hellscream completed-sale history becomes available or a
+  later scheduled evidence refresh is due. Nothing was published.
