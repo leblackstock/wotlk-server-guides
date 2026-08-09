@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HUB_PATH = ROOT / "auction-house.html"
 OUTPUT_PATH = ROOT / "assets" / "ah-search-index.js"
 CANONICAL_VALUES_PATH = ROOT / "data" / "ah-search-canonical-values.json"
+VENDOR_RECOMMENDATIONS_PATH = ROOT / "data" / "ah-low-demand-vendor-recommendations.json"
 GUIDE_MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 AH_GUIDE_SUFFIX = "ah-price-guide.html"
 
@@ -75,11 +76,18 @@ class HubGuideParser(HTMLParser):
 
 
 class AHGuideParser(HTMLParser):
-    def __init__(self, filename: str, guide_id: str, guide_title: str) -> None:
+    def __init__(
+        self,
+        filename: str,
+        guide_id: str,
+        guide_title: str,
+        vendor_recommendation_names: set[str],
+    ) -> None:
         super().__init__()
         self.filename = filename
         self.guide_id = guide_id
         self.guide_title = guide_title
+        self.vendor_recommendation_names = vendor_recommendation_names
         self.section = "Other"
         self.capture_heading = False
         self.capture_heading_action = False
@@ -221,10 +229,11 @@ class AHGuideParser(HTMLParser):
             self.target_buyout_parts.append(data)
 
     def _finish_row(self) -> None:
-        if self.search_excluded:
-            return
         name = clean_text(self.name_parts)
         if not name:
+            return
+        vendor_recommended = name in self.vendor_recommendation_names
+        if self.search_excluded and not vendor_recommended:
             return
 
         slug = item_slug(name)
@@ -261,6 +270,8 @@ class AHGuideParser(HTMLParser):
         price_basis = clean_text(self.price_basis_parts)
         if price_basis:
             item["priceBasis"] = price_basis
+        if self.search_excluded and vendor_recommended:
+            item["_vendorReferencePromotion"] = True
         self.items.append(item)
 
 
@@ -273,6 +284,54 @@ def load_canonical_values() -> dict[str, object]:
     if data.get("version") != 1:
         raise RuntimeError("Unsupported AH search canonical-values version")
     return data
+
+
+def load_vendor_recommendations() -> dict[str, object]:
+    if not VENDOR_RECOMMENDATIONS_PATH.is_file():
+        raise FileNotFoundError(
+            "Missing low-demand vendor recommendations: "
+            f"{VENDOR_RECOMMENDATIONS_PATH.relative_to(ROOT)}"
+        )
+    data = json.loads(VENDOR_RECOMMENDATIONS_PATH.read_text(encoding="utf-8"))
+    if data.get("version") != 1:
+        raise RuntimeError("Unsupported low-demand vendor-recommendations version")
+    return data
+
+
+def recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+    recommendations = data.get("item_recommendations")
+    if not isinstance(recommendations, list) or not recommendations:
+        raise RuntimeError("Low-demand item vendor recommendations must not be empty")
+
+    keys: set[tuple[str, str]] = set()
+    for entry in recommendations:
+        if not isinstance(entry, dict):
+            raise RuntimeError("Every low-demand vendor recommendation must be an object")
+        key = (str(entry.get("guide_id", "")), str(entry.get("name", "")))
+        if not all(key):
+            raise RuntimeError("Every vendor recommendation needs guide_id and name")
+        if key in keys:
+            raise RuntimeError(f"Duplicate low-demand vendor recommendation: {key!r}")
+        keys.add(key)
+    return keys
+
+
+def section_recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+    recommendations = data.get("section_recommendations")
+    if not isinstance(recommendations, list) or not recommendations:
+        raise RuntimeError("Low-demand section vendor recommendations must not be empty")
+
+    keys: set[tuple[str, str]] = set()
+    for entry in recommendations:
+        if not isinstance(entry, dict):
+            raise RuntimeError("Every low-demand section recommendation must be an object")
+        key = (str(entry.get("guide_id", "")), str(entry.get("section", "")))
+        if not all(key):
+            raise RuntimeError("Every section recommendation needs guide_id and section")
+        if key in keys:
+            raise RuntimeError(f"Duplicate low-demand section recommendation: {key!r}")
+        keys.add(key)
+    return keys
 
 
 def grouped_items(
@@ -354,8 +413,79 @@ def canonicalize_and_validate(items: list[dict[str, str | int]]) -> None:
         )
 
 
+def apply_vendor_recommendations(
+    items: list[dict[str, str | int | bool]],
+    audit: dict[str, object],
+) -> int:
+    keys = recommendation_keys(audit)
+    section_keys = section_recommendation_keys(audit)
+    matched_keys: set[tuple[str, str]] = set()
+    matched_section_keys: set[tuple[str, str]] = set()
+    recommendation_count = 0
+    for item in items:
+        key = (str(item["guideId"]), str(item["name"]))
+        section_key = (str(item["guideId"]), str(item["section"]))
+        if key not in keys and section_key not in section_keys:
+            continue
+        if key in matched_keys and key in keys:
+            raise RuntimeError(f"Vendor recommendation matched multiple search rows: {key!r}")
+        if item["demand"] != "Low":
+            raise RuntimeError(f"Vendor recommendation must have exact Low demand: {key!r}")
+        if item["section"] == "Vendor & convenience items":
+            raise RuntimeError(f"NPC-vendor resale item cannot be a liquidation recommendation: {key!r}")
+        item["vendorRecommended"] = True
+        recommendation_count += 1
+        if key in keys:
+            matched_keys.add(key)
+        if section_key in section_keys:
+            matched_section_keys.add(section_key)
+
+    if matched_keys != keys:
+        missing = sorted(keys - matched_keys)
+        raise RuntimeError(f"Vendor recommendations are absent from the search index: {missing!r}")
+    if matched_section_keys != section_keys:
+        missing = sorted(section_keys - matched_section_keys)
+        raise RuntimeError(
+            f"Vendor-recommended sections are absent from the search index: {missing!r}"
+        )
+
+    by_name = grouped_items(items)
+    for group in by_name.values():
+        flags = {item.get("vendorRecommended", False) for item in group}
+        if len(flags) > 1:
+            raise RuntimeError(
+                f"Grouped item mixes Vendor and normal recommendations: {group[0]['name']}"
+            )
+
+    scope = audit.get("reviewed_scope")
+    if not isinstance(scope, dict):
+        raise RuntimeError("Low-demand vendor audit is missing reviewed_scope")
+    low_items = [item for item in items if item["demand"] == "Low"]
+    low_names = {item_slug(str(item["name"])) for item in low_items}
+    promoted_reference_count = sum(
+        item.get("_vendorReferencePromotion") is True for item in items
+    )
+    expected_counts = {
+        "low_entry_count_after_promotions": len(low_items),
+        "low_unique_name_count_after_promotions": len(low_names),
+        "promoted_reference_entry_count": promoted_reference_count,
+        "vendor_recommendation_count": recommendation_count,
+    }
+    for field, actual in expected_counts.items():
+        if int(scope.get(field, -1)) != actual:
+            raise RuntimeError(
+                f"Low-demand vendor audit {field} is stale: expected {scope.get(field)!r}, "
+                f"found {actual}"
+            )
+    for item in items:
+        item.pop("_vendorReferencePromotion", None)
+    return recommendation_count
+
+
 def build_index() -> str:
     manifest = json.loads(GUIDE_MANIFEST_PATH.read_text(encoding="utf-8"))
+    vendor_audit = load_vendor_recommendations()
+    vendor_keys = recommendation_keys(vendor_audit)
     guides = manifest.get("guides", [])
     if len(guides) != int(manifest.get("active_guide_count", 0)):
         raise RuntimeError("AH guide manifest active count does not match its guide list")
@@ -368,18 +498,25 @@ def build_index() -> str:
         path = ROOT / "guides" / filename
         if not path.is_file():
             raise FileNotFoundError(f"Manifest links to missing AH guide: {path.relative_to(ROOT)}")
-        parser = AHGuideParser(filename, guide_id, guide_title)
+        vendor_names = {
+            name
+            for recommended_guide_id, name in vendor_keys
+            if recommended_guide_id == guide_id
+        }
+        parser = AHGuideParser(filename, guide_id, guide_title, vendor_names)
         parser.feed(path.read_text(encoding="utf-8"))
         if not parser.items:
             raise RuntimeError(f"No searchable item rows found in {path.relative_to(ROOT)}")
         items.extend(parser.items)
 
     canonicalize_and_validate(items)
+    vendor_recommendation_count = apply_vendor_recommendations(items, vendor_audit)
     items.sort(key=lambda item: (str(item["name"]).casefold(), str(item["guideId"])))
     payload = {
         "version": 5,
         "guideCount": len(guides),
         "itemCount": len(items),
+        "vendorRecommendationCount": vendor_recommendation_count,
         "items": items,
     }
     compact_json = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))

@@ -224,12 +224,14 @@
         const stackValues = uniqueValues(matches, "stack");
         const priceBasisValues = Array.from(new Set(matches.map((match) => match.priceBasis).filter(Boolean)));
         const demandValues = uniqueValues(matches, "demand");
+        const vendorRecommended = matches.some((match) => match.vendorRecommended === true);
         const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
         const targetBidValue = bidValues[0] || "—";
         const targetBuyoutValue = buyoutValues[0] || "—";
         const stackValue = stackValues[0] || "—";
         const priceBasisValue = priceBasisValues[0] || "";
         const demandValue = demandValues[0] || "—";
+        const lowDemand = demandValue === "Low" && !vendorRecommended;
         const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
         const card = makeElement("article", "ah-search-result");
@@ -247,7 +249,7 @@
         targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
         targetBuyout.append(makeElement("strong", "ah-search-target-value", targetBuyoutValue));
         targetPrice.append(targetBid, targetBuyout);
-        topLine.append(targetPrice);
+        if (!vendorRecommended) topLine.append(targetPrice);
         primary.append(topLine);
 
         const locationSummary = `${matches.length} ${matches.length === 1 ? "entry" : "entries"} across ${guideCount} ${guideCount === 1 ? "guide" : "guides"}`;
@@ -258,6 +260,12 @@
         const detailLine = makeElement("span", "ah-search-result-detail-line");
         detailLine.append(makeElement("span", "ah-search-result-meta", meta));
         const stackDetails = makeElement("span", "ah-search-stack-details");
+        if (vendorRecommended) {
+          stackDetails.append(makeElement("span", "ah-vendor-chip ah-search-vendor-chip", "Vendor"));
+        }
+        if (lowDemand) {
+          stackDetails.append(makeElement("span", "ah-low-chip ah-search-low-chip", "Low"));
+        }
         if (priceBasisValue) {
           stackDetails.append(makeElement("span", "ah-price-stack-chip ah-search-price-stack-chip", priceBasisValue));
         }

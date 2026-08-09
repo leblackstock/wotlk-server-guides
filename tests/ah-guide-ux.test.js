@@ -205,8 +205,9 @@ vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
 assert.equal(searchIndex.guideCount, 18);
-assert.equal(searchIndex.itemCount, 3949);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3720);
+assert.equal(searchIndex.itemCount, 3951);
+assert.equal(searchIndex.vendorRecommendationCount, 22);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3722);
 assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 18);
 
 const counts = Object.fromEntries(
