@@ -8,6 +8,7 @@ const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
 const version = "20260804-ah-dropped-gear-v1";
+const hubSearchVersion = "20260809-ah-demand-chips-v1";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 
@@ -27,7 +28,7 @@ const hub = new JSDOM(read("auction-house.html")).window.document;
 assert.match(hub.querySelector("header .sub").textContent, /all 18 pricing guides/);
 const hubGroups = [...hub.querySelectorAll("[data-ah-guide-group]")];
 assert.equal(hubGroups.length, manifest.groups.length);
-assert.ok(hub.querySelector('link[href="./assets/style.css?v=20260804-ah-dropped-gear-hub-v1"]'));
+assert.ok(hub.querySelector(`link[href="./assets/style.css?v=${hubSearchVersion}"]`));
 assert.ok(hub.querySelector('link[href="./assets/ah-guide-icons.css?v=20260804-ah-dropped-gear-v1"]'));
 assert.deepEqual(
   hubGroups.map((group) => group.dataset.ahGuideGroup),
@@ -43,8 +44,8 @@ assert.equal(hubCards.length, expectedHubCardCount);
 assert.equal(hub.querySelectorAll(".ah-hub-route-card").length, 4);
 assert.equal(hub.querySelectorAll(".ah-hub-route-card:not(.ah-hub-link-card)").length, 3);
 assert.equal(hub.querySelectorAll(".ah-hub-link-card").length, 1);
-assert.ok(hub.querySelector('script[src="./assets/ah-search-index.js?v=20260804-ah-dropped-gear-v1"]'));
-assert.ok(hub.querySelector('script[src="./assets/ah-search.js?v=20260804-ah-dropped-gear-v1"]'));
+assert.ok(hub.querySelector(`script[src="./assets/ah-search-index.js?v=${hubSearchVersion}"]`));
+assert.ok(hub.querySelector(`script[src="./assets/ah-search.js?v=${hubSearchVersion}"]`));
 for (const guide of manifest.guides) {
   if (groupedGuideIds.has(guide.id)) {
     const chip = hub.querySelector(`.ah-hub-card-chip[data-ah-guide-id="${guide.id}"]`);
