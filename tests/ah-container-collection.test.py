@@ -17,6 +17,7 @@ PAGE_PATH = ROOT / "guides" / "bags-containers-ah-guide.html"
 AUDIT_PATH = ROOT / "data" / "ah-container-audit.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
+SEARCH_INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 RENDERER_PATH = ROOT / "scripts" / "render-ah-container-collection.py"
 
 
@@ -36,6 +37,8 @@ audit = load(AUDIT_PATH)
 vendor = load(VENDOR_PATH)
 manifest = load(MANIFEST_PATH)
 source = PAGE_PATH.read_text(encoding="utf-8")
+search_index_source = SEARCH_INDEX_PATH.read_text(encoding="utf-8")
+search_index = json.loads(search_index_source.partition("=")[2].rstrip(" ;\n"))
 
 included_ids = {
     int(item_id)
@@ -76,6 +79,14 @@ assert all(
     for row in canonical_rows
 )
 assert all(row["owner_href"].startswith("./") and "#ah-item=" in row["owner_href"] for row in canonical_rows)
+search_destinations = {
+    (item["name"], item["href"].replace("./guides/", "./", 1))
+    for item in search_index["items"]
+}
+assert all(
+    (row["name"], row["owner_href"]) in search_destinations
+    for row in canonical_rows
+), "Every container link must use the destination guide's actual searchable row fragment"
 
 row_tags = re.findall(r"<tr data-container-row\b[^>]*>", source)
 assert len(row_tags) == 93
@@ -104,7 +115,7 @@ assert "Selected types are combined with OR" in source
 assert "Showing 93 of 93 containers" in source
 assert "One collection, one price owner" in source
 assert "Vendor cost" in source
-assert "Updated 2026-08-08</footer>" in source
+assert "Updated 2026-08-09</footer>" in source
 assert '../assets/ah-containers.css?v=20260808-container-collection-v2' in source
 assert '../assets/ah-containers.js?v=20260808-container-collection-v2' in source
 assert '../assets/ah-item-tooltips.js?v=20260808-container-collection-v2' in source

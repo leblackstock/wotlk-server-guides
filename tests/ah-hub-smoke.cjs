@@ -179,7 +179,7 @@ async function verifyContainerCollection(page, labelPrefix) {
   assert.deepEqual(await page.locator(".container-summary-grid strong").allTextContents(), ["93", "48", "27", "18"]);
   assert.equal(await page.locator("[data-container-row]:not([hidden])").count(), 93);
   assert.equal(await page.locator("#container-result-count").textContent(), "Showing 93 of 93 containers");
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-08/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-09/);
   assert.deepEqual(
     await page.locator("[data-container-row]").evaluateAll((rows) => rows.slice(0, 5).map((row) => row.dataset.capacity)),
     ["32", "32", "32", "32", "32"],
@@ -242,6 +242,25 @@ async function verifyContainerCollection(page, labelPrefix) {
     assert.equal(await page.locator("[data-container-row]").first().locator("strong").first().textContent(), "Abyssal Bag");
   }
   await noOverflow(page, `${labelPrefix} Bags & Containers collection`);
+
+  const imbuedNetherweaveBagLink = page.locator('[data-container-row][data-item-id="21843"] .container-item-link');
+  assert.match(
+    await imbuedNetherweaveBagLink.getAttribute("href"),
+    /tailoring-cloth-ah-price-guide\.html#ah-item=imbued-netherweave-bag$/,
+  );
+  await Promise.all([
+    page.waitForURL(/tailoring-cloth-ah-price-guide\.html#ah-item=imbued-netherweave-bag$/),
+    imbuedNetherweaveBagLink.click(),
+  ]);
+  await page.waitForSelector('[data-crafted-key="tailor-imbued-netherweave-bag"].ah-row-selected');
+  const selectedContainerRow = page.locator('[data-crafted-key="tailor-imbued-netherweave-bag"].ah-row-selected');
+  assert.equal(await selectedContainerRow.locator("td:first-child strong").textContent(), "Imbued Netherweave Bag");
+  await page.waitForFunction(() => {
+    const row = document.querySelector('[data-crafted-key="tailor-imbued-netherweave-bag"].ah-row-selected');
+    if (!row) return false;
+    const bounds = row.getBoundingClientRect();
+    return bounds.bottom > 0 && bounds.top < window.innerHeight;
+  });
 }
 
 (async () => {

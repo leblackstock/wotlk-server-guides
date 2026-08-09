@@ -8,6 +8,7 @@ import html
 import json
 import re
 import sys
+import unicodedata
 from collections import Counter
 from datetime import date
 from pathlib import Path
@@ -66,6 +67,17 @@ RESTRICTION_CHIPS = (
 
 def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def item_slug(value: str) -> str:
+    value = "".join(
+        character
+        for character in unicodedata.normalize("NFKD", value)
+        if unicodedata.category(character) != "Mn"
+    )
+    value = re.sub(r"['’]", "", value.lower())
+    value = value.replace("&", " and ")
+    return re.sub(r"[^a-z0-9]+", "-", value).strip("-")
 
 
 def merged_crafted_catalog(config: dict) -> dict[int, tuple[str, dict]]:
@@ -217,7 +229,7 @@ def build_rows() -> tuple[dict, list[dict]]:
                 "target_copper": target,
                 "high_copper": high,
                 "owner_guide": guides[guide_file]["title"],
-                "owner_href": f"./{guide_file}#ah-item={key}",
+                "owner_href": f'./{guide_file}#ah-item={item_slug(audited["name"])}',
                 "canonical_key": key,
             }
         )
