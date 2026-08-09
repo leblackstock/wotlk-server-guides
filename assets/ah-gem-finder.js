@@ -140,10 +140,12 @@
     const moreButton = finder.querySelector("#ah-gem-more-stats");
     const moreStats = finder.querySelector("#ah-gem-extra-stats");
     const sortSelect = finder.querySelector("#ah-gem-sort");
+    const cutCount = finder.querySelector("[data-gem-cut-count]");
     if (!input || !results || !status || !activeFilters || !activeRow || !clearButton || !sortSelect) return;
 
     finder.dataset.gemFinderReady = "true";
     finder.dataset.cutCount = String(cuts.length);
+    if (cutCount) cutCount.textContent = `${cuts.length} cuts`;
     const state = {
       stats: new Set(),
       tier: "all",

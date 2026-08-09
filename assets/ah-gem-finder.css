@@ -6,9 +6,16 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder {
   border: 1px solid rgba(114, 227, 255, 0.28);
   border-radius: 16px;
   background:
+    radial-gradient(circle at 92% -30%, rgba(202, 167, 255, 0.16), transparent 38%),
     linear-gradient(135deg, rgba(114, 227, 255, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(30, 38, 48, 0.98), rgba(20, 27, 34, 0.98));
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder[open] {
+  border-color: rgba(114, 227, 255, 0.42);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.24), 0 0 28px rgba(114, 227, 255, 0.05);
 }
 
 body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
@@ -22,8 +29,84 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
 .ah-gem-finder-heading {
   display: flex;
   gap: 13px;
-  align-items: flex-start;
-  margin-bottom: 16px;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ah-gem-finder-heading::-webkit-details-marker {
+  display: none;
+}
+
+.ah-gem-finder-heading:focus-visible {
+  border-radius: 10px;
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.ah-gem-finder-heading > div {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.ah-gem-finder-summary-meta {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.ah-gem-finder-count,
+.ah-gem-finder-toggle {
+  padding: 6px 10px;
+  border: 1px solid rgba(174, 184, 194, 0.2);
+  border-radius: 999px;
+  background: rgba(8, 13, 18, 0.48);
+  color: #b9c6d1;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.ah-gem-finder-toggle {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  border-color: rgba(114, 227, 255, 0.36);
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+
+.ah-gem-finder-toggle::before {
+  content: "Open";
+}
+
+.ah-gem-finder-toggle::after {
+  content: "⌄";
+  font-size: 1rem;
+  line-height: 0.7;
+  transform: translateY(-1px);
+  transition: transform 160ms ease;
+}
+
+.ah-gem-finder[open] .ah-gem-finder-toggle::before {
+  content: "Close";
+}
+
+.ah-gem-finder[open] .ah-gem-finder-toggle::after {
+  transform: translateY(1px) rotate(180deg);
+}
+
+.ah-gem-finder-body {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(174, 184, 194, 0.14);
+}
+
+.ah-gem-finder:not([open]) .ah-gem-finder-body {
+  display: none;
 }
 
 .ah-gem-finder-mark {
@@ -34,8 +117,18 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
   place-items: center;
   border: 1px solid rgba(114, 227, 255, 0.38);
   border-radius: 12px;
-  background: rgba(114, 227, 255, 0.09);
+  background:
+    linear-gradient(145deg, rgba(114, 227, 255, 0.17), rgba(202, 167, 255, 0.1)),
+    rgba(8, 13, 18, 0.46);
   color: var(--cyan);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 8px 22px rgba(0, 0, 0, 0.18);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.ah-gem-finder-heading:hover .ah-gem-finder-mark {
+  border-color: rgba(114, 227, 255, 0.68);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 0 22px rgba(114, 227, 255, 0.13);
+  transform: translateY(-1px);
 }
 
 .ah-gem-finder-mark svg {
@@ -52,6 +145,11 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
   margin: 0;
   color: var(--text);
   font-size: clamp(1.2rem, 2vw, 1.55rem);
+  transition: color 160ms ease;
+}
+
+.ah-gem-finder-heading:hover h2 {
+  color: #e8fbff;
 }
 
 .ah-gem-finder-heading p {
@@ -88,14 +186,19 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
   border: 1px solid rgba(114, 227, 255, 0.32);
   border-radius: 12px;
   outline: none;
-  background: rgba(9, 14, 19, 0.76);
+  background:
+    linear-gradient(90deg, rgba(114, 227, 255, 0.035), transparent 38%),
+    rgba(9, 14, 19, 0.8);
   color: var(--text);
   font: inherit;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
 
 .ah-gem-search-input:focus {
   border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(114, 227, 255, 0.12);
+  background: rgba(10, 17, 23, 0.94);
+  box-shadow: 0 0 0 3px rgba(114, 227, 255, 0.12), 0 10px 28px rgba(0, 0, 0, 0.16);
 }
 
 .ah-gem-filter-set {
@@ -137,6 +240,8 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
   font-size: 0.84rem;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+  transition: border-color 130ms ease, background 130ms ease, color 130ms ease, transform 130ms ease;
 }
 
 .ah-gem-chip:hover,
@@ -145,13 +250,51 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
 .ah-gem-clear-button:hover {
   border-color: rgba(114, 227, 255, 0.65);
   color: #fff;
+  transform: translateY(-1px);
 }
 
 .ah-gem-chip[aria-pressed="true"] {
   border-color: var(--cyan);
-  background: rgba(114, 227, 255, 0.15);
+  background: linear-gradient(135deg, rgba(114, 227, 255, 0.19), rgba(202, 167, 255, 0.1));
   color: #e7fbff;
-  box-shadow: inset 0 0 0 1px rgba(114, 227, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(114, 227, 255, 0.12), 0 5px 16px rgba(0, 0, 0, 0.14);
+}
+
+[data-gem-stat]::before,
+[data-gem-filter-group="tier"]:not([data-gem-filter-value="all"])::before,
+[data-gem-filter-group="socket"]:not([data-gem-filter-value="any"])::before {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  box-shadow: 0 0 8px rgba(114, 227, 255, 0.3);
+  content: "";
+  transform: rotate(45deg);
+}
+
+[data-gem-filter-group="tier"][data-gem-filter-value="epic"]::before { background: var(--q-epic); }
+[data-gem-filter-group="tier"][data-gem-filter-value="rare"]::before { background: var(--q-rare); }
+[data-gem-filter-group="tier"][data-gem-filter-value="uncommon"]::before { background: var(--q-uncommon); }
+[data-gem-filter-group="socket"][data-gem-filter-value="red"]::before { background: #ff6f7d; }
+[data-gem-filter-group="socket"][data-gem-filter-value="yellow"]::before { background: #ffd166; }
+[data-gem-filter-group="socket"][data-gem-filter-value="blue"]::before { background: #6ea8ff; }
+[data-gem-filter-group="socket"][data-gem-filter-value="meta"]::before { background: var(--purple); }
+
+[data-gem-filter-group="tier"][data-gem-filter-value="epic"][aria-pressed="true"] {
+  border-color: var(--q-epic);
+  background: rgba(202, 167, 255, 0.16);
+}
+
+[data-gem-filter-group="tier"][data-gem-filter-value="rare"][aria-pressed="true"] {
+  border-color: var(--q-rare);
+  background: rgba(75, 132, 255, 0.15);
+}
+
+[data-gem-filter-group="tier"][data-gem-filter-value="uncommon"][aria-pressed="true"] {
+  border-color: var(--q-uncommon);
+  background: rgba(46, 207, 92, 0.13);
 }
 
 .ah-gem-extra-stats {
@@ -188,6 +331,7 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
   background: #10171e;
   color: var(--text);
   font: inherit;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
 }
 
 .ah-gem-active-row {
@@ -369,6 +513,19 @@ body[data-ah-guide="jewelcrafting-gems"] .ah-gem-finder::before {
 
   .ah-gem-finder-heading {
     gap: 10px;
+  }
+
+  .ah-gem-finder-count {
+    display: none;
+  }
+
+  .ah-gem-finder-toggle {
+    padding: 6px 8px;
+  }
+
+  .ah-gem-finder-heading p {
+    font-size: 0.83rem;
+    line-height: 1.4;
   }
 
   .ah-gem-finder-mark {

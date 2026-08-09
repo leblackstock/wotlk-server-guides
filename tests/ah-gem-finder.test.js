@@ -11,9 +11,15 @@ const guideSource = read("guides/jewelcrafting-gems-ah-price-guide.html");
 const finderSource = read("assets/ah-gem-finder.js");
 const staticDocument = new JSDOM(guideSource).window.document;
 
-assert.ok(staticDocument.querySelector('link[href="../assets/ah-gem-finder.css?v=20260808-cut-gem-finder-v1"]'));
-assert.ok(staticDocument.querySelector('script[src="../assets/ah-gem-finder.js?v=20260808-cut-gem-finder-v1"]'));
+assert.ok(staticDocument.querySelector('link[href="../assets/ah-gem-finder.css?v=20260808-cut-gem-finder-v2"]'));
+assert.ok(staticDocument.querySelector('script[src="../assets/ah-gem-finder.js?v=20260808-cut-gem-finder-v2"]'));
 assert.equal(staticDocument.querySelectorAll("[data-ah-gem-finder]").length, 1);
+const staticFinder = staticDocument.querySelector("[data-ah-gem-finder]");
+assert.equal(staticFinder.tagName, "DETAILS");
+assert.equal(staticFinder.open, false, "The Cut Gem Finder must be collapsed by default");
+assert.ok(staticFinder.querySelector("summary.ah-gem-finder-heading"));
+assert.ok(staticFinder.querySelector("[data-gem-cut-count]"));
+assert.equal(staticFinder.querySelector("summary .ah-back-to-top"), null);
 assert.equal(staticDocument.querySelectorAll("[data-ah-gem-finder] [data-gem-stat]").length, 18);
 assert.equal(staticDocument.querySelectorAll("[data-gem-filter-group='tier']").length, 4);
 assert.equal(staticDocument.querySelectorAll("[data-gem-filter-group='socket']").length, 5);
@@ -53,6 +59,7 @@ const click = (selector) => {
 
 assert.equal(finder.dataset.gemFinderReady, "true");
 assert.equal(Number(finder.dataset.cutCount), sourceCutCount);
+assert.equal(finder.querySelector("[data-gem-cut-count]").textContent, `${sourceCutCount} cuts`);
 assert.ok(sourceCutCount >= 350);
 assert.equal(results.hidden, true);
 assert.match(status.textContent, new RegExp(`^${sourceCutCount} cut gems available`));

@@ -1,13 +1,19 @@
-<section class="ah-gem-finder" aria-labelledby="ah-gem-finder-title" data-ah-gem-finder>
-  <div class="ah-gem-finder-heading">
+<details class="ah-gem-finder" aria-labelledby="ah-gem-finder-title" data-ah-gem-finder>
+  <summary class="ah-gem-finder-heading">
     <span class="ah-gem-finder-mark" aria-hidden="true">
       <svg viewBox="0 0 24 24" focusable="false"><path d="m7 3-4 6 9 12 9-12-4-6H7Z"></path><path d="m3 9 9 3 9-3M7 3l5 9 5-9"></path></svg>
     </span>
     <div>
-      <h2 id="ah-gem-finder-title" class="ah-category-heading">Cut Gem Finder<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
-      <p>Search cut names or exact effects, combine popular stats, and narrow by quality or matching socket. Multiple stat chips use exact <strong>AND</strong> matching.</p>
+      <h2 id="ah-gem-finder-title" class="ah-category-heading">Cut Gem Finder</h2>
+      <p>Find the right cut by stat, quality, and socket. Combine stat chips for exact <strong>AND</strong> matches.</p>
     </div>
-  </div>
+    <span class="ah-gem-finder-summary-meta" aria-hidden="true">
+      <span class="ah-gem-finder-count" data-gem-cut-count>Cut catalog</span>
+      <span class="ah-gem-finder-toggle"></span>
+    </span>
+  </summary>
+
+  <div class="ah-gem-finder-body">
 
   <label class="visually-hidden" for="ah-gem-search-input">Search cut gem names or effects</label>
   <div class="ah-gem-search-wrap">
@@ -86,4 +92,5 @@
   <p class="ah-gem-status" id="ah-gem-status" role="status" aria-live="polite"></p>
   <ol class="ah-gem-results" id="ah-gem-results" hidden></ol>
   <noscript><p class="small">JavaScript is required for the finder. The complete cut tables remain available below.</p></noscript>
-</section>
+  </div>
+</details>

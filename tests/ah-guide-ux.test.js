@@ -120,9 +120,11 @@ for (const guide of manifest.guides) {
     "level-80-boe-epics",
     "sought-after-world-drops",
   ]);
-  const expectedUpdatedDate = updatedOnAugustEighth.has(guide.id)
-    ? "2026-08-08"
-    : "2026-08-06";
+  const expectedUpdatedDate = guide.id === "jewelcrafting-gems"
+    ? "2026-08-09"
+    : updatedOnAugustEighth.has(guide.id)
+      ? "2026-08-08"
+      : "2026-08-06";
   assert.ok(document.querySelector("footer").textContent.endsWith(`Updated ${expectedUpdatedDate}`), guide.file);
   assert.equal(document.title, `${guide.title} AH Price Guide — WotLK 3.3.5 Low Pop`, guide.file);
   assert.ok(

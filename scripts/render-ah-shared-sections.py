@@ -312,6 +312,8 @@ def decorate_category_headings(source: str, filename: str) -> str:
 
     def decorate(match: re.Match[str]) -> str:
         attributes, content = match.groups()
+        if 'id="ah-gem-finder-title"' in attributes:
+            return match.group(0)
         content = re.sub(
             r'<a class="ah-back-to-top"[^>]*>.*?</a>\s*$',
             "",

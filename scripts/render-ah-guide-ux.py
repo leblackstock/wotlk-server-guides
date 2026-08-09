@@ -23,8 +23,8 @@ ASSET_VERSION = "20260804-ah-dropped-gear-v1"
 HUB_STYLE_VERSION = "20260804-ah-dropped-gear-hub-v1"
 PAGE_SPECIFIC_ASSETS = {
     "jewelcrafting-gems-ah-price-guide.html": {
-        "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v1")],
-        "scripts": [("ah-gem-finder.js", "20260808-cut-gem-finder-v1")],
+        "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v2")],
+        "scripts": [("ah-gem-finder.js", "20260808-cut-gem-finder-v2")],
     },
 }
 
@@ -33,7 +33,7 @@ UX_BLOCK = re.compile(
     re.DOTALL,
 )
 GEM_FINDER_BLOCK = re.compile(
-    r'\s*<section class="ah-gem-finder"[^>]*data-ah-gem-finder.*?</section>',
+    r'\s*<(?P<tag>section|details) class="ah-gem-finder"[^>]*data-ah-gem-finder.*?</(?P=tag)>',
     re.DOTALL,
 )
 HEADER_BLOCK = re.compile(r"<header(?:\s[^>]*)?>.*?</header>", re.DOTALL)

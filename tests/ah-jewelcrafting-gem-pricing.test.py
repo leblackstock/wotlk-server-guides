@@ -142,7 +142,7 @@ assert "Publication status: `local only — not published`" in report
 
 gem_guide = GEM_GUIDE_PATH.read_text(encoding="utf-8")
 jewelry_guide = JEWELRY_GUIDE_PATH.read_text(encoding="utf-8")
-assert "Updated 2026-08-08" in gem_guide
+assert "Updated 2026-08-09" in gem_guide
 assert "Updated 2026-08-06" in jewelry_guide
 assert gem_guide.count('class="crafted-recipe-link ') == 360
 assert gem_guide.count('class="crafted-note-ref"') == 360
