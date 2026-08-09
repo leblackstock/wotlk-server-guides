@@ -521,6 +521,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "190g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
+      footerDate: "2026-08-09",
       label: "Desktop Jewelcrafting gems guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -751,6 +752,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "190g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
+      footerDate: "2026-08-09",
       label: "Mobile Jewelcrafting gems guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
