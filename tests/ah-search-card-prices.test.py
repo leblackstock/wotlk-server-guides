@@ -117,7 +117,10 @@ assert 'const targetBuyoutValue = buyoutValues[0] || "—"' in search_script
 assert 'const stackValue = stackValues[0] || "—"' in search_script
 assert 'const priceBasisValue = priceBasisValues[0] || ""' in search_script
 assert 'const demandValue = demandValues[0] || "—"' in search_script
+assert 'const hasTargetPrice = targetBidValue !== "—" || targetBuyoutValue !== "—"' in search_script
 assert 'const lowDemand = demandValue === "Low" && !vendorRecommended' in search_script
+assert "if (hasTargetPrice) topLine.append(targetPrice)" in search_script
+assert "if (!vendorRecommended) topLine.append(targetPrice)" not in search_script
 assert '"Stack"' in search_script
 assert '"Recommended stack"' not in search_script
 assert '"Varies"' not in search_script

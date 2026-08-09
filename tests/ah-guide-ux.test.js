@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
 const version = "20260804-ah-dropped-gear-v1";
-const hubSearchVersion = "20260809-ah-demand-chips-v1";
+const hubSearchVersion = "20260809-ah-vendor-prices-v1";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 

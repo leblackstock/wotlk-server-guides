@@ -231,6 +231,7 @@
         const stackValue = stackValues[0] || "—";
         const priceBasisValue = priceBasisValues[0] || "";
         const demandValue = demandValues[0] || "—";
+        const hasTargetPrice = targetBidValue !== "—" || targetBuyoutValue !== "—";
         const lowDemand = demandValue === "Low" && !vendorRecommended;
         const grouped = matches.length > 1;
         const listItem = makeElement("li", "ah-search-result-item");
@@ -249,7 +250,7 @@
         targetBuyout.append(makeElement("span", "ah-search-target-label", "Buyout"));
         targetBuyout.append(makeElement("strong", "ah-search-target-value", targetBuyoutValue));
         targetPrice.append(targetBid, targetBuyout);
-        if (!vendorRecommended) topLine.append(targetPrice);
+        if (hasTargetPrice) topLine.append(targetPrice);
         primary.append(topLine);
 
         const locationSummary = `${matches.length} ${matches.length === 1 ? "entry" : "entries"} across ${guideCount} ${guideCount === 1 ? "guide" : "guides"}`;
