@@ -572,7 +572,7 @@
         {
           "id": "collectibles-rare-rewards",
           "label": "Rare Rewards",
-          "patterns": ["^Promotional and TCG mounts$", "^Shadowmourne quest rewards$"]
+          "patterns": ["^Shadowmourne quest rewards$"]
         },
         {
           "id": "collectibles-seasons",

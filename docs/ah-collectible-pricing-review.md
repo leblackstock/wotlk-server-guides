@@ -1,11 +1,11 @@
 # Companions, Mounts & Accessories AH Pricing Review
 
 - Review date: `2026-08-10`
-- Items reviewed: `133`
+- Items reviewed: `128`
 - Qualified or sparse Hellscream completed-sale histories: `1`
 - Present in current Hellscream supply after owned-account exclusion: `2`
-- Seen on at least two comparison realms: `56`
-- Comparison requests: `366` initial / `0` final failures after the 2-, 5-, and 10-second retry rule
+- Seen on at least two comparison realms: `55`
+- Comparison requests: `336` initial / `0` final failures after the 2-, 5-, and 10-second retry rule
 
 ## Decision
 
@@ -28,7 +28,6 @@ Active Hellscream listings were used only as supply diagnostics and never set or
 | crafted-companion | 75g | Reviewed 75g collectible-demand anchor; exact same-band recipe cost remains the minimum craftability diagnostic. |
 | crafted-profession-mount | 1,000g | Reviewed 1,000g starter anchor for a profession-restricted crafted mount; exact recipe cost remains separate. |
 | crafted-motorcycle | 18,000g | Reviewed 18,000g starter anchor for the general-use motorcycle market; exact vendor components and materials set the craft floor. |
-| promotional-mounts | 30,000g | Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. |
 | quest-accessories | 10,000g | Reviewed 10,000g Hellscream starter anchor for the tradeable Shadowmourne sealed-chest reward family. |
 | seasonal-companion | 250g | Reviewed 250g Hellscream starter anchor for a tradeable event companion reward. |
 | seasonal-apparel | 75g | Reviewed 75g Hellscream starter anchor for tradeable event apparel and appearance demand. |
@@ -42,7 +41,8 @@ Wood Frog Box has one valid 20g completed buyout from one buyer on one day. It r
 
 - Comparison-realm pages report asks, not completed sales. Their nominal gold values are not saved or copied.
 - A token requirement proves acquisition cost, but not a gold conversion; token-priced rows remain fallback confidence.
-- Promotional and Shadowmourne reward prices are discovery bands for a thin market, not verified current values.
+- Promotional and TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that the rewards are enabled on this server.
+- Shadowmourne reward prices are discovery bands for a thin market, not verified current values.
 - Limited and unlimited vendors remain separate because a stock cap and restock timer materially change arbitrage risk.
 - Every holiday is rendered separately, including explicit empty in-scope sections where only BoP, temporary, or unverified rewards exist.
 

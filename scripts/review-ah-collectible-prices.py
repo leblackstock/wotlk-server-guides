@@ -62,10 +62,6 @@ FIXED_ANCHORS = {
         "target_copper": 180_000_000,
         "basis": "Reviewed 18,000g starter anchor for the general-use motorcycle market; exact vendor components and materials set the craft floor.",
     },
-    "promotional-mounts": {
-        "target_copper": 300_000_000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied.",
-    },
     "quest-accessories": {
         "target_copper": 100_000_000,
         "basis": "Reviewed 10,000g Hellscream starter anchor for the tradeable Shadowmourne sealed-chest reward family.",
@@ -109,11 +105,11 @@ SECTION_SPECS = [
     ("vendor-unlimited", "Unlimited-supply vendor arbitrage", "Exact coin cost plus a documented convenience margin. These are route-and-faction arbitrage items, not scarcity plays."),
     ("vendor-limited", "Limited-supply vendor arbitrage", "True stock caps and restock timers are verified separately from unlimited vendors."),
     ("vendor-token", "Token and reputation vendors", "The token requirement is exact; the gold band is a fallback estimate because time-gated currency has no deterministic gold conversion."),
-    ("crafted-companions", "Crafted companions", "Tradeable Engineering companions with exact recipe floors and collectible-demand estimates."),
-    ("crafted-mounts", "Crafted mounts", "Profession-restricted flying mounts and general-use motorcycles are labeled for their actual buyer."),
+    ("crafted-companions", "Crafted companions", "Tradeable Engineering companions that do not require Engineering to use, with exact recipe floors and collectible-demand estimates."),
+    ("crafted-mounts-general-use", "Crafted mounts — no profession required", "The finished motorcycles do not require Engineering to use; normal faction and Riding 150 requirements still apply."),
+    ("crafted-mounts-profession-required", "Crafted mounts — profession required", "The buyer must have the listed Engineering or Tailoring rank to use these finished flying mounts."),
     ("companion-drops", "Farmed companion drops", "Pinned loot routes, wide fallback bands, and one-at-a-time posting for thin collector demand."),
     ("companion-quest-rewards", "Quest-reward companions", "Tradeable quest-chain rewards whose acquisition route is verified independently of their price."),
-    ("promotional-mounts", "Promotional and TCG mounts", "Only mounts with a pinned Landro's Gift Box route are included. Other technically tradeable promo mounts remain excluded pending server-availability proof."),
     ("quest-accessories", "Shadowmourne quest rewards", "Tradeable sealed-chest rewards: one mount plus vanity and appearance accessories."),
 ]
 
@@ -504,7 +500,7 @@ def build_evidence() -> dict:
         "version": 1,
         "reviewed": date.today().isoformat(),
         "model_version": MODEL_VERSION,
-        "scope": "All 133 verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the new guide.",
+        "scope": f"All {len(records)} verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the guide. Promotional and TCG mounts are excluded until direct Hellscream availability is verified.",
         "rules": {
             "active_hellscream_listing_prices_used": False,
             "external_gold_values_copied": False,
@@ -564,13 +560,11 @@ def source_label(item: dict) -> str:
         label = evidence[0] if evidence else "Pinned loot route"
         chance = item["loot_sources"]["chance_range"]
         return f"{label}; pinned chance range {chance[0]:g}%–{chance[1]:g}%"
-    if item["group"] == "promotional-mounts":
-        return "Landro's Gift Box promotional reward route"
     return "Pinned AzerothCore acquisition route"
 
 
 def demand(item: dict) -> tuple[str, str]:
-    if item["kind"] == "Mount" or item["group"] in {"promotional-mounts", "quest-accessories"}:
+    if item["kind"] == "Mount" or item["group"] == "quest-accessories":
         return "Very Low", "low"
     if item["kind"] == "Companion":
         return "Low-Med", "med"
@@ -629,14 +623,23 @@ def sections_from_catalog(catalog: dict) -> list[dict]:
             by_group[item["group"]].append(key)
     sections = []
     for section_id, title, description in SECTION_SPECS:
+        audience = None
         if section_id == "crafted-companions":
             keys = [key for key in by_group["crafted-collectibles"] if catalog[key]["kind"] == "Companion"]
-        elif section_id == "crafted-mounts":
-            keys = [key for key in by_group["crafted-collectibles"] if catalog[key]["kind"] == "Mount"]
+            audience = "general-use"
+        elif section_id == "crafted-mounts-general-use":
+            keys = [key for key in by_group["crafted-collectibles"] if catalog[key]["kind"] == "Mount" and catalog[key]["required_skill_id"] == 762]
+            audience = "general-use"
+        elif section_id == "crafted-mounts-profession-required":
+            keys = [key for key in by_group["crafted-collectibles"] if catalog[key]["kind"] == "Mount" and catalog[key]["required_skill_id"] in {197, 202}]
+            audience = "profession-restricted"
         else:
             keys = by_group[section_id]
         keys.sort(key=lambda key: (-catalog[key]["target_copper"], catalog[key]["name"].casefold()))
-        sections.append({"id": section_id, "title": title, "description": description, "items": keys})
+        section = {"id": section_id, "title": title, "description": description, "items": keys}
+        if audience:
+            section["audience"] = audience
+        sections.append(section)
     for season in SEASON_ORDER:
         keys = by_season[season]
         keys.sort(key=lambda key: (-catalog[key]["target_copper"], catalog[key]["name"].casefold()))
@@ -702,7 +705,8 @@ def report(evidence: dict) -> str:
         "",
         "- Comparison-realm pages report asks, not completed sales. Their nominal gold values are not saved or copied.",
         "- A token requirement proves acquisition cost, but not a gold conversion; token-priced rows remain fallback confidence.",
-        "- Promotional and Shadowmourne reward prices are discovery bands for a thin market, not verified current values.",
+        "- Promotional and TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that the rewards are enabled on this server.",
+        "- Shadowmourne reward prices are discovery bands for a thin market, not verified current values.",
         "- Limited and unlimited vendors remain separate because a stock cap and restock timer materially change arbitrage risk.",
         "- Every holiday is rendered separately, including explicit empty in-scope sections where only BoP, temporary, or unverified rewards exist.",
         "",
@@ -722,8 +726,9 @@ def validate(evidence: dict, sections: dict | None = None) -> None:
     audit = load(AUDIT_PATH)
     if evidence.get("model_version") != MODEL_VERSION:
         raise ValueError("Collectible Evidence Pricing model is stale")
-    if len(evidence.get("items", {})) != 133 or set(evidence["items"]) != set(audit["items"]):
-        raise ValueError("Collectible evidence must cover all 133 audited items")
+    expected_items = len(audit["items"])
+    if len(evidence.get("items", {})) != expected_items or set(evidence["items"]) != set(audit["items"]):
+        raise ValueError(f"Collectible evidence must cover all {expected_items} audited items")
     if evidence["rules"].get("active_hellscream_listing_prices_used") is not False:
         raise ValueError("Active Hellscream listings must not set collectible prices")
     if evidence["rules"].get("external_gold_values_copied") is not False:
@@ -735,8 +740,8 @@ def validate(evidence: dict, sections: dict | None = None) -> None:
         if record["external_relative_review"].get("used_to_set_gold_value") is not False:
             raise ValueError(f"{record['name']}: external gold leaked into price")
     if sections:
-        if len(sections["catalog"]) != 133:
-            raise ValueError("Collectible catalog must contain 133 rows")
+        if len(sections["catalog"]) != expected_items:
+            raise ValueError(f"Collectible catalog must contain {expected_items} rows")
         season_titles = [section["title"] for section in sections["sections"] if section["id"].startswith("season-")]
         if season_titles != SEASON_ORDER:
             raise ValueError("Season sections are missing or out of order")

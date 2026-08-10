@@ -59,7 +59,6 @@ expected_groups = {
     "crafted-collectibles": 10,
     "companion-drops": 20,
     "companion-quest-rewards": 2,
-    "promotional-mounts": 5,
     "quest-accessories": 5,
     "season-love-is-in-the-air": 17,
     "season-noblegarden": 3,
@@ -92,11 +91,11 @@ expected_empty_seasons = {
 assert audit["source"]["commit"] == "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
 assert audit["rules"]["allowed_bonding"] == [0, 2, 3]
 assert audit["rules"]["active_listings_set_prices"] is False
-assert audit["summary"]["included_items"] == len(audit["items"]) == 133
+assert audit["summary"]["included_items"] == len(audit["items"]) == 128
 assert audit["summary"]["groups"] == expected_groups
 assert audit["summary"]["existing_exact_name_overlaps"] == 11
 assert set(audit["empty_seasons"]) == expected_empty_seasons
-assert len({item["item_id"] for item in audit["items"].values()}) == 133
+assert len({item["item_id"] for item in audit["items"].values()}) == 128
 assert all(item["auctionable"] for item in audit["items"].values())
 assert all(item["duration"] == 0 for item in audit["items"].values())
 assert all(item["buy_count"] >= 1 for item in audit["items"].values())
@@ -126,16 +125,16 @@ assert audit["items"]["17194"]["buy_count"] == 5
 assert audit["items"]["17194"]["vendor_unit_cost_copper"] == 2
 
 assert evidence["summary"] == {
-    "items_reviewed": 133,
+    "items_reviewed": 128,
     "decisions": {
         "exact-token-cost-plus-fallback-opportunity-anchor": 26,
         "exact-unlimited-vendor-arbitrage": 44,
-        "fixed-acquisition-cohort-estimate": 62,
+        "fixed-acquisition-cohort-estimate": 57,
         "sparse-completed-sales-shrunk": 1,
     },
     "items_with_completed_sales": 1,
     "items_present_in_current_supply_snapshot": 2,
-    "items_seen_on_at_least_two_external_realms": 56,
+    "items_seen_on_at_least_two_external_realms": 55,
     "final_failed_comparison_requests": 0,
 }
 assert evidence["rules"]["active_hellscream_listing_prices_used"] is False
@@ -143,7 +142,7 @@ assert evidence["rules"]["external_gold_values_copied"] is False
 assert evidence["rules"]["limited_and_unlimited_vendor_sections_separate"] is True
 assert evidence["rules"]["seasons_rendered_separately"] is True
 retry = evidence["source_snapshots"]["external_comparisons"]["retry_summary"]
-assert retry["initial_requests"] == 366
+assert retry["initial_requests"] == 336
 assert retry["retry_delays_seconds"] == [2, 5, 10]
 assert retry["final_failed_requests"] == 0
 assert evidence["source_snapshots"]["auction_scan"]["listing_prices_saved"] is False
@@ -161,9 +160,9 @@ assert frog_evidence["proposal"]["sales_weight"] == 0.25
 assert frog_evidence["proposal"]["confidence"] == "low"
 assert evidence["items"]["17194"]["exact_vendor_cost_copper"] == 2
 
-assert len(sections["catalog"]) == 133
-assert len(sections["sections"]) == 21
-season_sections = sections["sections"][10:]
+assert len(sections["catalog"]) == 128
+assert len(sections["sections"]) == 20
+season_sections = sections["sections"][9:]
 assert [section["title"] for section in season_sections] == expected_seasons
 assert {
     section["title"] for section in season_sections if not section["items"]
@@ -202,9 +201,9 @@ assert collectible_manifest["file"] == GUIDE_PATH.name
 assert len(collectible_manifest["navigation"][1]["children"]) == 3
 assert len(collectible_manifest["navigation"][4]["children"]) == 11
 assert index["guideCount"] == 19
-assert Counter(item["guideId"] for item in index["items"])["collectibles"] == 133
-assert guide.count('data-collectible-key="') == 133
-assert guide.count('data-collectible-section="') == 21
+assert Counter(item["guideId"] for item in index["items"])["collectibles"] == 128
+assert guide.count('data-collectible-key="') == 128
+assert guide.count('data-collectible-section="') == 20
 assert guide.count("collectible-market-section--empty") == 6
 assert guide.count('data-use-audience="general-use"') == 2
 assert guide.count('data-use-audience="profession-restricted"') == 1
@@ -224,11 +223,22 @@ assert "Engineering 375 required to use." in restricted_mounts.group(0)
 assert "Engineering 300 required to use." in restricted_mounts.group(0)
 assert "Tailoring 300 required to use." in restricted_mounts.group(0)
 assert "Updated 2026-08-10" in guide
-assert "Magic Rooster Egg" in guide and "Wooly White Rhino" in guide and "Blazing Hippogryph" in guide
+assert 'data-collectible-section="promotional-mounts"' not in guide
+for excluded_promo_mount in (
+    "Big Battle Bear",
+    "Reins of the Spectral Tiger",
+    "Reins of the Swift Spectral Tiger",
+    "X-51 Nether-Rocket",
+    "X-51 Nether-Rocket X-TREME",
+    "Magic Rooster Egg",
+    "Wooly White Rhino",
+    "Blazing Hippogryph",
+):
+    assert excluded_promo_mount not in guide
 assert re.search(r"Holiday Spices.*Exact vendor cost: 2c", guide, re.DOTALL)
 
 assert eligibility["rules"]["allowed_bonding"] == [0, 2, 3]
-assert eligibility["source_counts"]["collectible_item_ids"] == 133
+assert eligibility["source_counts"]["collectible_item_ids"] == 128
 assert all(str(item_id) in eligibility["items"] for item_id in crafted_ids)
 
-print("Validated 133 evidence-priced collectible rows across 21 acquisition and seasonal sections.")
+print("Validated 128 evidence-priced collectible rows across 20 acquisition and seasonal sections.")

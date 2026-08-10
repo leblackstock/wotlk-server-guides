@@ -2,7 +2,7 @@
   "version": 1,
   "reviewed": "2026-08-10",
   "model_version": "collectible-acquisition-evidence-pricing-v1",
-  "scope": "All 133 verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the new guide.",
+  "scope": "All 128 verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the guide. Promotional and TCG mounts are excluded until direct Hellscream availability is verified.",
   "rules": {
     "active_hellscream_listing_prices_used": false,
     "external_gold_values_copied": false,
@@ -35,10 +35,6 @@
     "crafted-motorcycle": {
       "target_copper": 180000000,
       "basis": "Reviewed 18,000g starter anchor for the general-use motorcycle market; exact vendor components and materials set the craft floor."
-    },
-    "promotional-mounts": {
-      "target_copper": 300000000,
-      "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
     },
     "quest-accessories": {
       "target_copper": 100000000,
@@ -96,7 +92,7 @@
     "external_comparisons": {
       "source": "https://ah.nerfed.net/servers/base?id=7",
       "retry_summary": {
-        "initial_requests": 366,
+        "initial_requests": 336,
         "retry_delays_seconds": [
           2,
           5,
@@ -109,16 +105,16 @@
     }
   },
   "summary": {
-    "items_reviewed": 133,
+    "items_reviewed": 128,
     "decisions": {
       "exact-token-cost-plus-fallback-opportunity-anchor": 26,
       "exact-unlimited-vendor-arbitrage": 44,
-      "fixed-acquisition-cohort-estimate": 62,
+      "fixed-acquisition-cohort-estimate": 57,
       "sparse-completed-sales-shrunk": 1
     },
     "items_with_completed_sales": 1,
     "items_present_in_current_supply_snapshot": 2,
-    "items_seen_on_at_least_two_external_realms": 56,
+    "items_seen_on_at_least_two_external_realms": 55,
     "final_failed_comparison_requests": 0
   },
   "items": {
@@ -6174,265 +6170,6 @@
         "decision": "fixed-acquisition-cohort-estimate",
         "sales_weight": null,
         "reason": "Reviewed 500g Hellscream starter anchor for a farmed, nonstackable companion drop. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "49282": {
-      "item_id": 49282,
-      "name": "Big Battle Bear",
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "cohort": "promotional-mounts",
-      "fixed_anchor": {
-        "target_copper": 300000000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [
-          "Icecrown"
-        ],
-        "realm_count": 1,
-        "faction_snapshots_present": 2,
-        "raw_relative_rank_percentile": 0.333333,
-        "coverage_weight": 0.35,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 174000000,
-          "target": 290000000,
-          "high": 580000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "49283": {
-      "item_id": 49283,
-      "name": "Reins of the Spectral Tiger",
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "cohort": "promotional-mounts",
-      "fixed_anchor": {
-        "target_copper": 300000000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [],
-        "realm_count": 0,
-        "faction_snapshots_present": 0,
-        "raw_relative_rank_percentile": 0.5,
-        "coverage_weight": 0.0,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 180000000,
-          "target": 300000000,
-          "high": 600000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "49284": {
-      "item_id": 49284,
-      "name": "Reins of the Swift Spectral Tiger",
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "cohort": "promotional-mounts",
-      "fixed_anchor": {
-        "target_copper": 300000000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [
-          "Icecrown",
-          "Lordaeron"
-        ],
-        "realm_count": 2,
-        "faction_snapshots_present": 2,
-        "raw_relative_rank_percentile": 1.0,
-        "coverage_weight": 0.7,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 254000000,
-          "target": 363000000,
-          "high": 617000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "49285": {
-      "item_id": 49285,
-      "name": "X-51 Nether-Rocket",
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "cohort": "promotional-mounts",
-      "fixed_anchor": {
-        "target_copper": 300000000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [
-          "Icecrown"
-        ],
-        "realm_count": 1,
-        "faction_snapshots_present": 2,
-        "raw_relative_rank_percentile": 0.0,
-        "coverage_weight": 0.35,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 161000000,
-          "target": 269000000,
-          "high": 538000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "49286": {
-      "item_id": 49286,
-      "name": "X-51 Nether-Rocket X-TREME",
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "cohort": "promotional-mounts",
-      "fixed_anchor": {
-        "target_copper": 300000000,
-        "basis": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [
-          "Icecrown"
-        ],
-        "realm_count": 1,
-        "faction_snapshots_present": 2,
-        "raw_relative_rank_percentile": 0.666667,
-        "coverage_weight": 0.35,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 187000000,
-          "target": 311000000,
-          "high": 622000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 30,000g Hellscream starter anchor for verified Landro's Gift Box mounts; no external gold value is copied. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
         "requires_large_change_review": false,
         "reviewer_decision": "accept"
       }

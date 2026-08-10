@@ -217,7 +217,7 @@ def render_page(data: dict, audit: dict) -> str:
 <section class="common ah-search-section ah-guide-search-section" aria-label="Auction House lookup">
   <div class="ah-search-heading"><span><span class="ah-search-eyebrow">Search every AH guide</span><span class="ah-search-count" id="ah-search-count"></span></span></div>
   <label class="visually-hidden" for="ah-search-input">Search by Auction House item name</label>
-  <div class="ah-search-input-wrap"><input id="ah-search-input" class="ah-search-input" type="search" placeholder="Try Wood Frog Box, Spectral Tiger, or Snowman Kit…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="ah-search-status" aria-controls="ah-search-results"></div>
+  <div class="ah-search-input-wrap"><input id="ah-search-input" class="ah-search-input" type="search" placeholder="Try Wood Frog Box, Mekgineer’s Chopper, or Snowman Kit…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="ah-search-status" aria-controls="ah-search-results"></div>
   <nav class="ah-guide-major-nav" data-ah-major-nav aria-label="Jump to a major category"></nav>
   <p class="ah-search-status" id="ah-search-status" role="status" aria-live="polite" hidden></p>
   <ol class="ah-search-results" id="ah-search-results" hidden></ol>
@@ -243,7 +243,7 @@ def render_page(data: dict, audit: dict) -> str:
   <div class="best-grid ah-summary-grid">
     <div class="best-card ah-summary-card"><h3>Vendor arbitrage</h3><p><strong>{unlimited}</strong> unlimited coin-vendor rows, <strong>{limited}</strong> true limited-stock rows, and a separate token/reputation section.</p></div>
     <div class="best-card ah-summary-card"><h3>Farmed &amp; crafted</h3><p><strong>{drops}</strong> pinned companion drops plus exact Engineering and Tailoring recipe floors.</p></div>
-    <div class="best-card ah-summary-card"><h3>Rare rewards</h3><p>Verified quest companions, Landro's Gift Box mounts, and the tradeable Shadowmourne reward family.</p></div>
+    <div class="best-card ah-summary-card"><h3>Rare rewards</h3><p>Verified quest companions and the tradeable Shadowmourne reward family.</p></div>
     <div class="best-card ah-summary-card"><h3>Season by season</h3><p><strong>{seasonal}</strong> event rows, with every holiday in its own section and explicit empty in-scope sections.</p></div>
   </div>
 </section>
@@ -252,7 +252,7 @@ def render_page(data: dict, audit: dict) -> str:
 
 <section class="common">
   <h2 class="ah-category-heading">Excluded and pending verification<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
-  <p class="small">The technically tradeable Magic Rooster Egg, Wooly White Rhino, and Blazing Hippogryph have no pinned acquisition route in the audited base data and remain unpriced until Hellscream availability is proven. BoP and temporary examples—including Fetch Ball, pet grooming items, temporary broom mounts, The Horseman's Reins, and Big Love Rocket—cannot be listed and stay out of the tables.</p>
+  <p class="small">Promotional and TCG mounts stay excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that those rewards are enabled on this server. BoP and temporary examples—including Fetch Ball, pet grooming items, and temporary event mounts—cannot be listed and stay out of the tables.</p>
 </section>
 
 <section class="common">

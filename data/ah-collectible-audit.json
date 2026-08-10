@@ -35,17 +35,15 @@
       "limited coin vendor",
       "token vendor",
       "quest/reward",
-      "drop",
-      "promotional container"
+      "drop"
     ]
   },
   "summary": {
-    "included_items": 133,
+    "included_items": 128,
     "groups": {
       "companion-drops": 20,
       "companion-quest-rewards": 2,
       "crafted-collectibles": 10,
-      "promotional-mounts": 5,
       "quest-accessories": 5,
       "season-love-is-in-the-air": 17,
       "season-lunar-festival": 15,
@@ -68,18 +66,28 @@
     "Pirates' Day"
   ],
   "exclusions": {
-    "no-pinned-acquisition": {
+    "unverified-hellscream-promotional-mounts": {
       "item_ids": [
+        49282,
+        49283,
+        49284,
+        49285,
+        49286,
         49290,
         54068,
         54069
       ],
       "names": [
+        "Big Battle Bear",
+        "Reins of the Spectral Tiger",
+        "Reins of the Swift Spectral Tiger",
+        "X-51 Nether-Rocket",
+        "X-51 Nether-Rocket X-TREME",
         "Magic Rooster Egg",
         "Wooly White Rhino",
         "Blazing Hippogryph"
       ],
-      "reason": "The item templates are technically tradeable, but the pinned AzerothCore world data has no acquisition route. Verify Hellscream availability before pricing."
+      "reason": "No direct Hellscream acquisition evidence is saved. A generic base-database loot route is not proof that a promotional or TCG reward is enabled on this server."
     },
     "auction-ineligible-examples": {
       "item_ids": [
@@ -3372,221 +3380,6 @@
         }
       ],
       "canonical_owner": "data/ah-crafted-sections.json"
-    },
-    "49282": {
-      "item_id": 49282,
-      "name": "Big Battle Bear",
-      "item_class": 15,
-      "item_subclass": 5,
-      "quality_id": 4,
-      "quality": "epic",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 0,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 100000,
-      "vendor_unit_cost_copper": 100000,
-      "sell_price_copper": 0,
-      "required_skill_id": 762,
-      "required_skill_rank": 150,
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": {
-        "source_rows": 1,
-        "source_types": [
-          "container"
-        ],
-        "representative_evidence": [
-          "Landro's Gift Box",
-          "Landro's Gift Box - Big Battle Bear"
-        ],
-        "chance_range": [
-          0.2,
-          0.2
-        ]
-      },
-      "quest_sources": [],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
-    },
-    "49283": {
-      "item_id": 49283,
-      "name": "Reins of the Spectral Tiger",
-      "item_class": 15,
-      "item_subclass": 5,
-      "quality_id": 3,
-      "quality": "rare",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 0,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 10000,
-      "vendor_unit_cost_copper": 10000,
-      "sell_price_copper": 0,
-      "required_skill_id": 762,
-      "required_skill_rank": 75,
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": {
-        "source_rows": 1,
-        "source_types": [
-          "container"
-        ],
-        "representative_evidence": [
-          "Landro's Gift Box",
-          "Landro's Gift Box - Reins of the Spectral Tiger"
-        ],
-        "chance_range": [
-          0.3,
-          0.3
-        ]
-      },
-      "quest_sources": [],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
-    },
-    "49284": {
-      "item_id": 49284,
-      "name": "Reins of the Swift Spectral Tiger",
-      "item_class": 15,
-      "item_subclass": 5,
-      "quality_id": 4,
-      "quality": "epic",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 0,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 100000,
-      "vendor_unit_cost_copper": 100000,
-      "sell_price_copper": 0,
-      "required_skill_id": 762,
-      "required_skill_rank": 150,
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": {
-        "source_rows": 1,
-        "source_types": [
-          "container"
-        ],
-        "representative_evidence": [
-          "Landro's Gift Box",
-          "Landro's Gift Box - Reins of the Swift Spectral Tiger"
-        ],
-        "chance_range": [
-          0.3,
-          0.3
-        ]
-      },
-      "quest_sources": [],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
-    },
-    "49285": {
-      "item_id": 49285,
-      "name": "X-51 Nether-Rocket",
-      "item_class": 15,
-      "item_subclass": 5,
-      "quality_id": 3,
-      "quality": "rare",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 0,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 1000000,
-      "vendor_unit_cost_copper": 1000000,
-      "sell_price_copper": 0,
-      "required_skill_id": 762,
-      "required_skill_rank": 225,
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": {
-        "source_rows": 1,
-        "source_types": [
-          "container"
-        ],
-        "representative_evidence": [
-          "Landro's Gift Box",
-          "Landro's Gift Box - X-51 Nether-Rocket"
-        ],
-        "chance_range": [
-          0.1,
-          0.1
-        ]
-      },
-      "quest_sources": [],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
-    },
-    "49286": {
-      "item_id": 49286,
-      "name": "X-51 Nether-Rocket X-TREME",
-      "item_class": 15,
-      "item_subclass": 5,
-      "quality_id": 4,
-      "quality": "epic",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 0,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 2000000,
-      "vendor_unit_cost_copper": 2000000,
-      "sell_price_copper": 0,
-      "required_skill_id": 762,
-      "required_skill_rank": 300,
-      "group": "promotional-mounts",
-      "season": null,
-      "kind": "Mount",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": {
-        "source_rows": 1,
-        "source_types": [
-          "container"
-        ],
-        "representative_evidence": [
-          "Landro's Gift Box",
-          "Landro's Gift Box - X-51 Nether-Rocket X-TREME"
-        ],
-        "chance_range": [
-          0.3,
-          0.3
-        ]
-      },
-      "quest_sources": [],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
     },
     "52200": {
       "item_id": 52200,

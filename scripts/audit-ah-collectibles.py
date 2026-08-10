@@ -77,7 +77,6 @@ ITEM_GROUPS = {
     ),
     "companion-quest-rewards": (10398, 22781),
     "crafted-collectibles": (4401, 11825, 11826, 15996, 21277, 34060, 34061, 41508, 44413, 44554),
-    "promotional-mounts": (49282, 49283, 49284, 49285, 49286),
     "quest-accessories": (52200, 52201, 52251, 52252, 52253),
     "season-winter-veil": (17194, 17202, 17303, 17304, 17307, 17405, 21213, 21301, 21305, 21308, 21309),
     "season-lunar-festival": (21557, 21558, 21559, 21561, 21562, 21571, 21574, 21576, 21589, 21590, 21592, 21593, 21595, 21713, 21747),
@@ -134,10 +133,19 @@ CURRENCY_COSTS = {
 }
 
 EXCLUSIONS = {
-    "no-pinned-acquisition": {
-        "item_ids": [49290, 54068, 54069],
-        "names": ["Magic Rooster Egg", "Wooly White Rhino", "Blazing Hippogryph"],
-        "reason": "The item templates are technically tradeable, but the pinned AzerothCore world data has no acquisition route. Verify Hellscream availability before pricing.",
+    "unverified-hellscream-promotional-mounts": {
+        "item_ids": [49282, 49283, 49284, 49285, 49286, 49290, 54068, 54069],
+        "names": [
+            "Big Battle Bear",
+            "Reins of the Spectral Tiger",
+            "Reins of the Swift Spectral Tiger",
+            "X-51 Nether-Rocket",
+            "X-51 Nether-Rocket X-TREME",
+            "Magic Rooster Egg",
+            "Wooly White Rhino",
+            "Blazing Hippogryph",
+        ],
+        "reason": "No direct Hellscream acquisition evidence is saved. A generic base-database loot route is not proof that a promotional or TCG reward is enabled on this server.",
     },
     "auction-ineligible-examples": {
         "item_ids": [37431, 37460, 43352, 43626, 44820, 33182, 33184, 37012, 50250],
@@ -321,8 +329,6 @@ def build(source_dir: Path | None = None) -> dict:
                 raise ValueError(f"Drop route missing: {item['name']}")
             if group == "crafted-collectibles" and not recipe:
                 raise ValueError(f"Craft recipe missing: {item['name']}")
-            if group == "promotional-mounts" and not item_loot:
-                raise ValueError(f"Promotional container route missing: {item['name']}")
             if group in {"companion-quest-rewards", "quest-accessories"} and not item_quests:
                 raise ValueError(f"Quest route missing: {item['name']}")
             season = SEASON_LABELS.get(group)
@@ -362,7 +368,7 @@ def build(source_dir: Path | None = None) -> dict:
             "required_duration": 0,
             "conjured_flag": CONJURED_FLAG,
             "active_listings_set_prices": False,
-            "source_priority": ["crafted", "unlimited coin vendor", "limited coin vendor", "token vendor", "quest/reward", "drop", "promotional container"],
+            "source_priority": ["crafted", "unlimited coin vendor", "limited coin vendor", "token vendor", "quest/reward", "drop"],
         },
         "summary": {
             "included_items": len(records),

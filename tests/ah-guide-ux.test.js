@@ -208,9 +208,9 @@ vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
 assert.equal(searchIndex.guideCount, 19);
-assert.equal(searchIndex.itemCount, 4094);
+assert.equal(searchIndex.itemCount, 4089);
 assert.equal(searchIndex.vendorRecommendationCount, 483);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3853);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3848);
 assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 19);
 
 const counts = Object.fromEntries(
@@ -227,6 +227,6 @@ assert.equal(counts["turn-ins"], 75);
 assert.equal(counts["recipe-pattern-drops"], 90);
 assert.equal(counts["level-80-boe-epics"], 85);
 assert.equal(counts["sought-after-world-drops"], 283);
-assert.equal(counts.collectibles, 133);
+assert.equal(counts.collectibles, 128);
 
 console.log("AH manifest, hub cards, compact guide UX, redirects, and split/merged index counts are current.");

@@ -15,8 +15,9 @@ async function noOverflow(page, label) {
 
 async function verifyGuide(page, label) {
   await page.goto(guideUrl, { waitUntil: "networkidle" });
-  assert.equal(await page.locator('[data-collectible-key]').count(), 133);
-  assert.equal(await page.locator('[data-collectible-section]').count(), 21);
+  assert.equal(await page.locator('[data-collectible-key]').count(), 128);
+  assert.equal(await page.locator('[data-collectible-section]').count(), 20);
+  assert.equal(await page.getByRole('heading', { name: 'Promotional and TCG mounts' }).count(), 0);
   assert.equal(await page.locator('.collectible-market-section--empty').count(), 6);
   assert.equal(
     await page.locator('[data-collectible-section="vendor-unlimited"] [data-collectible-key]').count(),

@@ -63,7 +63,7 @@ assert policy["margin_model"]["minimum_expected_profit_copper_per_listing"] == 2
 assert set(policy["margin_model"]["sale_probability_basis_points_by_demand"]) == {
     item["demand"] for item in items
 }
-assert len(items) == scope["search_entry_count"] == 4094
+assert len(items) == scope["search_entry_count"] == 4089
 assert index["vendorRecommendationCount"] == len(recommended) == scope["vendor_recommendation_count"] == 483
 assert len(automatic) == scope["automatic_margin_vendor_recommendation_count"] == 466
 assert len(manual) == scope["manual_vendor_recommendation_count"] == 22
@@ -78,8 +78,8 @@ assert all(
     "sell_price_copper" in record and int(record["sell_price_copper"]) >= 0
     for record in eligibility["items"].values()
 )
-assert eligibility["source_counts"]["unique_audited_item_ids"] == len(eligibility["items"]) == 3926
-assert eligibility["source_counts"]["collectible_item_ids"] == 133
+assert eligibility["source_counts"]["unique_audited_item_ids"] == len(eligibility["items"]) == 3921
+assert eligibility["source_counts"]["collectible_item_ids"] == 128
 assert all(
     isinstance(item.get("vendorRecommendationNote"), str)
     and 1 <= len(item["vendorRecommendationNote"]) <= 60

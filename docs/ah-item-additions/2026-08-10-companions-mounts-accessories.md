@@ -1,10 +1,10 @@
 # AH Item Addition Work Order — Companions, Mounts & Accessories
 
 - **Date:** 2026-08-10
-- **Status:** complete locally — not published
+- **Status:** complete locally — promotional/TCG availability correction not published
 - **Requested scope:** coupled batch
 - **Market type:** vendor | crafted | quest/reward | world drop | seasonal | promotional
-- **Target guide and section:** `guides/companions-mounts-accessories-ah-price-guide.html`; separate limited vendor, unlimited vendor, token vendor, drop, crafted, quest/reward, promotional, accessory, and per-event seasonal sections
+- **Target guide and section:** `guides/companions-mounts-accessories-ah-price-guide.html`; separate limited vendor, unlimited vendor, token vendor, drop, crafted, quest/reward, accessory, and per-event seasonal sections
 - **Profession plan or evidence-status owner:** `docs/ah-evidence-pricing-library-plan.md`; Engineering and Tailoring addenda for delegated crafted rows
 - **Publishing authorized:** no
 
@@ -20,7 +20,7 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 | Farmed companion drops | 8491, 8492, 8494, 8498, 8499, 10822, 20769, 29960, 34535, 39896, 39898, 39899, 44721, 48112, 48114, 48116, 48118, 48122, 48124, 48126 | Companion collectors | per item | Loot rates and source access form comparable scarcity cohorts |
 | Quest/reward companions | 10398, 22781 | Companion collectors | per item | One-time or quest-gated acquisition |
 | Crafted companions and mounts | 4401, 11825, 11826, 15996, 21277, 34060, 34061, 41508, 44413, 44554 | Collectors; Engineer- or Tailor-restricted mount users where stated | per item | Exact recipe floors and shared collectible demand must remain coupled |
-| Promotional container mounts | 49282, 49283, 49284, 49285, 49286 | Mount collectors | per item | Pinned Landro's Gift Box routes; server availability remains a separate diagnostic |
+| Promotional and TCG mounts excluded | 49282, 49283, 49284, 49285, 49286, 49290, 54068, 54069 | Not listed | none | No direct Hellscream acquisition evidence is saved; a generic base-database route is not proof that a reward is enabled on this server |
 | Shadowmourne quest rewards and accessories | 52200, 52201, 52251, 52252, 52253 | Mount, tabard, toy, and roleplay collectors | per item | One shared quest source and slow-sale prestige market |
 | Winter Veil | 17194, 17202, 17303, 17304, 17307, 17405, 21213, 21301, 21305, 21308, 21309 | Seasonal collectors and novelty buyers | per item or valid small stack | One event calendar and gift/vendor supply window |
 | Lunar Festival | 21557, 21558, 21559, 21561, 21562, 21571, 21574, 21576, 21589, 21590, 21592, 21593, 21595, 21713, 21747 | Firework and roleplay buyers | per item or valid small stack | One event-vendor and event-loot market |
@@ -35,7 +35,7 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 - **Recipe/spell and guaranteed output, if any:** Ten one-item Engineering/Tailoring recipes are pinned in the collectible audit and delegated to `data/ah-crafted-sections.json`.
 - **Quest or gear-use facts, if any:** Shadowmourne sealed-chest rewards are Bind on Use/Equip and tradeable before use; crafted Flying Machine and Flying Carpet rows carry their profession-use restrictions.
 - **Restricted buyer section required:** yes — Engineering and Tailoring mount requirements are explicit.
-- **Exclusions and reasons:** ordinary racial/reputation mounts, most event pets/mounts, pet toys, and temporary brooms are BoP, duration-limited, or otherwise auction-ineligible. Technically tradeable records without a pinned acquisition route remain excluded. Magic Rooster Egg (49290), Wooly White Rhino (54068), and Blazing Hippogryph (54069) remain excluded until Hellscream acquisition is verified.
+- **Exclusions and reasons:** ordinary racial/reputation mounts, most event pets/mounts, pet toys, and temporary brooms are BoP, duration-limited, or otherwise auction-ineligible. All eight promotional/TCG mounts in scope remain excluded until direct Hellscream acquisition is verified; a generic base-database loot route is insufficient.
 
 ## Duplicate and Dependency Audit
 
@@ -52,7 +52,7 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 - **Exact vendor/conversion/acquisition anchor:** coin cost, stock/restock, 40 Champion's Seals, Noblegarden Chocolate/Love Token/Burning Blossom costs, exact recipe reagents, or pinned loot/quest path as applicable.
 - **Fixed Hellscream cohort anchor:** one sparse Wood Frog sale plus reviewed cosmetic/crafted comparables and documented low-pop collectible starter anchors.
 - **External realms/factions covered:** Icecrown, Lordaeron, and Onyxia; both factions.
-- **Comparison retry result:** 366 initial requests; all resolved on the initial
+- **Comparison retry result:** 336 initial requests; all resolved on the initial
   pass, so the saved 2s + 5s + 10s retry ladder had zero final failures
 - **`external_gold_values_copied`:** false
 - **Saved evidence file/report:** `data/ah-collectible-price-evidence.json`; `docs/ah-collectible-pricing-review.md`
@@ -62,7 +62,7 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 - Vendor cost is a deterministic floor, not proof of the resale premium.
 - Qualified completed Hellscream sales take priority. Sparse sales are shrunk toward a fixed cohort.
 - External observations may set relative rank only. All unsupported opening prices remain `fallback` confidence.
-- Every proposed Target is new; all 133 decisions are recorded in the saved
+- Every proposed Target is new; all 128 decisions are recorded in the saved
   evidence report and were reviewed before apply.
 
 ## Canonical Implementation
@@ -78,7 +78,7 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
   `scripts/review-ah-collectible-prices.py`, and
   `scripts/render-ah-collectibles.py`
 - **Generated guides/assets:** the new guide, icon, 19-guide manifest/hub,
-  navigation data, 4,094-row search index, and tooltip/eligibility snapshots
+  navigation data, 4,089-row search index, and tooltip/eligibility snapshots
 - **Profession plan/status log updated:** yes — Engineering, Tailoring, and the
   library-wide Evidence Pricing status record
 - **Changed guide footer date:** 2026-08-10 on the new guide and the two edited
@@ -101,33 +101,32 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 
 | Command/check | Result | Notes |
 |---|---|---|
-| Collectible audit/reviewer `--check` | pass | 133 eligible items; 20 sections; evidence, applied data, and guide current |
+| Collectible audit/reviewer `--check` | pass | 128 eligible items; 20 sections; evidence, applied data, and guide current |
 | Canonical renderer checks | pass | Shared sections, profession-use blocks, guide UX, search, and tooltip assets current |
 | AH Python regression suite | pass | All 40 `tests/ah-*.test.py` files passed |
 | `npm test` | pass | Node, guide-banner, fresh-80 workflow, and guide-audience suites passed |
-| Local desktop/mobile AH smoke | pass | Hub card, search, all 20 sections, 133 rows, six empty seasons, and overflow checked |
-| Auction eligibility | pass | 3,926 unique IDs; 133 collectible IDs; unused Bind on Use accepted; one explicit cost-only exception |
+| Local desktop/mobile AH smoke | pass | Hub card, search, all 20 sections, 128 rows, six empty seasons, and overflow checked |
+| Auction eligibility | pass | 3,921 unique IDs; 128 collectible IDs; unused Bind on Use accepted; one explicit cost-only exception |
 | Duplicate price/rarity/stack consistency | pass | Ten crafted owners and Holiday Spices synchronize; all exact collectible identities pass |
 | Section price ordering | pass | 19 guides; 347 priced tables; 286 price-ordered and 61 fixed-order tables |
-| Search and tooltip coverage | pass | 4,094 search rows; all 133 collectible names resolve to pinned item IDs |
+| Search and tooltip coverage | pass | 4,089 search rows; all 128 collectible names resolve to pinned item IDs |
 | UTF-8/mojibake scan | pass | No mojibake found in the files changed for this work order |
 | `git diff --check` | pass | No whitespace errors in the working-tree diff |
 
 ## Acceptance Report
 
-- **Items added:** 133 collectible-guide rows; ten also added to their canonical
+- **Items added:** 128 collectible-guide rows; ten also added to their canonical
   Engineering/Tailoring catalogs and Holiday Spices remains vendor-owned
-- **Items excluded:** nine pinned auction-ineligible examples plus Magic Rooster
-  Egg, Wooly White Rhino, and Blazing Hippogryph pending a verified Hellscream
-  acquisition route
-- **Bands changed:** 133 new collectible bands; no active listing price was
+- **Items excluded:** nine pinned auction-ineligible examples plus all eight
+  promotional/TCG mounts pending direct Hellscream availability evidence
+- **Bands changed:** 128 collectible bands; no active listing price was
   imported and the existing Holiday Spices Target remained synchronized at 1s
-- **Confidence distribution:** 44 high exact unlimited-vendor decisions, 88
+- **Confidence distribution:** 44 high exact unlimited-vendor decisions, 83
   fallback estimates, and one low-confidence sparse-sale decision
-- **Large changes reviewed:** zero prior-band comparisons; all 133 new proposals
+- **Large changes reviewed:** zero prior-band comparisons; all 128 proposals
   carry an explicit `accept` decision
-- **Comparison requests and final failures:** 366 initial / 0 final failures
-- **Search/index result:** 4,094 rows across 19 guides, including all 133 new
+- **Comparison requests and final failures:** 336 initial / 0 final failures
+- **Search/index result:** 4,089 rows across 19 guides, including all 128
   collectible rows
 - **Local or live status:** local only; publishing not authorized
 - **Unrelated worktree changes left untouched:** existing addon, guide-audience, and spec-guide work remains unstaged
