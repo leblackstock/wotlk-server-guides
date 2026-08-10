@@ -29,7 +29,7 @@ index = json.loads(
 )
 assert index["version"] == 5
 assert index["itemCount"] == len(index["items"])
-assert index["vendorRecommendationCount"] == 22
+assert index["vendorRecommendationCount"] == 483
 assert index["items"]
 
 canonical = json.loads(CANONICAL_VALUES_PATH.read_text(encoding="utf-8"))
@@ -112,6 +112,8 @@ assert 'uniqueValues(matches, "stack")' in search_script
 assert "match.priceBasis" in search_script
 assert "match.vendorRecommended === true" in search_script
 assert 'uniqueValues(matches, "demand")' in search_script
+assert 'uniqueValues(matches, "vendorSell")' in search_script
+assert 'uniqueValues(matches, "vendorMinimumTarget")' in search_script
 assert 'const targetBidValue = bidValues[0] || "—"' in search_script
 assert 'const targetBuyoutValue = buyoutValues[0] || "—"' in search_script
 assert 'const stackValue = stackValues[0] || "—"' in search_script
@@ -133,6 +135,7 @@ assert 'stackValue !== "1"' in search_script
 assert 'stackValue !== "—"' in search_script
 assert '"ah-price-stack-chip ah-search-price-stack-chip"' in search_script
 assert '"ah-vendor-chip ah-search-vendor-chip", "Vendor"' in search_script
+assert 'vendorChip.title = `Vendor instead: NPC sell value ${vendorSellValues[0]} per item;' in search_script
 assert '"ah-low-chip ah-search-low-chip", "Low"' in search_script
 
 search_styles = SEARCH_STYLES_PATH.read_text(encoding="utf-8")

@@ -45,6 +45,7 @@ assert.equal(new Set(broadSearch.map((item) => normalize(item.name))).size, broa
 const root = path.resolve(__dirname, "..");
 const engineeringGuide = fs.readFileSync(path.join(root, "guides", "engineering-materials-ah-price-guide.html"), "utf8");
 const searchSource = fs.readFileSync(path.join(root, "assets", "ah-search.js"), "utf8");
+const indexSource = fs.readFileSync(path.join(root, "assets", "ah-search-index.js"), "utf8");
 const runtime = new JSDOM(engineeringGuide, {
   runScripts: "outside-only",
   url: "http://127.0.0.1/guides/engineering-materials-ah-price-guide.html",
@@ -63,5 +64,57 @@ assert.equal(selectedRow.querySelector("td:first-child strong").textContent.trim
 assert.equal(selectedRow.getAttribute("aria-selected"), "true");
 runtime.window.close();
 
-console.log("Auction House search groups duplicate item rows and follows same-page item links.");
+const hubSource = fs.readFileSync(path.join(root, "auction-house.html"), "utf8");
+const vendorRuntime = new JSDOM(hubSource, {
+  runScripts: "outside-only",
+  url: "http://127.0.0.1/auction-house.html",
+});
+vendorRuntime.window.eval(indexSource);
+vendorRuntime.window.eval(searchSource);
+vendorRuntime.window.document.dispatchEvent(new vendorRuntime.window.Event("DOMContentLoaded"));
+const vendorSearch = vendorRuntime.window.document.querySelector("#ah-search-input");
+vendorSearch.value = "Core Felcloth Bag";
+vendorSearch.dispatchEvent(new vendorRuntime.window.Event("input", { bubbles: true }));
+let vendorChip = vendorRuntime.window.document.querySelector(".ah-search-vendor-chip");
+assert.ok(vendorChip);
+assert.match(vendorChip.title, /NPC sell value 8g per item/);
+assert.match(vendorChip.title, /Target needs at least 8g 85s 62c per item/);
+
+vendorSearch.value = "Raw Spinefin Halibut";
+vendorSearch.dispatchEvent(new vendorRuntime.window.Event("input", { bubbles: true }));
+vendorChip = vendorRuntime.window.document.querySelector(".ah-search-vendor-chip");
+assert.ok(vendorChip);
+assert.match(vendorChip.title, /does not justify the expected fees/);
+assert.doesNotMatch(vendorChip.title, /—/);
+vendorRuntime.window.close();
+
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "data", "ah-guides.json"), "utf8"));
+let renderedVendorNotes = 0;
+for (const guide of manifest.guides) {
+  const expectedNotes = index.items
+    .filter((item) => item.guideId === guide.id && item.vendorRecommended === true)
+    .map((item) => `Vendor: ${item.vendorRecommendationNote}`)
+    .sort();
+  const guideRuntime = new JSDOM(
+    fs.readFileSync(path.join(root, "guides", guide.file), "utf8"),
+    {
+      runScripts: "outside-only",
+      url: `http://127.0.0.1/guides/${guide.file}`,
+    },
+  );
+  guideRuntime.window.AH_SEARCH_INDEX = index;
+  guideRuntime.window.eval(searchSource);
+  const result = guideRuntime.window.AHSearchCore.initializeVendorNotes();
+  const actualNotes = [...guideRuntime.window.document.querySelectorAll(".ah-item-vendor-note")]
+    .map((note) => note.textContent.replace(/\s+/g, " ").trim())
+    .sort();
+  assert.equal(result.expected, expectedNotes.length, `${guide.file}: wrong expected Vendor-note count`);
+  assert.equal(result.rendered, expectedNotes.length, `${guide.file}: not every Vendor note found its item row`);
+  assert.deepEqual(actualNotes, expectedNotes, `${guide.file}: rendered Vendor notes drifted`);
+  renderedVendorNotes += actualNotes.length;
+  guideRuntime.window.close();
+}
+assert.equal(renderedVendorNotes, index.vendorRecommendationCount);
+
+console.log("Auction House search groups duplicate items, follows row links, and renders every Vendor reason in item notes.");
 require("./ah-gem-finder.test.js");

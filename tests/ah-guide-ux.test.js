@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
 const version = "20260804-ah-dropped-gear-v1";
-const hubSearchVersion = "20260809-ah-vendor-prices-v1";
+const hubSearchVersion = "20260810-ah-vendor-notes-v3";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 
@@ -209,7 +209,7 @@ const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
 assert.equal(searchIndex.guideCount, 19);
 assert.equal(searchIndex.itemCount, 4094);
-assert.equal(searchIndex.vendorRecommendationCount, 22);
+assert.equal(searchIndex.vendorRecommendationCount, 483);
 assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3853);
 assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 19);
 

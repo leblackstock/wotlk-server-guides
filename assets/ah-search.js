@@ -225,6 +225,8 @@
         const priceBasisValues = Array.from(new Set(matches.map((match) => match.priceBasis).filter(Boolean)));
         const demandValues = uniqueValues(matches, "demand");
         const vendorRecommended = matches.some((match) => match.vendorRecommended === true);
+        const vendorSellValues = uniqueValues(matches, "vendorSell");
+        const vendorMinimumTargetValues = uniqueValues(matches, "vendorMinimumTarget");
         const conversionHints = Array.from(new Set(matches.map((match) => match.conversionHint).filter(Boolean)));
         const targetBidValue = bidValues[0] || "—";
         const targetBuyoutValue = buyoutValues[0] || "—";
@@ -262,7 +264,19 @@
         detailLine.append(makeElement("span", "ah-search-result-meta", meta));
         const stackDetails = makeElement("span", "ah-search-stack-details");
         if (vendorRecommended) {
-          stackDetails.append(makeElement("span", "ah-vendor-chip ah-search-vendor-chip", "Vendor"));
+          const vendorChip = makeElement("span", "ah-vendor-chip ah-search-vendor-chip", "Vendor");
+          if (
+            vendorSellValues.length === 1
+            && vendorSellValues[0] !== "—"
+            && vendorMinimumTargetValues.length === 1
+            && vendorMinimumTargetValues[0] !== "—"
+          ) {
+            const basisLabel = priceBasisValue ? ` per ${priceBasisValue.toLowerCase()}` : " per item";
+            vendorChip.title = `Vendor instead: NPC sell value ${vendorSellValues[0]} per item; Target needs at least ${vendorMinimumTargetValues[0]}${basisLabel} for this demand and posting margin.`;
+          } else {
+            vendorChip.title = "Vendor instead: this listing does not justify the expected fees, deposit risk, and posting effort.";
+          }
+          stackDetails.append(vendorChip);
         }
         if (lowDemand) {
           stackDetails.append(makeElement("span", "ah-low-chip ah-search-low-chip", "Low"));
@@ -339,6 +353,56 @@
       }
     });
     render();
+  }
+
+  function rowSectionTitle(row) {
+    const heading = row.closest("section")?.querySelector("h2");
+    if (!heading) return "";
+    const copy = heading.cloneNode(true);
+    copy.querySelectorAll(".ah-back-to-top, .ah-back-to-parent, .ah-category-chip-nav")
+      .forEach((element) => element.remove());
+    return normalize(copy.textContent);
+  }
+
+  function initializeVendorNotes() {
+    const index = global.AH_SEARCH_INDEX;
+    const guideId = document.body?.dataset.ahGuide;
+    if (!index || !Array.isArray(index.items) || !guideId) return { expected: 0, rendered: 0 };
+
+    const recommendations = new Map();
+    index.items
+      .filter((item) => item.guideId === guideId && item.vendorRecommended === true)
+      .forEach((item) => {
+        const note = String(item.vendorRecommendationNote || "").trim();
+        if (!note) return;
+        const key = `${slugify(item.name)}\u0000${normalize(item.section)}`;
+        const notes = recommendations.get(key) || [];
+        notes.push(note);
+        recommendations.set(key, notes);
+      });
+
+    let expected = 0;
+    recommendations.forEach((notes) => { expected += notes.length; });
+    let rendered = 0;
+    const rows = Array.from(document.querySelectorAll(".table-wrap > table > tbody > tr"));
+    rows.forEach((row) => {
+      row.querySelector(".ah-item-vendor-note")?.remove();
+      const name = row.querySelector("td:first-child strong");
+      if (!name) return;
+      const key = `${slugify(name.textContent)}\u0000${rowSectionTitle(row)}`;
+      const notes = recommendations.get(key);
+      if (!notes?.length) return;
+      const notesCell = row.querySelector('td[data-column="notes"]');
+      if (!notesCell) return;
+
+      const note = notes.shift();
+      const noteElement = makeElement("div", "ah-item-vendor-note");
+      noteElement.append(makeElement("strong", "", "Vendor:"));
+      noteElement.append(document.createTextNode(` ${note}`));
+      notesCell.prepend(noteElement);
+      rendered += 1;
+    });
+    return { expected, rendered };
   }
 
   function initializeRowSelection() {
@@ -421,11 +485,13 @@
     scoreItem,
     searchItems,
     slugify,
-    uniqueItemCount
+    uniqueItemCount,
+    initializeVendorNotes
   };
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       initializeSearch();
+      initializeVendorNotes();
       initializeRowSelection();
     });
   }

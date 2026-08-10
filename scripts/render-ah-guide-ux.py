@@ -20,7 +20,7 @@ MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 GEM_FINDER_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "gem-finder.html"
 ASSET_VERSION = "20260804-ah-dropped-gear-v1"
-HUB_STYLE_VERSION = "20260809-ah-vendor-prices-v1"
+HUB_STYLE_VERSION = "20260810-ah-vendor-notes-v3"
 PAGE_SPECIFIC_ASSETS = {
     "jewelcrafting-gems-ah-price-guide.html": {
         "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v2")],
@@ -379,12 +379,20 @@ def transform_hub(source: str, manifest: dict) -> str:
         source,
         count=1,
     )
-    return re.sub(
+    source = re.sub(
         r"style\.css\?v=[^\"\s]+",
         f"style.css?v={HUB_STYLE_VERSION}",
         source,
         count=1,
     )
+    for asset in ("ah-search-index.js", "ah-search.js"):
+        source = re.sub(
+            rf"{re.escape(asset)}\?v=[^\"\s]+",
+            f"{asset}?v={HUB_STYLE_VERSION}",
+            source,
+            count=1,
+        )
+    return source
 
 
 def main() -> int:

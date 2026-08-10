@@ -5,9 +5,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import sys
 import unicodedata
+from fractions import Fraction
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -16,9 +18,14 @@ ROOT = Path(__file__).resolve().parents[1]
 HUB_PATH = ROOT / "auction-house.html"
 OUTPUT_PATH = ROOT / "assets" / "ah-search-index.js"
 CANONICAL_VALUES_PATH = ROOT / "data" / "ah-search-canonical-values.json"
-VENDOR_RECOMMENDATIONS_PATH = ROOT / "data" / "ah-low-demand-vendor-recommendations.json"
+VENDOR_RECOMMENDATIONS_PATH = ROOT / "data" / "ah-vendor-recommendations.json"
+ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
+ELIGIBILITY_AUDIT_PATH = ROOT / "data" / "ah-auction-eligibility-audit.json"
+COLLECTIBLE_AUDIT_PATH = ROOT / "data" / "ah-collectible-audit.json"
 GUIDE_MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 AH_GUIDE_SUFFIX = "ah-price-guide.html"
+GENERATED_OBJECT = re.compile(r"window\.(\w+)=(\{.*?\});(?:\n|$)", re.DOTALL)
+MONEY_PART = re.compile(r"([0-9][0-9,]*)\s*([gsc])")
 
 
 def attr_map(attrs: list[tuple[str, str | None]]) -> dict[str, str]:
@@ -42,6 +49,68 @@ def item_slug(value: str) -> str:
     value = re.sub(r"['’]", "", value.lower())
     value = value.replace("&", " and ")
     return re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+
+
+def item_lookup_key(value: str) -> str:
+    return item_slug(value).replace("-", " ")
+
+
+def generated_json(path: Path, variable: str) -> dict[str, object]:
+    source = path.read_text(encoding="utf-8")
+    for match in GENERATED_OBJECT.finditer(source):
+        if match.group(1) == variable:
+            return json.loads(match.group(2))
+    raise RuntimeError(f"Could not parse {variable} from {path.relative_to(ROOT)}")
+
+
+def parse_money(value: str) -> int | None:
+    value = value.strip()
+    if not value or value == "—":
+        return None
+    matches = MONEY_PART.findall(value)
+    remainder = MONEY_PART.sub("", value).strip()
+    if not matches or remainder:
+        raise RuntimeError(f"Unsupported AH money value: {value!r}")
+    multipliers = {"g": 10_000, "s": 100, "c": 1}
+    return sum(int(amount.replace(",", "")) * multipliers[unit] for amount, unit in matches)
+
+
+def format_money(copper: int) -> str:
+    if copper < 0:
+        raise ValueError("Copper values cannot be negative")
+    gold, remainder = divmod(copper, 10_000)
+    silver, copper = divmod(remainder, 100)
+    parts: list[str] = []
+    if gold:
+        parts.append(f"{gold:,}g")
+    if silver:
+        parts.append(f"{silver}s")
+    if copper or not parts:
+        parts.append(f"{copper}c")
+    return " ".join(parts)
+
+
+def stack_counts(value: str) -> list[int]:
+    if not value or value == "—":
+        return [1]
+    counts = [
+        int(part.strip())
+        for part in value.split("/")
+        if re.fullmatch(r"[0-9]+", part.strip())
+    ]
+    if not counts or any(count < 1 for count in counts):
+        raise RuntimeError(f"Unsupported AH stack recommendation: {value!r}")
+    return counts
+
+
+def price_basis_count(item: dict[str, object]) -> int:
+    value = str(item.get("priceBasis", "")).strip()
+    if not value:
+        return 1
+    match = re.fullmatch(r"Stack of ([0-9]+)", value)
+    if not match:
+        raise RuntimeError(f"Unsupported AH price basis: {value!r}")
+    return int(match.group(1))
 
 
 class HubGuideParser(HTMLParser):
@@ -289,49 +358,118 @@ def load_canonical_values() -> dict[str, object]:
 def load_vendor_recommendations() -> dict[str, object]:
     if not VENDOR_RECOMMENDATIONS_PATH.is_file():
         raise FileNotFoundError(
-            "Missing low-demand vendor recommendations: "
+            "Missing vendor recommendations: "
             f"{VENDOR_RECOMMENDATIONS_PATH.relative_to(ROOT)}"
         )
     data = json.loads(VENDOR_RECOMMENDATIONS_PATH.read_text(encoding="utf-8"))
-    if data.get("version") != 1:
-        raise RuntimeError("Unsupported low-demand vendor-recommendations version")
+    if data.get("version") != 2:
+        raise RuntimeError("Unsupported vendor-recommendations version")
     return data
 
 
-def recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+def load_vendor_sell_prices(audit: dict[str, object]) -> dict[str, int]:
+    model = audit.get("margin_model")
+    if not isinstance(model, dict):
+        raise RuntimeError("Vendor recommendations are missing margin_model")
+
+    item_ids = generated_json(ITEM_IDS_PATH, "AH_ITEM_IDS")
+    eligibility = json.loads(ELIGIBILITY_AUDIT_PATH.read_text(encoding="utf-8"))
+    source = eligibility.get("item_template_source")
+    if not isinstance(source, dict) or source.get("commit") != model.get("sell_price_source_commit"):
+        raise RuntimeError("Vendor margin model and eligibility SellPrice source do not match")
+    records = eligibility.get("items")
+    if not isinstance(records, dict):
+        raise RuntimeError("Auction-eligibility audit is missing item records")
+
+    name_ids = {str(key): int(raw_item_id) for key, raw_item_id in item_ids.items()}
+    if COLLECTIBLE_AUDIT_PATH.is_file():
+        collectible = json.loads(COLLECTIBLE_AUDIT_PATH.read_text(encoding="utf-8"))
+        for raw_item_id, item in collectible.get("items", {}).items():
+            if not isinstance(item, dict):
+                raise RuntimeError("Collectible audit contains an invalid item record")
+            key = item_lookup_key(str(item["name"]))
+            item_id = int(raw_item_id)
+            existing = name_ids.get(key)
+            if existing is not None and existing != item_id:
+                existing_record = records.get(str(existing))
+                new_record = records.get(str(item_id))
+                if (
+                    not isinstance(existing_record, dict)
+                    or not isinstance(new_record, dict)
+                    or int(existing_record.get("sell_price_copper", -1))
+                    != int(new_record.get("sell_price_copper", -2))
+                ):
+                    raise RuntimeError(
+                        f"Same-name collectible IDs have different NPC SellPrice values for "
+                        f"{key!r}: {existing} versus {item_id}"
+                    )
+                continue
+            name_ids[key] = item_id
+
+    prices: dict[str, int] = {}
+    for key, raw_item_id in name_ids.items():
+        item_id = str(raw_item_id)
+        record = records.get(item_id)
+        if not isinstance(record, dict) or "sell_price_copper" not in record:
+            raise RuntimeError(f"Saved NPC SellPrice is missing for item {item_id} ({key})")
+        sell_price = int(record["sell_price_copper"])
+        if sell_price < 0:
+            raise RuntimeError(f"Saved NPC SellPrice is invalid for item {item_id} ({key})")
+        prices[str(key)] = sell_price
+    return prices
+
+
+def concise_recommendation_note(entry: dict[str, object], label: str) -> str:
+    note = str(entry.get("vendor_note", "")).strip()
+    if not note:
+        raise RuntimeError(f"{label} is missing vendor_note")
+    if "\n" in note or len(note) > 60:
+        raise RuntimeError(f"{label} vendor_note must be one short line: {note!r}")
+    return note
+
+
+def recommendation_notes(data: dict[str, object]) -> dict[tuple[str, str], str]:
     recommendations = data.get("item_recommendations")
     if not isinstance(recommendations, list) or not recommendations:
-        raise RuntimeError("Low-demand item vendor recommendations must not be empty")
+        raise RuntimeError("Manual item vendor recommendations must not be empty")
 
-    keys: set[tuple[str, str]] = set()
+    notes: dict[tuple[str, str], str] = {}
     for entry in recommendations:
         if not isinstance(entry, dict):
-            raise RuntimeError("Every low-demand vendor recommendation must be an object")
+            raise RuntimeError("Every manual item vendor recommendation must be an object")
         key = (str(entry.get("guide_id", "")), str(entry.get("name", "")))
         if not all(key):
             raise RuntimeError("Every vendor recommendation needs guide_id and name")
-        if key in keys:
-            raise RuntimeError(f"Duplicate low-demand vendor recommendation: {key!r}")
-        keys.add(key)
-    return keys
+        if key in notes:
+            raise RuntimeError(f"Duplicate manual item vendor recommendation: {key!r}")
+        notes[key] = concise_recommendation_note(entry, f"Item recommendation {key!r}")
+    return notes
 
 
-def section_recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+def recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+    return set(recommendation_notes(data))
+
+
+def section_recommendation_notes(data: dict[str, object]) -> dict[tuple[str, str], str]:
     recommendations = data.get("section_recommendations")
     if not isinstance(recommendations, list) or not recommendations:
-        raise RuntimeError("Low-demand section vendor recommendations must not be empty")
+        raise RuntimeError("Manual section vendor recommendations must not be empty")
 
-    keys: set[tuple[str, str]] = set()
+    notes: dict[tuple[str, str], str] = {}
     for entry in recommendations:
         if not isinstance(entry, dict):
             raise RuntimeError("Every low-demand section recommendation must be an object")
         key = (str(entry.get("guide_id", "")), str(entry.get("section", "")))
         if not all(key):
             raise RuntimeError("Every section recommendation needs guide_id and section")
-        if key in keys:
+        if key in notes:
             raise RuntimeError(f"Duplicate low-demand section recommendation: {key!r}")
-        keys.add(key)
-    return keys
+        notes[key] = concise_recommendation_note(entry, f"Section recommendation {key!r}")
+    return notes
+
+
+def section_recommendation_keys(data: dict[str, object]) -> set[tuple[str, str]]:
+    return set(section_recommendation_notes(data))
 
 
 def grouped_items(
@@ -413,32 +551,166 @@ def canonicalize_and_validate(items: list[dict[str, str | int]]) -> None:
         )
 
 
+def vendor_margin_evaluation(
+    item: dict[str, object],
+    sell_price_copper: int,
+    model: dict[str, object],
+) -> dict[str, int | Fraction]:
+    target_copper = parse_money(str(item["target"]))
+    if target_copper is None:
+        raise RuntimeError(f"Cannot evaluate an unpriced AH row: {item['name']}")
+    basis_count = price_basis_count(item)
+    listing_count = max(stack_counts(str(item["stack"])))
+    if listing_count < basis_count or listing_count % basis_count:
+        raise RuntimeError(
+            f"Recommended stack does not align with the price basis for {item['name']}: "
+            f"{listing_count} versus {basis_count}"
+        )
+
+    cut_bp = int(model["auction_cut_basis_points"])
+    standard_deposit_bp = int(model["standard_12h_deposit_basis_points"])
+    server_deposit_multiplier_bp = int(model["hellscream_deposit_multiplier_basis_points"])
+    minimum_deposit = int(model["minimum_deposit_copper"])
+    effort_floor = int(model["minimum_expected_profit_copper_per_listing"])
+    probabilities = model.get("sale_probability_basis_points_by_demand")
+    if not isinstance(probabilities, dict) or str(item["demand"]) not in probabilities:
+        raise RuntimeError(f"Vendor margin model has no sale likelihood for {item['demand']!r}")
+    sale_probability_bp = int(probabilities[str(item["demand"])])
+    if not 0 < sale_probability_bp <= 10_000:
+        raise RuntimeError(f"Invalid sale probability for {item['demand']!r}")
+    if not 0 <= cut_bp < 10_000:
+        raise RuntimeError("Invalid AH cut in vendor margin model")
+
+    target_listing_copper = Fraction(target_copper * listing_count, basis_count)
+    vendor_listing_copper = sell_price_copper * listing_count
+    deposit_copper = max(
+        minimum_deposit,
+        vendor_listing_copper * standard_deposit_bp * server_deposit_multiplier_bp
+        // 100_000_000,
+    )
+    sale_probability = Fraction(sale_probability_bp, 10_000)
+    net_success = target_listing_copper * Fraction(10_000 - cut_bp, 10_000)
+    expected_profit = (
+        sale_probability * net_success
+        + (1 - sale_probability) * (vendor_listing_copper - deposit_copper)
+        - vendor_listing_copper
+    )
+    required_listing_gross = (
+        vendor_listing_copper
+        + Fraction(10_000 - sale_probability_bp, sale_probability_bp) * deposit_copper
+        + Fraction(10_000, sale_probability_bp) * effort_floor
+    ) / Fraction(10_000 - cut_bp, 10_000)
+    minimum_target_copper = math.ceil(required_listing_gross * basis_count / listing_count)
+    return {
+        "target_copper": target_copper,
+        "minimum_target_copper": minimum_target_copper,
+        "listing_count": listing_count,
+        "deposit_copper": deposit_copper,
+        "target_listing_copper": target_listing_copper,
+        "vendor_listing_copper": vendor_listing_copper,
+        "net_success_copper": net_success,
+        "expected_profit": expected_profit,
+    }
+
+
 def apply_vendor_recommendations(
     items: list[dict[str, str | int | bool]],
     audit: dict[str, object],
 ) -> int:
-    keys = recommendation_keys(audit)
-    section_keys = section_recommendation_keys(audit)
+    item_notes = recommendation_notes(audit)
+    section_notes = section_recommendation_notes(audit)
+    keys = set(item_notes)
+    section_keys = set(section_notes)
+    model = audit.get("margin_model")
+    if not isinstance(model, dict):
+        raise RuntimeError("Vendor recommendations are missing margin_model")
+    sell_prices = load_vendor_sell_prices(audit)
+    vendor_resale_names = {
+        item_lookup_key(str(item["name"]))
+        for item in items
+        if item["section"] == "Vendor & convenience items"
+        or "coin vendor" in str(item.get("conversionHint", "")).casefold()
+    }
     matched_keys: set[tuple[str, str]] = set()
     matched_section_keys: set[tuple[str, str]] = set()
+    manual_count = 0
+    automatic_count = 0
+    below_vendor_after_cut_count = 0
+    close_margin_count = 0
     recommendation_count = 0
+    resolved_sell_price_count = 0
+    zero_sell_price_count = 0
+    vendor_resale_excluded_count = 0
+    margin_evaluated_count = 0
+    unpriced_reference_count = 0
     for item in items:
         key = (str(item["guideId"]), str(item["name"]))
         section_key = (str(item["guideId"]), str(item["section"]))
-        if key not in keys and section_key not in section_keys:
-            continue
-        if key in matched_keys and key in keys:
-            raise RuntimeError(f"Vendor recommendation matched multiple search rows: {key!r}")
-        if item["demand"] != "Low":
-            raise RuntimeError(f"Vendor recommendation must have exact Low demand: {key!r}")
-        if item["section"] == "Vendor & convenience items":
-            raise RuntimeError(f"NPC-vendor resale item cannot be a liquidation recommendation: {key!r}")
-        item["vendorRecommended"] = True
-        recommendation_count += 1
-        if key in keys:
-            matched_keys.add(key)
-        if section_key in section_keys:
-            matched_section_keys.add(section_key)
+        manual = key in keys or section_key in section_keys
+        manual_note = item_notes.get(key) or section_notes.get(section_key)
+        if manual:
+            manual_count += 1
+            if key in matched_keys and key in keys:
+                raise RuntimeError(f"Vendor recommendation matched multiple search rows: {key!r}")
+            if item["section"] == "Vendor & convenience items":
+                raise RuntimeError(f"NPC-vendor resale item cannot be a liquidation recommendation: {key!r}")
+            if key in keys:
+                matched_keys.add(key)
+            if section_key in section_keys:
+                matched_section_keys.add(section_key)
+
+        lookup_key = item_lookup_key(str(item["name"]))
+        sell_price = sell_prices.get(lookup_key)
+        target_copper = parse_money(str(item["target"]))
+        automatic = False
+        automatic_note = ""
+        evaluation: dict[str, int | Fraction] | None = None
+        if sell_price is None:
+            if not manual or target_copper is not None:
+                raise RuntimeError(f"AH row lacks a saved item ID and NPC SellPrice: {key!r}")
+            unpriced_reference_count += 1
+        else:
+            resolved_sell_price_count += 1
+            if lookup_key in vendor_resale_names:
+                vendor_resale_excluded_count += 1
+            elif sell_price == 0:
+                zero_sell_price_count += 1
+            elif target_copper is None:
+                if not manual:
+                    raise RuntimeError(f"Priced AH row unexpectedly lacks a Target: {key!r}")
+                unpriced_reference_count += 1
+            else:
+                margin_evaluated_count += 1
+                evaluation = vendor_margin_evaluation(item, sell_price, model)
+                automatic = int(evaluation["target_copper"]) < int(
+                    evaluation["minimum_target_copper"]
+                )
+                if automatic:
+                    automatic_count += 1
+                    if evaluation["net_success_copper"] <= evaluation["vendor_listing_copper"]:
+                        below_vendor_after_cut_count += 1
+                        automatic_note = "AH net is below NPC value."
+                    else:
+                        close_margin_count += 1
+                        automatic_note = "Expected profit is too small."
+
+        if manual or automatic:
+            item["vendorRecommended"] = True
+            item["vendorRecommendationNote"] = automatic_note or manual_note
+            if not item["vendorRecommendationNote"]:
+                raise RuntimeError(f"Vendor recommendation lacks a short note: {key!r}")
+            recommendation_count += 1
+            if manual and automatic:
+                item["vendorRecommendationSource"] = "manual-and-margin"
+            elif manual:
+                item["vendorRecommendationSource"] = "manual"
+            else:
+                item["vendorRecommendationSource"] = "margin"
+            if automatic and evaluation is not None and sell_price is not None:
+                item["vendorSell"] = format_money(sell_price)
+                item["vendorMinimumTarget"] = format_money(
+                    int(evaluation["minimum_target_copper"])
+                )
 
     if matched_keys != keys:
         missing = sorted(keys - matched_keys)
@@ -459,24 +731,35 @@ def apply_vendor_recommendations(
 
     scope = audit.get("reviewed_scope")
     if not isinstance(scope, dict):
-        raise RuntimeError("Low-demand vendor audit is missing reviewed_scope")
+        raise RuntimeError("Vendor recommendation audit is missing reviewed_scope")
     low_items = [item for item in items if item["demand"] == "Low"]
     low_names = {item_slug(str(item["name"])) for item in low_items}
     promoted_reference_count = sum(
         item.get("_vendorReferencePromotion") is True for item in items
     )
     expected_counts = {
+        "search_index_version": 5,
+        "search_entry_count": len(items),
+        "resolved_sell_price_entry_count": resolved_sell_price_count,
+        "unpriced_reference_entry_count": unpriced_reference_count,
+        "npc_vendor_resale_excluded_entry_count": vendor_resale_excluded_count,
+        "zero_vendor_sell_price_entry_count": zero_sell_price_count,
+        "margin_evaluated_entry_count": margin_evaluated_count,
         "low_entry_count_after_promotions": len(low_items),
         "low_unique_name_count_after_promotions": len(low_names),
         "promoted_reference_entry_count": promoted_reference_count,
+        "manual_vendor_recommendation_count": manual_count,
+        "automatic_margin_vendor_recommendation_count": automatic_count,
+        "below_vendor_after_cut_entry_count": below_vendor_after_cut_count,
+        "close_margin_vendor_recommendation_count": close_margin_count,
+        "above_margin_entry_count": margin_evaluated_count - automatic_count,
         "vendor_recommendation_count": recommendation_count,
     }
-    for field, actual in expected_counts.items():
-        if int(scope.get(field, -1)) != actual:
-            raise RuntimeError(
-                f"Low-demand vendor audit {field} is stale: expected {scope.get(field)!r}, "
-                f"found {actual}"
-            )
+    if scope != expected_counts:
+        raise RuntimeError(
+            "Vendor recommendation reviewed_scope is stale: "
+            f"saved={scope!r}, found={expected_counts!r}"
+        )
     for item in items:
         item.pop("_vendorReferencePromotion", None)
     return recommendation_count

@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "reviewed_date": "2026-08-10",
+  "policy": "The Vendor chip is a liquidation recommendation, not a synonym for Low demand. Every priced AH item with a positive NPC SellPrice is checked against a demand-aware minimum Target that covers the 5% AH cut, Hellscream's measured deposit behavior, one failed listing, and a small expected-profit floor for posting effort. Items with no vendor value cannot receive the automatic price-margin signal. NPC-vendor convenience-resale items remain explicitly excluded. The saved manual recommendations remain for unpriced reference rows and unusually narrow buyer cases.",
+  "margin_model": {
+    "sell_price_source_commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
+    "comparison_price": "Published Target buyout normalized to the row's price basis and largest recommended stack.",
+    "auction_cut_basis_points": 500,
+    "standard_12h_deposit_basis_points": 1500,
+    "hellscream_deposit_multiplier_basis_points": 2000,
+    "minimum_deposit_copper": 1,
+    "minimum_expected_profit_copper_per_listing": 2500,
+    "auction_duration_note": "Hellscream charges 20% of the standard deposit while extending auction durations to 4x normal; the shortest listing is therefore approximately two days.",
+    "failure_rule": "Model one listing attempt. On success, subtract the 5% AH cut. On expiration, lose the Hellscream deposit and then vendor the returned stack.",
+    "sale_probability_basis_points_by_demand": {
+      "Very High": 9000,
+      "High": 7500,
+      "Med-High": 6000,
+      "Med": 4500,
+      "Medium": 4500,
+      "Low-Med": 2500,
+      "Low": 1000,
+      "Very Low": 500,
+      "Weird": 1000
+    },
+    "decision_rule": "Apply Vendor when the expected improvement over vendoring now is less than 25s for one efficiently sized listing. This also guarantees the successful-sale proceeds exceed the direct NPC sell value."
+  },
+  "reviewed_scope": {
+    "search_index_version": 5,
+    "search_entry_count": 4094,
+    "resolved_sell_price_entry_count": 4093,
+    "unpriced_reference_entry_count": 2,
+    "npc_vendor_resale_excluded_entry_count": 119,
+    "zero_vendor_sell_price_entry_count": 393,
+    "margin_evaluated_entry_count": 3580,
+    "low_entry_count_after_promotions": 1083,
+    "low_unique_name_count_after_promotions": 1056,
+    "promoted_reference_entry_count": 2,
+    "manual_vendor_recommendation_count": 22,
+    "automatic_margin_vendor_recommendation_count": 466,
+    "below_vendor_after_cut_entry_count": 79,
+    "close_margin_vendor_recommendation_count": 387,
+    "above_margin_entry_count": 3114,
+    "vendor_recommendation_count": 483
+  },
+  "section_recommendations": [
+    {
+      "guide_id": "fishing-cooking",
+      "section": "Low-demand / should probably vendor",
+      "vendor_note": "Too niche to keep reposting.",
+      "reason": "On Hellscream, these low-value Classic cooking and quest inputs are too niche to keep reposting. Vendor them unless you already know a specific buyer or active quest-stack market."
+    }
+  ],
+  "item_recommendations": [
+    {
+      "guide_id": "fishing-cooking",
+      "name": "Raw Spinefin Halibut",
+      "vendor_note": "No known use.",
+      "reason": "No cooking recipe or crafting use is known in the WotLK data. Vendor it unless Hellscream has a verified custom use.",
+      "evidence_url": "https://www.wowhead.com/wotlk/item=8959/raw-spinefin-halibut"
+    },
+    {
+      "guide_id": "fishing-cooking",
+      "name": "15 Pound Mud Snapper / 29 Pound Salmon / 32 Pound Catfish / 52 Pound Redgill / 68 Pound Grouper / 22 Pound Lobster / 92–103 Pound Mightfish",
+      "vendor_note": "Novelty item with little demand.",
+      "reason": "These are novelty trophy catches rather than cooking materials. Try a single only when collector demand is known; otherwise vendor them.",
+      "evidence_url": "https://warcraft.wiki.gg/wiki/Trophy_fish"
+    }
+  ]
+}

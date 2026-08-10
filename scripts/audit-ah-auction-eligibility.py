@@ -60,7 +60,7 @@ def parse_item_template(sql: str, target_ids: set[int]) -> dict[int, dict]:
         raise ValueError("Could not locate the item_template schema") from error
     columns = re.findall(r"^  `([^`]+)` ", schema, re.MULTILINE)
     positions = {name: index for index, name in enumerate(columns)}
-    required = {"entry", "name", "Flags", "bonding", "duration"}
+    required = {"entry", "name", "Flags", "bonding", "duration", "SellPrice"}
     if not required <= positions.keys():
         raise ValueError(f"item_template schema is missing fields: {sorted(required - positions.keys())}")
 
@@ -94,6 +94,7 @@ def parse_item_template(sql: str, target_ids: set[int]) -> dict[int, dict]:
             "flags": int(values[positions["Flags"]]),
             "bonding": int(values[positions["bonding"]]),
             "duration": int(values[positions["duration"]]),
+            "sell_price_copper": int(values[positions["SellPrice"]]),
         }
 
     missing = sorted(target_ids - records.keys())
@@ -199,6 +200,7 @@ def build_audit(records: dict[int, dict], sources: dict) -> dict:
             "allowed_bonding": sorted(ALLOWED_BONDING),
             "conjured_flag": CONJURED_FLAG,
             "required_duration": 0,
+            "sell_price_field": "AzerothCore item_template.SellPrice in copper per item.",
             "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search.",
         },
         "source_counts": {
@@ -235,6 +237,8 @@ def validate_audit(audit: dict, sources: dict) -> None:
 
     errors: list[str] = []
     for item_id, record in records.items():
+        if "sell_price_copper" not in record or int(record["sell_price_copper"]) < 0:
+            errors.append(f"{item_id} {record.get('name', '')}: missing or invalid SellPrice")
         reasons = eligibility_reasons(record)
         if reasons and item_id not in sources["cost_only_ids"]:
             labels = ", ".join(sorted(sources["memberships"][item_id]))
