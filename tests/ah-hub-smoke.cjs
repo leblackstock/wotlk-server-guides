@@ -20,7 +20,7 @@ async function verifyAuditedCraftedGuide(page, options) {
     recipeSpell,
     notePattern,
     label,
-    footerDate = "2026-08-08"
+    footerDate = "2026-08-10"
   } = options;
   await page.goto(`${base}/guides/${filename}`, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-market-source="crafted"]').count(), rows);
@@ -125,7 +125,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.equal(await zomsRow.locator('[data-column="target"] .buyout').textContent(), "350g");
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /ICC-era iLvl 264 necklace/);
   assert.match(await wodinRow.locator('[data-column="notes"]').textContent(), /Sack of Frosty Treasures supply is episodic/);
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-08/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-10/);
   await noOverflow(page, `${labelPrefix} Level 80 BoE guide`);
 
   await page.goto(`${base}/guides/sought-after-world-drops-ah-price-guide.html`, { waitUntil: "networkidle" });
@@ -168,7 +168,7 @@ async function verifyDroppedGearGuides(page, labelPrefix) {
   assert.equal(await sandalsRow.locator('[data-column="target"] .buyout').textContent(), "9g 57s");
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Fixed-stat level 19 one-handed weapon/);
   assert.match(await shadowfangRow.locator('[data-column="notes"]').textContent(), /Shadowfang Keep trash farming/);
-  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-08/);
+  assert.match(await page.locator("footer").textContent(), /Updated 2026-08-10/);
   await noOverflow(page, `${labelPrefix} world-drop guide`);
 }
 
@@ -473,7 +473,7 @@ async function verifyContainerCollection(page, labelPrefix) {
     }));
     assert.equal(rarityColors.every(Boolean), true, "Enchanting guide should render all four item rarities");
     assert.equal(new Set(rarityColors).size, 4, "Each item rarity should have a distinct name color");
-    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-08/);
+    assert.match(await desktop.locator("footer").textContent(), /Updated 2026-08-10/);
     await noOverflow(desktop, "Desktop Enchanting guide");
     await verifyGuideNavigation(desktop);
     await verifyDroppedGearGuides(desktop, "Desktop");
@@ -508,7 +508,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g 75s",
       recipeSpell: 66659,
       notePattern: /Uncut red epic gem/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Desktop Alchemy guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -519,7 +519,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Desktop Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -530,7 +530,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "7,690g",
       recipeSpell: 70562,
       notePattern: /ICC-era raid gearing/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Desktop Blacksmithing gear guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -541,7 +541,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "190g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
-      footerDate: "2026-08-09",
+      footerDate: "2026-08-10",
       label: "Desktop Jewelcrafting gems guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -552,7 +552,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "2g 20s",
       recipeSpell: 56193,
       notePattern: /item level 138/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Desktop Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -574,7 +574,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "17g 50s",
       recipeSpell: 35543,
       notePattern: /Cannot affect targets level 80 or higher/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Desktop Leatherworking guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -585,7 +585,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "12g 25s",
       recipeSpell: 57423,
       notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Desktop Cooking guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -596,13 +596,13 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g",
       recipeSpell: 55208,
       notePattern: /Standard 3\.3\.5 data shows no cooldown/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Desktop Mining guide"
     });
 
     await desktop.goto(`${base}/guides/tailoring-cloth-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#tailor-only-nets").count(), 1);
-    assert.equal(await desktop.locator("#tailor-only-nets tbody tr").count(), 3);
+    assert.equal(await desktop.locator("#tailor-only-nets tbody tr:not(.ah-source-notes-detail)").count(), 3);
     assert.match(
       await desktop.locator('[data-crafted-key="tailor-frostweave-net"] [data-column="notes"]').textContent(),
       /Requires Tailoring 350 to use/
@@ -627,12 +627,12 @@ async function verifyContainerCollection(page, labelPrefix) {
 
     await desktop.goto(`${base}/guides/skinning-leatherworking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#leatherworker-only-drums").count(), 1);
-    assert.equal(await desktop.locator("#leatherworker-only-drums tbody tr").count(), 5);
+    assert.equal(await desktop.locator("#leatherworker-only-drums tbody tr:not(.ah-source-notes-detail)").count(), 5);
     assert.match(
       await desktop.locator('[data-crafted-key="lw-drums-of-battle"] [data-column="notes"]').textContent(),
       /Requires Leatherworking 350 to use/
     );
-    assert.equal(await desktop.locator('[data-use-audience="profession-input"] tbody tr').count(), 6);
+    assert.equal(await desktop.locator('[data-use-audience="profession-input"] tbody tr:not(.ah-source-notes-detail)').count(), 6);
     assert.match(
       await desktop.locator('[data-crafted-key="lw-drums-of-forgotten-kings"] [data-column="notes"]').textContent(),
       /No profession required/
@@ -655,9 +655,9 @@ async function verifyContainerCollection(page, labelPrefix) {
 
     await desktop.goto(`${base}/guides/fishing-cooking-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#cook-required-feasts").count(), 1);
-    assert.equal(await desktop.locator("#cook-required-feasts tbody tr").count(), 4);
+    assert.equal(await desktop.locator("#cook-required-feasts tbody tr:not(.ah-source-notes-detail)").count(), 4);
     assert.match(await desktop.locator("#cook-required-feasts").textContent(), /Requires Cooking 425 to place/);
-    assert.equal(await desktop.locator("#rogue-only-utility tbody tr").count(), 1);
+    assert.equal(await desktop.locator("#rogue-only-utility tbody tr:not(.ah-source-notes-detail)").count(), 1);
     assert.match(await desktop.locator("#rogue-only-utility").textContent(), /Rogue only/);
     await noOverflow(desktop, "Desktop profession-separated Cooking guide");
 
@@ -740,7 +740,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g 75s",
       recipeSpell: 66659,
       notePattern: /Uncut red epic gem/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Mobile Alchemy guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -751,7 +751,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Mobile Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -762,7 +762,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "7,690g",
       recipeSpell: 70562,
       notePattern: /ICC-era raid gearing/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Mobile Blacksmithing gear guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -773,7 +773,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "190g",
       recipeSpell: 66448,
       notePattern: /\+20 Agility/,
-      footerDate: "2026-08-09",
+      footerDate: "2026-08-10",
       label: "Mobile Jewelcrafting gems guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -784,7 +784,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "2g 20s",
       recipeSpell: 56193,
       notePattern: /item level 138/,
-      footerDate: "2026-08-06",
+      footerDate: "2026-08-10",
       label: "Mobile Jewelcrafting jewelry guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -806,7 +806,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "17g 50s",
       recipeSpell: 35543,
       notePattern: /Cannot affect targets level 80 or higher/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Mobile Leatherworking guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -817,7 +817,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "12g 25s",
       recipeSpell: 57423,
       notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Mobile Cooking guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -828,7 +828,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g",
       recipeSpell: 55208,
       notePattern: /Standard 3\.3\.5 data shows no cooldown/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Mobile Mining guide"
     });
 

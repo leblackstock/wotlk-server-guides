@@ -132,24 +132,7 @@ assert status["publishing_status"] == "local only — not published"
 
 for filename in evidence["scope"]["guides"]:
     source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
-    expected_date = (
-        "2026-08-10"
-        if filename in {
-            "engineering-materials-ah-price-guide.html",
-            "tailoring-cloth-ah-price-guide.html",
-        }
-        else "2026-08-09"
-        if filename == "jewelcrafting-gems-ah-price-guide.html"
-        else "2026-08-08"
-        if filename in {
-            "enchanting-mats-ah-price-guide.html",
-            "inscription-materials-ah-price-guide.html",
-            "skinning-leatherworking-materials-ah-price-guide.html",
-            "fishing-cooking-materials-ah-price-guide.html",
-            "mining-smithing-ah-price-guide.html",
-        }
-        else "2026-08-06"
-    )
+    expected_date = "2026-08-10"
     assert f"Updated {expected_date}" in source, filename
 
 print(

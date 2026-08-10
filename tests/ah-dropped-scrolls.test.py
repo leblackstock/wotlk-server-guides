@@ -195,7 +195,7 @@ def main() -> int:
     if source.count("data-ah-major-nav") != 1:
         fail("Inscription guide needs one runtime major-category chip destination")
     for asset in ("ah-guide-navigation-data.js", "ah-guide-navigation.js"):
-        if f'../assets/{asset}?v=20260804-ah-dropped-gear-v1' not in source:
+        if f'../assets/{asset}?v=20260810-ah-source-notes-v1' not in source:
             fail(f"Inscription guide is missing runtime category navigation: {asset}")
 
     inscription_sections = {

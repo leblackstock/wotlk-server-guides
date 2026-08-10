@@ -38,7 +38,7 @@ assert "Exact reversible 10:1 conversions: `2`" in report
 assert "New price changes in this closeout: `0`" in report
 assert "Publication status: `local only — not published`" in report
 
-assert "Updated 2026-08-08" in guide
+assert "Updated 2026-08-10" in guide
 assert guide.count('id="crafted-mining-pricing-note"') == 1
 assert "Twenty-two bars and alloys retain their completed Phase 1A Evidence Pricing decisions" in guide
 assert guide.count('data-crafted-key="mining-') == 24

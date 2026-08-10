@@ -21,7 +21,7 @@ TURN_IN_EVIDENCE = ROOT / "data" / "ah-turn-in-price-evidence.json"
 RECIPE_AUDIT = ROOT / "data" / "ah-recipe-drop-audit.json"
 RECIPE_EVIDENCE = ROOT / "data" / "ah-recipe-drop-price-evidence.json"
 SHARED_RENDERER = ROOT / "scripts" / "render-ah-shared-sections.py"
-TODAY = "2026-08-08"
+TODAY = "2026-08-10"
 FIXED_TURN_IN_SECTION = "Darkmoon Faire drop turn-ins only"
 DEMAND_CLASSES = {
     "Very High": "vh",

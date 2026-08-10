@@ -1014,23 +1014,7 @@ def main() -> int:
         "fishing-cooking-materials-ah-price-guide.html",
         "mining-smithing-ah-price-guide.html",
     ):
-        expected_date = (
-            "2026-08-10"
-            if filename in {
-                "engineering-materials-ah-price-guide.html",
-                "tailoring-cloth-ah-price-guide.html",
-            }
-            else "2026-08-09"
-            if filename == "jewelcrafting-gems-ah-price-guide.html"
-            else "2026-08-08"
-            if filename in {
-                "inscription-materials-ah-price-guide.html",
-                "skinning-leatherworking-materials-ah-price-guide.html",
-                "fishing-cooking-materials-ah-price-guide.html",
-                "mining-smithing-ah-price-guide.html",
-            }
-            else "2026-08-06"
-        )
+        expected_date = "2026-08-10"
         if f"Updated {expected_date}" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
         if not re.search(
@@ -1111,7 +1095,7 @@ def main() -> int:
         fail(f"Expected 25 expanded Enchanting sections, found {len(enchanting_sections)}")
 
     enchanting_source = sources["enchanting-mats-ah-price-guide.html"]
-    if "Updated 2026-08-08" not in enchanting_source:
+    if "Updated 2026-08-10" not in enchanting_source:
         fail("Enchanting guide footer date was not updated")
     if enchanting_source.count('id="crafted-enchanting-pricing-note"') != 1:
         fail("Enchanting guide must contain exactly one shared pricing note")

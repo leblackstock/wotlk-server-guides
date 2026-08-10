@@ -197,7 +197,7 @@ assert "Publication status: `local only — not published`" in report
 assert "394 on three realms, 67 on two, and 9 on one" in report
 assert "All 2,856 individual comparison requests resolved" in report
 
-assert "Updated 2026-08-08" in guide
+assert "Updated 2026-08-10" in guide
 assert guide.count('id="crafted-leatherworking-pricing-note"') == 1
 assert "The Evidence Pricing review found usable relative-rank evidence for 470 finished outputs" in guide
 assert len(re.findall(r'class="crafted-recipe-link ', guide)) == 490

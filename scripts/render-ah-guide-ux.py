@@ -8,6 +8,7 @@ import html
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 from ah_guides import load_guide_manifest
@@ -19,8 +20,8 @@ HUB_PATH = ROOT / "auction-house.html"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 GEM_FINDER_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "gem-finder.html"
-ASSET_VERSION = "20260804-ah-dropped-gear-v1"
-HUB_STYLE_VERSION = "20260810-ah-vendor-notes-v3"
+ASSET_VERSION = "20260810-ah-source-notes-v1"
+HUB_STYLE_VERSION = "20260810-ah-source-notes-v1"
 PAGE_SPECIFIC_ASSETS = {
     "jewelcrafting-gems-ah-price-guide.html": {
         "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v2")],
@@ -152,11 +153,12 @@ def render_scripts(guide: dict) -> str:
 <script src="../assets/ah-search-index.js?v={ASSET_VERSION}" defer></script>
 <script src="../assets/ah-guide-navigation-data.js?v={ASSET_VERSION}" defer></script>
 <script src="../assets/ah-guide-navigation.js?v={ASSET_VERSION}" defer></script>
-<script src="../assets/ah-search.js?v={ASSET_VERSION}" defer></script>{extra_scripts}
+<script src="../assets/ah-search.js?v={ASSET_VERSION}" defer></script>
+<script src="../assets/ah-source-notes.js?v={ASSET_VERSION}" defer></script>{extra_scripts}
 <!-- AH_GUIDE_SCRIPTS_END -->'''
 
 
-def transform_page(source: str, guide: dict) -> str:
+def transform_page(source: str, guide: dict, updated_date: str | None = None) -> str:
     filename = guide["file"]
     notes = extract_notes(source, filename)
     source = GEM_FINDER_BLOCK.sub("", source)
@@ -225,7 +227,7 @@ def transform_page(source: str, guide: dict) -> str:
     footer_match = re.search(r"<footer>.*?Updated (\d{4}-\d{2}-\d{2})</footer>", source, re.DOTALL)
     if not footer_match:
         raise ValueError(f"{filename}: expected an Updated footer date")
-    updated_date = footer_match.group(1)
+    updated_date = updated_date or footer_match.group(1)
     footer = (
         f'<footer>WotLK 3.3.5 {html.escape(guide["title"])} AH Guide '
         f'• Hellscream / Garrosh • Created by Valdora • Updated {updated_date}</footer>'
@@ -385,6 +387,12 @@ def transform_hub(source: str, manifest: dict) -> str:
         source,
         count=1,
     )
+    source = re.sub(
+        r"ah-guide-icons\.css\?v=[^\"\s]+",
+        f"ah-guide-icons.css?v={ASSET_VERSION}",
+        source,
+        count=1,
+    )
     for asset in ("ah-search-index.js", "ah-search.js"):
         source = re.sub(
             rf"{re.escape(asset)}\?v=[^\"\s]+",
@@ -398,7 +406,14 @@ def transform_hub(source: str, manifest: dict) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail when guide UX is stale")
+    parser.add_argument(
+        "--updated-date",
+        help="Set the Updated footer date on every rendered guide (YYYY-MM-DD)",
+    )
     args = parser.parse_args()
+
+    if args.updated_date:
+        date.fromisoformat(args.updated_date)
 
     manifest = load_guide_manifest(MANIFEST_PATH)
     if len(manifest["guides"]) != int(manifest["active_guide_count"]):
@@ -411,7 +426,7 @@ def main() -> int:
         if not path.is_file():
             raise FileNotFoundError(path)
         source = path.read_text(encoding="utf-8")
-        expected = transform_page(source, guide)
+        expected = transform_page(source, guide, updated_date=args.updated_date)
         if expected != source:
             stale.append(str(path.relative_to(ROOT)))
             updates.append((path, expected))

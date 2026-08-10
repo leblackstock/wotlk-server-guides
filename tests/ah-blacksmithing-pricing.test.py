@@ -144,7 +144,7 @@ for filename in (
     "blacksmithing-gear-ah-price-guide.html",
 ):
     source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
-    assert "Updated 2026-08-06" in source
+    assert "Updated 2026-08-10" in source
     assert source.count("Evidence Pricing") >= 1
 
 print(

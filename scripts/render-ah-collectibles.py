@@ -238,6 +238,13 @@ def render_page(data: dict, audit: dict) -> str:
 </details>
 <!-- AH_GUIDE_UX_END -->
 
+{sections}
+
+<section class="common">
+  <h2 class="ah-category-heading">Excluded and pending verification<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
+  <p class="small">Promotional and TCG mounts stay excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that those rewards are enabled on this server. BoP and temporary examples—including Fetch Ball, pet grooming items, and temporary event mounts—cannot be listed and stay out of the tables.</p>
+</section>
+
 <section class="common">
   <h2 class="ah-category-heading">What is covered<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
   <div class="best-grid ah-summary-grid">
@@ -246,13 +253,6 @@ def render_page(data: dict, audit: dict) -> str:
     <div class="best-card ah-summary-card"><h3>Rare rewards</h3><p>Verified quest companions and the tradeable Shadowmourne reward family.</p></div>
     <div class="best-card ah-summary-card"><h3>Season by season</h3><p><strong>{seasonal}</strong> event rows, with every holiday in its own section and explicit empty in-scope sections.</p></div>
   </div>
-</section>
-
-{sections}
-
-<section class="common">
-  <h2 class="ah-category-heading">Excluded and pending verification<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
-  <p class="small">Promotional and TCG mounts stay excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that those rewards are enabled on this server. BoP and temporary examples—including Fetch Ball, pet grooming items, and temporary event mounts—cannot be listed and stay out of the tables.</p>
 </section>
 
 <section class="common">

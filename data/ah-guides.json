@@ -590,8 +590,7 @@
             {"id": "collectibles-season-lunar-festival", "label": "Lunar Festival", "patterns": ["^Lunar Festival$"]},
             {"id": "collectibles-season-pirates-day", "label": "Pirates' Day", "patterns": ["^Pirates' Day$"]}
           ]
-        },
-        {"id": "collectibles-reference", "label": "Coverage & Sources", "patterns": ["^What is covered$", "^Excluded and pending verification$", "^Sources$", "^Disclaimer$"]}
+        }
       ]
     }
   ],

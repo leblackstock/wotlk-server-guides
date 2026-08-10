@@ -7,10 +7,12 @@ const { JSDOM } = require("jsdom");
 const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
-const version = "20260804-ah-dropped-gear-v1";
-const hubSearchVersion = "20260810-ah-vendor-notes-v3";
+const version = "20260810-ah-source-notes-v1";
+const hubSearchVersion = "20260810-ah-source-notes-v1";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
+const sourceNotesSource = read("assets/ah-source-notes.js");
+const ahPriceGuideCss = read("assets/ah-price-guide.css");
 
 assert.equal(manifest.version, 1);
 assert.equal(manifest.active_guide_count, 19);
@@ -29,7 +31,7 @@ assert.match(hub.querySelector("header .sub").textContent, /all 19 pricing guide
 const hubGroups = [...hub.querySelectorAll("[data-ah-guide-group]")];
 assert.equal(hubGroups.length, manifest.groups.length);
 assert.ok(hub.querySelector(`link[href="./assets/style.css?v=${hubSearchVersion}"]`));
-assert.ok(hub.querySelector('link[href="./assets/ah-guide-icons.css?v=20260804-ah-dropped-gear-v1"]'));
+assert.ok(hub.querySelector(`link[href="./assets/ah-guide-icons.css?v=${version}"]`));
 assert.deepEqual(
   hubGroups.map((group) => group.dataset.ahGuideGroup),
   [...manifest.groups].sort((a, b) => a.order - b.order).map((group) => group.id),
@@ -105,30 +107,7 @@ for (const guide of manifest.guides) {
   assert.equal(document.querySelector("details.ah-guide-notes").hasAttribute("open"), false, guide.file);
   assert.equal(document.querySelectorAll(".ah-baseline-note").length, 1, guide.file);
   assert.equal(document.querySelectorAll("footer").length, 1, guide.file);
-  const updatedOnAugustEighth = new Set([
-    "herbalism",
-    "engineering",
-    "jewelcrafting-gems",
-    "enchanting",
-    "inscription",
-    "tailoring",
-    "skinning-leatherworking",
-    "fishing-cooking",
-    "mining-metals",
-    "shared-materials",
-    "turn-ins",
-    "recipe-pattern-drops",
-    "level-80-boe-epics",
-    "sought-after-world-drops",
-  ]);
-  const expectedUpdatedDate = new Set(["collectibles", "engineering", "tailoring"]).has(guide.id)
-    ? "2026-08-10"
-    : guide.id === "jewelcrafting-gems"
-    ? "2026-08-09"
-    : updatedOnAugustEighth.has(guide.id)
-      ? "2026-08-08"
-      : "2026-08-06";
-  assert.ok(document.querySelector("footer").textContent.endsWith(`Updated ${expectedUpdatedDate}`), guide.file);
+  assert.ok(document.querySelector("footer").textContent.endsWith("Updated 2026-08-10"), guide.file);
   assert.equal(document.title, `${guide.title} AH Price Guide — WotLK 3.3.5 Low Pop`, guide.file);
   assert.ok(
     document.querySelector(`link[href="../assets/ah-guide-icons.css?v=${version}"]`),
@@ -139,6 +118,7 @@ for (const guide of manifest.guides) {
     "ah-guide-navigation-data.js",
     "ah-guide-navigation.js",
     "ah-search.js",
+    "ah-source-notes.js",
   ]) {
     assert.ok(
       document.querySelector(`script[src="../assets/${asset}?v=${version}"]`),
@@ -150,12 +130,56 @@ for (const guide of manifest.guides) {
     runScripts: "dangerously",
     url: `http://127.0.0.1/guides/${guide.file}`,
   });
+  const runtimeDocument = runtime.window.document;
+  const eligibleRows = [...runtimeDocument.querySelectorAll("table > tbody > tr")].filter((row) => {
+    const cells = [...row.children];
+    return cells.some((cell) => cell.matches('td[data-column="notes"]'))
+      && (cells.some((cell) => cell.matches('td[data-column="item"]')) || row.cells[0]);
+  });
+  const originalNotes = eligibleRows.map((row) =>
+    [...row.children].find((cell) => cell.matches('td[data-column="notes"]')).textContent.replace(/\s+/g, " ").trim()
+  );
   runtime.window.eval(navDataSource);
   runtime.window.eval(navSource);
+  runtime.window.eval(sourceNotesSource);
   if (!runtime.window.document.querySelector("[data-ah-major-nav] .ah-category-chip")) {
     runtime.window.document.dispatchEvent(new runtime.window.Event("DOMContentLoaded"));
   }
-  const runtimeDocument = runtime.window.document;
+  runtime.window.AH_SOURCE_NOTES.initialize();
+
+  assert.equal(
+    runtimeDocument.querySelectorAll(".ah-source-notes-toggle").length,
+    eligibleRows.length,
+    `${guide.file}: source-notes action count`,
+  );
+  assert.equal(
+    runtimeDocument.querySelectorAll(".ah-source-notes-detail").length,
+    eligibleRows.length,
+    `${guide.file}: source-notes detail count`,
+  );
+  assert.equal(
+    runtimeDocument.querySelectorAll('[class*="source-type"], [class*="acquisition-type"]').length,
+    0,
+    `${guide.file}: source-type chips are not allowed`,
+  );
+  eligibleRows.forEach((row, index) => {
+    const itemCell = [...row.children].find((cell) => cell.matches('td[data-column="item"]')) || row.cells[0];
+    const toggle = itemCell.querySelector(".ah-source-notes-toggle");
+    const detail = row.nextElementSibling;
+    assert.equal(row.dataset.ahSourceNotesReady, "true", `${guide.file}: row ${index + 1} was not enhanced`);
+    assert.ok(toggle, `${guide.file}: row ${index + 1} is missing its action`);
+    assert.equal(toggle.textContent, "Source & notes", `${guide.file}: row ${index + 1} action label`);
+    assert.equal(toggle.getAttribute("aria-expanded"), "false", `${guide.file}: row ${index + 1} initial state`);
+    assert.equal(detail.id, toggle.getAttribute("aria-controls"), `${guide.file}: row ${index + 1} control target`);
+    assert.equal(detail.className, "ah-source-notes-detail", `${guide.file}: row ${index + 1} detail class`);
+    assert.equal(detail.hidden, true, `${guide.file}: row ${index + 1} detail must start closed`);
+    assert.equal(
+      detail.querySelector(".ah-source-notes-panel-body").textContent.replace(/\s+/g, " ").trim(),
+      originalNotes[index],
+      `${guide.file}: row ${index + 1} note content changed`,
+    );
+  });
+
   const chips = [...runtimeDocument.querySelectorAll(".ah-category-chip")];
   assert.ok(chips.length, `${guide.file}: category navigation rendered no chips`);
   for (const chip of chips) {
@@ -174,11 +198,58 @@ for (const guide of manifest.guides) {
     .filter((section) => !section.classList.contains("ah-category-banner"))
     .filter((section) => !section.classList.contains("crafted-market-intro"))
     .filter((section) => [...section.children].some((child) => child.tagName === "H2"))
-    .filter((section) => !/^(Sources|Disclaimer)$/.test(sectionTitle(section)))
+    .filter((section) => !/^(What is covered|Excluded and pending verification|Sources|Disclaimer)$/.test(sectionTitle(section)))
     .filter((section) => section.dataset.ahNavCovered !== "true")
     .map(sectionTitle);
   assert.deepEqual(uncovered, [], `${guide.file}: guide categories missing from chip navigation`);
+
+  for (const back of runtimeDocument.querySelectorAll(".ah-category-heading .ah-back-to-parent")) {
+    const top = back.parentElement.querySelector(".ah-back-to-top");
+    assert.ok(top, `${guide.file}: parent control is missing its Top partner`);
+    assert.equal(back.nextElementSibling, top, `${guide.file}: parent control must immediately precede Top`);
+  }
+
+  if (guide.id === "collectibles") {
+    assert.equal(runtimeDocument.querySelector('.ah-guide-major-nav a[href="#collectibles-reference"]'), null);
+    assert.equal(runtimeDocument.getElementById("collectibles-reference"), null);
+    const excluded = runtimeDocument.getElementById("ah-section-excluded-and-pending-verification");
+    const covered = runtimeDocument.getElementById("ah-section-what-is-covered");
+    const sources = runtimeDocument.getElementById("ah-section-sources");
+    const disclaimer = runtimeDocument.getElementById("ah-section-disclaimer");
+    assert.equal(excluded.nextElementSibling, covered);
+    assert.equal(covered.nextElementSibling, sources);
+    assert.equal(sources.nextElementSibling, disclaimer);
+
+    const expandableTable = [...runtimeDocument.querySelectorAll("table.ah-source-notes-ready")]
+      .find((table) => table.querySelectorAll(".ah-source-notes-toggle").length >= 2);
+    const toggles = [...expandableTable.querySelectorAll(".ah-source-notes-toggle")];
+    const firstDetail = runtimeDocument.getElementById(toggles[0].getAttribute("aria-controls"));
+    const secondDetail = runtimeDocument.getElementById(toggles[1].getAttribute("aria-controls"));
+    toggles[0].click();
+    assert.equal(firstDetail.hidden, false);
+    assert.equal(toggles[0].textContent, "Hide notes");
+    toggles[1].click();
+    assert.equal(firstDetail.hidden, true);
+    assert.equal(toggles[0].textContent, "Source & notes");
+    assert.equal(secondDetail.hidden, false);
+    secondDetail.querySelector(".ah-source-notes-close").click();
+    assert.equal(secondDetail.hidden, true);
+    assert.equal(runtimeDocument.activeElement, toggles[1]);
+  }
+
+  if (guide.id === "enchanting") {
+    assert.equal(runtimeDocument.querySelectorAll(".crafted-note-ref").length, 276);
+    assert.equal(runtimeDocument.querySelectorAll(".crafted-item-note").length, 276);
+    assert.equal(runtimeDocument.querySelectorAll(".crafted-recipe-link").length, 276);
+  }
 }
+
+assert.match(ahPriceGuideCss, /@media \(min-width: 1001px\)/);
+assert.match(ahPriceGuideCss, /@media \(max-width: 1000px\)/);
+assert.match(ahPriceGuideCss, /--ah-source-notes-action:\s*#79ddc7/);
+assert.match(ahPriceGuideCss, /\.ah-category-heading \.ah-back-to-top\s*\{\s*margin-left:\s*auto;/);
+assert.match(ahPriceGuideCss, /tr\.ah-row-pulse\s*\{\s*animation:\s*ah-row-pulse/);
+assert.doesNotMatch(ahPriceGuideCss, /ah-row-pulse-cell/);
 
 for (const redirect of manifest.redirects) {
   const source = read(`guides/${redirect.file}`);

@@ -128,8 +128,8 @@ def main() -> int:
     assert quest_source.count('data-container-key="') == 1
     assert "<!-- AH_CONTAINER_DROPS_START -->" in world_source
     assert "<!-- AH_CONTAINER_QUEST_REWARDS_START -->" in quest_source
-    assert "Updated 2026-08-08" in world_source
-    assert "Updated 2026-08-08" in quest_source
+    assert "Updated 2026-08-10" in world_source
+    assert "Updated 2026-08-10" in quest_source
     for source, marker in (
         (world_source, "AH_CONTAINER_DROPS"),
         (quest_source, "AH_CONTAINER_QUEST_REWARDS"),

@@ -153,8 +153,8 @@ assert turn_guide.count("<tbody><tr") == 11
 assert recipe_guide.count("Limited vendor:") == 5
 assert "Eighty-five have pinned loot paths; five limited-vendor recipes" in recipe_guide
 assert "Requires Inscription 425" in recipe_guide
-assert "Updated 2026-08-08</footer>" in turn_guide
-assert "Updated 2026-08-08</footer>" in recipe_guide
+assert "Updated 2026-08-10</footer>" in turn_guide
+assert "Updated 2026-08-10</footer>" in recipe_guide
 assert "Active listings show competition only and never set or raise guide prices." in turn_guide
 assert "Active listings show competition only and never set or raise guide prices." in recipe_guide
 

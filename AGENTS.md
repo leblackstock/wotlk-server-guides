@@ -11,6 +11,11 @@
 - Update the matching plan's status and evidence log as the work advances. Do not treat a listing, low-confidence reference, or fallback as verified current value.
 - Publishing remains a separate step and requires explicit user authorization.
 
+## AH Guide UX Standards
+
+- Before changing AH table presentation, source-note behavior, row highlighting, or page flow, read `docs/ah-guide-ux-standard.md`.
+- An approved standard marked as rollout-pending must not be applied to live guides, shared assets, generators, or canonical data until the user explicitly authorizes implementation.
+
 ## Guide Footer Dates
 
 - When editing any published guide HTML file under `guides/`, update that page's footer `Updated YYYY-MM-DD` date in the same change.
