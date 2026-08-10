@@ -145,6 +145,10 @@ def render_row(key: str, item: dict) -> str:
 
 
 def render_section(section: dict, catalog: dict) -> str:
+    audience = section.get("audience")
+    audience_attribute = (
+        f' data-use-audience="{html.escape(audience)}"' if audience else ""
+    )
     heading = (
         f'<h2 class="ah-category-heading">{html.escape(section["title"])}'
         '<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>'
@@ -153,12 +157,13 @@ def render_section(section: dict, catalog: dict) -> str:
     if not section["items"]:
         return (
             f'<section class="common collectible-market-section collectible-market-section--empty" '
-            f'data-collectible-section="{html.escape(section["id"])}">{heading}{intro}'
+            f'data-collectible-section="{html.escape(section["id"])}"{audience_attribute}>{heading}{intro}'
             f'<div class="note"><strong>No priced rows:</strong> {html.escape(section["empty_reason"])}</div></section>'
         )
     rows = "\n".join(render_row(key, catalog[key]) for key in section["items"])
     return (
-        f'<section class="common collectible-market-section" data-collectible-section="{html.escape(section["id"])}">'
+        f'<section class="common collectible-market-section" '
+        f'data-collectible-section="{html.escape(section["id"])}"{audience_attribute}>'
         f'{heading}{intro}<div class="table-wrap"><table class="ah-market-table ah-market-table--extended" '
         'data-table-family="market"><thead><tr><th data-column="item">Item</th>'
         '<th data-column="target">Target Price</th><th data-column="quick">Quick Price</th>'

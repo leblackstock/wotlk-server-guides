@@ -162,8 +162,8 @@ assert frog_evidence["proposal"]["confidence"] == "low"
 assert evidence["items"]["17194"]["exact_vendor_cost_copper"] == 2
 
 assert len(sections["catalog"]) == 133
-assert len(sections["sections"]) == 20
-season_sections = sections["sections"][9:]
+assert len(sections["sections"]) == 21
+season_sections = sections["sections"][10:]
 assert [section["title"] for section in season_sections] == expected_seasons
 assert {
     section["title"] for section in season_sections if not section["items"]
@@ -199,12 +199,30 @@ assert holiday_vendor["vendor_cost_copper"] // holiday_vendor["vendor_buy_count"
 assert manifest["active_guide_count"] == len(manifest["guides"]) == 19
 collectible_manifest = next(guide_record for guide_record in manifest["guides"] if guide_record["id"] == "collectibles")
 assert collectible_manifest["file"] == GUIDE_PATH.name
+assert len(collectible_manifest["navigation"][1]["children"]) == 3
 assert len(collectible_manifest["navigation"][4]["children"]) == 11
 assert index["guideCount"] == 19
 assert Counter(item["guideId"] for item in index["items"])["collectibles"] == 133
 assert guide.count('data-collectible-key="') == 133
-assert guide.count('data-collectible-section="') == 20
+assert guide.count('data-collectible-section="') == 21
 assert guide.count("collectible-market-section--empty") == 6
+assert guide.count('data-use-audience="general-use"') == 2
+assert guide.count('data-use-audience="profession-restricted"') == 1
+general_mounts = re.search(
+    r'data-collectible-section="crafted-mounts-general-use".*?</section>',
+    guide,
+    re.DOTALL,
+)
+restricted_mounts = re.search(
+    r'data-collectible-section="crafted-mounts-profession-required".*?</section>',
+    guide,
+    re.DOTALL,
+)
+assert general_mounts and general_mounts.group(0).count('data-collectible-key="') == 2
+assert restricted_mounts and restricted_mounts.group(0).count('data-collectible-key="') == 3
+assert "Engineering 375 required to use." in restricted_mounts.group(0)
+assert "Engineering 300 required to use." in restricted_mounts.group(0)
+assert "Tailoring 300 required to use." in restricted_mounts.group(0)
 assert "Updated 2026-08-10" in guide
 assert "Magic Rooster Egg" in guide and "Wooly White Rhino" in guide and "Blazing Hippogryph" in guide
 assert re.search(r"Holiday Spices.*Exact vendor cost: 2c", guide, re.DOTALL)
@@ -213,4 +231,4 @@ assert eligibility["rules"]["allowed_bonding"] == [0, 2, 3]
 assert eligibility["source_counts"]["collectible_item_ids"] == 133
 assert all(str(item_id) in eligibility["items"] for item_id in crafted_ids)
 
-print("Validated 133 evidence-priced collectible rows across 20 acquisition and seasonal sections.")
+print("Validated 133 evidence-priced collectible rows across 21 acquisition and seasonal sections.")

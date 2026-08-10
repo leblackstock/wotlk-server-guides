@@ -62,6 +62,18 @@ const selectedRow = runtime.window.document.querySelector("tr.ah-row-selected");
 assert.ok(selectedRow, "Same-page AH item links should select their destination row after the hash changes");
 assert.equal(selectedRow.querySelector("td:first-child strong").textContent.trim(), "Elemental Blasting Powder");
 assert.equal(selectedRow.getAttribute("aria-selected"), "true");
+assert.equal(
+  runtime.window.document.querySelector('[data-use-audience="general-use"] .profession-audience-chip').textContent,
+  "No profession required",
+);
+assert.equal(
+  runtime.window.document.querySelector('[data-use-audience="profession-restricted"] .profession-audience-chip').textContent,
+  "Profession required",
+);
+assert.equal(
+  runtime.window.document.querySelector('[data-use-audience="profession-input"] .profession-audience-chip').textContent,
+  "Profession buyers",
+);
 runtime.window.close();
 
 const hubSource = fs.readFileSync(path.join(root, "auction-house.html"), "utf8");
@@ -90,6 +102,14 @@ vendorRuntime.window.close();
 
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "data", "ah-guides.json"), "utf8"));
 let renderedVendorNotes = 0;
+let renderedAudienceLabels = 0;
+const audienceLabels = {
+  "general-use": "No profession required",
+  "profession-restricted": "Profession required",
+  "profession-input": "Profession buyers",
+  "class-restricted": "Class required",
+  "mixed-input-and-general-use": "Mixed use",
+};
 for (const guide of manifest.guides) {
   const expectedNotes = index.items
     .filter((item) => item.guideId === guide.id && item.vendorRecommended === true)
@@ -104,6 +124,18 @@ for (const guide of manifest.guides) {
   );
   guideRuntime.window.AH_SEARCH_INDEX = index;
   guideRuntime.window.eval(searchSource);
+  const audienceSections = [...guideRuntime.window.document.querySelectorAll("section[data-use-audience]")];
+  assert.equal(
+    guideRuntime.window.AHSearchCore.initializeProfessionAudienceLabels(),
+    audienceSections.length,
+    `${guide.file}: wrong profession-audience label count`,
+  );
+  for (const section of audienceSections) {
+    const chips = section.querySelectorAll(":scope > h2 .profession-audience-chip");
+    assert.equal(chips.length, 1, `${guide.file}: profession-audience label missing or duplicated`);
+    assert.equal(chips[0].textContent, audienceLabels[section.dataset.useAudience]);
+  }
+  renderedAudienceLabels += audienceSections.length;
   const result = guideRuntime.window.AHSearchCore.initializeVendorNotes();
   const actualNotes = [...guideRuntime.window.document.querySelectorAll(".ah-item-vendor-note")]
     .map((note) => note.textContent.replace(/\s+/g, " ").trim())
@@ -115,6 +147,7 @@ for (const guide of manifest.guides) {
   guideRuntime.window.close();
 }
 assert.equal(renderedVendorNotes, index.vendorRecommendationCount);
+assert.ok(renderedAudienceLabels > 0);
 
 console.log("Auction House search groups duplicate items, follows row links, and renders every Vendor reason in item notes.");
 require("./ah-gem-finder.test.js");

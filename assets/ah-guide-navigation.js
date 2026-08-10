@@ -22,7 +22,7 @@
 
   function headingText(heading) {
     const clone = heading.cloneNode(true);
-    clone.querySelectorAll(".ah-back-to-top, .ah-back-to-parent, .ah-category-chip-nav").forEach((node) => node.remove());
+    clone.querySelectorAll(".ah-back-to-top, .ah-back-to-parent, .ah-category-chip-nav, .profession-audience-chip").forEach((node) => node.remove());
     return clone.textContent.trim();
   }
 

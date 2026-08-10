@@ -3,7 +3,7 @@
   "scope": {
     "guide_glob": "*-ah-price-guide.html",
     "expected_guide_count": 19,
-    "expected_priced_table_count": 347
+    "expected_priced_table_count": 348
   },
   "default_order": {
     "field": "target_buyout_copper",

@@ -359,7 +359,7 @@
     const heading = row.closest("section")?.querySelector("h2");
     if (!heading) return "";
     const copy = heading.cloneNode(true);
-    copy.querySelectorAll(".ah-back-to-top, .ah-back-to-parent, .ah-category-chip-nav")
+    copy.querySelectorAll(".ah-back-to-top, .ah-back-to-parent, .ah-category-chip-nav, .profession-audience-chip")
       .forEach((element) => element.remove());
     return normalize(copy.textContent);
   }
@@ -403,6 +403,50 @@
       rendered += 1;
     });
     return { expected, rendered };
+  }
+
+  const PROFESSION_AUDIENCE_LABELS = {
+    "general-use": {
+      label: "No profession required",
+      title: "The finished item does not require the crafting profession. Other listed requirements still apply."
+    },
+    "profession-restricted": {
+      label: "Profession required",
+      title: "The buyer must meet the listed profession and rank requirement."
+    },
+    "profession-input": {
+      label: "Profession buyers",
+      title: "This item is mainly a profession tool, reagent, component, or specialty container."
+    },
+    "class-restricted": {
+      label: "Class required",
+      title: "The buyer must meet the listed class requirement."
+    },
+    "mixed-input-and-general-use": {
+      label: "Mixed use",
+      title: "This section contains both general-use items and profession inputs."
+    }
+  };
+
+  function initializeProfessionAudienceLabels() {
+    let rendered = 0;
+    document.querySelectorAll("section[data-use-audience]").forEach((section) => {
+      const audience = section.dataset.useAudience;
+      const content = PROFESSION_AUDIENCE_LABELS[audience];
+      const heading = Array.from(section.children).find((child) => child.tagName === "H2");
+      if (!content || !heading) return;
+
+      let chip = heading.querySelector(".profession-audience-chip");
+      if (!chip) {
+        chip = makeElement("span", `profession-audience-chip profession-audience-chip--${audience}`);
+        const firstControl = heading.querySelector(".ah-back-to-parent, .ah-back-to-top");
+        heading.insertBefore(chip, firstControl || null);
+      }
+      chip.textContent = content.label;
+      chip.title = content.title;
+      rendered += 1;
+    });
+    return rendered;
   }
 
   function initializeRowSelection() {
@@ -486,12 +530,14 @@
     searchItems,
     slugify,
     uniqueItemCount,
-    initializeVendorNotes
+    initializeVendorNotes,
+    initializeProfessionAudienceLabels
   };
   if (typeof document !== "undefined") {
     document.addEventListener("DOMContentLoaded", () => {
       initializeSearch();
       initializeVendorNotes();
+      initializeProfessionAudienceLabels();
       initializeRowSelection();
     });
   }

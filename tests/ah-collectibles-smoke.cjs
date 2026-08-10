@@ -16,7 +16,7 @@ async function noOverflow(page, label) {
 async function verifyGuide(page, label) {
   await page.goto(guideUrl, { waitUntil: "networkidle" });
   assert.equal(await page.locator('[data-collectible-key]').count(), 133);
-  assert.equal(await page.locator('[data-collectible-section]').count(), 20);
+  assert.equal(await page.locator('[data-collectible-section]').count(), 21);
   assert.equal(await page.locator('.collectible-market-section--empty').count(), 6);
   assert.equal(
     await page.locator('[data-collectible-section="vendor-unlimited"] [data-collectible-key]').count(),
@@ -50,6 +50,14 @@ async function verifyGuide(page, label) {
   assert.match(await woodFrog.textContent(), /Flik: stock 1, 30-minute restock/);
   const carpet = page.locator('[data-collectible-key="flying-carpet"]');
   assert.match(await carpet.textContent(), /Tailoring 300/);
+  assert.equal(
+    await page.locator('[data-collectible-section="crafted-mounts-general-use"] .profession-audience-chip').textContent(),
+    "No profession required",
+  );
+  assert.equal(
+    await page.locator('[data-collectible-section="crafted-mounts-profession-required"] .profession-audience-chip').textContent(),
+    "Profession required",
+  );
   assert.match(await page.locator("footer").textContent(), /Updated 2026-08-10/);
   await noOverflow(page, label);
 }

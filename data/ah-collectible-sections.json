@@ -3573,7 +3573,8 @@
     {
       "id": "crafted-companions",
       "title": "Crafted companions",
-      "description": "Tradeable Engineering companions with exact recipe floors and collectible-demand estimates.",
+      "description": "Tradeable Engineering companions that do not require Engineering to use, with exact recipe floors and collectible-demand estimates.",
+      "audience": "general-use",
       "items": [
         "tranquil-mechanical-yeti",
         "lil-smoky",
@@ -3583,12 +3584,21 @@
       ]
     },
     {
-      "id": "crafted-mounts",
-      "title": "Crafted mounts",
-      "description": "Profession-restricted flying mounts and general-use motorcycles are labeled for their actual buyer.",
+      "id": "crafted-mounts-general-use",
+      "title": "Crafted mounts — no profession required",
+      "description": "The finished motorcycles do not require Engineering to use; normal faction and Riding 150 requirements still apply.",
+      "audience": "general-use",
       "items": [
         "mekgineer-s-chopper",
-        "mechano-hog",
+        "mechano-hog"
+      ]
+    },
+    {
+      "id": "crafted-mounts-profession-required",
+      "title": "Crafted mounts — profession required",
+      "description": "The buyer must have the listed Engineering or Tailoring rank to use these finished flying mounts.",
+      "audience": "profession-restricted",
+      "items": [
         "turbo-charged-flying-machine-control",
         "flying-machine-control",
         "flying-carpet"

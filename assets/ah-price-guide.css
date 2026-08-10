@@ -307,6 +307,55 @@ body[data-guide-section="auction-house"] .ah-guide-hero .sub {
 .ah-category-heading .ah-back-to-parent + .ah-back-to-top {
   margin-left: 0;
 }
+.profession-audience-chip {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 24px;
+  margin-left: auto;
+  padding: 3px 8px;
+  border: 1px solid rgba(143, 155, 167, .34);
+  border-radius: 999px;
+  background: rgba(143, 155, 167, .08);
+  color: #c4cbd2;
+  font-size: .68rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+.profession-audience-chip + .ah-back-to-parent,
+.profession-audience-chip + .ah-back-to-top {
+  margin-left: 0;
+}
+.profession-audience-chip--general-use {
+  border-color: rgba(89, 213, 178, .42);
+  background: rgba(89, 213, 178, .10);
+  color: #a9efdc;
+}
+.profession-audience-chip--profession-restricted,
+.profession-audience-chip--class-restricted {
+  border-color: rgba(240, 193, 90, .46);
+  background: rgba(240, 193, 90, .11);
+  color: #f5d98f;
+}
+.profession-audience-chip--profession-input {
+  border-color: rgba(174, 137, 255, .42);
+  background: rgba(174, 137, 255, .10);
+  color: #d8c2ff;
+}
+section[data-use-audience="general-use"] {
+  border-left: 3px solid rgba(89, 213, 178, .62);
+}
+section[data-use-audience="profession-restricted"],
+section[data-use-audience="class-restricted"] {
+  border-left: 3px solid rgba(240, 193, 90, .68);
+}
+section[data-use-audience="profession-input"] {
+  border-left: 3px solid rgba(174, 137, 255, .60);
+}
+section[data-use-audience="mixed-input-and-general-use"] {
+  border-left: 3px solid rgba(143, 155, 167, .52);
+}
 .ah-category-heading .ah-back-to-parent:hover,
 .ah-category-heading .ah-back-to-parent:focus-visible {
   border-color: rgba(var(--section-ah-rgb), .72);

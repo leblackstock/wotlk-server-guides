@@ -560,7 +560,8 @@
           "label": "Crafted",
           "children": [
             {"id": "collectibles-crafted-companions", "label": "Companions", "patterns": ["^Crafted companions$"]},
-            {"id": "collectibles-crafted-mounts", "label": "Mounts", "patterns": ["^Crafted mounts$"]}
+            {"id": "collectibles-crafted-mounts-general", "label": "Mounts — Anyone", "patterns": ["^Crafted mounts — no profession required$"]},
+            {"id": "collectibles-crafted-mounts-restricted", "label": "Mounts — Profession", "patterns": ["^Crafted mounts — profession required$"]}
           ]
         },
         {
