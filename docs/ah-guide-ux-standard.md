@@ -10,12 +10,12 @@ This standard applies to Auction House market and reference guides that display 
 
 ## Source and selling notes
 
-- On desktop widths above 1000 px, hide the wide source/selling-notes table column and place exactly one teal action labeled **Source & notes** with each item.
+- On desktop widths above 760 px, hide the wide source/selling-notes table column and place exactly one teal action labeled **Source & notes** with each item.
 - Do not add a separate source-type, acquisition-type, vendor-type, or similar chip beside the action.
 - Activating **Source & notes** opens the row's complete source and selling notes in a full-width panel immediately below that row. Do not abbreviate or discard any of the original note content.
 - While open, the action label changes to **Hide notes**. A separate **Close notes** action closes the panel and returns keyboard focus to the originating action.
 - Only one source-notes panel may be open within a table at a time.
-- At widths of 1000 px and below, use the full card layout, keep source and selling notes visible in the card, and hide the desktop disclosure action and panel row.
+- At widths of 760 px and below, use the full card layout, keep source and selling notes visible in the card, and hide the desktop disclosure action and panel row.
 - Preserve semantic buttons, `aria-expanded`, `aria-controls`, a labeled notes region, keyboard operation, and reduced-motion behavior.
 
 ## Search-result row highlighting

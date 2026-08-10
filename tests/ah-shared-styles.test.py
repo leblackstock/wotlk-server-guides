@@ -23,7 +23,7 @@ STYLES_PATH = ROOT / "assets" / "ah-price-guide.css"
 ICON_STYLES_PATH = ROOT / "assets" / "ah-guide-icons.css"
 SEARCH_STYLES_PATH = ROOT / "assets" / "style.css"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
-STYLESHEET_VERSION = "20260810-ah-source-notes-v1"
+STYLESHEET_VERSION = "20260810-ah-desktop-table-v2"
 
 
 def normalize_item_name(value: str) -> str:

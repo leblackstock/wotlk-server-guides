@@ -27,7 +27,7 @@ VENDOR_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "vendor-convenience-sec
 CRAFTED_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "crafted-market-section.html"
 DROPPED_SCROLL_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "dropped-scrolls-section.html"
 AH_GUIDES_PATH = ROOT / "data" / "ah-guides.json"
-AH_STYLESHEET_VERSION = "20260810-ah-source-notes-v1"
+AH_STYLESHEET_VERSION = "20260810-ah-desktop-table-v2"
 DROPPED_GEAR_GUIDES = {
     "level-80-boe-epics-ah-price-guide.html",
     "sought-after-world-drops-ah-price-guide.html",

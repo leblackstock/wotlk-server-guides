@@ -20,8 +20,8 @@ HUB_PATH = ROOT / "auction-house.html"
 MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 GEM_FINDER_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "gem-finder.html"
-ASSET_VERSION = "20260810-ah-source-notes-v1"
-HUB_STYLE_VERSION = "20260810-ah-source-notes-v1"
+ASSET_VERSION = "20260810-ah-desktop-table-v2"
+HUB_STYLE_VERSION = "20260810-ah-desktop-table-v2"
 PAGE_SPECIFIC_ASSETS = {
     "jewelcrafting-gems-ah-price-guide.html": {
         "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v2")],

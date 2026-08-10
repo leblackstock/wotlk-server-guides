@@ -128,7 +128,7 @@ body[data-guide-section="auction-house"] table.ah-vendor-table [data-column="not
 body[data-guide-section="auction-house"] .ah-source-notes-controls { display: none; }
 body[data-guide-section="auction-house"] .ah-source-notes-detail[hidden] { display: none; }
 
-@media (min-width: 1001px) {
+@media (min-width: 761px) {
   body[data-guide-section="auction-house"] table.ah-source-notes-ready { min-width: 900px; }
   body[data-guide-section="auction-house"] table.ah-source-notes-ready > thead [data-column="notes"],
   body[data-guide-section="auction-house"] table.ah-source-notes-ready > tbody > tr:not(.ah-source-notes-detail) > [data-column="notes"] { display: none; }
@@ -229,8 +229,8 @@ body[data-guide-section="auction-house"] .ah-info-panel--rare { border-color: rg
   body[data-guide-section="auction-house"] h1 { font-size: 24px; }
 }
 
-/* Tablet/mobile layout: every data row becomes a readable card; Item and Target stay first. */
-@media (max-width: 1000px) {
+/* Phone layout: every data row becomes a readable card; Item and Target stay first. */
+@media (max-width: 760px) {
   body[data-guide-section="auction-house"] .ah-source-notes-controls,
   body[data-guide-section="auction-house"] .ah-source-notes-detail { display: none !important; }
   body[data-guide-section="auction-house"] .table-wrap { overflow: visible; border: 0; background: transparent; }
@@ -757,7 +757,7 @@ body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row
 }
 
 /* Mobile card selection uses one continuous card highlight. */
-@media (max-width: 1000px) {
+@media (max-width: 760px) {
   body[data-guide-section="auction-house"] .table-wrap > table > tbody > tr.ah-row-selectable {
     -webkit-tap-highlight-color: transparent;
   }

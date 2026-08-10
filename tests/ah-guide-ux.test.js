@@ -7,8 +7,8 @@ const { JSDOM } = require("jsdom");
 const root = path.resolve(__dirname, "..");
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const manifest = JSON.parse(read("data/ah-guides.json"));
-const version = "20260810-ah-source-notes-v1";
-const hubSearchVersion = "20260810-ah-source-notes-v1";
+const version = "20260810-ah-desktop-table-v2";
+const hubSearchVersion = "20260810-ah-desktop-table-v2";
 const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 const sourceNotesSource = read("assets/ah-source-notes.js");
@@ -244,8 +244,8 @@ for (const guide of manifest.guides) {
   }
 }
 
-assert.match(ahPriceGuideCss, /@media \(min-width: 1001px\)/);
-assert.match(ahPriceGuideCss, /@media \(max-width: 1000px\)/);
+assert.match(ahPriceGuideCss, /@media \(min-width: 761px\)/);
+assert.match(ahPriceGuideCss, /@media \(max-width: 760px\)/);
 assert.match(ahPriceGuideCss, /--ah-source-notes-action:\s*#79ddc7/);
 assert.match(ahPriceGuideCss, /\.ah-category-heading \.ah-back-to-top\s*\{\s*margin-left:\s*auto;/);
 assert.match(ahPriceGuideCss, /tr\.ah-row-pulse\s*\{\s*animation:\s*ah-row-pulse/);
