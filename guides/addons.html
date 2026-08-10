@@ -10,11 +10,11 @@
   <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260726-atlasloot-discord-v2">
   <link rel="stylesheet" href="../assets/style.css?v=20260726-atlasloot-discord-v2">
-  <link rel="stylesheet" href="../assets/addon-catalog.css?v=20260731-gitaddonsmanager-v1">
+  <link rel="stylesheet" href="../assets/addon-catalog.css?v=20260731-gitaddonsmanager-drawer-v2">
   <link rel="stylesheet" href="../assets/addon-color-roles.css?v=20260726-atlasloot-discord-v2">
-  <script src="../assets/addon-catalog-data.js?v=20260731-existing-install-v1" defer></script>
+  <script src="../assets/addon-catalog-data.js?v=20260806-randomcompanions-v1" defer></script>
   <script src="../assets/addon-search-core.js?v=20260726-atlasloot-discord-v2" defer></script>
-  <script src="../assets/addon-catalog.js?v=20260731-existing-install-v1" defer></script>
+  <script src="../assets/addon-catalog.js?v=20260731-gitaddonsmanager-drawer-v1" defer></script>
 </head>
 <body data-guide-section="addons">
   <div class="wrap addon-page">
@@ -33,8 +33,14 @@
       <section id="gitaddonsmanager" class="addon-manager" aria-labelledby="addon-manager-heading">
         <span class="addon-manager-kicker">Recommended updater</span>
         <h2 id="addon-manager-heading">Keep Git-hosted addons updated with GitAddonsManager</h2>
-        <p>GitAddonsManager installs and updates addons directly from GitHub, GitLab, and similar Git repositories. It is the recommended way to install Auctioneer Revisited and other addons for which this guide provides a <code>.git</code> clone URL.</p>
-        <a class="addon-manager-download" href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">Download GitAddonsManager from the official page ↗</a>
+        <p>GitAddonsManager installs and updates addons directly from GitHub, GitLab, and similar Git repositories. It is the recommended way to install Auctioneer Revisited, RandomCompanions, and other addons for which this guide provides a <code>.git</code> clone URL.</p>
+        <aside class="addon-manager-limitations addon-manager-repo-warning">
+          <strong>Important:</strong> GitAddonsManager only works with addons that are also Git repositories. It cannot manage an ordinary ZIP-only or manually installed addon unless its maintainer provides a compatible Git clone URL.
+        </aside>
+        <div class="addon-manager-actions">
+          <a class="addon-manager-download" href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">Download GitAddonsManager from the official page ↗</a>
+          <button id="gitaddonsmanager-drawer-open" class="addon-manager-drawer-button" type="button" aria-haspopup="dialog" aria-controls="gitaddonsmanager-dialog" aria-expanded="false">Open detailed setup drawer</button>
+        </div>
 
         <details class="addon-manager-guide">
           <summary>Installation, setup, adding addons, and updating addons</summary>
@@ -63,9 +69,10 @@
               <ol>
                 <li>Back up any existing copy and its important files under <code>WTF\Account\&lt;account&gt;\SavedVariables</code>. Remove or move old addon folders out of <code>Interface\AddOns</code> so releases cannot mix.</li>
                 <li>Open GitAddonsManager's <strong>Addons</strong> tab and select the <strong>+</strong> button labeled <strong>Download a new addon from a git repository</strong>.</li>
-                <li>In <strong>Clone Repository</strong>, paste the repository's clone URL, which normally ends in <code>.git</code>. For Auctioneer Revisited, use <code>https://github.com/leblackstock/auctioneer-revisited-wotlk.git</code>.</li>
+                <li>In <strong>Clone Repository</strong>, paste the repository's clone URL, which normally ends in <code>.git</code>. Use <code>https://github.com/leblackstock/auctioneer-revisited-wotlk.git</code> for Auctioneer Revisited or <code>https://github.com/leblackstock/RandomCompanions-WotLK.git</code> for RandomCompanions.</li>
                 <li>If more than one AddOns directory is configured, choose the correct destination, select <strong>OK</strong>, and wait for cloning and subfolder setup to finish.</li>
                 <li>For Auctioneer Revisited, confirm <code>Interface\AddOns\Auc-Advanced\Auc-Advanced.toc</code> and <code>Interface\AddOns\BeanCounter\BeanCounter.toc</code> exist directly under AddOns. Do not leave the suite nested inside another folder.</li>
+                <li>For RandomCompanions, confirm GitAddonsManager used the root TOC name and created <code>Interface\AddOns\RandomCompanions\RandomCompanions.toc</code>. Do not leave it under <code>RandomCompanions-WotLK</code> or another nested folder.</li>
                 <li>Start WoW, enable <strong>Load out of date AddOns</strong> if the client requests it, and verify the addon version and settings before normal play.</li>
               </ol>
             </section>
@@ -136,7 +143,7 @@
       <noscript>
         <section class="addon-noscript">
           <h2>JavaScript is needed for search and filters</h2>
-          <p>The catalog currently has eighteen addons. Download links open in a new tab.</p>
+          <p>The catalog currently has nineteen addons. Download links open in a new tab.</p>
           <ul>
             <li><a href="https://warperia.com/addon-wotlk/pallypower/" target="_blank" rel="noopener">PallyPower ↗</a></li>
             <li><a href="https://www.wowinterface.com/downloads/info13576-ProtectionIsSurprisinglyStupendous.html" target="_blank" rel="noopener">Protection Is Surprisingly Stupendous ↗</a></li>
@@ -151,6 +158,7 @@
             <li><a href="https://warperia.com/addon-wotlk/skada-revisited/" target="_blank" rel="noopener">Skada Revisited ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/chatter/" target="_blank" rel="noopener">Chatter ↗</a></li>
             <li>Auctioneer Revisited: <a href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">get GitAddonsManager ↗</a> · <a href="https://github.com/leblackstock/auctioneer-revisited-wotlk" target="_blank" rel="noopener">open the repository ↗</a></li>
+            <li>RandomCompanions: <a href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">get GitAddonsManager ↗</a> · <a href="https://github.com/leblackstock/RandomCompanions-WotLK" target="_blank" rel="noopener">open the repository ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/addon-control-panel/" target="_blank" rel="noopener">Addon Control Panel ↗</a></li>
             <li><a href="https://www.curseforge.com/wow/addons/bartender4/files/439962" target="_blank" rel="noopener">Bartender4 ↗</a></li>
             <li><a href="https://warperia.com/addon-wotlk/outfitter/" target="_blank" rel="noopener">Outfitter ↗</a></li>
@@ -165,13 +173,141 @@
       </aside>
     </main>
 
-    <footer>Unofficial WotLK 3.3.5 addon reference. Compatibility does not mean tested on Hellscream. • Updated 2026-07-31</footer>
+    <footer>Unofficial WotLK 3.3.5 addon reference. Compatibility does not mean tested on Hellscream. • Updated 2026-08-10</footer>
   </div>
 
   <dialog id="addon-details-dialog" class="addon-dialog" aria-labelledby="addon-dialog-title">
     <div class="addon-dialog-shell">
       <button id="addon-dialog-close" class="addon-dialog-close" type="button" aria-label="Close addon details">×</button>
       <div id="addon-dialog-content"></div>
+    </div>
+  </dialog>
+
+  <dialog id="gitaddonsmanager-dialog" class="addon-dialog addon-manager-dialog" aria-labelledby="gitaddonsmanager-dialog-title">
+    <div class="addon-dialog-shell">
+      <button id="gitaddonsmanager-dialog-close" class="addon-dialog-close" type="button" aria-label="Close GitAddonsManager setup">×</button>
+      <div class="addon-manager-drawer-content">
+        <header class="addon-dialog-header">
+          <div>
+            <span class="addon-manager-kicker">Detailed setup</span>
+            <h2 id="gitaddonsmanager-dialog-title" class="addon-dialog-title">GitAddonsManager installation and maintenance</h2>
+          </div>
+        </header>
+
+        <p class="addon-dialog-summary">Use this walkthrough when setting up GitAddonsManager for the first time, moving an existing addon under Git management, or recovering from a failed clone or update.</p>
+
+        <div class="addon-dialog-actions">
+          <a class="addon-dialog-download" href="https://woblight.gitlab.io/overview/gitaddonsmanager/" target="_blank" rel="noopener">Open the official download page ↗</a>
+          <button id="gitaddonsmanager-dialog-collapse" class="addon-manager-drawer-button" type="button" aria-controls="gitaddonsmanager-dialog">Collapse setup drawer</button>
+        </div>
+
+        <section class="addon-dialog-section">
+          <h3>Before you start</h3>
+          <ul>
+            <li>Exit World of Warcraft before changing addon files. Keep a backup of important addon folders and account SavedVariables.</li>
+            <li>GitAddonsManager only works with addons that are also Git repositories. It does not search for addons or automatically adopt ordinary ZIP installations without a <code>.git</code> repository.</li>
+            <li>Use trusted HTTPS clone URLs supplied by the addon maintainer. A clone URL normally ends in <code>.git</code>.</li>
+          </ul>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>1. Download and launch it on Windows</h3>
+          <ol>
+            <li>Open the official page above and choose <strong>Download for Windows x64</strong>.</li>
+            <li>Extract the ZIP into a permanent tools folder. Do not run the executable from inside the compressed ZIP.</li>
+            <li>Launch GitAddonsManager from the extracted folder. Keep the entire extracted folder together so the application can update and reopen normally.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>2. Select the exact AddOns directory</h3>
+          <ol>
+            <li>When <strong>Choose addons directory</strong> appears, select the folder ending in <code>Interface\AddOns</code>.</li>
+            <li>A standard installation may end in <code>World of Warcraft\Interface\AddOns</code>. A private-server launcher may use a path ending in <code>launcher\Interface\AddOns</code>.</li>
+            <li>Do not select the WoW root, <code>Interface</code>, or one individual addon folder. The selected directory must directly contain folders such as <code>Questie</code>, <code>BeanCounter</code>, or <code>Auc-Advanced</code>.</li>
+            <li>For another WoW installation, open <strong>Options</strong>, choose <strong>Add directory</strong>, and add that installation's separate <code>Interface\AddOns</code> folder.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>3. Prepare an addon that is already installed</h3>
+          <ol>
+            <li>Back up the existing addon folder and any important files under <code>WTF\Account\&lt;account&gt;\SavedVariables</code>.</li>
+            <li>Move the old addon folder to a backup location outside <code>Interface\AddOns</code>. Merely renaming it inside AddOns can allow WoW to keep loading it.</li>
+            <li>For a multi-folder suite such as Auctioneer, move every folder belonging to the old matched suite. Mixing old and new modules can cause silent failures.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>4. Clone and add an addon</h3>
+          <ol>
+            <li>Open the <strong>Addons</strong> tab and select the <strong>+</strong> button labeled <strong>Download a new addon from a git repository</strong>.</li>
+            <li>In <strong>Clone Repository</strong>, paste the trusted HTTPS clone URL.</li>
+            <li>If several AddOns directories are configured, select the intended game installation, then choose <strong>OK</strong>.</li>
+            <li>Wait for cloning and subfolder setup to finish. Do not start WoW while the operation is running.</li>
+            <li>Confirm the addon's <code>.toc</code> file is at <code>Interface\AddOns\AddonName\AddonName.toc</code>, not one folder deeper.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>5. Install Auctioneer Revisited</h3>
+          <ol>
+            <li>Back up <code>AucAdvanced.lua</code>, <code>AucAdvanced.lua.bak</code>, <code>BeanCounter.lua</code>, and <code>BeanCounter.lua.bak</code> for every account whose scans or sales history matter.</li>
+            <li>Move the complete old Auctioneer suite outside AddOns, including Auc-Advanced, BeanCounter, Enchantrix, Informant, SlideBar, Stubby, !Swatter, and every Auc-Filter, Auc-ScanData, Auc-Stat, and Auc-Util folder.</li>
+            <li>Paste <code>https://github.com/leblackstock/auctioneer-revisited-wotlk.git</code> into <strong>Clone Repository</strong>.</li>
+            <li>Confirm <code>Interface\AddOns\Auc-Advanced\Auc-Advanced.toc</code> and <code>Interface\AddOns\BeanCounter\BeanCounter.toc</code> exist directly under AddOns.</li>
+            <li>Start WoW, enable <strong>Load out of date AddOns</strong> if requested, and confirm the old scans and BeanCounter history load before deleting the backups.</li>
+            <li>Open Auctioneer <strong>Configure → Server Rules</strong>. Confirm Hellscream on Hellscream, or switch to Standard WotLK on servers using normal auction rules.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>6. Install RandomCompanions</h3>
+          <ol>
+            <li>Back up <code>RandomCompanions.lua</code> and <code>RandomCompanions.lua.bak</code> from each account's SavedVariables folder, and move any old <code>RandomCompanions</code> addon folder outside AddOns.</li>
+            <li>Paste <code>https://github.com/leblackstock/RandomCompanions-WotLK.git</code> into <strong>Clone Repository</strong>.</li>
+            <li>GitAddonsManager should use the root <code>RandomCompanions.toc</code> name when arranging the checkout. Confirm the final path is <code>Interface\AddOns\RandomCompanions\RandomCompanions.toc</code>, not a nested <code>RandomCompanions-WotLK</code> folder.</li>
+            <li>Start WoW, enable <strong>Load out of date AddOns</strong> if requested, open <code>/rc config</code>, and confirm the previous positions, modes, Favorites, and auto-pet setting loaded.</li>
+            <li>Run <code>/reload</code>, summon one mount and one pet, and keep the backups until both the full login and reload checks succeed.</li>
+            <li>To restore the previous installation, exit WoW, remove the Git-managed folder, restore the complete addon-folder backup, and restore the matching <code>RandomCompanions.lua</code> SavedVariables files.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>7. Check for and install updates</h3>
+          <ol>
+            <li>Exit WoW, open GitAddonsManager, and select <strong>Refresh addons list and check for updates</strong>.</li>
+            <li>Use the button beside one repository when its tooltip says <strong>Perform upgrade</strong>, or use <strong>Upgrade all addons</strong> in the toolbar.</li>
+            <li>Wait for the operation to finish, start WoW, and verify the expected addon version. Keep SavedVariables unless the addon maintainer explicitly requires a reset.</li>
+          </ol>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>8. Repair, remove, or recover an addon</h3>
+          <ul>
+            <li><strong>Repair:</strong> restores repository-managed addon files and may replace local edits.</li>
+            <li><strong>Repair repository:</strong> attempts to download the repository again when its Git data is damaged.</li>
+            <li><strong>Delete:</strong> removes the managed addon files. Account SavedVariables are separate, but back them up before removing anything important.</li>
+            <li>If an update loses expected data, exit WoW and restore both the addon-folder backup and the matching SavedVariables backup.</li>
+          </ul>
+        </section>
+
+        <section class="addon-dialog-section">
+          <h3>Common problems</h3>
+          <dl class="addon-manager-problems">
+            <dt>The addon is not listed</dt>
+            <dd>It was probably installed manually without a <code>.git</code> repository. Back it up, move it out of AddOns, and clone it through GitAddonsManager.</dd>
+            <dt>Clone Repository reports an error</dt>
+            <dd>Confirm the URL is a public HTTPS clone URL ending in <code>.git</code>, the destination is the correct AddOns folder, and no old folder is blocking the repository name.</dd>
+            <dt>The addon is nested too deeply</dt>
+            <dd>Confirm the selected directory is <code>Interface\AddOns</code>. Use the repository repair option if the manager did not finish arranging its addon subfolders.</dd>
+            <dt>No update appears</dt>
+            <dd>Select refresh, check the repository's active branch, and review <strong>View log</strong> for fetch or local-file errors.</dd>
+          </dl>
+        </section>
+
+        <p class="addon-dialog-callout addon-dialog-warning"><strong>Keep the backup:</strong> do not delete the old addon and SavedVariables backups until the replacement has loaded successfully after both a full login and <code>/reload</code>.</p>
+      </div>
     </div>
   </dialog>
 </body>

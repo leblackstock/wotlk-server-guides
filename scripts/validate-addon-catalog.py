@@ -27,13 +27,14 @@ REQUIRED_ADDONS = {
     "skada",
     "chatter",
     "auctioneer-suite",
+    "random-companions",
     "addon-control-panel",
     "bartender4",
     "outfitter",
     "pawn",
     "atlasloot-hellscream",
 }
-TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "addon-control-panel", "bartender4", "outfitter", "pawn", "atlasloot-hellscream"}
+TESTED_HELLSCREAM_ADDONS = {"questie", "skada", "chatter", "auctioneer-suite", "random-companions", "addon-control-panel", "bartender4", "outfitter", "pawn", "atlasloot-hellscream"}
 AUDIENCE_KEYS = {
     "classes": "class",
     "specs": "specialization",

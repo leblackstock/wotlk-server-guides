@@ -141,7 +141,7 @@ assert.ok(paladinTankRaid.includes("deadly-boss-mods"));
 assert.ok(paladinTankRaid.includes("ratingbuster"));
 assert.ok(ids("", { role: ["tank"] }).includes("healbot"));
 assert.ok(ids("", { activity: ["raids"] }).includes("deadly-boss-mods"));
-assert.equal(ids("").length, 18);
+assert.equal(ids("").length, 19);
 assert.equal(ids("", { profession: ["alchemy"] }).length, 0);
 
 const questie = addons.find((addon) => addon.id === "questie");
@@ -213,6 +213,40 @@ assert.ok(auctioneer.moduleGroups.flatMap((group) => group.items).some((item) =>
 const auctioneerRole = core.recommendationFor(auctioneer, state("", { role: ["dps"] }), catalog);
 assert.equal(auctioneerRole.importance, "recommended");
 assert.deepEqual(auctioneerRole.purposes, ["economy"]);
+
+const randomCompanions = addons.find((addon) => addon.id === "random-companions");
+assert.ok(ids("random pet").includes("random-companions"));
+assert.ok(ids("mount favorites").includes("random-companions"));
+assert.ok(ids("", { activity: ["leveling"] }).includes("random-companions"));
+assert.equal(randomCompanions.name, "RandomCompanions");
+assert.equal(randomCompanions.compatibility.downloadVersion, "1.0.3-wotlk.1");
+assert.equal(randomCompanions.compatibility.hellscreamTested, true);
+assert.equal(randomCompanions.compatibility.hellscreamTestedDate, "2026-08-04");
+assert.ok(randomCompanions.tags.includes("tested-hellscream"));
+assert.ok(randomCompanions.tags.includes("server-sensitive"));
+assert.equal(randomCompanions.download.url, "https://github.com/leblackstock/RandomCompanions-WotLK");
+assert.equal(randomCompanions.prerequisiteLinks[0].url, "https://woblight.gitlab.io/overview/gitaddonsmanager/");
+assert.match(randomCompanions.generalSetup.join("\n"), /RandomCompanions-WotLK\.git/);
+assert.match(randomCompanions.generalSetup.join("\n"), /Interface\\AddOns\\RandomCompanions\\RandomCompanions\.toc/);
+assert.match(randomCompanions.generalSetup.join("\n"), /\/rc petstatus/);
+assert.match(randomCompanions.compatibility.importantNotes.join("\n"), /one-time Favorites presets/);
+assert.equal(randomCompanions.generalSetupGuides.length, 1);
+assert.equal(randomCompanions.generalSetupGuides[0].title, "Already have RandomCompanions? Protect your settings and favorites first");
+assert.match(randomCompanions.generalSetupGuides[0].intro, /known-companion baseline/);
+const randomCompanionsBackupSteps = randomCompanions.generalSetupGuides[0].steps.map((step) => step.instruction).join("\n");
+assert.match(randomCompanionsBackupSteps, /RandomCompanions\.lua.*RandomCompanions\.lua\.bak/);
+assert.match(randomCompanionsBackupSteps, /dated backup folder outside the WoW installation/);
+assert.match(randomCompanionsBackupSteps, /Run \/reload and check the settings again/);
+assert.match(randomCompanionsBackupSteps, /restore the complete addon-folder backup/);
+assert.equal(randomCompanions.configurationGuides.length, 1);
+assert.equal(randomCompanions.configurationGuides[0].title, "Troubleshoot Favorites or auto-pet behavior");
+const randomCompanionsTroubleshooting = randomCompanions.configurationGuides[0].steps.map((step) => step.instruction).join("\n");
+assert.match(randomCompanionsTroubleshooting, /exact sequence/);
+assert.match(randomCompanionsTroubleshooting, /\/rc petstatus/);
+assert.doesNotMatch(randomCompanionsTroubleshooting, /[A-Z]:\\/);
+const randomCompanionsRole = core.recommendationFor(randomCompanions, state("", { role: ["dps"] }), catalog);
+assert.equal(randomCompanionsRole.importance, "optional");
+assert.deepEqual(randomCompanionsRole.purposes, ["convenience", "aesthetic"]);
 
 
 const acp = addons.find((addon) => addon.id === "addon-control-panel");

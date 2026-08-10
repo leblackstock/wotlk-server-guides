@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">RandomCompanions</title>
+  <desc id="desc">A horseshoe and paw joined by random-selection arrows.</desc>
+  <rect x="8" y="8" width="112" height="112" rx="18" fill="#171b20" stroke="#a4a9a5" stroke-width="5"/>
+  <path d="M25 31v23c0 15 10 27 24 27s24-12 24-27V31H60v23c0 8-5 14-11 14s-11-6-11-14V31Z" fill="#414444" stroke="#dedcd6" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M33 30v10M65 30v10" fill="none" stroke="#cf4e17" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="87" cy="75" r="8" fill="#cf4e17" stroke="#dedcd6" stroke-width="3"/>
+  <circle cx="75" cy="64" r="5" fill="#cf4e17"/>
+  <circle cx="87" cy="59" r="5" fill="#cf4e17"/>
+  <circle cx="99" cy="64" r="5" fill="#cf4e17"/>
+  <path d="M74 86c4-8 9-12 13-12s9 4 13 12c3 7-2 13-8 11l-5-2-5 2c-6 2-11-4-8-11Z" fill="#414444" stroke="#dedcd6" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M28 99h29l-7-7M57 99l-7 7M70 29h29l-7-7M99 29l-7 7" fill="none" stroke="#cf4e17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

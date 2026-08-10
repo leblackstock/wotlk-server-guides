@@ -92,6 +92,7 @@ body[data-guide-section="addons"] {
   color: var(--text-strong);
   font: .92em/1.45 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 }
+.addon-manager-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .addon-manager-download {
   min-height: 44px;
   display: inline-flex;
@@ -105,6 +106,17 @@ body[data-guide-section="addons"] {
   font-size: 12px;
   font-weight: 900;
   text-decoration: none;
+}
+.addon-manager-drawer-button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--section-addons-accent);
+  border-radius: 10px;
+  background: rgba(var(--section-addons-rgb), .08);
+  color: var(--section-addons-soft);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
 }
 .addon-manager-guide {
   margin-top: 12px;
@@ -135,6 +147,18 @@ body[data-guide-section="addons"] {
   color: var(--status-warning-soft);
   font-size: 12px;
 }
+.addon-manager-repo-warning { margin: 0 0 12px; }
+.addon-manager-drawer-content code {
+  overflow-wrap: anywhere;
+  color: var(--text-strong);
+  font: .92em/1.45 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+.addon-manager-problems { display: grid; grid-template-columns: minmax(145px, .8fr) minmax(0, 1.7fr); margin: 0; }
+.addon-manager-problems dt,
+.addon-manager-problems dd { margin: 0; padding: 9px 0; border-top: 1px solid rgba(255,255,255,.055); font-size: 12px; }
+.addon-manager-problems dt { padding-right: 12px; color: var(--section-addons-soft); font-weight: 850; }
+.addon-manager-problems dd { color: var(--text-muted); }
+.addon-manager-drawer-content > .addon-dialog-warning { margin-top: 14px; }
 
 .addon-controls {
   margin-top: 18px;
@@ -473,13 +497,17 @@ body[data-guide-section="addons"] {
   .addon-page { padding-inline: 12px; }
   .addon-header { padding: 18px 16px; }
   .addon-manager { padding: 14px; }
-  .addon-manager-download { width: 100%; }
+  .addon-manager-download,
+  .addon-manager-drawer-button { width: 100%; }
   .addon-controls { padding: 12px; }
   .addon-filter-toggle { margin-left: 0; }
   .addon-card-actions { flex-direction: column; }
   .addon-download-link { width: 100%; }
   .addon-dialog-shell { padding: 15px; }
   .addon-dialog-meta-grid { grid-template-columns: 1fr; }
+  .addon-manager-problems { grid-template-columns: 1fr; }
+  .addon-manager-problems dt { padding-bottom: 2px; }
+  .addon-manager-problems dd { padding-top: 0; border-top: 0; }
   .addon-module-list { grid-template-columns: 1fr; }
   .addon-module-list dt { padding-bottom: 2px; border-top: 1px solid rgba(255,255,255,.07); }
   .addon-module-list dd { padding-top: 0; border-top: 0; }

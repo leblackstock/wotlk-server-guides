@@ -16,10 +16,14 @@ async function noOverflow(page, label) {
     const desktop = await browser.newPage({ viewport: { width: 1280, height: 900 } });
     await desktop.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 18, "Default catalog should show eighteen addons");
+    assert.equal(await desktop.locator(".addon-card").count(), 19, "Default catalog should show nineteen addons");
     const managerGuide = desktop.locator(".addon-manager-guide");
     assert.equal(await managerGuide.evaluate((node) => node.open), false, "GitAddonsManager instructions should start collapsed");
     assert.equal(await managerGuide.locator("h3").first().isVisible(), false);
+    const managerRepoWarning = desktop.locator(".addon-manager-repo-warning");
+    assert.equal(await managerRepoWarning.isVisible(), true);
+    assert.match(await managerRepoWarning.textContent(), /only works with addons that are also Git repositories/);
+    assert.match(await managerRepoWarning.textContent(), /cannot manage an ordinary ZIP-only or manually installed addon/);
     assert.equal(await desktop.locator('a[href="https://woblight.gitlab.io/overview/gitaddonsmanager/"]').count() > 0, true);
     await managerGuide.locator("summary").click();
     assert.equal(await managerGuide.locator("h3").count(), 4);
@@ -27,9 +31,44 @@ async function noOverflow(page, label) {
     assert.match(managerText, /Download for Windows x64/);
     assert.match(managerText, /Interface\\AddOns/);
     assert.match(managerText, /https:\/\/github\.com\/leblackstock\/auctioneer-revisited-wotlk\.git/);
+    assert.match(managerText, /https:\/\/github\.com\/leblackstock\/RandomCompanions-WotLK\.git/);
     assert.match(managerText, /Refresh addons list and check for updates/);
     assert.match(managerText, /Upgrade all addons/);
     assert.match(managerText, /does not automatically detect addons installed manually/);
+    const managerDrawerButton = desktop.locator("#gitaddonsmanager-drawer-open");
+    const managerDrawer = desktop.locator("#gitaddonsmanager-dialog");
+    assert.equal(await managerDrawerButton.getAttribute("aria-haspopup"), "dialog");
+    assert.equal(await managerDrawerButton.getAttribute("aria-controls"), "gitaddonsmanager-dialog");
+    assert.equal(await managerDrawerButton.getAttribute("aria-expanded"), "false");
+    assert.equal(await managerDrawer.evaluate((node) => node.open), false);
+    await managerDrawerButton.focus();
+    await managerDrawerButton.click();
+    await desktop.waitForSelector("#gitaddonsmanager-dialog[open]");
+    const managerCollapseButton = desktop.locator("#gitaddonsmanager-dialog-collapse");
+    assert.equal(await managerDrawerButton.getAttribute("aria-expanded"), "true");
+    assert.equal(await managerCollapseButton.evaluate((node) => node === document.activeElement), true);
+    assert.equal(await managerCollapseButton.textContent(), "Collapse setup drawer");
+    assert.equal(await desktop.locator("#gitaddonsmanager-dialog-title").textContent(), "GitAddonsManager installation and maintenance");
+    const managerDrawerText = await desktop.locator(".addon-manager-drawer-content").textContent();
+    assert.match(managerDrawerText, /Choose addons directory/);
+    assert.match(managerDrawerText, /Prepare an addon that is already installed/);
+    assert.match(managerDrawerText, /https:\/\/github\.com\/leblackstock\/auctioneer-revisited-wotlk\.git/);
+    assert.match(managerDrawerText, /https:\/\/github\.com\/leblackstock\/RandomCompanions-WotLK\.git/);
+    assert.match(managerDrawerText, /Interface\\AddOns\\RandomCompanions\\RandomCompanions\.toc/);
+    assert.match(managerDrawerText, /Repair repository/);
+    assert.match(managerDrawerText, /The addon is nested too deeply/);
+    assert.match(managerDrawerText, /View log/);
+    assert.doesNotMatch(managerDrawerText, /[A-Z]:\\/);
+    await noOverflow(desktop, "Desktop GitAddonsManager drawer");
+    await managerCollapseButton.click();
+    await desktop.waitForFunction(() => !document.getElementById("gitaddonsmanager-dialog").open);
+    assert.equal(await managerDrawerButton.getAttribute("aria-expanded"), "false");
+    assert.equal(await managerDrawerButton.evaluate((node) => node === document.activeElement), true, "Focus should return to the GitAddonsManager drawer button");
+    await managerDrawerButton.click();
+    await desktop.waitForSelector("#gitaddonsmanager-dialog[open]");
+    await desktop.keyboard.press("Escape");
+    await desktop.waitForFunction(() => !document.getElementById("gitaddonsmanager-dialog").open);
+    assert.equal(await managerDrawerButton.getAttribute("aria-expanded"), "false");
     await desktop.locator("#addon-all-filters").click();
     const launchSpecs = desktop.locator('[data-filter-group="specialization"] .addon-filter-chip');
     assert.equal(await launchSpecs.count(), 1, "Only specializations with targeted launch records should be shown");
@@ -177,6 +216,34 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator('a[href="https://web.archive.org/web/20110112162840/http://auctioneeraddon.com/dl/Release/AuctioneerSuite-5.9.4961.zip"]').count() > 0, true);
     await noOverflow(desktop, "Auctioneer module drawer");
 
+    await desktop.goto(`${base}/guides/addons.html?role=dps#addon=random-companions`, { waitUntil: "networkidle" });
+    await desktop.waitForSelector("#addon-details-dialog[open]");
+    assert.equal(await desktop.locator("#addon-dialog-title").textContent(), "RandomCompanions");
+    const randomCompanionsText = await desktop.locator("#addon-dialog-content").textContent();
+    assert.match(randomCompanionsText, /1\.0\.3-wotlk\.1/);
+    assert.match(randomCompanionsText, /Tested on Hellscream/);
+    assert.match(randomCompanionsText, /one-time Favorites presets/);
+    assert.match(randomCompanionsText, /RandomCompanions-WotLK\.git/);
+    assert.match(randomCompanionsText, /RandomCompanions\\RandomCompanions\.toc/);
+    const randomCompanionsBackupGuide = desktop.locator(".addon-existing-install-guide");
+    assert.equal(await randomCompanionsBackupGuide.count(), 1);
+    assert.equal(await randomCompanionsBackupGuide.locator("summary").textContent(), "Already have RandomCompanions? Protect your settings and favorites first");
+    await randomCompanionsBackupGuide.locator("summary").click();
+    const randomCompanionsBackupText = await randomCompanionsBackupGuide.textContent();
+    assert.match(randomCompanionsBackupText, /RandomCompanions\.lua/);
+    assert.match(randomCompanionsBackupText, /dated backup folder outside the WoW installation/);
+    assert.match(randomCompanionsBackupText, /Run \/reload and check the settings again/);
+    assert.match(randomCompanionsBackupText, /restore the complete addon-folder backup/);
+    const randomCompanionsTroubleshootingGuide = desktop.locator(".addon-configuration-guide");
+    assert.equal(await randomCompanionsTroubleshootingGuide.locator("summary").textContent(), "Troubleshoot Favorites or auto-pet behavior");
+    await randomCompanionsTroubleshootingGuide.locator("summary").click();
+    const randomCompanionsTroubleshootingText = await randomCompanionsTroubleshootingGuide.textContent();
+    assert.match(randomCompanionsTroubleshootingText, /exact sequence/);
+    assert.match(randomCompanionsTroubleshootingText, /\/rc petstatus/);
+    assert.doesNotMatch(randomCompanionsTroubleshootingText, /[A-Z]:\\/);
+    assert.equal(await desktop.locator('a[href="https://github.com/leblackstock/RandomCompanions-WotLK"]').count() > 0, true);
+    await noOverflow(desktop, "RandomCompanions details drawer");
+
 
     await desktop.goto(`${base}/guides/addons.html?role=dps#addon=addon-control-panel`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#addon-details-dialog[open]");
@@ -299,7 +366,7 @@ async function noOverflow(page, label) {
 
     await desktop.goto(`${base}/guides/addons.html?class=priest&role=healer#addon=healbot`, { waitUntil: "networkidle" });
     await desktop.waitForSelector("#addon-details-dialog[open]");
-    assert.doesNotMatch(await desktop.locator(".addon-dialog-summary").textContent(), /Righteous Defense|Protection Paladin/);
+    assert.doesNotMatch(await desktop.locator("#addon-dialog-content .addon-dialog-summary").textContent(), /Righteous Defense|Protection Paladin/);
     const visibleProtectionHeadings = await desktop.locator("#addon-dialog-content h3:visible").filter({ hasText: "Protection Paladin" }).count();
     assert.equal(visibleProtectionHeadings, 0, "Protection setup should not be automatically exposed to Priest Healer context");
 
@@ -308,13 +375,19 @@ async function noOverflow(page, label) {
     assert.equal(await desktop.locator("#addon-grid").isHidden(), true, "Result grid should hide when filters produce no results");
     await desktop.locator("#addon-empty-clear").click();
     await desktop.waitForSelector(".addon-card");
-    assert.equal(await desktop.locator(".addon-card").count(), 18);
+    assert.equal(await desktop.locator(".addon-card").count(), 19);
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true });
     await mobile.goto(`${base}/guides/addons.html`, { waitUntil: "networkidle" });
     await mobile.waitForSelector(".addon-card");
     await mobile.locator(".addon-manager-guide summary").click();
     await noOverflow(mobile, "Mobile GitAddonsManager guide");
+    await mobile.locator("#gitaddonsmanager-drawer-open").click();
+    await mobile.waitForSelector("#gitaddonsmanager-dialog[open]");
+    assert.equal(await mobile.locator("#gitaddonsmanager-dialog-title").textContent(), "GitAddonsManager installation and maintenance");
+    await noOverflow(mobile, "Mobile GitAddonsManager drawer");
+    await mobile.locator("#gitaddonsmanager-dialog-close").click();
+    await mobile.waitForFunction(() => !document.getElementById("gitaddonsmanager-dialog").open);
 
     await mobile.goto(`${base}/guides/addons.html?class=paladin&spec=paladin-protection&role=tank#addon=healbot`, { waitUntil: "networkidle" });
     await mobile.waitForSelector("#addon-details-dialog[open]");

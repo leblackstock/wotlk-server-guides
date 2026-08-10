@@ -63,7 +63,11 @@
     const dialog = document.getElementById("addon-details-dialog");
     const dialogClose = document.getElementById("addon-dialog-close");
     const dialogContent = document.getElementById("addon-dialog-content");
-    if (![input, sort, quick, filterToggle, filterPanel, activeArea, activeFilters, clearAll, count, contextBanner, grid, empty, emptyClear, dialog, dialogClose, dialogContent].every(Boolean)) return;
+    const managerDrawerButton = document.getElementById("gitaddonsmanager-drawer-open");
+    const managerDialog = document.getElementById("gitaddonsmanager-dialog");
+    const managerDialogClose = document.getElementById("gitaddonsmanager-dialog-close");
+    const managerDialogCollapse = document.getElementById("gitaddonsmanager-dialog-collapse");
+    if (![input, sort, quick, filterToggle, filterPanel, activeArea, activeFilters, clearAll, count, contextBanner, grid, empty, emptyClear, dialog, dialogClose, dialogContent, managerDrawerButton, managerDialog, managerDialogClose, managerDialogCollapse].every(Boolean)) return;
 
     let state = core.parseUrlState(global.location.href, catalog);
     let originButton = null;
@@ -665,6 +669,18 @@
       dialogUrlWasPushed = false;
     }
 
+    function openManagerDialog() {
+      if (!managerDialog.open) managerDialog.showModal();
+      managerDrawerButton.setAttribute("aria-expanded", "true");
+      managerDialogCollapse.focus();
+    }
+
+    function closeManagerDialog() {
+      if (managerDialog.open) managerDialog.close();
+      managerDrawerButton.setAttribute("aria-expanded", "false");
+      managerDrawerButton.focus();
+    }
+
     function syncDialogFromState() {
       if (state.addon && addonMap.has(state.addon)) {
         const currentTitle = dialogContent.querySelector(".addon-dialog-title")?.textContent;
@@ -708,6 +724,16 @@
     });
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) closeDialog(true);
+    });
+    managerDrawerButton.addEventListener("click", openManagerDialog);
+    managerDialogClose.addEventListener("click", closeManagerDialog);
+    managerDialogCollapse.addEventListener("click", closeManagerDialog);
+    managerDialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeManagerDialog();
+    });
+    managerDialog.addEventListener("click", (event) => {
+      if (event.target === managerDialog) closeManagerDialog();
     });
     global.addEventListener("popstate", () => {
       handlingHistory = true;

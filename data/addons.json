@@ -3627,6 +3627,219 @@
       "relatedGuides": []
     },
     {
+      "id": "random-companions",
+      "name": "RandomCompanions",
+      "aliases": [
+        "Random Companions",
+        "RandomCompanions-WotLK",
+        "Random Companion",
+        "RandomCompanions 1.0.3-wotlk.1"
+      ],
+      "searchTerms": [
+        "random mount",
+        "random pet",
+        "random companion",
+        "vanity pet",
+        "mount button",
+        "pet button",
+        "mount favorites",
+        "pet favorites",
+        "auto pet",
+        "summon pet after dismount",
+        "summon pet after flight path",
+        "summon pet after teleport",
+        "ground flying mount filter",
+        "companion launcher",
+        "rc petstatus"
+      ],
+      "summary": "Random mount and vanity-pet buttons for WoW 3.3.5, with favorites, mount filters, auto-pet recovery, a minimap launcher, keybindings, and saved settings.",
+      "does": [
+        "Adds movable on-screen buttons, keybindings, chat commands, and a minimap launcher for summoning random learned mounts and vanity pets.",
+        "Provides addon-managed mount and pet Favorites plus All, Ground, and Flying selection modes that work around Wrath's lack of native companion favorites.",
+        "Can restore a random pet after login, reload, zone or instance changes, flight-path landing, and dismounting, with diagnostic state available through /rc petstatus."
+      ],
+      "doesNot": [
+        "Does not summon mounts or pets the character has not learned, bypass combat or indoor mounting restrictions, or override other protected WoW actions.",
+        "Does not guarantee identical mount classification on every custom server; it uses Wrath usability checks, English or Portuguese tooltip text, and stable name or icon fallbacks."
+      ],
+      "generalSetup": [
+        "Recommended: install GitAddonsManager from the official page linked above, select the correct Interface\\AddOns directory, and add the clone URL https://github.com/leblackstock/RandomCompanions-WotLK.git.",
+        "After GitAddonsManager finishes, confirm Interface\\AddOns\\RandomCompanions\\RandomCompanions.toc exists directly under AddOns. The manager should rename the repository folder from RandomCompanions-WotLK to match the root TOC; do not leave the addon nested one folder deeper.",
+        "At character select, enable Load out of date AddOns if requested. Log in, use /rc config, and confirm the mount button, pet button, minimap launcher, scale, lock, and auto-pet options are available.",
+        "Wrath has no native companion favorites. Summon a mount or pet, then Shift-right-click its matching on-screen button—or use /rc favmount or /rc favpet—to add or remove that active companion from RandomCompanions' own Favorites.",
+        "Choose Favorites or All for mounts and pets, choose All, Ground, or Flying for mounts, and test auto-pet after a full login and /reload. If a pet does not return, reproduce the exact sequence and run /rc petstatus."
+      ],
+      "generalSetupGuides": [
+        {
+          "title": "Already have RandomCompanions? Protect your settings and favorites first",
+          "intro": "RandomCompanions stores button positions, modes, favorites, auto-pet settings, and its known-companion baseline in account SavedVariables. Back up that data before replacing an existing copy so the migration can be reversed.",
+          "steps": [
+            {
+              "instruction": "Exit World of Warcraft completely before making the backup. A UI reload is not enough because the game writes SavedVariables when it closes."
+            },
+            {
+              "instruction": "Open WTF\\Account\\<account>\\SavedVariables and copy RandomCompanions.lua and RandomCompanions.lua.bak into a dated backup folder outside the WoW installation. Repeat this for every WoW account whose settings or favorites matter."
+            },
+            {
+              "instruction": "Move the old Interface\\AddOns\\RandomCompanions folder to a backup location outside Interface\\AddOns. Do not merely rename it inside AddOns, because WoW may still discover and load the old folder."
+            },
+            {
+              "instruction": "Use GitAddonsManager's Add button, paste https://github.com/leblackstock/RandomCompanions-WotLK.git into Clone Repository, choose the intended AddOns directory, and wait for the operation to finish."
+            },
+            {
+              "instruction": "Confirm Interface\\AddOns\\RandomCompanions\\RandomCompanions.toc is the final path, then start WoW on the same account. Open /rc config and confirm the previous button positions, modes, favorites, and auto-pet setting appear."
+            },
+            {
+              "instruction": "Run /reload and check the settings again. Keep the dated backup until the addon has worked normally through a full login, /reload, one mount summon, and one pet summon."
+            },
+            {
+              "instruction": "If settings or favorites are missing, exit WoW, remove the Git-managed RandomCompanions folder, restore the complete addon-folder backup, and copy the saved RandomCompanions.lua files back into the same account's SavedVariables folder."
+            }
+          ],
+          "notes": [
+            "RandomCompanions.lua contains the addon's positions, modes, favorites, auto-pet choice, one-time preset markers, and known-companion baselines.",
+            "Do not combine runtime files from the retail addon with this 3.3.5 port. Restore the complete matched folder instead of copying individual Lua files across versions."
+          ]
+        }
+      ],
+      "configurationGuides": [
+        {
+          "title": "Troubleshoot Favorites or auto-pet behavior",
+          "intro": "Check the active mode and exact trigger before changing files. Mount summoning, flight-path detection, and pet recovery use separate Wrath events, so a narrow reproduction is more useful than resetting the whole addon.",
+          "steps": [
+            {
+              "instruction": "Open /rc config and confirm mount mode, mount type, pet mode, and auto-pet are set as intended. Use /rc to print the available command list."
+            },
+            {
+              "instruction": "For a Favorites problem, summon the exact mount or pet, use /rc favmount or /rc favpet, and then test again in the matching Favorites mode. Manual removals should remain removed after /reload."
+            },
+            {
+              "instruction": "For an auto-pet problem, record the exact sequence—login, /reload, teleport, flight-path landing, or dismount—wait at least 2 seconds, then run /rc petstatus before taking another mount or pet action."
+            },
+            {
+              "instruction": "If /rc petstatus reports that a companion is already active when none is visible, repeat the same trigger once and preserve the complete status line. Custom servers can briefly retain stale companion state after a teleport or dismount."
+            },
+            {
+              "instruction": "If the buttons are missing but /rc works, use /rc toggle and /rc reset, then verify the saved scale and lock settings in /rc config."
+            },
+            {
+              "instruction": "If the problem began immediately after an update, exit WoW and use the dated addon-folder and RandomCompanions SavedVariables backups to restore the previous matched installation before testing again."
+            }
+          ],
+          "notes": [
+            "The first-load presets and automatic new-companion favorites use one-time and known-companion markers so later manual removals are preserved.",
+            "When reporting an auto-pet failure, include the exact reproduction sequence and the full /rc petstatus result."
+          ]
+        }
+      ],
+      "tags": [
+        "all-roles",
+        "interface",
+        "utility",
+        "leveling",
+        "farming",
+        "lightweight",
+        "setup-required",
+        "verified-335-download",
+        "tested-hellscream",
+        "server-sensitive"
+      ],
+      "featuredTags": [
+        "utility",
+        "verified-335-download",
+        "tested-hellscream"
+      ],
+      "scope": {
+        "classes": [
+          "paladin",
+          "warrior",
+          "death-knight",
+          "druid",
+          "priest",
+          "shaman",
+          "mage",
+          "warlock",
+          "rogue",
+          "hunter"
+        ],
+        "specs": [],
+        "roles": [
+          "tank",
+          "healer",
+          "dps"
+        ],
+        "activities": [
+          "leveling",
+          "farming"
+        ],
+        "universalClasses": true,
+        "universalSpecs": true
+      },
+      "recommendations": [
+        {
+          "audience": {
+            "roles": [
+              "tank",
+              "healer",
+              "dps"
+            ]
+          },
+          "importance": "optional",
+          "purposes": [
+            "convenience",
+            "aesthetic"
+          ],
+          "summary": "A lightweight convenience addon for players who collect mounts and vanity pets or want a companion restored automatically during normal travel.",
+          "reason": "RandomCompanions makes a large collection easier to enjoy without affecting combat decisions, and this exact WotLK port has been exercised on Hellscream through its mount, pet, Favorites, and recovery workflows."
+        }
+      ],
+      "customizations": [],
+      "compatibility": {
+        "client": "3.3.5a",
+        "hellscreamTested": true,
+        "hellscreamTestedDate": "2026-08-04",
+        "lastReviewed": "2026-08-06",
+        "downloadVersion": "1.0.3-wotlk.1",
+        "verifiedDownload": true,
+        "serverSensitive": true,
+        "maintenanceState": "maintained-port",
+        "importantNotes": [
+          "This build applies one-time Favorites presets: it adds all currently learned pets, applies a tested Hellscream mount set when those mounts are learned, and switches pet selection to Favorites. Review the Favorites lists after first login and remove anything you do not want."
+        ],
+        "notes": [
+          "The repository's wotlk-3.3.5 branch identifies the port as RandomCompanions 1.0.3-wotlk.1 for Interface 30300, based on the original RandomCompanions 1.0.3 release.",
+          "Hellscream validation on August 4, 2026 covered the installed runtime after a timestamped backup; source, build, package, and live runtime hashes matched after the final favorites update.",
+          "The repository validator covers strict Lua 5.1 syntax, BOM-free UTF-8, TOC and legacy API checks, XML parsing, and mocked mount, pet, Favorites, Wintergrasp, flight-path, dismount, teleport, and stale-pet workflows.",
+          "The port includes custom-server safeguards for unreliable mount usability, localized tooltip classification, Wintergrasp, and stale or hidden companion state after teleporting or dismounting.",
+          "Newly learned pets and mounts are automatically added to Favorites. The known-companion baseline prevents a companion that was manually removed from being treated as new and re-added on later reloads.",
+          "GitAddonsManager uses the root RandomCompanions.toc name to place this checkout in the RandomCompanions addon folder; verify the final TOC path after cloning."
+        ]
+      },
+      "prerequisiteLinks": [
+        {
+          "url": "https://woblight.gitlab.io/overview/gitaddonsmanager/",
+          "source": "GitAddonsManager",
+          "label": "Get GitAddonsManager ↗",
+          "cardLabel": "Get Addon Manager ↗",
+          "notes": "Recommended Git-based installer and updater for this repository. Use the page's Windows x64 download for Windows."
+        }
+      ],
+      "download": {
+        "url": "https://github.com/leblackstock/RandomCompanions-WotLK",
+        "source": "GitHub",
+        "notes": "Maintained WoW 3.3.5 compatibility port. Install with GitAddonsManager using https://github.com/leblackstock/RandomCompanions-WotLK.git.",
+        "label": "Open RandomCompanions on GitHub ↗",
+        "cardLabel": "Open Repository ↗"
+      },
+      "icon": {
+        "path": "assets/addons/icons/random-companions.svg",
+        "alt": "Horseshoe and paw joined by random-selection arrows"
+      },
+      "screenshots": [],
+      "videos": [],
+      "relatedGuides": []
+    },
+    {
       "id": "addon-control-panel",
       "name": "Addon Control Panel",
       "aliases": [
