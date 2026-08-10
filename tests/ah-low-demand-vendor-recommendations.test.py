@@ -46,8 +46,8 @@ expected_keys = {
 }
 
 scope = audit["reviewed_scope"]
-assert len(low_items) == scope["low_entry_count_after_promotions"] == 1026
-assert len(low_names) == scope["low_unique_name_count_after_promotions"] == 1005
+assert len(low_items) == scope["low_entry_count_after_promotions"] == 1083
+assert len(low_names) == scope["low_unique_name_count_after_promotions"] == 1056
 assert len(recommended) == scope["vendor_recommendation_count"] == 22
 assert (
     sum(item["target"] == "—" for item in recommended)
@@ -63,7 +63,7 @@ assert not any(
     for item in index["items"]
     if item["section"] == "Vendor & convenience items"
 )
-assert len(low_items) - len(recommended) == 1004
+assert len(low_items) - len(recommended) == 1061
 
 required_recommendations = {
     "Raw Spinefin Halibut",

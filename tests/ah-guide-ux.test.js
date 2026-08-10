@@ -13,11 +13,11 @@ const navDataSource = read("assets/ah-guide-navigation-data.js");
 const navSource = read("assets/ah-guide-navigation.js");
 
 assert.equal(manifest.version, 1);
-assert.equal(manifest.active_guide_count, 18);
-assert.equal(manifest.guides.length, 18);
-assert.equal(manifest.groups.length, 3);
-assert.equal(new Set(manifest.guides.map((guide) => guide.id)).size, 18);
-assert.equal(new Set(manifest.guides.map((guide) => guide.file)).size, 18);
+assert.equal(manifest.active_guide_count, 19);
+assert.equal(manifest.guides.length, 19);
+assert.equal(manifest.groups.length, 4);
+assert.equal(new Set(manifest.guides.map((guide) => guide.id)).size, 19);
+assert.equal(new Set(manifest.guides.map((guide) => guide.file)).size, 19);
 assert.equal(
   manifest.redirects.some((redirect) => manifest.guides.some((guide) => guide.file === redirect.file)),
   false,
@@ -25,7 +25,7 @@ assert.equal(
 );
 
 const hub = new JSDOM(read("auction-house.html")).window.document;
-assert.match(hub.querySelector("header .sub").textContent, /all 18 pricing guides/);
+assert.match(hub.querySelector("header .sub").textContent, /all 19 pricing guides/);
 const hubGroups = [...hub.querySelectorAll("[data-ah-guide-group]")];
 assert.equal(hubGroups.length, manifest.groups.length);
 assert.ok(hub.querySelector(`link[href="./assets/style.css?v=${hubSearchVersion}"]`));
@@ -121,7 +121,9 @@ for (const guide of manifest.guides) {
     "level-80-boe-epics",
     "sought-after-world-drops",
   ]);
-  const expectedUpdatedDate = guide.id === "jewelcrafting-gems"
+  const expectedUpdatedDate = new Set(["collectibles", "engineering", "tailoring"]).has(guide.id)
+    ? "2026-08-10"
+    : guide.id === "jewelcrafting-gems"
     ? "2026-08-09"
     : updatedOnAugustEighth.has(guide.id)
       ? "2026-08-08"
@@ -205,11 +207,11 @@ const indexContext = { window: {} };
 vm.runInNewContext(read("assets/ah-search-index.js"), indexContext);
 const searchIndex = indexContext.window.AH_SEARCH_INDEX;
 assert.equal(searchIndex.version, 5);
-assert.equal(searchIndex.guideCount, 18);
-assert.equal(searchIndex.itemCount, 3951);
+assert.equal(searchIndex.guideCount, 19);
+assert.equal(searchIndex.itemCount, 4094);
 assert.equal(searchIndex.vendorRecommendationCount, 22);
-assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3722);
-assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 18);
+assert.equal(new Set(searchIndex.items.map((item) => item.name)).size, 3853);
+assert.equal(new Set(searchIndex.items.map((item) => item.guideId)).size, 19);
 
 const counts = Object.fromEntries(
   manifest.guides.map((guide) => [
@@ -225,5 +227,6 @@ assert.equal(counts["turn-ins"], 75);
 assert.equal(counts["recipe-pattern-drops"], 90);
 assert.equal(counts["level-80-boe-epics"], 85);
 assert.equal(counts["sought-after-world-drops"], 283);
+assert.equal(counts.collectibles, 133);
 
 console.log("AH manifest, hub cards, compact guide UX, redirects, and split/merged index counts are current.");

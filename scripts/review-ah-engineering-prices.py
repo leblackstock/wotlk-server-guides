@@ -67,6 +67,10 @@ def entries(config: dict) -> list[dict]:
             item = dict(shared.merged_item(config, key))
             if item.get("profession") != "Engineering":
                 raise ValueError(f"Non-Engineering output in Engineering catalog: {key}")
+            if item.get("price_evidence_ref", "").startswith(
+                "data/ah-collectible-price-evidence.json#items/"
+            ):
+                continue
             item_id = int(item["item_id"])
             PRICE_BASIS_BY_ITEM_ID[item_id] = basis
             is_single = item.get("stack") == "1"
@@ -423,6 +427,8 @@ def apply_catalog(evidence: dict) -> None:
             duplicate["evidence_ref"] = expected_ref
     guide = config["guides"][GUIDE_FILENAME]
     for section in guide["sections"]:
+        if any(key not in proposals for key in section["items"]):
+            continue
         if section["title"] in FIXED_ORDER_SECTION_TITLES:
             continue
         ordered = sorted(

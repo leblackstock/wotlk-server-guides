@@ -124,6 +124,22 @@ DECK_COMPLETION_MARGINS = {
 # references belong in data/ah-price-baselines.json, while exact vendor tools
 # and explicit BoP access estimates remain isolated here.
 REAGENT_COST_OVERRIDES = {
+    11291: {
+        "name": "Star Wood",
+        "source_type": "coin-vendor",
+        "quick": 4_500,
+        "target": 4_500,
+        "high": 4_500,
+        "reason": "Exact unlimited-vendor cost.",
+    },
+    34249: {
+        "name": "Hula Girl Doll",
+        "source_type": "coin-vendor",
+        "quick": 1_000_000,
+        "target": 1_000_000,
+        "high": 1_000_000,
+        "reason": "Exact unlimited-vendor cost from Griftah.",
+    },
     2901: {
         "name": "Mining Pick",
         "source_type": "coin-vendor",

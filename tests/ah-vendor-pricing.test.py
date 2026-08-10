@@ -66,8 +66,8 @@ def main() -> int:
     catalog = config["catalog"]
     configured_guides = config["guides"]
     guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
-    if len(guide_paths) != 18:
-        fail(f"Expected 18 AH guides, found {len(guide_paths)}")
+    if len(guide_paths) != 19:
+        fail(f"Expected 19 AH guides, found {len(guide_paths)}")
     if len(configured_guides) != 11:
         fail(f"Expected 11 vendor configurations, found {len(configured_guides)}")
 
@@ -261,7 +261,7 @@ def main() -> int:
         "AH vendor pricing validation passed: "
         f"{len(catalog)} canonical items, "
         f"{sum(not guide.get('remove') for guide in configured_guides.values())} rendered vendor blocks, "
-        "18 two-button guide navs."
+        "19 two-button guide navs."
     )
     return 0
 

@@ -124,13 +124,16 @@ assert "Manually reviewed Target changes over 50%: `11`" in report
 assert "Publication status: `local only — not published`" in report
 
 guide = GUIDE_PATH.read_text(encoding="utf-8")
-assert "Updated 2026-08-08" in guide
+assert "Updated 2026-08-10" in guide
 assert guide.count("Evidence Pricing and craft floor") >= 1
-assert guide.count('class="crafted-recipe-link ') == 55
-assert guide.count('class="crafted-note-ref"') == 55
+assert guide.count('class="crafted-recipe-link ') == 64
+assert guide.count('class="crafted-note-ref"') == 64
 assert guide.count('<span class="ah-price-stack-chip">Stack of 200</span>') == 13
 assert "current Hellscream listings never set them" in guide
 assert "General-use all-in-one Mining, Skinning, and Blacksmithing tool" in guide
+assert "General-use crafted Engineering companions" in guide
+assert "Engineer-only crafted flying mounts" in guide
+assert "General-use crafted motorcycles" in guide
 
 search = SEARCH_PATH.read_text(encoding="utf-8")
 assert '"name":"Khorium Power Core"' in search

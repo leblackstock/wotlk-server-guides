@@ -1,6 +1,6 @@
 # Tailoring AH Expansion Plan
 
-- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
+- Status: `complete — Phase 2 plus collectible addendum, 2026-08-10`
 - Existing guide: `guides/tailoring-cloth-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 3
@@ -26,8 +26,9 @@
   BoE gear with real bag, leveling, twink, roleplay, or collection demand.
 - Include bolts and specialty cloth as canonical intermediates without
   duplicating them in every finished-item section.
-- Exclude flying carpets, profession-only embroidery applications, BoP gear,
-  and other self-only outputs.
+- Include the tradeable Flying Carpet in a dedicated Tailor-only mount section;
+  exclude its BoP upgrade variants, profession-only embroidery applications,
+  BoP gear, and other self-only outputs.
 
 ## Profession-Specific Price Checks
 
@@ -55,7 +56,8 @@
 - [x] Cloth conversion and cooldown rules are documented and tested.
 - [x] Every tradeable Tailoring output has an include/exclude decision.
 - [x] Bag sizes/restrictions and spellthread effects are exact.
-- [x] BoP, carpet, and self-only embroidery outputs are absent.
+- [x] The tradeable Flying Carpet is restricted to its actual Tailoring buyer;
+  BoP carpet upgrades and self-only embroidery outputs are absent.
 - [x] Shared validation in `README.md` passes.
 
 ## Evidence Log
@@ -80,7 +82,7 @@
   appropriate outputs. Excluded 12 BoP outputs, the skill-gated Flying Carpet,
   four duplicate Alliance-only Trial records, and self-only applications that
   create no tradeable item. The three tradeable nets are isolated in a Tailor-
-  only section. The exact recipe model covers 147 direct inputs; four missing
+  only section. The exact recipe model now covers 148 direct inputs; four missing
   tradeable inputs were added as fallback-confidence references, four dyes use
   exact unlimited-vendor costs, and BoP Ogre Tannin remains an explicit access-
   cost fallback rather than a market claim.
@@ -126,3 +128,10 @@
   guide as deterministic convenience references, including the mixed-source
   Small Brown Pouch, whose unlimited 5s vendor route prevents drop-scarcity
   pricing. No crafted Tailoring band changed and nothing was published.
+- Collectible coverage addendum — 2026-08-10: Added the tradeable Flying Carpet
+  in a dedicated Tailor-only crafted-mount section. Its Tailoring 300 use
+  requirement, exact one-item recipe, and recursively audited craft floor are
+  saved; its sale band is delegated to the collectible Evidence Pricing review
+  so the completed 406-output Tailoring Phase 2 snapshot remains frozen. The
+  BoP Magnificent Flying Carpet and Frosty Flying Carpet remain excluded.
+  Active listings did not set value. Nothing was published.

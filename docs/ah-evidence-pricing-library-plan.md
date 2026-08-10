@@ -2,8 +2,8 @@
 
 - Status: `complete locally — all three Evidence Pricing phases audited; scheduled refreshes next`
 - Recorded: `2026-08-05`
-- Last updated: `2026-08-08`
-- Scope: `All 18 active Auction House guides`
+- Last updated: `2026-08-10`
+- Scope: `All 19 active Auction House guides`
 - Required order: `Gathering and materials → professions → drops`
 - Governing method: [Evidence Pricing](ah-pricing-methodology.md)
 - Publishing rule: each implementation batch remains local until the user explicitly says to make it live.
@@ -37,7 +37,7 @@ Additional guards:
 
 Before changing any price:
 
-- Export all 18 guides into one deterministic inventory keyed by item ID and canonical item key.
+- Export all 19 guides into one deterministic inventory keyed by item ID and canonical item key.
 - Record guide, section, expansion, item type, rarity, stack limit, suggested stacks, demand, current Quick/Target/High, target bid, source type, confidence, evidence date, and note.
 - Record every duplicate item across guides and identify its canonical owner.
 - Confirm whether each displayed price is per item, per craft, or per stated stack.
@@ -173,7 +173,7 @@ Reviewer decisions are `accept`, `revise`, `retain fallback`, or `exclude`.
 
 ## Definition of Done
 
-- [ ] All 18 active AH guides have a completed evidence review.
+- [x] All 19 active AH guides have a completed evidence review.
 - [x] Gathering and material baselines were completed before profession outputs.
 - [ ] Profession outputs were completed before drop-market refreshes.
 - [ ] Every changed price traces to saved independent evidence or an explicit fallback model.
@@ -220,3 +220,12 @@ Reviewer decisions are `accept`, `revise`, `retain fallback`, or `exclude`.
 - 2026-08-08: Phase 3 Turn-ins completed. The old 26 grouped price rows were resolved to 74 exact auctionable item IDs with pinned 3.3.5 binding, maximum-stack, quest-quantity, repeatability, level, faction/event/standing, and purchase-quantity facts. Uncatalogued Species, Deadwood Headdress Feather, and Winterfall Spirit Beads were removed because their pinned records bind on pickup; the now-empty Timbermaw section was removed. All 444 comparison requests resolved on the initial pass with three-realm coverage for all 74 items. Seventy bands changed; 35 Targets rose, 28 fell, and 11 stayed unchanged. Six Target candidates over 50% passed the full-coverage review. Fiery Core, Lava Core, Core Leather, and Blood of the Mountain retained their already-audited shared-material bands. Grouped aliases were replaced by exact rows, true stack behavior, resolved rarity/tooltips, and item-specific notes. Nothing was published.
 - 2026-08-08: Phase 3 Recipe and Pattern Drops completed. All 90 tradeable recipe items were pinned to exact profession, required skill, binding, learned-output market, loot-source, and vendor records. Eighty-five have saved loot paths; five purported drops are actually limited-vendor recipes and now show the exact vendor, stock, restock, and deterministic vendor-cost correction instead of false drop scarcity. All 540 comparison requests resolved on the initial pass; 89 items had three-realm coverage and one had two-realm coverage. Eighty-nine bands changed; 34 Targets rose, 50 fell, and six stayed unchanged. Fifteen Target candidates over 50% were reviewed. The Book of Glyph Mastery retained the user-reported 25g Target and recorded original baseline. All row notes now state the exact profession skill and output market, the shared methodology appears once, price order and the 11-item Blacksmithing count were corrected, and every tooltip resolves. Nothing was published.
 - 2026-08-08: Phase 3 dropped-gear revalidation completed for all 85 Level-80 BoEs and 262 sought-after world drops. Today's privacy-preserving Hellscream snapshot still contains only the same two low-confidence sale items and no medium-confidence cohort; independent local supply presence increased from 23 to 33 items but remained diagnostic only. All 2,082 fresh comparison requests resolved on the initial pass, improving at-least-two-realm coverage from 305 to all 347 items. The refresh changed 309 bands: 70 of 85 Level-80 bands and 239 of 262 world-drop bands. Nine Target changes over 50% passed explicit slot, stats/socket/effect, buyer, acquisition-cohort, and three-realm reviews. Buyer/source cohorts now separately record Northrend leveling, Classic brackets/iconics, Outland level-70/leveling, containers, world bosses, raid trash, special summons, and other level-80 drops. The two sparse direct-sale bands remain low confidence; the other 345 remain fallback confidence. Ordering, search metadata, tooltips, and all four Phase 3 guide footers were refreshed locally. All three Evidence Pricing phases are complete; scheduled refreshes are next. Nothing was published.
+- 2026-08-10: Added a nineteenth active guide for 133 verified tradeable
+  companions, mounts, accessories, and event novelties. Unlimited coin vendors,
+  limited-stock vendors, token vendors, farmed drops, quest rewards, crafted
+  items, promotional rewards, and each individual holiday are separate
+  sections. Exact coin, stock/restock, token, recipe, quest, and loot facts are
+  pinned to saved source evidence. One sparse Wood Frog sale received 25%
+  weight and was shrunk toward its fixed Hellscream cohort; active listings
+  remained supply-only evidence and external gold values were not copied.
+  Nothing was published.

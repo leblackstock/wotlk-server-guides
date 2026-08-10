@@ -1643,6 +1643,16 @@
       "confidence": "fallback",
       "reason": "Reviewed Phase 3 recipes Evidence Pricing band. Qualified completed sales take precedence; sparse sales shrink toward a fixed Hellscream comparable-cohort estimate. External asks set relative rank only, active Hellscream listings are excluded, and exact quest, source, or vendor facts remain separate diagnostics."
     },
+    "4394": {
+      "name": "Big Iron Bomb",
+      "quick": 8850,
+      "target": 11750,
+      "high": 17700,
+      "source_type": "deterministic-conversion",
+      "confidence": "fallback",
+      "reason": "Exact minimum-output recipe cost from 3 Iron Bars, 3 Heavy Blasting Powders, and 1 Silver Contact for at least 2 bombs. Component bands are independently frozen; active listings were not used.",
+      "evidence_ref": "docs/ah-item-additions/2026-08-10-companions-mounts-accessories.md#gate-b--evidence"
+    },
     "4402": {
       "name": "Small Flame Sac",
       "quick": 6000,

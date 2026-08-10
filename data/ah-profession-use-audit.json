@@ -44,6 +44,16 @@
       "skill": "Engineering",
       "rank": 330
     },
+    "eng-flying-machine-control": {
+      "item_id": 34060,
+      "skill": "Engineering",
+      "rank": 300
+    },
+    "eng-turbo-charged-flying-machine-control": {
+      "item_id": 34061,
+      "skill": "Engineering",
+      "rank": 375
+    },
     "eng-arclight-spanner": {
       "item_id": 6219,
       "skill": "Engineering",
@@ -103,6 +113,11 @@
       "item_id": 41509,
       "skill": "Tailoring",
       "rank": 350
+    },
+    "tailor-flying-carpet": {
+      "item_id": 44554,
+      "skill": "Tailoring",
+      "rank": 300
     },
     "lw-drums-of-war": {
       "item_id": 29528,
@@ -313,6 +328,16 @@
     }
   },
   "canonical_general_use_exceptions": {
+    "eng-mechano-hog": {
+      "item_id": 41508,
+      "show_note": true,
+      "reason": "No Engineering requirement on the finished Horde motorcycle; Riding 150 is required."
+    },
+    "eng-mekgineers-chopper": {
+      "item_id": 44413,
+      "show_note": true,
+      "reason": "No Engineering requirement on the finished Alliance motorcycle; Riding 150 is required."
+    },
     "eng-gnomish-army-knife": {
       "item_id": 40772,
       "show_note": true,

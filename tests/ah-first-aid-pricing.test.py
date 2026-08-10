@@ -50,7 +50,12 @@ guide = GUIDE_PATH.read_text(encoding="utf-8")
 search = INDEX_PATH.read_text(encoding="utf-8")
 
 sections = config["guide_supplements"][GUIDE_FILENAME]["prepend_sections"]
-first_aid_keys = [key for section in sections for key in section["items"]]
+first_aid_keys = [
+    key
+    for section in sections
+    for key in section["items"]
+    if key.startswith("firstaid-")
+]
 items = {key: merged_item(config, key) for key in first_aid_keys}
 
 assert len(first_aid_keys) == len(set(first_aid_keys)) == 17
@@ -126,7 +131,7 @@ assert {key for key in general if key.startswith("firstaid-")} == {
     "firstaid-strong-anti-venom",
 }
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["tailoring"]["status"] == "Phase 2 complete locally"
@@ -137,7 +142,7 @@ assert "All 102 comparison requests resolved" in plan
 assert "Publication status: `local only — not published`" in report
 assert "All 102 comparison requests resolved" in report
 
-assert "Updated 2026-08-08" in guide
+assert "Updated 2026-08-10" in guide
 assert guide.count('id="crafted-tailoring-pricing-note"') == 1
 assert "The First Aid review found usable relative-rank evidence for 17 outputs" in guide
 assert guide.count('data-crafted-key="firstaid-') == 17

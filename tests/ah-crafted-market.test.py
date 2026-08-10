@@ -31,12 +31,12 @@ INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 EXPECTED_GUIDE_COUNTS = {
     "inscription-materials-ah-price-guide.html": 107,
-    "engineering-materials-ah-price-guide.html": 55,
+    "engineering-materials-ah-price-guide.html": 64,
     "alchemy-materials-ah-price-guide.html": 206,
     "enchanting-mats-ah-price-guide.html": 276,
     "blacksmithing-materials-ah-price-guide.html": 453,
     "jewelcrafting-gems-ah-price-guide.html": 497,
-    "tailoring-cloth-ah-price-guide.html": 423,
+    "tailoring-cloth-ah-price-guide.html": 424,
     "skinning-leatherworking-materials-ah-price-guide.html": 490,
     "fishing-cooking-materials-ah-price-guide.html": 162,
     "mining-smithing-ah-price-guide.html": 24,
@@ -201,6 +201,12 @@ def main() -> int:
     }
     catalog = config["catalog"]
     guides = config["guides"]
+    collectible_override_keys = {
+        key for key, item in catalog.items()
+        if item.get("price_evidence_ref", "").startswith(
+            "data/ah-collectible-price-evidence.json#items/"
+        )
+    }
     index = generated_json(INDEX_PATH, "AH_SEARCH_INDEX")
     item_ids = generated_json(ITEM_IDS_PATH, "AH_ITEM_IDS")
 
@@ -221,8 +227,8 @@ def main() -> int:
         for section in guide["sections"]
         for key in section["items"]
     }
-    if len(non_enchanting_keys) != 2417:
-        fail(f"Expected 2417 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
+    if len(non_enchanting_keys) != 2427:
+        fail(f"Expected 2427 non-Enchanting recipe audits, found {len(non_enchanting_keys)}")
     if set(recipe_audit.get("recipes", {})) != non_enchanting_keys:
         fail("Non-Enchanting recipe snapshot does not match the crafted catalog")
     for key in non_enchanting_keys:
@@ -266,6 +272,7 @@ def main() -> int:
                 and key not in leatherworking_override_keys
                 and key not in cooking_override_keys
                 and key not in first_aid_override_keys
+                and key not in collectible_override_keys
             ):
                 fail(f"{key}: Evidence Pricing override is outside a reviewed scope")
 
@@ -551,14 +558,13 @@ def main() -> int:
         for key in used_keys
         if key.startswith("tailor-")
     }
-    if len(tailoring_items) != 406:
-        fail(f"Expected 406 distinct tradeable Tailoring outputs, found {len(tailoring_items)}")
+    if len(tailoring_items) != 407:
+        fail(f"Expected 407 distinct tradeable Tailoring outputs, found {len(tailoring_items)}")
     for label in (
         "Robe of the Archmage",
         "Sunfire Robe",
         "Magnificent Flying Carpet",
         "Frosty Flying Carpet",
-        "Flying Carpet",
     ):
         if label in tailoring_items:
             fail(f"BoP, self-only, or excluded Tailoring output leaked in: {label}")
@@ -586,8 +592,8 @@ def main() -> int:
         if label not in tailoring_items:
             fail(f"Expanded Tailoring era/category coverage is missing: {label}")
     tailoring_sections = guides["tailoring-cloth-ah-price-guide.html"]["sections"]
-    if len(tailoring_sections) != 21:
-        fail(f"Expected 21 Tailoring and First Aid sections, found {len(tailoring_sections)}")
+    if len(tailoring_sections) != 22:
+        fail(f"Expected 22 Tailoring and First Aid sections, found {len(tailoring_sections)}")
     restricted_tailoring = [
         section
         for section in tailoring_sections
@@ -598,12 +604,16 @@ def main() -> int:
         for section in restricted_tailoring
         if section["items"][0].startswith("tailor-")
     ]
-    if len(tailor_only_sections) != 1 or set(tailor_only_sections[0]["items"]) != {
-        "tailor-netherweave-net",
-        "tailor-heavy-netherweave-net",
-        "tailor-frostweave-net",
+    tailor_only_memberships = {section["title"]: set(section["items"]) for section in tailor_only_sections}
+    if tailor_only_memberships != {
+        "Tailor-only crafted mount": {"tailor-flying-carpet"},
+        "Tailor-only nets": {
+            "tailor-netherweave-net",
+            "tailor-heavy-netherweave-net",
+            "tailor-frostweave-net",
+        },
     }:
-        fail("Tailor-only nets are not isolated in one profession-restricted section")
+        fail("Tailor-only mount and nets are not isolated in dedicated restricted sections")
 
     first_aid_items = {key for key in used_keys if key.startswith("firstaid-")}
     if len(first_aid_items) != 17:
@@ -1005,12 +1015,16 @@ def main() -> int:
         "mining-smithing-ah-price-guide.html",
     ):
         expected_date = (
-            "2026-08-08"
+            "2026-08-10"
+            if filename in {
+                "engineering-materials-ah-price-guide.html",
+                "tailoring-cloth-ah-price-guide.html",
+            }
+            else "2026-08-09"
+            if filename == "jewelcrafting-gems-ah-price-guide.html"
+            else "2026-08-08"
             if filename in {
                 "inscription-materials-ah-price-guide.html",
-                "engineering-materials-ah-price-guide.html",
-                "jewelcrafting-gems-ah-price-guide.html",
-                "tailoring-cloth-ah-price-guide.html",
                 "skinning-leatherworking-materials-ah-price-guide.html",
                 "fishing-cooking-materials-ah-price-guide.html",
                 "mining-smithing-ah-price-guide.html",

@@ -1,6 +1,6 @@
 # Engineering AH Evidence Pricing Plan
 
-- Status: `complete` — Phase 2 Evidence Pricing, 2026-08-06
+- Status: `complete` — Phase 2 plus collectible addendum, 2026-08-10
 - Active guide: `guides/engineering-materials-ah-price-guide.html`
 - Work type: full finished-output price audit
 - Phase 2 order: 3
@@ -27,6 +27,8 @@
 - Crafted parts from Northrend, Outland, and Classic.
 - Blasting powders, ammunition, explosives, target dummies, and decoys.
 - General-use devices, profession tools, and mount components.
+- Five general-use crafted companions, two Engineer-only flying mounts, and two
+  faction-specific general-use motorcycles.
 - Engineer-restricted devices, tools, ammunition, explosives, and mount parts
   in their dedicated restricted sections.
 - Exclude BoP, nontradeable, self-only, temporary, conjured, invalid, and
@@ -70,6 +72,8 @@
 - [x] Ammo units and stack recommendations are correct.
 - [x] All Target moves over 50% have an explicit reviewer decision.
 - [x] Generated guide, ordering, search, tooltip, and full AH validation pass.
+- [x] Collectible companions and mounts are separated by actual buyer
+  requirement and share the dedicated collectible evidence snapshot.
 
 ## Evidence Log
 
@@ -97,3 +101,11 @@
   limited to one per vendor with a 2-hour restock at Fabian Lanzonelli and
   12-hour restocks at the other listed innkeepers. Exact vendor cost sets the
   floor; active listings did not set value. Nothing was published.
+- Collectible coverage addendum — 2026-08-10: Added five tradeable mechanical
+  companions, the two Engineer-only flying machines, and the Horde/Alliance
+  motorcycles. Exact recipes and recursively audited craft floors are saved;
+  the nine sale-value bands are delegated to the collectible Evidence Pricing
+  review so the completed 55-output Engineering Phase 2 snapshot remains
+  frozen. Mechano-hog is explicitly below its Quick craft floor and carries a
+  do-not-craft warning. Active listings did not set value. Nothing was
+  published.

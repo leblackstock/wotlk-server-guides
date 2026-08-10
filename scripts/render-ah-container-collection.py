@@ -284,7 +284,7 @@ def render_row(row: dict) -> str:
     )
 
 
-def render_page(collection: dict, rows: list[dict]) -> str:
+def render_page(collection: dict, rows: list[dict], updated_date: str | None = None) -> str:
     source_counts = Counter(row["source_type"] for row in rows)
     category_counts = Counter(row["category_key"] for row in rows)
     restriction_counts = Counter(row["restriction_key"] for row in rows)
@@ -297,7 +297,7 @@ def render_page(collection: dict, rows: list[dict]) -> str:
         for key, label in RESTRICTION_CHIPS
     )
     rendered_rows = "\n".join(render_row(row) for row in rows)
-    today = date.today().isoformat()
+    updated_date = updated_date or date.today().isoformat()
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -441,7 +441,7 @@ def render_page(collection: dict, rows: list[dict]) -> str:
       <p>Sort the Slots heading to keep equal capacities together. Restriction chips show any selected type, while Search, Source, and Expansion narrow those results together. Select the item name or Canonical guide link for its full pricing and acquisition note. Crafted rows retain their recipe and materials mouseover in the owning profession guide.</p>
     </section>
 
-    <footer>WotLK 3.3.5 Bags &amp; Containers AH Collection • Hellscream / Garrosh • Created by Valdora • Updated {today}</footer>
+    <footer>WotLK 3.3.5 Bags &amp; Containers AH Collection • Hellscream / Garrosh • Created by Valdora • Updated {updated_date}</footer>
   </div>
   <script src="../assets/ah-item-tooltips.js?v={ASSET_VERSION}" defer></script>
   <script src="../assets/ah-containers.js?v={ASSET_VERSION}" defer></script>
@@ -468,10 +468,16 @@ def main() -> int:
 
     collection, rows = build_rows()
     output_path = GUIDES_DIR / collection["file"]
-    expected_page = render_page(collection, rows)
     changes: list[tuple[Path, str]] = []
-    if not output_path.is_file() or output_path.read_text(encoding="utf-8") != expected_page:
-        changes.append((output_path, expected_page))
+    if output_path.is_file():
+        current_page = output_path.read_text(encoding="utf-8")
+        match = re.search(r"Updated (\d{4}-\d{2}-\d{2})</footer>", current_page)
+        preserved_date = match.group(1) if match else date.today().isoformat()
+        expected_page = render_page(collection, rows, preserved_date)
+        if current_page != expected_page:
+            changes.append((output_path, render_page(collection, rows)))
+    else:
+        changes.append((output_path, render_page(collection, rows)))
     for path in HUB_PATHS:
         source = path.read_text(encoding="utf-8")
         expected = render_shortcut(source, path)

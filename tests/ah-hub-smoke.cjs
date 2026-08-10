@@ -330,7 +330,7 @@ async function verifyContainerCollection(page, labelPrefix) {
 
     await desktop.locator(".ah-hub-browse").click();
     await desktop.waitForURL(`${base}/auction-house.html`);
-    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 17, "Auction House hub should present eighteen guides plus one collection across seventeen cards");
+    assert.equal(await desktop.locator(".guide-card.has-guide-icon").count(), 18, "Auction House hub should present nineteen guides plus one collection across eighteen cards");
     assert.equal(await desktop.locator(".ah-hub-route-card").count(), 4);
     assert.equal(await desktop.locator(".ah-hub-link-card").count(), 1);
     const blacksmithingCard = desktop.locator('[data-ah-hub-card="blacksmithing"]');
@@ -368,7 +368,7 @@ async function verifyContainerCollection(page, labelPrefix) {
     await desktop.waitForSelector("#ah-search-input");
     assert.equal(await desktop.locator(".ah-search-quick-links .library-hub-chip").count(), 6);
     const expectedUniqueItems = await desktop.evaluate(() => window.AHSearchCore.uniqueItemCount(window.AH_SEARCH_INDEX.items));
-    assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 18 guides`);
+    assert.equal(await desktop.locator("#ah-search-count").textContent(), `${expectedUniqueItems.toLocaleString()} unique items across 19 guides`);
 
     await desktop.locator("#ah-search-input").fill("Sanguine Hibiscus");
     await desktop.waitForSelector(".ah-search-result");
@@ -491,12 +491,13 @@ async function verifyContainerCollection(page, labelPrefix) {
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "engineering-materials-ah-price-guide.html",
-      rows: 55,
-      sections: 8,
+      rows: 64,
+      sections: 11,
       key: "eng-khorium-power-core",
       target: "20g 25s",
       recipeSpell: 30308,
       notePattern: /used in high-end devices/,
+      footerDate: "2026-08-10",
       label: "Desktop Engineering guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -556,13 +557,13 @@ async function verifyContainerCollection(page, labelPrefix) {
     });
     await verifyAuditedCraftedGuide(desktop, {
       filename: "tailoring-cloth-ah-price-guide.html",
-      rows: 423,
-      sections: 21,
+      rows: 424,
+      sections: 22,
       key: "firstaid-heavy-frostweave-bandage",
       target: "1g 10s",
       recipeSpell: 45546,
       notePattern: /Heals 5,800 damage/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Desktop Tailoring + First Aid guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -679,7 +680,7 @@ async function verifyContainerCollection(page, labelPrefix) {
     await noOverflow(mobile, "Mobile main hub");
 
     await mobile.goto(`${base}/auction-house.html`, { waitUntil: "networkidle" });
-    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 17);
+    assert.equal(await mobile.locator(".guide-card.has-guide-icon").count(), 18);
     assert.equal(await mobile.locator(".ah-hub-card-chip").count(), 7);
     await mobile.locator("#ah-search-input").fill("saronite");
     assert.equal(await mobile.locator(".ah-search-result").count(), 12);
@@ -722,12 +723,13 @@ async function verifyContainerCollection(page, labelPrefix) {
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "engineering-materials-ah-price-guide.html",
-      rows: 55,
-      sections: 8,
+      rows: 64,
+      sections: 11,
       key: "eng-khorium-power-core",
       target: "20g 25s",
       recipeSpell: 30308,
       notePattern: /used in high-end devices/,
+      footerDate: "2026-08-10",
       label: "Mobile Engineering guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -787,13 +789,13 @@ async function verifyContainerCollection(page, labelPrefix) {
     });
     await verifyAuditedCraftedGuide(mobile, {
       filename: "tailoring-cloth-ah-price-guide.html",
-      rows: 423,
-      sections: 21,
+      rows: 424,
+      sections: 22,
       key: "firstaid-heavy-frostweave-bandage",
       target: "1g 10s",
       recipeSpell: 45546,
       notePattern: /Heals 5,800 damage/,
-      footerDate: "2026-08-08",
+      footerDate: "2026-08-10",
       label: "Mobile Tailoring + First Aid guide"
     });
     await verifyAuditedCraftedGuide(mobile, {

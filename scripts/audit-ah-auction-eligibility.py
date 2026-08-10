@@ -19,6 +19,7 @@ ITEM_IDS_PATH = ROOT / "assets" / "ah-item-ids.js"
 CRAFTED_PATH = ROOT / "data" / "ah-crafted-sections.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
 BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
+COLLECTIBLE_AUDIT_PATH = ROOT / "data" / "ah-collectible-audit.json"
 AUDIT_PATH = ROOT / "data" / "ah-auction-eligibility-audit.json"
 
 ITEM_TEMPLATE_COMMIT = "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
@@ -27,7 +28,7 @@ ITEM_TEMPLATE_URL = (
     f"{ITEM_TEMPLATE_COMMIT}/data/sql/base/db_world/item_template.sql"
 )
 CONJURED_FLAG = 0x00000002
-ALLOWED_BONDING = {0, 2}
+ALLOWED_BONDING = {0, 2, 3}
 GENERATED_PAYLOAD = re.compile(r"window\.(\w+)=(\{.*?\});\n", re.DOTALL)
 
 
@@ -116,13 +117,19 @@ def load_sources() -> dict:
     crafted = json.loads(CRAFTED_PATH.read_text(encoding="utf-8"))
     vendor = json.loads(VENDOR_PATH.read_text(encoding="utf-8"))
     baseline = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
+    collectible = (
+        json.loads(COLLECTIBLE_AUDIT_PATH.read_text(encoding="utf-8"))
+        if COLLECTIBLE_AUDIT_PATH.is_file()
+        else {"items": {}}
+    )
 
     indexed_names = {item["name"] for item in index.get("items", [])}
     search_ids = {int(item_id) for item_id in item_ids.values()}
     crafted_ids = {int(item["item_id"]) for item in crafted["catalog"].values()}
     vendor_ids = {int(item["item_id"]) for item in vendor["catalog"].values()}
     baseline_ids = {int(item_id) for item_id in baseline["items"]}
-    target_ids = search_ids | crafted_ids | vendor_ids | baseline_ids
+    collectible_ids = {int(item_id) for item_id in collectible["items"]}
+    target_ids = search_ids | crafted_ids | vendor_ids | baseline_ids | collectible_ids
 
     memberships: dict[int, set[str]] = defaultdict(set)
     for label, item_set in {
@@ -130,6 +137,7 @@ def load_sources() -> dict:
         "crafted": crafted_ids,
         "vendor": vendor_ids,
         "baseline": baseline_ids,
+        "collectible": collectible_ids,
     }.items():
         for item_id in item_set:
             memberships[item_id].add(label)
@@ -160,6 +168,7 @@ def load_sources() -> dict:
         "crafted": crafted,
         "vendor": vendor,
         "baseline": baseline,
+        "collectible": collectible,
         "target_ids": target_ids,
         "memberships": memberships,
         "cost_only_ids": cost_only_ids,
@@ -201,6 +210,9 @@ def build_audit(records: dict[int, dict], sources: dict) -> dict:
                 {int(item["item_id"]) for item in sources["vendor"]["catalog"].values()}
             ),
             "baseline_item_ids": len({int(item_id) for item_id in sources["baseline"]["items"]}),
+            "collectible_item_ids": len(
+                {int(item_id) for item_id in sources["collectible"]["items"]}
+            ),
             "unique_audited_item_ids": len(records),
         },
         "items": {str(item_id): records[item_id] for item_id in sorted(records)},
@@ -228,7 +240,7 @@ def validate_audit(audit: dict, sources: dict) -> None:
             labels = ", ".join(sorted(sources["memberships"][item_id]))
             errors.append(f"{item_id} {record['name']} ({labels}): {', '.join(reasons)}")
 
-    binding_names = {0: "none", 2: "boe"}
+    binding_names = {0: "none", 2: "boe", 3: "use"}
     crafted = sources["crafted"]
     for key, raw in crafted["catalog"].items():
         item_id = int(raw["item_id"])
@@ -251,6 +263,9 @@ def validate_audit(audit: dict, sources: dict) -> None:
             {int(item["item_id"]) for item in sources["vendor"]["catalog"].values()}
         ),
         "baseline_item_ids": len({int(item_id) for item_id in sources["baseline"]["items"]}),
+        "collectible_item_ids": len(
+            {int(item_id) for item_id in sources["collectible"]["items"]}
+        ),
         "unique_audited_item_ids": len(expected_ids),
     }
     if audit.get("source_counts") != expected_counts:

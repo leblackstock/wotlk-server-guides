@@ -155,31 +155,41 @@ assert tailor_hard == {
     "tailor-netherweave-net",
     "tailor-heavy-netherweave-net",
     "tailor-frostweave-net",
+    "tailor-flying-carpet",
 }
+base_tailor_hard = tailor_hard - {"tailor-flying-carpet"}
 restricted_sections = [
     section for section in guide_config["sections"]
     if section.get("audience") == "profession-restricted"
 ]
 assert len(restricted_sections) == 1
-assert set(restricted_sections[0]["items"]) == tailor_hard
+assert set(restricted_sections[0]["items"]) == base_tailor_hard
+supplement_sections = config["guide_supplements"][GUIDE_FILENAME]["prepend_sections"]
+carpet_section = next(
+    section for section in supplement_sections if section["id"] == "tailor-only-crafted-mount"
+)
+assert carpet_section["audience"] == "profession-restricted"
+assert carpet_section["items"] == ["tailor-flying-carpet"]
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["tailoring"]["status"] == "Phase 2 complete locally"
 assert status["guides"]["tailoring"]["evidence_ref"] == "data/ah-tailoring-price-evidence.json"
-assert "complete — Phase 2 Evidence Pricing, 2026-08-08" in plan
+assert "complete — Phase 2 plus collectible addendum, 2026-08-10" in plan
 assert "all 2,334 comparison requests resolved" in plan
 assert "Publication status: `local only — not published`" in report
 assert "331 on three realms, 38 on two, and 8 on one" in report
 assert "All 2,334 comparison requests resolved" in report
 
-assert "Updated 2026-08-08" in guide
+assert "Updated 2026-08-10" in guide
+assert 'data-crafted-key="tailor-flying-carpet"' in guide
+assert "Requires Tailoring 300 to use." in guide
 assert guide.count('id="crafted-tailoring-pricing-note"') == 1
 assert "Evidence Pricing and craft diagnostics" in guide
 assert "usable relative-rank evidence for 377 finished outputs" in guide
-assert len(re.findall(r'class="crafted-recipe-link ', guide)) == 423
-assert len(re.findall(r'class="crafted-note-ref"', guide)) == 423
+assert len(re.findall(r'class="crafted-recipe-link ', guide)) == 424
+assert len(re.findall(r'class="crafted-note-ref"', guide)) == 424
 for key in ("tailor-frostweave-bag", "tailor-brilliant-spellthread", "tailor-gordok-ogre-suit"):
     assert f'data-crafted-key="{key}"' in guide
     assert json.dumps(tailoring_items[key]["name"], ensure_ascii=False) in search

@@ -37,7 +37,7 @@ def normalize_item_name(value: str) -> str:
 
 
 guide_paths = active_guide_paths(guides_dir=GUIDES_DIR)
-assert len(guide_paths) == 18
+assert len(guide_paths) == 19
 
 inline_style_guides = [
     path.name

@@ -127,7 +127,7 @@ assert '"buyer":' not in evidence_text
 assert '"seller":' not in evidence_text
 assert "normalized_ask_ratio" not in evidence_text
 
-assert len(status["guides"]) == 18
+assert len(status["guides"]) == 19
 assert {
     guide_id
     for guide_id, record in status["guides"].items()

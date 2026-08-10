@@ -182,6 +182,35 @@ not be copied into the price.
   10-second failed-request retries. Successful responses are preserved, and
   nominal external gold is never committed or copied.
 
+## Collectible, Vendor-Arbitrage, and Seasonal Rules
+
+- Unlimited coin-vendor items and limited-stock vendor items must be separate.
+  Unlimited supply uses exact coin cost as a deterministic acquisition floor;
+  limited supply must also record the vendor's maximum stock and restock time.
+  When a vendor purchase grants multiple items, divide the bundle cost by its
+  exact buy count before comparing it with per-item AH prices.
+- An AH resale premium represents travel, faction, timing, or restock
+  convenience. Exact vendor cost alone does not prove that premium, and an
+  active reseller listing cannot establish it.
+- Token and reputation costs are acquisition facts, not coin-vendor floors.
+  Their gold bands remain documented fallbacks until qualifying realized sales
+  or a measured token-acquisition opportunity cost supports replacement.
+- Crafted collectibles inherit exact recipes and recursive craft-floor
+  diagnostics from their canonical profession catalog. Hard profession-use
+  requirements remain visible to the actual buyer; a sale estimate below the
+  craft floor must retain do-not-craft guidance.
+- Farmed drops, quests, promotional containers, and other rare rewards must
+  each retain a pinned acquisition route. A technically tradeable item with an
+  unverified server acquisition path stays excluded rather than receiving an
+  invented scarcity premium.
+- Each holiday or micro-holiday has its own section and availability window.
+  An event with no verified auctionable item remains visible as an explicit
+  no-row section; it must not be merged into another season or padded with BoP,
+  temporary, conjured, or otherwise nontradeable rewards.
+- Sparse collectible sales follow the one-at-a-time item gate. One buyer or one
+  day receives at most 25% weight against a fixed reviewed Hellscream cohort,
+  and the result remains `low` confidence.
+
 ## Display Currency Rule
 
 Saved baselines and craft calculations retain their exact copper values. The
@@ -256,7 +285,7 @@ acquisition evidence becomes available.
 ## Recorded Follow-Up Work
 
 - [AH Evidence Pricing Library Audit Plan](ah-evidence-pricing-library-plan.md) —
-  planned evidence refresh for all 18 AH guides in dependency order: gathering
+  planned evidence refresh for all 19 AH guides in dependency order: gathering
   and materials first, professions second, and drops last.
 - [Dropped-Gear Repricing Plan](ah-dropped-gear-pricing-plan.md) — implemented
   local evidence, fixed Hellscream starter anchors, normalized cross-server

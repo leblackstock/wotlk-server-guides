@@ -45,10 +45,10 @@ def main() -> int:
     if baseline.get("diagnostic_observations", {}).get("used_to_set_prices") is not False:
         fail("Active-listing diagnostics must be excluded from baseline prices")
     dropped_count = len(dropped_gear["catalog"])
-    if len(baseline.get("items", {})) != 782 + dropped_count:
-        fail("Baseline must contain the 782 material and Phase 3 static references plus every audited dropped-gear item")
+    if len(baseline.get("items", {})) != 783 + dropped_count:
+        fail("Baseline must contain the 783 material and Phase 3 static references plus every audited dropped-gear item")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"fallback": 1023, "low": 106}):
+    if confidence != Counter({"fallback": 1024, "low": 106}):
         fail(f"Unexpected baseline confidence distribution: {confidence}")
     if dropped_evidence["review"]["decisions"] != {
         "accept-reviewed-starter-estimate": 345,
@@ -158,8 +158,8 @@ def main() -> int:
         if key.startswith("tailor-")
         for reagent in recipe["reagents"]
     }
-    if len(tailoring_inputs) != 147:
-        fail(f"Expected 147 direct Tailoring inputs, found {len(tailoring_inputs)}")
+    if len(tailoring_inputs) != 148:
+        fail(f"Expected 148 direct Tailoring inputs, found {len(tailoring_inputs)}")
     leatherworking_inputs = {
         int(reagent["item_id"])
         for key, recipe in recipes.items()
@@ -260,7 +260,7 @@ def main() -> int:
 
     print(
         "Non-circular AH baseline is valid: 782 material and Phase 3 static references plus reviewed dropped-gear evidence, "
-        "149 Blacksmithing, 147 Tailoring, 165 Leatherworking, 141 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
+        "149 Blacksmithing, 148 Tailoring, 165 Leatherworking, 141 Cooking, 34 Mining, and 10 First Aid inputs covered; active scans excluded."
     )
     return 0
 

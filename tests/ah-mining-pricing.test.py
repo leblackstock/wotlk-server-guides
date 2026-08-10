@@ -26,7 +26,7 @@ plan = PLAN_PATH.read_text(encoding="utf-8")
 report = REPORT_PATH.read_text(encoding="utf-8")
 guide = GUIDE_PATH.read_text(encoding="utf-8")
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["mining-metals"]["status"] == "Phase 2 complete locally"

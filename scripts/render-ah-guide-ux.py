@@ -20,7 +20,7 @@ MANIFEST_PATH = ROOT / "data" / "ah-guides.json"
 NAV_DATA_PATH = ROOT / "assets" / "ah-guide-navigation-data.js"
 GEM_FINDER_TEMPLATE_PATH = ROOT / "templates" / "ah-guide" / "gem-finder.html"
 ASSET_VERSION = "20260804-ah-dropped-gear-v1"
-HUB_STYLE_VERSION = "20260804-ah-dropped-gear-hub-v1"
+HUB_STYLE_VERSION = "20260809-ah-vendor-prices-v1"
 PAGE_SPECIFIC_ASSETS = {
     "jewelcrafting-gems-ah-price-guide.html": {
         "stylesheets": [("ah-gem-finder.css", "20260808-cut-gem-finder-v2")],
@@ -290,6 +290,7 @@ def render_hub_cards(manifest: dict) -> str:
         "gathering": ("Materials", "gold"),
         "professions": ("Profession", "purple"),
         "drops": ("Drops", "green"),
+        "collectibles": ("Collectibles", "purple"),
     }
     sections: list[str] = []
     for group in sorted(manifest["groups"], key=lambda item: int(item["order"])):
@@ -372,6 +373,12 @@ def transform_hub(source: str, manifest: dict) -> str:
         if start < 0 or end < 0:
             raise ValueError("auction-house.html: could not find the legacy AH guide-card block")
         source = source[:start] + block + source[end:]
+    source = re.sub(
+        r"browse all \d+ pricing guides",
+        f'browse all {int(manifest["active_guide_count"])} pricing guides',
+        source,
+        count=1,
+    )
     return re.sub(
         r"style\.css\?v=[^\"\s]+",
         f"style.css?v={HUB_STYLE_VERSION}",

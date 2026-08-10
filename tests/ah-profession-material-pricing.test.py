@@ -124,7 +124,7 @@ for item_id, record in evidence["items"].items():
                 f"data/ah-profession-material-price-evidence.json#items/{item_id}"
             )
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == (
     "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 )
@@ -133,13 +133,17 @@ assert status["publishing_status"] == "local only — not published"
 for filename in evidence["scope"]["guides"]:
     source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
     expected_date = (
-        "2026-08-08"
+        "2026-08-10"
         if filename in {
-            "enchanting-mats-ah-price-guide.html",
-            "jewelcrafting-gems-ah-price-guide.html",
-            "inscription-materials-ah-price-guide.html",
             "engineering-materials-ah-price-guide.html",
             "tailoring-cloth-ah-price-guide.html",
+        }
+        else "2026-08-09"
+        if filename == "jewelcrafting-gems-ah-price-guide.html"
+        else "2026-08-08"
+        if filename in {
+            "enchanting-mats-ah-price-guide.html",
+            "inscription-materials-ah-price-guide.html",
             "skinning-leatherworking-materials-ah-price-guide.html",
             "fishing-cooking-materials-ah-price-guide.html",
             "mining-smithing-ah-price-guide.html",

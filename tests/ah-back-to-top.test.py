@@ -25,13 +25,19 @@ subprocess.run(
 )
 
 paths = active_guide_paths(guides_dir=GUIDES_DIR)
-assert len(paths) == 18
+assert len(paths) == 19
 
 category_count = 0
 for path in paths:
     source = path.read_text(encoding="utf-8")
     assert source.count('id="top"') == 1, path.name
-    headings = re.findall(r"<h2([^>]*)>(.*?)</h2>", source, flags=re.DOTALL)
+    headings = [
+        (attributes, content)
+        for attributes, content in re.findall(
+            r"<h2([^>]*)>(.*?)</h2>", source, flags=re.DOTALL
+        )
+        if 'id="ah-gem-finder-title"' not in attributes
+    ]
     links = re.findall(
         r'<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a>',
         source,

@@ -57,20 +57,25 @@ assert renderer.format_money(14_875) == "1g 49s"
 assert renderer.format_money(999_999) == "100g"
 
 guide_paths = active_guide_paths(guides_dir=GUIDES)
-assert len(guide_paths) == 18
+assert len(guide_paths) == 19
 price_count = 0
 for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
     expected_date = (
-        "2026-08-08"
+        "2026-08-10"
         if path.name in {
+            "companions-mounts-accessories-ah-price-guide.html",
             "engineering-materials-ah-price-guide.html",
+            "tailoring-cloth-ah-price-guide.html",
+        }
+        else "2026-08-09"
+        if path.name == "jewelcrafting-gems-ah-price-guide.html"
+        else "2026-08-08"
+        if path.name in {
             "herbalism-herbs-ah-price-guide.html",
             "enchanting-mats-ah-price-guide.html",
             "inscription-materials-ah-price-guide.html",
-            "jewelcrafting-gems-ah-price-guide.html",
-            "tailoring-cloth-ah-price-guide.html",
             "skinning-leatherworking-materials-ah-price-guide.html",
             "fishing-cooking-materials-ah-price-guide.html",
             "mining-smithing-ah-price-guide.html",

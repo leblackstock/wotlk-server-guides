@@ -4,8 +4,8 @@
   "policy": "This is a low-population-server liquidation signal, not a synonym for Low demand. Recommend vendoring exact-Low stock when its remaining buyer case is too narrow and low-value to justify bag space and repeated deposits. Preserve rare materials, valuable gear, practical consumables, conversion inputs, and items that should be sold or crafted only on demand. NPC-vendor convenience-resale items are explicitly excluded.",
   "reviewed_scope": {
     "search_index_version": 5,
-    "low_entry_count_after_promotions": 1026,
-    "low_unique_name_count_after_promotions": 1005,
+    "low_entry_count_after_promotions": 1083,
+    "low_unique_name_count_after_promotions": 1056,
     "promoted_reference_entry_count": 2,
     "vendor_recommendation_count": 22
   },

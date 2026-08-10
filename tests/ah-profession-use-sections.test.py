@@ -44,9 +44,9 @@ subprocess.run(
 hard = AUDIT["canonical_hard_requirements"]
 profession_audience = AUDIT["canonical_profession_audience"]
 general_exceptions = AUDIT["canonical_general_use_exceptions"]
-assert len(hard) == 42
+assert len(hard) == 45
 assert len(profession_audience) == 17
-assert len(general_exceptions) == 11
+assert len(general_exceptions) == 13
 assert len(AUDIT["vendor_hard_requirements"]) == 3
 assert len(AUDIT["static_hard_requirements"]) == 1
 assert len(AUDIT["static_general_use_exceptions"]) == 0
@@ -107,6 +107,13 @@ for name in ("Gnomish Army Knife", "Mana Injector Kit"):
         re.DOTALL,
     )
     assert row and "No profession required:" in row.group(0)
+for key in ("eng-mechano-hog", "eng-mekgineers-chopper"):
+    row = re.search(
+        rf'<tr data-crafted-key="{re.escape(key)}".*?</tr>',
+        engineering,
+        re.DOTALL,
+    )
+    assert row and "No profession required:</strong>" in row.group(0)
 
 for section_id, section in AUDIT["static_sections"].items():
     source = (GUIDES / section["guide"]).read_text(encoding="utf-8")
@@ -193,6 +200,6 @@ for excluded in AUDIT["excluded_items"]:
 
 print(
     "Profession-use audit is current: "
-    "46 hard-restricted finished items, 17 profession-or-class-audience items, "
-    "and 11 documented general-use exceptions."
+    "49 hard-restricted finished items, 17 profession-or-class-audience items, "
+    "and 13 documented general-use exceptions."
 )

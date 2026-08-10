@@ -148,7 +148,7 @@ assert len(class_sections) == 1
 assert class_sections[0]["items"] == ["cook-thistle-tea"]
 assert use_audit["canonical_profession_audience"]["cook-thistle-tea"]["audience"] == "Rogue"
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["fishing-cooking"]["status"] == "Phase 2 complete locally"

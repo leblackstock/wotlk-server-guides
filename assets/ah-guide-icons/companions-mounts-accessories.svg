@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Companions, mounts, and accessories</title>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#302254"/>
+      <stop offset="1" stop-color="#151327"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="18" y1="16" x2="49" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe29a"/>
+      <stop offset="1" stop-color="#d3942e"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#bg)" stroke="#b995ff" stroke-width="2"/>
+  <path d="M14 44c2-10 7-17 15-21l5-8 4 9c7 3 11 9 12 17l-5 5-8-5-8 5-9-3-6 1Z" fill="none" stroke="url(#gold)" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M24 26l-6-7 9 2m17 6 5-7-9 2" fill="none" stroke="#d8c4ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="30" cy="31" r="2" fill="#f7ecff"/>
+  <circle cx="40" cy="31" r="2" fill="#f7ecff"/>
+  <path d="M33 36h4l-2 3-2-3Z" fill="#f0ae63"/>
+  <path d="M18 49h31" stroke="#b995ff" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+</svg>

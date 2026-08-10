@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "active_guide_count": 18,
+  "active_guide_count": 19,
   "groups": [
     {
       "id": "gathering",
@@ -19,6 +19,12 @@
       "title": "Drops, Recipes & Turn-Ins",
       "description": "Farmable unlocks, reputation items, quest pages, recipes, and patterns.",
       "order": 30
+    },
+    {
+      "id": "collectibles",
+      "title": "Collectibles & Seasonal",
+      "description": "Companions, mounts, vanity accessories, vendor arbitrage, rare rewards, and event markets.",
+      "order": 40
     }
   ],
   "hub_cards": [
@@ -223,7 +229,7 @@
       "id": "engineering",
       "file": "engineering-materials-ah-price-guide.html",
       "title": "Engineering",
-      "description": "Engineering inputs, parts, explosives, ammo, devices, mount components, tools, and utility markets.",
+      "description": "Engineering inputs, parts, explosives, ammo, devices, crafted companions and mounts, tools, and utility markets.",
       "icon": "engineering.svg",
       "group": "professions",
       "order": 30,
@@ -232,6 +238,7 @@
         {"id": "engineering-parts", "label": "Parts", "patterns": ["parts", "Blasting powders", "mount components"]},
         {"id": "engineering-ammo", "label": "Ammo", "patterns": ["Ammo"]},
         {"id": "engineering-explosives", "label": "Explosives", "patterns": ["bombs", "sapper", "decoys"]},
+        {"id": "engineering-collectibles", "label": "Mounts & Companions", "patterns": ["crafted motorcycles", "crafted flying mounts", "crafted Engineering companions"]},
         {"id": "engineering-utility", "label": "Devices & Utility", "patterns": ["utility", "tools"]},
         {"id": "engineering-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
       ]
@@ -370,7 +377,7 @@
       "id": "tailoring",
       "file": "tailoring-cloth-ah-price-guide.html",
       "title": "Tailoring, Cloth & First Aid",
-      "description": "Cloth, Tailoring materials and crafts, bags, spellthreads, gear, bandages, and anti-venoms.",
+      "description": "Cloth, Tailoring materials and crafts, bags, a crafted mount, spellthreads, gear, bandages, and anti-venoms.",
       "icon": "tailoring.svg",
       "group": "professions",
       "order": 90,
@@ -378,6 +385,7 @@
         {"id": "tailoring-materials", "label": "Materials", "patterns": ["reagents", "intermediates", "silks", "Cloth drops"]},
         {"id": "tailoring-gear", "label": "Gear", "patterns": ["cloth gear", "Cosmetic shirts"]},
         {"id": "tailoring-bags", "label": "Bags", "patterns": ["bags$"]},
+        {"id": "tailoring-mounts", "label": "Mounts", "patterns": ["Tailor-only crafted mount"]},
         {"id": "tailoring-utility", "label": "Spellthreads & Utility", "patterns": ["spellthreads", "Tailoring utility", "Tailor-only nets"]},
         {"id": "tailoring-first-aid", "label": "First Aid", "patterns": ["First Aid", "anti-venoms"]},
         {"id": "tailoring-vendor", "label": "Vendor", "patterns": ["Vendor & convenience"]}
@@ -527,6 +535,62 @@
           ]
         },
         {"id": "world-containers", "label": "Containers", "patterns": ["Dropped bags and containers"]}
+      ]
+    },
+    {
+      "id": "collectibles",
+      "file": "companions-mounts-accessories-ah-price-guide.html",
+      "title": "Companions, Mounts & Accessories",
+      "description": "Verified tradeable pets, mounts, vanity accessories, vendor arbitrage, farmed drops, and separately organized seasonal markets.",
+      "icon": "companions-mounts-accessories.svg",
+      "group": "collectibles",
+      "order": 10,
+      "navigation": [
+        {
+          "id": "collectibles-vendors",
+          "label": "Vendor Arbitrage",
+          "children": [
+            {"id": "collectibles-vendor-unlimited", "label": "Unlimited", "patterns": ["^Unlimited-supply vendor arbitrage$"]},
+            {"id": "collectibles-vendor-limited", "label": "Limited Stock", "patterns": ["^Limited-supply vendor arbitrage$"]},
+            {"id": "collectibles-vendor-token", "label": "Tokens & Reputation", "patterns": ["^Token and reputation vendors$"]}
+          ]
+        },
+        {
+          "id": "collectibles-crafted",
+          "label": "Crafted",
+          "children": [
+            {"id": "collectibles-crafted-companions", "label": "Companions", "patterns": ["^Crafted companions$"]},
+            {"id": "collectibles-crafted-mounts", "label": "Mounts", "patterns": ["^Crafted mounts$"]}
+          ]
+        },
+        {
+          "id": "collectibles-acquisition",
+          "label": "Drops & Quests",
+          "patterns": ["^Farmed companion drops$", "^Quest-reward companions$"]
+        },
+        {
+          "id": "collectibles-rare-rewards",
+          "label": "Rare Rewards",
+          "patterns": ["^Promotional and TCG mounts$", "^Shadowmourne quest rewards$"]
+        },
+        {
+          "id": "collectibles-seasons",
+          "label": "Seasonal",
+          "children": [
+            {"id": "collectibles-season-love", "label": "Love is in the Air", "patterns": ["^Love is in the Air$"]},
+            {"id": "collectibles-season-noblegarden", "label": "Noblegarden", "patterns": ["^Noblegarden$"]},
+            {"id": "collectibles-season-childrens-week", "label": "Children's Week", "patterns": ["^Children's Week$"]},
+            {"id": "collectibles-season-midsummer", "label": "Midsummer", "patterns": ["^Midsummer Fire Festival$"]},
+            {"id": "collectibles-season-brewfest", "label": "Brewfest", "patterns": ["^Brewfest$"]},
+            {"id": "collectibles-season-hallows-end", "label": "Hallow's End", "patterns": ["^Hallow's End$"]},
+            {"id": "collectibles-season-day-of-the-dead", "label": "Day of the Dead", "patterns": ["^Day of the Dead$"]},
+            {"id": "collectibles-season-pilgrims-bounty", "label": "Pilgrim's Bounty", "patterns": ["^Pilgrim's Bounty$"]},
+            {"id": "collectibles-season-winter-veil", "label": "Winter Veil", "patterns": ["^Winter Veil$"]},
+            {"id": "collectibles-season-lunar-festival", "label": "Lunar Festival", "patterns": ["^Lunar Festival$"]},
+            {"id": "collectibles-season-pirates-day", "label": "Pirates' Day", "patterns": ["^Pirates' Day$"]}
+          ]
+        },
+        {"id": "collectibles-reference", "label": "Coverage & Sources", "patterns": ["^What is covered$", "^Excluded and pending verification$", "^Sources$", "^Disclaimer$"]}
       ]
     }
   ],

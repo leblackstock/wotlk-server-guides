@@ -186,7 +186,7 @@ restricted_sections = [
 assert len(restricted_sections) == 1
 assert set(restricted_sections[0]["items"]) == leatherworking_hard
 
-assert status["updated"] == "2026-08-08"
+assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["skinning-leatherworking"]["status"] == "Phase 2 complete locally"

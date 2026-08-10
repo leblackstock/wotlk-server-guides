@@ -126,13 +126,13 @@ def main() -> int:
         and urlparse(href).path.endswith("ah-price-guide.html")
     ]
     ah_card_paths = [urlparse(href).path for href in ah_cards]
-    if ah_hub.guide_card_count != 17:
-        errors.append(f"auction-house.html must contain 17 visible cards; found {ah_hub.guide_card_count}")
+    if ah_hub.guide_card_count != 18:
+        errors.append(f"auction-house.html must contain 18 visible cards; found {ah_hub.guide_card_count}")
     if ah_hub.route_card_count != 4 or ah_hub.link_card_count != 1:
         errors.append("auction-house.html must contain three grouped cards and one category link card")
-    if len(ah_cards) != 19 or len(set(ah_card_paths)) != 18:
+    if len(ah_cards) != 20 or len(set(ah_card_paths)) != 19:
         errors.append(
-            "auction-house.html must expose 18 active guide routes plus the Skinning category link"
+            "auction-house.html must expose 19 active guide routes plus the Skinning category link"
         )
     skinning_path = "./guides/skinning-leatherworking-materials-ah-price-guide.html"
     if ah_card_paths.count(skinning_path) != 2:
@@ -162,7 +162,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print("Hub validation passed: 18 active guides plus the Bags & Containers collection across 17 cards.")
+    print("Hub validation passed: 19 active guides plus the Bags & Containers collection across 18 cards.")
     return 0
 
 

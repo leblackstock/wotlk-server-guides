@@ -49,6 +49,24 @@
     "complete_decks": "At least the sum of all eight audited card prices plus a small completion premium."
   },
   "reagent_cost_overrides": {
+    "11291": {
+      "name": "Star Wood",
+      "source_type": "coin-vendor",
+      "quick": 4500,
+      "target": 4500,
+      "high": 4500,
+      "reason": "Exact unlimited-vendor cost.",
+      "confidence": "high"
+    },
+    "34249": {
+      "name": "Hula Girl Doll",
+      "source_type": "coin-vendor",
+      "quick": 1000000,
+      "target": 1000000,
+      "high": 1000000,
+      "reason": "Exact unlimited-vendor cost from Griftah.",
+      "confidence": "high"
+    },
     "2901": {
       "name": "Mining Pick",
       "source_type": "coin-vendor",
@@ -3691,6 +3709,152 @@
           "name": "Essence of Fire",
           "count": 2
         }
+      ]
+    },
+    "eng-mechanical-squirrel-box": {
+      "source_spell_id": 3928,
+      "source_spell_name": "Mechanical Squirrel Box",
+      "output_item_id": 4401,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 4363, "name": "Copper Modulator", "count": 1},
+        {"item_id": 4359, "name": "Handful of Copper Bolts", "count": 1},
+        {"item_id": 2840, "name": "Copper Bar", "count": 1},
+        {"item_id": 774, "name": "Malachite", "count": 2}
+      ]
+    },
+    "eng-pet-bombling": {
+      "source_spell_id": 15628,
+      "source_spell_name": "Pet Bombling",
+      "output_item_id": 11825,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 4394, "name": "Big Iron Bomb", "count": 1},
+        {"item_id": 7077, "name": "Heart of Fire", "count": 1},
+        {"item_id": 7191, "name": "Fused Wiring", "count": 1},
+        {"item_id": 3860, "name": "Mithril Bar", "count": 6}
+      ]
+    },
+    "eng-lil-smoky": {
+      "source_spell_id": 15633,
+      "source_spell_name": "Lil' Smoky",
+      "output_item_id": 11826,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 7075, "name": "Core of Earth", "count": 1},
+        {"item_id": 4389, "name": "Gyrochronatom", "count": 2},
+        {"item_id": 7191, "name": "Fused Wiring", "count": 1},
+        {"item_id": 3860, "name": "Mithril Bar", "count": 2},
+        {"item_id": 6037, "name": "Truesilver Bar", "count": 1}
+      ]
+    },
+    "eng-lifelike-mechanical-toad": {
+      "source_spell_id": 19793,
+      "source_spell_name": "Lifelike Mechanical Toad",
+      "output_item_id": 15996,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 12803, "name": "Living Essence", "count": 1},
+        {"item_id": 15994, "name": "Thorium Widget", "count": 4},
+        {"item_id": 10558, "name": "Gold Power Core", "count": 1},
+        {"item_id": 8170, "name": "Rugged Leather", "count": 1}
+      ]
+    },
+    "eng-tranquil-mechanical-yeti": {
+      "source_spell_id": 26011,
+      "source_spell_name": "Tranquil Mechanical Yeti",
+      "output_item_id": 21277,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 15407, "name": "Cured Rugged Hide", "count": 1},
+        {"item_id": 15994, "name": "Thorium Widget", "count": 4},
+        {"item_id": 7079, "name": "Globe of Water", "count": 2},
+        {"item_id": 18631, "name": "Truesilver Transformer", "count": 2},
+        {"item_id": 10558, "name": "Gold Power Core", "count": 1}
+      ]
+    },
+    "eng-flying-machine-control": {
+      "source_spell_id": 44155,
+      "source_spell_name": "Flying Machine",
+      "output_item_id": 34060,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 23782, "name": "Fel Iron Casing", "count": 2},
+        {"item_id": 23781, "name": "Elemental Blasting Powder", "count": 20},
+        {"item_id": 23783, "name": "Handful of Fel Iron Bolts", "count": 20},
+        {"item_id": 11291, "name": "Star Wood", "count": 8}
+      ]
+    },
+    "eng-turbo-charged-flying-machine-control": {
+      "source_spell_id": 44157,
+      "source_spell_name": "Turbo-Charged Flying Machine",
+      "output_item_id": 34061,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 23784, "name": "Adamantite Frame", "count": 4},
+        {"item_id": 23786, "name": "Khorium Power Core", "count": 8},
+        {"item_id": 23787, "name": "Felsteel Stabilizer", "count": 8},
+        {"item_id": 34249, "name": "Hula Girl Doll", "count": 1}
+      ]
+    },
+    "eng-mechano-hog": {
+      "source_spell_id": 60866,
+      "source_spell_name": "Mechano-hog",
+      "output_item_id": 41508,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 37663, "name": "Titansteel Bar", "count": 12},
+        {"item_id": 39681, "name": "Handful of Cobalt Bolts", "count": 40},
+        {"item_id": 44128, "name": "Arctic Fur", "count": 2},
+        {"item_id": 44499, "name": "Salvaged Iron Golem Parts", "count": 1},
+        {"item_id": 44501, "name": "Goblin-machined Piston", "count": 8},
+        {"item_id": 44500, "name": "Elementium-plated Exhaust Pipe", "count": 1}
+      ]
+    },
+    "eng-mekgineers-chopper": {
+      "source_spell_id": 60867,
+      "source_spell_name": "Mekgineer's Chopper",
+      "output_item_id": 44413,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 37663, "name": "Titansteel Bar", "count": 12},
+        {"item_id": 39681, "name": "Handful of Cobalt Bolts", "count": 40},
+        {"item_id": 44128, "name": "Arctic Fur", "count": 2},
+        {"item_id": 44499, "name": "Salvaged Iron Golem Parts", "count": 1},
+        {"item_id": 44501, "name": "Goblin-machined Piston", "count": 8},
+        {"item_id": 44500, "name": "Elementium-plated Exhaust Pipe", "count": 1}
+      ]
+    },
+    "tailor-flying-carpet": {
+      "source_spell_id": 60969,
+      "source_spell_name": "Flying Carpet",
+      "output_item_id": 44554,
+      "output_count": 1,
+      "output_count_max": 1,
+      "pricing_rule": "direct",
+      "reagents": [
+        {"item_id": 21840, "name": "Bolt of Netherweave", "count": 6},
+        {"item_id": 23112, "name": "Golden Draenite", "count": 4},
+        {"item_id": 22445, "name": "Arcane Dust", "count": 4},
+        {"item_id": 8343, "name": "Heavy Silken Thread", "count": 5}
       ]
     },
     "eng-arclight-spanner": {

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refreshed": "2026-08-08",
+  "refreshed": "2026-08-10",
   "item_template_source": {
     "name": "AzerothCore WotLK item_template",
     "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
@@ -9,18 +9,20 @@
   "rules": {
     "allowed_bonding": [
       0,
-      2
+      2,
+      3
     ],
     "conjured_flag": 2,
     "required_duration": 0,
     "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search."
   },
   "source_counts": {
-    "search_item_ids": 3720,
-    "crafted_item_ids": 2693,
+    "search_item_ids": 3852,
+    "crafted_item_ids": 2703,
     "vendor_item_ids": 63,
-    "baseline_item_ids": 1129,
-    "unique_audited_item_ids": 3791
+    "baseline_item_ids": 1130,
+    "collectible_item_ids": 133,
+    "unique_audited_item_ids": 3926
   },
   "items": {
     "118": {
@@ -2633,9 +2635,21 @@
       "bonding": 0,
       "duration": 0
     },
+    "4394": {
+      "name": "Big Iron Bomb",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "4400": {
       "name": "Heavy Stock",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "4401": {
+      "name": "Mechanical Squirrel Box",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -3631,6 +3645,18 @@
     },
     "6796": {
       "name": "Red Swashbuckler's Shirt",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "6833": {
+      "name": "White Tuxedo Shirt",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "6835": {
+      "name": "Black Tuxedo Pants",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -4739,6 +4765,102 @@
       "bonding": 2,
       "duration": 0
     },
+    "8485": {
+      "name": "Cat Carrier (Bombay)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8486": {
+      "name": "Cat Carrier (Cornish Rex)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8487": {
+      "name": "Cat Carrier (Orange Tabby)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8488": {
+      "name": "Cat Carrier (Silver Tabby)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8489": {
+      "name": "Cat Carrier (White Kitten)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8490": {
+      "name": "Cat Carrier (Siamese)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8491": {
+      "name": "Cat Carrier (Black Tabby)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8492": {
+      "name": "Parrot Cage (Green Wing Macaw)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8494": {
+      "name": "Parrot Cage (Hyacinth Macaw)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8495": {
+      "name": "Parrot Cage (Senegal)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8496": {
+      "name": "Parrot Cage (Cockatiel)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8497": {
+      "name": "Rabbit Crate (Snowshoe)",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8498": {
+      "name": "Tiny Emerald Whelpling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8499": {
+      "name": "Tiny Crimson Whelpling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8500": {
+      "name": "Great Horned Owl",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8501": {
+      "name": "Hawk Owl",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "8544": {
       "name": "Mageweave Bandage",
       "flags": 2097216,
@@ -4813,6 +4935,12 @@
     },
     "8956": {
       "name": "Oil of Immolation",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "8959": {
+      "name": "Raw Spinefin Halibut",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -5285,6 +5413,42 @@
       "bonding": 0,
       "duration": 0
     },
+    "10360": {
+      "name": "Black Kingsnake",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "10361": {
+      "name": "Brown Snake",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "10392": {
+      "name": "Crimson Snake",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "10393": {
+      "name": "Cockroach",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "10394": {
+      "name": "Prairie Dog Whistle",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "10398": {
+      "name": "Mechanical Chicken",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "10421": {
       "name": "Rough Copper Vest",
       "flags": 0,
@@ -5375,6 +5539,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "10822": {
+      "name": "Dark Whelpling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "10841": {
       "name": "Goldthorn Tea",
       "flags": 0,
@@ -5414,6 +5584,24 @@
     "11018": {
       "name": "Un'Goro Soil",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11023": {
+      "name": "Ancona Chicken",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11026": {
+      "name": "Tree Frog Box",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11027": {
+      "name": "Wood Frog Box",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -5618,6 +5806,18 @@
     "11754": {
       "name": "Black Diamond",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11825": {
+      "name": "Pet Bombling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "11826": {
+      "name": "Lil' Smoky",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -7475,6 +7675,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "15996": {
+      "name": "Lifelike Mechanical Toad",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "15997": {
       "name": "Thorium Shells",
       "flags": 0,
@@ -7877,6 +8083,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "17202": {
+      "name": "Snowball",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "17203": {
       "name": "Sulfuron Ingot",
       "flags": 0,
@@ -7885,6 +8097,30 @@
     },
     "17222": {
       "name": "Spider Sausage",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "17303": {
+      "name": "Blue Ribboned Wrapping Paper",
+      "flags": 512,
+      "bonding": 0,
+      "duration": 0
+    },
+    "17304": {
+      "name": "Green Ribboned Wrapping Paper",
+      "flags": 512,
+      "bonding": 0,
+      "duration": 0
+    },
+    "17307": {
+      "name": "Purple Ribboned Wrapping Paper",
+      "flags": 512,
+      "bonding": 0,
+      "duration": 0
+    },
+    "17405": {
+      "name": "Green Garden Tea",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -8157,6 +8393,12 @@
       "name": "Barbaric Bracers",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "19028": {
+      "name": "Elegant Dress",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "19043": {
@@ -8789,6 +9031,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "20769": {
+      "name": "Disgusting Oozeling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "20816": {
       "name": "Delicate Copper Wire",
       "flags": 0,
@@ -9005,9 +9253,21 @@
       "bonding": 0,
       "duration": 0
     },
+    "21213": {
+      "name": "Preserved Holly",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "21217": {
       "name": "Sagefish Delight",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21277": {
+      "name": "Tranquil Mechanical Yeti",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -9015,6 +9275,30 @@
       "name": "Stormshroud Gloves",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "21301": {
+      "name": "Green Helper Box",
+      "flags": 1024,
+      "bonding": 3,
+      "duration": 0
+    },
+    "21305": {
+      "name": "Red Helper Box",
+      "flags": 1024,
+      "bonding": 3,
+      "duration": 0
+    },
+    "21308": {
+      "name": "Jingling Bell",
+      "flags": 1024,
+      "bonding": 3,
+      "duration": 0
+    },
+    "21309": {
+      "name": "Snowman Kit",
+      "flags": 1024,
+      "bonding": 3,
       "duration": 0
     },
     "21340": {
@@ -9043,6 +9327,96 @@
     },
     "21546": {
       "name": "Elixir of Greater Firepower",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21557": {
+      "name": "Small Red Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21558": {
+      "name": "Small Blue Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21559": {
+      "name": "Small Green Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21561": {
+      "name": "Small White Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21562": {
+      "name": "Small Yellow Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21571": {
+      "name": "Blue Rocket Cluster",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21574": {
+      "name": "Green Rocket Cluster",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21576": {
+      "name": "Red Rocket Cluster",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21589": {
+      "name": "Large Blue Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21590": {
+      "name": "Large Green Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21592": {
+      "name": "Large Red Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21593": {
+      "name": "Large White Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21595": {
+      "name": "Large Yellow Rocket",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21713": {
+      "name": "Elune's Candle",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "21747": {
+      "name": "Festival Firecracker",
       "flags": 0,
       "bonding": 0,
       "duration": 0
@@ -9479,6 +9853,12 @@
       "bonding": 2,
       "duration": 0
     },
+    "22200": {
+      "name": "Silver Shafted Arrow",
+      "flags": 65600,
+      "bonding": 0,
+      "duration": 0
+    },
     "22202": {
       "name": "Small Obsidian Shard",
       "flags": 0,
@@ -9488,6 +9868,12 @@
     "22203": {
       "name": "Large Obsidian Shard",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22218": {
+      "name": "Handful of Rose Petals",
+      "flags": 69696,
       "bonding": 0,
       "duration": 0
     },
@@ -9525,6 +9911,48 @@
       "name": "Satchel of Cenarius",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "22276": {
+      "name": "Lovely Red Dress",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22277": {
+      "name": "Red Dinner Suit",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22278": {
+      "name": "Lovely Blue Dress",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22279": {
+      "name": "Lovely Black Dress",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22280": {
+      "name": "Lovely Purple Dress",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22281": {
+      "name": "Blue Dinner Suit",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "22282": {
+      "name": "Purple Dinner Suit",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "22383": {
@@ -9861,6 +10289,12 @@
       "name": "Ironvine Belt",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "22781": {
+      "name": "Polar Bear Collar",
+      "flags": 64,
+      "bonding": 0,
       "duration": 0
     },
     "22785": {
@@ -12095,6 +12529,18 @@
       "bonding": 2,
       "duration": 0
     },
+    "29363": {
+      "name": "Mana Wyrmling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29364": {
+      "name": "Brown Rabbit Crate",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "29425": {
       "name": "Mark of Kil'jaeden",
       "flags": 0,
@@ -12368,6 +12814,54 @@
     "29740": {
       "name": "Fel Armament",
       "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29901": {
+      "name": "Blue Moth Egg",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29902": {
+      "name": "Red Moth Egg",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29903": {
+      "name": "Yellow Moth Egg",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29904": {
+      "name": "White Moth Egg",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29956": {
+      "name": "Red Dragonhawk Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29957": {
+      "name": "Silver Dragonhawk Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29958": {
+      "name": "Blue Dragonhawk Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "29960": {
+      "name": "Captured Firefly",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -13811,6 +14305,18 @@
       "bonding": 0,
       "duration": 0
     },
+    "34060": {
+      "name": "Flying Machine Control",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "34061": {
+      "name": "Turbo-Charged Flying Machine Control",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "34085": {
       "name": "Red Winter Clothes",
       "flags": 0,
@@ -13862,6 +14368,12 @@
     "34220": {
       "name": "Chaotic Skyfire Diamond",
       "flags": 4096,
+      "bonding": 0,
+      "duration": 0
+    },
+    "34258": {
+      "name": "Love Rocket",
+      "flags": 65536,
       "bonding": 0,
       "duration": 0
     },
@@ -13965,6 +14477,18 @@
       "name": "Bag of Many Hides",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "34535": {
+      "name": "Azure Whelpling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "34599": {
+      "name": "Juggling Torch",
+      "flags": 0,
+      "bonding": 0,
       "duration": 0
     },
     "34622": {
@@ -14145,6 +14669,12 @@
       "name": "The 2 Ring",
       "flags": 0,
       "bonding": 2,
+      "duration": 0
+    },
+    "34850": {
+      "name": "Midsummer Ground Flower",
+      "flags": 64,
+      "bonding": 0,
       "duration": 0
     },
     "35128": {
@@ -17147,6 +17677,24 @@
       "bonding": 0,
       "duration": 0
     },
+    "39896": {
+      "name": "Tickbird Hatchling",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "39898": {
+      "name": "Cobra Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "39899": {
+      "name": "White Tickbird Hatchling",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "39900": {
       "name": "Bold Bloodstone",
       "flags": 0,
@@ -19337,6 +19885,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "41508": {
+      "name": "Mechano-hog",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "41509": {
       "name": "Frostweave Net",
       "flags": 64,
@@ -21389,6 +21943,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "44413": {
+      "name": "Mekgineer's Chopper",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "44436": {
       "name": "Dark Frostscale Leggings",
       "flags": 0,
@@ -21569,6 +22129,12 @@
       "bonding": 2,
       "duration": 0
     },
+    "44554": {
+      "name": "Flying Carpet",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "44684": {
       "name": "Glyph of Frostfire",
       "flags": 64,
@@ -21581,9 +22147,27 @@
       "bonding": 2,
       "duration": 0
     },
+    "44721": {
+      "name": "Proto-Drake Whelp",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
     "44815": {
       "name": "Scroll of Enchant Bracers - Greater Assault",
       "flags": 268435520,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44822": {
+      "name": "Albino Snake",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44915": {
+      "name": "Elune's Candle",
+      "flags": 64,
       "bonding": 0,
       "duration": 0
     },
@@ -21656,6 +22240,60 @@
     "44963": {
       "name": "Earthen Leg Armor",
       "flags": 36928,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44965": {
+      "name": "Teldrassil Sproutling",
+      "flags": 4096,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44970": {
+      "name": "Dun Morogh Cub",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44971": {
+      "name": "Tirisfal Batling",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44973": {
+      "name": "Durotar Scorpion",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44974": {
+      "name": "Elwynn Lamb",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44980": {
+      "name": "Mulgore Hatchling",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44982": {
+      "name": "Enchanted Broom",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "44984": {
+      "name": "Ammen Vale Lashling",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "45002": {
+      "name": "Mechanopeep",
+      "flags": 4160,
       "bonding": 0,
       "duration": 0
     },
@@ -22013,6 +22651,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "45606": {
+      "name": "Sen'jin Fetish",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
     "45621": {
       "name": "Elixir of Minor Accuracy",
       "flags": 0,
@@ -22313,6 +22957,24 @@
       "bonding": 0,
       "duration": 0
     },
+    "46398": {
+      "name": "Calico Cat",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "46820": {
+      "name": "Shimmering Wyrmling",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
+    "46821": {
+      "name": "Shimmering Wyrmling",
+      "flags": 4160,
+      "bonding": 0,
+      "duration": 0
+    },
     "46970": {
       "name": "Drape of the Untamed Predator",
       "flags": 0,
@@ -22487,6 +23149,54 @@
       "bonding": 2,
       "duration": 0
     },
+    "48112": {
+      "name": "Darting Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48114": {
+      "name": "Deviate Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48116": {
+      "name": "Gundrak Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48118": {
+      "name": "Leaping Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48120": {
+      "name": "Obsidian Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48122": {
+      "name": "Ravasaur Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48124": {
+      "name": "Razormaw Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
+    "48126": {
+      "name": "Razzashi Hatchling",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "48663": {
       "name": "Tankard O' Terror",
       "flags": 0,
@@ -22496,6 +23206,36 @@
     "49110": {
       "name": "Nightmare Tear",
       "flags": 524288,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49282": {
+      "name": "Big Battle Bear",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49283": {
+      "name": "Reins of the Spectral Tiger",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49284": {
+      "name": "Reins of the Swift Spectral Tiger",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49285": {
+      "name": "X-51 Nether-Rocket",
+      "flags": 0,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49286": {
+      "name": "X-51 Nether-Rocket X-TREME",
+      "flags": 0,
       "bonding": 0,
       "duration": 0
     },
@@ -22514,6 +23254,42 @@
     "49634": {
       "name": "Drums of the Wild",
       "flags": 8388672,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49856": {
+      "name": "\"VICTORY\" Perfume",
+      "flags": 65536,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49857": {
+      "name": "\"Enchantress\" Perfume",
+      "flags": 65536,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49858": {
+      "name": "\"Forever\" Perfume",
+      "flags": 65536,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49859": {
+      "name": "\"Bravado\" Cologne",
+      "flags": 65536,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49860": {
+      "name": "\"Wizardry\" Cologne",
+      "flags": 65536,
+      "bonding": 0,
+      "duration": 0
+    },
+    "49861": {
+      "name": "\"STALWART\" Cologne",
+      "flags": 65536,
       "bonding": 0,
       "duration": 0
     },
@@ -22685,6 +23461,12 @@
       "bonding": 0,
       "duration": 0
     },
+    "50163": {
+      "name": "Lovely Rose",
+      "flags": 64,
+      "bonding": 0,
+      "duration": 0
+    },
     "50175": {
       "name": "Crypt Keeper's Bracers",
       "flags": 0,
@@ -22767,6 +23549,36 @@
       "name": "Iceblade Arrow",
       "flags": 4096,
       "bonding": 0,
+      "duration": 0
+    },
+    "52200": {
+      "name": "Reins of the Crimson Deathcharger",
+      "flags": 32768,
+      "bonding": 3,
+      "duration": 0
+    },
+    "52201": {
+      "name": "Muradin's Favor",
+      "flags": 64,
+      "bonding": 3,
+      "duration": 0
+    },
+    "52251": {
+      "name": "Jaina's Locket",
+      "flags": 64,
+      "bonding": 3,
+      "duration": 0
+    },
+    "52252": {
+      "name": "Tabard of the Lightbringer",
+      "flags": 67141696,
+      "bonding": 2,
+      "duration": 0
+    },
+    "52253": {
+      "name": "Sylvanas's Music Box",
+      "flags": 0,
+      "bonding": 3,
       "duration": 0
     }
   }

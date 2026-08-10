@@ -81,13 +81,13 @@ class AHGuideParser(HTMLParser):
         filename: str,
         guide_id: str,
         guide_title: str,
-        vendor_recommendation_names: set[str],
+        vendor_recommendation_names: set[str] | None = None,
     ) -> None:
         super().__init__()
         self.filename = filename
         self.guide_id = guide_id
         self.guide_title = guide_title
-        self.vendor_recommendation_names = vendor_recommendation_names
+        self.vendor_recommendation_names = vendor_recommendation_names or set()
         self.section = "Other"
         self.capture_heading = False
         self.capture_heading_action = False

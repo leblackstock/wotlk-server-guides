@@ -1,0 +1,6369 @@
+{
+  "version": 1,
+  "refreshed": "2026-08-10",
+  "scope": "Verified auctionable WotLK companions, mounts, collectible accessories, and event novelties selected for the Hellscream low-pop AH guide.",
+  "source": {
+    "name": "AzerothCore WotLK base world data",
+    "repository": "azerothcore/azerothcore-wotlk",
+    "commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
+    "files": [
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/item_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/creature_loot_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/gameobject_loot_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/item_loot_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/reference_loot_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/creature_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/gameobject_template.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/npc_vendor.sql",
+      "https://raw.githubusercontent.com/azerothcore/azerothcore-wotlk/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world/quest_template.sql"
+    ],
+    "crafted_cross_check": "WotLKDB 3.3.5a item pages, refreshed 2026-08-10"
+  },
+  "rules": {
+    "allowed_bonding": [
+      0,
+      2,
+      3
+    ],
+    "bond_on_use_rule": "Unused Bind on Use items are tradeable; AzerothCore auction creation checks instance bound state, not future binding type.",
+    "required_duration": 0,
+    "conjured_flag": 2,
+    "active_listings_set_prices": false,
+    "source_priority": [
+      "crafted",
+      "unlimited coin vendor",
+      "limited coin vendor",
+      "token vendor",
+      "quest/reward",
+      "drop",
+      "promotional container"
+    ]
+  },
+  "summary": {
+    "included_items": 133,
+    "groups": {
+      "companion-drops": 20,
+      "companion-quest-rewards": 2,
+      "crafted-collectibles": 10,
+      "promotional-mounts": 5,
+      "quest-accessories": 5,
+      "season-love-is-in-the-air": 17,
+      "season-lunar-festival": 15,
+      "season-midsummer": 2,
+      "season-noblegarden": 3,
+      "season-winter-veil": 11,
+      "vendor-limited": 2,
+      "vendor-token": 12,
+      "vendor-unlimited": 29
+    },
+    "existing_exact_name_overlaps": 11,
+    "empty_seasons": 6
+  },
+  "empty_seasons": [
+    "Children's Week",
+    "Brewfest",
+    "Hallow's End",
+    "Pilgrim's Bounty",
+    "Day of the Dead",
+    "Pirates' Day"
+  ],
+  "exclusions": {
+    "no-pinned-acquisition": {
+      "item_ids": [
+        49290,
+        54068,
+        54069
+      ],
+      "names": [
+        "Magic Rooster Egg",
+        "Wooly White Rhino",
+        "Blazing Hippogryph"
+      ],
+      "reason": "The item templates are technically tradeable, but the pinned AzerothCore world data has no acquisition route. Verify Hellscream availability before pricing."
+    },
+    "auction-ineligible-examples": {
+      "item_ids": [
+        37431,
+        37460,
+        43352,
+        43626,
+        44820,
+        33182,
+        33184,
+        37012,
+        50250
+      ],
+      "names": [
+        "Fetch Ball",
+        "Rope Pet Leash",
+        "Pet Grooming Kit",
+        "Happy Pet Snack",
+        "Red Ribbon Pet Leash",
+        "Swift Flying Broom",
+        "Swift Magic Broom",
+        "The Horseman's Reins",
+        "Big Love Rocket"
+      ],
+      "reason": "Bind on Pickup, duration-limited, or otherwise nontradeable before Auction House listing."
+    }
+  },
+  "items": {
+    "8485": {
+      "item_id": 8485,
+      "name": "Cat Carrier (Bombay)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 6367,
+          "name": "Donni Anthania",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8486": {
+      "item_id": 8486,
+      "name": "Cat Carrier (Cornish Rex)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 6367,
+          "name": "Donni Anthania",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8487": {
+      "item_id": 8487,
+      "name": "Cat Carrier (Orange Tabby)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 6367,
+          "name": "Donni Anthania",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8488": {
+      "item_id": 8488,
+      "name": "Cat Carrier (Silver Tabby)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 6367,
+          "name": "Donni Anthania",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8490": {
+      "item_id": 8490,
+      "name": "Cat Carrier (Siamese)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 6000,
+      "vendor_unit_cost_copper": 6000,
+      "sell_price_copper": 1500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Cookie",
+          "Cookie - Cat Carrier (Siamese)"
+        ],
+        "chance_range": [
+          15.0,
+          15.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8495": {
+      "item_id": 8495,
+      "name": "Parrot Cage (Senegal)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 2663,
+          "name": "Narkk",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8496": {
+      "item_id": 8496,
+      "name": "Parrot Cage (Cockatiel)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 2663,
+          "name": "Narkk",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8497": {
+      "item_id": 8497,
+      "name": "Rabbit Crate (Snowshoe)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 2000,
+      "vendor_unit_cost_copper": 2000,
+      "sell_price_copper": 500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 1263,
+          "name": "Yarlyn Amberstill",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8500": {
+      "item_id": 8500,
+      "name": "Great Horned Owl",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8665,
+          "name": "Shylenai",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8501": {
+      "item_id": 8501,
+      "name": "Hawk Owl",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8665,
+          "name": "Shylenai",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10360": {
+      "item_id": 10360,
+      "name": "Black Kingsnake",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8404,
+          "name": "Xan'tish",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10361": {
+      "item_id": 10361,
+      "name": "Brown Snake",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8404,
+          "name": "Xan'tish",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10392": {
+      "item_id": 10392,
+      "name": "Crimson Snake",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8404,
+          "name": "Xan'tish",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10393": {
+      "item_id": 10393,
+      "name": "Cockroach",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8403,
+          "name": "Jeremiah Payson",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10394": {
+      "item_id": 10394,
+      "name": "Prairie Dog Whistle",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8401,
+          "name": "Halpa",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "11023": {
+      "item_id": 11023,
+      "name": "Ancona Chicken",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 6548,
+          "name": "Magus Tirth",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "11026": {
+      "item_id": 11026,
+      "name": "Tree Frog Box",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 14860,
+          "name": "Flik",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29363": {
+      "item_id": 29363,
+      "name": "Mana Wyrmling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 400000,
+      "vendor_unit_cost_copper": 400000,
+      "sell_price_copper": 100000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29364": {
+      "item_id": 29364,
+      "name": "Brown Rabbit Crate",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 100000,
+      "vendor_unit_cost_copper": 100000,
+      "sell_price_copper": 25000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 13303,
+          "title": "Test Quest"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29901": {
+      "item_id": 29901,
+      "name": "Blue Moth Egg",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 21019,
+          "name": "Sixx",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29902": {
+      "item_id": 29902,
+      "name": "Red Moth Egg",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 100000,
+      "vendor_unit_cost_copper": 100000,
+      "sell_price_copper": 25000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29903": {
+      "item_id": 29903,
+      "name": "Yellow Moth Egg",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 21019,
+          "name": "Sixx",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29904": {
+      "item_id": 29904,
+      "name": "White Moth Egg",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 21019,
+          "name": "Sixx",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29956": {
+      "item_id": 29956,
+      "name": "Red Dragonhawk Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 16860,
+          "name": "Jilanne",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29957": {
+      "item_id": 29957,
+      "name": "Silver Dragonhawk Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 16860,
+          "name": "Jilanne",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29958": {
+      "item_id": 29958,
+      "name": "Blue Dragonhawk Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 100000,
+      "vendor_unit_cost_copper": 100000,
+      "sell_price_copper": 25000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 20980,
+          "name": "Dealer Rashaad",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44822": {
+      "item_id": 44822,
+      "name": "Albino Snake",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 500000,
+      "vendor_unit_cost_copper": 500000,
+      "sell_price_copper": 125000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 28951,
+          "name": "Breanni",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "46398": {
+      "item_id": 46398,
+      "name": "Calico Cat",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 500000,
+      "vendor_unit_cost_copper": 500000,
+      "sell_price_copper": 125000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 28951,
+          "name": "Breanni",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48120": {
+      "item_id": 48120,
+      "name": "Obsidian Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 500000,
+      "vendor_unit_cost_copper": 500000,
+      "sell_price_copper": 125000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-unlimited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 28951,
+          "name": "Breanni",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8489": {
+      "item_id": 8489,
+      "name": "Cat Carrier (White Kitten)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 6000,
+      "vendor_unit_cost_copper": 6000,
+      "sell_price_copper": 1500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-limited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 8666,
+          "name": "Lil Timmy",
+          "max_count": 1,
+          "restock_seconds": 3600,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "11027": {
+      "item_id": 11027,
+      "name": "Wood Frog Box",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-limited",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 14860,
+          "name": "Flik",
+          "max_count": 1,
+          "restock_seconds": 1800,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44965": {
+      "item_id": 44965,
+      "name": "Teldrassil Sproutling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4096,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33653,
+          "name": "Rook Hawkfist",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44970": {
+      "item_id": 44970,
+      "name": "Dun Morogh Cub",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33310,
+          "name": "Derrick Brindlebeard",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44971": {
+      "item_id": 44971,
+      "name": "Tirisfal Batling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33555,
+          "name": "Eliza Killian",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44973": {
+      "item_id": 44973,
+      "name": "Durotar Scorpion",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33553,
+          "name": "Freka Bloodaxe",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44974": {
+      "item_id": 44974,
+      "name": "Elwynn Lamb",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33307,
+          "name": "Corporal Arthur Flew",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44980": {
+      "item_id": 44980,
+      "name": "Mulgore Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33556,
+          "name": "Doru Thunderhorn",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44982": {
+      "item_id": 44982,
+      "name": "Enchanted Broom",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33557,
+          "name": "Trellis Morningsun",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44984": {
+      "item_id": 44984,
+      "name": "Ammen Vale Lashling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33657,
+          "name": "Irisee",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "45002": {
+      "item_id": 45002,
+      "name": "Mechanopeep",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33650,
+          "name": "Rillie Spindlenut",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "45606": {
+      "item_id": 45606,
+      "name": "Sen'jin Fetish",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 33554,
+          "name": "Samamba",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "46820": {
+      "item_id": 46820,
+      "name": "Shimmering Wyrmling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 34881,
+          "name": "Hiren Loresong",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "46821": {
+      "item_id": 46821,
+      "name": "Shimmering Wyrmling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 4160,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "vendor-token",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 34772,
+          "name": "Vasarin Redmorn",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2599
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "40 Champion's Seals",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8491": {
+      "item_id": 8491,
+      "name": "Cat Carrier (Black Tabby)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 6000,
+      "vendor_unit_cost_copper": 6000,
+      "sell_price_copper": 1500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Dalaran Spellscribe",
+          "Dalaran Spellscribe - Cat Carrier (Black Tabby)",
+          "Dalaran Shield Guard",
+          "Dalaran Shield Guard - Cat Carrier (Black Tabby)",
+          "Dalaran Theurgist",
+          "Dalaran Theurgist - Cat Carrier (Black Tabby)",
+          "Dalaran Summoner",
+          "Dalaran Summoner - Cat Carrier (Black Tabby)"
+        ],
+        "chance_range": [
+          0.18,
+          16.79
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8492": {
+      "item_id": 8492,
+      "name": "Parrot Cage (Green Wing Macaw)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Defias Pirate",
+          "Defias Pirate - Parrot Cage (Green Wing Macaw)"
+        ],
+        "chance_range": [
+          3.52,
+          3.52
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8494": {
+      "item_id": 8494,
+      "name": "Parrot Cage (Hyacinth Macaw)",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 10,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Bloodsail Raider",
+          "Bloodsail Raider - Parrot Cage (Hyacinth Macaw)",
+          "Bloodsail Mage",
+          "Bloodsail Mage - Parrot Cage (Hyacinth Macaw)",
+          "Bloodsail Swashbuckler",
+          "Bloodsail Swashbuckler - Parrot Cage (Hyacinth Macaw)",
+          "Bloodsail Warlock",
+          "Bloodsail Warlock - Parrot Cage (Hyacinth Macaw)",
+          "Bloodsail Sea Dog",
+          "Bloodsail Sea Dog - Parrot Cage (Hyacinth Macaw)"
+        ],
+        "chance_range": [
+          0.01,
+          0.02
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8498": {
+      "item_id": 8498,
+      "name": "Tiny Emerald Whelpling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 2,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Adolescent Whelp",
+          "Adolescent Whelp - Tiny Emerald Whelpling",
+          "Dreaming Whelp",
+          "Dreaming Whelp - Tiny Emerald Whelpling"
+        ],
+        "chance_range": [
+          0.1,
+          0.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "8499": {
+      "item_id": 8499,
+      "name": "Tiny Crimson Whelpling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 3,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Red Whelp",
+          "Red Whelp - Tiny Crimson Whelpling",
+          "Flamesnorting Whelp",
+          "Flamesnorting Whelp - Tiny Crimson Whelpling",
+          "Crimson Whelp",
+          "Crimson Whelp - Tiny Crimson Whelpling"
+        ],
+        "chance_range": [
+          0.25,
+          1.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10822": {
+      "item_id": 10822,
+      "name": "Dark Whelpling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 2,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Scalding Whelp",
+          "Scalding Whelp - Dark Whelpling",
+          "Searing Whelp",
+          "Searing Whelp - Dark Whelpling"
+        ],
+        "chance_range": [
+          0.1,
+          0.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "20769": {
+      "item_id": 20769,
+      "name": "Disgusting Oozeling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Oozing Bag",
+          "Oozing Bag - Disgusting Oozeling"
+        ],
+        "chance_range": [
+          1.9,
+          1.9
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "29960": {
+      "item_id": 29960,
+      "name": "Captured Firefly",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Bogflare Needler",
+          "Bogflare Needler - Captured Firefly"
+        ],
+        "chance_range": [
+          0.05,
+          0.05
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "34535": {
+      "item_id": 34535,
+      "name": "Azure Whelpling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Blue Dragonspawn",
+          "Blue Dragonspawn - Azure Whelpling",
+          "Draconic Magelord",
+          "Draconic Magelord - Azure Whelpling",
+          "Blue Scalebane",
+          "Blue Scalebane - Azure Whelpling",
+          "Draconic Mageweaver",
+          "Draconic Mageweaver - Azure Whelpling"
+        ],
+        "chance_range": [
+          0.1,
+          0.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "39896": {
+      "item_id": 39896,
+      "name": "Tickbird Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 3000,
+      "vendor_unit_cost_copper": 3000,
+      "sell_price_copper": 750,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Cracked Egg",
+          "Cracked Egg - Tickbird Hatchling"
+        ],
+        "chance_range": [
+          20.0,
+          20.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "39898": {
+      "item_id": 39898,
+      "name": "Cobra Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Cracked Egg",
+          "Cracked Egg - Cobra Hatchling"
+        ],
+        "chance_range": [
+          20.0,
+          20.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "39899": {
+      "item_id": 39899,
+      "name": "White Tickbird Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Cracked Egg",
+          "Cracked Egg - White Tickbird Hatchling"
+        ],
+        "chance_range": [
+          20.0,
+          20.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "44721": {
+      "item_id": 44721,
+      "name": "Proto-Drake Whelp",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Cracked Egg",
+          "Cracked Egg - Proto-Drake Whelp"
+        ],
+        "chance_range": [
+          5.0,
+          5.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48112": {
+      "item_id": 48112,
+      "name": "Darting Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Dart's Nest",
+          "Dart's Nest - Darting Hatchling"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48114": {
+      "item_id": 48114,
+      "name": "Deviate Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 2,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Deviate Ravager",
+          "Deviate Ravager - Deviate Hatchling",
+          "Deviate Guardian",
+          "Deviate Guardian - Deviate Hatchling"
+        ],
+        "chance_range": [
+          0.5,
+          0.5
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48116": {
+      "item_id": 48116,
+      "name": "Gundrak Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Gundrak Raptor",
+          "Gundrak Raptor - Gundrak Hatchling"
+        ],
+        "chance_range": [
+          0.1,
+          0.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48118": {
+      "item_id": 48118,
+      "name": "Leaping Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Takk's Nest",
+          "Takk's Nest - Leaping Hatchling"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48122": {
+      "item_id": 48122,
+      "name": "Ravasaur Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Ravasaur Matriarch's Nest",
+          "Ravasaur Matriarch's Nest - Ravasaur Hatchling"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48124": {
+      "item_id": 48124,
+      "name": "Razormaw Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Razormaw Matriach's Nest",
+          "Razormaw Matriach's Nest - Razormaw Hatchling"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "48126": {
+      "item_id": 48126,
+      "name": "Razzashi Hatchling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-drops",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Razzashi Raptor",
+          "Razzashi Raptor - Razzashi Hatchling"
+        ],
+        "chance_range": [
+          0.2,
+          0.2
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "10398": {
+      "item_id": 10398,
+      "name": "Mechanical Chicken",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 4000,
+      "vendor_unit_cost_copper": 4000,
+      "sell_price_copper": 1000,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-quest-rewards",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 3721,
+          "title": "An OOX of Your Own"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22781": {
+      "item_id": 22781,
+      "name": "Polar Bear Collar",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "companion-quest-rewards",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 9273,
+          "title": "Redeem iCoke Prize Voucher"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "4401": {
+      "item_id": 4401,
+      "name": "Mechanical Squirrel Box",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 400,
+      "vendor_unit_cost_copper": 400,
+      "sell_price_copper": 100,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 3928,
+        "spell_name": "Mechanical Squirrel Box",
+        "skill": 75,
+        "reagents": [
+          [
+            4363,
+            1
+          ],
+          [
+            4359,
+            1
+          ],
+          [
+            2840,
+            1
+          ],
+          [
+            774,
+            2
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=mechanical-squirrel-box"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "11825": {
+      "item_id": 11825,
+      "name": "Pet Bombling",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 15628,
+        "spell_name": "Pet Bombling",
+        "skill": 205,
+        "reagents": [
+          [
+            4394,
+            1
+          ],
+          [
+            7077,
+            1
+          ],
+          [
+            7191,
+            1
+          ],
+          [
+            3860,
+            6
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=pet-bombling"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "11826": {
+      "item_id": 11826,
+      "name": "Lil' Smoky",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 15633,
+        "spell_name": "Lil' Smoky",
+        "skill": 205,
+        "reagents": [
+          [
+            7075,
+            1
+          ],
+          [
+            4389,
+            2
+          ],
+          [
+            7191,
+            1
+          ],
+          [
+            3860,
+            2
+          ],
+          [
+            6037,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=lil-smoky"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "15996": {
+      "item_id": 15996,
+      "name": "Lifelike Mechanical Toad",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 2500,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 19793,
+        "spell_name": "Lifelike Mechanical Toad",
+        "skill": 265,
+        "reagents": [
+          [
+            12803,
+            1
+          ],
+          [
+            15994,
+            4
+          ],
+          [
+            10558,
+            1
+          ],
+          [
+            8170,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=lifelike-mechanical-toad"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "21277": {
+      "item_id": 21277,
+      "name": "Tranquil Mechanical Yeti",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 5000,
+      "vendor_unit_cost_copper": 5000,
+      "sell_price_copper": 1250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 26011,
+        "spell_name": "Tranquil Mechanical Yeti",
+        "skill": 250,
+        "reagents": [
+          [
+            15407,
+            1
+          ],
+          [
+            15994,
+            4
+          ],
+          [
+            7079,
+            2
+          ],
+          [
+            18631,
+            2
+          ],
+          [
+            10558,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=tranquil-mechanical-yeti"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "34060": {
+      "item_id": 34060,
+      "name": "Flying Machine Control",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 202,
+      "required_skill_rank": 300,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Fathom-Lord Karathress",
+          "Fathom-Lord Karathress - (ReferenceTable)"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 44155,
+        "spell_name": "Flying Machine",
+        "skill": 300,
+        "reagents": [
+          [
+            23782,
+            2
+          ],
+          [
+            23781,
+            20
+          ],
+          [
+            23783,
+            20
+          ],
+          [
+            11291,
+            8
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=flying-machine-control"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "34061": {
+      "item_id": 34061,
+      "name": "Turbo-Charged Flying Machine Control",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 202,
+      "required_skill_rank": 375,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "creature"
+        ],
+        "representative_evidence": [
+          "Morogrim Tidewalker",
+          "Morogrim Tidewalker - (ReferenceTable)"
+        ],
+        "chance_range": [
+          100.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 44157,
+        "spell_name": "Turbo-Charged Flying Machine",
+        "skill": 375,
+        "reagents": [
+          [
+            23784,
+            4
+          ],
+          [
+            23786,
+            8
+          ],
+          [
+            23787,
+            8
+          ],
+          [
+            34249,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=turbo-charged-flying-machine-control"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "41508": {
+      "item_id": 41508,
+      "name": "Mechano-hog",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 50000,
+      "vendor_unit_cost_copper": 50000,
+      "sell_price_copper": 12500,
+      "required_skill_id": 762,
+      "required_skill_rank": 150,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 60866,
+        "spell_name": "Mechano-hog",
+        "skill": 450,
+        "faction": "Horde",
+        "reagents": [
+          [
+            37663,
+            12
+          ],
+          [
+            39681,
+            40
+          ],
+          [
+            44128,
+            2
+          ],
+          [
+            44499,
+            1
+          ],
+          [
+            44501,
+            8
+          ],
+          [
+            44500,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=mechano-hog"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "44413": {
+      "item_id": 44413,
+      "name": "Mekgineer's Chopper",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 50000,
+      "vendor_unit_cost_copper": 50000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 150,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Engineering",
+        "spell_id": 60867,
+        "spell_name": "Mekgineer's Chopper",
+        "skill": 450,
+        "faction": "Alliance",
+        "reagents": [
+          [
+            37663,
+            12
+          ],
+          [
+            39681,
+            40
+          ],
+          [
+            44128,
+            2
+          ],
+          [
+            44499,
+            1
+          ],
+          [
+            44501,
+            8
+          ],
+          [
+            44500,
+            1
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "engineering",
+          "href": "./guides/engineering-materials-ah-price-guide.html#ah-item=mekgineers-chopper"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "44554": {
+      "item_id": 44554,
+      "name": "Flying Carpet",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 197,
+      "required_skill_rank": 300,
+      "group": "crafted-collectibles",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": {
+        "profession": "Tailoring",
+        "spell_id": 60969,
+        "spell_name": "Flying Carpet",
+        "skill": 300,
+        "reagents": [
+          [
+            21840,
+            6
+          ],
+          [
+            23112,
+            4
+          ],
+          [
+            22445,
+            4
+          ],
+          [
+            8343,
+            5
+          ]
+        ]
+      },
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "tailoring",
+          "href": "./guides/tailoring-cloth-ah-price-guide.html#ah-item=flying-carpet"
+        }
+      ],
+      "canonical_owner": "data/ah-crafted-sections.json"
+    },
+    "49282": {
+      "item_id": 49282,
+      "name": "Big Battle Bear",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 100000,
+      "vendor_unit_cost_copper": 100000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 150,
+      "group": "promotional-mounts",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Landro's Gift Box",
+          "Landro's Gift Box - Big Battle Bear"
+        ],
+        "chance_range": [
+          0.2,
+          0.2
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49283": {
+      "item_id": 49283,
+      "name": "Reins of the Spectral Tiger",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 10000,
+      "vendor_unit_cost_copper": 10000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 75,
+      "group": "promotional-mounts",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Landro's Gift Box",
+          "Landro's Gift Box - Reins of the Spectral Tiger"
+        ],
+        "chance_range": [
+          0.3,
+          0.3
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49284": {
+      "item_id": 49284,
+      "name": "Reins of the Swift Spectral Tiger",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 100000,
+      "vendor_unit_cost_copper": 100000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 150,
+      "group": "promotional-mounts",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Landro's Gift Box",
+          "Landro's Gift Box - Reins of the Swift Spectral Tiger"
+        ],
+        "chance_range": [
+          0.3,
+          0.3
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49285": {
+      "item_id": 49285,
+      "name": "X-51 Nether-Rocket",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 3,
+      "quality": "rare",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 1000000,
+      "vendor_unit_cost_copper": 1000000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 225,
+      "group": "promotional-mounts",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Landro's Gift Box",
+          "Landro's Gift Box - X-51 Nether-Rocket"
+        ],
+        "chance_range": [
+          0.1,
+          0.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49286": {
+      "item_id": 49286,
+      "name": "X-51 Nether-Rocket X-TREME",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 2000000,
+      "vendor_unit_cost_copper": 2000000,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 300,
+      "group": "promotional-mounts",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Landro's Gift Box",
+          "Landro's Gift Box - X-51 Nether-Rocket X-TREME"
+        ],
+        "chance_range": [
+          0.3,
+          0.3
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "52200": {
+      "item_id": 52200,
+      "name": "Reins of the Crimson Deathcharger",
+      "item_class": 15,
+      "item_subclass": 5,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 32768,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 762,
+      "required_skill_rank": 75,
+      "group": "quest-accessories",
+      "season": null,
+      "kind": "Mount",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 24915,
+          "title": "Mograine's Reunion"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "52201": {
+      "item_id": 52201,
+      "name": "Muradin's Favor",
+      "item_class": 15,
+      "item_subclass": 4,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "quest-accessories",
+      "season": null,
+      "kind": "Toy / accessory",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 24917,
+          "title": "Muradin's Lament"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "52251": {
+      "item_id": 52251,
+      "name": "Jaina's Locket",
+      "item_class": 15,
+      "item_subclass": 4,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "quest-accessories",
+      "season": null,
+      "kind": "Toy / accessory",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 24916,
+          "title": "Jaina's Locket"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "52252": {
+      "item_id": 52252,
+      "name": "Tabard of the Lightbringer",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 2,
+      "binding": "equip",
+      "flags": 67141696,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "quest-accessories",
+      "season": null,
+      "kind": "Tabard",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 24919,
+          "title": "The Lightbringer's Redemption"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "52253": {
+      "item_id": 52253,
+      "name": "Sylvanas's Music Box",
+      "item_class": 15,
+      "item_subclass": 4,
+      "quality_id": 4,
+      "quality": "epic",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "quest-accessories",
+      "season": null,
+      "kind": "Toy / accessory",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 24918,
+          "title": "Sylvanas' Vengeance"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "17194": {
+      "item_id": 17194,
+      "name": "Holiday Spices",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 10,
+      "vendor_unit_cost_copper": 2,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13420,
+          "name": "Penney Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13429,
+          "name": "Nardstrum Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13432,
+          "name": "Seersa Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13433,
+          "name": "Wulmort Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13435,
+          "name": "Khole Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23010,
+          "name": "Wolgren Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23012,
+          "name": "Hotoppik Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23064,
+          "name": "Eebee Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [
+        {
+          "guide_id": "fishing-cooking",
+          "href": "./guides/fishing-cooking-materials-ah-price-guide.html#ah-item=holiday-spices"
+        }
+      ],
+      "canonical_owner": "data/ah-vendor-sections.json"
+    },
+    "17202": {
+      "item_id": 17202,
+      "name": "Snowball",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 10,
+      "vendor_unit_cost_copper": 2,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13420,
+          "name": "Penney Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13429,
+          "name": "Nardstrum Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13432,
+          "name": "Seersa Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13433,
+          "name": "Wulmort Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13435,
+          "name": "Khole Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23010,
+          "name": "Wolgren Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23012,
+          "name": "Hotoppik Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23064,
+          "name": "Eebee Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 11,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Mountain Yeti",
+          "Mountain Yeti - Snowball",
+          "Giant Yeti",
+          "Giant Yeti - Snowball",
+          "Crushridge Ogre",
+          "Crushridge Ogre - Snowball",
+          "Crushridge Brute",
+          "Crushridge Brute - Snowball",
+          "Crushridge Mage",
+          "Crushridge Mage - Snowball"
+        ],
+        "chance_range": [
+          0.0,
+          100.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "17303": {
+      "item_id": 17303,
+      "name": "Blue Ribboned Wrapping Paper",
+      "item_class": 0,
+      "item_subclass": 8,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 512,
+      "duration": 0,
+      "max_stack": 10,
+      "buy_count": 1,
+      "buy_price_copper": 10,
+      "vendor_unit_cost_copper": 10,
+      "sell_price_copper": 2,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Wrapping paper",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13420,
+          "name": "Penney Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13429,
+          "name": "Nardstrum Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13432,
+          "name": "Seersa Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13433,
+          "name": "Wulmort Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13435,
+          "name": "Khole Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23010,
+          "name": "Wolgren Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23012,
+          "name": "Hotoppik Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23064,
+          "name": "Eebee Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "17304": {
+      "item_id": 17304,
+      "name": "Green Ribboned Wrapping Paper",
+      "item_class": 0,
+      "item_subclass": 8,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 512,
+      "duration": 0,
+      "max_stack": 10,
+      "buy_count": 1,
+      "buy_price_copper": 10,
+      "vendor_unit_cost_copper": 10,
+      "sell_price_copper": 2,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Wrapping paper",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13420,
+          "name": "Penney Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13429,
+          "name": "Nardstrum Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13432,
+          "name": "Seersa Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13433,
+          "name": "Wulmort Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13435,
+          "name": "Khole Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23010,
+          "name": "Wolgren Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23012,
+          "name": "Hotoppik Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23064,
+          "name": "Eebee Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "17307": {
+      "item_id": 17307,
+      "name": "Purple Ribboned Wrapping Paper",
+      "item_class": 0,
+      "item_subclass": 8,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 512,
+      "duration": 0,
+      "max_stack": 10,
+      "buy_count": 1,
+      "buy_price_copper": 10,
+      "vendor_unit_cost_copper": 10,
+      "sell_price_copper": 2,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Wrapping paper",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13420,
+          "name": "Penney Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13429,
+          "name": "Nardstrum Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13432,
+          "name": "Seersa Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13433,
+          "name": "Wulmort Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13435,
+          "name": "Khole Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23010,
+          "name": "Wolgren Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23012,
+          "name": "Hotoppik Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23064,
+          "name": "Eebee Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "17405": {
+      "item_id": 17405,
+      "name": "Green Garden Tea",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 1000,
+      "vendor_unit_cost_copper": 200,
+      "sell_price_copper": 50,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 13418,
+          "name": "Kaymard Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13430,
+          "name": "Jaycrue Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13431,
+          "name": "Whulwert Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13434,
+          "name": "Macey Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 13436,
+          "name": "Guchie Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23009,
+          "name": "Bessbi Jinglepocket",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23011,
+          "name": "Morshelz Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 23065,
+          "name": "Olnayvi Copperpinch",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21213": {
+      "item_id": 21213,
+      "name": "Preserved Holly",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 2,
+      "quality": "uncommon",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Ticking Present",
+          "Ticking Present - Preserved Holly"
+        ],
+        "chance_range": [
+          89.7,
+          89.7
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 8746,
+          "title": "Metzen the Reindeer"
+        },
+        {
+          "quest_id": 8762,
+          "title": "Metzen the Reindeer"
+        },
+        {
+          "quest_id": 8763,
+          "title": "The Hero of the Day"
+        },
+        {
+          "quest_id": 8799,
+          "title": "The Hero of the Day"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21301": {
+      "item_id": 21301,
+      "name": "Green Helper Box",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 1024,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Gaily Wrapped Present",
+          "Gaily Wrapped Present - Green Helper Box"
+        ],
+        "chance_range": [
+          25.0,
+          25.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21305": {
+      "item_id": 21305,
+      "name": "Red Helper Box",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 1024,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Gaily Wrapped Present",
+          "Gaily Wrapped Present - Red Helper Box"
+        ],
+        "chance_range": [
+          25.0,
+          25.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21308": {
+      "item_id": 21308,
+      "name": "Jingling Bell",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 1024,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Gaily Wrapped Present",
+          "Gaily Wrapped Present - Jingling Bell"
+        ],
+        "chance_range": [
+          25.0,
+          25.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21309": {
+      "item_id": 21309,
+      "name": "Snowman Kit",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 3,
+      "binding": "use",
+      "flags": 1024,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-winter-veil",
+      "season": "Winter Veil",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Gaily Wrapped Present",
+          "Gaily Wrapped Present - Snowman Kit"
+        ],
+        "chance_range": [
+          25.0,
+          25.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21557": {
+      "item_id": 21557,
+      "name": "Small Red Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 25,
+      "vendor_unit_cost_copper": 25,
+      "sell_price_copper": 6,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Small Red Rocket",
+          "Omen",
+          "Omen - Small Red Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Small Red Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Small Red Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          85.3
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21558": {
+      "item_id": 21558,
+      "name": "Small Blue Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 25,
+      "vendor_unit_cost_copper": 25,
+      "sell_price_copper": 6,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Small Blue Rocket",
+          "Omen",
+          "Omen - Small Blue Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Small Blue Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Small Blue Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          81.7
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21559": {
+      "item_id": 21559,
+      "name": "Small Green Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 25,
+      "vendor_unit_cost_copper": 25,
+      "sell_price_copper": 6,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Small Green Rocket",
+          "Omen",
+          "Omen - Small Green Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Small Green Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Small Green Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          84.7
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21561": {
+      "item_id": 21561,
+      "name": "Small White Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 25,
+      "vendor_unit_cost_copper": 25,
+      "sell_price_copper": 6,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Small White Rocket",
+          "Omen",
+          "Omen - Small White Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Small White Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Small White Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          88.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21562": {
+      "item_id": 21562,
+      "name": "Small Yellow Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 25,
+      "vendor_unit_cost_copper": 25,
+      "sell_price_copper": 6,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Small Yellow Rocket",
+          "Omen",
+          "Omen - Small Yellow Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Small Yellow Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Small Yellow Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          89.7
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21571": {
+      "item_id": 21571,
+      "name": "Blue Rocket Cluster",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 100,
+      "vendor_unit_cost_copper": 100,
+      "sell_price_copper": 25,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21574": {
+      "item_id": 21574,
+      "name": "Green Rocket Cluster",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 100,
+      "vendor_unit_cost_copper": 100,
+      "sell_price_copper": 25,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21576": {
+      "item_id": 21576,
+      "name": "Red Rocket Cluster",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 100,
+      "vendor_unit_cost_copper": 100,
+      "sell_price_copper": 25,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21589": {
+      "item_id": 21589,
+      "name": "Large Blue Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 50,
+      "vendor_unit_cost_copper": 50,
+      "sell_price_copper": 12,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Large Blue Rocket",
+          "Omen",
+          "Omen - Large Blue Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Large Blue Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Large Blue Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          90.1
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21590": {
+      "item_id": 21590,
+      "name": "Large Green Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 50,
+      "vendor_unit_cost_copper": 50,
+      "sell_price_copper": 12,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Large Green Rocket",
+          "Omen",
+          "Omen - Large Green Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Large Green Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Large Green Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          92.2
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21592": {
+      "item_id": 21592,
+      "name": "Large Red Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 50,
+      "vendor_unit_cost_copper": 50,
+      "sell_price_copper": 12,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Large Red Rocket",
+          "Omen",
+          "Omen - Large Red Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Large Red Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Large Red Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          94.9
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21593": {
+      "item_id": 21593,
+      "name": "Large White Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 50,
+      "vendor_unit_cost_copper": 50,
+      "sell_price_copper": 12,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Large White Rocket",
+          "Omen",
+          "Omen - Large White Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Large White Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Large White Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          96.0
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21595": {
+      "item_id": 21595,
+      "name": "Large Yellow Rocket",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 50,
+      "vendor_unit_cost_copper": 50,
+      "sell_price_copper": 12,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 4,
+        "source_types": [
+          "container",
+          "creature",
+          "gameobject"
+        ],
+        "representative_evidence": [
+          "Hive'Zora Abomination",
+          "Hive'Zora Abomination - Large Yellow Rocket",
+          "Omen",
+          "Omen - Large Yellow Rocket",
+          "Fudgerick's Fireworks",
+          "Fudgerick's Fireworks - Large Yellow Rocket",
+          "Lunar Festival Fireworks Pack",
+          "Lunar Festival Fireworks Pack - Large Yellow Rocket"
+        ],
+        "chance_range": [
+          0.0,
+          94.7
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21713": {
+      "item_id": 21713,
+      "name": "Elune's Candle",
+      "item_class": 2,
+      "item_subclass": 14,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 1000,
+      "vendor_unit_cost_copper": 1000,
+      "sell_price_copper": 250,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15864,
+          "name": "Valadar Starsong",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 8862,
+          "title": "Elune's Candle"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "21747": {
+      "item_id": 21747,
+      "name": "Festival Firecracker",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 1,
+      "buy_price_copper": 300,
+      "vendor_unit_cost_copper": 300,
+      "sell_price_copper": 75,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-lunar-festival",
+      "season": "Lunar Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 15898,
+          "name": "Lunar Festival Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22200": {
+      "item_id": 22200,
+      "name": "Silver Shafted Arrow",
+      "item_class": 15,
+      "item_subclass": 2,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65600,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Companion",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2727
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 8981,
+          "title": "Gift Giving"
+        },
+        {
+          "quest_id": 8993,
+          "title": "Gift Giving"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": "5 Love Tokens",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22218": {
+      "item_id": 22218,
+      "name": "Handful of Rose Petals",
+      "item_class": 15,
+      "item_subclass": 3,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 69696,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2728
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 12,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Pledge of Adoration: Stormwind",
+          "Pledge of Adoration: Stormwind - Handful of Rose Petals",
+          "Gift of Adoration: Darnassus",
+          "Gift of Adoration: Darnassus - Handful of Rose Petals",
+          "Gift of Adoration: Ironforge",
+          "Gift of Adoration: Ironforge - Handful of Rose Petals",
+          "Gift of Adoration: Stormwind",
+          "Gift of Adoration: Stormwind - Handful of Rose Petals",
+          "Pledge of Adoration: Ironforge",
+          "Pledge of Adoration: Ironforge - Handful of Rose Petals"
+        ],
+        "chance_range": [
+          10.7,
+          38.3
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 8980,
+          "title": "Zinge's Assessment"
+        },
+        {
+          "quest_id": 8981,
+          "title": "Gift Giving"
+        },
+        {
+          "quest_id": 8993,
+          "title": "Gift Giving"
+        },
+        {
+          "quest_id": 9025,
+          "title": "Morgan's Discovery"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": "2 Love Tokens",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22276": {
+      "item_id": 22276,
+      "name": "Lovely Red Dress",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Lovely Dress Box",
+          "Lovely Dress Box - Lovely Red Dress"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22277": {
+      "item_id": 22277,
+      "name": "Red Dinner Suit",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Dinner Suit Box",
+          "Dinner Suit Box - Red Dinner Suit"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22278": {
+      "item_id": 22278,
+      "name": "Lovely Blue Dress",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Lovely Dress Box",
+          "Lovely Dress Box - Lovely Blue Dress"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22279": {
+      "item_id": 22279,
+      "name": "Lovely Black Dress",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 13,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Pledge of Adoration: Stormwind",
+          "Pledge of Adoration: Stormwind - Lovely Black Dress",
+          "Gift of Adoration: Darnassus",
+          "Gift of Adoration: Darnassus - Lovely Black Dress",
+          "Gift of Adoration: Ironforge",
+          "Gift of Adoration: Ironforge - Lovely Black Dress",
+          "Gift of Adoration: Stormwind",
+          "Gift of Adoration: Stormwind - Lovely Black Dress",
+          "Pledge of Adoration: Ironforge",
+          "Pledge of Adoration: Ironforge - Lovely Black Dress"
+        ],
+        "chance_range": [
+          0.0,
+          3.5
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22280": {
+      "item_id": 22280,
+      "name": "Lovely Purple Dress",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Lovely Dress Box",
+          "Lovely Dress Box - Lovely Purple Dress"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22281": {
+      "item_id": 22281,
+      "name": "Blue Dinner Suit",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Dinner Suit Box",
+          "Dinner Suit Box - Blue Dinner Suit"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "22282": {
+      "item_id": 22282,
+      "name": "Purple Dinner Suit",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 7,
+      "vendor_unit_cost_copper": 7,
+      "sell_price_copper": 1,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Dinner Suit Box",
+          "Dinner Suit Box - Purple Dinner Suit"
+        ],
+        "chance_range": [
+          0.0,
+          0.0
+        ]
+      },
+      "quest_sources": [
+        {
+          "quest_id": 9029,
+          "title": "A Bubbling Cauldron"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "34258": {
+      "item_id": 34258,
+      "name": "Love Rocket",
+      "item_class": 0,
+      "item_subclass": 8,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2727
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 8980,
+          "title": "Zinge's Assessment"
+        },
+        {
+          "quest_id": 8981,
+          "title": "Gift Giving"
+        },
+        {
+          "quest_id": 8993,
+          "title": "Gift Giving"
+        },
+        {
+          "quest_id": 9025,
+          "title": "Morgan's Discovery"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": "5 Love Tokens",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49856": {
+      "item_id": 49856,
+      "name": "\"VICTORY\" Perfume",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49857": {
+      "item_id": 49857,
+      "name": "\"Enchantress\" Perfume",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49858": {
+      "item_id": 49858,
+      "name": "\"Forever\" Perfume",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49859": {
+      "item_id": 49859,
+      "name": "\"Bravado\" Cologne",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49860": {
+      "item_id": 49860,
+      "name": "\"Wizardry\" Cologne",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "49861": {
+      "item_id": 49861,
+      "name": "\"STALWART\" Cologne",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 65536,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2725
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "1 Love Token",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "50163": {
+      "item_id": 50163,
+      "name": "Lovely Rose",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 20,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-love-is-in-the-air",
+      "season": "Love is in the Air",
+      "kind": "Vanity accessory",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 37674,
+          "name": "Lovely Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2727
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "5 Love Tokens",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "6833": {
+      "item_id": 6833,
+      "name": "White Tuxedo Shirt",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-noblegarden",
+      "season": "Noblegarden",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 32836,
+          "name": "Noblegarden Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2572
+        },
+        {
+          "entry": 32837,
+          "name": "Noblegarden Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2572
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Brightly Colored Egg",
+          "Brightly Colored Egg - White Tuxedo Shirt"
+        ],
+        "chance_range": [
+          0.9,
+          0.9
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "25 Noblegarden Chocolates",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "6835": {
+      "item_id": 6835,
+      "name": "Black Tuxedo Pants",
+      "item_class": 4,
+      "item_subclass": 1,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-noblegarden",
+      "season": "Noblegarden",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 32836,
+          "name": "Noblegarden Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2572
+        },
+        {
+          "entry": 32837,
+          "name": "Noblegarden Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2572
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Brightly Colored Egg",
+          "Brightly Colored Egg - Black Tuxedo Pants"
+        ],
+        "chance_range": [
+          0.9,
+          0.9
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "25 Noblegarden Chocolates",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "19028": {
+      "item_id": 19028,
+      "name": "Elegant Dress",
+      "item_class": 4,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 1,
+      "buy_count": 1,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-noblegarden",
+      "season": "Noblegarden",
+      "kind": "Cosmetic apparel",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 32836,
+          "name": "Noblegarden Vendor",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2573
+        },
+        {
+          "entry": 32837,
+          "name": "Noblegarden Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2573
+        }
+      ],
+      "loot_sources": {
+        "source_rows": 1,
+        "source_types": [
+          "container"
+        ],
+        "representative_evidence": [
+          "Brightly Colored Egg",
+          "Brightly Colored Egg - Elegant Dress"
+        ],
+        "chance_range": [
+          0.2,
+          0.2
+        ]
+      },
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": "50 Noblegarden Chocolates",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "34599": {
+      "item_id": 34599,
+      "name": "Juggling Torch",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 0,
+      "duration": 0,
+      "max_stack": 40,
+      "buy_count": 5,
+      "buy_price_copper": 0,
+      "vendor_unit_cost_copper": 0,
+      "sell_price_copper": 0,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-midsummer",
+      "season": "Midsummer Fire Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 26123,
+          "name": "Midsummer Supplier",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2349
+        },
+        {
+          "entry": 26124,
+          "name": "Midsummer Merchant",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 2349
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [
+        {
+          "quest_id": 11657,
+          "title": "Torch Catching"
+        },
+        {
+          "quest_id": 11923,
+          "title": "Torch Catching"
+        }
+      ],
+      "crafted_recipe": null,
+      "currency_cost": "5 Burning Blossoms",
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    },
+    "34850": {
+      "item_id": 34850,
+      "name": "Midsummer Ground Flower",
+      "item_class": 0,
+      "item_subclass": 0,
+      "quality_id": 1,
+      "quality": "common",
+      "bonding": 0,
+      "binding": "none",
+      "flags": 64,
+      "duration": 0,
+      "max_stack": 5,
+      "buy_count": 1,
+      "buy_price_copper": 100,
+      "vendor_unit_cost_copper": 100,
+      "sell_price_copper": 25,
+      "required_skill_id": 0,
+      "required_skill_rank": 0,
+      "group": "season-midsummer",
+      "season": "Midsummer Fire Festival",
+      "kind": "Seasonal novelty",
+      "auctionable": true,
+      "vendor_sources": [
+        {
+          "entry": 5569,
+          "name": "Fizzlebang Booms",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 8116,
+          "name": "Ziggle Sparks",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 8117,
+          "name": "Wizbang Booms",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 8118,
+          "name": "Lillian Singh",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 8121,
+          "name": "Jaxxil Sparks",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 8122,
+          "name": "Kizzak Sparks",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        },
+        {
+          "entry": 15012,
+          "name": "Javnir Nashak",
+          "max_count": 0,
+          "restock_seconds": 0,
+          "extended_cost": 0
+        }
+      ],
+      "loot_sources": null,
+      "quest_sources": [],
+      "crafted_recipe": null,
+      "currency_cost": null,
+      "existing_guide_occurrences": [],
+      "canonical_owner": "data/ah-collectible-sections.json"
+    }
+  }
+}
