@@ -1,7 +1,7 @@
 # AH Item Addition Work Order — Companions, Mounts & Accessories
 
 - **Date:** 2026-08-10
-- **Status:** complete locally — evidence-backed demand/turnover correction and promotional exclusion validated for publication
+- **Status:** complete and published — evidence-backed demand/turnover correction and promotional exclusion are live
 - **Requested scope:** coupled batch
 - **Market type:** vendor | crafted | quest/reward | world drop | seasonal | promotional
 - **Target guide and section:** `guides/companions-mounts-accessories-ah-price-guide.html`; separate limited vendor, unlimited vendor, token vendor, drop, crafted, quest/reward, accessory, and per-event seasonal sections
@@ -137,16 +137,16 @@ The complete exact-name inventory is generated in `data/ah-collectible-audit.jso
 - **Demand comparison requests and final failures:** 762 active-scope checks + 6 promotional-exclusion checks / 0 final failures
 - **Search/index result:** 4,088 rows across 19 guides, including all 127
   collectible rows
-- **Local or live status:** local validation passed; publishing authorized and push pending
+- **Local or live status:** published and publicly verified
 - **Unrelated worktree changes left untouched:** existing addon, guide-audience, and spec-guide work remains unstaged
 
 ## Publication Record
 
 Complete only after explicit authorization.
 
-- **Commit:** pending final validation
+- **Commit:** `d03528a` (`feat: add evidence-backed collectible demand`)
 - **Push target:** `origin/main`
-- **Ahead/behind:** not checked for publication
-- **Pages deployment:** not authorized
-- **Public smoke result:** not run
-- **Live URL:** not published
+- **Ahead/behind:** `0 / 0` after the content push
+- **Pages deployment:** published from `main` on 2026-08-10
+- **Public smoke result:** pass — 127 rows, Demand / Turnover column, corrected High/Slow and High/Very slow examples, seasonal demand, demand-review link, and no Polar Bear Collar row
+- **Live URL:** `https://leblackstock.github.io/wotlk-server-guides/guides/companions-mounts-accessories-ah-price-guide.html`
