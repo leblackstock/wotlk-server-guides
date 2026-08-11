@@ -1,7 +1,7 @@
 # AH Item Addition Work Order — Cooking stat and dual-recovery foods
 
 - **Date:** 2026-08-10
-- **Status:** publishing — authorized 2026-08-11
+- **Status:** complete and published — 2026-08-11
 - **Requested scope:** coupled batch
 - **Market type:** crafted
 - **Target guide and section:** `guides/fishing-cooking-materials-ah-price-guide.html`; expansion-specific stat-food sections
@@ -76,7 +76,7 @@ Only section ownership and explanatory copy change.
 | Canonical renderer checks | passed | Shared sections and guide UX current |
 | AH Python regression suite | passed | All 40 passed on 2026-08-10; all 39 applicable release-day tests passed on 2026-08-11, with only the untouched collectibles page's date-dynamic renderer excluded |
 | `npm test` | passed | Full site suite passed on 2026-08-11 |
-| Local desktop/mobile AH smoke | passed | 1280 × 800 and 390 × 844; no page overflow or console errors |
+| Local desktop/mobile AH smoke | passed | Local and public checks at 1280 × 800 and 390 × 844; no page overflow or console errors |
 | Auction eligibility | passed | 3,920 unique item IDs valid; one existing cost-only exception |
 | Duplicate price/rarity/stack consistency | passed | Cross-guide consistency test passed |
 | Section price ordering | passed | All 347 priced tables valid |
@@ -93,10 +93,14 @@ Only section ownership and explanatory copy change.
 - **Large changes reviewed:** Not applicable; no price changes
 - **Comparison requests and final failures:** 972 saved requests; 0 final failures
 - **Search/index result:** All 10 promoted rows remain indexed; 4,088 total AH search entries
-- **Local or live status:** validated locally; publication authorized
+- **Local or live status:** published and publicly verified
 - **Unrelated worktree changes left untouched:** yes
 
 ## Publication Record
 
-Publishing was authorized on 2026-08-11. The commit, deployment, and public
-verification details will be recorded after the live release completes.
+- **Commit:** `670de1c` (`feat: group useful cooked foods`)
+- **Push target:** `origin/main`
+- **Ahead/behind:** `0 / 0` after the content push
+- **Pages deployment:** run `31457583668` succeeded for `670de1c` on 2026-08-11
+- **Public smoke result:** pass — all three corrected headings and all ten promoted rows are live; desktop and mobile have no page overflow or console errors
+- **Live URL:** `https://leblackstock.github.io/wotlk-server-guides/guides/fishing-cooking-materials-ah-price-guide.html`

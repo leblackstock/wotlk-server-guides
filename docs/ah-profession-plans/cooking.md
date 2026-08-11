@@ -62,6 +62,11 @@
 
 ## Evidence Log
 
+- Publication — 2026-08-11: Commit `670de1c` (`feat: group useful cooked
+  foods`) was pushed to `origin/main`. GitHub Pages deployment run
+  `31457583668` succeeded, and the public guide was verified at desktop and
+  mobile widths with all three corrected headings, all ten promoted rows, the
+  `2026-08-11` footer, no page overflow, and no console errors.
 - Stat and dual-recovery coverage correction completion — 2026-08-10: Moved
   all ten qualifying rows into accurately named expansion-specific stat-bonus
   and dual-recovery sections. The recovery sections now retain health-only and
