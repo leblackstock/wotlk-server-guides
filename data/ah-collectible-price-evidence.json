@@ -2,7 +2,7 @@
   "version": 1,
   "reviewed": "2026-08-10",
   "model_version": "collectible-acquisition-evidence-pricing-v1",
-  "scope": "All 128 verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the guide. Promotional and TCG mounts are excluded until direct Hellscream availability is verified.",
+  "scope": "All 127 verified auctionable companions, mounts, collectible accessories, and seasonal novelties in the guide. Promotional companions and promotional/TCG mounts are excluded until direct Hellscream availability is verified.",
   "rules": {
     "active_hellscream_listing_prices_used": false,
     "external_gold_values_copied": false,
@@ -105,11 +105,11 @@
     }
   },
   "summary": {
-    "items_reviewed": 128,
+    "items_reviewed": 127,
     "decisions": {
       "exact-token-cost-plus-fallback-opportunity-anchor": 26,
       "exact-unlimited-vendor-arbitrage": 44,
-      "fixed-acquisition-cohort-estimate": 57,
+      "fixed-acquisition-cohort-estimate": 56,
       "sparse-completed-sales-shrunk": 1
     },
     "items_with_completed_sales": 1,
@@ -3779,56 +3779,6 @@
         "decision": "fixed-acquisition-cohort-estimate",
         "sales_weight": null,
         "reason": "Reviewed 75g Hellscream starter anchor for tradeable event apparel and appearance demand. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
-        "requires_large_change_review": false,
-        "reviewer_decision": "accept"
-      }
-    },
-    "22781": {
-      "item_id": 22781,
-      "name": "Polar Bear Collar",
-      "group": "companion-quest-rewards",
-      "season": null,
-      "kind": "Companion",
-      "cohort": "companion-quest-rewards",
-      "fixed_anchor": {
-        "target_copper": 3000000,
-        "basis": "Reviewed 300g Hellscream starter anchor for a tradeable quest-chain companion reward."
-      },
-      "exact_vendor_cost_copper": null,
-      "exact_currency_cost": null,
-      "exact_recipe_floor": null,
-      "local_completed_sales": null,
-      "current_supply": {
-        "auction_rows": 0,
-        "units": 0,
-        "distinct_sellers": 0,
-        "largest_seller_unit_share": null,
-        "rows_with_buyout": 0,
-        "owned_account_rows_excluded": 0,
-        "owned_account_units_excluded": 0,
-        "classification": "absent-one-snapshot",
-        "diagnostic_only": true
-      },
-      "external_relative_review": {
-        "realms_present": [],
-        "realm_count": 0,
-        "faction_snapshots_present": 0,
-        "raw_relative_rank_percentile": 0.5,
-        "coverage_weight": 0.0,
-        "used_to_set_gold_value": false,
-        "external_gold_value_copied": false
-      },
-      "proposal": {
-        "band": {
-          "quick": 1800000,
-          "target": 3000000,
-          "high": 6000000
-        },
-        "source_type": "documented-fallback",
-        "confidence": "fallback",
-        "decision": "fixed-acquisition-cohort-estimate",
-        "sales_weight": null,
-        "reason": "Reviewed 300g Hellscream starter anchor for a tradeable quest-chain companion reward. External observations, where present, set within-cohort rank only; active Hellscream listings did not set price.",
         "requires_large_change_review": false,
         "reviewer_decision": "accept"
       }

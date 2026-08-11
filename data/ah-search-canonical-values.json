@@ -63,8 +63,8 @@
     "Eternal Shadow": {"value": "Med", "source_guide_id": "shared-materials"},
     "Eternium Thread": {"value": "Low", "source_guide_id": "skinning-leatherworking"},
     "Eye of Zul": {"value": "Med", "source_guide_id": "jewelcrafting-gems"},
-    "Flying Carpet": {"value": "Low", "source_guide_id": "tailoring"},
-    "Flying Machine Control": {"value": "Low", "source_guide_id": "engineering"},
+    "Flying Carpet": {"value": "Med", "source_guide_id": "tailoring"},
+    "Flying Machine Control": {"value": "Med", "source_guide_id": "engineering"},
     "Heavy Leather": {"value": "Med", "source_guide_id": "skinning-leatherworking"},
     "Infinite Dust": {"value": "Very High", "source_guide_id": "enchanting"},
     "Iridescent Pearl": {"value": "Med", "source_guide_id": "shared-materials"},
@@ -73,8 +73,8 @@
     "Large Brilliant Shard": {"value": "High", "source_guide_id": "enchanting"},
     "Light Leather": {"value": "Med", "source_guide_id": "skinning-leatherworking"},
     "Medium Leather": {"value": "Med", "source_guide_id": "skinning-leatherworking"},
-    "Mekgineer's Chopper": {"value": "Low", "source_guide_id": "engineering"},
-    "Mechano-hog": {"value": "Low", "source_guide_id": "engineering"},
+    "Mekgineer's Chopper": {"value": "High", "source_guide_id": "engineering"},
+    "Mechano-hog": {"value": "High", "source_guide_id": "engineering"},
     "Monarch Topaz": {"value": "High", "source_guide_id": "jewelcrafting-gems"},
     "Moss Agate": {"value": "Med-High", "source_guide_id": "jewelcrafting-gems"},
     "Mote of Earth": {"value": "Low", "source_guide_id": "shared-materials"},
@@ -91,7 +91,7 @@
     "Titanium Ore": {"value": "Very High", "source_guide_id": "mining-metals"},
     "Titanium Rod": {"value": "Med", "source_guide_id": "blacksmithing-materials"},
     "Titansteel Bar": {"value": "Very High", "source_guide_id": "mining-metals"},
-    "Turbo-Charged Flying Machine Control": {"value": "Low", "source_guide_id": "engineering"},
+    "Turbo-Charged Flying Machine Control": {"value": "Med", "source_guide_id": "engineering"},
     "Wool Cloth": {"value": "High", "source_guide_id": "tailoring"}
   }
 }

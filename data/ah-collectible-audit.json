@@ -39,10 +39,10 @@
     ]
   },
   "summary": {
-    "included_items": 128,
+    "included_items": 127,
     "groups": {
       "companion-drops": 20,
-      "companion-quest-rewards": 2,
+      "companion-quest-rewards": 1,
       "crafted-collectibles": 10,
       "quest-accessories": 5,
       "season-love-is-in-the-air": 17,
@@ -66,6 +66,15 @@
     "Pirates' Day"
   ],
   "exclusions": {
+    "unverified-hellscream-promotional-companions": {
+      "item_ids": [
+        22781
+      ],
+      "names": [
+        "Polar Bear Collar"
+      ],
+      "reason": "The only pinned acquisition route is quest 9273, Redeem iCoke Prize Voucher. No direct Hellscream enablement evidence is saved, and the item was absent from all six comparison markets in the 2026-08-10 demand snapshot."
+    },
     "unverified-hellscream-promotional-mounts": {
       "item_ids": [
         49282,
@@ -2707,41 +2716,6 @@
         {
           "quest_id": 3721,
           "title": "An OOX of Your Own"
-        }
-      ],
-      "crafted_recipe": null,
-      "currency_cost": null,
-      "existing_guide_occurrences": [],
-      "canonical_owner": "data/ah-collectible-sections.json"
-    },
-    "22781": {
-      "item_id": 22781,
-      "name": "Polar Bear Collar",
-      "item_class": 15,
-      "item_subclass": 2,
-      "quality_id": 1,
-      "quality": "common",
-      "bonding": 0,
-      "binding": "none",
-      "flags": 64,
-      "duration": 0,
-      "max_stack": 1,
-      "buy_count": 1,
-      "buy_price_copper": 0,
-      "vendor_unit_cost_copper": 0,
-      "sell_price_copper": 0,
-      "required_skill_id": 0,
-      "required_skill_rank": 0,
-      "group": "companion-quest-rewards",
-      "season": null,
-      "kind": "Companion",
-      "auctionable": true,
-      "vendor_sources": [],
-      "loot_sources": null,
-      "quest_sources": [
-        {
-          "quest_id": 9273,
-          "title": "Redeem iCoke Prize Voucher"
         }
       ],
       "crafted_recipe": null,

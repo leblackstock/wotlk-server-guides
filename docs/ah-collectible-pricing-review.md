@@ -1,7 +1,7 @@
 # Companions, Mounts & Accessories AH Pricing Review
 
 - Review date: `2026-08-10`
-- Items reviewed: `128`
+- Items reviewed: `127`
 - Qualified or sparse Hellscream completed-sale histories: `1`
 - Present in current Hellscream supply after owned-account exclusion: `2`
 - Seen on at least two comparison realms: `55`
@@ -41,7 +41,8 @@ Wood Frog Box has one valid 20g completed buyout from one buyer on one day. It r
 
 - Comparison-realm pages report asks, not completed sales. Their nominal gold values are not saved or copied.
 - A token requirement proves acquisition cost, but not a gold conversion; token-priced rows remain fallback confidence.
-- Promotional and TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that the rewards are enabled on this server.
+- The promotional Polar Bear Collar and promotional/TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database quest or loot route is not proof that the rewards are enabled on this server.
+- The saved 336-request price snapshot predates removal of Polar Bear Collar and includes its six zero-result comparison checks. The active 127-item pricing records exclude it; the separate demand snapshot covers exactly the active scope.
 - Shadowmourne reward prices are discovery bands for a thin market, not verified current values.
 - Limited and unlimited vendors remain separate because a stock cap and restock timer materially change arbitrage risk.
 - Every holiday is rendered separately, including explicit empty in-scope sections where only BoP, temporary, or unverified rewards exist.

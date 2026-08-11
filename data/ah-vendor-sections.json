@@ -451,6 +451,8 @@
       "vendor_buy_count": 5,
       "target_copper": 100,
       "stack": "5 / 20",
+      "demand": "Med in season",
+      "demand_class": "med",
       "notes": "Winter Veil Cooking reagent. Vendor cost is 10c per bundle of five; availability is seasonal."
     },
     "holiday-spirits": {

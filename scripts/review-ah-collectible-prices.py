@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT_PATH = ROOT / "data" / "ah-collectible-audit.json"
 EVIDENCE_PATH = ROOT / "data" / "ah-collectible-price-evidence.json"
+DEMAND_EVIDENCE_PATH = ROOT / "data" / "ah-collectible-demand-evidence.json"
 SECTIONS_PATH = ROOT / "data" / "ah-collectible-sections.json"
 REPORT_PATH = ROOT / "docs" / "ah-collectible-pricing-review.md"
 BASELINE_PATH = ROOT / "data" / "ah-price-baselines.json"
@@ -563,21 +564,17 @@ def source_label(item: dict) -> str:
     return "Pinned AzerothCore acquisition route"
 
 
-def demand(item: dict) -> tuple[str, str]:
-    if item["kind"] == "Mount" or item["group"] == "quest-accessories":
-        return "Very Low", "low"
-    if item["kind"] == "Companion":
-        return "Low-Med", "med"
-    return "Low", "low"
-
-
 def catalog_from_evidence(evidence: dict) -> dict:
     audit = load(AUDIT_PATH)
+    demand_evidence = load(DEMAND_EVIDENCE_PATH)
+    if set(demand_evidence.get("items", {})) != set(audit["items"]):
+        raise ValueError("Collectible demand evidence does not match the audited inventory")
     catalog = {}
     for item_id, record in evidence["items"].items():
         item = audit["items"][item_id]
         band = record["proposal"]["band"]
-        demand_label, demand_class = demand(item)
+        demand_record = demand_evidence["items"][item_id]
+        assessment = demand_record["assessment"]
         stack = "1" if item["max_stack"] == 1 else f"1 / {min(5, item['max_stack'])} / {item['max_stack']}"
         key = slug(item["name"])
         if key in catalog:
@@ -602,8 +599,16 @@ def catalog_from_evidence(evidence: dict) -> dict:
             "currency_cost": record["exact_currency_cost"],
             "recipe_floor_copper": record["exact_recipe_floor"],
             "stack": stack,
-            "demand": demand_label,
-            "demand_class": demand_class,
+            "demand": assessment["demand"],
+            "demand_class": assessment["demand_class"],
+            "turnover": assessment["turnover"],
+            "demand_confidence": assessment["confidence"],
+            "demand_rationale": assessment["rationale"],
+            "external_markets_present": demand_record["external_supply"]["markets_present"],
+            "external_markets_checked": demand_record["external_supply"]["markets_checked"],
+            "external_units": demand_record["external_supply"]["total_units"],
+            "local_completed_buyouts": (demand_record.get("local_completed_sales") or {}).get("completed_buyouts", 0),
+            "demand_evidence_ref": f"data/ah-collectible-demand-evidence.json#items/{item_id}",
             "source": source_label(item),
             "notes": record["proposal"]["reason"],
             "price_strategy": "evidence-pricing-market-value",
@@ -657,7 +662,11 @@ def build_sections(evidence: dict) -> dict:
     catalog = catalog_from_evidence(evidence)
     return {
         "version": 1,
-        "source": {"audit": "data/ah-collectible-audit.json", "evidence": "data/ah-collectible-price-evidence.json"},
+        "source": {
+            "audit": "data/ah-collectible-audit.json",
+            "price_evidence": "data/ah-collectible-price-evidence.json",
+            "demand_evidence": "data/ah-collectible-demand-evidence.json",
+        },
         "pricing_unit": "per item",
         "catalog": catalog,
         "sections": sections_from_catalog(catalog),
@@ -705,7 +714,8 @@ def report(evidence: dict) -> str:
         "",
         "- Comparison-realm pages report asks, not completed sales. Their nominal gold values are not saved or copied.",
         "- A token requirement proves acquisition cost, but not a gold conversion; token-priced rows remain fallback confidence.",
-        "- Promotional and TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that the rewards are enabled on this server.",
+        "- The promotional Polar Bear Collar and promotional/TCG mounts are excluded until direct Hellscream availability is verified; a generic base-database quest or loot route is not proof that the rewards are enabled on this server.",
+        "- The saved 336-request price snapshot predates removal of Polar Bear Collar and includes its six zero-result comparison checks. The active 127-item pricing records exclude it; the separate demand snapshot covers exactly the active scope.",
         "- Shadowmourne reward prices are discovery bands for a thin market, not verified current values.",
         "- Limited and unlimited vendors remain separate because a stock cap and restock timer materially change arbitrage risk.",
         "- Every holiday is rendered separately, including explicit empty in-scope sections where only BoP, temporary, or unverified rewards exist.",
@@ -749,6 +759,16 @@ def validate(evidence: dict, sections: dict | None = None) -> None:
             targets = [sections["catalog"][key]["target_copper"] for key in section["items"]]
             if targets != sorted(targets, reverse=True):
                 raise ValueError(f"{section['title']}: rows are not target-price sorted")
+        demand_evidence = load(DEMAND_EVIDENCE_PATH)
+        demand_by_id = demand_evidence["items"]
+        for item in sections["catalog"].values():
+            item_id = str(item["item_id"])
+            assessment = demand_by_id[item_id]["assessment"]
+            if item["demand"] != assessment["demand"] or item["turnover"] != assessment["turnover"]:
+                raise ValueError(f"{item['name']}: applied demand evidence drifted")
+            proposal = evidence["items"][item_id]["proposal"]["band"]
+            if any(item[f"{band}_copper"] != proposal[band] for band in PRICE_BANDS):
+                raise ValueError(f"{item['name']}: demand apply changed a price")
 
 
 def main() -> int:

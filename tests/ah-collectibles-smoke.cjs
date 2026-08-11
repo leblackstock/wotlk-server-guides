@@ -15,9 +15,11 @@ async function noOverflow(page, label) {
 
 async function verifyGuide(page, label) {
   await page.goto(guideUrl, { waitUntil: "networkidle" });
-  assert.equal(await page.locator('[data-collectible-key]').count(), 128);
+  assert.equal(await page.locator('[data-collectible-key]').count(), 127);
   assert.equal(await page.locator('[data-collectible-section]').count(), 20);
   assert.equal(await page.getByRole('heading', { name: 'Promotional and TCG mounts' }).count(), 0);
+  assert.equal(await page.getByText('Polar Bear Collar', { exact: true }).count(), 0);
+  assert.equal(await page.getByRole('columnheader', { name: 'Demand / Turnover' }).first().isVisible(), true);
   assert.equal(await page.locator('.collectible-market-section--empty').count(), 6);
   assert.equal(
     await page.locator('[data-collectible-section="vendor-unlimited"] [data-collectible-key]').count(),
@@ -51,6 +53,9 @@ async function verifyGuide(page, label) {
   assert.match(await woodFrog.textContent(), /Flik: stock 1, 30-minute restock/);
   const carpet = page.locator('[data-collectible-key="flying-carpet"]');
   assert.match(await carpet.textContent(), /Tailoring 300/);
+  assert.match(await page.locator('[data-collectible-key="mechano-hog"] [data-column="demand"]').textContent(), /High.*Slow/s);
+  assert.match(await page.locator('[data-collectible-key="jaina-s-locket"] [data-column="demand"]').textContent(), /High.*Very slow/s);
+  assert.match(await page.locator('[data-collectible-key="juggling-torch"] [data-column="demand"]').textContent(), /High in season.*Seasonal/s);
   assert.equal(
     await page.locator('[data-collectible-section="crafted-mounts-general-use"] .profession-audience-chip').textContent(),
     "No profession required",

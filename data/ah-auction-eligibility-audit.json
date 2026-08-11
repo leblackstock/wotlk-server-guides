@@ -18,12 +18,12 @@
     "cost_only_exception": "A non-auctionable vendor input must set cost_only=true and auctionable=false and must not render or appear in search."
   },
   "source_counts": {
-    "search_item_ids": 3847,
+    "search_item_ids": 3846,
     "crafted_item_ids": 2703,
     "vendor_item_ids": 63,
     "baseline_item_ids": 1130,
-    "collectible_item_ids": 128,
-    "unique_audited_item_ids": 3921
+    "collectible_item_ids": 127,
+    "unique_audited_item_ids": 3920
   },
   "items": {
     "118": {
@@ -12002,13 +12002,6 @@
       "bonding": 2,
       "duration": 0,
       "sell_price_copper": 19537
-    },
-    "22781": {
-      "name": "Polar Bear Collar",
-      "flags": 64,
-      "bonding": 0,
-      "duration": 0,
-      "sell_price_copper": 0
     },
     "22785": {
       "name": "Felweed",

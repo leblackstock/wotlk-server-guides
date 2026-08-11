@@ -178,6 +178,8 @@ class AHGuideParser(HTMLParser):
         self.target_bid_parts: list[str] = []
         self.capture_target_buyout = False
         self.target_buyout_parts: list[str] = []
+        self.capture_demand = False
+        self.demand_parts: list[str] = []
         self.quality = "common"
         self.market_source = "market"
         self.profession = ""
@@ -220,6 +222,7 @@ class AHGuideParser(HTMLParser):
             self.price_basis_parts = []
             self.target_bid_parts = []
             self.target_buyout_parts = []
+            self.demand_parts = []
             self.quality = "common"
         elif tag == "td" and self.in_row:
             self.cell_index += 1
@@ -253,6 +256,13 @@ class AHGuideParser(HTMLParser):
             and "buyout" in classes
         ):
             self.capture_target_buyout = True
+        elif (
+            tag == "span"
+            and self.in_row
+            and self.current_cell_column == "demand"
+            and "demand" in classes
+        ):
+            self.capture_demand = True
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "h2" and self.capture_heading:
@@ -273,6 +283,8 @@ class AHGuideParser(HTMLParser):
             self.capture_target_bid = False
         elif tag == "span" and self.capture_target_buyout:
             self.capture_target_buyout = False
+        elif tag == "span" and self.capture_demand:
+            self.capture_demand = False
         elif tag == "tr" and self.in_row:
             self._finish_row()
             self.in_row = False
@@ -296,6 +308,8 @@ class AHGuideParser(HTMLParser):
             self.target_bid_parts.append(data)
         if self.capture_target_buyout:
             self.target_buyout_parts.append(data)
+        if self.capture_demand:
+            self.demand_parts.append(data)
 
     def _finish_row(self) -> None:
         name = clean_text(self.name_parts)
@@ -313,7 +327,9 @@ class AHGuideParser(HTMLParser):
             fragment += f"&occurrence={occurrence}"
 
         demand = ""
-        if "demand" in self.cell_columns:
+        if self.demand_parts:
+            demand = clean_text(self.demand_parts)
+        elif "demand" in self.cell_columns:
             demand = clean_text(self.cell_parts[self.cell_columns.index("demand")])
         stack = "1"
         if "stack" in self.cell_columns:

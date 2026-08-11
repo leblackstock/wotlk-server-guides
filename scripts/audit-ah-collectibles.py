@@ -75,7 +75,7 @@ ITEM_GROUPS = {
         39896, 39898, 39899, 44721, 48112, 48114, 48116, 48118, 48122,
         48124, 48126,
     ),
-    "companion-quest-rewards": (10398, 22781),
+    "companion-quest-rewards": (10398,),
     "crafted-collectibles": (4401, 11825, 11826, 15996, 21277, 34060, 34061, 41508, 44413, 44554),
     "quest-accessories": (52200, 52201, 52251, 52252, 52253),
     "season-winter-veil": (17194, 17202, 17303, 17304, 17307, 17405, 21213, 21301, 21305, 21308, 21309),
@@ -133,6 +133,11 @@ CURRENCY_COSTS = {
 }
 
 EXCLUSIONS = {
+    "unverified-hellscream-promotional-companions": {
+        "item_ids": [22781],
+        "names": ["Polar Bear Collar"],
+        "reason": "The only pinned acquisition route is quest 9273, Redeem iCoke Prize Voucher. No direct Hellscream enablement evidence is saved, and the item was absent from all six comparison markets in the 2026-08-10 demand snapshot.",
+    },
     "unverified-hellscream-promotional-mounts": {
         "item_ids": [49282, 49283, 49284, 49285, 49286, 49290, 54068, 54069],
         "names": [

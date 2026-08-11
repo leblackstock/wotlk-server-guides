@@ -14,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT_PATH = ROOT / "data" / "ah-collectible-audit.json"
 EVIDENCE_PATH = ROOT / "data" / "ah-collectible-price-evidence.json"
+DEMAND_EVIDENCE_PATH = ROOT / "data" / "ah-collectible-demand-evidence.json"
 SECTIONS_PATH = ROOT / "data" / "ah-collectible-sections.json"
 CRAFTED_PATH = ROOT / "data" / "ah-crafted-sections.json"
 VENDOR_PATH = ROOT / "data" / "ah-vendor-sections.json"
@@ -25,6 +26,7 @@ INDEX_PATH = ROOT / "assets" / "ah-search-index.js"
 
 for command in (
     [sys.executable, "scripts/audit-ah-collectibles.py", "--check"],
+    [sys.executable, "scripts/review-ah-collectible-demand.py", "--check"],
     [sys.executable, "scripts/review-ah-collectible-prices.py", "--check"],
     [sys.executable, "scripts/render-ah-collectibles.py", "--check"],
     [sys.executable, "scripts/render-ah-shared-sections.py", "--check"],
@@ -38,6 +40,7 @@ for command in (
 
 audit = json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
 evidence = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
+demand_evidence = json.loads(DEMAND_EVIDENCE_PATH.read_text(encoding="utf-8"))
 sections = json.loads(SECTIONS_PATH.read_text(encoding="utf-8"))
 crafted = json.loads(CRAFTED_PATH.read_text(encoding="utf-8"))
 vendor = json.loads(VENDOR_PATH.read_text(encoding="utf-8"))
@@ -58,7 +61,7 @@ expected_groups = {
     "vendor-token": 12,
     "crafted-collectibles": 10,
     "companion-drops": 20,
-    "companion-quest-rewards": 2,
+    "companion-quest-rewards": 1,
     "quest-accessories": 5,
     "season-love-is-in-the-air": 17,
     "season-noblegarden": 3,
@@ -91,11 +94,13 @@ expected_empty_seasons = {
 assert audit["source"]["commit"] == "e0fe11ba46b885a01e4a4038001e0055822cc7ba"
 assert audit["rules"]["allowed_bonding"] == [0, 2, 3]
 assert audit["rules"]["active_listings_set_prices"] is False
-assert audit["summary"]["included_items"] == len(audit["items"]) == 128
+assert audit["summary"]["included_items"] == len(audit["items"]) == 127
 assert audit["summary"]["groups"] == expected_groups
 assert audit["summary"]["existing_exact_name_overlaps"] == 11
 assert set(audit["empty_seasons"]) == expected_empty_seasons
-assert len({item["item_id"] for item in audit["items"].values()}) == 128
+assert len({item["item_id"] for item in audit["items"].values()}) == 127
+assert "22781" not in audit["items"]
+assert audit["exclusions"]["unverified-hellscream-promotional-companions"]["item_ids"] == [22781]
 assert all(item["auctionable"] for item in audit["items"].values())
 assert all(item["duration"] == 0 for item in audit["items"].values())
 assert all(item["buy_count"] >= 1 for item in audit["items"].values())
@@ -125,11 +130,11 @@ assert audit["items"]["17194"]["buy_count"] == 5
 assert audit["items"]["17194"]["vendor_unit_cost_copper"] == 2
 
 assert evidence["summary"] == {
-    "items_reviewed": 128,
+    "items_reviewed": 127,
     "decisions": {
         "exact-token-cost-plus-fallback-opportunity-anchor": 26,
         "exact-unlimited-vendor-arbitrage": 44,
-        "fixed-acquisition-cohort-estimate": 57,
+        "fixed-acquisition-cohort-estimate": 56,
         "sparse-completed-sales-shrunk": 1,
     },
     "items_with_completed_sales": 1,
@@ -160,7 +165,53 @@ assert frog_evidence["proposal"]["sales_weight"] == 0.25
 assert frog_evidence["proposal"]["confidence"] == "low"
 assert evidence["items"]["17194"]["exact_vendor_cost_copper"] == 2
 
-assert len(sections["catalog"]) == 128
+assert demand_evidence["summary"] == {
+    "items_reviewed": 127,
+    "markets_checked_per_item": 6,
+    "active_item_comparison_requests": 762,
+    "promotional_exclusion_requests": 6,
+    "comparison_requests": 768,
+    "final_failed_comparison_requests": 0,
+    "items_with_local_completed_sales": 1,
+    "items_present_in_local_supply": 2,
+    "items_present_in_any_comparison_market": 117,
+    "demand_labels": {
+        "High": 11,
+        "High in season": 5,
+        "Low in season": 25,
+        "Low-Med": 34,
+        "Low-Med in season": 3,
+        "Med": 11,
+        "Med in season": 15,
+        "Med-High": 23,
+    },
+    "turnover_labels": {
+        "Seasonal": 48,
+        "Slow": 29,
+        "Slow / steady": 29,
+        "Very slow": 21,
+    },
+}
+assert demand_evidence["rules"]["external_listings_prove_sales"] is False
+assert demand_evidence["rules"]["external_prices_saved"] is False
+assert demand_evidence["rules"]["single_snapshot_establishes_turnover"] is False
+assert "22781" not in demand_evidence["items"]
+assert demand_evidence["excluded_items"]["22781"]["external_supply"]["markets_checked"] == 6
+assert demand_evidence["excluded_items"]["22781"]["external_supply"]["markets_present"] == 0
+assert all(
+    record["external_supply"]["markets_checked"] == 6
+    and len(record["external_supply"]["observations"]) == 6
+    and not any("median_buyout_copper" in observation for observation in record["external_supply"]["observations"])
+    for record in demand_evidence["items"].values()
+)
+assert demand_evidence["items"]["41508"]["assessment"]["demand"] == "High"
+assert demand_evidence["items"]["41508"]["assessment"]["turnover"] == "Slow"
+assert demand_evidence["items"]["52251"]["assessment"]["demand"] == "High"
+assert demand_evidence["items"]["52251"]["assessment"]["turnover"] == "Very slow"
+assert demand_evidence["items"]["34599"]["assessment"]["demand"] == "High in season"
+assert demand_evidence["items"]["34599"]["assessment"]["turnover"] == "Seasonal"
+
+assert len(sections["catalog"]) == 127
 assert len(sections["sections"]) == 20
 season_sections = sections["sections"][9:]
 assert [section["title"] for section in season_sections] == expected_seasons
@@ -201,8 +252,8 @@ assert collectible_manifest["file"] == GUIDE_PATH.name
 assert len(collectible_manifest["navigation"][1]["children"]) == 3
 assert len(collectible_manifest["navigation"][4]["children"]) == 11
 assert index["guideCount"] == 19
-assert Counter(item["guideId"] for item in index["items"])["collectibles"] == 128
-assert guide.count('data-collectible-key="') == 128
+assert Counter(item["guideId"] for item in index["items"])["collectibles"] == 127
+assert guide.count('data-collectible-key="') == 127
 assert guide.count('data-collectible-section="') == 20
 assert guide.count("collectible-market-section--empty") == 6
 assert guide.count('data-use-audience="general-use"') == 2
@@ -224,6 +275,10 @@ assert "Engineering 300 required to use." in restricted_mounts.group(0)
 assert "Tailoring 300 required to use." in restricted_mounts.group(0)
 assert "Updated 2026-08-10" in guide
 assert 'data-collectible-section="promotional-mounts"' not in guide
+assert "Polar Bear Collar" not in guide
+assert "Demand / Turnover" in guide
+assert "High in season" in guide
+assert "Very slow turnover" in guide
 for excluded_promo_mount in (
     "Big Battle Bear",
     "Reins of the Spectral Tiger",
@@ -238,7 +293,7 @@ for excluded_promo_mount in (
 assert re.search(r"Holiday Spices.*Exact vendor cost: 2c", guide, re.DOTALL)
 
 assert eligibility["rules"]["allowed_bonding"] == [0, 2, 3]
-assert eligibility["source_counts"]["collectible_item_ids"] == 128
+assert eligibility["source_counts"]["collectible_item_ids"] == 127
 assert all(str(item_id) in eligibility["items"] for item_id in crafted_ids)
 
-print("Validated 128 evidence-priced collectible rows across 20 acquisition and seasonal sections.")
+print("Validated 127 evidence-priced and demand-reviewed collectible rows across 20 acquisition and seasonal sections.")

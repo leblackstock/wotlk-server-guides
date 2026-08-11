@@ -137,10 +137,14 @@ def render_row(key: str, item: dict) -> str:
         f'<td data-column="quick" data-label="Quick Price">{price_pair("quick", int(item["quick_copper"]))}</td>'
         f'<td data-column="high" data-label="High / Scarce">{price_pair("high", int(item["high_copper"]))}</td>'
         f'<td data-column="stack" data-label="Stack Size">{html.escape(item["stack"])}</td>'
-        f'<td data-column="demand" data-label="Demand"><span class="demand {html.escape(item["demand_class"])}">{html.escape(item["demand"])}</span></td>'
+        f'<td data-column="demand" data-label="Demand / Turnover"><span class="demand {html.escape(item["demand_class"])}">{html.escape(item["demand"])}</span>'
+        f'<div class="mini">{html.escape(item["turnover"])} turnover</div></td>'
         '<td data-column="notes" data-label="Source / Selling Notes">'
         f'<strong>{html.escape(confidence)}.</strong> {html.escape(item["source"])}. '
-        f'{html.escape(facts)} {html.escape(item["notes"])}{owner_note(item)}</td></tr>'
+        f'{html.escape(facts)} {html.escape(item["notes"])} '
+        f'<strong>Demand evidence:</strong> {item["external_markets_present"]}/{item["external_markets_checked"]} comparison markets, '
+        f'{item["external_units"]} listed units; {html.escape(item["demand_rationale"])} '
+        f'Current listings measure supply, not completed sales.{owner_note(item)}</td></tr>'
     )
 
 
@@ -168,7 +172,7 @@ def render_section(section: dict, catalog: dict) -> str:
         'data-table-family="market"><thead><tr><th data-column="item">Item</th>'
         '<th data-column="target">Target Price</th><th data-column="quick">Quick Price</th>'
         '<th data-column="high">High / Scarce</th><th data-column="stack">Stack Size</th>'
-        '<th data-column="demand">Demand</th><th data-column="notes">Source / Selling Notes</th>'
+        '<th data-column="demand">Demand / Turnover</th><th data-column="notes">Source / Selling Notes</th>'
         f'</tr></thead><tbody>{rows}</tbody></table></div></section>'
     )
 
@@ -229,6 +233,7 @@ def render_page(data: dict, audit: dict) -> str:
 <!-- AH_GUIDE_NOTES_CONTENT_START -->
 <div class="note"><strong>Vendor arbitrage:</strong> Buy from the named vendor and resell for convenience. Unlimited stock and true limited stock are separate because limited rows have verified stock caps and restock timers. Token and reputation vendors are separate again because their exact currency cost has no deterministic gold conversion.</div>
 <div class="note"><strong>Collector markets:</strong> Most pets, mounts, and vanity rewards sell slowly. Post one at a time. An empty AH does not prove the High band, especially for promotional and Shadowmourne rewards.</div>
+<div class="note"><strong>Demand / turnover:</strong> Demand labels combine known achievement or utility drivers with a six-market supply snapshot. Turnover remains conservative because current listings are not completed sales and one snapshot cannot measure sell-through. Seasonal labels describe the active event window; expect Very Low interest off-season.</div>
 <div class="legend"><span class="pill p-quick">Quick</span><span class="pill p-bid">Target Bid</span><span class="pill p-target">Target Buyout</span><span class="pill p-watch">High / scarce</span></div>
 <!-- AH_BASELINE_NOTE_START -->
 <aside class="note ah-baseline-note"><strong>* Evidence Pricing:</strong> Exact vendor cost, stock, restock, token quantity, tradeability, loot route, and recipe floor are acquisition facts. Qualified completed sales take precedence; otherwise fixed Hellscream acquisition-cohort anchors and cross-server relative rank provide clearly labeled fallback bands. Active listings show competition only and never set or raise guide prices.</aside>
@@ -242,7 +247,7 @@ def render_page(data: dict, audit: dict) -> str:
 
 <section class="common">
   <h2 class="ah-category-heading">Excluded and pending verification<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2>
-  <p class="small">Promotional and TCG mounts stay excluded until direct Hellscream availability is verified; a generic base-database loot route is not proof that those rewards are enabled on this server. BoP and temporary examples—including Fetch Ball, pet grooming items, and temporary event mounts—cannot be listed and stay out of the tables.</p>
+  <p class="small">Promotional companions and promotional/TCG mounts stay excluded until direct Hellscream availability is verified; a generic base-database quest or loot route is not proof that those rewards are enabled on this server. BoP and temporary examples—including Fetch Ball, pet grooming items, and temporary event mounts—cannot be listed and stay out of the tables.</p>
 </section>
 
 <section class="common">
@@ -260,7 +265,10 @@ def render_page(data: dict, audit: dict) -> str:
   <ul>
     <li><a href="https://github.com/azerothcore/azerothcore-wotlk/tree/e0fe11ba46b885a01e4a4038001e0055822cc7ba/data/sql/base/db_world">Pinned AzerothCore WotLK world data</a>: item templates, vendors, quests, creatures, game objects, and loot routes.</li>
     <li><a href="https://wotlkdb.com/">WotLKDB 3.3.5a</a>: exact Engineering and Tailoring spell reagents cross-checked on 2026-08-10.</li>
-    <li><a href="../docs/ah-collectible-pricing-review.md">Saved Evidence Pricing review</a>: completed-sale coverage, fixed anchors, comparison coverage, and model limits.</li>
+    <li><a href="../docs/ah-collectible-pricing-review.md">Saved Evidence Pricing review</a>: completed-sale coverage, fixed anchors, comparison coverage, and price-model limits.</li>
+    <li><a href="../docs/ah-collectible-demand-review.md">Saved demand and turnover review</a>: all six comparison markets, local completed-sale coverage, known demand drivers, per-label counts, and model limits.</li>
+    <li><a href="https://www.wowhead.com/wotlk/achievement=1250/shop-smart-shop-pet-smart">50-pet</a> and <a href="https://www.wowhead.com/wotlk/achievement=2516/lil-game-hunter">75-pet</a> collection achievements; <a href="https://www.wowhead.com/wotlk/achievement=2143/leading-the-cavalry">50-mount</a> and <a href="https://www.wowhead.com/wotlk/achievement=2536/mountain-o-mounts">100-mount</a> collection achievements: durable collector-demand drivers.</li>
+    <li><a href="https://ah.nerfed.net/servers/base?id=7">Nerfed AH comparison markets</a>: current supply only across Icecrown, Lordaeron, and Onyxia, both factions; listings are not treated as sales.</li>
   </ul>
 </section>
 
