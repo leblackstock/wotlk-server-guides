@@ -1014,7 +1014,11 @@ def main() -> int:
         "fishing-cooking-materials-ah-price-guide.html",
         "mining-smithing-ah-price-guide.html",
     ):
-        expected_date = "2026-08-10"
+        expected_date = (
+            "2026-08-11"
+            if filename == "fishing-cooking-materials-ah-price-guide.html"
+            else "2026-08-10"
+        )
         if f"Updated {expected_date}" not in sources[filename]:
             fail(f"{filename}: crafted-price audit footer date is stale")
         if not re.search(

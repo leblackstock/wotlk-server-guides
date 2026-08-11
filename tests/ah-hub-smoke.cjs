@@ -585,7 +585,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "12g 25s",
       recipeSpell: 57423,
       notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
-      footerDate: "2026-08-10",
+      footerDate: "2026-08-11",
       label: "Desktop Cooking guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -817,7 +817,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "12g 25s",
       recipeSpell: 57423,
       notePattern: /80 Attack Power, 46 Spell Power and 40 Stamina/,
-      footerDate: "2026-08-10",
+      footerDate: "2026-08-11",
       label: "Mobile Cooking guide"
     });
     await verifyAuditedCraftedGuide(mobile, {

@@ -1,6 +1,6 @@
 # Cooking AH Expansion Plan
 
-- Status: `complete — Phase 2 Evidence Pricing, 2026-08-08`
+- Status: `complete — stat and dual-recovery coverage correction, 2026-08-10`
 - Existing guide: `guides/fishing-cooking-materials-ah-price-guide.html`
 - Work type: full crafted catalog
 - Suggested order: 5
@@ -62,6 +62,23 @@
 
 ## Evidence Log
 
+- Stat and dual-recovery coverage correction completion — 2026-08-10: Moved
+  all ten qualifying rows into accurately named expansion-specific stat-bonus
+  and dual-recovery sections. The recovery sections now retain health-only and
+  mana-only foods. Canonical data, saved evidence section labels, the evidence
+  report, rendered guide, search index, and tooltip assets agree. A comparison
+  with the prior revision confirmed zero price-band, recipe-floor, demand, or
+  demand-class changes. All 40 AH regression tests, the full site test suite,
+  and local desktop/mobile browser checks passed. Nothing was published.
+- Stat and dual-recovery coverage correction start — 2026-08-10: Audited all
+  162 Cooking rows by their saved item effects. Ten qualifying foods were
+  already evidence-priced but were filed under recovery-only sections: four
+  Wrath foods that restore both health and mana, four Outland foods that grant
+  Stamina and Spirit, one Outland food that restores both resources, and one
+  Classic food that restores both resources. They move into their expansion's
+  stat-food section without changing price bands, demand labels, recipe floors,
+  or evidence confidence. Pure health-only and pure mana-only foods remain in
+  recovery sections. Nothing has been published.
 - Phase 2 completion — 2026-08-08: Reviewed all 162 auctionable Cooking
   outputs. All 972 comparison requests resolved on the initial pass; coverage
   reached all three realms for 159 outputs and two realms for three. No

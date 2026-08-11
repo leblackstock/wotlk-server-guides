@@ -165,7 +165,11 @@ def main() -> int:
                 f"{filename}: expected {spec['baseline']} baselines and {spec['vendor']} "
                 f"vendor rows, found {baseline_count} and {vendor_count}"
             )
-        expected_footer = "Updated 2026-08-10"
+        expected_footer = (
+            "Updated 2026-08-11"
+            if filename == "fishing-cooking-materials-ah-price-guide.html"
+            else "Updated 2026-08-10"
+        )
         if expected_footer not in source:
             fail(f"{filename}: footer date is stale")
 

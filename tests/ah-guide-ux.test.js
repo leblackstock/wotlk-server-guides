@@ -107,7 +107,10 @@ for (const guide of manifest.guides) {
   assert.equal(document.querySelector("details.ah-guide-notes").hasAttribute("open"), false, guide.file);
   assert.equal(document.querySelectorAll(".ah-baseline-note").length, 1, guide.file);
   assert.equal(document.querySelectorAll("footer").length, 1, guide.file);
-  assert.ok(document.querySelector("footer").textContent.endsWith("Updated 2026-08-10"), guide.file);
+  const expectedFooterDate = guide.file === "fishing-cooking-materials-ah-price-guide.html"
+    ? "2026-08-11"
+    : "2026-08-10";
+  assert.ok(document.querySelector("footer").textContent.endsWith(`Updated ${expectedFooterDate}`), guide.file);
   assert.equal(document.title, `${guide.title} AH Price Guide — WotLK 3.3.5 Low Pop`, guide.file);
   assert.ok(
     document.querySelector(`link[href="../assets/ah-guide-icons.css?v=${version}"]`),

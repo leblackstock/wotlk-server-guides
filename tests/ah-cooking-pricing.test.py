@@ -55,6 +55,9 @@ search = INDEX_PATH.read_text(encoding="utf-8")
 guide_config = config["guides"][GUIDE_FILENAME]
 cooking_keys = [key for section in guide_config["sections"] for key in section["items"]]
 cooking_items = {key: merged_item(config, key) for key in cooking_keys}
+sections_by_title = {
+    section["title"]: set(section["items"]) for section in guide_config["sections"]
+}
 
 assert len(cooking_keys) == len(set(cooking_keys)) == 162
 assert set(evidence["items"]) == {
@@ -148,18 +151,60 @@ assert len(class_sections) == 1
 assert class_sections[0]["items"] == ["cook-thistle-tea"]
 assert use_audit["canonical_profession_audience"]["cook-thistle-tea"]["audience"] == "Rogue"
 
+qualifying_sections = {
+    "Wrath stat-bonus and dual-recovery foods": {
+        "cook-smoked-rockfin",
+        "cook-grilled-bonescale",
+        "cook-sauteed-goby",
+        "cook-black-jelly",
+    },
+    "Outland stat-bonus and dual-recovery foods": {
+        "cook-roasted-moongraze-tenderloin",
+        "cook-lynx-steak",
+        "cook-bat-bites",
+        "cook-buzzard-bites",
+        "cook-hot-buttered-trout",
+    },
+    "Classic combat, stat, and dual-recovery foods": {
+        "cook-cooked-crab-claw",
+    },
+}
+for section_title, promoted_keys in qualifying_sections.items():
+    assert promoted_keys <= sections_by_title[section_title]
+    for key in promoted_keys:
+        item_id = str(int(cooking_items[key]["item_id"]))
+        assert evidence["items"][item_id]["section"] == section_title
+
+recovery_only = {
+    "Wrath recovery foods and drinks": {
+        "cook-northern-stew",
+        "cook-kungaloosh",
+    },
+    "Outland recovery and leveling foods": {
+        "cook-blackened-trout",
+        "cook-stewed-trout",
+    },
+    "Classic recovery and leveling foods": {
+        "cook-goldthorn-tea",
+    },
+}
+all_qualifying = set().union(*qualifying_sections.values())
+for section_title, representative_keys in recovery_only.items():
+    assert representative_keys <= sections_by_title[section_title]
+    assert not (all_qualifying & sections_by_title[section_title])
+
 assert status["updated"] == "2026-08-10"
 assert status["current_phase"] == "All three Evidence Pricing phases complete locally; scheduled refreshes next"
 assert status["publishing_status"] == "local only — not published"
 assert status["guides"]["fishing-cooking"]["status"] == "Phase 2 complete locally"
 assert status["guides"]["fishing-cooking"]["evidence_ref"] == EVIDENCE_PATH.relative_to(ROOT).as_posix()
-assert "complete — Phase 2 Evidence Pricing, 2026-08-08" in plan
+assert "stat and dual-recovery coverage correction, 2026-08-10" in plan
 assert "All 972 comparison requests resolved" in plan
 assert "Publication status: `local only — not published`" in report
 assert "159 on three realms, 3 on two, and 0 on one" in report
 assert "All 972 individual comparison requests resolved" in report
 
-assert "Updated 2026-08-10" in guide
+assert "Updated 2026-08-11" in guide
 assert guide.count('id="crafted-cooking-pricing-note"') == 1
 assert "usable relative-rank evidence for 162 outputs" in guide
 assert len(re.findall(r'class="crafted-recipe-link ', guide)) == 162

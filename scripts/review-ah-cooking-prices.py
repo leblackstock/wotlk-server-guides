@@ -22,14 +22,14 @@ TOTAL_OUTPUTS = 162
 
 VIEW_BY_SECTION = {
     "Cook-required feasts": "restricted-feasts",
-    "Wrath level-80 personal stat foods": "wrath-foods",
+    "Wrath stat-bonus and dual-recovery foods": "wrath-foods",
     "Wrath recovery foods and drinks": "wrath-foods",
     "Wrath pet, tracking, and critter utility": "wrath-foods",
     "Wrath achievement and novelty foods": "wrath-foods",
-    "Outland stat foods": "outland-foods",
+    "Outland stat-bonus and dual-recovery foods": "outland-foods",
     "Outland recovery and leveling foods": "outland-foods",
     "Outland achievement and utility foods": "outland-foods",
-    "Classic combat and stat foods": "classic-foods",
+    "Classic combat, stat, and dual-recovery foods": "classic-foods",
     "Classic recovery and leveling foods": "classic-foods",
     "Classic novelty foods": "classic-foods",
     "Seasonal foods and drinks": "seasonal-foods",
@@ -338,6 +338,21 @@ def write_outputs(evidence: dict) -> None:
     REPORT_PATH.write_text(render_report(evidence), encoding="utf-8", newline="\n")
 
 
+def sync_section_metadata(evidence: dict) -> dict:
+    """Align saved evidence section labels with the canonical Cooking catalog."""
+    current = {
+        str(int(row["item"]["item_id"])): row
+        for row in entries(BASE.load(BASE.CRAFTED_PATH))
+    }
+    if set(current) != set(evidence["items"]):
+        raise ValueError("Cooking evidence inventory drifted during section sync")
+    for item_id, record in evidence["items"].items():
+        record["section"] = current[item_id]["section"]
+        record["view"] = current[item_id]["view"]
+    update_summary(evidence)
+    return evidence
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group(required=True)
@@ -345,6 +360,7 @@ def main() -> int:
     group.add_argument("--refresh", action="store_true")
     group.add_argument("--review", action="store_true")
     group.add_argument("--refresh-dependencies", action="store_true")
+    group.add_argument("--sync-sections", action="store_true")
     group.add_argument("--apply", action="store_true")
     group.add_argument("--check", action="store_true")
     args = parser.parse_args()
@@ -371,6 +387,12 @@ def main() -> int:
         BASE.validate(evidence, require_applied=True)
         write_outputs(evidence)
         print("Refreshed Cooking recipe-floor diagnostics without changing prices.")
+        return 0
+    if args.sync_sections:
+        evidence = sync_section_metadata(BASE.load(EVIDENCE_PATH))
+        BASE.validate(evidence, require_applied=True)
+        write_outputs(evidence)
+        print("Synchronized Cooking evidence section labels without changing prices.")
         return 0
     evidence = BASE.load(EVIDENCE_PATH)
     if args.apply:
