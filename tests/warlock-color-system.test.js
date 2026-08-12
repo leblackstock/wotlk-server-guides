@@ -10,6 +10,10 @@ const sharedReferenceCss = fs.readFileSync(path.join(root, "assets", "internal-c
 const deathKnightCss = fs.readFileSync(path.join(root, "assets", "death-knight-color-system.css"), "utf8");
 const referenceHtml = fs.readFileSync(path.join(root, "internal", "warlock-color-system.html"), "utf8");
 const referenceDocument = new JSDOM(referenceHtml).window.document;
+const hunterReferenceHtml = fs.readFileSync(path.join(root, "internal", "hunter-color-system.html"), "utf8");
+const hunterReferenceDocument = new JSDOM(hunterReferenceHtml).window.document;
+const hunterSpecimenHtml = fs.readFileSync(path.join(root, "internal", "marksmanship-hunter-visual-system.html"), "utf8");
+const hunterConfig = JSON.parse(fs.readFileSync(path.join(root, "templates", "spec-guide", "marksmanship-hunter.config.json"), "utf8"));
 const cardSurface = "#121820";
 
 function cssValue(token) {
@@ -33,8 +37,7 @@ function contrastRatio(first, second) {
   return (values[0] + 0.05) / (values[1] + 0.05);
 }
 
-function oklab(hex) {
-  const [red, green, blue] = [1, 3, 5].map((index) => linearChannel(Number.parseInt(hex.slice(index, index + 2), 16)));
+function oklabFromLinear([red, green, blue]) {
   const long = 0.4122214708 * red + 0.5363325363 * green + 0.0514459929 * blue;
   const medium = 0.2119034982 * red + 0.6806995451 * green + 0.1073969566 * blue;
   const short = 0.0883024619 * red + 0.2817188376 * green + 0.6299787005 * blue;
@@ -46,9 +49,27 @@ function oklab(hex) {
   ];
 }
 
+function oklab(hex) {
+  return oklabFromLinear(
+    [1, 3, 5].map((index) => linearChannel(Number.parseInt(hex.slice(index, index + 2), 16)))
+  );
+}
+
 function perceptualDistance(first, second) {
   const firstLab = oklab(first);
   const secondLab = oklab(second);
+  return Math.hypot(...firstLab.map((value, index) => value - secondLab[index]));
+}
+
+function simulatedDistance(first, second, matrix) {
+  function simulate(hex) {
+    const channels = [1, 3, 5].map((index) => linearChannel(Number.parseInt(hex.slice(index, index + 2), 16)));
+    return oklabFromLinear(
+      matrix.map((row) => Math.max(0, Math.min(1, row.reduce((total, value, index) => total + value * channels[index], 0))))
+    );
+  }
+  const firstLab = simulate(first);
+  const secondLab = simulate(second);
   return Math.hypot(...firstLab.map((value, index) => value - secondLab[index]));
 }
 
@@ -89,12 +110,12 @@ const configs = [
   {
     specKey: "demonology",
     specShortName: "Demonology",
-    specAccent: "#63d0b0",
-    specAccentSoft: "#c4f3e5",
-    specAccentDeep: "#205d4c",
-    specAccentRgb: "99, 208, 176",
+    specAccent: "#aad372",
+    specAccentSoft: "#ddf2be",
+    specAccentDeep: "#405a28",
+    specAccentRgb: "170, 211, 114",
     mechanics: [
-      { key: "felguard", color: "#63d0b0", soft: "#c4f3e5", rgb: "99, 208, 176" },
+      { key: "felguard", color: "#aad372", soft: "#ddf2be", rgb: "170, 211, 114" },
       { key: "procs", color: "#e5905a", soft: "#f8d4bd", rgb: "229, 144, 90" },
       { key: "metamorphosis", color: "#b37aee", soft: "#e5cef9", rgb: "179, 122, 238" },
       { key: "pact", color: "#7db5e8", soft: "#cce5fa", rgb: "125, 181, 232" }
@@ -149,6 +170,72 @@ for (const token of accentTokens) {
   );
 }
 
+const hunterClass = {
+  accent: "#67a85f",
+  soft: "#cbe7c6",
+  deep: "#26472b",
+  rgb: "103, 168, 95",
+  deepRgb: "38, 71, 43"
+};
+const hunterSpecs = [
+  { key: "beast-mastery", accent: "#d0bda5", soft: "#f1e7db", deep: "#594b3f", rgb: "208, 189, 165", deepRgb: "89, 75, 63" },
+  { key: "marksmanship", accent: "#78a9d4", soft: "#c9e4f8", deep: "#2e5270", rgb: "120, 169, 212", deepRgb: "46, 82, 112" },
+  { key: "survival", accent: "#df7d4f", soft: "#ffc6a9", deep: "#71371f", rgb: "223, 125, 79", deepRgb: "113, 55, 31" }
+];
+const hunterMechanics = [
+  { key: "sting", accent: "#cd87ad", soft: "#f3c8de", rgb: "205, 135, 173" },
+  { key: "shots", accent: "#78a9d4", soft: "#c9e4f8", rgb: "120, 169, 212" },
+  { key: "movement", accent: "#adb5bd", soft: "#e1e7ec", rgb: "173, 181, 189" },
+  { key: "pet", accent: "#78cfa8", soft: "#c8f1de", rgb: "120, 207, 168" }
+];
+assert.equal(cssValue("class-hunter-accent"), hunterClass.accent);
+assert.equal(cssValue("class-hunter-soft"), hunterClass.soft);
+assert.equal(cssValue("class-hunter-deep"), hunterClass.deep);
+assert.equal(cssValue("class-hunter-rgb"), hunterClass.rgb);
+assert.equal(cssValue("class-hunter-deep-rgb"), hunterClass.deepRgb);
+assert.ok(
+  contrastRatio(hunterClass.accent, cardSurface) >= 5.5,
+  `--class-hunter-accent must retain at least 5.5:1 contrast against ${cardSurface}`
+);
+for (const spec of hunterSpecs) {
+  assert.equal(cssValue(`spec-hunter-${spec.key}-accent`), spec.accent);
+  assert.equal(cssValue(`spec-hunter-${spec.key}-soft`), spec.soft);
+  assert.equal(cssValue(`spec-hunter-${spec.key}-deep`), spec.deep);
+  assert.equal(cssValue(`spec-hunter-${spec.key}-rgb`), spec.rgb);
+  assert.equal(cssValue(`spec-hunter-${spec.key}-deep-rgb`), spec.deepRgb);
+  assert.ok(contrastRatio(spec.accent, cardSurface) >= 6, `Hunter ${spec.key} must retain at least 6:1 contrast`);
+}
+for (const mechanic of hunterMechanics) {
+  assert.equal(cssValue(`mechanic-marksmanship-${mechanic.key}`), mechanic.accent);
+  assert.equal(cssValue(`mechanic-marksmanship-${mechanic.key}-soft`), mechanic.soft);
+  assert.equal(cssValue(`mechanic-marksmanship-${mechanic.key}-rgb`), mechanic.rgb);
+  assert.ok(contrastRatio(mechanic.accent, cardSurface) >= 6, `Hunter ${mechanic.key} must retain at least 6:1 contrast`);
+}
+assertPairwiseDistance(hunterSpecs.map((spec) => `spec-hunter-${spec.key}-accent`), 0.14, "Hunter specialization identities");
+assertPairwiseDistance(hunterMechanics.map((mechanic) => `mechanic-marksmanship-${mechanic.key}`), 0.08, "Marksmanship mechanic lanes");
+assert.ok(perceptualDistance(hunterClass.accent, cssValue("spec-warlock-demonology-accent")) >= 0.12, "Hunter forest must remain distinct from fel green");
+assert.ok(perceptualDistance(cssValue("mechanic-marksmanship-sting"), cssValue("spec-warlock-demonology-accent")) >= 0.12, "Sting must remain distinct from fel green");
+assert.ok(perceptualDistance(cssValue("mechanic-marksmanship-movement"), cssValue("status-info")) >= 0.085, "Movement must remain distinct from global information cyan");
+
+const redGreenMatrices = [
+  [[0.152286, 1.052583, -0.204868], [0.114503, 0.786281, 0.099216], [-0.003882, -0.048116, 1.051998]],
+  [[0.367322, 0.860646, -0.227968], [0.280085, 0.672501, 0.047413], [-0.01182, 0.04294, 0.968881]]
+];
+for (const matrix of redGreenMatrices) {
+  assert.ok(
+    simulatedDistance(cssValue("spec-hunter-beast-mastery-accent"), cssValue("spec-hunter-survival-accent"), matrix) >= 0.1,
+    "Beast Mastery and Survival must remain distinct under red-green color-vision simulation"
+  );
+}
+
+assert.equal(hunterConfig.classAccent.toLowerCase(), hunterClass.accent);
+assert.equal(hunterConfig.mechanics.find((mechanic) => mechanic.key === "sting").color.toLowerCase(), hunterMechanics[0].accent);
+assert.equal(hunterConfig.mechanics.find((mechanic) => mechanic.key === "movement").color.toLowerCase(), hunterMechanics[2].accent);
+for (const color of [hunterClass.accent, hunterSpecs[1].accent, ...hunterMechanics.map((mechanic) => mechanic.accent)]) {
+  assert.ok(hunterSpecimenHtml.toLowerCase().includes(color), `Marksmanship specimen must display ${color}`);
+}
+assert.match(hunterReferenceDocument.querySelector("#audit").textContent, /color-vision differences/);
+
 assertPairwiseDistance(
   configs.map((config) => `spec-warlock-${config.specKey}-accent`),
   0.2,
@@ -195,6 +282,15 @@ for (const file of canonicalReferences) {
   );
 }
 
+for (const file of ["color-reference.html", "hunter-color-system.html", "warlock-color-system.html"]) {
+  const document = new JSDOM(fs.readFileSync(path.join(root, "internal", file), "utf8")).window.document;
+  assert.equal(
+    document.querySelector('link[href="../assets/guide-color-system.css?v=20260812-hunter-fel-color-v2"]')?.getAttribute("rel"),
+    "stylesheet",
+    `${file} must request the cache-safe Hunter and fel color release`
+  );
+}
+
 const deathKnightSoft = deathKnightCss.match(/--class-death-knight-soft:\s*([^;]+);/);
 assert.ok(deathKnightSoft, "missing --class-death-knight-soft");
 assert.match(
@@ -209,4 +305,4 @@ for (const background of ["#171d24", "#0b0f14"]) {
   );
 }
 
-console.log("Validated the three-spec Warlock color system and semantic boundaries.");
+console.log("Validated the Warlock and Hunter color systems, contrast, and semantic boundaries.");

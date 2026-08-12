@@ -205,17 +205,17 @@
   --mechanic-shadow-mana-rgb: 120, 207, 168;
 
   /* Hunter class and specialization identities */
-  --class-hunter-accent: #aad372;
-  --class-hunter-soft: #ddf2be;
-  --class-hunter-deep: #405a28;
-  --class-hunter-rgb: 170, 211, 114;
-  --class-hunter-deep-rgb: 64, 90, 40;
+  --class-hunter-accent: #67a85f;
+  --class-hunter-soft: #cbe7c6;
+  --class-hunter-deep: #26472b;
+  --class-hunter-rgb: 103, 168, 95;
+  --class-hunter-deep-rgb: 38, 71, 43;
 
-  --spec-hunter-beast-mastery-accent: #b88f5e;
-  --spec-hunter-beast-mastery-soft: #e9cba7;
-  --spec-hunter-beast-mastery-deep: #5f432a;
-  --spec-hunter-beast-mastery-rgb: 184, 143, 94;
-  --spec-hunter-beast-mastery-deep-rgb: 95, 67, 42;
+  --spec-hunter-beast-mastery-accent: #d0bda5;
+  --spec-hunter-beast-mastery-soft: #f1e7db;
+  --spec-hunter-beast-mastery-deep: #594b3f;
+  --spec-hunter-beast-mastery-rgb: 208, 189, 165;
+  --spec-hunter-beast-mastery-deep-rgb: 89, 75, 63;
 
   --spec-hunter-marksmanship-accent: #78a9d4;
   --spec-hunter-marksmanship-soft: #c9e4f8;
@@ -230,15 +230,15 @@
   --spec-hunter-survival-deep-rgb: 113, 55, 31;
 
   /* Marksmanship Hunter mechanics */
-  --mechanic-marksmanship-sting: #bdc96b;
-  --mechanic-marksmanship-sting-soft: #edf2b5;
-  --mechanic-marksmanship-sting-rgb: 189, 201, 107;
+  --mechanic-marksmanship-sting: #cd87ad;
+  --mechanic-marksmanship-sting-soft: #f3c8de;
+  --mechanic-marksmanship-sting-rgb: 205, 135, 173;
   --mechanic-marksmanship-shots: #78a9d4;
   --mechanic-marksmanship-shots-soft: #c9e4f8;
   --mechanic-marksmanship-shots-rgb: 120, 169, 212;
-  --mechanic-marksmanship-movement: #72d7e8;
-  --mechanic-marksmanship-movement-soft: #c5f2f8;
-  --mechanic-marksmanship-movement-rgb: 114, 215, 232;
+  --mechanic-marksmanship-movement: #adb5bd;
+  --mechanic-marksmanship-movement-soft: #e1e7ec;
+  --mechanic-marksmanship-movement-rgb: 173, 181, 189;
   --mechanic-marksmanship-pet: #78cfa8;
   --mechanic-marksmanship-pet-soft: #c8f1de;
   --mechanic-marksmanship-pet-rgb: 120, 207, 168;
@@ -256,11 +256,11 @@
   --spec-warlock-affliction-rgb: 180, 108, 255;
   --spec-warlock-affliction-deep-rgb: 75, 33, 110;
 
-  --spec-warlock-demonology-accent: #63d0b0;
-  --spec-warlock-demonology-soft: #c4f3e5;
-  --spec-warlock-demonology-deep: #205d4c;
-  --spec-warlock-demonology-rgb: 99, 208, 176;
-  --spec-warlock-demonology-deep-rgb: 32, 93, 76;
+  --spec-warlock-demonology-accent: #aad372;
+  --spec-warlock-demonology-soft: #ddf2be;
+  --spec-warlock-demonology-deep: #405a28;
+  --spec-warlock-demonology-rgb: 170, 211, 114;
+  --spec-warlock-demonology-deep-rgb: 64, 90, 40;
 
   --spec-warlock-destruction-accent: #f07b3f;
   --spec-warlock-destruction-soft: #ffd1b8;
@@ -283,9 +283,9 @@
   --mechanic-affliction-resources-rgb: 112, 201, 154;
 
   /* Demonology Warlock mechanics */
-  --mechanic-demonology-felguard: #63d0b0;
-  --mechanic-demonology-felguard-soft: #c4f3e5;
-  --mechanic-demonology-felguard-rgb: 99, 208, 176;
+  --mechanic-demonology-felguard: #aad372;
+  --mechanic-demonology-felguard-soft: #ddf2be;
+  --mechanic-demonology-felguard-rgb: 170, 211, 114;
   --mechanic-demonology-procs: #e5905a;
   --mechanic-demonology-procs-soft: #f8d4bd;
   --mechanic-demonology-procs-rgb: 229, 144, 90;

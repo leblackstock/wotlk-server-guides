@@ -36,10 +36,10 @@
   "allowDenseEntityIcons": false,
   "cacheKey": "20260805-marksman-v3-fresh80",
   "guideDescription": "A fresh-level-80 path into Marksmanship Hunter dungeon and raid damage on Hellscream.",
-  "classAccent": "#AAD372",
-  "classAccentSoft": "#DDF2BE",
-  "classAccentDeep": "#405A28",
-  "classAccentRgb": "170,211,114",
+  "classAccent": "#67A85F",
+  "classAccentSoft": "#CBE7C6",
+  "classAccentDeep": "#26472B",
+  "classAccentRgb": "103,168,95",
   "specAccent": "#78A9D4",
   "specAccentSoft": "#C9E4F8",
   "specAccentDeep": "#2E5270",
@@ -53,10 +53,10 @@
         { "name": "Serpent Sting", "type": "spell", "id": 49001, "icon": "ability_hunter_quickshot" },
         { "name": "Chimera Shot", "type": "spell", "id": 53209, "icon": "ability_hunter_chimerashot2" }
       ],
-      "color": "#BDC96B",
-      "soft": "#EDF2B5",
-      "deep": "#505629",
-      "rgb": "189,201,107",
+      "color": "#CD87AD",
+      "soft": "#F3C8DE",
+      "deep": "#63324E",
+      "rgb": "205,135,173",
       "use": "Apply Serpent Sting once, then protect it with timely Chimera Shot refreshes."
     },
     {
@@ -84,10 +84,10 @@
         { "name": "Auto Shot", "type": "spell", "id": 75, "icon": "ability_whirlwind" },
         { "name": "Steady Shot", "type": "spell", "id": 49052, "icon": "ability_hunter_steadyshot" }
       ],
-      "color": "#72D7E8",
-      "soft": "#C5F2F8",
-      "deep": "#245966",
-      "rgb": "114,215,232",
+      "color": "#ADB5BD",
+      "soft": "#E1E7EC",
+      "deep": "#46515B",
+      "rgb": "173,181,189",
       "use": "Move during instant-shot globals and stop long enough for Auto Shot and Steady Shot."
     },
     {
