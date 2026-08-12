@@ -142,12 +142,18 @@ for (const file of discoveredGuideFiles) {
 
 const hubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "utf8")).window.document;
 assert.equal(hubDocument.querySelectorAll(".class-guide-card").length, Object.keys(families).length);
+assert.equal(
+  hubDocument.querySelectorAll('link[href="./assets/guide-hero.css?v=20260812-guide-identity-gradient-v1"]').length,
+  1,
+  "index.html: shared guide-gradient stylesheet is missing"
+);
 for (const [prefix, family] of Object.entries(families)) {
   const card = hubDocument.querySelector(`.class-guide-card[href="./guides/${prefix}-pve-guide.html"]`);
   const landingDocument = new JSDOM(
     fs.readFileSync(path.join(root, "guides", `${prefix}-pve-guide.html`), "utf8")
   ).window.document;
   assert.ok(card, `index.html: ${prefix} class-guide card is missing`);
+  assert.ok(card.classList.contains("guide-identity-gradient"), `index.html: ${prefix} card must reuse the guide-banner gradient`);
   assert.equal(
     card.querySelector(".guide-card-nickname")?.textContent.trim(),
     family.nickname,
@@ -199,6 +205,29 @@ for (const [cardClass, classToken] of Object.entries({
     `index.html: ${cardClass} side bar does not use its class color`
   );
 }
+for (const [cardClass, deepTokens] of Object.entries({
+  "paladin-protection": ["class-paladin-deep-rgb", "spec-paladin-protection-deep-rgb"],
+  "paladin-holy": ["class-paladin-deep-rgb", "spec-paladin-holy-deep-rgb"],
+  "death-knight-blood": ["class-death-knight-deep-rgb", "spec-death-knight-blood-deep-rgb"],
+  "priest-holy": ["class-priest-deep-rgb", "spec-priest-holy-deep-rgb"],
+  "priest-shadow": ["class-priest-deep-rgb", "spec-priest-shadow-deep-rgb"],
+  "hunter-marksmanship": ["class-hunter-deep-rgb", "spec-hunter-marksmanship-deep-rgb"],
+  "warlock-affliction": ["class-warlock-deep-rgb", "spec-warlock-affliction-deep-rgb"],
+  "warlock-demonology": ["class-warlock-deep-rgb", "spec-warlock-demonology-deep-rgb"],
+  "warlock-destruction": ["class-warlock-deep-rgb", "spec-warlock-destruction-deep-rgb"]
+})) {
+  assert.match(
+    hubInlineCss,
+    new RegExp(`\\.class-guide-card\\.${cardClass}\\{[^}]*--guide-banner-class-deep-rgb:var\\(--${deepTokens[0]}\\)[^}]*--guide-banner-spec-deep-rgb:var\\(--${deepTokens[1]}\\)`),
+    `index.html: ${cardClass} gradient must use its guide-banner class and spec colors`
+  );
+}
+
+const coreColorDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-system.html"), "utf8")).window.document;
+assert.equal(coreColorDocument.querySelectorAll("#identity-gradient .guide-identity-gradient").length, 3);
+assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /Guide banners and their matching Guide Hub cards/);
+const colorReferenceDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8")).window.document;
+assert.match(colorReferenceDocument.querySelector("#workflow")?.textContent || "", /Reuse the identity gradient/);
 
 const operatingManuals = {
   "protection-paladin": { id: "quick-start", summaryCards: 4, sequences: 3 },
@@ -381,6 +410,21 @@ assert.equal(
 const css = fs.readFileSync(path.join(root, "assets/guide-hero.css"), "utf8");
 assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color token is missing");
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");
+assert.match(
+  css,
+  /\.guide-identity-gradient,\s*body header\.guide-hero\s*\{[\s\S]*--guide-identity-background:\s*linear-gradient\(\s*135deg,[\s\S]*rgba\(var\(--guide-banner-class-deep-rgb\), \.42\) 46%,[\s\S]*rgba\(var\(--guide-banner-spec-deep-rgb\), \.34\) 78%,[\s\S]*var\(--surface-card\) 100%[\s\S]*background:\s*var\(--guide-identity-background\)/,
+  "shared guide identity gradient is missing or changed"
+);
+assert.match(
+  css,
+  /\.guide-identity-gradient:hover,\s*\.guide-identity-gradient:focus-visible\s*\{\s*background:\s*var\(--guide-identity-background\)/,
+  "shared guide identity gradient must survive hover and keyboard focus"
+);
+assert.match(
+  css,
+  /body header\.guide-hero\s*\{[\s\S]*--guide-banner-class-deep-rgb:\s*var\(--class-accent-deep-rgb\);[\s\S]*--guide-banner-spec-deep-rgb:\s*var\(--theme-accent-deep-rgb\);/,
+  "guide banners do not bind the reusable gradient tokens"
+);
 const operatingCss = fs.readFileSync(path.join(root, "assets/guide-operating-manual.css"), "utf8");
 for (const marker of [".operating-manual .operating-engine", ".engine-spell-sequence", ".checklist li::before", ".priority-list li::before", "@media (max-width: 680px)"]) {
   assert.ok(operatingCss.includes(marker), `shared operating-manual stylesheet is missing ${marker}`);

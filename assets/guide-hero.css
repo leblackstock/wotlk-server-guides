@@ -13,17 +13,29 @@
   --guide-chip-gap: 8px;
 }
 
+.guide-identity-gradient,
 body header.guide-hero {
-  padding: var(--guide-hero-padding-block) var(--guide-hero-padding-inline);
-  border-color: rgba(var(--class-accent-rgb), .32);
-  background:
+  --guide-identity-background:
     linear-gradient(
       135deg,
       var(--surface-raised) 0%,
-      rgba(var(--class-accent-deep-rgb), .42) 46%,
-      rgba(var(--theme-accent-deep-rgb), .34) 78%,
+      rgba(var(--guide-banner-class-deep-rgb), .42) 46%,
+      rgba(var(--guide-banner-spec-deep-rgb), .34) 78%,
       var(--surface-card) 100%
     );
+  background: var(--guide-identity-background);
+}
+
+.guide-identity-gradient:hover,
+.guide-identity-gradient:focus-visible {
+  background: var(--guide-identity-background);
+}
+
+body header.guide-hero {
+  --guide-banner-class-deep-rgb: var(--class-accent-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--theme-accent-deep-rgb);
+  padding: var(--guide-hero-padding-block) var(--guide-hero-padding-inline);
+  border-color: rgba(var(--class-accent-rgb), .32);
 }
 
 body .guide-hero .page-kicker {
@@ -101,6 +113,7 @@ body .guide-jump-nav a:focus-visible {
     display: none;
   }
 
+  .guide-identity-gradient,
   body header.guide-hero {
     background: #ffffff;
     box-shadow: none;
