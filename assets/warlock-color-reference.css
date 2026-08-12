@@ -1,0 +1,37 @@
+/*
+ * Warlock additions for the internal color-reference site.
+ * Production color tokens remain owned by guide-color-system.css.
+ */
+body.color-reference-page[data-guide-class="warlock"] {
+  --reference-accent: var(--class-warlock-accent);
+  --reference-soft: var(--class-warlock-soft);
+  --reference-deep: var(--class-warlock-deep);
+  --reference-rgb: var(--class-warlock-rgb);
+}
+
+.directory-card.warlock {
+  --card-accent: var(--class-warlock-accent);
+  --card-soft: var(--class-warlock-soft);
+  --card-rgb: var(--class-warlock-rgb);
+}
+
+.spec-card.affliction {
+  --local-accent: var(--spec-warlock-affliction-accent);
+  --local-soft: var(--spec-warlock-affliction-soft);
+  --local-deep: var(--spec-warlock-affliction-deep);
+  --local-rgb: var(--spec-warlock-affliction-rgb);
+}
+
+.spec-card.demonology {
+  --local-accent: var(--spec-warlock-demonology-accent);
+  --local-soft: var(--spec-warlock-demonology-soft);
+  --local-deep: var(--spec-warlock-demonology-deep);
+  --local-rgb: var(--spec-warlock-demonology-rgb);
+}
+
+.spec-card.destruction {
+  --local-accent: var(--spec-warlock-destruction-accent);
+  --local-soft: var(--spec-warlock-destruction-soft);
+  --local-deep: var(--spec-warlock-destruction-deep);
+  --local-rgb: var(--spec-warlock-destruction-rgb);
+}

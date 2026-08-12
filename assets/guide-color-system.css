@@ -243,6 +243,73 @@
   --mechanic-marksmanship-pet-soft: #c8f1de;
   --mechanic-marksmanship-pet-rgb: 120, 207, 168;
 
+  /* Warlock class and specializations */
+  --class-warlock-accent: #8788ee;
+  --class-warlock-soft: #c8c9ff;
+  --class-warlock-deep: #30316b;
+  --class-warlock-rgb: 135, 136, 238;
+  --class-warlock-deep-rgb: 48, 49, 107;
+
+  --spec-warlock-affliction-accent: #b46cff;
+  --spec-warlock-affliction-soft: #e4c7ff;
+  --spec-warlock-affliction-deep: #4b216e;
+  --spec-warlock-affliction-rgb: 180, 108, 255;
+  --spec-warlock-affliction-deep-rgb: 75, 33, 110;
+
+  --spec-warlock-demonology-accent: #63d0b0;
+  --spec-warlock-demonology-soft: #c4f3e5;
+  --spec-warlock-demonology-deep: #205d4c;
+  --spec-warlock-demonology-rgb: 99, 208, 176;
+  --spec-warlock-demonology-deep-rgb: 32, 93, 76;
+
+  --spec-warlock-destruction-accent: #f07b3f;
+  --spec-warlock-destruction-soft: #ffd1b8;
+  --spec-warlock-destruction-deep: #6d2d13;
+  --spec-warlock-destruction-rgb: 240, 123, 63;
+  --spec-warlock-destruction-deep-rgb: 109, 45, 19;
+
+  /* Affliction Warlock mechanics */
+  --mechanic-affliction-dots: #b46cff;
+  --mechanic-affliction-dots-soft: #e4c7ff;
+  --mechanic-affliction-dots-rgb: 180, 108, 255;
+  --mechanic-affliction-haunt: #6fc7d8;
+  --mechanic-affliction-haunt-soft: #c6f0f6;
+  --mechanic-affliction-haunt-rgb: 111, 199, 216;
+  --mechanic-affliction-execute: #e07a9a;
+  --mechanic-affliction-execute-soft: #f8cad8;
+  --mechanic-affliction-execute-rgb: 224, 122, 154;
+  --mechanic-affliction-resources: #70c99a;
+  --mechanic-affliction-resources-soft: #c9f0db;
+  --mechanic-affliction-resources-rgb: 112, 201, 154;
+
+  /* Demonology Warlock mechanics */
+  --mechanic-demonology-felguard: #63d0b0;
+  --mechanic-demonology-felguard-soft: #c4f3e5;
+  --mechanic-demonology-felguard-rgb: 99, 208, 176;
+  --mechanic-demonology-procs: #e5905a;
+  --mechanic-demonology-procs-soft: #f8d4bd;
+  --mechanic-demonology-procs-rgb: 229, 144, 90;
+  --mechanic-demonology-metamorphosis: #b37aee;
+  --mechanic-demonology-metamorphosis-soft: #e5cef9;
+  --mechanic-demonology-metamorphosis-rgb: 179, 122, 238;
+  --mechanic-demonology-pact: #7db5e8;
+  --mechanic-demonology-pact-soft: #cce5fa;
+  --mechanic-demonology-pact-rgb: 125, 181, 232;
+
+  /* Destruction Warlock mechanics */
+  --mechanic-destruction-immolate: #f07b3f;
+  --mechanic-destruction-immolate-soft: #ffd1b8;
+  --mechanic-destruction-immolate-rgb: 240, 123, 63;
+  --mechanic-destruction-bolts: #77c9a5;
+  --mechanic-destruction-bolts-soft: #c9f0df;
+  --mechanic-destruction-bolts-rgb: 119, 201, 165;
+  --mechanic-destruction-backdraft: #e4b04e;
+  --mechanic-destruction-backdraft-soft: #f8e3b5;
+  --mechanic-destruction-backdraft-rgb: 228, 176, 78;
+  --mechanic-destruction-imp: #a88bf0;
+  --mechanic-destruction-imp-soft: #ddd2fa;
+  --mechanic-destruction-imp-rgb: 168, 139, 240;
+
   /* Safe defaults */
   --class-accent: var(--text-muted);
   --class-accent-soft: var(--text-primary);
@@ -387,4 +454,41 @@ body:has(.ah-guide-heading) {
   --theme-accent-deep: var(--spec-hunter-survival-deep);
   --theme-accent-rgb: var(--spec-hunter-survival-rgb);
   --theme-accent-deep-rgb: var(--spec-hunter-survival-deep-rgb);
+}
+
+[data-guide-class="warlock"] {
+  --class-accent: var(--class-warlock-accent);
+  --class-accent-soft: var(--class-warlock-soft);
+  --class-accent-deep: var(--class-warlock-deep);
+  --class-accent-rgb: var(--class-warlock-rgb);
+  --class-accent-deep-rgb: var(--class-warlock-deep-rgb);
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="warlock"][data-guide-spec="affliction"] {
+  --theme-accent: var(--spec-warlock-affliction-accent);
+  --theme-accent-soft: var(--spec-warlock-affliction-soft);
+  --theme-accent-deep: var(--spec-warlock-affliction-deep);
+  --theme-accent-rgb: var(--spec-warlock-affliction-rgb);
+  --theme-accent-deep-rgb: var(--spec-warlock-affliction-deep-rgb);
+}
+
+[data-guide-class="warlock"][data-guide-spec="demonology"] {
+  --theme-accent: var(--spec-warlock-demonology-accent);
+  --theme-accent-soft: var(--spec-warlock-demonology-soft);
+  --theme-accent-deep: var(--spec-warlock-demonology-deep);
+  --theme-accent-rgb: var(--spec-warlock-demonology-rgb);
+  --theme-accent-deep-rgb: var(--spec-warlock-demonology-deep-rgb);
+}
+
+[data-guide-class="warlock"][data-guide-spec="destruction"] {
+  --theme-accent: var(--spec-warlock-destruction-accent);
+  --theme-accent-soft: var(--spec-warlock-destruction-soft);
+  --theme-accent-deep: var(--spec-warlock-destruction-deep);
+  --theme-accent-rgb: var(--spec-warlock-destruction-rgb);
+  --theme-accent-deep-rgb: var(--spec-warlock-destruction-deep-rgb);
 }
