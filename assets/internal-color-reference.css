@@ -168,6 +168,7 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
 }
 
 .reference-section {
+  scroll-margin-top: 76px;
   margin-top: 16px;
   padding: 16px;
   border: 1px solid var(--border-default);
@@ -357,6 +358,40 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
 .flow-step strong { display: block; color: var(--reference-soft); font-size: 12px; }
 .flow-step span { display: block; margin-top: 4px; color: var(--text-muted); font-size: 11px; }
 
+.identity-example-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.identity-gradient-example {
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid rgba(var(--spec-warlock-demonology-rgb), .26);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+}
+
+.identity-gradient-example .identity-example-label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--class-warlock-soft);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.identity-gradient-example strong {
+  display: block;
+  color: var(--text-strong);
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.identity-gradient-example strong span { color: var(--spec-warlock-demonology-accent); }
+.identity-gradient-example p { max-width: 52ch; margin: 8px 0 0; color: var(--text-muted); font-size: 12px; }
+
 .related-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .related-links a,
 .reference-pager a {
@@ -388,11 +423,13 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
 
 @media (max-width: 640px) {
   .color-reference-page .wrap { padding: 10px 10px 36px; }
+  .reference-section { scroll-margin-top: 12px; }
   .reference-site-nav { position: static; }
   .reference-site-nav a { flex: 1 1 calc(50% - 7px); justify-content: center; }
   .reference-site-nav .public-hub-link { flex-basis: 100%; margin-right: 0; }
   .reference-header { padding: 18px; }
   .reference-grid,
+  .identity-example-grid,
   .reference-directory-grid,
   .rule-grid,
   .spec-grid,

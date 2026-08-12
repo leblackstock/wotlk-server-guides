@@ -29,8 +29,8 @@ body header.guide-hero {
 }
 
 .guide-identity-gradient--card {
-  --guide-identity-class-opacity: .28;
-  --guide-identity-spec-opacity: .22;
+  --guide-identity-class-opacity: .14;
+  --guide-identity-spec-opacity: .11;
 }
 
 .guide-identity-gradient:hover,

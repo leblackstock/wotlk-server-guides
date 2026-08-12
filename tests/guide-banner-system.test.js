@@ -143,7 +143,7 @@ for (const file of discoveredGuideFiles) {
 const hubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "utf8")).window.document;
 assert.equal(hubDocument.querySelectorAll(".class-guide-card").length, Object.keys(families).length);
 assert.equal(
-  hubDocument.querySelectorAll('link[href="./assets/guide-hero.css?v=20260812-guide-identity-card-v2"]').length,
+  hubDocument.querySelectorAll('link[href="./assets/guide-hero.css?v=20260812-guide-identity-card-v3"]').length,
   1,
   "index.html: shared guide-gradient stylesheet is missing"
 );
@@ -231,6 +231,15 @@ assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent 
 assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /approved subtle opacity variant/);
 const colorReferenceDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8")).window.document;
 assert.match(colorReferenceDocument.querySelector("#workflow")?.textContent || "", /Reuse the identity gradient/);
+assert.equal(
+  colorReferenceDocument.querySelectorAll('link[href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3"]').length,
+  1,
+  "internal/color-reference.html: shared identity-gradient stylesheet is missing"
+);
+assert.equal(colorReferenceDocument.querySelectorAll("#identity-examples .guide-identity-gradient").length, 2);
+assert.equal(colorReferenceDocument.querySelectorAll("#identity-examples .guide-identity-gradient--card").length, 1);
+assert.match(colorReferenceDocument.querySelector("#identity-examples")?.textContent || "", /Guide banner · 42% \/ 34%/);
+assert.match(colorReferenceDocument.querySelector("#identity-examples")?.textContent || "", /Compact Hub card · 14% \/ 11%/);
 
 const operatingManuals = {
   "protection-paladin": { id: "quick-start", summaryCards: 4, sequences: 3 },
@@ -420,7 +429,7 @@ assert.match(
 );
 assert.match(
   css,
-  /\.guide-identity-gradient--card\s*\{\s*--guide-identity-class-opacity:\s*\.28;\s*--guide-identity-spec-opacity:\s*\.22;/,
+  /\.guide-identity-gradient--card\s*\{\s*--guide-identity-class-opacity:\s*\.14;\s*--guide-identity-spec-opacity:\s*\.11;/,
   "shared guide identity gradient is missing the subtle card variant"
 );
 assert.match(

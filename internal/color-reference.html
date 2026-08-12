@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260812-hunter-fel-color-v2">
   <link rel="stylesheet" href="../assets/death-knight-color-system.css?v=20260725-dk-live-v2">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-dk-live-v2">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260812-identity-examples-v1">
   <link rel="stylesheet" href="../assets/priest-hunter-color-reference.css?v=20260726-priest-hunter-color-v2">
   <link rel="stylesheet" href="../assets/warlock-color-reference.css?v=20260812-warlock-color-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
 </head>
 <body class="color-reference-page" data-reference-theme="core">
 <div class="wrap">
@@ -20,7 +21,7 @@
     <span class="reference-kicker">Internal design system • Noindex</span>
     <h1>Color Reference <span>Hub</span></h1>
     <p class="sub">The single entry point for class, specialization, mechanic, status, item-quality, Addon, and Auction House color decisions used across the Hellscream guide site.</p>
-    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#directory">Reference pages</a><a href="#hierarchy">Color hierarchy</a><a href="#workflow">Adding a guide</a><a href="#fixed-meanings">Fixed meanings</a></nav>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#directory">Reference pages</a><a href="#hierarchy">Color hierarchy</a><a href="#identity-examples">Gradient examples</a><a href="#workflow">Adding a guide</a><a href="#fixed-meanings">Fixed meanings</a></nav>
   </header>
   <main>
     <section class="reference-section" id="directory">
@@ -39,6 +40,23 @@
       <h2>Color hierarchy</h2>
       <div class="reference-flow" aria-label="Color decision order"><div class="flow-step"><strong>Foundation</strong><span>Surfaces, text, borders</span></div><div class="flow-step"><strong>Section or class</strong><span>Broad identity</span></div><div class="flow-step"><strong>Specialization</strong><span>Active state and focus</span></div><div class="flow-step"><strong>Mechanic</strong><span>Repeated gameplay concept</span></div><div class="flow-step"><strong>Status or game data</strong><span>Fixed global meaning</span></div></div>
       <div class="reference-note"><strong>Primary rule:</strong> use the highest-level color that accurately describes the information. Do not invent a local accent when an existing semantic role already fits.</div>
+    </section>
+    <section class="reference-section" id="identity-examples">
+      <h2>Class-to-spec gradient examples</h2>
+      <p>Both examples use the same Demonology tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.</p>
+      <div class="identity-example-grid">
+        <article class="identity-gradient-example guide-identity-gradient" style="--guide-banner-class-deep-rgb:var(--class-warlock-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-warlock-demonology-deep-rgb)">
+          <span class="identity-example-label">Guide banner · 42% / 34%</span>
+          <strong><span>Demo Lock</span> Quick Start</strong>
+          <p>Use the default strength for the large identity banner at the top of a guide.</p>
+        </article>
+        <article class="identity-gradient-example guide-identity-gradient guide-identity-gradient--card" style="--guide-banner-class-deep-rgb:var(--class-warlock-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-warlock-demonology-deep-rgb)">
+          <span class="identity-example-label">Compact Hub card · 14% / 11%</span>
+          <strong><span>Demo Lock</span> Quick Start</strong>
+          <p>Use the half-strength card modifier when the gradient supports a compact surface.</p>
+        </article>
+      </div>
+      <div class="reference-note"><strong>Approved usage:</strong> banners use <code>.guide-identity-gradient</code>. Compact cards add <code>.guide-identity-gradient--card</code>. Never duplicate or locally alter the formula.</div>
     </section>
     <section class="reference-section" id="workflow">
       <h2>Adding or revising a guide</h2>
