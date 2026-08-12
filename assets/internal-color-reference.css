@@ -50,6 +50,10 @@ body.color-reference-page[data-guide-class="death-knight"] {
   --reference-rgb: var(--class-death-knight-rgb);
 }
 
+body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
+  color: var(--reference-soft);
+}
+
 .color-reference-page .wrap {
   max-width: 1240px;
   margin: 0 auto;

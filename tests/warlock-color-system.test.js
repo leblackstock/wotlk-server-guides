@@ -6,6 +6,8 @@ const { JSDOM } = require("jsdom");
 const root = path.resolve(__dirname, "..");
 const colorCss = fs.readFileSync(path.join(root, "assets", "guide-color-system.css"), "utf8");
 const referenceCss = fs.readFileSync(path.join(root, "assets", "warlock-color-reference.css"), "utf8");
+const sharedReferenceCss = fs.readFileSync(path.join(root, "assets", "internal-color-reference.css"), "utf8");
+const deathKnightCss = fs.readFileSync(path.join(root, "assets", "death-knight-color-system.css"), "utf8");
 const referenceHtml = fs.readFileSync(path.join(root, "internal", "warlock-color-system.html"), "utf8");
 const referenceDocument = new JSDOM(referenceHtml).window.document;
 const cardSurface = "#121820";
@@ -190,6 +192,20 @@ for (const file of canonicalReferences) {
     document.querySelectorAll('.reference-site-nav a[href="warlock-color-system.html"]').length,
     1,
     `${file} must link the Warlock standard once in its reference navigation`
+  );
+}
+
+const deathKnightSoft = deathKnightCss.match(/--class-death-knight-soft:\s*([^;]+);/);
+assert.ok(deathKnightSoft, "missing --class-death-knight-soft");
+assert.match(
+  sharedReferenceCss,
+  /body\.color-reference-page\[data-guide-class="death-knight"\] \.reference-kicker\s*\{[^}]*color:\s*var\(--reference-soft\);/s,
+  "Death Knight reference kicker must use the accessible soft class color"
+);
+for (const background of ["#171d24", "#0b0f14"]) {
+  assert.ok(
+    contrastRatio(deathKnightSoft[1].trim().toLowerCase(), background) >= 4.5,
+    `Death Knight reference kicker must retain 4.5:1 contrast against ${background}`
   );
 }
 
