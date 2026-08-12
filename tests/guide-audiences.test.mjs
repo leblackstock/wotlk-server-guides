@@ -10,7 +10,7 @@ const audit = spawnSync(process.execPath, ["tools/audit-guide-audiences.mjs"], {
 });
 
 assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
-assert.match(audit.stdout, /6 registered families/);
+assert.match(audit.stdout, /9 registered families/);
 
 const densityReport = spawnSync(process.execPath, [
   "tools/analyze-guide-icon-density.mjs",

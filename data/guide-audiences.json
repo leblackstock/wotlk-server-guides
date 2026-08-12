@@ -30,6 +30,24 @@
       "configFile": "templates/spec-guide/marksmanship-hunter.config.json"
     },
     {
+      "specSlug": "affliction-warlock",
+      "specName": "Affliction Warlock",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/affliction-warlock.config.json"
+    },
+    {
+      "specSlug": "demonology-warlock",
+      "specName": "Demonology Warlock",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/demonology-warlock.config.json"
+    },
+    {
+      "specSlug": "destruction-warlock",
+      "specName": "Destruction Warlock",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/destruction-warlock.config.json"
+    },
+    {
       "specSlug": "blood-death-knight",
       "specName": "Blood Death Knight",
       "guideAudience": "specialized-raid",

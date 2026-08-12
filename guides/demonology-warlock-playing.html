@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Run the DoT and filler priority, react to Molten Core and Decimation, and use the Felguard and Metamorphosis safely.">
+  <title>Playing your Demonology Warlock | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260812-warlock-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
+  <link rel="stylesheet" href="../assets/demonology-warlock.css?v=20260812-warlock-v1">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
+  <script src="../assets/warlock-tooltips.js?v=20260812-warlock-v1" defer></script>
+  <script src="../assets/demonology-warlock.js?v=20260812-warlock-v1" defer></script>
+</head>
+<body data-guide-class="warlock" data-guide-spec="demonology" data-guide-audience="fresh-80">
+  <div class="wrap" id="top">
+    <nav class="site-nav" aria-label="Demonology Warlock guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="demonology-warlock-pve-guide.html">Quick Start</a><a href="demonology-warlock-playing.html" aria-current="page">Playing</a><a href="demonology-warlock-setting-up.html">Setup</a><a href="demonology-warlock-gearing.html">Building</a><a href="demonology-warlock-gear-targets.html">Equipping</a><a href="demonology-warlock-raiding.html">Raiding</a></nav>
+    <header class="guide-hero">
+      <span class="page-kicker">Demonology Warlock • WotLK 3.3.5 • Level 80+</span>
+      <h1 class="guide-hero-title"><span class="hero-spec-nickname">Demo Lock</span> <span class="hero-guide-type">Playing Guide</span></h1>
+      <p class="sub">Run the DoT and filler priority, react to Molten Core and Decimation, and use the Felguard and Metamorphosis safely.</p>
+    </header>
+    <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page"><a href="#engine">Combat engine</a><a href="#playbooks">Playbooks</a><a href="#utility">Cooldowns</a><a href="#mistakes">Mistakes</a><a href="#sources">Sources</a></nav>
+    <main><section class="common" id="engine"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_demonform.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Core decision engine<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="engine-grid"><div class="engine-step mechanic-felguard"><strong data-entity-icon="Summon Felguard">Felguard</strong><p>Keep the Felguard alive, attacking the correct target, and empowered without wasting the cooldown while it travels.</p></div><div class="engine-step mechanic-procs"><strong data-entity-icon="Molten Core">Procs</strong><p>Switch fillers deliberately: Shadow Bolt by default, Incinerate for Molten Core, and Soul Fire for Decimation.</p></div><div class="engine-step mechanic-metamorphosis"><strong data-entity-icon="Metamorphosis">Metamorphosis</strong><p>Choose a safe full window first; proximity damage is optional and never outranks mechanics.</p></div><div class="engine-step mechanic-pact"><strong data-entity-icon="Demonic Pact">Demonic Pact</strong><p>Build reliable personal spell power and pet uptime before optimizing raid-wide proc timing.</p></div></div>
+    <div class="note spec" style="margin-top:12px"><strong>Default priority:</strong> <span class="ability-name">Fel Armor</span> and <span class="ability-name">Glyph of Life Tap</span> buff → <span class="ability-name">Metamorphosis</span> in a useful planned window → assigned curse → <span class="ability-name">Corruption</span> → <span class="ability-name">Immolate</span> → <span class="ability-name">Shadow Bolt</span> filler → <span class="ability-name">Incinerate</span> during <span class="ability-name">Molten Core</span> → <span class="ability-name">Soul Fire</span> during <span class="ability-name">Decimation</span>.</div>
+    <div class="two-col" style="margin-top:12px"><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_demonform.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Opener</h3><ul class="clean-list"><li>Use a safe pre-pull <span class="ability-name">Life Tap</span> when <span class="ability-name">Glyph of Life Tap</span> is equipped; start with Fel Armor and the Felguard ready.</li><li>Precast <span class="ability-name">Shadow Bolt</span> when the tank and pull timer allow it, then send the Felguard.</li><li>Apply the assigned curse, <span class="ability-name">Corruption</span>, and <span class="ability-name">Immolate</span>.</li><li>Use <span class="ability-name">Metamorphosis</span> early only when the full window will connect; proximity abilities are a separate safety decision.</li></ul></div><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warlock_moltencore.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Track this</h3><ul class="clean-list"><li><span class="ability-name">Corruption</span>, <span class="ability-name">Immolate</span>, assigned curse, <span class="ability-name">Molten Core</span>, and <span class="ability-name">Decimation</span>.</li><li><span class="ability-name">Metamorphosis</span>, <span class="ability-name">Demonic Empowerment</span>, <span class="ability-name">Glyph of Life Tap</span>, mana, health, and threat.</li><li>Felguard target, health, range, <span class="ability-name">Cleave</span>, and movement path.</li><li><span class="ability-name">Demonic Pact</span> presence as a diagnostic; reliable pet uptime comes before proc micromanagement.</li></ul></div></div></section><section class="common" id="playbooks"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_demonform.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Situation playbooks<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><p class="muted">Select a card header to focus on one situation. Select it again—or press Escape—to restore all cards.</p><div class="spec-playbook-grid"><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Ordinary target</span><h3 data-entity-icon="Shadow Bolt">Run the base priority</h3></div>
+      <span class="spec-card-tag">Default</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Maintain the required effects and use Shadow Bolt while no stronger proc state is active.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Corruption">Corruption</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Immolate">Immolate</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Shadow Bolt">Shadow Bolt</span></div>
+      <ul class="clean-list"><li>Corruption remains valuable because it can trigger Molten Core.</li><li>Use Curse of Doom only when it has time to complete; otherwise choose the assigned utility or shorter damage curse.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> casting Incinerate without Molten Core or losing Corruption while waiting for a proc.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Molten Core active</span><h3 data-entity-icon="Molten Core">Switch to Incinerate</h3></div>
+      <span class="spec-card-tag">Proc</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use the proc on Incinerate while maintaining higher-priority effects.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Molten Core">Molten Core</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Incinerate">Incinerate</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Immolate">Immolate</span></div>
+      <ul class="clean-list"><li>Do not let the proc distract from an urgent target switch or expiring effect.</li><li>If Decimation is active, Soul Fire takes precedence.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> continuing Shadow Bolt through the proc or consuming the phase on a dying target.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Target below 35%</span><h3 data-entity-icon="Decimation">Soul Fire execute</h3></div>
+      <span class="spec-card-tag">Execute</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use instant-access Decimation procs to make Soul Fire the filler while required effects stay active.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Decimation">Decimation</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Soul Fire">Soul Fire</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Corruption">Corruption</span></div>
+      <ul class="clean-list"><li>A low-health add can activate Decimation for damage on the assigned target.</li><li>Keep Corruption and Immolate only when their remaining ticks justify the globals.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> ignoring Decimation or spamming Soul Fire after the proc has fallen.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Planned cooldown</span><h3 data-entity-icon="Metamorphosis">Use Metamorphosis safely</h3></div>
+      <span class="spec-card-tag">Cooldown</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Choose a window with continuous target access; add proximity abilities only if the position is safe.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Metamorphosis">Metamorphosis</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Immolation Aura">Immolation Aura</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Shadow Cleave">Shadow Cleave</span></div>
+      <ul class="clean-list"><li>Metamorphosis still grants ranged damage even when melee range is unsafe.</li><li>Demon Charge costs a global and is a movement tool, not a mandatory opener.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> charging into a lethal mechanic to chase optional Immolation Aura ticks.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Pet movement</span><h3 data-entity-icon="Summon Felguard">Protect the Felguard</h3></div>
+      <span class="spec-card-tag">Pet</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Recall or redirect before the pet crosses hazards, attacks an immune target, or misses the next assigned enemy.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Demonic Empowerment">Demonic Empowerment</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Cleave">Cleave</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Intercept">Intercept</span></div>
+      <ul class="clean-list"><li>Use Demonic Empowerment when the pet can actually attack.</li><li>Turn off automatic Intercept when an unintended charge would kill or misposition the pet.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> losing both Felguard damage and Demonic Pact because follow was never bound.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Stacked enemies</span><h3 data-entity-icon="Seed of Corruption">Choose controlled AoE</h3></div>
+      <span class="spec-card-tag">AoE</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use Seed on durable stacks and Metamorphosis proximity tools only where tank threat and mechanics permit.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Seed of Corruption">Seed of Corruption</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Metamorphosis">Metamorphosis</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Immolation Aura">Immolation Aura</span></div>
+      <ul class="clean-list"><li>Rain of Fire is a simpler ranged choice when Seeds will not detonate reliably.</li><li>Keep the Felguard on the approved target instead of letting Cleave break control.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> opening at close range before threat exists or breaking crowd control with pet Cleave.</p></div>
+  </article></div></section><section class="common" id="utility"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_faeriefire.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Cooldowns and utility<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Primary job</th><th>Timing rule</th></tr></thead><tbody><tr><td><span class="ability-name">Demonic Empowerment</span></td><td>Felguard throughput cooldown</td><td>Use when the Felguard is in range and attacking; it is off the global cooldown.</td></tr><tr><td><span class="ability-name">Demonic Pact</span></td><td>Raid spell-power support</td><td>It follows Felguard critical hits and the Warlock's spell power; pet uptime is the first requirement.</td></tr><tr><td><span class="ability-name">Demonic Circle: Teleport</span></td><td>Planned displacement</td><td>Place the circle before the mechanic where it preserves casting or exits proximity safely.</td></tr><tr><td><span class="ability-name">Soulshatter</span></td><td>Threat reduction</td><td>Use before Metamorphosis or execute threat becomes a tank problem.</td></tr><tr><td><span class="ability-name">Banish</span></td><td>Demon or elemental control</td><td>Coordinate the target and pet Cleave before applying it.</td></tr><tr><td><span class="ability-name">Shadow Ward</span></td><td>Shadow mitigation</td><td>Use for known shadow damage; it does not make unsafe proximity acceptable.</td></tr></tbody></table></div></section><section class="common" id="mistakes"><h2 class="guide-category-heading">Mistakes that cost pulls<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong><ul class="clean-list"><li>Treating Shadow Bolt, Incinerate, and Soul Fire as interchangeable fillers.</li><li>Letting Corruption fall and then wondering why Molten Core never appears.</li><li>Using Metamorphosis during forced downtime or an immediate target immunity.</li></ul></div><div class="note danger"><strong>Raid mistakes</strong><ul class="clean-list"><li>Charging into melee range when ranged Metamorphosis was the safe choice.</li><li>Allowing the Felguard to die, idle, or attack an immune target.</li><li>Chasing a larger Demonic Pact number before personal setup and pet uptime are reliable.</li></ul></div></div></section><section class="common" id="sources"><h2 class="guide-category-heading">Sources and verification<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><ul class="source-list"><li><a href="https://www.wowhead.com/wotlk/guide/classes/warlock/demonology/dps-rotation-cooldowns-abilities-pve" target="_blank" rel="noopener">Demonology Warlock rotation, cooldowns, and abilities</a></li><li><a href="https://www.wowhead.com/wotlk/spells/abilities/warlock" target="_blank" rel="noopener">Warlock spell records</a></li></ul></section><nav class="page-pager" aria-label="Previous and next guide pages"><a href="demonology-warlock-pve-guide.html">← Quick Start</a><a href="demonology-warlock-setting-up.html">Setup →</a></nav></main>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-08-12</footer>
+  </div>
+</body>
+</html>

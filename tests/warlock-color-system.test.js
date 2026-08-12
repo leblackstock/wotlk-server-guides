@@ -12,6 +12,8 @@ const referenceHtml = fs.readFileSync(path.join(root, "internal", "warlock-color
 const referenceDocument = new JSDOM(referenceHtml).window.document;
 const hunterReferenceHtml = fs.readFileSync(path.join(root, "internal", "hunter-color-system.html"), "utf8");
 const hunterReferenceDocument = new JSDOM(hunterReferenceHtml).window.document;
+const colorHubHtml = fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8");
+const colorHubDocument = new JSDOM(colorHubHtml).window.document;
 const hunterSpecimenHtml = fs.readFileSync(path.join(root, "internal", "marksmanship-hunter-visual-system.html"), "utf8");
 const hunterConfig = JSON.parse(fs.readFileSync(path.join(root, "templates", "spec-guide", "marksmanship-hunter.config.json"), "utf8"));
 const cardSurface = "#121820";
@@ -154,6 +156,33 @@ for (const config of configs) {
     assert.equal(cssValue(`${mechanicPrefix}-soft`), mechanic.soft);
     assert.equal(cssValue(`${mechanicPrefix}-rgb`), mechanic.rgb);
   }
+
+  const guideConfig = JSON.parse(
+    fs.readFileSync(path.join(root, "templates", "spec-guide", `${config.specKey}-warlock.config.json`), "utf8")
+  );
+  const specimenHtml = fs.readFileSync(
+    path.join(root, "internal", `${config.specKey}-warlock-visual-system.html`),
+    "utf8"
+  ).toLowerCase();
+  const normalizeRgb = (value) => value.replaceAll(" ", "");
+  assert.equal(guideConfig.classAccent.toLowerCase(), warlockClass.accent);
+  assert.equal(guideConfig.classAccentSoft.toLowerCase(), warlockClass.soft);
+  assert.equal(guideConfig.classAccentDeep.toLowerCase(), warlockClass.deep);
+  assert.equal(normalizeRgb(guideConfig.classAccentRgb), normalizeRgb(warlockClass.rgb));
+  assert.equal(guideConfig.specAccent.toLowerCase(), config.specAccent);
+  assert.equal(guideConfig.specAccentSoft.toLowerCase(), config.specAccentSoft);
+  assert.equal(guideConfig.specAccentDeep.toLowerCase(), config.specAccentDeep);
+  assert.equal(normalizeRgb(guideConfig.specAccentRgb), normalizeRgb(config.specAccentRgb));
+  for (const mechanic of config.mechanics) {
+    const configuredMechanic = guideConfig.mechanics.find((entry) => entry.key === mechanic.key);
+    assert.ok(configuredMechanic, `${config.specShortName} config is missing ${mechanic.key}`);
+    assert.equal(configuredMechanic.color.toLowerCase(), mechanic.color);
+    assert.equal(configuredMechanic.soft.toLowerCase(), mechanic.soft);
+    assert.equal(normalizeRgb(configuredMechanic.rgb), normalizeRgb(mechanic.rgb));
+  }
+  for (const color of [warlockClass.accent, config.specAccent, ...config.mechanics.map((mechanic) => mechanic.color)]) {
+    assert.ok(specimenHtml.includes(color), `${config.specShortName} specimen must display ${color}`);
+  }
 }
 
 const accentTokens = [
@@ -235,6 +264,15 @@ for (const color of [hunterClass.accent, hunterSpecs[1].accent, ...hunterMechani
   assert.ok(hunterSpecimenHtml.toLowerCase().includes(color), `Marksmanship specimen must display ${color}`);
 }
 assert.match(hunterReferenceDocument.querySelector("#audit").textContent, /color-vision differences/);
+assert.match(hunterReferenceDocument.body.textContent, /Approved for implementation/i);
+assert.match(referenceDocument.body.textContent, /Approved for implementation/i);
+for (const system of ["hunter", "warlock"]) {
+  assert.match(
+    colorHubDocument.querySelector(`.directory-card.${system} .card-status`)?.textContent ?? "",
+    /Implementation approved/i,
+    `${system} color hub card must show implementation approval`
+  );
+}
 
 assertPairwiseDistance(
   configs.map((config) => `spec-warlock-${config.specKey}-accent`),

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage DoTs, Haunt, Shadow Bolt, Drain Soul, movement, target life, curses, and utility as one priority system.">
+  <title>Playing your Affliction Warlock | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260812-warlock-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
+  <link rel="stylesheet" href="../assets/affliction-warlock.css?v=20260812-warlock-v1">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
+  <script src="../assets/warlock-tooltips.js?v=20260812-warlock-v1" defer></script>
+  <script src="../assets/affliction-warlock.js?v=20260812-warlock-v1" defer></script>
+</head>
+<body data-guide-class="warlock" data-guide-spec="affliction" data-guide-audience="fresh-80">
+  <div class="wrap" id="top">
+    <nav class="site-nav" aria-label="Affliction Warlock guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="affliction-warlock-pve-guide.html">Quick Start</a><a href="affliction-warlock-playing.html" aria-current="page">Playing</a><a href="affliction-warlock-setting-up.html">Setup</a><a href="affliction-warlock-gearing.html">Building</a><a href="affliction-warlock-gear-targets.html">Equipping</a><a href="affliction-warlock-raiding.html">Raiding</a></nav>
+    <header class="guide-hero">
+      <span class="page-kicker">Affliction Warlock • WotLK 3.3.5 • Level 80+</span>
+      <h1 class="guide-hero-title"><span class="hero-spec-nickname">Affliction</span> <span class="hero-guide-type">Playing Guide</span></h1>
+      <p class="sub">Manage DoTs, Haunt, Shadow Bolt, Drain Soul, movement, target life, curses, and utility as one priority system.</p>
+    </header>
+    <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page"><a href="#engine">Combat engine</a><a href="#playbooks">Playbooks</a><a href="#utility">Cooldowns</a><a href="#mistakes">Mistakes</a><a href="#sources">Sources</a></nav>
+    <main><section class="common" id="engine"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_abominationexplosion.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Core decision engine<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="engine-grid"><div class="engine-step mechanic-dots"><strong data-entity-icon="Corruption">DoTs</strong><p>Maintain effects only when the target will live long enough for their full value.</p></div><div class="engine-step mechanic-haunt"><strong data-entity-icon="Haunt">Haunt</strong><p>Keep Haunt active and use Shadow Bolt to establish and refresh the supporting debuffs.</p></div><div class="engine-step mechanic-execute"><strong data-entity-icon="Drain Soul">Execute</strong><p>Below 25%, channel Drain Soul and refresh required effects immediately after a tick.</p></div><div class="engine-step mechanic-resources"><strong data-entity-icon="Life Tap">Resources</strong><p>Maintain Fel Armor, plan Life Tap safely, and arrive with shards, pet, Healthstone, and Soulstone ready.</p></div></div>
+    <div class="note spec" style="margin-top:12px"><strong>Default priority:</strong> <span class="ability-name">Fel Armor</span> and the <span class="ability-name">Glyph of Life Tap</span> buff → assigned curse → <span class="ability-name">Shadow Bolt</span> to establish <span class="ability-name">Shadow Embrace</span> → <span class="ability-name">Haunt</span> → <span class="ability-name">Unstable Affliction</span> → <span class="ability-name">Corruption</span> → <span class="ability-name">Shadow Bolt</span> filler above 25% → <span class="ability-name">Drain Soul</span> filler below 25%.</div>
+    <div class="two-col" style="margin-top:12px"><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_warlock_haunt.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Opener</h3><ul class="clean-list"><li>Use a safe pre-pull <span class="ability-name">Life Tap</span> when <span class="ability-name">Glyph of Life Tap</span> is equipped; enter combat with <span class="ability-name">Fel Armor</span> and the Felhunter ready.</li><li>Precast <span class="ability-name">Shadow Bolt</span> when the pull timer and tank allow it.</li><li>Apply <span class="ability-name">Haunt</span>, <span class="ability-name">Unstable Affliction</span>, the assigned curse, and <span class="ability-name">Corruption</span> after the opening debuffs are established.</li><li>Do not delay the whole opener waiting for a raid buff or proc that may never arrive.</li></ul></div><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_abominationexplosion.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Track this</h3><ul class="clean-list"><li><span class="ability-name">Haunt</span>, <span class="ability-name">Unstable Affliction</span>, <span class="ability-name">Corruption</span>, the assigned curse, and <span class="ability-name">Shadow Embrace</span>.</li><li><span class="ability-name">Glyph of Life Tap</span> buff, mana, health, threat, and <span class="ability-name">Soulshatter</span>.</li><li>Target health at 35% and 25%, plus enough remaining life for each new DoT.</li><li>Felhunter target, health, range, and <span class="ability-name">Spell Lock</span> availability.</li></ul></div></div></section><section class="common" id="playbooks"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_abominationexplosion.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Situation playbooks<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><p class="muted">Select a card header to focus on one situation. Select it again—or press Escape—to restore all cards.</p><div class="spec-playbook-grid"><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Durable target</span><h3 data-entity-icon="Haunt">Build the full engine</h3></div>
+      <span class="spec-card-tag">Default</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use the complete priority when the target will live long enough for every maintenance global to pay back.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Shadow Bolt">Shadow Bolt</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Haunt">Haunt</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Unstable Affliction">Unstable Affliction</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Corruption">Corruption</span></div>
+      <ul class="clean-list"><li>Establish Shadow Embrace before evaluating the opening Corruption.</li><li>Refresh Haunt early enough that travel time does not create a debuff gap.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> recasting every DoT early and replacing damaging ticks with maintenance globals.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Target below 25%</span><h3 data-entity-icon="Drain Soul">Drain Soul execute</h3></div>
+      <span class="spec-card-tag">Execute</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Replace Shadow Bolt filler with Drain Soul while required effects stay active.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Haunt">Haunt</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Unstable Affliction">Unstable Affliction</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Drain Soul">Drain Soul</span></div>
+      <ul class="clean-list"><li>Break the channel immediately after a tick when a required effect must be refreshed.</li><li>Restart Drain Soul after movement or a refresh; never wait for a full 15-second channel.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> clipping before ticks or letting Haunt and Unstable Affliction disappear during the strongest phase.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Second durable target</span><h3 data-entity-icon="Corruption">Multi-DoT with a reason</h3></div>
+      <span class="spec-card-tag">Cleave</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Add effects only when the target will survive long enough and the primary assignment remains safe.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Corruption">Corruption</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Unstable Affliction">Unstable Affliction</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Haunt">Haunt</span></div>
+      <ul class="clean-list"><li>Corruption is the cheapest durable extension; add longer setup only when life expectancy supports it.</li><li>Haunt cannot reliably cover many targets; prioritize the assigned target.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> blanketing short-lived adds and losing boss Haunt, execute ticks, or the required target swap.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Short-lived add</span><h3 data-entity-icon="Shadow Bolt">Skip slow setup</h3></div>
+      <span class="spec-card-tag">Swap</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use direct damage or a minimal DoT package when the add will die before a full ramp pays back.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Shadow Bolt">Shadow Bolt</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Haunt">Haunt</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Drain Soul">Drain Soul</span></div>
+      <ul class="clean-list"><li>Use Drain Soul on an eligible dying target when it supports the assignment and shard supply.</li><li>Follow the raid's kill target instead of padding durable side targets.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> finishing a five-global setup after the add is already dead.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Forced movement</span><h3 data-entity-icon="Life Tap">Move on useful globals</h3></div>
+      <span class="spec-card-tag">Mobile</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Refresh only effects genuinely due, tap safely, command the pet, or reposition through Demonic Circle.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Life Tap">Life Tap</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Corruption">Corruption</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Demonic Circle: Teleport">Demonic Circle: Teleport</span></div>
+      <ul class="clean-list"><li>Place Demonic Circle before the mechanic, not after movement has already begun.</li><li>Do not Life Tap into lethal incoming damage.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> manufacturing early DoT refreshes every time movement begins.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Stacked pack</span><h3 data-entity-icon="Seed of Corruption">Seed stable targets</h3></div>
+      <span class="spec-card-tag">AoE</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use Seed of Corruption on a target likely to remain inside the pack until detonation.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Seed of Corruption">Seed of Corruption</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Rain of Fire">Rain of Fire</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Shadowfury">Shadowfury</span></div>
+      <ul class="clean-list"><li>Choose Rain of Fire when the pack will die before repeated Seeds detonate.</li><li>Respect crowd control and tank threat before opening with AoE.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> seeding a target that leaves the stack or breaking assigned control.</p></div>
+  </article></div></section><section class="common" id="utility"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_faeriefire.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Cooldowns and utility<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Primary job</th><th>Timing rule</th></tr></thead><tbody><tr><td><span class="ability-name">Spell Lock</span></td><td>Felhunter interrupt</td><td>Keep manual control when an assigned cast matters; pet range and target determine availability.</td></tr><tr><td><span class="ability-name">Curse of the Elements</span></td><td>Spell-damage debuff</td><td>Use it when no equivalent effect is actually present; do not assume raid composition.</td></tr><tr><td><span class="ability-name">Demonic Circle: Teleport</span></td><td>Planned displacement</td><td>Place the circle before the pull where it solves a known mechanic.</td></tr><tr><td><span class="ability-name">Soulshatter</span></td><td>Threat reduction</td><td>Use before threat forces the tank or raid to react, not after the boss turns.</td></tr><tr><td><span class="ability-name">Banish</span></td><td>Demon or elemental control</td><td>Coordinate the target and never refresh through a kill call.</td></tr><tr><td><span class="ability-name">Shadow Ward</span></td><td>Shadow mitigation</td><td>Use for known shadow damage without treating it as immunity.</td></tr></tbody></table></div></section><section class="common" id="mistakes"><h2 class="guide-category-heading">Mistakes that cost pulls<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong><ul class="clean-list"><li>Treating the priority as a fixed rotation and refreshing effects early.</li><li>Using long DoTs on targets that will die before their final ticks.</li><li>Missing Drain Soul ticks by clipping at arbitrary times.</li></ul></div><div class="note danger"><strong>Raid mistakes</strong><ul class="clean-list"><li>Allowing Haunt to fall because travel time was ignored.</li><li>Life Tapping immediately before predictable lethal damage.</li><li>Losing the Felhunter or assigned Spell Lock to uncontrolled pet movement.</li></ul></div></div></section><section class="common" id="sources"><h2 class="guide-category-heading">Sources and verification<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><ul class="source-list"><li><a href="https://www.wowhead.com/wotlk/guide/classes/warlock/affliction/dps-rotation-cooldowns-abilities-pve" target="_blank" rel="noopener">Affliction Warlock rotation, cooldowns, and abilities</a></li><li><a href="https://www.wowhead.com/wotlk/spells/abilities/warlock" target="_blank" rel="noopener">Warlock spell records</a></li></ul></section><nav class="page-pager" aria-label="Previous and next guide pages"><a href="affliction-warlock-pve-guide.html">← Quick Start</a><a href="affliction-warlock-setting-up.html">Setup →</a></nav></main>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-08-12</footer>
+  </div>
+</body>
+</html>

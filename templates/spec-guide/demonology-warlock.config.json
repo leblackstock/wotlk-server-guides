@@ -1,0 +1,142 @@
+{
+  "className": "Warlock",
+  "classSlug": "warlock",
+  "specName": "Demonology Warlock",
+  "specShortName": "Demonology",
+  "guideNickname": "Demo Lock",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid DPS Guide"
+  },
+  "specSlug": "demonology-warlock",
+  "specKey": "demonology",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Ranged damage and raid support",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-12",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/warlock-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "warlock-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260812-warlock-v1",
+  "guideDescription": "A fresh-level-80 path into Felguard control, proc-driven casting, safe Metamorphosis use, and later raid support.",
+  "classAccent": "#8788EE",
+  "classAccentSoft": "#C8C9FF",
+  "classAccentDeep": "#30316B",
+  "classAccentRgb": "135,136,238",
+  "specAccent": "#AAD372",
+  "specAccentSoft": "#DDF2BE",
+  "specAccentDeep": "#405A28",
+  "specAccentRgb": "170,211,114",
+  "mechanics": [
+    {
+      "key": "felguard",
+      "label": "Felguard",
+      "titleIcon": "spell_shadow_summonfelguard",
+      "examples": [
+        { "name": "Summon Felguard", "type": "spell", "id": 30146, "icon": "spell_shadow_summonfelguard" },
+        { "name": "Demonic Empowerment", "type": "spell", "id": 47193, "icon": "ability_warlock_demonicempowerment" }
+      ],
+      "color": "#AAD372",
+      "soft": "#DDF2BE",
+      "deep": "#405A28",
+      "rgb": "170,211,114",
+      "use": "Keep the Felguard alive, attacking the correct target, and empowered without wasting the cooldown while it travels."
+    },
+    {
+      "key": "procs",
+      "label": "Procs",
+      "titleIcon": "ability_warlock_moltencore",
+      "examples": [
+        { "name": "Molten Core", "type": "spell", "id": 47247, "icon": "ability_warlock_moltencore" },
+        { "name": "Decimation", "type": "spell", "id": 63158, "icon": "spell_fire_fireball02" }
+      ],
+      "color": "#E5905A",
+      "soft": "#F8D4BD",
+      "deep": "#6B351A",
+      "rgb": "229,144,90",
+      "use": "Switch fillers deliberately: Shadow Bolt by default, Incinerate for Molten Core, and Soul Fire for Decimation."
+    },
+    {
+      "key": "metamorphosis",
+      "label": "Metamorphosis",
+      "titleIcon": "spell_shadow_demonform",
+      "examples": [
+        { "name": "Metamorphosis", "type": "spell", "id": 47241, "icon": "spell_shadow_demonform" },
+        { "name": "Immolation Aura", "type": "spell", "id": 50589, "icon": "spell_fire_elementaldevastation" }
+      ],
+      "color": "#B37AEE",
+      "soft": "#E5CEF9",
+      "deep": "#4A2768",
+      "rgb": "179,122,238",
+      "use": "Choose a safe full window first; proximity damage is optional and never outranks mechanics."
+    },
+    {
+      "key": "pact",
+      "label": "Demonic Pact",
+      "titleIcon": "spell_shadow_demonicpact",
+      "examples": [
+        { "name": "Demonic Pact", "type": "spell", "id": 47240, "icon": "spell_shadow_demonicpact" },
+        { "name": "Fel Armor", "type": "spell", "id": 47893, "icon": "spell_shadow_felarmour" }
+      ],
+      "color": "#7DB5E8",
+      "soft": "#CCE5FA",
+      "deep": "#294F73",
+      "rgb": "125,181,232",
+      "use": "Build reliable personal spell power and pet uptime before optimizing raid-wide proc timing."
+    }
+  ],
+  "icons": {
+    "class": "spell_nature_faeriefire",
+    "quickStart": "spell_shadow_summonfelguard",
+    "playing": "spell_shadow_demonform",
+    "setup": "ability_warlock_demonicempowerment",
+    "building": "spell_shadow_demonicpact",
+    "equipping": "inv_chest_cloth_43",
+    "raiding": "achievement_boss_lichking",
+    "talent": "spell_shadow_demonform",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "0/56/15",
+    "name": "Fresh-80 self-contained Demonology baseline",
+    "summary": "Use the complete Felguard and Metamorphosis baseline. The character works without an assumed external caster debuff or raid support package.",
+    "wowheadPath": "warlock/-003203301135202530135221351-55000005"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Felguard controls, proc priorities, hit assumptions, and safe Metamorphosis rules.",
+    "playing": "Run the DoT and filler priority, react to Molten Core and Decimation, and use the Felguard and Metamorphosis safely.",
+    "setup": "Install the 0/56/15 build, glyphs, pet controls, original-client macros, addons, and tracking.",
+    "building": "Build hit and spell power, then balance Spirit, haste, critical strike, budget gems, and enchants.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Handle Demonic Pact, Felguard uptime, Metamorphosis windows, add executes, movement, and encounter assignments."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "execute", "label": "Decimation" },
+    { "value": "metamorphosis", "label": "Metamorphosis" },
+    { "value": "pet", "label": "Pet control" },
+    { "value": "utility", "label": "Utility / support" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Demonic Pact overwrites, pet inheritance and pathing, Metamorphosis handling, and Immolation Aura range on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

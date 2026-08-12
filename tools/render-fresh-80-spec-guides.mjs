@@ -1484,7 +1484,557 @@ const marksmanshipHunter = {
   }
 };
 
-const specs = [holyPriest, shadowPriest, marksmanshipHunter];
+function loadWarlockConfig(slug) {
+  return JSON.parse(fs.readFileSync(path.join(root, "templates", "spec-guide", `${slug}.config.json`), "utf8"));
+}
+
+function warlockBuilding(specKey) {
+  const hitCorrection = specKey === "affliction"
+    ? "The 55/0/16 baseline includes 3/3 Suppression, so 14% from gear (about 367 rating) completes the self-contained level-83 target. Recalculate whenever talents or group effects change."
+    : "The baseline has no personal spell-hit talent. Work toward 17% from gear (about 446 rating) for a level-83 target, then subtract only effects actually present.";
+  const specStat = specKey === "demonology"
+    ? ["Spirit", "Support-sensitive secondary", "Fel Armor and Demonic Aegis convert Spirit into personal spell power, which also strengthens Demonic Pact.", "Do not sacrifice large hit, spell-power, haste, or item-level gains merely to collect Spirit."]
+    : ["Spirit", "Useful secondary", "Fel Armor and Glyph of Life Tap convert part of Spirit into spell power.", "Spirit is useful, not a reason to take healer gear from a stronger overall upgrade."];
+
+  return {
+    stats: [
+      ["Spell hit", '<span class="must">First raid-boss progression target</span>', "Prevents offensive spells from missing the selected target.", hitCorrection],
+      ["Spell Power", "First uncapped throughput stat", specKey === "demonology" ? "Raises personal damage and the spell power shared through Demonic Pact." : "Raises direct spells, damage-over-time effects, and most pet scaling.", "A larger item with several useful stats can beat a smaller piece that has only the preferred secondary."],
+      ["Haste", "Strong after hit and spell power", "Shortens casts and the global cooldown; Glyph of Quick Decay also lets haste affect Corruption.", "32.79 haste rating is about 1% haste at level 80. Haste does not create a universal one-number cap for this Fresh-80 path."],
+      ["Critical strike", "Useful secondary", "Raises direct-spell criticals and spec-specific procs; Affliction also gains periodic criticals through Pandemic.", "45.91 crit rating is about 1% spell crit at level 80, so compare the entire item rather than one rating line."],
+      specStat,
+      ["Intellect", "Useful but lower priority", "Adds mana and a small amount of spell critical chance; pets inherit part of it.", "Life Tap means mana pool size is rarely worth sacrificing major throughput upgrades."]
+    ],
+    stages: [
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Enter normal and heroic dungeons immediately with trained spells, a controlled pet, Fel Armor, and a complete talent tree.", "Repair hit with ordinary dungeon, reputation, crafted, and inexpensive BoE pieces; use rare-quality gems and budget enchants on temporary gear.", "Replace leveling greens and empty trinket slots before chasing a final raid stat profile."] },
+      { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Know the exact level-83 hit target for the current talents and group.", "Carry complete glyphs, consumables, Soul Shards, a Healthstone, and a Soulstone.", "Practice pet recall, target swaps, movement globals, and threat recovery in heroic dungeons."] },
+      { title: "Later progression", icon: "inv_misc_gear_01", items: ["Move into epic gems and premium enchants only when the piece will last.", "Maintain a small hit-swap set so upgrades do not silently move the character above or below the current cap.", "Compare set bonuses, trinket timing, and encounter-specific pet uptime as a complete loadout."] }
+    ],
+    gems: [
+      ["Meta", item("Chaotic Skyflare Diamond", "q-rare"), "None for general damage", "Activate it with the required blue gems; verify the live tooltip before final socket planning."],
+      ["Red", item("Runed Scarlet Ruby", "q-rare"), item("Runed Cardinal Ruby"), "Use the rare version on temporary gear and the epic version on lasting pieces."],
+      ["Yellow hit repair", item("Veiled Monarch Topaz", "q-rare"), item("Veiled Ametrine"), "Use only until the exact set reaches its current hit target."],
+      ["Yellow haste", "Rare-quality spell power / haste gem", item("Reckless Ametrine"), "Match a worthwhile socket bonus after hit is solved."],
+      ["Blue / meta", item("Purified Twilight Opal", "q-rare"), item("Purified Dreadstone"), "Meet the meta with the least throughput loss; Nightmare Tear is a later convenience."],
+      ["Any color", "Correctly colored budget gem", item("Nightmare Tear"), "Do not buy this merely to avoid planning two inexpensive gems."]
+    ],
+    enchants: [
+      ["Head", item("Arcanum of Burning Mysteries"), "Kirin Tor revered in standard Wrath."],
+      ["Shoulders", item("Greater Inscription of the Storm"), "Use the lower Sons of Hodir inscription while reputation is unfinished."],
+      ["Back", entity("Enchant Cloak - Greater Speed", "enchant-name"), "A cheaper haste enchant is acceptable on a temporary cloak."],
+      ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Use a cheaper all-stats enchant on a short-lived chest."],
+      ["Wrists", entity("Enchant Bracers - Superior Spellpower", "enchant-name"), "Prioritize it on a bracer expected to survive several upgrades."],
+      ["Hands", entity("Enchant Gloves - Exceptional Spellpower", "enchant-name"), "Engineering may use Hyperspeed Accelerators when the activation is deliberately timed."],
+      ["Waist", item("Eternal Belt Buckle", "q-rare"), "Add the extra socket to a belt worth keeping."],
+      ["Legs", item("Shining Spellthread", "q-rare"), `${item("Brilliant Spellthread")} is the later premium option.`],
+      ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), "Movement speed commonly saves more damage and lives than a small stationary gain."],
+      ["Weapon", entity("Enchant Weapon - Mighty Spellpower", "enchant-name"), `${entity("Enchant Weapon - Black Magic", "enchant-name")} is a later haste-proc comparison, not an automatic Fresh-80 purchase.`]
+    ],
+    professions: [
+      ["Engineering", "Hyperspeed Accelerators, Nitro Boosts, bombs, and utility.", "Excellent when the active tools are actually bound and planned; never an assumed requirement."],
+      ["Tailoring", "Lightweave Embroidery and useful caster crafts.", "Strong throughput with practical gearing value."],
+      ["Jewelcrafting", "Three stronger Dragon's Eye gems.", "Flexible spell-power or hit repair."],
+      ["Alchemy", "Improved flask and potion value.", "A practical low-population-server option for sustaining personal supplies."],
+      ["Enchanting / Inscription", "Static ring enchants or a personal shoulder inscription.", "Reliable value; choose professions for the whole character and account, not one theoretical stat line."]
+    ]
+  };
+}
+
+function warlockEquipping(specKey) {
+  const gearReason = specKey === "demonology"
+    ? "Spell power and reliable pet uptime support both personal damage and Demonic Pact."
+    : specKey === "affliction"
+      ? "Hit, spell power, and haste stabilize the DoT and execute engine."
+      : "Hit, spell power, and haste stabilize the short-cooldown fire priority.";
+  return {
+    first: [
+      ['<span class="must">Hit trinket</span>', item("Mark of the War Prisoner", "q-rare"), "Cyanigosa, heroic Violet Hold", "A large early hit repair plus an on-use spell-power window."],
+      ['<span class="must">Weapon</span>', item("Flameheart Spell Scalpel", "q-rare"), "Kirin Tor revered", "A deterministic reputation weapon when dungeon drops refuse to cooperate."],
+      ['<span class="must">Off-hand</span>', item("Ward of the Violet Citadel", "q-epic"), "25 Emblems of Heroism", "A durable early off-hand that pairs with several accessible one-handed weapons."],
+      ['<span class="optional">Throughput trinket</span>', item("Sundial of the Exiled", "q-epic"), "40 Emblems of Heroism", "A practical early critical-strike and spell-power proc trinket."],
+      ['<span class="optional">Dungeon trinket</span>', item("Forge Ember", "q-rare"), "Sjonnir, heroic Halls of Stone", "A no-raid spell-power alternative while emblems go elsewhere."]
+    ],
+    fresh: [
+      ["Shoulders", item("Dark Runic Mantle", "q-rare"), "Bind-on-equip world drop", "Compare its local price with the next reachable dungeon drop."],
+      ["Chest", item("Spellweave Robe", "q-epic"), "Tailoring BoE", "A strong craft, but not worth bankrupting a character that still has several weak slots."],
+      ["Hands", item("Ebonweave Gloves", "q-epic"), "Tailoring BoE", "Useful hit repair when the whole set needs it."],
+      ["Feet", item("Sandals of Crimson Fury", "q-epic"), "Wyrmrest Accord exalted", "A deterministic reputation endpoint for an otherwise unreliable slot."],
+      ["Ring", item("Ring of Northern Tears", "q-rare"), "Jewelcrafting BoE", "An accessible socketed hit option; buy only at a sensible local price."],
+      ["Any weak slot", "Best normal, heroic, reputation, or affordable BoE upgrade", "Northrend five-player and faction progression", gearReason]
+    ],
+    emblems: [
+      { title: "Heroism and Triumph", icon: "spell_holy_summonchampion", items: [`Use ${item("Ward of the Violet Citadel")} or ${item("Sundial of the Exiled")} when those slots are still weak.`, "Use Triumph catch-up pieces to repair the largest armor gaps.", "Do not save every emblem while wearing leveling gear."] },
+      { title: "Tier progression", icon: "inv_chest_cloth_43", items: ["Build T9 as an accessible bridge, then compare T10 bonuses against the actual offset pieces available.", "Keep a coherent set first; a partial late-tier plan does not replace missing gems, enchants, or hit.", "Evaluate Affliction, Demonology, and Destruction set-bonus value separately."] },
+      { title: "Frost", icon: "inv_misc_frostemblem_01", items: ["Buy the largest reliable upgrade or required tier piece first.", "Confirm that a purchase does not create an unplanned hit deficit.", "Retain useful old pieces for hit swaps or a second Warlock specialization."] }
+    ],
+    toc: [
+      [item("Abyssal Rune", "q-rare"), "Normal Trial of the Champion", "Excellent catch-up haste proc with no raid lockout."],
+      ["T9 Warlock set", "Triumph vendor and Trial of the Crusader routes", "Accessible set progression after the immediate five-player path."],
+      ["Reign caster trinket family", "Anub'arak, 25-player", "Later direct-damage proc option; verify faction, mode, and exact item ID."],
+      ["High-item-level weapon or off-hand", "Trial of the Crusader bosses", "Take the clean upgrade instead of waiting for one perfect list item."]
+    ],
+    icc: [
+      [item("Nevermelting Ice Crystal", "q-epic"), "Scourgelord Tyrannus, heroic Pit of Saron", specKey === "affliction" ? "A catch-up critical-strike on-use with special Affliction snapshot considerations; test Hellscream behavior." : "A catch-up option whose on-use must be compared with ordinary trinket uptime."],
+      [item("Muradin's Spyglass"), "Gunship Battle, 10-player", "A strong stack-building spell-power trinket for sustained casting."],
+      [item("Dislodged Foreign Object"), "Rotface, 25-player", "A major later haste and spell-power proc target."],
+      [item("Phylactery of the Nameless Lich"), "Sindragosa, 25-player", "A later critical-strike and spell-power proc target."],
+      [item("Charred Twilight Scale"), "Halion, 25-player", "Ruby Sanctum endgame target; verify normal versus heroic item ID and raid priority."]
+    ],
+    special: [
+      ["Hit repair", "Mark of the War Prisoner, Ebonweave Gloves, Ring of Northern Tears, and loose hit pieces", "Swap enough pieces to reach the current target without carrying large excess hit."],
+      ["Movement", "Tuskarr's Vitality boots", "A small paper-stat loss can preserve full casts, pet control, and survival."],
+      ["Second specialization", "Haste/crit and hit variants", "Do not vendor a useful alternate piece until the other Warlock spec's cap and priority are checked."],
+      ["Pet-hostile encounter", "Personal-throughput trinket or offset", specKey === "demonology" ? "Felguard loss is a severe damage and Demonic Pact loss; solve pet survival before changing the whole set." : "Keep an alternative when pet uptime or proc behavior makes the normal choice unreliable."]
+    ]
+  };
+}
+
+const warlockEncounterBase = [
+  ["toc", "Trial of the Crusader", "achievement_reputation_argentchampion", "single-target burst execute aoe pet utility"],
+  ["marrowgar", "Lord Marrowgar", "achievement_boss_lordmarrowgar", "single-target burst multi-dot pet utility"],
+  ["deathwhisper", "Lady Deathwhisper", "achievement_boss_ladydeathwhisper", "burst multi-dot aoe pet utility"],
+  ["saurfang", "Deathbringer Saurfang", "achievement_boss_saurfang", "single-target burst execute pet utility"],
+  ["putricide", "Professor Putricide", "achievement_boss_profputricide", "burst multi-dot execute pet utility"],
+  ["blood-wing", "Blood Prince Council and Blood-Queen Lana'thel", "achievement_boss_lanathel", "single-target burst multi-dot pet utility"],
+  ["valithria", "Valithria Dreamwalker", "achievement_boss_valithriadreamwalker", "burst multi-dot execute aoe pet utility"],
+  ["sindragosa", "Sindragosa", "achievement_boss_sindragosa", "single-target burst pet utility"],
+  ["lich-king", "The Lich King", "achievement_boss_lichking", "single-target burst multi-dot execute aoe pet utility special"],
+  ["halion", "Halion", "achievement_boss_halion", "single-target burst pet utility special"]
+];
+
+function warlockRaiding(specKey, advice) {
+  return {
+    entryNote: "This chapter is later progression, not the starting expectation for a new level 80. Complete the self-contained setup, practice the priority and pet controls in normal and heroic dungeons, and enter raids only after the character and player are ready.",
+    assignmentIcon: specKey === "affliction" ? "ability_warlock_haunt" : specKey === "demonology" ? "spell_shadow_demonicpact" : "ability_warlock_chaosbolt",
+    consumables: [
+      `${item("Flask of the Frost Wyrm")} for planned raid progression; it is not required for ordinary dungeon entry.`,
+      `${item("Firecracker Salmon")} or ${item("Fish Feast")} for a practical spell-power food option.`,
+      `${item("Potion of Speed")} for a planned haste window; ${item("Potion of Wild Magic")} is a critical-strike/spell-power alternative whose timing depends on the specialization.`,
+      "Soul Shards, a Healthstone, a Soulstone, repaired gear, and the correct pet before the pull."
+    ],
+    prePull: [
+      "Which curse or debuff the Warlock is responsible for and who covers it after a death or target swap.",
+      "Primary target, add priority, crowd-control assignment, and whether the pet stays on the boss or swaps.",
+      "Demonic Circle location and the movement mechanic it is intended to solve.",
+      specKey === "demonology" ? "Metamorphosis windows, safe proximity opportunities, and Demonic Pact expectations." : specKey === "affliction" ? "Execute timing, long-lived multi-DoT targets, and any approved Corruption rollover plan." : "Imp Firebolt control, short-cooldown timing, and Shadowfury assignments.",
+      "Soulstone target, Healthstone availability, and Soulshatter timing."
+    ],
+    assignments: [
+      ["Boss damage", advice.assignmentBoss, "Call forced downtime, an immunity, or an unexpected target change."],
+      ["Adds / swaps", advice.assignmentAdds, "Call the priority, crowd control, and whether the pet follows."],
+      ["Curse / utility", "Maintain the assigned curse, use Banish or Fear only on designated targets, and keep Demonic Circle available for the planned mechanic.", "Call a resist, immunity, broken control, or missing debuff."],
+      ["Pet control", advice.assignmentPet, "Call a pet death, pathing failure, or required recall."],
+      ["Special phase", advice.assignmentSpecial, "Call execute, cooldown, realm, or soak readiness before the window starts."]
+    ],
+    notes: warlockEncounterBase.map(([key, encounter, iconName, role]) => ({
+      encounter,
+      icon: iconName,
+      size: "10 25",
+      difficulty: "normal heroic",
+      role,
+      sizeLabel: "10 / 25",
+      difficultyLabel: "Normal / Heroic",
+      roleLabel: key === "lich-king" ? "All roles" : "Damage / utility",
+      verify: advice.verify.includes(key),
+      text: advice.notes[key]
+    }))
+  };
+}
+
+function warlockSources(specKey) {
+  const title = specKey[0].toUpperCase() + specKey.slice(1);
+  const base = `https://www.wowhead.com/wotlk/guide/classes/warlock/${specKey}`;
+  return {
+    quick: [[`${title} Warlock talents and glyphs`, `${base}/dps-talent-builds-glyphs-pve`], [`${title} Warlock stats and hit assumptions`, `${base}/dps-stat-priority-attributes-pve`]],
+    playing: [[`${title} Warlock rotation, cooldowns, and abilities`, `${base}/dps-rotation-cooldowns-abilities-pve`], ["Warlock spell records", "https://www.wowhead.com/wotlk/spells/abilities/warlock"]],
+    setup: [[`${title} Warlock talents and glyphs`, `${base}/dps-talent-builds-glyphs-pve`], [`Filled ${title} talent calculator`, `https://www.wowhead.com/wotlk/talent-calc/${loadWarlockConfig(`${specKey}-warlock`).talent.wowheadPath}`]],
+    building: [[`${title} Warlock stat priority`, `${base}/dps-stat-priority-attributes-pve`], [`${title} Warlock gems and enchants`, `${base}/dps-enchants-gems-pve`]],
+    equipping: [[`${title} Warlock pre-raid gear`, `${base}/dps-bis-gear-pre-raid-pve`], [`${title} Warlock phase-four gear`, `${base}/dps-bis-gear-pve-phase-4`], ["Abyssal Rune item record", "https://www.wowhead.com/wotlk/item=47213"], ["Charred Twilight Scale item record", "https://www.wowhead.com/wotlk/item=54572"]],
+    raiding: [["Icecrown Citadel raid overview", "https://www.wowhead.com/wotlk/zone=4812/icecrown-citadel"], ["Trial of the Crusader raid overview", "https://www.wowhead.com/wotlk/zone=4722/trial-of-the-crusader"], ["Ruby Sanctum raid overview", "https://www.wowhead.com/wotlk/zone=4987/the-ruby-sanctum"], ["Demonic Circle: Teleport spell record", "https://www.wowhead.com/wotlk/spell=48020"]]
+  };
+}
+
+function makeWarlockSpec(config, content) {
+  return {
+    className: config.className,
+    classSlug: config.classSlug,
+    name: config.specName,
+    shortName: config.specShortName,
+    nickname: config.guideNickname,
+    guideTypes: config.guideTypes,
+    slug: config.specSlug,
+    specKey: config.specKey,
+    guideAudience: config.guideAudience,
+    fresh80Policy: config.fresh80Policy,
+    tooltipFile: config.tooltipFile,
+    cacheKey: config.cacheKey,
+    serverNote: config.serverNote,
+    icons: config.icons,
+    descriptions: config.pageDescriptions,
+    mechanics: config.mechanics.map((mechanic) => ({ ...mechanic, iconEntity: mechanic.examples[0].name })),
+    roleFilters: config.raidRoleFilters.map(({ value, label }) => [value, label]),
+    talent: {
+      points: config.talent.points,
+      name: config.talent.name,
+      summary: config.talent.summary,
+      path: config.talent.wowheadPath
+    },
+    building: warlockBuilding(config.specKey),
+    equipping: warlockEquipping(config.specKey),
+    sources: warlockSources(config.specKey),
+    ...content
+  };
+}
+
+const afflictionWarlock = makeWarlockSpec(loadWarlockConfig("affliction-warlock"), {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Keep valuable DoTs working", detail: "Choose targets by remaining life, maintain Haunt, and convert the final quarter into Drain Soul damage." },
+      { label: "Default priority", value: "Haunt and DoTs before filler", detail: "Use Shadow Bolt only after required effects are established and likely to finish useful ticks." },
+      { label: "Fresh-80 rule", value: "Build the set, not one cap", detail: "Work toward the correct hit target while replacing weak gear through normal and heroic dungeons." }
+    ],
+    engineTitle: "Prepare → establish → maintain → execute",
+    beforeIcon: "spell_shadow_summonfelhunter",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Use ${entity("Fel Armor")}, summon the ${entity("Felhunter")}, create a ${entity("Healthstone")}, and place a ${entity("Soulstone")} on the agreed target.`,
+      `Carry enough Soul Shards for stones, summons, and ${entity("Drain Soul")} without filling every bag.`,
+      `Confirm the assigned curse; use ${entity("Curse of the Elements")} when the group lacks the equivalent spell-damage debuff.`,
+      `Set the pet to a controlled state and know the key for attack, follow, and ${entity("Spell Lock")}.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the complete 55/0/16 baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; the level-83 raid-boss hit cap is a progression target, not a five-player entry requirement.",
+      "Replace leveling gear, secure two useful trinkets, and apply affordable gems and enchants to pieces that will last.",
+      "Practice DoT life judgment and the 25% Drain Soul transition before advanced Corruption rollover optimization."
+    ],
+    chapterTopics: {
+      playing: "DoTs · Haunt · execute · movement",
+      setup: "55/0/16 · glyphs · pet · macros",
+      building: "Hit · spell power · haste · budget",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Curses · swaps · execute · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Fel Armor")} and the ${entity("Glyph of Life Tap")} buff → assigned curse → ${entity("Shadow Bolt")} to establish ${entity("Shadow Embrace")} → ${entity("Haunt")} → ${entity("Unstable Affliction")} → ${entity("Corruption")} → ${entity("Shadow Bolt")} filler above 25% → ${entity("Drain Soul")} filler below 25%.`,
+    openerIcon: "ability_warlock_haunt",
+    trackingIcon: "spell_shadow_abominationexplosion",
+    opener: [
+      `Use a safe pre-pull ${entity("Life Tap")} when ${entity("Glyph of Life Tap")} is equipped; enter combat with ${entity("Fel Armor")} and the Felhunter ready.`,
+      `Precast ${entity("Shadow Bolt")} when the pull timer and tank allow it.`,
+      `Apply ${entity("Haunt")}, ${entity("Unstable Affliction")}, the assigned curse, and ${entity("Corruption")} after the opening debuffs are established.`,
+      "Do not delay the whole opener waiting for a raid buff or proc that may never arrive."
+    ],
+    tracking: [
+      `${entity("Haunt")}, ${entity("Unstable Affliction")}, ${entity("Corruption")}, the assigned curse, and ${entity("Shadow Embrace")}.`,
+      `${entity("Glyph of Life Tap")} buff, mana, health, threat, and ${entity("Soulshatter")}.`,
+      "Target health at 35% and 25%, plus enough remaining life for each new DoT.",
+      `Felhunter target, health, range, and ${entity("Spell Lock")} availability.`
+    ],
+    cards: [
+      { kicker: "Durable target", title: "Build the full engine", tag: "Default", iconEntity: "Haunt", decision: "Use the complete priority when the target will live long enough for every maintenance global to pay back.", actions: ["Shadow Bolt", "Haunt", "Unstable Affliction", "Corruption"], rules: ["Establish Shadow Embrace before evaluating the opening Corruption.", "Refresh Haunt early enough that travel time does not create a debuff gap."], failure: "recasting every DoT early and replacing damaging ticks with maintenance globals." },
+      { kicker: "Target below 25%", title: "Drain Soul execute", tag: "Execute", iconEntity: "Drain Soul", decision: "Replace Shadow Bolt filler with Drain Soul while required effects stay active.", actions: ["Haunt", "Unstable Affliction", "Drain Soul"], rules: ["Break the channel immediately after a tick when a required effect must be refreshed.", "Restart Drain Soul after movement or a refresh; never wait for a full 15-second channel."], failure: "clipping before ticks or letting Haunt and Unstable Affliction disappear during the strongest phase." },
+      { kicker: "Second durable target", title: "Multi-DoT with a reason", tag: "Cleave", iconEntity: "Corruption", decision: "Add effects only when the target will survive long enough and the primary assignment remains safe.", actions: ["Corruption", "Unstable Affliction", "Haunt"], rules: ["Corruption is the cheapest durable extension; add longer setup only when life expectancy supports it.", "Haunt cannot reliably cover many targets; prioritize the assigned target."], failure: "blanketing short-lived adds and losing boss Haunt, execute ticks, or the required target swap." },
+      { kicker: "Short-lived add", title: "Skip slow setup", tag: "Swap", iconEntity: "Shadow Bolt", decision: "Use direct damage or a minimal DoT package when the add will die before a full ramp pays back.", actions: ["Shadow Bolt", "Haunt", "Drain Soul"], rules: ["Use Drain Soul on an eligible dying target when it supports the assignment and shard supply.", "Follow the raid's kill target instead of padding durable side targets."], failure: "finishing a five-global setup after the add is already dead." },
+      { kicker: "Forced movement", title: "Move on useful globals", tag: "Mobile", iconEntity: "Life Tap", decision: "Refresh only effects genuinely due, tap safely, command the pet, or reposition through Demonic Circle.", actions: ["Life Tap", "Corruption", "Demonic Circle: Teleport"], rules: ["Place Demonic Circle before the mechanic, not after movement has already begun.", "Do not Life Tap into lethal incoming damage."], failure: "manufacturing early DoT refreshes every time movement begins." },
+      { kicker: "Stacked pack", title: "Seed stable targets", tag: "AoE", iconEntity: "Seed of Corruption", decision: "Use Seed of Corruption on a target likely to remain inside the pack until detonation.", actions: ["Seed of Corruption", "Rain of Fire", "Shadowfury"], rules: ["Choose Rain of Fire when the pack will die before repeated Seeds detonate.", "Respect crowd control and tank threat before opening with AoE."], failure: "seeding a target that leaves the stack or breaking assigned control." }
+    ],
+    utility: [
+      [entity("Spell Lock"), "Felhunter interrupt", "Keep manual control when an assigned cast matters; pet range and target determine availability."],
+      [entity("Curse of the Elements"), "Spell-damage debuff", "Use it when no equivalent effect is actually present; do not assume raid composition."],
+      [entity("Demonic Circle: Teleport"), "Planned displacement", "Place the circle before the pull where it solves a known mechanic."],
+      [entity("Soulshatter"), "Threat reduction", "Use before threat forces the tank or raid to react, not after the boss turns."],
+      [entity("Banish"), "Demon or elemental control", "Coordinate the target and never refresh through a kill call."],
+      [entity("Shadow Ward"), "Shadow mitigation", "Use for known shadow damage without treating it as immunity."]
+    ],
+    mistakes: [
+      "Treating the priority as a fixed rotation and refreshing effects early.",
+      "Using long DoTs on targets that will die before their final ticks.",
+      "Missing Drain Soul ticks by clipping at arbitrary times.",
+      "Allowing Haunt to fall because travel time was ignored.",
+      "Life Tapping immediately before predictable lethal damage.",
+      "Losing the Felhunter or assigned Spell Lock to uncontrolled pet movement."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Affliction engine", icon: "ability_warlock_haunt", items: [`${entity("Everlasting Affliction")} lets Shadow Bolt, Haunt, and Drain Soul refresh Corruption.`, `${entity("Pandemic")} enables critical Corruption and Unstable Affliction ticks.`, `${entity("Death's Embrace")} and Drain Soul define the execute transition.`] },
+      { title: "Self-contained hit", icon: "spell_shadow_unsummonbuilding", items: [`Three points in ${entity("Suppression")} provide 3% spell hit for all schools in Wrath.`, "The baseline therefore needs 14% from gear for a level-83 target before counting real group effects.", "Do not remove Suppression until the replacement set and group assumptions are explicit."] },
+      { title: "Legitimate flex", icon: "spell_shadow_shadowbolt", items: ["Threat, range, and pushback talents can be adjusted for a known encounter or stable raid environment.", "Any later swap must preserve 71 allocated points and state the new hit requirement.", "Advanced Corruption snapshot tools belong after the basic priority is reliable."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Life Tap", "glyph-name"), '<span class="must">Default</span>', "All content", "Converts a portion of Spirit into a timed spell-power buff after Life Tap."],
+      [entity("Glyph of Quick Decay", "glyph-name"), '<span class="must">Default</span>', "All content", "Allows haste to shorten Corruption's tick interval."],
+      [entity("Glyph of Haunt", "glyph-name"), '<span class="must">Default</span>', "Single target", "Raises Haunt's periodic-damage bonus."],
+      [entity("Glyph of Drain Soul", "glyph-name"), '<span class="optional">Minor</span>', "Shard supply", "Adds a chance to gain an extra Soul Shard from Drain Soul."],
+      [entity("Glyph of Unending Breath", "glyph-name"), '<span class="optional">Minor</span>', "Convenience", "Adds swim speed to Unending Breath."],
+      [entity("Glyph of Souls", "glyph-name"), '<span class="optional">Minor</span>', "Group setup", "Reduces the mana cost of Ritual of Souls."]
+    ],
+    extraSection: { id: "pet", short: "Pet", title: "Felhunter control", icon: "spell_shadow_summonfelhunter", body: `<div class="two-col"><div class="guide-box"><h3>Default state</h3>${list(["Use the Felhunter for sustained damage and Spell Lock utility.", "Bind pet attack, follow, and passive so target swaps and hazards do not decide for you.", "Keep Spell Lock available manually when assigned to interrupt."])}</div><div class="guide-box"><h3>When the pet is unsafe</h3>${list(["Recall before transitions and ground hazards.", "Resummon only when the cast or Soul Shard cost will not fail the current mechanic.", "Report pet death when it removes an interrupt or meaningful damage."])}</div></div>` },
+    macros: [
+      { title: "Focus Spell Lock", entity: "Spell Lock", purpose: "Interrupt the focus without changing the damage target; fall back to the current hostile target.", code: "#showtooltip Spell Lock\n/cast [@focus,harm,nodead][] Spell Lock" },
+      { title: "Controlled pet attack", entity: "Shadow Bolt", purpose: "Start the filler and send the Felhunter to the selected target.", code: "#showtooltip Shadow Bolt\n/petattack [harm,nodead]\n/cast Shadow Bolt" },
+      { title: "Stop and follow", entity: "Summon Felhunter", purpose: "Recall the pet immediately from a hazardous target or path.", code: "/petpassive\n/petfollow" },
+      { title: "Demonic Circle return", entity: "Demonic Circle: Teleport", purpose: "Return to the pre-placed circle without a modern cursor command.", code: "#showtooltip Demonic Circle: Teleport\n/cast Demonic Circle: Teleport" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for movement, phase, and execute timing.`, "A 3.3.5-compatible DoT timer that separates each target and shows Haunt travel or expiration clearly.", "A cast/channel bar that exposes Drain Soul ticks and latency."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Shadow Embrace")}, ${entity("Glyph of Life Tap")}, execute health, and pet state.`, "Details/Recount to review target damage, DoT uptime, execute damage, misses, threat, and pet uptime.", "A threat display that makes Soulshatter timing visible before aggro is lost."]
+  },
+  raiding: warlockRaiding("affliction", {
+    assignmentBoss: "Haunt, required DoTs, and the assigned curse remain active; Drain Soul takes over below 25%.",
+    assignmentAdds: "Long-lived secondary targets receive deliberate DoTs; urgent short-lived adds receive immediate useful damage.",
+    assignmentPet: "The Felhunter stays alive, attacks the approved target, and keeps Spell Lock available when assigned.",
+    assignmentSpecial: "Execute, multi-DoT, and Demonic Circle plans are chosen before the phase begins.",
+    verify: ["lich-king"],
+    notes: {
+      toc: `Maintain the assigned curse and durable DoTs, but respect target immunities and kill order. On Anub'arak, prepare ${entity("Drain Soul")} for the boss execute while using ${entity("Seed of Corruption")} only on controlled stacked adds that will live to detonate.`,
+      marrowgar: `Keep boss effects running, switch immediately to Bone Spikes, and use movement globals during Bone Storm. The ${entity("Felhunter")} must not chase through Coldflame or delay a required ${entity("Spell Lock")}.`,
+      deathwhisper: `Follow the add priority instead of blanketing every target. Maintain useful effects on the shielded boss only when the assignment permits, preserve Spell Lock for the called caster, and move early from Death and Decay.`,
+      saurfang: `Keep the full boss engine active and use direct damage on Blood Beasts only when assigned. Do not place long DoTs on beasts that must die quickly and must never reach a player.`,
+      putricide: `Switch hard to Volatile Ooze and Gas Cloud; apply DoTs only when the add will live long enough. Place ${entity("Demonic Circle: Summon")} for planned movement, avoid Malleable Goo, and follow the heroic plague route.`,
+      "blood-wing": `On Princes, damage only the empowered target and avoid slow ramp on Kinetic Bombs. On Blood-Queen, maintain effects through movement, follow bite order, and use instant globals while dropping Swarming Shadows.`,
+      valithria: `Prioritize Blazing Skeletons and Suppressors, use ${entity("Seed of Corruption")} only on stable stacked packs, and preserve Spell Lock for an assigned Frostbolt Volley. This is add control, not a meter-padding multi-DoT exercise.`,
+      sindragosa: `Manage Unchained Magic and Instability; stop casting before stacks become lethal. Do not allow lingering DoTs to destroy an Ice Tomb early, and use the tomb line for Mystic Buffet resets.`,
+      "lich-king": `Maintain boss effects through predictable movement, burn Val'kyr and Raging Spirits by priority, and begin ${entity("Drain Soul")} below 25% only when mechanics permit the channel. Verify Hellscream's Corruption rollover and Vile Spirit targeting before building a special plan around them.`,
+      halion: `Stay in the assigned realm, maintain the boss package while moving early for combustion or consumption, and pre-place Demonic Circle around cutter movement. Keep the Felhunter inside a safe path and on the correct realm target.`
+    }
+  })
+});
+
+const demonologyWarlock = makeWarlockSpec(loadWarlockConfig("demonology-warlock"), {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Keep the Felguard and caster working", detail: "The specialization loses personal damage and raid support when the pet is dead, idle, or attacking the wrong target." },
+      { label: "Default priority", value: "DoTs → proc filler → execute", detail: "Shadow Bolt normally, Incinerate for Molten Core, then Soul Fire during Decimation." },
+      { label: "Fresh-80 rule", value: "Safe demon windows first", detail: "Metamorphosis is valuable at range; Immolation Aura is optional when proximity is actually safe." }
+    ],
+    engineTitle: "Control pet → maintain → react → transform",
+    beforeIcon: "spell_shadow_summonfelguard",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Use ${entity("Fel Armor")}, summon the ${entity("Felguard")}, create a ${entity("Healthstone")}, and place a ${entity("Soulstone")} on the agreed target.`,
+      `Bind pet attack, follow, passive, ${entity("Cleave")}, and ${entity("Intercept")} rather than trusting every automatic decision.`,
+      `Confirm the assigned curse; use ${entity("Curse of the Elements")} when the group lacks the equivalent spell-damage debuff.`,
+      `Know the first ${entity("Metamorphosis")} window and whether approaching the target is safe or unnecessary.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the complete 0/56/15 baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; practice keeping the Felguard alive and on the selected target.",
+      "Replace leveling gear and work toward the level-83 hit target without treating it as a dungeon-entry gate.",
+      "Learn the three filler states before attempting close-range Metamorphosis optimization."
+    ],
+    chapterTopics: {
+      playing: "Felguard · Molten Core · Decimation · Meta",
+      setup: "0/56/15 · glyphs · pet · macros",
+      building: "Hit · spell power · Spirit · haste",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Demonic Pact · Meta · execute · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Fel Armor")} and ${entity("Glyph of Life Tap")} buff → ${entity("Metamorphosis")} in a useful planned window → assigned curse → ${entity("Corruption")} → ${entity("Immolate")} → ${entity("Shadow Bolt")} filler → ${entity("Incinerate")} during ${entity("Molten Core")} → ${entity("Soul Fire")} during ${entity("Decimation")}.`,
+    openerIcon: "spell_shadow_demonform",
+    trackingIcon: "ability_warlock_moltencore",
+    opener: [
+      `Use a safe pre-pull ${entity("Life Tap")} when ${entity("Glyph of Life Tap")} is equipped; start with Fel Armor and the Felguard ready.`,
+      `Precast ${entity("Shadow Bolt")} when the tank and pull timer allow it, then send the Felguard.`,
+      `Apply the assigned curse, ${entity("Corruption")}, and ${entity("Immolate")}.`,
+      `Use ${entity("Metamorphosis")} early only when the full window will connect; proximity abilities are a separate safety decision.`
+    ],
+    tracking: [
+      `${entity("Corruption")}, ${entity("Immolate")}, assigned curse, ${entity("Molten Core")}, and ${entity("Decimation")}.`,
+      `${entity("Metamorphosis")}, ${entity("Demonic Empowerment")}, ${entity("Glyph of Life Tap")}, mana, health, and threat.`,
+      `Felguard target, health, range, ${entity("Cleave")}, and movement path.`,
+      `${entity("Demonic Pact")} presence as a diagnostic; reliable pet uptime comes before proc micromanagement.`
+    ],
+    cards: [
+      { kicker: "Ordinary target", title: "Run the base priority", tag: "Default", iconEntity: "Shadow Bolt", decision: "Maintain the required effects and use Shadow Bolt while no stronger proc state is active.", actions: ["Corruption", "Immolate", "Shadow Bolt"], rules: ["Corruption remains valuable because it can trigger Molten Core.", "Use Curse of Doom only when it has time to complete; otherwise choose the assigned utility or shorter damage curse."], failure: "casting Incinerate without Molten Core or losing Corruption while waiting for a proc." },
+      { kicker: "Molten Core active", title: "Switch to Incinerate", tag: "Proc", iconEntity: "Molten Core", decision: "Use the proc on Incinerate while maintaining higher-priority effects.", actions: ["Molten Core", "Incinerate", "Immolate"], rules: ["Do not let the proc distract from an urgent target switch or expiring effect.", "If Decimation is active, Soul Fire takes precedence."], failure: "continuing Shadow Bolt through the proc or consuming the phase on a dying target." },
+      { kicker: "Target below 35%", title: "Soul Fire execute", tag: "Execute", iconEntity: "Decimation", decision: "Use instant-access Decimation procs to make Soul Fire the filler while required effects stay active.", actions: ["Decimation", "Soul Fire", "Corruption"], rules: ["A low-health add can activate Decimation for damage on the assigned target.", "Keep Corruption and Immolate only when their remaining ticks justify the globals."], failure: "ignoring Decimation or spamming Soul Fire after the proc has fallen." },
+      { kicker: "Planned cooldown", title: "Use Metamorphosis safely", tag: "Cooldown", iconEntity: "Metamorphosis", decision: "Choose a window with continuous target access; add proximity abilities only if the position is safe.", actions: ["Metamorphosis", "Immolation Aura", "Shadow Cleave"], rules: ["Metamorphosis still grants ranged damage even when melee range is unsafe.", "Demon Charge costs a global and is a movement tool, not a mandatory opener."], failure: "charging into a lethal mechanic to chase optional Immolation Aura ticks." },
+      { kicker: "Pet movement", title: "Protect the Felguard", tag: "Pet", iconEntity: "Summon Felguard", decision: "Recall or redirect before the pet crosses hazards, attacks an immune target, or misses the next assigned enemy.", actions: ["Demonic Empowerment", "Cleave", "Intercept"], rules: ["Use Demonic Empowerment when the pet can actually attack.", "Turn off automatic Intercept when an unintended charge would kill or misposition the pet."], failure: "losing both Felguard damage and Demonic Pact because follow was never bound." },
+      { kicker: "Stacked enemies", title: "Choose controlled AoE", tag: "AoE", iconEntity: "Seed of Corruption", decision: "Use Seed on durable stacks and Metamorphosis proximity tools only where tank threat and mechanics permit.", actions: ["Seed of Corruption", "Metamorphosis", "Immolation Aura"], rules: ["Rain of Fire is a simpler ranged choice when Seeds will not detonate reliably.", "Keep the Felguard on the approved target instead of letting Cleave break control."], failure: "opening at close range before threat exists or breaking crowd control with pet Cleave." }
+    ],
+    utility: [
+      [entity("Demonic Empowerment"), "Felguard throughput cooldown", "Use when the Felguard is in range and attacking; it is off the global cooldown."],
+      [entity("Demonic Pact"), "Raid spell-power support", "It follows Felguard critical hits and the Warlock's spell power; pet uptime is the first requirement."],
+      [entity("Demonic Circle: Teleport"), "Planned displacement", "Place the circle before the mechanic where it preserves casting or exits proximity safely."],
+      [entity("Soulshatter"), "Threat reduction", "Use before Metamorphosis or execute threat becomes a tank problem."],
+      [entity("Banish"), "Demon or elemental control", "Coordinate the target and pet Cleave before applying it."],
+      [entity("Shadow Ward"), "Shadow mitigation", "Use for known shadow damage; it does not make unsafe proximity acceptable."]
+    ],
+    mistakes: [
+      "Treating Shadow Bolt, Incinerate, and Soul Fire as interchangeable fillers.",
+      "Letting Corruption fall and then wondering why Molten Core never appears.",
+      "Using Metamorphosis during forced downtime or an immediate target immunity.",
+      "Charging into melee range when ranged Metamorphosis was the safe choice.",
+      "Allowing the Felguard to die, idle, or attack an immune target.",
+      "Chasing a larger Demonic Pact number before personal setup and pet uptime are reliable."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Pet foundation", icon: "spell_shadow_summonfelguard", items: [`${entity("Summon Felguard")} supplies the specialization's primary pet.`, `${entity("Demonic Knowledge")} turns inherited pet stats into personal spell power.`, `${entity("Demonic Empowerment")} is a frequent off-global pet cooldown.`] },
+      { title: "Proc engine", icon: "ability_warlock_moltencore", items: [`${entity("Molten Core")} turns Corruption ticks into stronger, faster fire fillers.`, `${entity("Decimation")} makes Soul Fire the execute filler below 35%.`, `${entity("Demonic Pact")} converts reliable Felguard criticals into raid support.`] },
+      { title: "Real flex points", icon: "spell_shadow_demonform", items: ["Pet healing, pushback, and threat options can move for a known environment.", "Early hit talents are an explicit alternate build and change the gear requirement; they are not silently assumed here.", "Any swap must preserve the complete Felguard, Demonic Pact, and Metamorphosis engine."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Life Tap", "glyph-name"), '<span class="must">Default</span>', "All content", "Converts a portion of Spirit into a timed spell-power buff."],
+      [entity("Glyph of Felguard", "glyph-name"), '<span class="must">Default</span>', "Pet uptime", "Raises Felguard attack power and therefore its sustained damage."],
+      [entity("Glyph of Quick Decay", "glyph-name"), '<span class="must">Default</span>', "Proc engine", "Lets haste accelerate Corruption and its Molten Core opportunities."],
+      [entity("Glyph of Metamorphosis", "glyph-name"), '<span class="optional">Encounter swap</span>', "Long cooldown window", "Extends Metamorphosis; compare it only when the full extra duration remains useful."],
+      [entity("Glyph of Drain Soul", "glyph-name"), '<span class="optional">Minor</span>', "Shard supply", "Adds a chance to gain an extra Soul Shard from Drain Soul."],
+      [entity("Glyph of Souls", "glyph-name"), '<span class="optional">Minor</span>', "Group setup", "Reduces Ritual of Souls mana cost."]
+    ],
+    extraSection: { id: "pet", short: "Pet", title: "Felguard control", icon: "spell_shadow_summonfelguard", body: `<div class="two-col"><div class="guide-box"><h3>Damage controls</h3>${list(["Bind attack, follow, passive, Cleave, and Intercept.", "Use Demonic Empowerment when the Felguard has target uptime.", "Pet criticals maintain Demonic Pact; an idle pet provides neither damage nor support."])}</div><div class="guide-box"><h3>Survival controls</h3>${list(["Recall before transitions, void zones, and unsafe pathing.", "Disable automatic Intercept when a charge would cross mechanics.", "Resummon only when the current assignment can spare the cast and shard."])}</div></div>` },
+    macros: [
+      { title: "Empowered Shadow Bolt", entity: "Shadow Bolt", purpose: "Use the ordinary filler, command the Felguard, and activate Demonic Empowerment when available.", code: "#showtooltip Shadow Bolt\n/petattack [harm,nodead]\n/cast Demonic Empowerment\n/cast Shadow Bolt" },
+      { title: "Controlled Soul Fire", entity: "Soul Fire", purpose: "Use the execute filler without changing the Felguard's selected target automatically.", code: "#showtooltip Soul Fire\n/cast Soul Fire" },
+      { title: "Stop and follow", entity: "Summon Felguard", purpose: "Recall the Felguard immediately from a hazard or immune target.", code: "/petpassive\n/petfollow" },
+      { title: "Demonic Circle return", entity: "Demonic Circle: Teleport", purpose: "Exit a planned proximity window or mechanic through the pre-placed circle.", code: "#showtooltip Demonic Circle: Teleport\n/cast Demonic Circle: Teleport" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for Metamorphosis access, movement, and execute timing.`, "A pet frame with clear health, target, range, and action feedback.", "A 3.3.5-compatible proc display for Molten Core and Decimation."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Molten Core")}, ${entity("Decimation")}, ${entity("Metamorphosis")}, and ${entity("Demonic Empowerment")}.`, "Details/Recount to review player and Felguard damage, pet target uptime, misses, and execute usage.", "A threat display for planned Soulshatter before Metamorphosis or execute windows."]
+  },
+  raiding: warlockRaiding("demonology", {
+    assignmentBoss: "Corruption, Immolate, the assigned curse, and the correct filler state remain active; Metamorphosis is used in a full useful window.",
+    assignmentAdds: "Priority adds are switched immediately, low-health targets supply Decimation only when the raid assignment permits, and Soul Fire returns to the approved target.",
+    assignmentPet: "The Felguard remains alive and on target so personal damage and Demonic Pact remain reliable.",
+    assignmentSpecial: "Metamorphosis proximity, execute targets, Demonic Circle, and pet recall are decided before the phase.",
+    verify: ["toc", "lich-king"],
+    notes: {
+      toc: `Maintain the assigned curse and pet uptime across target changes. On Anub'arak, use low-health adds for ${entity("Decimation")} only when the raid's damage plan permits, and verify Hellscream's proc behavior before relying on a specific execute-sniping route.`,
+      marrowgar: `Keep boss effects running, switch to Bone Spikes immediately, and preserve the Felguard through Coldflame and Bone Storm. Use ${entity("Metamorphosis")} at range if melee access is unsafe.`,
+      deathwhisper: `Follow add priority, keep the Felguard on the called target, and avoid uncontrolled Cleave around crowd control. Save a Metamorphosis window for a wave only when it does not sacrifice continuous boss or priority-add access.`,
+      saurfang: `Keep the Felguard on the boss unless the raid explicitly assigns pet swaps. Use direct damage on Blood Beasts, exploit ${entity("Decimation")} only without compromising control, and never approach for Immolation Aura.`,
+      putricide: `Switch hard to Volatile Ooze and Gas Cloud, keep the pet out of slime and bad paths, and move before Malleable Goo. A safe full ranged Metamorphosis window is better than a short lethal proximity attempt.`,
+      "blood-wing": `On Princes, damage only the empowered target and redirect the Felguard promptly. On Blood-Queen, follow bite order, preserve pet uptime through movement, and align Metamorphosis with a full ground phase rather than the air transition.`,
+      valithria: `Prioritize Blazing Skeletons and Suppressors, use ${entity("Seed of Corruption")} on stable stacks, and redirect the Felguard without cleaving controlled targets. Low-health adds can feed Decimation for the next priority target.`,
+      sindragosa: `Manage Unchained Magic and Instability, recall the Felguard for unsafe air transitions, and break only assigned tombs. Use Metamorphosis at range if phase-three proximity cannot be maintained safely.`,
+      "lich-king": `Keep boss effects and the Felguard active, burn Val'kyr and Raging Spirits by priority, and use ${entity("Decimation")} from eligible adds only within the raid plan. Verify Hellscream pet pathing, Demonic Pact overwrites, and Vile Spirit behavior before adopting a specialized proximity route.`,
+      halion: `Stay in the assigned realm, pre-place Demonic Circle for cutter movement, and recall the Felguard before dangerous realm or path transitions. Treat Immolation Aura as optional; ranged Metamorphosis damage remains useful.`
+    }
+  })
+});
+
+const destructionWarlock = makeWarlockSpec(loadWarlockConfig("destruction-warlock"), {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Keep the fire priority moving", detail: "Maintain Immolate, use Conflagrate and Chaos Bolt on useful cooldowns, and fill with Incinerate." },
+      { label: "Default priority", value: "Immolate → Conflag → Chaos Bolt", detail: "The sequence is a priority, not a loop; target life and cooldown readiness decide the next cast." },
+      { label: "Fresh-80 rule", value: "Control the Imp", detail: "The pet contributes damage and Blood Pact only while alive, in range, and attacking the approved target." }
+    ],
+    engineTitle: "Prepare → maintain → burst → fill",
+    beforeIcon: "spell_shadow_summonimp",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Use ${entity("Fel Armor")}, summon the ${entity("Imp")}, create a ${entity("Healthstone")}, and place a ${entity("Soulstone")} on the agreed target.`,
+      `Bind pet attack, follow, and passive; decide whether ${entity("Firebolt")} is manually queued or left automatic.`,
+      `Confirm the assigned curse; use ${entity("Curse of the Elements")} when the group lacks the equivalent spell-damage debuff.`,
+      `Know whether ${entity("Shadowfury")} is a damage button or an assigned control tool on the next pull.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the fully allocated 0/19/52 baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; the level-83 hit target is later raid progression, not a five-player entrance exam.",
+      "Replace leveling gear, secure two useful trinkets, and practice moving during Life Tap or instant-cast globals.",
+      "Learn the short-cooldown priority and Imp recall before adding advanced cooldown stacking."
+    ],
+    chapterTopics: {
+      playing: "Immolate · Conflagrate · Chaos Bolt · Imp",
+      setup: "0/19/52 · glyphs · pet · macros",
+      building: "Hit · spell power · haste · budget",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Burst · swaps · control · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Fel Armor")} and ${entity("Glyph of Life Tap")} buff → assigned curse → ${entity("Immolate")} → ${entity("Conflagrate")} → ${entity("Chaos Bolt")} → ${entity("Incinerate")} filler → refresh effects only when needed.`,
+    openerIcon: "ability_warlock_chaosbolt",
+    trackingIcon: "ability_warlock_backdraft",
+    opener: [
+      `Use a safe pre-pull ${entity("Life Tap")} when ${entity("Glyph of Life Tap")} is equipped; start with Fel Armor and the Imp ready.`,
+      `Precast ${entity("Immolate")} only when the tank and pull timer allow it; otherwise establish the assigned curse first.`,
+      `Use ${entity("Conflagrate")} once Immolate is active, then ${entity("Chaos Bolt")}.`,
+      `Fill with ${entity("Incinerate")} and keep the Imp casting ${entity("Firebolt")} on the approved target.`
+    ],
+    tracking: [
+      `${entity("Immolate")}, ${entity("Conflagrate")}, ${entity("Chaos Bolt")}, ${entity("Backdraft")}, and the assigned curse.`,
+      `${entity("Glyph of Life Tap")}, mana, health, threat, and ${entity("Soulshatter")}.`,
+      `Imp target, health, range, ${entity("Firebolt")}, ${entity("Empowered Imp")}, and ${entity("Blood Pact")}.`,
+      `${entity("Shadowfury")} assignment, target life, and whether a new Immolate can deliver meaningful value.`
+    ],
+    cards: [
+      { kicker: "Durable target", title: "Run the fire priority", tag: "Default", iconEntity: "Immolate", decision: "Maintain Immolate, use the short cooldowns, then fill with Incinerate.", actions: ["Immolate", "Conflagrate", "Chaos Bolt", "Incinerate"], rules: ["Conflagrate requires Immolate and does not consume it with Glyph of Conflagrate.", "Cooldowns remain subordinate to an urgent movement or control assignment."], failure: "casting Incinerate into a target without Immolate or delaying short cooldowns through several fillers." },
+      { kicker: "Backdraft active", title: "Spend fast casts well", tag: "Proc", iconEntity: "Backdraft", decision: "Use Backdraft charges on useful Destruction casts rather than movement, an unnecessary refresh, or downtime.", actions: ["Conflagrate", "Backdraft", "Chaos Bolt", "Incinerate"], rules: ["Plan movement before Conflagrate when the next globals would otherwise be lost.", "Do not hold Conflagrate indefinitely for a perfect Backdraft sequence."], failure: "triggering Backdraft immediately before a mechanic that prevents casting." },
+      { kicker: "Urgent target", title: "Burst before setup expires", tag: "Swap", iconEntity: "Chaos Bolt", decision: "Use immediate useful damage and add Immolate only when the target will live long enough for Conflagrate and ticks.", actions: ["Shadowfury", "Chaos Bolt", "Conflagrate"], rules: ["Shadowfury can create control time before damage when the target is stunnable.", "Do not recast a long curse on an add that will die in seconds."], failure: "spending the entire add lifetime preparing a full boss opener." },
+      { kicker: "Forced movement", title: "Move without panic", tag: "Mobile", iconEntity: "Life Tap", decision: "Tap safely, use an available instant, command the Imp, or return through Demonic Circle.", actions: ["Life Tap", "Conflagrate", "Demonic Circle: Teleport"], rules: ["Do not force Conflagrate if Immolate is absent merely to have an instant cast.", "Use Demonic Circle only after placing it for a real mechanic."], failure: "Life Tapping into lethal damage or refreshing Immolate far too early during every movement." },
+      { kicker: "Stacked pack", title: "Control before AoE", tag: "AoE", iconEntity: "Shadowfury", decision: "Stun when assigned, then use Seed or Rain of Fire according to pack life and movement.", actions: ["Shadowfury", "Seed of Corruption", "Rain of Fire"], rules: ["Seed durable stacks; use Rain of Fire for short stable packs.", "Respect crowd control and tank threat before opening."], failure: "breaking control or stunning before the tank can position the pack." },
+      { kicker: "Pet hazard", title: "Keep the Imp casting", tag: "Pet", iconEntity: "Summon Imp", decision: "Recall before avoidable damage or transitions, then resend when a safe target is available.", actions: ["Firebolt", "Empowered Imp", "Blood Pact"], rules: ["Manual Firebolt queueing can reduce gaps, but never hide an assigned control spell inside the same key.", "Report pet death when it removes Blood Pact or meaningful damage."], failure: "leaving the Imp on an immune target or in a hazard because pet follow was never bound." }
+    ],
+    utility: [
+      [entity("Shadowfury"), "Instant area stun", "Reserve it for assigned control when the stun matters more than incidental damage."],
+      [entity("Blood Pact"), "Imp health buff", "Keep the Imp alive and in range; confirm overlap with the group's Warrior buff."],
+      [entity("Demonic Circle: Teleport"), "Planned displacement", "Place the circle before the pull where it solves a known movement mechanic."],
+      [entity("Soulshatter"), "Threat reduction", "Use before burst threat turns the boss or forces damage downtime."],
+      [entity("Banish"), "Demon or elemental control", "Coordinate the target and avoid incidental AoE around it."],
+      [entity("Shadow Ward"), "Shadow mitigation", "Use for predictable shadow damage without treating it as immunity."]
+    ],
+    mistakes: [
+      "Treating the short-cooldown priority as one unchanging cast sequence.",
+      "Attempting Conflagrate without Immolate or using the wrong glyph assumptions.",
+      "Spending Backdraft charges during forced movement or on pointless refreshes.",
+      "Using a full boss setup on a target that will die immediately.",
+      "Hiding Shadowfury inside a damage macro when it is an assigned stun.",
+      "Losing Imp damage and Blood Pact through uncontrolled pet positioning."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Fire engine", icon: "ability_warlock_chaosbolt", items: [`${entity("Immolate")} enables Conflagrate and strengthens the ordinary fire priority.`, `${entity("Conflagrate")} supplies burst and ${entity("Backdraft")}.`, `${entity("Chaos Bolt")} is a high-priority short-cooldown direct spell.`] },
+      { title: "Imp engine", icon: "spell_shadow_summonimp", items: [`The ${entity("Imp")} supplies ranged pet damage and ${entity("Blood Pact")}.`, `${entity("Empowered Imp")} rewards continuous Firebolt criticals.`, "Manual Firebolt queueing is useful only when pet control remains visible and safe."] },
+      { title: "Fully allocated baseline", icon: "ability_warlock_improvedsoulleech", items: ["The 0/19/52 tree uses all 71 points instead of handing a new player five unexplained flex points.", `${entity("Improved Soul Leech")} supplies useful mana support without requiring another class.`, "Alternate hit, survivability, or Imp allocations are later whole-build decisions with their own gearing assumptions."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Conflagrate", "glyph-name"), '<span class="must">Default</span>', "All content", "Prevents Conflagrate from consuming Immolate or Shadowflame."],
+      [entity("Glyph of Incinerate", "glyph-name"), '<span class="must">Default</span>', "Sustained damage", "Raises the ordinary filler spell's damage."],
+      [entity("Glyph of Life Tap", "glyph-name"), '<span class="must">Fresh-80 default</span>', "Spirit conversion", "Converts a portion of Spirit into a timed spell-power buff."],
+      [entity("Glyph of Immolate", "glyph-name"), '<span class="optional">Later comparison</span>', "Different gear sets", "Raises Immolate periodic damage and should be compared against Life Tap for the actual set."],
+      [entity("Glyph of Drain Soul", "glyph-name"), '<span class="optional">Minor</span>', "Shard supply", "Adds a chance to gain an extra Soul Shard from Drain Soul."],
+      [entity("Glyph of Souls", "glyph-name"), '<span class="optional">Minor</span>', "Group setup", "Reduces Ritual of Souls mana cost."]
+    ],
+    extraSection: { id: "pet", short: "Pet", title: "Imp control", icon: "spell_shadow_summonimp", body: `<div class="two-col"><div class="guide-box"><h3>Damage controls</h3>${list(["Bind pet attack, follow, and passive.", "Queue Firebolt deliberately when testing shows it reduces pet cast gaps.", "Keep the Imp on the approved target so Empowered Imp and damage remain useful."])}</div><div class="guide-box"><h3>Survival controls</h3>${list(["Recall before transitions and persistent ground hazards.", "Do not send the Imp across an immunity or realm boundary.", "Resummon only when the current assignment can spare the cast and shard."])}</div></div>` },
+    macros: [
+      { title: "Incinerate with Firebolt", entity: "Incinerate", purpose: "Queue the Imp's Firebolt while casting the ordinary filler.", code: "#showtooltip Incinerate\n/petattack [harm,nodead]\n/cast Firebolt\n/cast Incinerate" },
+      { title: "Focus Shadowfury target", entity: "Shadowfury", purpose: "Cast the assigned area stun at the focused hostile target without changing the damage target.", code: "#showtooltip Shadowfury\n/cast [@focus,harm,nodead][] Shadowfury" },
+      { title: "Stop and follow", entity: "Summon Imp", purpose: "Recall the Imp immediately from a hazard, immunity, or transition.", code: "/petpassive\n/petfollow" },
+      { title: "Demonic Circle return", entity: "Demonic Circle: Teleport", purpose: "Return through the pre-placed circle using original-client spell behavior.", code: "#showtooltip Demonic Circle: Teleport\n/cast Demonic Circle: Teleport" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for movement, add spawns, and burst timing.`, "A 3.3.5-compatible timer for Immolate, Conflagrate, Chaos Bolt, and Backdraft.", "A visible pet frame for Imp health, range, target, and casting."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Backdraft")}, ${entity("Empowered Imp")}, ${entity("Glyph of Life Tap")}, and cooldown collisions.`, "Details/Recount to review target damage, misses, Imp uptime, Firebolt casts, and movement downtime.", "A threat display to time Soulshatter before burst becomes aggro loss."]
+  },
+  raiding: warlockRaiding("destruction", {
+    assignmentBoss: "Immolate remains active; Conflagrate and Chaos Bolt land on useful cooldowns; Incinerate fills the gaps.",
+    assignmentAdds: "Short-lived targets receive immediate burst and Shadowfury control instead of an oversized setup.",
+    assignmentPet: "The Imp stays alive, in range, and casting Firebolt on the approved target so damage and Blood Pact remain available.",
+    assignmentSpecial: "Shadowfury, Demonic Circle, burst targets, and pet recall are planned before the phase.",
+    verify: ["lich-king"],
+    notes: {
+      toc: `Maintain the assigned curse and fire priority while following target order. Use ${entity("Shadowfury")} for assigned add control, and on Anub'arak choose ${entity("Seed of Corruption")} or ${entity("Rain of Fire")} only when stacked adds justify AoE.`,
+      marrowgar: `Keep Immolate on the boss, switch immediately to Bone Spikes with direct burst, and use instant globals while relocating during Bone Storm. Recall the Imp before Coldflame or unsafe pathing removes it.`,
+      deathwhisper: `Use burst on the called add, reserve Shadowfury for assigned control, and keep the Imp on the correct physical-or-magic target. Move early from Death and Decay rather than finishing Incinerate.`,
+      saurfang: `Keep the boss priority active and use immediate direct damage on Blood Beasts only when assigned. Shadowfury can support control if the raid plans for it; do not send the Imp or apply slow setup to beasts indiscriminately.`,
+      putricide: `Switch hard to Volatile Ooze and Gas Cloud, use short cooldowns for real burst, and move before Malleable Goo. Pre-place ${entity("Demonic Circle: Summon")} and protect the Imp from bad paths and slime.`,
+      "blood-wing": `On Princes, damage only the empowered target and use direct spells on Kinetic Bombs when assigned. On Blood-Queen, follow bite order, maintain the fire priority through planned movement, and preserve the Imp during the air phase.`,
+      valithria: `Prioritize Blazing Skeletons and Suppressors, use Shadowfury for planned control, and AoE only stable stacks. The Imp stays on the priority target rather than padding a harmless add.`,
+      sindragosa: `Manage Unchained Magic and Instability; stop casting before stacks become lethal. Recall the Imp for unsafe air phases, break only assigned tombs, and use tomb line-of-sight to reset Mystic Buffet.`,
+      "lich-king": `Maintain boss Immolate, burst Val'kyr and Raging Spirits, and preserve Shadowfury for an assigned control moment. Verify Hellscream Imp pathing, Empowered Imp, and Vile Spirit behavior before relying on a specialized pet or stun route.`,
+      halion: `Stay in the assigned realm, pre-place Demonic Circle around cutter movement, and move early with combustion or consumption. Keep the Imp on the correct realm target and resume the short-cooldown priority only from a safe plant position.`
+    }
+  })
+});
+
+const specs = [holyPriest, shadowPriest, marksmanshipHunter, afflictionWarlock, demonologyWarlock, destructionWarlock];
 const renderers = {
   quickStart: renderQuickStart,
   playing: renderPlaying,

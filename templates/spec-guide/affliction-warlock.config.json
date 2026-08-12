@@ -1,0 +1,142 @@
+{
+  "className": "Warlock",
+  "classSlug": "warlock",
+  "specName": "Affliction Warlock",
+  "specShortName": "Affliction",
+  "guideNickname": "Affliction",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid DPS Guide"
+  },
+  "specSlug": "affliction-warlock",
+  "specKey": "affliction",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Ranged damage",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-12",
+  "createClassSharedCss": true,
+  "createTooltipStarter": true,
+  "createEntityRegistry": true,
+  "createTooltipScript": true,
+  "entityRegistryFile": "data/warlock-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "warlock-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260812-warlock-v1",
+  "guideDescription": "A fresh-level-80 path into Affliction damage-over-time priorities, execute control, dungeon utility, and later raid progression.",
+  "classAccent": "#8788EE",
+  "classAccentSoft": "#C8C9FF",
+  "classAccentDeep": "#30316B",
+  "classAccentRgb": "135,136,238",
+  "specAccent": "#B46CFF",
+  "specAccentSoft": "#E4C7FF",
+  "specAccentDeep": "#4B216E",
+  "specAccentRgb": "180,108,255",
+  "mechanics": [
+    {
+      "key": "dots",
+      "label": "DoTs",
+      "titleIcon": "spell_shadow_abominationexplosion",
+      "examples": [
+        { "name": "Corruption", "type": "spell", "id": 47813, "icon": "spell_shadow_abominationexplosion" },
+        { "name": "Unstable Affliction", "type": "spell", "id": 47843, "icon": "spell_shadow_unstableaffliction_3" }
+      ],
+      "color": "#B46CFF",
+      "soft": "#E4C7FF",
+      "deep": "#4B216E",
+      "rgb": "180,108,255",
+      "use": "Maintain effects only when the target will live long enough for their full value."
+    },
+    {
+      "key": "haunt",
+      "label": "Haunt",
+      "titleIcon": "ability_warlock_haunt",
+      "examples": [
+        { "name": "Haunt", "type": "spell", "id": 59164, "icon": "ability_warlock_haunt" },
+        { "name": "Shadow Bolt", "type": "spell", "id": 47809, "icon": "spell_shadow_shadowbolt" }
+      ],
+      "color": "#6FC7D8",
+      "soft": "#C6F0F6",
+      "deep": "#245561",
+      "rgb": "111,199,216",
+      "use": "Keep Haunt active and use Shadow Bolt to establish and refresh the supporting debuffs."
+    },
+    {
+      "key": "execute",
+      "label": "Execute",
+      "titleIcon": "spell_shadow_haunting",
+      "examples": [
+        { "name": "Drain Soul", "type": "spell", "id": 47855, "icon": "spell_shadow_haunting" },
+        { "name": "Death's Embrace", "type": "spell", "id": 47200, "icon": "spell_shadow_deathsembrace" }
+      ],
+      "color": "#E07A9A",
+      "soft": "#F8CAD8",
+      "deep": "#6A2940",
+      "rgb": "224,122,154",
+      "use": "Below 25%, channel Drain Soul and refresh required effects immediately after a tick."
+    },
+    {
+      "key": "resources",
+      "label": "Resources",
+      "titleIcon": "spell_shadow_burningspirit",
+      "examples": [
+        { "name": "Life Tap", "type": "spell", "id": 57946, "icon": "spell_shadow_burningspirit" },
+        { "name": "Fel Armor", "type": "spell", "id": 47893, "icon": "spell_shadow_felarmour" }
+      ],
+      "color": "#70C99A",
+      "soft": "#C9F0DB",
+      "deep": "#285C42",
+      "rgb": "112,201,154",
+      "use": "Maintain Fel Armor, plan Life Tap safely, and arrive with shards, pet, Healthstone, and Soulstone ready."
+    }
+  ],
+  "icons": {
+    "class": "spell_nature_faeriefire",
+    "quickStart": "ability_warlock_haunt",
+    "playing": "spell_shadow_abominationexplosion",
+    "setup": "spell_shadow_unstableaffliction_3",
+    "building": "spell_shadow_felarmour",
+    "equipping": "inv_chest_cloth_43",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_warlock_haunt",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "55/0/16",
+    "name": "Fresh-80 self-contained Affliction baseline",
+    "summary": "Use the complete Suppression baseline while early gear is short on hit. Treat threat, range, and raid-composition swaps as later options.",
+    "wowheadPath": "warlock/2350002030023510253500331151--550000051"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Felhunter setup, DoT priorities, hit assumptions, and a practical dungeon-ready checklist.",
+    "playing": "Manage DoTs, Haunt, Shadow Bolt, Drain Soul, movement, target life, curses, and utility as one priority system.",
+    "setup": "Install the 55/0/16 build, glyphs, pet controls, original-client macros, addons, and tracking.",
+    "building": "Build hit deliberately, then balance spell power, haste, critical strike, Spirit, budget gems, and enchants.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Handle curses, target swaps, execute channels, movement, pet safety, and encounter responsibilities by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "multi-dot", "label": "Multi-DoT" },
+    { "value": "execute", "label": "Execute" },
+    { "value": "utility", "label": "Utility / control" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Corruption rollover, Drain Soul tick timing, pet behavior, and encounter-specific immunities on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

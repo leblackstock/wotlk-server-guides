@@ -18,7 +18,10 @@ assert.ok(validateFresh80Config(invalid).length >= 2);
 for (const configFile of [
   "templates/spec-guide/holy-priest.config.json",
   "templates/spec-guide/shadow-priest.config.json",
-  "templates/spec-guide/marksmanship-hunter.config.json"
+  "templates/spec-guide/marksmanship-hunter.config.json",
+  "templates/spec-guide/affliction-warlock.config.json",
+  "templates/spec-guide/demonology-warlock.config.json",
+  "templates/spec-guide/destruction-warlock.config.json"
 ]) {
   const freshConfig = JSON.parse(fs.readFileSync(path.join(root, configFile), "utf8"));
   assert.deepEqual(validateFresh80Config(freshConfig), [], configFile);

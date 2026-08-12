@@ -1,0 +1,142 @@
+{
+  "className": "Warlock",
+  "classSlug": "warlock",
+  "specName": "Destruction Warlock",
+  "specShortName": "Destruction",
+  "guideNickname": "Destro Lock",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid DPS Guide"
+  },
+  "specSlug": "destruction-warlock",
+  "specKey": "destruction",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Ranged damage and burst control",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-12",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/warlock-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "warlock-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260812-warlock-v1",
+  "guideDescription": "A fresh-level-80 path into Destruction's short-cooldown fire priority, Imp control, dungeon utility, and later raid progression.",
+  "classAccent": "#8788EE",
+  "classAccentSoft": "#C8C9FF",
+  "classAccentDeep": "#30316B",
+  "classAccentRgb": "135,136,238",
+  "specAccent": "#F07B3F",
+  "specAccentSoft": "#FFD1B8",
+  "specAccentDeep": "#6D2D13",
+  "specAccentRgb": "240,123,63",
+  "mechanics": [
+    {
+      "key": "immolate",
+      "label": "Immolate",
+      "titleIcon": "spell_fire_immolation",
+      "examples": [
+        { "name": "Immolate", "type": "spell", "id": 47811, "icon": "spell_fire_immolation" },
+        { "name": "Conflagrate", "type": "spell", "id": 17962, "icon": "spell_fire_fireball" }
+      ],
+      "color": "#F07B3F",
+      "soft": "#FFD1B8",
+      "deep": "#6D2D13",
+      "rgb": "240,123,63",
+      "use": "Keep Immolate active so Conflagrate remains available without consuming it when glyphed."
+    },
+    {
+      "key": "bolts",
+      "label": "Bolts",
+      "titleIcon": "ability_warlock_chaosbolt",
+      "examples": [
+        { "name": "Chaos Bolt", "type": "spell", "id": 59172, "icon": "ability_warlock_chaosbolt" },
+        { "name": "Incinerate", "type": "spell", "id": 47838, "icon": "spell_fire_burnout" }
+      ],
+      "color": "#77C9A5",
+      "soft": "#C9F0DF",
+      "deep": "#285A45",
+      "rgb": "119,201,165",
+      "use": "Cast Chaos Bolt on useful cooldowns and fill with Incinerate while the required effects are active."
+    },
+    {
+      "key": "backdraft",
+      "label": "Backdraft",
+      "titleIcon": "ability_warlock_backdraft",
+      "examples": [
+        { "name": "Backdraft", "type": "spell", "id": 47260, "icon": "ability_warlock_backdraft" },
+        { "name": "Life Tap", "type": "spell", "id": 57946, "icon": "spell_shadow_burningspirit" }
+      ],
+      "color": "#E4B04E",
+      "soft": "#F8E3B5",
+      "deep": "#66501B",
+      "rgb": "228,176,78",
+      "use": "Spend the short cast-speed window on useful fire casts and move or tap before mana becomes a crisis."
+    },
+    {
+      "key": "imp",
+      "label": "Imp",
+      "titleIcon": "spell_shadow_summonimp",
+      "examples": [
+        { "name": "Summon Imp", "type": "spell", "id": 688, "icon": "spell_shadow_summonimp" },
+        { "name": "Firebolt", "type": "spell", "id": 47964, "icon": "spell_fire_firebolt" }
+      ],
+      "color": "#A88BF0",
+      "soft": "#DDD2FA",
+      "deep": "#493577",
+      "rgb": "168,139,240",
+      "use": "Keep the Imp safe and active, and queue Firebolt deliberately when manual control improves uptime."
+    }
+  ],
+  "icons": {
+    "class": "spell_nature_faeriefire",
+    "quickStart": "ability_warlock_chaosbolt",
+    "playing": "spell_fire_fireball",
+    "setup": "ability_warlock_backdraft",
+    "building": "spell_fire_burnout",
+    "equipping": "inv_chest_cloth_43",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_warlock_chaosbolt",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_05"
+  },
+  "talent": {
+    "points": "0/19/52",
+    "name": "Fresh-80 self-contained Destruction baseline",
+    "summary": "Use the complete Imp-centered baseline with no unspent flex points. Treat alternate hit, survivability, and raid-support allocations as later deliberate swaps.",
+    "wowheadPath": "warlock/-033100301134-05203205210231051035030351"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Imp controls, the Immolate priority, hit assumptions, and a practical dungeon-ready checklist.",
+    "playing": "Manage Immolate, Conflagrate, Chaos Bolt, Incinerate, Backdraft, movement, AoE, pet uptime, and utility.",
+    "setup": "Install the 0/19/52 build, glyphs, pet controls, original-client macros, addons, and tracking.",
+    "building": "Build hit deliberately, then balance spell power, haste, critical strike, Spirit, budget gems, and enchants.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Handle short cooldowns, target swaps, Imp safety, movement, control, and encounter responsibilities by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "burst", "label": "Burst / swaps" },
+    { "value": "aoe", "label": "AoE / control" },
+    { "value": "pet", "label": "Pet control" },
+    { "value": "utility", "label": "Utility / support" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Imp Firebolt queueing, Empowered Imp, Conflagrate and Immolate interaction, Shadowfury control, and encounter-specific immunities on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

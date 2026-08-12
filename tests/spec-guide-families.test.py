@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the complete fresh-80 Priest and Hunter guide families."""
+"""Validate the complete config-backed fresh-80 guide families."""
 
 from __future__ import annotations
 
@@ -14,6 +14,9 @@ FAMILIES = {
     "holy-priest": ("priest", "priest-holy"),
     "shadow-priest": ("priest", "shadow"),
     "marksmanship-hunter": ("hunter", "marksmanship"),
+    "affliction-warlock": ("warlock", "affliction"),
+    "demonology-warlock": ("warlock", "demonology"),
+    "destruction-warlock": ("warlock", "destruction"),
 }
 SUFFIXES = (
     "pve-guide",
@@ -75,4 +78,4 @@ assert "2/3 Improved Hunter's Mark" in hunter_pages
 assert "later progression chapter, not the starting expectation" in hunter_pages
 assert hunter_pages.count("Updated 2026-08-05") == len(SUFFIXES)
 
-print("Validated 18 complete fresh-80 Priest and Hunter pages, hub cards, and local links.")
+print("Validated 36 complete config-backed fresh-80 pages, hub cards, and local links.")

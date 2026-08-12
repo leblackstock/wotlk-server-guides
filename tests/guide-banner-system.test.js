@@ -38,6 +38,21 @@ const families = {
     nickname: "Marks Hunter",
     raidType: "Raid DPS Guide",
     quickStartUpdated: "2026-08-05"
+  },
+  "affliction-warlock": {
+    specName: "Affliction Warlock",
+    nickname: "Affliction",
+    raidType: "Raid DPS Guide"
+  },
+  "demonology-warlock": {
+    specName: "Demonology Warlock",
+    nickname: "Demo Lock",
+    raidType: "Raid DPS Guide"
+  },
+  "destruction-warlock": {
+    specName: "Destruction Warlock",
+    nickname: "Destro Lock",
+    raidType: "Raid DPS Guide"
   }
 };
 const pageTypes = {
@@ -173,7 +188,10 @@ for (const [cardClass, classToken] of Object.entries({
   "death-knight-blood": "class-death-knight-accent",
   "priest-holy": "class-priest-accent",
   "priest-shadow": "class-priest-accent",
-  "hunter-marksmanship": "class-hunter-accent"
+  "hunter-marksmanship": "class-hunter-accent",
+  "warlock-affliction": "class-warlock-accent",
+  "warlock-demonology": "class-warlock-accent",
+  "warlock-destruction": "class-warlock-accent"
 })) {
   assert.match(
     hubInlineCss,
@@ -188,7 +206,10 @@ const operatingManuals = {
   "blood-death-knight": { id: "verdict", summaryCards: 4, sequences: 4 },
   "holy-priest": { id: "quick-start", summaryCards: 4, sequences: 4 },
   "shadow-priest": { id: "quick-start", summaryCards: 4, sequences: 4 },
-  "marksmanship-hunter": { id: "quick-start", summaryCards: 5, sequences: 4, fourSummaries: true }
+  "marksmanship-hunter": { id: "quick-start", summaryCards: 5, sequences: 4, fourSummaries: true },
+  "affliction-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "demonology-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "destruction-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 }
 };
 for (const [prefix, expected] of Object.entries(operatingManuals)) {
   const relative = `guides/${prefix}-pve-guide.html`;
