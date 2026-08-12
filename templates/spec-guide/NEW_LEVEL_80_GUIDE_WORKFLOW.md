@@ -1,6 +1,6 @@
 # New Level-80 Guide Workflow
 
-This is the required workflow for a guide whose reader has just reached level 80. It does not apply to a deliberately specialized guide such as a Heroic LK25 tank playbook.
+This is the required workflow for a guide whose reader has just reached level 80. It does not apply to a deliberately specialized guide such as a Heroic LK25 tank playbook, which must declare `guideAudience: "specialized-raid"` instead.
 
 ## Audience contract
 

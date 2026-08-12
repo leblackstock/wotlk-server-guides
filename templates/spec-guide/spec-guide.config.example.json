@@ -14,6 +14,14 @@
   },
   "specSlug": "blood-death-knight",
   "specKey": "blood",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
   "role": "Tank",
   "levelLabel": "Level 80+",
   "createClassSharedCss": true,
@@ -27,7 +35,7 @@
   "entityIconMode": "selective",
   "allowDenseEntityIcons": false,
   "cacheKey": "20260725",
-  "guideDescription": "Tank with active mitigation, planned cooldowns, reliable threat, and encounter-specific utility.",
+  "guideDescription": "A fresh-level-80 path into tanking with active mitigation, planned cooldowns, reliable threat, and encounter-specific utility.",
   "classAccent": "#C41F3B",
   "classAccentSoft": "#F39AAA",
   "classAccentDeep": "#50111F",
@@ -148,7 +156,7 @@
   },
   "talent": {
     "points": "43/26/2",
-    "name": "Baseline raid tank build",
+    "name": "Fresh-80 self-contained tank baseline",
     "summary": "Use this as the fully filled starting tree. Document every legitimate flex point below the embed.",
     "wowheadPath": "death-knight/005512153330030320102013-305050500002-02"
   },

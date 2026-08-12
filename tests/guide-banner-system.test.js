@@ -230,7 +230,7 @@ for (const [prefix, expected] of Object.entries(operatingManuals)) {
   assert.ok(manual?.querySelector(".server-behavior"), `${relative}: collapsed server behavior is missing`);
   assert.ok(manual?.querySelector(".guide-box .checklist"), `${relative}: checkmark list is missing`);
   assert.ok(manual?.querySelector(".guide-box .priority-list"), `${relative}: numbered list is missing`);
-  const expectedFooterDate = families[prefix].quickStartUpdated || "2026-07-31";
+  const expectedFooterDate = families[prefix].quickStartUpdated || "2026-08-12";
   assert.match(document.querySelector(".wrap > footer")?.textContent || "", new RegExp(`Updated ${expectedFooterDate}$`), `${relative}: footer date is stale`);
 }
 
@@ -352,7 +352,7 @@ assert.equal(
   "Tankadin Playing: seal and Judgement flexibility guidance changed"
 );
 assert.equal(
-  tankadinPlayingDocument.querySelector(".wrap > footer")?.textContent.trim().endsWith("Updated 2026-07-30"),
+  tankadinPlayingDocument.querySelector(".wrap > footer")?.textContent.trim().endsWith("Updated 2026-08-12"),
   true,
   "Tankadin Playing: footer date was not updated with the page"
 );

@@ -273,7 +273,7 @@ assert restricted_mounts and restricted_mounts.group(0).count('data-collectible-
 assert "Engineering 375 required to use." in restricted_mounts.group(0)
 assert "Engineering 300 required to use." in restricted_mounts.group(0)
 assert "Tailoring 300 required to use." in restricted_mounts.group(0)
-assert "Updated 2026-08-10" in guide
+assert f"Updated {audit['refreshed']}" in guide
 assert 'data-collectible-section="promotional-mounts"' not in guide
 assert "Polar Bear Collar" not in guide
 assert "Demand / Turnover" in guide

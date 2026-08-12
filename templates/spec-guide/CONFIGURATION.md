@@ -35,6 +35,14 @@ Create those families with `tools/create-fresh-80-spec-guide.mjs`. The wrapper r
 
 Do not apply `guideAudience: fresh-80` to a deliberately narrow guide such as a Heroic LK25 playbook. Specialized guides use the general wrapper and must make their narrower audience obvious in the banner and description.
 
+Every specialized family must instead declare:
+
+```json
+"guideAudience": "specialized-raid"
+```
+
+The audience value is rendered on every page as `data-guide-audience`, so audits and shared styles can distinguish fresh-80 entry guides from narrow progression playbooks.
+
 All slug and key fields must use lower-case kebab-case.
 
 ## Shared banner

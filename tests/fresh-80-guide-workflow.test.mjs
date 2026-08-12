@@ -15,11 +15,19 @@ invalid.fresh80Policy.externalRaidBuffsRequired = true;
 invalid.talent.name = "25-player raid build";
 assert.ok(validateFresh80Config(invalid).length >= 2);
 
-const audit = spawnSync(process.execPath, ["tools/audit-fresh-80-guide.mjs", "templates/spec-guide/marksmanship-hunter.config.json"], {
-  cwd: root,
-  encoding: "utf8"
-});
-assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
+for (const configFile of [
+  "templates/spec-guide/holy-priest.config.json",
+  "templates/spec-guide/shadow-priest.config.json",
+  "templates/spec-guide/marksmanship-hunter.config.json"
+]) {
+  const freshConfig = JSON.parse(fs.readFileSync(path.join(root, configFile), "utf8"));
+  assert.deepEqual(validateFresh80Config(freshConfig), [], configFile);
+  const audit = spawnSync(process.execPath, ["tools/audit-fresh-80-guide.mjs", configFile], {
+    cwd: root,
+    encoding: "utf8"
+  });
+  assert.equal(audit.status, 0, `${configFile}\n${audit.stdout}\n${audit.stderr}`);
+}
 
 for (const file of [
   "templates/spec-guide/NEW_LEVEL_80_GUIDE_WORKFLOW.md",
@@ -29,4 +37,4 @@ for (const file of [
   assert.ok(fs.existsSync(path.join(root, file)), `${file} is missing`);
 }
 
-console.log("Fresh-80 workflow policy, Marks reference family, and automated audit passed.");
+console.log("Fresh-80 workflow policy and all config-backed fresh-80 family audits passed.");

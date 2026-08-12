@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "families": [
+    {
+      "specSlug": "protection-paladin",
+      "specName": "Protection Paladin",
+      "guideAudience": "fresh-80"
+    },
+    {
+      "specSlug": "holy-paladin",
+      "specName": "Holy Paladin",
+      "guideAudience": "fresh-80"
+    },
+    {
+      "specSlug": "holy-priest",
+      "specName": "Holy Priest",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/holy-priest.config.json"
+    },
+    {
+      "specSlug": "shadow-priest",
+      "specName": "Shadow Priest",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/shadow-priest.config.json"
+    },
+    {
+      "specSlug": "marksmanship-hunter",
+      "specName": "Marksmanship Hunter",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/marksmanship-hunter.config.json"
+    },
+    {
+      "specSlug": "blood-death-knight",
+      "specName": "Blood Death Knight",
+      "guideAudience": "specialized-raid",
+      "specializedScope": "Heroic LK25 Tank",
+      "configFile": "templates/spec-guide/blood-death-knight.config.json"
+    }
+  ]
+}

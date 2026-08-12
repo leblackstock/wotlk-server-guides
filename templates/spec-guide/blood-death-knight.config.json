@@ -20,6 +20,7 @@
   },
   "specSlug": "blood-death-knight",
   "specKey": "blood",
+  "guideAudience": "specialized-raid",
   "role": "Heroic Lich King 25 progression tank",
   "levelLabel": "Level 80+",
   "createClassSharedCss": false,

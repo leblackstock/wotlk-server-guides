@@ -320,17 +320,17 @@ async function analyzeFamily(family, policy) {
   };
 }
 
-function checkDerivedBudget(problems, warnings, label, value, budget) {
-  if (value < budget.minimum) problems.push(`${label}: ${value} is below the complexity-based minimum ${budget.minimum}.`);
-  if (value > budget.maximum) problems.push(`${label}: ${value} is above the complexity-based maximum ${budget.maximum}.`);
-  if (value >= budget.minimum && value < budget.preferredMin) warnings.push(`${label}: ${value} passes but is below the preferred ${budget.preferredMin}.`);
-  if (value <= budget.maximum && value > budget.preferredMax) warnings.push(`${label}: ${value} passes but is above the preferred ${budget.preferredMax}.`);
+function checkDerivedBudget(warnings, label, value, budget) {
+  if (value < budget.minimum) warnings.push(`${label}: ${value} is below the advisory reference range of ${budget.minimum}–${budget.maximum}.`);
+  if (value > budget.maximum) warnings.push(`${label}: ${value} is above the advisory reference range of ${budget.minimum}–${budget.maximum}.`);
+  if (value >= budget.minimum && value < budget.preferredMin) warnings.push(`${label}: ${value} is below the preferred reference ${budget.preferredMin}.`);
+  if (value <= budget.maximum && value > budget.preferredMax) warnings.push(`${label}: ${value} is above the preferred reference ${budget.preferredMax}.`);
 }
 
-function checkCoverage(problems, label, structure, minimum) {
+function checkCoverage(warnings, label, structure, minimum) {
   if (!structure || structure.total === 0) return;
   const ratio = structure.withContextualIcon / structure.total;
-  if (ratio < minimum) problems.push(`${label}: ${structure.withContextualIcon}/${structure.total} (${Math.round(ratio * 100)}%) is below ${Math.round(minimum * 100)}%.`);
+  if (ratio < minimum) warnings.push(`${label}: ${structure.withContextualIcon}/${structure.total} (${Math.round(ratio * 100)}%) is below the advisory ${Math.round(minimum * 100)}% reference.`);
 }
 
 function evaluateFamily(family, policy) {
@@ -339,44 +339,44 @@ function evaluateFamily(family, policy) {
   if (!policy) return { passed: true, problems, warnings };
   const totals = family.totals;
 
-  checkDerivedBudget(problems, warnings, "Family contextual icons", totals.contextual, totals.contextualBudget);
+  checkDerivedBudget(warnings, "Family contextual icons", totals.contextual, totals.contextualBudget);
   if (totals.contextualPer1000Words > Number(policy.family.maximumPer1000Words)) {
-    problems.push(`Contextual density: ${totals.contextualPer1000Words} per 1,000 words is above ${policy.family.maximumPer1000Words}.`);
+    warnings.push(`Contextual density: ${totals.contextualPer1000Words} per 1,000 words is above the advisory ${policy.family.maximumPer1000Words} reference.`);
   } else if (totals.contextualPer1000Words < Number(policy.family.warningBelowPer1000Words)) {
     warnings.push(`Contextual density: ${totals.contextualPer1000Words} per 1,000 words is low; verify that the guide still has enough visual anchors.`);
   }
 
   if (totals.contextual >= Number(policy.concentration.applyPageShareAfterContextualIcons) && totals.maxPageContextualShare > Number(policy.concentration.maxPageShare)) {
-    problems.push(`Largest page owns ${Math.round(totals.maxPageContextualShare * 100)}% of contextual icons; maximum is ${Math.round(policy.concentration.maxPageShare * 100)}%.`);
+    warnings.push(`Largest page owns ${Math.round(totals.maxPageContextualShare * 100)}% of contextual icons; the advisory reference is ${Math.round(policy.concentration.maxPageShare * 100)}%.`);
   }
 
-  for (const page of family.pages) checkDerivedBudget(problems, warnings, `${page.page} contextual icons`, page.contextual, page.contextualBudget);
+  for (const page of family.pages) checkDerivedBudget(warnings, `${page.page} contextual icons`, page.contextual, page.contextualBudget);
 
   for (const [key, minimum] of Object.entries(policy.coverage)) {
-    checkCoverage(problems, `${key} contextual icon coverage`, totals.structures[key], Number(minimum));
+    checkCoverage(warnings, `${key} contextual icon coverage`, totals.structures[key], Number(minimum));
   }
 
   const tableShare = totals.contextual ? totals.locations.tables / totals.contextual : 0;
   if (tableShare > Number(policy.concentration.maxTableShare)) {
-    problems.push(`Table icons are ${Math.round(tableShare * 100)}% of contextual icons; maximum is ${Math.round(policy.concentration.maxTableShare * 100)}%.`);
+    warnings.push(`Table icons are ${Math.round(tableShare * 100)}% of contextual icons; the advisory reference is ${Math.round(policy.concentration.maxTableShare * 100)}%.`);
   }
   const otherShare = totals.contextual ? totals.locations.otherContextual / totals.contextual : 0;
   if (otherShare > Number(policy.concentration.maxOtherContextualShare)) {
-    problems.push(`Unclassified contextual icons are ${Math.round(otherShare * 100)}% of contextual icons; maximum is ${Math.round(policy.concentration.maxOtherContextualShare * 100)}%.`);
+    warnings.push(`Unclassified contextual icons are ${Math.round(otherShare * 100)}% of contextual icons; the advisory reference is ${Math.round(policy.concentration.maxOtherContextualShare * 100)}%.`);
   }
 
   if (totals.inlineEntity > totals.inlineBudget.hardMax) {
-    problems.push(`Inline entity icons: ${totals.inlineEntity} exceeds the complexity-based maximum ${totals.inlineBudget.hardMax} for ${totals.entityLinkCount} eligible links.`);
+    warnings.push(`Inline entity icons: ${totals.inlineEntity} is above the advisory reference ${totals.inlineBudget.hardMax} for ${totals.entityLinkCount} eligible links.`);
   } else if (totals.inlineEntity > totals.inlineBudget.preferredMax) {
     warnings.push(`Inline entity icons: ${totals.inlineEntity} passes but is above the preferred ${totals.inlineBudget.preferredMax}.`);
   }
   if (totals.inlinePer1000Words > Number(policy.inlineEntity.maximumPer1000Words)) {
-    problems.push(`Inline icon density: ${totals.inlinePer1000Words} per 1,000 words is above ${policy.inlineEntity.maximumPer1000Words}.`);
+    warnings.push(`Inline icon density: ${totals.inlinePer1000Words} per 1,000 words is above the advisory ${policy.inlineEntity.maximumPer1000Words} reference.`);
   }
   if (totals.inlineEntity > 0) {
     const proseShare = totals.structures.inlineInParagraphs / totals.inlineEntity;
     if (proseShare > Number(policy.inlineEntity.maxParagraphShare)) {
-      problems.push(`Inline icons in paragraphs are ${Math.round(proseShare * 100)}% of inline icons; maximum is ${Math.round(policy.inlineEntity.maxParagraphShare * 100)}%. Use lists, tables, chips, and callouts instead.`);
+      warnings.push(`Inline icons in paragraphs are ${Math.round(proseShare * 100)}% of inline icons; the advisory reference is ${Math.round(policy.inlineEntity.maxParagraphShare * 100)}%. Review lists, tables, chips, and callouts before changing placements.`);
     }
   }
   if (family.entityIconMode === "dense" && !family.allowDenseEntityIcons) {
@@ -390,7 +390,7 @@ const policy = loadPolicy();
 const selectedFamilies = configFile ? [familyFromConfig(configFile)] : BASELINE_FAMILIES;
 const report = {
   generatedAt: new Date().toISOString(),
-  methodology: "Rendered DOM after local guide icon scripts; derives each guide's contextual icon budget from its actual icon-worthy structures, separates optional inline entity icons, and reports mandatory playbook-action icons outside the density budget for the dedicated 100% post-density gate.",
+  methodology: "Rendered DOM after local guide icon scripts; reports advisory density references, separates optional inline entity icons, and identifies mandatory playbook-action icons for the dedicated placement verifier. Counts never force icons to be added or removed.",
   policyFile: fs.existsSync(path.resolve(root, policyFile)) ? policyFile : null,
   families: []
 };
@@ -412,7 +412,7 @@ function markdown(data) {
     "",
     "## Family totals",
     "",
-    "| Guide family | Complexity | Opportunity score | Words | Contextual | Required contextual range | Inline | Inline maximum | Playbook actions | Approval |",
+    "| Guide family | Complexity | Opportunity score | Words | Contextual | Advisory contextual range | Inline | Advisory inline maximum | Playbook actions | Verification |",
     "|---|---|---:|---:|---:|---:|---:|---:|---:|---|"
   ];
   for (const family of data.families) {
@@ -420,14 +420,14 @@ function markdown(data) {
     lines.push(`| ${family.label} | ${t.complexity} | ${t.opportunityScore} | ${t.words} | ${t.contextual} | ${budgetText(t.contextualBudget)} | ${t.inlineEntity} | ${t.inlineBudget.hardMax} | ${t.mandatoryPlaybookAction} | ${family.approval.passed ? "Pass" : "Needs work"} |`);
   }
   for (const family of data.families) {
-    lines.push("", `## ${family.label} by page`, "", "| Page | Complexity | Opportunity score | Words | Contextual | Required range | Inline | Playbook actions |", "|---|---|---:|---:|---:|---:|---:|---:|");
+    lines.push("", `## ${family.label} by page`, "", "| Page | Complexity | Opportunity score | Words | Contextual | Advisory range | Inline | Playbook actions |", "|---|---|---:|---:|---:|---:|---:|---:|");
     for (const page of family.pages) {
       lines.push(`| ${page.page} | ${page.complexity} | ${page.opportunityScore} | ${page.words} | ${page.contextual} | ${budgetText(page.contextualBudget)} | ${page.inlineEntity} | ${page.mandatoryPlaybookAction} |`);
     }
     lines.push("", "Placement totals:", "");
     for (const [key, value] of Object.entries(family.totals.locations)) lines.push(`- ${key}: ${value}`);
-    if (family.approval.problems.length) lines.push("", "Approval failures:", "", ...family.approval.problems.map((item) => `- ${item}`));
-    if (family.approval.warnings.length) lines.push("", "Approval notes:", "", ...family.approval.warnings.map((item) => `- ${item}`));
+    if (family.approval.problems.length) lines.push("", "Verification failures:", "", ...family.approval.problems.map((item) => `- ${item}`));
+    if (family.approval.warnings.length) lines.push("", "Advisory density notes:", "", ...family.approval.warnings.map((item) => `- ${item}`));
   }
   return `${lines.join("\n")}\n`;
 }

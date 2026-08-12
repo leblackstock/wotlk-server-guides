@@ -1,8 +1,8 @@
-# Spec Guide Icon-Density Approval
+# Spec Guide Icon Placement Verification and Density Report
 
-This is the mandatory visual-density standard for new spec guides.
+This is the mandatory icon-verification standard for new spec guides. Density counts are advisory: they help compare pages, but they never force icons to be added or removed.
 
-The goal is not to make every guide contain the same number of icons. The goal is to give each guide enough visual anchors for the amount of information and number of decisions it actually contains, without turning the page into an icon mosaic.
+The goal is to verify approved icon placements, valid entity IDs, working mouseovers, and required action icons. The density report helps reviewers notice unusual concentration, but human section decisions control the design.
 
 The analyzer renders the pages with their local JavaScript before counting, so JavaScript-added icons are included.
 
@@ -22,7 +22,7 @@ Contextual icons explain structure or decisions:
 - raid encounter summaries
 - guide, priority, phase, and macro card headings
 
-These are required in proportion to the guide's actual complexity.
+These appear only where the shared component or an approved section decision calls for them. No count or ratio creates a placement requirement.
 
 ### Inline entity icons
 
@@ -40,7 +40,7 @@ A mechanically dense progression tank guide can naturally support many decision 
 
 Forcing both guides to reach the same total would either leave the complex guide under-illustrated or make the simple guide decorate ordinary prose merely to satisfy a number.
 
-The current standard therefore calculates the required range from **icon opportunities**, not from the class or role name and not from a fixed family total.
+The current report calculates an advisory reference range from **icon opportunities**. It is not a quota, a passing range, or an instruction to decorate content.
 
 ## 3. Icon-opportunity score
 
@@ -67,7 +67,7 @@ The score is reported as:
 
 These labels describe the guide's rendered structure. They are not manually assigned by class, specialization, role, or reputation.
 
-## 4. Dynamic family budget
+## 4. Advisory family reference
 
 The contextual-icon budget is calculated from the opportunity score:
 
@@ -79,17 +79,17 @@ The contextual-icon budget is calculated from the opportunity score:
 
 Examples:
 
-| Opportunity score | Complexity | Passing range | Preferred range |
+| Opportunity score | Complexity | Advisory range | Preferred reference |
 |---:|---|---:|---:|
 | 45 | Simple | 28–65 | 34–48 |
 | 70 | Standard | 44–96 | 53–74 |
 | 100 | Complex | 62–133 | 75–105 |
 
-A concise Feral DPS guide with a score near 45 could therefore pass with roughly 30–50 well-placed contextual icons. It would not be required to imitate a progression tank guide.
+A concise Feral DPS guide with a score near 45 may naturally land around 30–50 well-placed contextual icons. It is not required to reach that range or imitate a progression tank guide.
 
-Contextual density above **24 icons per 1,000 words** fails. Density below **6 per 1,000 words** produces a review note rather than an automatic failure, because structural coverage is the more reliable test.
+Contextual density above **24 icons per 1,000 words** or below **6 per 1,000 words** produces a review note only. Neither value is a release failure.
 
-## 5. Dynamic page budgets
+## 5. Advisory page references
 
 Each page receives its own opportunity score and budget.
 
@@ -110,13 +110,13 @@ The remainder is calculated from that page's opportunities:
 
 A short Setup page with only a few meaningful groups may need only a handful of icons. A large Playing page containing multiple playbooks and decision engines receives a larger allowance automatically.
 
-No page may hoard more than 45% of the family's contextual icons once the family contains at least 20 contextual icons.
+A page owning more than 45% of the family's contextual icons receives an advisory review note once the family contains at least 20 contextual icons.
 
-## 6. Coverage matters more than raw count
+## 6. Coverage is a review signal
 
 The analyzer checks coverage only for structures that actually exist.
 
-Required coverage:
+Advisory coverage references:
 
 - 60% of major sections
 - all Quick Start chapter cards that exist
@@ -127,25 +127,25 @@ Required coverage:
 - 55% of secondary card headings
 - all server-behavior notes that exist
 
-A guide with no combat-engine diagram does not fail for lacking combat-engine icons. A guide with ten playbook cards must iconize enough of those cards to preserve visual navigation.
+A guide with no combat-engine diagram does not receive a combat-engine note. A guide with ten playbook cards may receive a low-coverage note, but the approved per-section design decides the correct placements.
 
-Counts and coverage must both pass. Loading thirty icons into one gear table does not compensate for bare playbooks or encounter summaries.
+Counts and coverage never determine release approval. Loading thirty icons into one gear table also does not compensate for a missing icon in a specifically required component.
 
 ### Playbook ability chips: 100% required
 
 The percentage-based playbook-card coverage above applies to contextual card anchors. It does not permit bare action chips.
 
-The density analyzer reports these mandatory action icons separately and excludes them from the optional contextual/inline density budget. After that regular density audit passes, `audit-playbook-ability-icons.mjs` renders the Playing page with its local tooltip/icon scripts and checks every direct `.spec-playbook-grid .spec-card .ability-strip > .ability-choice`. Every chip must contain its own verified WoW icon. One icon in the card heading, or one icon elsewhere in the action row, does not satisfy this gate.
+The density analyzer reports these mandatory action icons separately and excludes them from the optional contextual/inline report. `audit-playbook-ability-icons.mjs` renders the Playing page with its local tooltip/icon scripts and checks every direct `.spec-playbook-grid .spec-card .ability-strip > .ability-choice`. Every chip must contain its own verified WoW icon. One icon in the card heading, or one icon elsewhere in the action row, does not satisfy this gate.
 
 This gate applies to every production config, including a guide whose overall icon-density baseline is explicitly grandfathered.
 
-## 7. Concentration safeguards
+## 7. Concentration review signals
 
-To prevent number-gaming:
+The report flags these patterns for human review:
 
-- table icons may not exceed 35% of contextual icons
-- unclassified contextual locations may not exceed 15%
-- no page may exceed the family concentration limit
+- table icons above 35% of contextual icons
+- unclassified contextual locations above 15%
+- a page above the family concentration reference
 - one contextual icon is normally enough for one heading or decision unit
 - do not duplicate the same icon twice on the same visual line
 
@@ -154,11 +154,11 @@ To prevent number-gaming:
 Inline icons scale with the number of eligible Wowhead-linked entity mentions.
 
 - preferred maximum: 25% of eligible entity links
-- hard maximum: 45% of eligible entity links
+- upper reference: 45% of eligible entity links
 - preferred allowance never needs to exceed 120
 - hard allowance never exceeds 180
-- hard density maximum: 25 per 1,000 words
-- no more than 10% may appear inside ordinary paragraphs
+- density reference: 25 per 1,000 words
+- paragraph-share reference: 10%
 
 Small guides receive a practical allowance of at least 16 preferred and 24 maximum inline icons, even when they contain few links.
 
@@ -177,7 +177,7 @@ Do not iconize every prose mention. A mouseover link remains useful without addi
 - `entityIconMode: "dense"`
 - `allowDenseEntityIcons: true`
 
-Dense mode must still pass all calculated limits.
+Dense mode still requires explicit approval, but calculated counts remain advisory.
 
 ## 9. Per-component rules
 
@@ -205,10 +205,10 @@ The permanent rules are:
 
 - Missing `iconDensityStatus` defaults to `required`.
 - The production generator refuses to create a new guide marked `grandfathered`.
-- The ordinary draft audit does not force a final icon count while content is still changing.
-- The release audit automatically invokes this rendered analyzer with `--enforce`.
+- Neither the ordinary draft audit nor the release audit forces an icon count.
+- The release audit invokes the rendered analyzer for advisory reporting and verifies explicit placement/mode rules.
 - GitHub Actions independently analyzes every retained production config by default.
-- A new guide cannot opt out by deleting or changing one boolean.
+- A new guide cannot opt out of icon verification by deleting or changing one boolean.
 - A future exception requires a deliberate central workflow change in a reviewed pull request, not a self-declared config value.
 
 Install the rendered-DOM dependency when working locally:

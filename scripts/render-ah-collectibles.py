@@ -10,7 +10,6 @@ import json
 import re
 import sys
 import unicodedata
-from datetime import date
 from pathlib import Path
 
 
@@ -274,7 +273,7 @@ def render_page(data: dict, audit: dict) -> str:
 
 <section class="common"><h2 class="ah-category-heading">Disclaimer<a class="ah-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><p class="small">These are evidence-labeled starting bands for the Hellscream / Garrosh low-population economy, not live Auction House prices. Confirm the exact item and tradeable state before posting.</p></section>
 
-<footer>WotLK 3.3.5 Companions, Mounts &amp; Accessories AH Guide • Hellscream / Garrosh • Created by Valdora • Updated {date.today().isoformat()}</footer>
+<footer>WotLK 3.3.5 Companions, Mounts &amp; Accessories AH Guide • Hellscream / Garrosh • Created by Valdora • Updated {html.escape(str(audit["refreshed"]))}</footer>
 </div>
 <!-- AH_GUIDE_SCRIPTS_START -->
 <script src="../assets/ah-search-index.js?v={ASSET_VERSION}" defer></script>

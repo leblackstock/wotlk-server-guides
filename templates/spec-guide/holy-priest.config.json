@@ -14,6 +14,14 @@
   },
   "specSlug": "holy-priest",
   "specKey": "priest-holy",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
   "role": "Flexible raid healer",
   "levelLabel": "Level 80+",
   "createClassSharedCss": true,
@@ -89,8 +97,8 @@
   },
   "talent": {
     "points": "18/53/0",
-    "name": "Standard fresh-80 Holy raid build",
-    "summary": "Start with the mana-stable standard build, then move flexible points only after the raid composition and personal spell usage justify it.",
+    "name": "Fresh-80 self-contained Holy baseline",
+    "summary": "Start with the complete mana-stable baseline. Treat composition-based point swaps as later optimization, never as a requirement for the build to work.",
     "wowheadPath": "priest/05032031103-234501032002151530000331351"
   },
   "pageDescriptions": {

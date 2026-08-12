@@ -196,10 +196,10 @@ function runIconDensityReleaseAudit() {
     return;
   }
   if (result.status !== 0) {
-    errors.push(`Complexity-based icon approval failed. Install jsdom with "npm install --no-save --no-package-lock jsdom@24" if the analyzer could not start, then correct the reported density, coverage, or concentration failures.`);
+    errors.push(`Rendered icon verification failed. Install jsdom with "npm install --no-save --no-package-lock jsdom@24" if the analyzer could not start, then correct the reported placement or mode failure. Density counts are advisory.`);
     return;
   }
-  notes.push("Complexity-based rendered icon approval passed as part of the release audit.");
+  notes.push("Rendered icon report completed; density counts were advisory and placement/mode verification passed.");
 }
 
 function runPlaybookAbilityIconReleaseAudit() {

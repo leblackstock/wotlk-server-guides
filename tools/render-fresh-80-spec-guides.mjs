@@ -228,6 +228,14 @@ const holyPriest = {
   },
   slug: "holy-priest",
   specKey: "priest-holy",
+  guideAudience: "fresh-80",
+  fresh80Policy: {
+    selfContainedTalents: true,
+    externalRaidBuffsRequired: false,
+    capsAreProgressionGoals: true,
+    budgetBeforePremium: true,
+    raidContentIsLaterProgression: true
+  },
   tooltipFile: "priest-tooltips.js",
   cacheKey: "20260726-holy-priest-v2-color-icons",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. Hellscream may alter sources, tuning, cooldown resets, or encounter scripting; uncertain interactions are labeled for live testing.",
@@ -300,7 +308,7 @@ const holyPriest = {
   roleFilters: [["raid-healing", "Raid healing"], ["tank-support", "Tank support"], ["utility", "Dispel / utility"], ["cooldown", "Cooldown"], ["special", "Special assignment"]],
   quick: {
     summaries: [
-      { label: "Core job", value: "Prevent the next death", detail: "Holy is a flexible raid healer. Choose by damage pattern, not by a rigid rotation." },
+      { label: "Core job", value: "Prevent the next death", detail: "Holy is a flexible group and raid healer. Choose by damage pattern, not by a rigid rotation." },
       { label: "Default rhythm", value: "PoM → CoH → triage", detail: "Keep Prayer of Mending moving, use Circle of Healing on real clusters, then fill intelligently." },
       { label: "Fresh-80 rule", value: "Mana first, speed second", detail: "A healer with empty mana has zero throughput. Add haste after sustained activity is comfortable." }
     ],
@@ -308,16 +316,16 @@ const holyPriest = {
     beforeIcon: "spell_holy_prayerofmendingtga",
     firstIcon: "inv_misc_coin_01",
     before: [
-      `Use ${entity("Inner Fire")} and the assigned raid prayers; carry candles for group buffs.`,
-      `Confirm raid-healing, tank-support, dispel, and ${entity("Guardian Spirit")} assignments.`,
-      `Pre-place ${entity("Lightwell")} only where the raid can actually click it safely.`,
+      `Use ${entity("Inner Fire")} and your available Fortitude, Spirit, and Shadow Protection buffs; carry candles for group prayers.`,
+      `Identify the tank, keep party or raid frames visible, and know which magic effects and diseases you can dispel.`,
+      `Pre-place ${entity("Lightwell")} only where the group can actually click it safely.`,
       `Cast ${entity("Prayer of Mending")} on the pull target and pre-${entity("Renew")} active tanks when damage is imminent.`
     ],
     firstMoves: [
       `Train every rank-80 heal and install raid frames that show range, aggro, diseases, and dispellable magic.`,
       `Buy or farm a mana trinket; enchant usable gear instead of waiting for a fantasy best-in-slot set.`,
-      `Run normal Trial of the Champion, heroic dungeons, daily randoms, and weekly raids for Triumph and Frost emblems.`,
-      `Enter raids once the set is coherent and enchanted; execution beats another week of shopping.`
+      `Run normal and heroic dungeons, including normal Trial of the Champion, while replacing weak slots and learning triage.`,
+      `Treat raids as later progression once the set is coherent, enchanted, and comfortable in five-player content.`
     ],
     chapterTopics: {
       playing: "Triage · Serendipity · movement · mana",
@@ -407,8 +415,8 @@ const holyPriest = {
   },
   talent: {
     points: "18/53/0",
-    name: "standard fresh-80 Holy raid build",
-    summary: "This version keeps the crucial Discipline mana tools and the full Holy raid-healing engine. Move flex points only when raid composition and actual logs show a reason.",
+    name: "fresh-80 self-contained Holy baseline",
+    summary: "This version keeps the crucial Discipline mana tools and the complete Holy healing engine. Treat composition-based flex points as later optimization, not a starting requirement.",
     path: "priest/05032031103-234501032002151530000331351"
   },
   setup: {
@@ -463,16 +471,16 @@ const holyPriest = {
       ["MP5", "Direct in-combat regeneration", "Works regardless of the five-second rule.", "Good on a usable upgrade, but Spirit and Intellect usually interact with more of the Holy kit."]
     ],
     stages: [
-      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Equip coherent spell-power gear with Intellect and useful secondaries.", "Secure two functional trinkets, a strong weapon, and all inexpensive enchants.", "Prefer mana stability over copying an ICC haste target."] },
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Equip coherent spell-power gear with Intellect and useful secondaries.", "Secure two functional trinkets, a strong weapon, and budget gems and enchants for temporary gear.", "Prefer mana stability over copying an ICC haste target or buying premium materials too early."] },
       { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Finish the 18/53/0 setup and glyphs.", "Practice sustained heroic-dungeon pulls without drinking after every pack.", "Carry mana potions and know the planned Shadowfiend/Hymn window."] },
       { title: "Encounter tuning", icon: "inv_misc_gear_01", items: ["Favor extra haste and spell power for short burst fights.", "Favor Intellect, Spirit, and mana trinkets for long progression pulls.", "Keep a throughput set for Valithria where encounter mechanics can solve mana."] }
     ],
     gems: [
       ["Meta", item("Insightful Earthsiege Diamond", "q-rare"), "None for general progression", "Activate with one red, one yellow, and one blue gem."],
-      ["Red", item("Runed Cardinal Ruby"), item("Luminous Ametrine"), "Use pure spell power after mana is comfortable; use spell power/Intellect while stabilizing."],
-      ["Yellow", item("Luminous Ametrine"), item("Quick King's Amber"), "Match worthwhile Intellect or haste bonuses."],
-      ["Blue", item("Purified Dreadstone"), item("Sparkling Majestic Zircon"), "Use the minimum needed for the meta unless a strong socket bonus justifies more."],
-      ["Any color", item("Nightmare Tear"), "Profession gem if applicable", "One Nightmare Tear efficiently satisfies all three meta colors."]
+      ["Red", "Rare-quality spell-power gem", item("Runed Cardinal Ruby"), "Use the affordable equivalent on temporary gear; upgrade to epic spell power only when mana is comfortable and the item will last."],
+      ["Yellow", "Rare-quality spell power / Intellect gem", item("Luminous Ametrine"), "Use the affordable equivalent while stabilizing, then upgrade worthwhile sockets later."],
+      ["Blue", "Rare-quality spell power / Spirit gem", item("Purified Dreadstone"), "Use the minimum needed for the meta unless a strong socket bonus justifies more."],
+      ["Any color", "Keep a correctly activated budget meta", item("Nightmare Tear"), "Nightmare Tear is a later convenience, not a required first purchase."]
     ],
     enchants: [
       ["Head", item("Arcanum of Burning Mysteries"), "Kirin Tor revered in standard Wrath."],
@@ -502,10 +510,10 @@ const holyPriest = {
       ['<span class="optional">BoE</span>', item("Darkmoon Card: Greatness"), "Nobles Deck / Darkmoon Faire", "The Intellect version is broadly useful, but price matters on a low-pop server."]
     ],
     fresh: [
-      ["Off-hand", item("Faces of Doom"), "Inscription BoE", "Pairs with a one-handed weapon and supplies strong early stats."],
-      ["Wrists", item("Bejeweled Wizard's Bracers"), "Tailoring BoE", "A costly but long-lived haste piece; confirm faction version and local material price."],
-      ["Legs", item("Lightweave Leggings"), "ICC tailoring craft", "High-level healer cloth that can bridge deep into ICC."],
-      ["Feet", item("Sandals of Consecration"), "ICC tailoring craft", "Strong healer boots when Primordial Saronite is realistic."],
+      ["Off-hand", item("Faces of Doom"), "Inscription BoE", "Pairs with a one-handed weapon and supplies strong early stats; compare the local price before buying."],
+      ["Armor gaps", "Highest usable normal or heroic dungeon healing piece", "Northrend five-player dungeons", "Replace quest and leveling pieces before paying for endgame crafts."],
+      ["Reputation slot", "Best affordable faction healing reward", "Northrend reputation vendors", "Use deterministic reputation rewards when dungeon drops refuse to cooperate."],
+      ["Crafted option", "Affordable spell-power cloth with Intellect or Spirit", "Tailoring BoE / Auction House", "Buy only when the price beats the next reachable dungeon or emblem upgrade."],
       ["Trinket", item("Talisman of Resurgence"), "50 Emblems of Triumph", "Large Intellect plus an on-use spell-power window."],
       ["Any weak slot", "Highest usable heroic / reputation upgrade", "Heroics and Northrend factions", "Replace severe item-level holes before optimizing secondary-stat perfection."]
     ],
@@ -535,6 +543,7 @@ const holyPriest = {
     ]
   },
   raiding: {
+    entryNote: "This is a later progression chapter, not the starting expectation for a new level 80. Finish the self-contained setup, practice in normal and heroic dungeons, and enter raids only after the character and player are ready.",
     assignmentIcon: "spell_holy_guardianspirit",
     consumables: [
       `${item("Flask of the Frost Wyrm")} for general throughput.`,
@@ -620,6 +629,14 @@ const shadowPriest = {
   },
   slug: "shadow-priest",
   specKey: "shadow",
+  guideAudience: "fresh-80",
+  fresh80Policy: {
+    selfContainedTalents: true,
+    externalRaidBuffsRequired: false,
+    capsAreProgressionGoals: true,
+    budgetBeforePremium: true,
+    raidContentIsLaterProgression: true
+  },
   tooltipFile: "priest-tooltips.js",
   cacheKey: "20260726-shadow-priest-v2-color-icons",
   serverNote: "Standard original-client WotLK 3.3.5a behavior is the baseline. Shadow Word: Pain snapshot details, channel timing, boss immunities, and custom encounter scripting should be verified on Hellscream when observed behavior differs.",
@@ -690,7 +707,7 @@ const shadowPriest = {
   roleFilters: [["single-target", "Single target"], ["multi-dot", "Adds / multi-DoT"], ["utility", "Utility / dispel"], ["soak", "Dispersion soak"], ["special", "Special assignment"]],
   quick: {
     summaries: [
-      { label: "Boss hit target", value: "17% total spell hit", detail: "With 3/3 Shadow Focus and personal Misery, a Horde priest needs 11% from gear: 289 rating." },
+      { label: "Level-83 hit goal", value: "Work toward 17% total", detail: "With 3/3 Shadow Focus and personal Misery, a Horde priest eventually needs 11% from gear: 289 rating. Start dungeons before reaching it." },
       { label: "Opener rule", value: "Five stacks, then Pain", detail: "Build Shadow Weaving before the long-lived Shadow Word: Pain that Mind Flay will refresh." },
       { label: "Fresh-80 rule", value: "Cap hit before greed", detail: "A missed Vampiric Touch, Mind Blast, or DoT costs more than a small uncapped throughput gain." }
     ],
@@ -699,15 +716,15 @@ const shadowPriest = {
     firstIcon: "inv_misc_coin_01",
     before: [
       `Activate ${entity("Shadowform")} and ${entity("Inner Fire")}; confirm Fortitude, Spirit, and Shadow Protection assignments.`,
-      `Confirm the boss target, required utility, and that the equipped boss set reaches its spell-hit target.`,
-      `Confirm whether the raid needs ${entity("Vampiric Embrace")}, ${entity("Mass Dispel")}, ${entity("Silence")}, or a ${entity("Dispersion")} soak.`,
-      `Pre-pot only when the encounter and pull timer make the potion window safe.`
+      `Identify the tank and first damage target; work toward the level-83 hit goal without treating it as a gate for five-player content.`,
+      `Know when the group needs ${entity("Vampiric Embrace")}, ${entity("Mass Dispel")}, ${entity("Silence")}, or ${entity("Dispersion")}.`,
+      `Save pre-potting for a planned boss pull; it is optional during the fresh-80 dungeon path.`
     ],
     firstMoves: [
-      "Reach the boss spell-hit target and install visible DoT timers.",
+      "Install visible DoT timers and begin building toward the level-83 spell-hit target.",
       `Farm ${item("Abyssal Rune", "q-rare")} and another functional trinket before chasing expensive ICC pieces.`,
       "Practice a five-stack opener on a training dummy until Shadow Word: Pain is never applied early.",
-      "Run heroics and Trial of the Champion while buying Triumph upgrades for the weakest slots."
+      "Run normal and heroic dungeons, including normal Trial of the Champion, while buying emblem upgrades for the weakest slots."
     ],
     chapterTopics: {
       playing: "DoTs · channels · movement · mana",
@@ -797,8 +814,8 @@ const shadowPriest = {
   },
   talent: {
     points: "14/0/57",
-    name: "standard Shadow raid build",
-    summary: "The damage engine is tight: core Shadow talents, Improved Inner Fire, Meditation, and Inner Focus leave only narrow flex around pushback protection, range, mana, and Silence.",
+    name: "fresh-80 self-contained Shadow baseline",
+    summary: "The complete baseline covers every core damage and mana talent without requiring a particular party or raid composition. The remaining choices are narrow utility trades.",
     path: "priest/05032031--325023051223010223152301351"
   },
   setup: {
@@ -853,16 +870,16 @@ const shadowPriest = {
       ["Intellect", "Secondary mana and crit", "Expands the mana pool and slightly increases crit.", "Do not gem pure Intellect for damage."]
     ],
     stages: [
-      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Reach 289 hit rating for a Horde boss set with 3/3 Shadow Focus and Misery.", "Equip spell power and haste after hit; accept Spirit on strong cloth pieces.", "Farm a usable weapon and two trinkets before expensive optimization."] },
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Start normal and heroic dungeons while building toward 289 hit rating for a Horde level-83 boss set with 3/3 Shadow Focus and Misery.", "Equip spell power and haste after hit; accept Spirit on strong cloth pieces.", "Use budget gems and enchants on temporary gear, and farm a usable weapon and two trinkets before expensive optimization."] },
       { title: "Raid-ready base", icon: "spell_shadow_shadowform", items: ["Use the 14/0/57 build and correct glyphs.", "Maintain near-complete Vampiric Touch and Devouring Plague uptime on a dummy.", "Carry a mana plan and a utility assignment."] },
       { title: "Encounter tuning", icon: "inv_misc_gear_01", items: ["Keep a hit-capped set through every swap.", "Use burst pieces for short adds and sustained pieces for long bosses.", "Do not break strong tier bonuses for a tiny single-item stat gain."] }
     ],
     gems: [
       ["Meta", item("Chaotic Skyflare Diamond", "q-rare"), "None for general damage", "Requires two blue gems; plan activation before socketing the rest."],
-      ["Red", item("Runed Cardinal Ruby"), "Profession spell-power gem", "Default when the bonus is weak."],
-      ["Yellow", item("Reckless Ametrine"), item("Quick King's Amber"), "Use spell power/haste to collect worthwhile bonuses."],
-      ["Blue", item("Purified Dreadstone"), item("Nightmare Tear"), "Meet the meta with the least damage loss and collect strong spell-power bonuses."],
-      ["Hit repair", item("Veiled Ametrine"), item("Rigid King's Amber"), "Use only until the exact set reaches cap; replace excess hit after upgrades."]
+      ["Red", "Rare-quality spell-power gem", item("Runed Cardinal Ruby"), "Use the affordable equivalent on temporary gear; upgrade lasting pieces later."],
+      ["Yellow", "Rare-quality spell power / haste gem", item("Reckless Ametrine"), "Collect worthwhile bonuses without overspending early."],
+      ["Blue", "Rare-quality spell power / Spirit gem", item("Purified Dreadstone"), "Meet the meta with the least damage loss; Nightmare Tear is a later convenience."],
+      ["Hit repair", "Rare-quality spell power / hit gem", item("Veiled Ametrine"), "Use only until the exact set reaches its current target; replace excess hit after upgrades."]
     ],
     enchants: [
       ["Head", item("Arcanum of Burning Mysteries"), "Kirin Tor revered."],
@@ -892,11 +909,11 @@ const shadowPriest = {
       ['<span class="optional">Triumph</span>', item("Talisman of Resurgence"), "50 Emblems of Triumph", "Large Intellect and controllable spell power while gearing."]
     ],
     fresh: [
-      ["Chest", item("Merlin's Robe"), "Tailoring BoE", "Strong spell-power and haste craft; use the correct faction version."],
-      ["Wrists", item("Bejeweled Wizard's Bracers"), "Tailoring BoE", "High-item-level haste craft that can survive into ICC."],
-      ["Legs", item("Leggings of Woven Death"), "ICC tailoring craft", "Powerful caster legs with sockets and offensive secondaries."],
-      ["Feet", item("Deathfrost Boots"), "ICC tailoring craft", "Strong caster boots when Primordial Saronite is affordable."],
-      ["Trinket", item("Illustration of the Dragon Soul"), "Sartharion 25", "Stacking spell power with strong sustained value."],
+      ["Chest", item("Merlin's Robe"), "Tailoring BoE", "Strong spell-power and haste craft, but only when its local price is reasonable for a new 80."],
+      ["Armor gaps", "Highest usable normal or heroic dungeon caster piece", "Northrend five-player dungeons", "Replace quest and leveling pieces before buying endgame crafts."],
+      ["Reputation slot", "Best affordable faction caster reward", "Northrend reputation vendors", "Use deterministic rewards to repair hit or a weak armor slot."],
+      ["Crafted option", "Affordable spell-power cloth with hit, haste, or Spirit", "Tailoring BoE / Auction House", "Compare the price with reachable dungeon and emblem alternatives."],
+      ["Trinket", item("Talisman of Resurgence"), "50 Emblems of Triumph", "An accessible stat stick and controllable spell-power window while stronger drops are unavailable."],
       ["Any weak slot", "Highest hit-capped heroic or reputation upgrade", "Heroics and Northrend factions", "The best item is often the one that removes a quest-green hole without breaking hit."]
     ],
     emblems: [
@@ -926,6 +943,7 @@ const shadowPriest = {
     ]
   },
   raiding: {
+    entryNote: "This is a later progression chapter, not the starting expectation for a new level 80. Finish the self-contained setup, practice in normal and heroic dungeons, and enter raids only after the character and player are ready.",
     assignmentIcon: "spell_shadow_dispersion",
     consumables: [
       `${item("Flask of the Frost Wyrm")} for spell power.`,

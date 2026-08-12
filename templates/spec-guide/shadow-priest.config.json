@@ -14,6 +14,14 @@
   },
   "specSlug": "shadow-priest",
   "specKey": "shadow",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
   "role": "Ranged damage and raid support",
   "levelLabel": "Level 80+",
   "createClassSharedCss": false,
@@ -89,8 +97,8 @@
   },
   "talent": {
     "points": "14/0/57",
-    "name": "Standard Shadow raid build",
-    "summary": "The baseline covers every core damage and mana talent while leaving only narrow utility choices around pushback, range, and Silence.",
+    "name": "Fresh-80 self-contained Shadow baseline",
+    "summary": "The complete baseline supplies every core damage and mana talent without requiring a particular party or raid composition.",
     "wowheadPath": "priest/05032031--325023051223010223152301351"
   },
   "pageDescriptions": {
