@@ -15,15 +15,22 @@
 
 .guide-identity-gradient,
 body header.guide-hero {
+  --guide-identity-class-opacity: .42;
+  --guide-identity-spec-opacity: .34;
   --guide-identity-background:
     linear-gradient(
       135deg,
       var(--surface-raised) 0%,
-      rgba(var(--guide-banner-class-deep-rgb), .42) 46%,
-      rgba(var(--guide-banner-spec-deep-rgb), .34) 78%,
+      rgba(var(--guide-banner-class-deep-rgb), var(--guide-identity-class-opacity)) 46%,
+      rgba(var(--guide-banner-spec-deep-rgb), var(--guide-identity-spec-opacity)) 78%,
       var(--surface-card) 100%
     );
   background: var(--guide-identity-background);
+}
+
+.guide-identity-gradient--card {
+  --guide-identity-class-opacity: .28;
+  --guide-identity-spec-opacity: .22;
 }
 
 .guide-identity-gradient:hover,

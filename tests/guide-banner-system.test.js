@@ -143,7 +143,7 @@ for (const file of discoveredGuideFiles) {
 const hubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "utf8")).window.document;
 assert.equal(hubDocument.querySelectorAll(".class-guide-card").length, Object.keys(families).length);
 assert.equal(
-  hubDocument.querySelectorAll('link[href="./assets/guide-hero.css?v=20260812-guide-identity-gradient-v1"]').length,
+  hubDocument.querySelectorAll('link[href="./assets/guide-hero.css?v=20260812-guide-identity-card-v2"]').length,
   1,
   "index.html: shared guide-gradient stylesheet is missing"
 );
@@ -154,6 +154,7 @@ for (const [prefix, family] of Object.entries(families)) {
   ).window.document;
   assert.ok(card, `index.html: ${prefix} class-guide card is missing`);
   assert.ok(card.classList.contains("guide-identity-gradient"), `index.html: ${prefix} card must reuse the guide-banner gradient`);
+  assert.ok(card.classList.contains("guide-identity-gradient--card"), `index.html: ${prefix} card must use the subtle gradient variant`);
   assert.equal(
     card.querySelector(".guide-card-nickname")?.textContent.trim(),
     family.nickname,
@@ -225,7 +226,9 @@ for (const [cardClass, deepTokens] of Object.entries({
 
 const coreColorDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-system.html"), "utf8")).window.document;
 assert.equal(coreColorDocument.querySelectorAll("#identity-gradient .guide-identity-gradient").length, 3);
-assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /Guide banners and their matching Guide Hub cards/);
+assert.equal(coreColorDocument.querySelectorAll("#identity-gradient .guide-identity-gradient--card").length, 3);
+assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /Guide banners use the default strength/);
+assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /approved subtle opacity variant/);
 const colorReferenceDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8")).window.document;
 assert.match(colorReferenceDocument.querySelector("#workflow")?.textContent || "", /Reuse the identity gradient/);
 
@@ -412,8 +415,13 @@ assert.match(css, /--guide-type-color:\s*#ffffff;/, "shared guide-type color tok
 assert.match(css, /\.hero-guide-type\s*\{[\s\S]*color:\s*var\(--guide-type-color\)/, "guide type does not use the shared color token");
 assert.match(
   css,
-  /\.guide-identity-gradient,\s*body header\.guide-hero\s*\{[\s\S]*--guide-identity-background:\s*linear-gradient\(\s*135deg,[\s\S]*rgba\(var\(--guide-banner-class-deep-rgb\), \.42\) 46%,[\s\S]*rgba\(var\(--guide-banner-spec-deep-rgb\), \.34\) 78%,[\s\S]*var\(--surface-card\) 100%[\s\S]*background:\s*var\(--guide-identity-background\)/,
+  /\.guide-identity-gradient,\s*body header\.guide-hero\s*\{[\s\S]*--guide-identity-class-opacity:\s*\.42;[\s\S]*--guide-identity-spec-opacity:\s*\.34;[\s\S]*--guide-identity-background:\s*linear-gradient\(\s*135deg,[\s\S]*rgba\(var\(--guide-banner-class-deep-rgb\), var\(--guide-identity-class-opacity\)\) 46%,[\s\S]*rgba\(var\(--guide-banner-spec-deep-rgb\), var\(--guide-identity-spec-opacity\)\) 78%,[\s\S]*var\(--surface-card\) 100%[\s\S]*background:\s*var\(--guide-identity-background\)/,
   "shared guide identity gradient is missing or changed"
+);
+assert.match(
+  css,
+  /\.guide-identity-gradient--card\s*\{\s*--guide-identity-class-opacity:\s*\.28;\s*--guide-identity-spec-opacity:\s*\.22;/,
+  "shared guide identity gradient is missing the subtle card variant"
 );
 assert.match(
   css,
