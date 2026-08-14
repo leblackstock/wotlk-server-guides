@@ -320,14 +320,18 @@ for (const file of canonicalReferences) {
   );
 }
 
-for (const file of ["color-reference.html", "hunter-color-system.html", "warlock-color-system.html"]) {
+for (const file of canonicalReferences) {
   const document = new JSDOM(fs.readFileSync(path.join(root, "internal", file), "utf8")).window.document;
   assert.equal(
-    document.querySelector('link[href="../assets/guide-color-system.css?v=20260812-hunter-fel-color-v2"]')?.getAttribute("rel"),
+    document.querySelector('link[href="../assets/guide-color-system.css?v=20260814-contextual-identity-examples-v2"]')?.getAttribute("rel"),
     "stylesheet",
-    `${file} must request the cache-safe Hunter and fel color release`
+    `${file} must request the cache-safe contextual specimen release`
   );
 }
+
+assert.equal(cssValue("navigation-global-deep-rgb"), "57, 69, 84");
+assert.equal(cssValue("section-addons-deep-rgb"), "45, 60, 107");
+assert.equal(cssValue("section-ah-deep-rgb"), "34, 89, 78");
 
 const deathKnightSoft = deathKnightCss.match(/--class-death-knight-soft:\s*([^;]+);/);
 assert.ok(deathKnightSoft, "missing --class-death-knight-soft");

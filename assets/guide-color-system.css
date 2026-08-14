@@ -27,17 +27,20 @@
   --navigation-global-soft: #edf3f8;
   --navigation-global-deep: #394554;
   --navigation-global-rgb: 196, 206, 217;
+  --navigation-global-deep-rgb: 57, 69, 84;
 
   /* Site sections */
   --section-addons-accent: #8fa8f5;
   --section-addons-soft: #d4deff;
   --section-addons-deep: #2d3c6b;
   --section-addons-rgb: 143, 168, 245;
+  --section-addons-deep-rgb: 45, 60, 107;
 
   --section-ah-accent: #63b7a6;
   --section-ah-soft: #bdebdf;
   --section-ah-deep: #22594e;
   --section-ah-rgb: 99, 183, 166;
+  --section-ah-deep-rgb: 34, 89, 78;
 
   /* Addon roles */
   --addon-importance-essential: var(--section-addons-accent);

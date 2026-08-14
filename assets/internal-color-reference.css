@@ -7,6 +7,7 @@ body.color-reference-page {
   --reference-soft: var(--navigation-global-soft);
   --reference-deep: var(--navigation-global-deep);
   --reference-rgb: var(--navigation-global-rgb);
+  --reference-deep-rgb: var(--navigation-global-deep-rgb);
   margin: 0;
   background:
     radial-gradient(circle at 10% -8%, rgba(var(--reference-rgb), .10), transparent 34rem),
@@ -20,6 +21,7 @@ body.color-reference-page[data-reference-theme="core"] {
   --reference-soft: #e2ebf3;
   --reference-deep: #34485d;
   --reference-rgb: 159, 178, 197;
+  --reference-deep-rgb: 52, 72, 93;
 }
 
 body.color-reference-page[data-reference-theme="sections"] {
@@ -27,6 +29,7 @@ body.color-reference-page[data-reference-theme="sections"] {
   --reference-soft: var(--section-ah-soft);
   --reference-deep: var(--section-ah-deep);
   --reference-rgb: var(--section-ah-rgb);
+  --reference-deep-rgb: var(--section-ah-deep-rgb);
 }
 
 body.color-reference-page[data-guide-class="paladin"] {
@@ -364,10 +367,72 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
   gap: 12px;
 }
 
+#identity-examples {
+  --identity-example-class-soft: var(--class-warlock-soft);
+  --identity-example-spec-accent: var(--spec-warlock-demonology-accent);
+  --identity-example-spec-rgb: var(--spec-warlock-demonology-rgb);
+}
+
+#identity-examples[data-identity-example="core"] {
+  --guide-banner-class-deep-rgb: var(--class-accent-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--reference-deep-rgb);
+  --identity-example-class-soft: var(--reference-soft);
+  --identity-example-spec-accent: var(--reference-accent);
+  --identity-example-spec-rgb: var(--reference-rgb);
+}
+
+#identity-examples[data-identity-example="paladin-protection"] {
+  --guide-banner-class-deep-rgb: var(--class-paladin-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-paladin-protection-deep-rgb);
+  --identity-example-class-soft: var(--class-paladin-soft);
+  --identity-example-spec-accent: var(--spec-paladin-protection-accent);
+  --identity-example-spec-rgb: var(--spec-paladin-protection-rgb);
+}
+
+#identity-examples[data-identity-example="death-knight-blood"] {
+  --guide-banner-class-deep-rgb: var(--class-death-knight-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-death-knight-blood-deep-rgb);
+  --identity-example-class-soft: var(--class-death-knight-soft);
+  --identity-example-spec-accent: var(--spec-death-knight-blood-accent);
+  --identity-example-spec-rgb: var(--spec-death-knight-blood-rgb);
+}
+
+#identity-examples[data-identity-example="priest-holy"] {
+  --guide-banner-class-deep-rgb: var(--class-priest-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-priest-holy-deep-rgb);
+  --identity-example-class-soft: var(--class-priest-soft);
+  --identity-example-spec-accent: var(--spec-priest-holy-accent);
+  --identity-example-spec-rgb: var(--spec-priest-holy-rgb);
+}
+
+#identity-examples[data-identity-example="hunter-marksmanship"] {
+  --guide-banner-class-deep-rgb: var(--class-hunter-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-hunter-marksmanship-deep-rgb);
+  --identity-example-class-soft: var(--class-hunter-soft);
+  --identity-example-spec-accent: var(--spec-hunter-marksmanship-accent);
+  --identity-example-spec-rgb: var(--spec-hunter-marksmanship-rgb);
+}
+
+#identity-examples[data-identity-example="warlock-demonology"] {
+  --guide-banner-class-deep-rgb: var(--class-warlock-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-warlock-demonology-deep-rgb);
+  --identity-example-class-soft: var(--class-warlock-soft);
+  --identity-example-spec-accent: var(--spec-warlock-demonology-accent);
+  --identity-example-spec-rgb: var(--spec-warlock-demonology-rgb);
+}
+
+#identity-examples[data-identity-example="addons-auction-house"] {
+  --guide-banner-class-deep-rgb: var(--section-addons-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--section-ah-deep-rgb);
+  --identity-example-class-soft: var(--section-addons-soft);
+  --identity-example-spec-accent: var(--section-ah-accent);
+  --identity-example-spec-rgb: var(--section-ah-rgb);
+}
+
 .identity-gradient-example {
   min-height: 150px;
   padding: 20px;
-  border: 1px solid rgba(var(--spec-warlock-demonology-rgb), .26);
+  border: 1px solid rgba(var(--identity-example-spec-rgb), .26);
   border-radius: 14px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
 }
@@ -375,7 +440,7 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
 .identity-gradient-example .identity-example-label {
   display: block;
   margin-bottom: 7px;
-  color: var(--class-warlock-soft);
+  color: var(--identity-example-class-soft);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: .09em;
@@ -389,7 +454,7 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
   line-height: 1.15;
 }
 
-.identity-gradient-example strong span { color: var(--spec-warlock-demonology-accent); }
+.identity-gradient-example strong span { color: var(--identity-example-spec-accent); }
 .identity-gradient-example p { max-width: 52ch; margin: 8px 0 0; color: var(--text-muted); font-size: 12px; }
 
 .related-links { display: flex; flex-wrap: wrap; gap: 8px; }

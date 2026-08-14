@@ -226,17 +226,73 @@ for (const [cardClass, deepTokens] of Object.entries({
 
 const colorReferenceDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8")).window.document;
 assert.match(colorReferenceDocument.querySelector("#workflow")?.textContent || "", /Reuse the identity gradient/);
-const identityExamplePages = [
-  "color-reference.html",
-  "color-system.html",
-  "paladin-color-system.html",
-  "death-knight-color-system.html",
-  "priest-color-system.html",
-  "hunter-color-system.html",
-  "warlock-color-system.html",
-  "color-system-addons-ah.html"
-];
-for (const pageFile of identityExamplePages) {
+const identityExamplePages = {
+  "color-reference.html": {
+    key: "warlock-demonology",
+    heading: "Class-to-spec gradient examples",
+    intro: "Both examples use the same Demonology tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Demo Lock Quick Start",
+    bannerCopy: "Use the default strength for the large identity banner at the top of a guide.",
+    cardCopy: "Use the half-strength card modifier when the gradient supports a compact surface."
+  },
+  "color-system.html": {
+    key: "core",
+    heading: "Core identity-gradient examples",
+    intro: "Both examples use the same neutral foundation and Core reference tokens, angle, stops, and surface anchors. Only the approved component strength changes.",
+    title: "Core Guide Color Standard",
+    bannerCopy: "Use the default strength for a large shared-system banner.",
+    cardCopy: "Use the card modifier when the shared system identity supports a compact surface."
+  },
+  "paladin-color-system.html": {
+    key: "paladin-protection",
+    heading: "Paladin class-to-spec gradient examples",
+    intro: "Both examples use the same Paladin and Protection tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Prot Pally Quick Start",
+    bannerCopy: "Use the default strength for the large Protection guide banner.",
+    cardCopy: "Use the card modifier when the Protection identity supports a compact Hub surface."
+  },
+  "death-knight-color-system.html": {
+    key: "death-knight-blood",
+    heading: "Death Knight class-to-spec gradient examples",
+    intro: "Both examples use the same Death Knight and Blood tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Blood DK Quick Start",
+    bannerCopy: "Use the default strength for the large Blood guide banner.",
+    cardCopy: "Use the card modifier when the Blood identity supports a compact Hub surface."
+  },
+  "priest-color-system.html": {
+    key: "priest-holy",
+    heading: "Priest class-to-spec gradient examples",
+    intro: "Both examples use the same Priest and Holy tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Holy Priest Quick Start",
+    bannerCopy: "Use the default strength for the large Holy guide banner.",
+    cardCopy: "Use the card modifier when the Holy identity supports a compact Hub surface."
+  },
+  "hunter-color-system.html": {
+    key: "hunter-marksmanship",
+    heading: "Hunter class-to-spec gradient examples",
+    intro: "Both examples use the same Hunter and Marksmanship tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "MM Hunter Quick Start",
+    bannerCopy: "Use the default strength for the large Marksmanship guide banner.",
+    cardCopy: "Use the card modifier when the Marksmanship identity supports a compact Hub surface."
+  },
+  "warlock-color-system.html": {
+    key: "warlock-demonology",
+    heading: "Warlock class-to-spec gradient examples",
+    intro: "Both examples use the same Warlock and Demonology tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Demo Lock Quick Start",
+    bannerCopy: "Use the default strength for the large Demonology guide banner.",
+    cardCopy: "Use the card modifier when the Demonology identity supports a compact Hub surface."
+  },
+  "color-system-addons-ah.html": {
+    key: "addons-auction-house",
+    heading: "Section identity-gradient examples",
+    intro: "Both examples use the same Addons and Auction House section tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Addons + Auction House",
+    bannerCopy: "Use the default strength for a large cross-section banner.",
+    cardCopy: "Use the card modifier when the Addons + Auction House identity supports a compact surface."
+  }
+};
+for (const [pageFile, expected] of Object.entries(identityExamplePages)) {
   const pageDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", pageFile), "utf8")).window.document;
   const section = pageDocument.querySelector("#identity-examples");
   const examples = [...(section?.querySelectorAll(".guide-identity-gradient") || [])];
@@ -244,7 +300,12 @@ for (const pageFile of identityExamplePages) {
 
   assert.ok(section, `internal/${pageFile}: explicit gradient examples are missing`);
   assert.equal(
-    pageDocument.querySelectorAll('link[href="../assets/internal-color-reference.css?v=20260812-identity-examples-v1"]').length,
+    pageDocument.querySelectorAll('link[href="../assets/guide-color-system.css?v=20260814-contextual-identity-examples-v2"]').length,
+    1,
+    `internal/${pageFile}: contextual color tokens are missing`
+  );
+  assert.equal(
+    pageDocument.querySelectorAll('link[href="../assets/internal-color-reference.css?v=20260814-contextual-identity-examples-v2"]').length,
     1,
     `internal/${pageFile}: shared specimen stylesheet is missing`
   );
@@ -257,16 +318,30 @@ for (const pageFile of identityExamplePages) {
   assert.equal(section.querySelectorAll(".guide-identity-gradient--card").length, 1, `internal/${pageFile}: exactly one compact card example is required`);
   assert.equal(examples[0].classList.contains("guide-identity-gradient--card"), false, `internal/${pageFile}: banner example must use default strength`);
   assert.equal(examples[1].classList.contains("guide-identity-gradient--card"), true, `internal/${pageFile}: compact example must use the card modifier`);
-  assert.equal(section.querySelector("h2")?.textContent.trim(), "Class-to-spec gradient examples");
-  assert.match(normalizeText(section), /Both examples use the same Demonology tokens, angle, stops, and neutral surface anchors\. Only the approved component strength changes\./);
+  assert.equal(section.getAttribute("data-identity-example"), expected.key, `internal/${pageFile}: wrong contextual color mapping`);
+  assert.equal(examples.filter((example) => example.hasAttribute("style")).length, 0, `internal/${pageFile}: specimen tokens must not be duplicated inline`);
+  assert.equal(section.querySelector("h2")?.textContent.trim(), expected.heading);
+  assert.equal(normalizeText(section.querySelector(":scope > p")), expected.intro);
   assert.equal(examples[0].querySelector(".identity-example-label")?.textContent.trim(), "Guide banner · 42% / 34%");
   assert.equal(examples[1].querySelector(".identity-example-label")?.textContent.trim(), "Compact Hub card · 14% / 11%");
-  assert.equal(normalizeText(examples[0].querySelector("strong")), "Demo Lock Quick Start");
-  assert.equal(normalizeText(examples[1].querySelector("strong")), "Demo Lock Quick Start");
-  assert.match(normalizeText(section), /Use the default strength for the large identity banner at the top of a guide\./);
-  assert.match(normalizeText(section), /Use the half-strength card modifier when the gradient supports a compact surface\./);
+  assert.equal(normalizeText(examples[0].querySelector("strong")), expected.title);
+  assert.equal(normalizeText(examples[1].querySelector("strong")), expected.title);
+  assert.equal(normalizeText(examples[0].querySelector("p")), expected.bannerCopy);
+  assert.equal(normalizeText(examples[1].querySelector("p")), expected.cardCopy);
   assert.match(normalizeText(section.querySelector(".reference-note")), /Approved usage: banners use \.guide-identity-gradient\. Compact cards add \.guide-identity-gradient--card\. Never duplicate or locally alter the formula\./);
 }
+
+const internalColorReferenceCss = fs.readFileSync(path.join(root, "assets", "internal-color-reference.css"), "utf8");
+for (const key of new Set(Object.values(identityExamplePages).map((page) => page.key))) {
+  assert.match(
+    internalColorReferenceCss,
+    new RegExp(`#identity-examples\\[data-identity-example="${key}"\\]\\s*\\{[^}]*--guide-banner-class-deep-rgb:[^}]*--guide-banner-spec-deep-rgb:[^}]*--identity-example-class-soft:[^}]*--identity-example-spec-accent:[^}]*--identity-example-spec-rgb:`),
+    `assets/internal-color-reference.css: ${key} specimen mapping is incomplete`
+  );
+}
+assert.match(internalColorReferenceCss, /border:\s*1px solid rgba\(var\(--identity-example-spec-rgb\), \.26\)/);
+assert.match(internalColorReferenceCss, /color:\s*var\(--identity-example-class-soft\)/);
+assert.match(internalColorReferenceCss, /\.identity-gradient-example strong span \{ color:\s*var\(--identity-example-spec-accent\); \}/);
 
 const operatingManuals = {
   "protection-paladin": { id: "quick-start", summaryCards: 4, sequences: 3 },
