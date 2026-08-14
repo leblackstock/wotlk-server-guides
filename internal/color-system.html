@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260725-paladin-combined-v2">
   <link rel="stylesheet" href="../assets/death-knight-color-system.css?v=20260725-paladin-combined-v2">
   <link rel="stylesheet" href="../assets/style.css">
-  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260725-paladin-combined-v2">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260812-identity-examples-v1">
   <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
 </head>
 <body class="color-reference-page" data-reference-theme="core">
@@ -19,7 +19,7 @@
     <span class="reference-kicker">Foundation and fixed semantics</span>
     <h1>Core Guide <span>Color System</span></h1>
     <p class="sub">The neutral foundation beneath every class and site section. This page defines what may never change when a new theme is introduced.</p>
-    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#foundation">Foundation</a><a href="#layers">Ownership layers</a><a href="#identity-gradient">Identity gradient</a><a href="#status">Status</a><a href="#game-data">Game data</a><a href="#boundaries">Boundaries</a></nav>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#foundation">Foundation</a><a href="#layers">Ownership layers</a><a href="#identity-examples">Gradient examples</a><a href="#status">Status</a><a href="#game-data">Game data</a><a href="#boundaries">Boundaries</a></nav>
   </header>
   <main>
     <section class="reference-section" id="foundation">
@@ -39,14 +39,22 @@
       <h2>Ownership layers</h2>
       <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Layer</th><th>Owns</th><th>Must not own</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Foundation</strong></td><td>Surfaces, text, borders, code and table chrome</td><td>Class identity or gameplay meaning</td><td>Page background, cards, muted copy</td></tr><tr><td><strong>Global navigation</strong></td><td>Movement between unrelated site areas</td><td>Class or spec state</td><td>Guide Hub link, reference hub link</td></tr><tr><td><strong>Class or section</strong></td><td>Broad family identity</td><td>Selected specialization or warning state</td><td>Paladin pink, DK crimson, AH teal</td></tr><tr><td><strong>Specialization</strong></td><td>Selected controls and spec-only emphasis</td><td>Site-wide success, warning, or item rarity</td><td>Protection blue, Holy gold, Frost blue</td></tr><tr><td><strong>Mechanic</strong></td><td>Repeated conceptual lanes</td><td>One-off decoration</td><td>Beacon transfer, runes, 9-second group</td></tr><tr><td><strong>Status and game data</strong></td><td>Fixed semantic meaning</td><td>Theme decoration</td><td>Danger red, epic purple, socket blue</td></tr></tbody></table></div>
     </section>
-    <section class="reference-section" id="identity-gradient">
-      <h2>Reusable class-to-spec gradient</h2>
-      <div class="spec-grid">
-        <article class="reference-card guide-identity-gradient guide-identity-gradient--card" style="--guide-banner-class-deep-rgb:var(--class-paladin-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-paladin-holy-deep-rgb)"><strong>Paladin → Holy</strong><p>The subtle card variant keeps both identity colors present without overpowering a compact surface.</p></article>
-        <article class="reference-card guide-identity-gradient guide-identity-gradient--card" style="--guide-banner-class-deep-rgb:var(--class-hunter-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-hunter-marksmanship-deep-rgb)"><strong>Hunter → Marksmanship</strong><p>The same fixed treatment creates a restrained forest-to-precision transition.</p></article>
-        <article class="reference-card guide-identity-gradient guide-identity-gradient--card" style="--guide-banner-class-deep-rgb:var(--class-warlock-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-warlock-demonology-deep-rgb)"><strong>Warlock → Demonology</strong><p>Fel-violet class depth transitions softly into fel green while the neutral surface stays dominant.</p></article>
+    <section class="reference-section" id="identity-examples">
+      <h2>Class-to-spec gradient examples</h2>
+      <p>Both examples use the same Demonology tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.</p>
+      <div class="identity-example-grid">
+        <article class="identity-gradient-example guide-identity-gradient" style="--guide-banner-class-deep-rgb:var(--class-warlock-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-warlock-demonology-deep-rgb)">
+          <span class="identity-example-label">Guide banner · 42% / 34%</span>
+          <strong><span>Demo Lock</span> Quick Start</strong>
+          <p>Use the default strength for the large identity banner at the top of a guide.</p>
+        </article>
+        <article class="identity-gradient-example guide-identity-gradient guide-identity-gradient--card" style="--guide-banner-class-deep-rgb:var(--class-warlock-deep-rgb);--guide-banner-spec-deep-rgb:var(--spec-warlock-demonology-deep-rgb)">
+          <span class="identity-example-label">Compact Hub card · 14% / 11%</span>
+          <strong><span>Demo Lock</span> Quick Start</strong>
+          <p>Use the half-strength card modifier when the gradient supports a compact surface.</p>
+        </article>
       </div>
-      <div class="reference-note"><strong>Component contract:</strong> use <code>.guide-identity-gradient</code>, set <code>--guide-banner-class-deep-rgb</code> and <code>--guide-banner-spec-deep-rgb</code>, and do not redefine the gradient locally. Guide banners use the default strength. Compact Guide Hub cards add <code>.guide-identity-gradient--card</code> for the approved subtle opacity variant; angle, stops, tokens, and surface anchors remain shared.</div>
+      <div class="reference-note"><strong>Approved usage:</strong> banners use <code>.guide-identity-gradient</code>. Compact cards add <code>.guide-identity-gradient--card</code>. Never duplicate or locally alter the formula.</div>
     </section>
     <section class="reference-section" id="status">
       <h2>Status colors</h2>

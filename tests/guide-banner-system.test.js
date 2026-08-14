@@ -224,22 +224,49 @@ for (const [cardClass, deepTokens] of Object.entries({
   );
 }
 
-const coreColorDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-system.html"), "utf8")).window.document;
-assert.equal(coreColorDocument.querySelectorAll("#identity-gradient .guide-identity-gradient").length, 3);
-assert.equal(coreColorDocument.querySelectorAll("#identity-gradient .guide-identity-gradient--card").length, 3);
-assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /Guide banners use the default strength/);
-assert.match(coreColorDocument.querySelector("#identity-gradient")?.textContent || "", /approved subtle opacity variant/);
 const colorReferenceDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", "color-reference.html"), "utf8")).window.document;
 assert.match(colorReferenceDocument.querySelector("#workflow")?.textContent || "", /Reuse the identity gradient/);
-assert.equal(
-  colorReferenceDocument.querySelectorAll('link[href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3"]').length,
-  1,
-  "internal/color-reference.html: shared identity-gradient stylesheet is missing"
-);
-assert.equal(colorReferenceDocument.querySelectorAll("#identity-examples .guide-identity-gradient").length, 2);
-assert.equal(colorReferenceDocument.querySelectorAll("#identity-examples .guide-identity-gradient--card").length, 1);
-assert.match(colorReferenceDocument.querySelector("#identity-examples")?.textContent || "", /Guide banner · 42% \/ 34%/);
-assert.match(colorReferenceDocument.querySelector("#identity-examples")?.textContent || "", /Compact Hub card · 14% \/ 11%/);
+const identityExamplePages = [
+  "color-reference.html",
+  "color-system.html",
+  "paladin-color-system.html",
+  "death-knight-color-system.html",
+  "priest-color-system.html",
+  "hunter-color-system.html",
+  "warlock-color-system.html",
+  "color-system-addons-ah.html"
+];
+for (const pageFile of identityExamplePages) {
+  const pageDocument = new JSDOM(fs.readFileSync(path.join(root, "internal", pageFile), "utf8")).window.document;
+  const section = pageDocument.querySelector("#identity-examples");
+  const examples = [...(section?.querySelectorAll(".guide-identity-gradient") || [])];
+  const normalizeText = (element) => (element?.textContent || "").replace(/\s+/g, " ").trim();
+
+  assert.ok(section, `internal/${pageFile}: explicit gradient examples are missing`);
+  assert.equal(
+    pageDocument.querySelectorAll('link[href="../assets/internal-color-reference.css?v=20260812-identity-examples-v1"]').length,
+    1,
+    `internal/${pageFile}: shared specimen stylesheet is missing`
+  );
+  assert.equal(
+    pageDocument.querySelectorAll('link[href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3"]').length,
+    1,
+    `internal/${pageFile}: shared identity-gradient stylesheet is missing`
+  );
+  assert.equal(examples.length, 2, `internal/${pageFile}: both approved strengths must be shown`);
+  assert.equal(section.querySelectorAll(".guide-identity-gradient--card").length, 1, `internal/${pageFile}: exactly one compact card example is required`);
+  assert.equal(examples[0].classList.contains("guide-identity-gradient--card"), false, `internal/${pageFile}: banner example must use default strength`);
+  assert.equal(examples[1].classList.contains("guide-identity-gradient--card"), true, `internal/${pageFile}: compact example must use the card modifier`);
+  assert.equal(section.querySelector("h2")?.textContent.trim(), "Class-to-spec gradient examples");
+  assert.match(normalizeText(section), /Both examples use the same Demonology tokens, angle, stops, and neutral surface anchors\. Only the approved component strength changes\./);
+  assert.equal(examples[0].querySelector(".identity-example-label")?.textContent.trim(), "Guide banner · 42% / 34%");
+  assert.equal(examples[1].querySelector(".identity-example-label")?.textContent.trim(), "Compact Hub card · 14% / 11%");
+  assert.equal(normalizeText(examples[0].querySelector("strong")), "Demo Lock Quick Start");
+  assert.equal(normalizeText(examples[1].querySelector("strong")), "Demo Lock Quick Start");
+  assert.match(normalizeText(section), /Use the default strength for the large identity banner at the top of a guide\./);
+  assert.match(normalizeText(section), /Use the half-strength card modifier when the gradient supports a compact surface\./);
+  assert.match(normalizeText(section.querySelector(".reference-note")), /Approved usage: banners use \.guide-identity-gradient\. Compact cards add \.guide-identity-gradient--card\. Never duplicate or locally alter the formula\./);
+}
 
 const operatingManuals = {
   "protection-paladin": { id: "quick-start", summaryCards: 4, sequences: 3 },
