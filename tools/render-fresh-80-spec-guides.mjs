@@ -75,7 +75,7 @@ function shell(spec, current, title, description, jumps, body) {
   <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
   <link rel="stylesheet" href="../assets/${spec.slug}.css?v=${spec.cacheKey}">
   <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
-  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260729-guide-hero-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
   <script src="../assets/${spec.tooltipFile}?v=${spec.cacheKey}" defer></script>
   <script src="../assets/${spec.slug}.js?v=${spec.cacheKey}" defer></script>
 </head>

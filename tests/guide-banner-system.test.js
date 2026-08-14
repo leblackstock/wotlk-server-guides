@@ -42,17 +42,20 @@ const families = {
   "affliction-warlock": {
     specName: "Affliction Warlock",
     nickname: "Affliction",
-    raidType: "Raid DPS Guide"
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-14"
   },
   "demonology-warlock": {
     specName: "Demonology Warlock",
     nickname: "Demo Lock",
-    raidType: "Raid DPS Guide"
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-14"
   },
   "destruction-warlock": {
     specName: "Destruction Warlock",
     nickname: "Destro Lock",
-    raidType: "Raid DPS Guide"
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-14"
   }
 };
 const pageTypes = {

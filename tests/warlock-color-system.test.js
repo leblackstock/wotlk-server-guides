@@ -17,6 +17,8 @@ const colorHubDocument = new JSDOM(colorHubHtml).window.document;
 const hunterSpecimenHtml = fs.readFileSync(path.join(root, "internal", "marksmanship-hunter-visual-system.html"), "utf8");
 const hunterConfig = JSON.parse(fs.readFileSync(path.join(root, "templates", "spec-guide", "marksmanship-hunter.config.json"), "utf8"));
 const cardSurface = "#121820";
+const warlockGuideCacheKey = "20260814-warlock-standard-v2";
+const guideIdentityCacheKey = "20260812-guide-identity-card-v3";
 
 function cssValue(token) {
   const match = colorCss.match(new RegExp(`--${token}:\\s*([^;]+);`));
@@ -166,6 +168,8 @@ for (const config of configs) {
   ).toLowerCase();
   const normalizeRgb = (value) => value.replaceAll(" ", "");
   assert.equal(guideConfig.classAccent.toLowerCase(), warlockClass.accent);
+  assert.equal(guideConfig.cacheKey, warlockGuideCacheKey);
+  assert.equal(guideConfig.updatedDate, "2026-08-14");
   assert.equal(guideConfig.classAccentSoft.toLowerCase(), warlockClass.soft);
   assert.equal(guideConfig.classAccentDeep.toLowerCase(), warlockClass.deep);
   assert.equal(normalizeRgb(guideConfig.classAccentRgb), normalizeRgb(warlockClass.rgb));
@@ -183,7 +187,29 @@ for (const config of configs) {
   for (const color of [warlockClass.accent, config.specAccent, ...config.mechanics.map((mechanic) => mechanic.color)]) {
     assert.ok(specimenHtml.includes(color), `${config.specShortName} specimen must display ${color}`);
   }
+
+  for (const pageSuffix of ["pve-guide", "playing", "setting-up", "gearing", "gear-targets", "raiding"]) {
+    const pageFile = `${config.specKey}-warlock-${pageSuffix}.html`;
+    const pageDocument = new JSDOM(fs.readFileSync(path.join(root, "guides", pageFile), "utf8")).window.document;
+    assert.equal(
+      pageDocument.querySelectorAll(`link[href="../assets/guide-color-system.css?v=${warlockGuideCacheKey}"]`).length,
+      1,
+      `${pageFile} must request the cache-safe approved Warlock color standard`
+    );
+    assert.equal(
+      pageDocument.querySelectorAll(`link[href="../assets/guide-hero.css?v=${guideIdentityCacheKey}"]`).length,
+      1,
+      `${pageFile} must request the approved identity-gradient component`
+    );
+  }
 }
+
+const guideHubDocument = new JSDOM(fs.readFileSync(path.join(root, "index.html"), "utf8")).window.document;
+assert.equal(
+  guideHubDocument.querySelectorAll(`link[href="./assets/guide-color-system.css?v=${warlockGuideCacheKey}"]`).length,
+  1,
+  "Guide Hub must request the cache-safe approved Warlock color standard"
+);
 
 const accentTokens = [
   "class-warlock-accent",
