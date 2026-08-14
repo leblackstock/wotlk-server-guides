@@ -332,6 +332,7 @@ const canonicalReferences = [
   "color-system.html",
   "paladin-color-system.html",
   "death-knight-color-system.html",
+  "druid-color-system.html",
   "priest-color-system.html",
   "hunter-color-system.html",
   "warlock-color-system.html",
@@ -349,7 +350,7 @@ for (const file of canonicalReferences) {
 for (const file of canonicalReferences) {
   const document = new JSDOM(fs.readFileSync(path.join(root, "internal", file), "utf8")).window.document;
   assert.equal(
-    document.querySelector('link[href="../assets/guide-color-system.css?v=20260814-contextual-identity-examples-v2"]')?.getAttribute("rel"),
+    document.querySelector('link[href="../assets/guide-color-system.css?v=20260814-druid-standard-v1"]')?.getAttribute("rel"),
     "stylesheet",
     `${file} must request the cache-safe contextual specimen release`
   );

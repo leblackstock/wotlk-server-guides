@@ -246,6 +246,73 @@
   --mechanic-marksmanship-pet-soft: #c8f1de;
   --mechanic-marksmanship-pet-rgb: 120, 207, 168;
 
+  /* Druid class and specialization identities */
+  --class-druid-accent: #e58b43;
+  --class-druid-soft: #ffd5b0;
+  --class-druid-deep: #713c1d;
+  --class-druid-rgb: 229, 139, 67;
+  --class-druid-deep-rgb: 113, 60, 29;
+
+  --spec-druid-balance-accent: #8c9fe8;
+  --spec-druid-balance-soft: #d5dcff;
+  --spec-druid-balance-deep: #3b456f;
+  --spec-druid-balance-rgb: 140, 159, 232;
+  --spec-druid-balance-deep-rgb: 59, 69, 111;
+
+  --spec-druid-feral-accent: #d6c2a6;
+  --spec-druid-feral-soft: #f5eadc;
+  --spec-druid-feral-deep: #64513e;
+  --spec-druid-feral-rgb: 214, 194, 166;
+  --spec-druid-feral-deep-rgb: 100, 81, 62;
+
+  --spec-druid-restoration-accent: #54a67a;
+  --spec-druid-restoration-soft: #bfe8d1;
+  --spec-druid-restoration-deep: #23513a;
+  --spec-druid-restoration-rgb: 84, 166, 122;
+  --spec-druid-restoration-deep-rgb: 35, 81, 58;
+
+  /* Balance Druid mechanics */
+  --mechanic-balance-lunar: #79b6e8;
+  --mechanic-balance-lunar-soft: #cce8fb;
+  --mechanic-balance-lunar-rgb: 121, 182, 232;
+  --mechanic-balance-solar: #e4b75b;
+  --mechanic-balance-solar-soft: #f9e4af;
+  --mechanic-balance-solar-rgb: 228, 183, 91;
+  --mechanic-balance-dots: #c783b4;
+  --mechanic-balance-dots-soft: #f0cce5;
+  --mechanic-balance-dots-rgb: 199, 131, 180;
+  --mechanic-balance-mana-movement: #78c6aa;
+  --mechanic-balance-mana-movement-soft: #c9efe2;
+  --mechanic-balance-mana-movement-rgb: 120, 198, 170;
+
+  /* Feral Druid mechanics */
+  --mechanic-feral-forms: #d6c2a6;
+  --mechanic-feral-forms-soft: #f5eadc;
+  --mechanic-feral-forms-rgb: 214, 194, 166;
+  --mechanic-feral-resources: #dfad42;
+  --mechanic-feral-resources-soft: #f6dfa6;
+  --mechanic-feral-resources-rgb: 223, 173, 66;
+  --mechanic-feral-bleeds: #d07b91;
+  --mechanic-feral-bleeds-soft: #f3c6d2;
+  --mechanic-feral-bleeds-rgb: 208, 123, 145;
+  --mechanic-feral-survival: #78b8d2;
+  --mechanic-feral-survival-soft: #c9e8f2;
+  --mechanic-feral-survival-rgb: 120, 184, 210;
+
+  /* Restoration Druid mechanics */
+  --mechanic-restoration-hots: #54a67a;
+  --mechanic-restoration-hots-soft: #bfe8d1;
+  --mechanic-restoration-hots-rgb: 84, 166, 122;
+  --mechanic-restoration-lifebloom: #d0bd5e;
+  --mechanic-restoration-lifebloom-soft: #f2e8ad;
+  --mechanic-restoration-lifebloom-rgb: 208, 189, 94;
+  --mechanic-restoration-raid-healing: #75b9dc;
+  --mechanic-restoration-raid-healing-soft: #c8e8f8;
+  --mechanic-restoration-raid-healing-rgb: 117, 185, 220;
+  --mechanic-restoration-mana-procs: #aa8fe0;
+  --mechanic-restoration-mana-procs-soft: #ddd2f7;
+  --mechanic-restoration-mana-procs-rgb: 170, 143, 224;
+
   /* Warlock class and specializations */
   --class-warlock-accent: #8788ee;
   --class-warlock-soft: #c8c9ff;
@@ -457,6 +524,43 @@ body:has(.ah-guide-heading) {
   --theme-accent-deep: var(--spec-hunter-survival-deep);
   --theme-accent-rgb: var(--spec-hunter-survival-rgb);
   --theme-accent-deep-rgb: var(--spec-hunter-survival-deep-rgb);
+}
+
+[data-guide-class="druid"] {
+  --class-accent: var(--class-druid-accent);
+  --class-accent-soft: var(--class-druid-soft);
+  --class-accent-deep: var(--class-druid-deep);
+  --class-accent-rgb: var(--class-druid-rgb);
+  --class-accent-deep-rgb: var(--class-druid-deep-rgb);
+  --theme-accent: var(--class-accent);
+  --theme-accent-soft: var(--class-accent-soft);
+  --theme-accent-deep: var(--class-accent-deep);
+  --theme-accent-rgb: var(--class-accent-rgb);
+  --theme-accent-deep-rgb: var(--class-accent-deep-rgb);
+}
+
+[data-guide-class="druid"][data-guide-spec="balance"] {
+  --theme-accent: var(--spec-druid-balance-accent);
+  --theme-accent-soft: var(--spec-druid-balance-soft);
+  --theme-accent-deep: var(--spec-druid-balance-deep);
+  --theme-accent-rgb: var(--spec-druid-balance-rgb);
+  --theme-accent-deep-rgb: var(--spec-druid-balance-deep-rgb);
+}
+
+[data-guide-class="druid"][data-guide-spec="feral"] {
+  --theme-accent: var(--spec-druid-feral-accent);
+  --theme-accent-soft: var(--spec-druid-feral-soft);
+  --theme-accent-deep: var(--spec-druid-feral-deep);
+  --theme-accent-rgb: var(--spec-druid-feral-rgb);
+  --theme-accent-deep-rgb: var(--spec-druid-feral-deep-rgb);
+}
+
+[data-guide-class="druid"][data-guide-spec="restoration"] {
+  --theme-accent: var(--spec-druid-restoration-accent);
+  --theme-accent-soft: var(--spec-druid-restoration-soft);
+  --theme-accent-deep: var(--spec-druid-restoration-deep);
+  --theme-accent-rgb: var(--spec-druid-restoration-rgb);
+  --theme-accent-deep-rgb: var(--spec-druid-restoration-deep-rgb);
 }
 
 [data-guide-class="warlock"] {

@@ -397,6 +397,14 @@ body.color-reference-page[data-guide-class="death-knight"] .reference-kicker {
   --identity-example-spec-rgb: var(--spec-death-knight-blood-rgb);
 }
 
+#identity-examples[data-identity-example="druid-restoration"] {
+  --guide-banner-class-deep-rgb: var(--class-druid-deep-rgb);
+  --guide-banner-spec-deep-rgb: var(--spec-druid-restoration-deep-rgb);
+  --identity-example-class-soft: var(--class-druid-soft);
+  --identity-example-spec-accent: var(--spec-druid-restoration-accent);
+  --identity-example-spec-rgb: var(--spec-druid-restoration-rgb);
+}
+
 #identity-examples[data-identity-example="priest-holy"] {
   --guide-banner-class-deep-rgb: var(--class-priest-deep-rgb);
   --guide-banner-spec-deep-rgb: var(--spec-priest-holy-deep-rgb);

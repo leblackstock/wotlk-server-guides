@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Druid Color System | Internal</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260814-druid-standard-v1">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/internal-color-reference.css?v=20260814-druid-standard-v1">
+  <link rel="stylesheet" href="../assets/druid-color-reference.css?v=20260814-druid-color-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
+</head>
+<body class="color-reference-page" data-guide-class="druid">
+<div class="wrap">
+  <nav class="reference-site-nav" aria-label="Internal color reference pages"><a class="public-hub-link" href="../index.html">Public Guide Hub</a><a href="color-reference.html">Hub</a><a href="color-system.html">Core</a><a href="paladin-color-system.html">Paladin</a><a href="death-knight-color-system.html">Death Knight</a><a href="druid-color-system.html" aria-current="page">Druid</a><a href="priest-color-system.html">Priest</a><a href="hunter-color-system.html">Hunter</a><a href="warlock-color-system.html">Warlock</a><a href="color-system-addons-ah.html">Addons + AH</a></nav>
+  <header class="reference-header">
+    <span class="reference-kicker">Combined class reference • Approved for implementation</span>
+    <h1>Druid <span>Color System</span></h1>
+    <p class="sub">The complete Druid family standard: shared wild-orange class identity, Balance astral indigo, Feral weathered hide, Restoration leaf green, and named mechanic languages for every Wrath specialization.</p>
+    <nav class="reference-jump-nav" aria-label="Topics on this page"><a href="#identity-examples">Gradient examples</a><a href="#class">Class identity</a><a href="#audit">Palette audit</a><a href="#specs">Spec comparison</a><a href="#balance">Balance</a><a href="#feral">Feral</a><a href="#restoration">Restoration</a><a href="#boundaries">Boundaries</a><a href="#matrix">Usage matrix</a></nav>
+  </header>
+  <main>
+    <section class="reference-section" id="identity-examples" data-identity-example="druid-restoration">
+      <h2>Druid class-to-spec gradient examples</h2>
+      <p>Both examples use the same Druid and Restoration tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.</p>
+      <div class="identity-example-grid">
+        <article class="identity-gradient-example guide-identity-gradient">
+          <span class="identity-example-label">Guide banner · 42% / 34%</span>
+          <strong><span>Restoration Druid</span> Quick Start</strong>
+          <p>Use the default strength for the large Restoration guide banner.</p>
+        </article>
+        <article class="identity-gradient-example guide-identity-gradient guide-identity-gradient--card">
+          <span class="identity-example-label">Compact Hub card · 14% / 11%</span>
+          <strong><span>Restoration Druid</span> Quick Start</strong>
+          <p>Use the card modifier when the Restoration identity supports a compact Hub surface.</p>
+        </article>
+      </div>
+      <div class="reference-note"><strong>Approved usage:</strong> banners use <code>.guide-identity-gradient</code>. Compact cards add <code>.guide-identity-gradient--card</code>. Never duplicate or locally alter the formula.</div>
+    </section>
+
+    <section class="reference-section" id="class">
+      <h2>Druid class identity</h2>
+      <div class="reference-grid">
+        <article class="reference-card"><div class="swatch-sample" style="--swatch-color:linear-gradient(135deg,var(--class-druid-accent),var(--class-druid-deep))"></div><strong>Druid wild orange</strong><p>Class titles, shared Druid framing, shapeshifting and utility relationships used by multiple specs, and broad Druid links.</p><code class="token">--class-druid-accent: #e58b43</code></article>
+        <article class="reference-card"><strong>Class boundary</strong><p>Wild orange does not identify a selected specialization, legendary item, warning, damage event, role, form, or individual spell school.</p><div class="reference-note"><strong>Rule:</strong> every Druid page remains recognizably Druid before its specialization, role, and mechanic colors enter the page.</div></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="audit">
+      <h2>Palette audit</h2>
+      <div class="rule-grid">
+        <article class="rule-card"><strong>Class orange adjusted</strong><p>The Druid identity retains the familiar orange family while using a softer copper value than legendary-item orange or Destruction flame.</p></article>
+        <article class="rule-card"><strong>Balance indigo approved</strong><p>Astral indigo supports eclipse state without borrowing rare-item blue, information cyan, or epic-item violet.</p></article>
+        <article class="rule-card"><strong>Feral hide approved</strong><p>The light neutral hide value separates Cat and Bear identity from the warmer class frame and remains distinct from leaf green under tested red-green simulations.</p></article>
+        <article class="rule-card"><strong>Restoration green approved</strong><p>The darker leaf value stays readable while labels and structure keep healing identity separate from success, Hunter, fel green, and Auction House teal.</p></article>
+      </div>
+      <div class="reference-note"><strong>Readability gate:</strong> every approved Druid class, specialization, and mechanic accent reaches at least 5.5:1 contrast against the primary card surface. The three specialization identities remain separated by lightness and hue under the tested red-green simulations.</div>
+    </section>
+
+    <section class="reference-section" id="specs">
+      <h2>Specialization comparison</h2>
+      <div class="spec-grid">
+        <article class="spec-card balance"><h3>Balance</h3><p>Astral indigo for selected navigation, eclipse controls, Balance-only labels, priority state, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Balance</span><span class="spec-deep"></span></div><code class="token">#8c9fe8 · --spec-druid-balance-accent</code></article>
+        <article class="spec-card feral"><h3>Feral</h3><p>Weathered hide for selected navigation, Cat and Bear controls, Feral-only labels, role context, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Feral</span><span class="spec-deep"></span></div><code class="token">#d6c2a6 · --spec-druid-feral-accent</code></article>
+        <article class="spec-card restoration"><h3>Restoration</h3><p>Leaf green for selected navigation, healing controls, Restoration-only labels, triage state, and technical emphasis.</p><div class="spec-sample"><button class="spec-button" type="button">Selected</button><span class="spec-tag">Restoration</span><span class="spec-deep"></span></div><code class="token">#54a67a · --spec-druid-restoration-accent</code></article>
+      </div>
+      <div class="reference-note"><strong>Implementation approval:</strong> the shared Druid identity, all three specialization identities, and every documented recurring mechanic lane are approved for implementation. Cat and Bear remain role expressions inside the single Feral specialization.</div>
+    </section>
+
+    <section class="reference-section" id="balance">
+      <h2>Balance mechanic system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-balance-lunar)"></div><strong>Lunar</strong><p>Lunar Eclipse, Starfire priority, lunar windows, and the decisions that extend or protect them.</p><code class="token">--mechanic-balance-lunar</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-balance-solar)"></div><strong>Solar</strong><p>Solar Eclipse, Wrath priority, nature windows, and the transition back toward lunar state.</p><code class="token">--mechanic-balance-solar</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-balance-dots)"></div><strong>DoTs</strong><p>Moonfire and Insect Swarm uptime, refresh timing, target life, and multi-target maintenance.</p><code class="token">--mechanic-balance-dots</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-balance-mana-movement)"></div><strong>Mana and movement</strong><p>Innervate planning, resource recovery, movement casts, positioning, and downtime reduction.</p><code class="token">--mechanic-balance-mana-movement</code></article>
+      </div>
+      <div class="reference-note"><strong>Balance contract:</strong> astral indigo identifies Balance state. Lunar blue, solar gold, moon-rose, and mint separate eclipse, DoT, and resource decisions.</div>
+    </section>
+
+    <section class="reference-section" id="feral">
+      <h2>Feral mechanic system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-feral-forms)"></div><strong>Forms</strong><p>Cat and Bear context, role changes, shapeshifting decisions, and abilities whose meaning changes with form.</p><code class="token">--mechanic-feral-forms</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-feral-resources)"></div><strong>Resources</strong><p>Energy, Rage, combo points, pooling, spending, and the timing cost of changing form.</p><code class="token">--mechanic-feral-resources</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-feral-bleeds)"></div><strong>Bleeds</strong><p>Rake, Rip, Lacerate, bleed-dependent effects, refresh timing, and target continuity.</p><code class="token">--mechanic-feral-bleeds</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-feral-survival)"></div><strong>Survival</strong><p>Savage Defense, Barkskin, Survival Instincts, mitigation, emergency form use, and tank stability.</p><code class="token">--mechanic-feral-survival</code></article>
+      </div>
+      <div class="reference-note"><strong>Feral contract:</strong> weathered hide identifies the Feral tree across both roles. Gold, rose, and steel blue separate resource, bleed, and survival decisions; text always identifies Cat, Bear, DPS, or tank context.</div>
+    </section>
+
+    <section class="reference-section" id="restoration">
+      <h2>Restoration mechanic system</h2>
+      <div class="mechanic-grid">
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-restoration-hots)"></div><strong>HoTs</strong><p>Rejuvenation and Regrowth coverage, refresh timing, duration, target priority, and layered healing.</p><code class="token">--mechanic-restoration-hots</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-restoration-lifebloom)"></div><strong>Lifebloom</strong><p>Stack count, rolling, bloom timing, mana return, and deliberate tank-healing decisions.</p><code class="token">--mechanic-restoration-lifebloom</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-restoration-raid-healing)"></div><strong>Raid healing</strong><p>Wild Growth, Swiftmend, group damage, triage, range, and short-window response.</p><code class="token">--mechanic-restoration-raid-healing</code></article>
+        <article class="mechanic-card"><div class="swatch-sample" style="--swatch-color:var(--mechanic-restoration-mana-procs)"></div><strong>Mana and procs</strong><p>Innervate, Clearcasting, Revitalize, resource reserves, and efficient spell selection.</p><code class="token">--mechanic-restoration-mana-procs</code></article>
+      </div>
+      <div class="reference-note"><strong>Restoration contract:</strong> leaf green identifies Restoration state and the central HoT lane. Gold, water blue, and violet separate Lifebloom, raid response, and resource decisions.</div>
+    </section>
+
+    <section class="reference-section" id="boundaries">
+      <h2>Semantic boundaries</h2>
+      <div class="rule-grid">
+        <article class="rule-card"><strong>Druid orange is not legendary or Destruction</strong><p>Class identity uses named Druid tokens. Legendary items retain canonical game-data orange, while Destruction uses named Warlock spec tokens.</p></article>
+        <article class="rule-card"><strong>Balance indigo is not rarity or information</strong><p>Rare and epic items keep canonical quality tokens; neutral factual callouts keep global information cyan.</p></article>
+        <article class="rule-card"><strong>Feral hide is not warning</strong><p>Risk and provisional behavior remain warning amber with explicit caution wording.</p></article>
+        <article class="rule-card"><strong>Restoration green is not success or Auction House teal</strong><p>Confirmed positive state and market navigation retain their fixed global and section roles.</p></article>
+        <article class="rule-card"><strong>Gold mechanics are not warnings</strong><p>Solar, Feral resource, and Lifebloom accents always retain mechanic labels and never carry caution by hue alone.</p></article>
+        <article class="rule-card"><strong>Cat and Bear are roles, not extra specs</strong><p>Both use Feral identity; explicit form and role labels distinguish their controls, priorities, and survival guidance.</p></article>
+      </div>
+    </section>
+
+    <section class="reference-section" id="matrix">
+      <h2>Druid usage matrix</h2>
+      <div class="role-table-wrap"><table class="role-table"><thead><tr><th>Role</th><th>Balance</th><th>Feral</th><th>Restoration</th></tr></thead><tbody>
+        <tr><td><strong>Class title and broad links</strong></td><td>Druid wild orange</td><td>Druid wild orange</td><td>Druid wild orange</td></tr>
+        <tr><td><strong>Selected controls</strong></td><td>Astral indigo</td><td>Weathered hide</td><td>Leaf green</td></tr>
+        <tr><td><strong>Repeated mechanics</strong></td><td>Lunar, Solar, DoTs, Mana and movement</td><td>Forms, Resources, Bleeds, Survival</td><td>HoTs, Lifebloom, Raid healing, Mana and procs</td></tr>
+        <tr><td><strong>Role and form</strong></td><td>DPS label</td><td>Explicit Cat/Bear and DPS/tank labels</td><td>Healer label</td></tr>
+        <tr><td><strong>Warnings and danger</strong></td><td colspan="3">Use fixed status tokens, never a class, specialization, role, form, or mechanic color</td></tr>
+        <tr><td><strong>Item rarity and sockets</strong></td><td colspan="3">Use canonical Wrath game-data tokens</td></tr>
+      </tbody></table></div>
+      <div class="related-links"><a href="color-system.html">Open core rules</a><a href="death-knight-color-system.html">Compare a tank-capable family</a><a href="priest-color-system.html">Compare a healing family</a><a href="color-system-addons-ah.html">Review section semantics</a></div>
+    </section>
+  </main>
+  <nav class="reference-pager" aria-label="Previous and next color references"><a href="death-knight-color-system.html">← Death Knight system</a><a href="priest-color-system.html">Priest system →</a></nav>
+  <footer class="reference-footer">Internal design reference. The Balance, Feral, and Restoration palettes are approved for implementation.</footer>
+</div>
+</body>
+</html>

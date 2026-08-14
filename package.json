@@ -4,7 +4,7 @@
   "scripts": {
     "test": "npm run test:node && npm run test:color-system && npm run test:guide-banner && npm run test:fresh-80-workflow && npm run test:guide-audiences",
     "test:node": "node tests/ah-guide-ux.test.js && node tests/ah-search-groups.test.js && node tests/addon-search.test.js && node tests/merchant-guild.test.js",
-    "test:color-system": "node tests/warlock-color-system.test.js",
+    "test:color-system": "node tests/warlock-color-system.test.js && node tests/druid-color-system.test.js",
     "test:guide-banner": "node tests/guide-banner-system.test.js",
     "test:fresh-80-workflow": "node tests/fresh-80-guide-workflow.test.mjs",
     "test:guide-audiences": "node tests/guide-audiences.test.mjs",

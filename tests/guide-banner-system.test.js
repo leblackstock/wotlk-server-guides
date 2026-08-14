@@ -262,6 +262,14 @@ const identityExamplePages = {
     bannerCopy: "Use the default strength for the large Blood guide banner.",
     cardCopy: "Use the card modifier when the Blood identity supports a compact Hub surface."
   },
+  "druid-color-system.html": {
+    key: "druid-restoration",
+    heading: "Druid class-to-spec gradient examples",
+    intro: "Both examples use the same Druid and Restoration tokens, angle, stops, and neutral surface anchors. Only the approved component strength changes.",
+    title: "Restoration Druid Quick Start",
+    bannerCopy: "Use the default strength for the large Restoration guide banner.",
+    cardCopy: "Use the card modifier when the Restoration identity supports a compact Hub surface."
+  },
   "priest-color-system.html": {
     key: "priest-holy",
     heading: "Priest class-to-spec gradient examples",
@@ -303,12 +311,12 @@ for (const [pageFile, expected] of Object.entries(identityExamplePages)) {
 
   assert.ok(section, `internal/${pageFile}: explicit gradient examples are missing`);
   assert.equal(
-    pageDocument.querySelectorAll('link[href="../assets/guide-color-system.css?v=20260814-contextual-identity-examples-v2"]').length,
+    pageDocument.querySelectorAll('link[href="../assets/guide-color-system.css?v=20260814-druid-standard-v1"]').length,
     1,
     `internal/${pageFile}: contextual color tokens are missing`
   );
   assert.equal(
-    pageDocument.querySelectorAll('link[href="../assets/internal-color-reference.css?v=20260814-contextual-identity-examples-v2"]').length,
+    pageDocument.querySelectorAll('link[href="../assets/internal-color-reference.css?v=20260814-druid-standard-v1"]').length,
     1,
     `internal/${pageFile}: shared specimen stylesheet is missing`
   );

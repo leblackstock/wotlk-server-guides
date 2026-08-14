@@ -1,0 +1,37 @@
+/*
+ * Druid additions for the internal color-reference site.
+ * Production color tokens remain owned by guide-color-system.css.
+ */
+body.color-reference-page[data-guide-class="druid"] {
+  --reference-accent: var(--class-druid-accent);
+  --reference-soft: var(--class-druid-soft);
+  --reference-deep: var(--class-druid-deep);
+  --reference-rgb: var(--class-druid-rgb);
+}
+
+.directory-card.druid {
+  --card-accent: var(--class-druid-accent);
+  --card-soft: var(--class-druid-soft);
+  --card-rgb: var(--class-druid-rgb);
+}
+
+.spec-card.balance {
+  --local-accent: var(--spec-druid-balance-accent);
+  --local-soft: var(--spec-druid-balance-soft);
+  --local-deep: var(--spec-druid-balance-deep);
+  --local-rgb: var(--spec-druid-balance-rgb);
+}
+
+.spec-card.feral {
+  --local-accent: var(--spec-druid-feral-accent);
+  --local-soft: var(--spec-druid-feral-soft);
+  --local-deep: var(--spec-druid-feral-deep);
+  --local-rgb: var(--spec-druid-feral-rgb);
+}
+
+.spec-card.restoration {
+  --local-accent: var(--spec-druid-restoration-accent);
+  --local-soft: var(--spec-druid-restoration-soft);
+  --local-deep: var(--spec-druid-restoration-deep);
+  --local-rgb: var(--spec-druid-restoration-rgb);
+}

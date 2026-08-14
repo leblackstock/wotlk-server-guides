@@ -16,6 +16,14 @@
 - Before changing AH table presentation, source-note behavior, row highlighting, or page flow, read `docs/ah-guide-ux-standard.md`.
 - An approved standard marked as rollout-pending must not be applied to live guides, shared assets, generators, or canonical data until the user explicitly authorizes implementation.
 
+## Class Color System Workflow
+
+- Before adding or revising a class or specialization color system, read `docs/class-color-system-workflow.md` and create a work order from `docs/class-color-system-work-orders/_template.md`.
+- Keep every Wrath specialization on one combined class reference page. Audit contrast, normal-vision separation, red-green simulations, and collisions with status, section, item-quality, socket, and existing class colors before approval.
+- A complete internal class-color change includes shared tokens and mappings, a class reference stylesheet, the class page, Color Reference Hub card, shared nav and pager updates, identity-gradient specimens and mapping, cache-key updates, automated coverage, strict UTF-8 checks, and desktop/mobile browser QA.
+- Treat internal palette approval, production guide rollout, and publication as three separate decisions. Do not apply an approved palette to live guides, configs, generators, or the public Guide Hub without explicit authorization.
+- Update the work order's status and validation record as the work advances. Do not mark a palette complete while a quantitative, semantic, integration, or browser gate is unresolved.
+
 ## Guide Footer Dates
 
 - When editing any published guide HTML file under `guides/`, update that page's footer `Updated YYYY-MM-DD` date in the same change.
