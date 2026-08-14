@@ -63,8 +63,12 @@ for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
     expected_date = (
-        "2026-08-11"
-        if path.name == "fishing-cooking-materials-ah-price-guide.html"
+        "2026-08-14"
+        if path.name
+        in {
+            "fishing-cooking-materials-ah-price-guide.html",
+            "mining-smithing-ah-price-guide.html",
+        }
         else "2026-08-10"
     )
     assert f"Updated {expected_date}" in source, path.name

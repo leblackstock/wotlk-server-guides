@@ -166,8 +166,12 @@ def main() -> int:
                 f"vendor rows, found {baseline_count} and {vendor_count}"
             )
         expected_footer = (
-            "Updated 2026-08-11"
-            if filename == "fishing-cooking-materials-ah-price-guide.html"
+            "Updated 2026-08-14"
+            if filename
+            in {
+                "fishing-cooking-materials-ah-price-guide.html",
+                "mining-smithing-ah-price-guide.html",
+            }
             else "Updated 2026-08-10"
         )
         if expected_footer not in source:

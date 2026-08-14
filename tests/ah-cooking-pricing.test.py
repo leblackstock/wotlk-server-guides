@@ -204,7 +204,7 @@ assert "Publication status: `local only — not published`" in report
 assert "159 on three realms, 3 on two, and 0 on one" in report
 assert "All 972 individual comparison requests resolved" in report
 
-assert "Updated 2026-08-11" in guide
+assert "Updated 2026-08-14" in guide
 assert guide.count('id="crafted-cooking-pricing-note"') == 1
 assert "usable relative-rank evidence for 162 outputs" in guide
 assert len(re.findall(r'class="crafted-recipe-link ', guide)) == 162

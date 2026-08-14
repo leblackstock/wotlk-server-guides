@@ -76,6 +76,9 @@ assert "hunter/502-035335131030013233035031051-5000002" not in hunter_pages
 assert "1/1 Trueshot Aura" in hunter_pages
 assert "2/3 Improved Hunter's Mark" in hunter_pages
 assert "later progression chapter, not the starting expectation" in hunter_pages
-assert hunter_pages.count("Updated 2026-08-05") == len(SUFFIXES)
+assert "Updated 2026-08-14" in (
+    GUIDES / "marksmanship-hunter-gearing.html"
+).read_text(encoding="utf-8")
+assert hunter_pages.count("Updated 2026-08-05") == len(SUFFIXES) - 1
 
 print("Validated 36 complete config-backed fresh-80 pages, hub cards, and local links.")

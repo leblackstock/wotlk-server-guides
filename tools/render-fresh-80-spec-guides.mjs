@@ -596,7 +596,7 @@ const holyPriest = {
     ],
     building: [
       ["Holy Priest stat priority", "https://www.wowhead.com/wotlk/guide/classes/priest/holy/healer-stat-priority-attributes-pve"],
-      ["Holy Priest gems and enchants", "https://www.wowhead.com/wotlk/guide/classes/priest/holy/healer-enchants-consumables-pve"]
+      ["Holy Priest gems and enchants", "https://www.wowhead.com/wotlk/guide/classes/priest/holy/healer-enchants-gems-pve"]
     ],
     equipping: [
       ["Holy Priest pre-raid gear", "https://www.wowhead.com/wotlk/guide/classes/priest/holy/healer-bis-gear-pre-raid-pve"],
@@ -995,7 +995,7 @@ const shadowPriest = {
     ],
     building: [
       ["Shadow Priest stat priority", "https://www.wowhead.com/wotlk/guide/classes/priest/shadow/dps-stat-priority-attributes-pve"],
-      ["Shadow Priest enchants and consumables", "https://www.wowhead.com/wotlk/guide/classes/priest/shadow/dps-enchants-consumables-pve"]
+      ["Shadow Priest gems and enchants", "https://www.wowhead.com/wotlk/guide/classes/priest/shadow/dps-enchants-gems-pve"]
     ],
     equipping: [
       ["Shadow Priest pre-raid gear", "https://www.wowhead.com/wotlk/guide/classes/priest/shadow/dps-bis-gear-pre-raid-pve"],
@@ -1467,7 +1467,7 @@ const marksmanshipHunter = {
     ],
     building: [
       ["Marksmanship Hunter stat priority", "https://www.wowhead.com/wotlk/guide/classes/hunter/marksmanship/dps-stat-priority-attributes-pve"],
-      ["Marksmanship Hunter enchants and consumables", "https://www.wowhead.com/wotlk/guide/classes/hunter/marksmanship/dps-enchants-consumables-pve"]
+      ["Marksmanship Hunter gems and enchants", "https://www.wowhead.com/wotlk/guide/classes/hunter/marksmanship/dps-enchants-gems-pve"]
     ],
     equipping: [
       ["Marksmanship Hunter pre-raid gear", "https://www.wowhead.com/wotlk/guide/classes/hunter/marksmanship/dps-bis-gear-pre-raid-pve"],
@@ -2048,11 +2048,18 @@ const cliArgs = process.argv.slice(2);
 const quickStartOnly = cliArgs.includes("--quick-start-only");
 const specArg = cliArgs.find((arg) => arg.startsWith("--spec="));
 const requestedSpec = specArg?.slice("--spec=".length);
+const pageArg = cliArgs.find((arg) => arg.startsWith("--page="));
+const requestedPage = pageArg?.slice("--page=".length);
 const selectedSpecs = requestedSpec ? specs.filter((spec) => spec.slug === requestedSpec) : specs;
 if (requestedSpec && selectedSpecs.length === 0) {
   throw new Error(`Unknown spec slug: ${requestedSpec}`);
 }
-const selectedPages = quickStartOnly
+if (requestedPage && !pageOrder.some(([pageKey]) => pageKey === requestedPage)) {
+  throw new Error(`Unknown page key: ${requestedPage}`);
+}
+const selectedPages = requestedPage
+  ? pageOrder.filter(([pageKey]) => pageKey === requestedPage)
+  : quickStartOnly
   ? pageOrder.filter(([pageKey]) => pageKey === "quickStart")
   : pageOrder;
 
