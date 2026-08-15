@@ -2034,7 +2034,792 @@ const destructionWarlock = makeWarlockSpec(loadWarlockConfig("destruction-warloc
   })
 });
 
-const specs = [holyPriest, shadowPriest, marksmanshipHunter, afflictionWarlock, demonologyWarlock, destructionWarlock];
+function loadDruidConfig(slug) {
+  return JSON.parse(fs.readFileSync(path.join(root, "templates", "spec-guide", `${slug}.config.json`), "utf8"));
+}
+
+function druidSources(role, config) {
+  const source = role === "balance"
+    ? { segment: "balance", prefix: "dps", title: "Balance Druid" }
+    : role === "cat"
+      ? { segment: "feral", prefix: "dps", title: "Feral Druid DPS" }
+      : role === "bear"
+        ? { segment: "feral", prefix: "tank", title: "Feral Druid Tank" }
+        : { segment: "restoration", prefix: "healer", title: "Restoration Druid" };
+  const base = `https://www.wowhead.com/wotlk/guide/classes/druid/${source.segment}`;
+  return {
+    quick: [[`${source.title} talents and glyphs`, `${base}/${source.prefix}-talent-builds-glyphs-pve`], [`${source.title} stats and progression assumptions`, `${base}/${source.prefix}-stat-priority-attributes-pve`]],
+    playing: [[`${source.title} rotation, cooldowns, and abilities`, `${base}/${source.prefix}-rotation-cooldowns-abilities-pve`], ["Druid spell records", "https://www.wowhead.com/wotlk/spells/abilities/druid"]],
+    setup: [[`${source.title} talents and glyphs`, `${base}/${source.prefix}-talent-builds-glyphs-pve`], [`Filled ${config.talent.points} talent calculator`, `https://www.wowhead.com/wotlk/talent-calc/${config.talent.wowheadPath}`]],
+    building: [[`${source.title} stat priority`, `${base}/${source.prefix}-stat-priority-attributes-pve`], [`${source.title} gems and enchants`, `${base}/${source.prefix}-enchants-gems-pve`]],
+    equipping: [[`${source.title} pre-raid gear`, `${base}/${source.prefix}-bis-gear-pre-raid-pve`], [`${source.title} phase-four gear`, `${base}/${source.prefix}-bis-gear-pve-phase-4`], ["Trial of the Champion", "https://www.wowhead.com/wotlk/zone=4723/trial-of-the-champion"], ["Icecrown five-player dungeons", "https://www.wowhead.com/wotlk/guide/icecrown-citadel-dungeons-forge-of-souls-pit-of-saron-halls-of-reflection"]],
+    raiding: [["Trial of the Crusader raid overview", "https://www.wowhead.com/wotlk/zone=4722/trial-of-the-crusader"], ["Icecrown Citadel raid overview", "https://www.wowhead.com/wotlk/zone=4812/icecrown-citadel"], ["Ruby Sanctum raid overview", "https://www.wowhead.com/wotlk/zone=4987/the-ruby-sanctum"], ["Rebirth spell record", "https://www.wowhead.com/wotlk/spell=48477"]]
+  };
+}
+
+function druidBuilding(role) {
+  const commonCasterProfessions = [
+    ["Engineering", "Hyperspeed Accelerators, Nitro Boosts, bombs, and utility.", "Excellent when the active tools are bound and planned; never an assumed requirement."],
+    ["Jewelcrafting", "Three stronger Dragon's Eye gems.", "Flexible throughput, hit, haste, or mana tuning."],
+    ["Leatherworking", "Fur Lining and access to useful leather crafts.", "Strong static value with practical early gearing."],
+    ["Alchemy", "Improved flask and potion value.", "A practical server-economy choice for sustaining personal supplies."],
+    ["Enchanting / Inscription", "Static ring enchants or a personal shoulder inscription.", "Reliable value; choose for the whole character rather than one theoretical stat line."]
+  ];
+  const commonPhysicalProfessions = [
+    ["Engineering", "Hyperspeed Accelerators, Nitro Boosts, bombs, and utility.", "Exceptional control and movement when the active tools are actually used."],
+    ["Jewelcrafting", "Three stronger Dragon's Eye gems.", "Flexible Stamina, Agility, Strength, hit, expertise, or later Armor Penetration tuning."],
+    ["Leatherworking", "Fur Lining and useful leather crafts.", "Strong static value and direct access to class armor crafts."],
+    ["Blacksmithing", "Two extra sockets.", "Flexible and scales with the gems appropriate to the current role and set."],
+    ["Alchemy", "Stronger, longer flasks and cheaper supplies.", "A sensible Hellscream economy choice even when it is not the paper maximum."]
+  ];
+
+  if (role === "balance") return {
+    stats: [
+      ["Spell hit", '<span class="must">First raid-boss progression target</span>', "Prevents offensive spells from missing the selected target.", "A level-83 boss needs 17% spell hit. Balance of Power and Improved Faerie Fire provide 7%, leaving 10% from gear—about 263 rating—when both are active. Do not delay normal or heroic dungeons while building it."],
+      ["Spell Power", "First uncapped throughput stat", "Raises Wrath, Starfire, DoTs, Starfall, Hurricane, and healing utility.", "Compare the whole item; a larger upgrade can beat a smaller piece with one preferred secondary."],
+      ["Haste", "Strong after hit and spell power", "Shortens casts and the global cooldown.", "32.79 haste rating is about 1% at level 80. The raid-buffed Wrath floor is a later set calculation, not a Fresh-80 requirement."],
+      ["Critical strike", "Strong Eclipse secondary", "Raises direct-spell criticals, Moonkin Form mana return, and Eclipse reliability.", "45.91 crit rating is about 1% spell crit; do not sacrifice hit or large spell-power gains to collect it."],
+      ["Spirit", "Useful secondary", "Improved Moonkin Form converts part of Spirit into spell power and Spirit supports out-of-cast regeneration.", "Useful caster gear may be cloth or leather; armor class alone does not make a weaker item better."],
+      ["Intellect", "Mana and crit support", "Adds mana and a small amount of spell critical chance.", "A larger mana pool helps, but it does not replace active Eclipse, movement, and Innervate planning."]
+    ],
+    stages: [
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Enter normal and heroic dungeons immediately with trained spells, Moonkin Form, the complete talent tree, and safe Starfall habits.", "Repair hit with ordinary dungeon, reputation, crafted, and inexpensive BoE pieces; use rare gems and budget enchants on temporary gear.", "Replace leveling weapons and empty trinket slots before chasing one final raid stat profile."] },
+      { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Know the exact level-83 hit target for the current talents and group.", "Maintain Faerie Fire, DoTs, and Eclipse through a full heroic without unsafe Starfall pulls.", "Carry reagents, role consumables, and a clear Innervate and Rebirth plan."] },
+      { title: "Later progression", icon: "inv_misc_gear_01", items: ["Move into epic gems and premium enchants only when the piece will last.", "Compare haste, crit, set bonuses, and movement as a complete loadout.", "Keep a small hit-swap set so one upgrade does not silently break the current cap."] }
+    ],
+    gems: [
+      ["Meta", item("Chaotic Skyflare Diamond", "q-rare"), "Keep the current working meta on a temporary helm", "Activate it with the least throughput loss."],
+      ["Red", item("Runed Scarlet Ruby", "q-rare"), item("Runed Cardinal Ruby"), "Use the rare version on temporary gear and the epic version on lasting pieces."],
+      ["Yellow hit repair", item("Veiled Monarch Topaz", "q-rare"), item("Veiled Ametrine"), "Use only until the exact set reaches its current hit target."],
+      ["Yellow haste", "Rare spell power / haste gem", item("Reckless Ametrine"), "Match a worthwhile socket bonus after hit is solved."],
+      ["Blue / meta", item("Purified Twilight Opal", "q-rare"), item("Purified Dreadstone"), "Meet the meta with the least throughput loss; Nightmare Tear is a later convenience."]
+    ],
+    enchants: [
+      ["Head", item("Arcanum of Burning Mysteries"), "Kirin Tor revered in standard Wrath."],
+      ["Shoulders", item("Greater Inscription of the Storm"), "Use the lower Sons of Hodir inscription while reputation is unfinished."],
+      ["Back", entity("Enchant Cloak - Greater Speed", "enchant-name"), "A cheaper haste enchant is acceptable on a temporary cloak."],
+      ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Use a cheaper all-stats enchant on a short-lived chest."],
+      ["Wrists", entity("Enchant Bracers - Superior Spellpower", "enchant-name"), "Prioritize it on bracers expected to last."],
+      ["Hands", entity("Enchant Gloves - Exceptional Spellpower", "enchant-name"), "Engineering may use Hyperspeed Accelerators when deliberately timed."],
+      ["Waist", item("Eternal Belt Buckle", "q-rare"), "Add the extra socket to a belt worth keeping."],
+      ["Legs", item("Shining Spellthread", "q-rare"), `${item("Brilliant Spellthread")} is the later premium option.`],
+      ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), "Movement speed commonly saves more damage and lives than a small stationary gain."],
+      ["Weapon", entity("Enchant Weapon - Mighty Spellpower", "enchant-name"), `${entity("Enchant Weapon - Black Magic", "enchant-name")} is a later haste-proc comparison.`]
+    ],
+    professions: commonCasterProfessions
+  };
+
+  if (role === "restoration") return {
+    stats: [
+      ["Spell Power", '<span class="must">First uncapped throughput stat</span>', "Raises every healing spell and emergency direct heal.", "A stronger spell-power item is useful immediately; a theoretical haste endpoint does not replace it."],
+      ["Haste", "Responsiveness and later GCD goal", "Shortens cast times and the global cooldown of instant HoTs.", "735 with Celestial Focus or 856 without it are later raid-buffed goals under stated assumptions—not dungeon-entry gates."],
+      ["Spirit", "Throughput and regeneration", "Improved Tree of Life converts part of Spirit into spell power while Intensity supports in-combat regeneration.", "Take enough regeneration for the actual healing assignment before optimizing a paper throughput set."],
+      ["MP5", "Reliable regeneration", "Returns mana continuously and remains useful while casting.", "Compare Spirit and MP5 through the whole item and actual fight length."],
+      ["Intellect", "Mana-pool support", "Adds mana, a small amount of crit, and value from percentage-based recovery.", "Mana stability is the goal; a large pool does not excuse wasteful Lifebloom or blanket healing."],
+      ["Critical strike", "Lower-priority secondary", "Helps Regrowth, Nourish, Healing Touch, and talents tied to direct-heal criticals.", "Most ordinary HoT ticks do not crit without specific set effects, so do not prioritize crit over the core package."]
+    ],
+    stages: [
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Enter normal and heroic dungeons with the complete Tree of Life build, working raid frames, mouseover heals, and enough water.", "Use rare gems and budget enchants while replacing leveling weapons and weak trinkets.", "Practice tank HoTs, Wild Growth placement, Lifebloom blooms, and emergency recovery before raid blanketing."] },
+      { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Sustain a heroic without running dry from unnecessary HoTs.", "Track Rejuvenation, Regrowth, Lifebloom stacks, Wild Growth, Swiftmend, Clearcasting, and Innervate.", "Carry reagents and know the Rebirth, dispel, and Innervate assignments."] },
+      { title: "Later progression", icon: "inv_misc_gear_01", items: ["Choose a Celestial Focus or deep-Restoration haste model as a complete build-and-gear decision.", "Use epic gems and premium enchants only on pieces expected to last.", "Keep regen-heavy and haste-heavy alternatives for different healing assignments."] }
+    ],
+    gems: [
+      ["Meta", item("Insightful Earthsiege Diamond", "q-rare"), "Keep the current working meta on a temporary helm", "Use the mana return until a tested alternative clearly fits the actual assignment better."],
+      ["Red", item("Runed Scarlet Ruby", "q-rare"), item("Runed Cardinal Ruby"), "Use spell power by default after basic mana stability."],
+      ["Yellow", "Rare spell power / haste gem", item("Reckless Ametrine"), "Use haste only toward the explicitly chosen build target."],
+      ["Blue", item("Purified Twilight Opal", "q-rare"), item("Purified Dreadstone"), "Spirit and spell power support both throughput and regeneration."],
+      ["Any color", "Correctly colored budget gem", item("Nightmare Tear"), "Do not buy the premium convenience gem for a short-lived item."]
+    ],
+    enchants: [
+      ["Head", item("Arcanum of Blissful Mending"), "Wyrmrest Accord revered in standard Wrath."],
+      ["Shoulders", item("Greater Inscription of the Crag"), "Use the lower Sons of Hodir healing inscription while reputation is unfinished."],
+      ["Back", entity("Enchant Cloak - Greater Speed", "enchant-name"), "Haste supports responsiveness; a cheaper enchant is fine on a temporary cloak."],
+      ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Use a cheaper all-stats enchant on a short-lived chest."],
+      ["Wrists", entity("Enchant Bracers - Superior Spellpower", "enchant-name"), "Prioritize it on lasting bracers."],
+      ["Hands", entity("Enchant Gloves - Exceptional Spellpower", "enchant-name"), "Engineering may use Hyperspeed Accelerators when the healing window is planned."],
+      ["Waist", item("Eternal Belt Buckle", "q-rare"), "Add the extra socket to a belt worth keeping."],
+      ["Legs", item("Sapphire Spellthread"), `${item("Brilliant Spellthread")} is a throughput alternative when regeneration is already stable.`],
+      ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), "Movement speed protects both healing uptime and survival."],
+      ["Weapon", entity("Enchant Weapon - Mighty Spellpower", "enchant-name"), "Use a cheaper spell-power enchant on a temporary weapon."]
+    ],
+    professions: commonCasterProfessions
+  };
+
+  if (role === "cat") return {
+    stats: [
+      ["Weapon DPS / Feral Attack Power", '<span class="must">First upgrade lever</span>', "Weapons supply Feral Attack Power from their DPS and amplify form damage.", "The displayed weapon damage is not swung in Cat Form; compare the form stats and whole item."],
+      ["Hit", "Reliability, not a forced cap", "Reduces missed melee specials against the selected target.", "8% against a level-83 boss is about 263 rating. Do not sacrifice a clearly stronger whole item merely to display a capped number."],
+      ["Expertise", "Strong below the dodge soft cap", "Reduces dodges and protects combo-point and finisher reliability.", "26 expertise is about 214 rating before Primal Precision; count talent expertise before choosing gems."],
+      ["Strength and Agility", "Primary throughput package", "Strength supplies attack power; Agility supplies attack power and crit in Cat Form.", "Compare the whole set. Fresh-80 players do not need an endgame bearweaving stat model to begin dungeons."],
+      ["Haste and critical strike", "Useful secondaries", "Haste speeds white attacks and Clearcasting opportunities; crit accelerates combo points through Primal Fury.", "Energy, debuff uptime, and position often matter more than a small paper-stat difference."],
+      ["Armor Penetration", "Later set transition", "Raises physical damage by bypassing armor.", "The 1,400-rating hard cap and trinket soft caps are later whole-set goals, never a Fresh-80 gem command."]
+    ],
+    stages: [
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Enter normal and heroic dungeons with the complete Cat build, trained abilities, and a working behind-target priority.", "Secure a credible Feral weapon and two useful trinkets before chasing a final raid stat profile.", "Use rare Strength or Agility gems and budget enchants on temporary gear."] },
+      { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Maintain Savage Roar, Mangle when assigned, Rake, and five-point Rip through a full heroic boss.", "Pool Energy and recover after movement without clipping finishers.", "Carry reagents and know the interrupt, Rebirth, and Innervate assignments."] },
+      { title: "Later progression", icon: "inv_misc_gear_01", items: ["Model the complete set before changing Strength, Agility, or Armor Penetration gems.", "Move to premium enchants only when the piece will last.", "Keep utility, hit, expertise, and alternate trinket pieces until the actual set is tested."] }
+    ],
+    gems: [
+      ["Meta", item("Relentless Earthsiege Diamond", "q-rare"), "Keep the current working meta on a temporary helm", "Activate it with the least loss to the current Strength or Agility plan."],
+      ["Red Strength", item("Bold Scarlet Ruby", "q-rare"), item("Bold Cardinal Ruby"), "Use only when the whole fresh set supports the Strength plan."],
+      ["Red Agility", item("Delicate Scarlet Ruby", "q-rare"), item("Delicate Cardinal Ruby"), "Agility is the simpler all-purpose alternative and supports survival utility."],
+      ["Yellow", item("Deadly Monarch Topaz", "q-rare"), item("Deadly Ametrine"), "Match a worthwhile bonus or repair a real hit/expertise deficit with the correct hybrid."],
+      ["Blue / meta", item("Shifting Twilight Opal", "q-rare"), item("Nightmare Tear"), "Meet the meta with the smallest useful blue commitment."]
+    ],
+    enchants: [
+      ["Head", item("Arcanum of Torment"), "Knights of the Ebon Blade revered in standard Wrath."],
+      ["Shoulders", item("Greater Inscription of the Axe"), "Use the lower Sons of Hodir inscription while progressing reputation."],
+      ["Back", entity("Enchant Cloak - Major Agility", "enchant-name"), "Use a cheaper Agility enchant on a temporary cloak."],
+      ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Use a cheaper stats enchant on a temporary chest."],
+      ["Wrists", entity("Enchant Bracers - Greater Assault", "enchant-name"), "Attack power is the stable physical option."],
+      ["Hands", entity("Enchant Gloves - Crusher", "enchant-name"), `${entity("Enchant Gloves - Greater Assault", "enchant-name")} is the budget option.`],
+      ["Waist", item("Eternal Belt Buckle", "q-rare"), "Add the extra socket to a lasting belt."],
+      ["Legs", item("Nerubian Leg Armor", "q-rare"), `${item("Icescale Leg Armor")} is the later premium option.`],
+      ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), "Feral Swiftness already supplies Cat movement; use Icewalker only for a real cap repair."],
+      ["Two-handed weapon", entity("Enchant 2H Weapon - Massacre", "enchant-name"), `${entity("Enchant Weapon - Berserking", "enchant-name")} is the premium proc comparison.`]
+    ],
+    professions: commonPhysicalProfessions
+  };
+
+  return {
+    stats: [
+      ["Stamina", '<span class="must">Primary effective-health stat</span>', "Raises the health buffer against physical and magical spikes.", "Gem Stamina when survival is the problem; do not turn every comparison into one universal ratio."],
+      ["Agility", "Mitigation and threat package", "Adds armor, dodge, crit, and attack power in Bear Form.", "Dodge from gear is subject to diminishing returns; Agility remains useful because it does several jobs."],
+      ["Armor", "Core physical mitigation", "Reduces physical damage and scales strongly in Dire Bear Form.", "Bonus armor on jewelry does not receive every Bear multiplier in the same way as leather armor; compare the exact item."],
+      ["Expertise", "Strong threat below dodge cap", "Reduces dodges and parries, improving threat and reducing parry-haste exposure where active.", "26 expertise removes boss dodges; do not sacrifice a large survival budget to chase the 56 hard cap."],
+      ["Hit", "Useful reliability", "Improves melee attacks and some tank actions.", "8% melee hit is about 263 rating, while Growl uses its own hit behavior. Verify taunts and glyphs on Hellscream."],
+      ["Defense and crit immunity", "Do not chase 540 Defense", "Survival of the Fittest supplies critical-strike immunity in Dire Bear Form.", "Defense can still add avoidance, but the plate-tank 540 rule is not a Feral requirement."],
+      ["Dodge, Strength, AP, haste, crit", "Secondary threat or avoidance", "These improve portions of survival or threat.", "Take them as part of a stronger item; effective health, armor, and controlled play remain the Fresh-80 foundation."]
+    ],
+    stages: [
+      { title: "Fresh level 80", icon: "inv_misc_coin_01", items: ["Enter normal and heroic dungeons with the complete Bear build, Dire Bear Form, trained taunts, and a deliberate pull plan.", "Use Stamina-heavy rare gems and budget armor or Stamina enchants while replacing leveling leather.", "Secure a credible Feral weapon and survival trinkets before copying an ICC threat set."] },
+      { title: "Raid-ready base", icon: "achievement_boss_general_nazgrim", items: ["Hold packs without starving required globals through Maul queues.", "Maintain Demoralizing Roar when assigned and plan Barkskin, Survival Instincts, and Frenzied Regeneration.", "Carry reagents and know the taunt-swap, add, Innervate, and Rebirth assignments."] },
+      { title: "Later progression", icon: "inv_misc_gear_01", items: ["Build survival, threat, and resistance variants only for a named job.", "Use epic gems and premium enchants on pieces expected to last.", "Keep alternate trinkets, weapons, and armor pieces until each encounter set is tested."] }
+    ],
+    gems: [
+      ["Meta", item("Austere Earthsiege Diamond", "q-rare"), "Keep the current defensive meta on a temporary helm", "Meet the requirement with the smallest useful off-color commitment."],
+      ["Blue", item("Solid Sky Sapphire", "q-rare"), item("Solid Majestic Zircon"), "Stamina is the default when damage spikes are the limiting problem."],
+      ["Red", item("Shifting Twilight Opal", "q-rare"), item("Shifting Dreadstone"), "Use Agility/Stamina when the socket bonus and whole item justify it."],
+      ["Red expertise", item("Guardian's Twilight Opal", "q-rare"), item("Guardian's Dreadstone"), "Repair a real expertise problem without abandoning the survival budget."],
+      ["Yellow", item("Vivid Forest Emerald", "q-rare"), item("Nightmare Tear"), "Use hit/Stamina only when the current set benefits; the unique Tear is a later convenience."]
+    ],
+    enchants: [
+      ["Head", item("Arcanum of the Stalwart Protector"), "Argent Crusade revered in standard Wrath."],
+      ["Shoulders", item("Greater Inscription of the Pinnacle"), "Use the lower Sons of Hodir tank inscription while reputation is unfinished."],
+      ["Back", entity("Enchant Cloak - Mighty Armor", "enchant-name"), "Use a cheaper armor enchant on a temporary cloak."],
+      ["Chest", entity("Enchant Chest - Powerful Stats", "enchant-name"), "Heavy Borean Armor Kit is a cheap Stamina alternative for temporary gear."],
+      ["Wrists", entity("Enchant Bracers - Major Stamina", "enchant-name"), "Leatherworking may use Fur Lining - Stamina."],
+      ["Hands", entity("Enchant Gloves - Armsman", "enchant-name"), "Use a cheaper Stamina or threat option on temporary gloves."],
+      ["Waist", item("Eternal Belt Buckle", "q-rare"), "Add the extra socket to a lasting belt."],
+      ["Legs", item("Nerubian Leg Armor", "q-rare"), `${item("Frosthide Leg Armor")} is the later premium survival option.`],
+      ["Feet", entity("Enchant Boots - Tuskarr's Vitality", "enchant-name"), "Movement and Stamina are both practical tank stats."],
+      ["Two-handed weapon", entity("Enchant 2H Weapon - Massacre", "enchant-name"), `${entity("Enchant Weapon - Mongoose", "enchant-name")} is an Agility proc comparison.`]
+    ],
+    professions: commonPhysicalProfessions
+  };
+}
+
+function druidEquipping(role) {
+  if (role === "balance") return {
+    first: [
+      ['<span class="must">Hit trinket</span>', item("Mark of the War Prisoner", "q-rare"), "Cyanigosa, heroic Violet Hold", "A large early hit repair plus an on-use spell-power window."],
+      ['<span class="must">Weapon</span>', item("Flameheart Spell Scalpel", "q-rare"), "Kirin Tor revered", "A deterministic reputation weapon when dungeon drops refuse to cooperate."],
+      ['<span class="must">Off-hand</span>', item("Ward of the Violet Citadel"), "25 Emblems of Heroism", "A durable early off-hand for accessible one-handed weapons."],
+      ['<span class="optional">Throughput trinket</span>', item("Sundial of the Exiled"), "40 Emblems of Heroism", "A practical early crit and spell-power proc trinket."],
+      ['<span class="optional">Dungeon trinket</span>', item("Forge Ember", "q-rare"), "Sjonnir, heroic Halls of Stone", "A no-raid spell-power alternative while emblems go elsewhere."]
+    ],
+    fresh: [
+      ["Weapon", item("Titansteel Guardian"), "Blacksmithing BoE", "A strong craft only when the local price does not consume the whole gearing budget."],
+      ["Head / chest / legs", "Best spell-power leather or cloth dungeon upgrade", "Northrend normal and heroic dungeons", "Replace leveling armor by total useful stats, not armor-class pride."],
+      ["Wrists / belt / boots", "Hit, spell-power, haste, or crit upgrade", "Heroic, reputation, or affordable BoE", "Repair the weakest slot while keeping the current hit model visible."],
+      ["Trinket", item("Abyssal Rune", "q-rare"), "Normal Trial of the Champion", "An accessible haste proc with no raid lockout."],
+      ["Any weak slot", "Best affordable non-raid upgrade", "Reputation, craft, BoE, or emblems", "A broad upgrade beats waiting in leveling gear for one perfect list item."]
+    ],
+    emblems: [
+      { title: "Heroism and Triumph", icon: "spell_holy_summonchampion", items: [`Use ${item("Ward of the Violet Citadel")} or ${item("Sundial of the Exiled")} when those slots are still weak.`, "Use Triumph catch-up pieces to repair the largest armor gaps.", "Do not save every emblem while wearing leveling gear."] },
+      { title: "Tier progression", icon: "inv_chest_leather_13", items: ["Build T9 as an accessible bridge, then compare Balance T10 bonuses against actual offset pieces.", "Keep hit coherent while changing tier pieces.", "A set bonus does not replace missing gems, enchants, or movement discipline."] },
+      { title: "Frost", icon: "inv_misc_frostemblem_01", items: ["Buy the largest reliable tier or off-set upgrade first.", "Confirm that a purchase does not create an unplanned hit deficit.", "Retain useful hit and haste swap pieces."] }
+    ],
+    toc: [[item("Abyssal Rune", "q-rare"), "Normal Trial of the Champion", "Immediate catch-up haste proc."], ["T9 Balance set", "Triumph vendor and Trial routes", "Accessible set progression."], [item("Talisman of Resurgence"), "Triumph vendor", "Later Intellect and spell-power on-use option."], ["High-item-level caster weapon", "Trial of the Crusader", "Later clean upgrade; verify faction and mode."]],
+    icc: [[item("Nevermelting Ice Crystal"), "Scourgelord Tyrannus, heroic Pit of Saron", "Catch-up crit on-use; compare with ordinary proc uptime."], [item("Muradin's Spyglass"), "Gunship Battle, 10-player", "Sustained spell-power stacking."], [item("Phylactery of the Nameless Lich"), "Sindragosa, 25-player", "Later crit and spell-power proc."], [item("Charred Twilight Scale"), "Halion, 25-player", "Ruby Sanctum endgame target; verify mode and priority."]],
+    special: [["Hit repair", "Mark of the War Prisoner and loose hit pieces", "Reach the current target without carrying large excess hit."], ["Movement", "Tuskarr's Vitality boots", "A small paper-stat loss can preserve entire Eclipse windows."], ["AoE safety", "Starfall and Hurricane control set", "The set never compensates for pulling inactive enemies."], ["Mana pressure", "Spirit, Intellect, and regen alternatives", "Keep until real encounter mana usage is known."]]
+  };
+
+  if (role === "restoration") return {
+    first: [
+      ['<span class="must">Weapon</span>', item("Titansteel Guardian"), "Blacksmithing BoE", "A strong deterministic healing weapon when sensibly priced."],
+      ['<span class="must">Off-hand</span>', item("Handbook of Obscure Remedies"), "25 Emblems of Heroism", "A durable early healing off-hand with regeneration."],
+      ['<span class="must">Mana trinket</span>', item("The Egg of Mortal Essence"), "40 Emblems of Heroism", "A practical haste proc and spell-power baseline."],
+      ['<span class="optional">Dungeon trinket</span>', item("Soul Preserver", "q-rare"), "King Ymiron, normal Culling of Stratholme", "A no-raid mana-efficiency option while emblems go elsewhere."],
+      ['<span class="optional">Reputation head enchant</span>', item("Arcanum of Blissful Mending"), "Wyrmrest Accord revered", "A deterministic healing upgrade tied to useful reputation progression."]
+    ],
+    fresh: [["Weapon / off-hand", "Best spell-power and regeneration pair", "Normal, heroic, reputation, craft, or emblems", "Weapon spell power usually delivers the largest immediate healing gain."], ["Armor", "Best spell-power, haste, Spirit, or MP5 leather/cloth", "Northrend five-player dungeons", "Use total healing value; do not wait in leveling leather for a perfect armor-class drop."], ["Trinket", item("Abyssal Rune", "q-rare"), "Normal Trial of the Champion", "Haste catch-up option when mana is already stable."], ["Belt / boots", "Affordable haste or Spirit upgrade", "Reputation, craft, or BoE", "Repair weak slots before forcing a one-second GCD set."], ["Any weak slot", "Best affordable non-raid upgrade", "Reputation, craft, BoE, or emblems", "A broad upgrade beats hoarding while the current item is weak."]],
+    emblems: [{ title: "Heroism and Triumph", icon: "spell_holy_summonchampion", items: [`Use ${item("Handbook of Obscure Remedies")} or ${item("The Egg of Mortal Essence")} while those slots are weak.`, "Use Triumph catch-up armor to replace the largest healing gaps.", "Do not delay a major upgrade merely to save for a distant list."] }, { title: "Tier progression", icon: "inv_chest_leather_13", items: ["Build T9 as an accessible bridge, then compare Restoration T10 bonuses against actual offsets.", "Keep haste and mana stable while changing several tier slots.", "Preserve assignment-specific alternatives."] }, { title: "Frost", icon: "inv_misc_frostemblem_01", items: ["Buy the largest reliable tier or off-set upgrade first.", "Confirm the change against the selected haste model.", "Keep regen-heavy pieces for long or recovery-intensive fights."] }],
+    toc: [[item("Abyssal Rune", "q-rare"), "Normal Trial of the Champion", "Catch-up haste when mana is stable."], ["T9 Restoration set", "Triumph vendor and Trial routes", "Accessible set progression."], [item("Talisman of Resurgence"), "Triumph vendor", "Large Intellect and planned spell-power on-use."], ["Solace trinket family", "Trial of the Crusader, 25-player", "Later regeneration target; verify faction and mode."]],
+    icc: [[item("Nevermelting Ice Crystal"), "Scourgelord Tyrannus, heroic Pit of Saron", "Catch-up option, not an automatic healing trinket."], [item("Althor's Abacus"), "Gunship Battle, 25-player", "Later direct-healing proc target."], [item("Trauma"), "Rotface, 25-player", "Later weapon whose proc value depends on healing pattern."], [item("Glowing Twilight Scale"), "Halion, 25-player", "Ruby Sanctum endgame healing target; verify mode and priority."]],
+    special: [["Mana stability", "Spirit, MP5, and Intellect variants", "Use when the assignment or fight length creates real mana pressure."], ["Haste progression", "Haste-heavy alternatives", "Use only against the explicitly chosen 735 or 856 model."], ["Tank support", "Nourish and direct-heal set", "Keep when five-player or raid tank healing is the job."], ["Movement", "Tuskarr's Vitality boots", "Reaching the next target is a healing throughput gain."]]
+  };
+
+  if (role === "cat") return {
+    first: [['<span class="must">Dungeon weapon</span>', item("Staff of Trickery", "q-rare"), "Herald Volazj, heroic Ahn'kahet", "A farmable Feral weapon when crafted options are too expensive."], ['<span class="must">Crafted weapon</span>', item("Titansteel Destroyer"), "Blacksmithing BoE", "A strong early weapon only when the local price leaves gold for the rest of the character."], ['<span class="must">Emblem trinket</span>', item("Mirror of Truth"), "40 Emblems of Heroism", "A reliable crit and attack-power proc baseline."], ['<span class="optional">Dungeon trinket</span>', item("Meteorite Whetstone", "q-rare"), "King Ymiron, heroic Utgarde Pinnacle", "A farmable crit and haste-proc option."], ['<span class="premium">Expensive BoE</span>', item("Darkmoon Card: Greatness"), "Nobles Deck", "Powerful, but never the first purchase while several slots remain weak."]],
+    fresh: [["Neck", item("Pendant of the Outcast Hero"), "25 Emblems of Heroism", "A durable physical-DPS neck after higher-impact needs are solved."], ["Back", item("Cloak of the Gushing Wound", "q-rare"), "Erekem, heroic Violet Hold", "A farmable Agility physical-DPS cloak."], ["Belt", item("Jorach's Crocolisk Skin Belt"), "40 Emblems of Heroism", "A strong emblem leather belt when the slot is weak."], ["Ring", item("Ring of Scarlet Shadows"), "Jewelcrafting BoE", "An accessible physical-DPS ring when sensibly priced."], ["Any armor slot", "Highest useful Agility leather upgrade", "Normal, heroic, reputation, or affordable BoE", "Item level and total useful stats usually beat waiting for one perfect secondary spread."]],
+    emblems: [{ title: "Heroism and Triumph", icon: "spell_holy_summonchampion", items: [`Prioritize ${item("Mirror of Truth")} and a major weapon or armor gap.`, "Use Triumph catch-up pieces and T9 to replace leveling gear.", "Do not hoard every emblem while the current set cannot support the rotation."] }, { title: "Tier progression", icon: "inv_chest_leather_13", items: ["Build T9 as a bridge, then compare Cat T10 bonuses against actual offset pieces.", "Keep hit and expertise visible while changing multiple slots.", "Set bonuses do not replace uptime and Energy discipline."] }, { title: "Frost", icon: "inv_misc_frostemblem_01", items: ["Buy the largest reliable tier or off-set upgrade first.", "Herkuml War Token is a later sustained-melee option, not the automatic first purchase.", "Keep alternate hit, expertise, and trinket pieces."] }],
+    toc: [[item("Banner of Victory", "q-rare"), "Normal Trial of the Champion", "Armor Penetration catch-up trinket; use only as part of the actual set."], ["T9 Feral set", "Triumph vendor and Trial routes", "Accessible set progression."], ["High-item-level Feral weapon", "Trial of the Crusader", "Weapon upgrades remain high priority."], ["Physical leather offset", "Trial bosses", "Take the clean upgrade rather than waiting for one perfect list item."]],
+    icc: [[item("Needle-Encrusted Scorpion"), "Devourer of Souls, heroic Forge of Souls", "Catch-up Armor Penetration proc; model its soft cap before regemming."], [item("Herkuml War Token"), "60 Emblems of Frost", "Later sustained haste and attack-power option."], [item("Whispering Fanged Skull"), "Lady Deathwhisper, 10-player", "Later crit and attack-power proc target."], [item("Deathbringer's Will"), "Deathbringer Saurfang, 25-player", "Major later raid target, not a Fresh-80 shopping expectation."], [item("Sharpened Twilight Scale"), "Halion, 25-player", "Ruby Sanctum endgame physical trinket; verify mode and priority."]],
+    special: [["Hit / expertise repair", "Loose reliability pieces", "Swap only enough to improve the actual set without losing a larger upgrade."], ["Armor Penetration", "Proc-trinket and native-ArP set", "Keep separate until the full set supports a validated transition."], ["Utility", "Survival or movement pieces", "Staying alive and reaching the target preserve more damage than a paper maximum."], ["Emergency Bear", "Stamina and armor alternatives", "Keep only for a named assignment; Cat remains the DPS role."]]
+  };
+
+  return {
+    first: [['<span class="must">Dungeon weapon</span>', item("Staff of Trickery", "q-rare"), "Herald Volazj, heroic Ahn'kahet", "A farmable Feral weapon with useful form stats."], ['<span class="must">Health trinket</span>', item("Essence of Gossamer", "q-rare"), "Hadronox, heroic Azjol-Nerub", "A direct early health buffer with no raid requirement."], ['<span class="must">Crafted chest</span>', item("Polar Vest"), "Leatherworking BoE", "A high-Stamina option only when the craft is affordable and the physical-survival job warrants it."], ['<span class="optional">Dungeon bracers</span>', item("Bindings of the Tunneler", "q-rare"), "Skarvald, heroic Utgarde Keep", "A farmable leather tank option with useful stats."], ['<span class="optional">Dungeon cloak</span>', item("Cloak of the Gushing Wound", "q-rare"), "Erekem, heroic Violet Hold", "An accessible Agility cloak while a more defensive option is unavailable."]],
+    fresh: [["Weapon", item("Titansteel Destroyer"), "Blacksmithing BoE", "A strong early Feral weapon when sensibly priced; survival gear still matters more than one luxury craft."], ["Chest", item("Crystal-Infused Tunic", "q-rare"), "Keristrasza, heroic Nexus", "A farmable leather alternative before expensive crafts."], ["Trinket", item("The Black Heart"), "Black Knight, normal Trial of the Champion", "A strong catch-up Stamina and armor-proc trinket."], ["Armor", "Highest useful Stamina, Agility, and armor leather", "Normal, heroic, reputation, or affordable BoE", "Replace leveling gear by total survival and threat value."], ["Any weak slot", "Best affordable tank upgrade", "Reputation, craft, BoE, or emblems", "A broad effective-health gain beats waiting for an ICC-shaped list."]],
+    emblems: [{ title: "Heroism and Triumph", icon: "spell_holy_summonchampion", items: ["Replace the weakest survival slot instead of hoarding every emblem.", "Use Triumph catch-up armor and T9 as a bridge.", "Keep threat reliable, but do not buy offensive pieces while health and armor are clearly weak."] }, { title: "Tier progression", icon: "inv_chest_leather_13", items: ["Build a coherent Feral tank set and compare bonuses against actual offset armor.", "Keep survival and threat variants when both have named jobs.", "Never import a Cat gem plan into the Bear set without review."] }, { title: "Frost", icon: "inv_misc_frostemblem_01", items: [`${item("Corroded Skeleton Key")} is a direct later Stamina option.`, "Buy required tier or the largest survival gain first.", "Keep alternate trinkets for physical, magical, and threat-sensitive encounters."] }],
+    toc: [[item("The Black Heart"), "Normal Trial of the Champion", "Immediate catch-up Stamina and armor proc."], ["T9 Feral tank pieces", "Triumph vendor and Trial routes", "Accessible set progression."], ["High-item-level Feral weapon", "Trial of the Crusader", "Threat and form-stat upgrade after survival basics."], [item("Glyph of Indomitability"), "50 Emblems of Triumph", "Later armor on-use option for physical damage."]],
+    icc: [[item("Corroded Skeleton Key"), "60 Emblems of Frost", "Large Stamina plus an absorb on use."], [item("Unidentifiable Organ"), "Professor Putricide, 10-player", "Physical-survival trinket whose stacks require actual incoming hits."], [item("Sindragosa's Flawless Fang"), "Sindragosa, 10-player", "Later Stamina and resistance cooldown target."], [item("Petrified Twilight Scale"), "Halion, 25-player", "Ruby Sanctum endgame tank target; verify mode and priority."]],
+    special: [["Physical survival", "Armor and Stamina set", "Use for sustained melee or burst physical damage."], ["Magic survival", "Stamina and resistance tools", "Use only for a named magical job; armor does not solve spell bursts."], ["Threat / pickup", "Hit, expertise, and offensive alternatives", "Use when survival is stable and pickup reliability is the actual problem."], ["Cat off-role", "Separate Cat weapon, trinkets, and gems", "Do not blur the Bear baseline into a compromised hybrid set."]]
+  };
+}
+
+const druidEncounterBase = [
+  ["toc", "Trial of the Crusader", "achievement_boss_anubarak_01"],
+  ["marrowgar", "Lord Marrowgar", "achievement_boss_lordmarrowgar"],
+  ["deathwhisper", "Lady Deathwhisper", "achievement_boss_ladydeathwhisper"],
+  ["saurfang", "Deathbringer Saurfang", "achievement_boss_saurfang"],
+  ["putricide", "Professor Putricide", "achievement_boss_profputricide"],
+  ["blood-wing", "Blood Prince Council and Blood-Queen Lana'thel", "achievement_boss_lanathel"],
+  ["valithria", "Valithria Dreamwalker", "achievement_boss_valithriadreamwalker"],
+  ["sindragosa", "Sindragosa", "achievement_boss_sindragosa"],
+  ["lich-king", "The Lich King", "achievement_boss_lichking"],
+  ["halion", "Halion", "achievement_boss_halion"]
+];
+
+function druidRaiding(role, advice) {
+  const tank = role === "bear";
+  const healer = role === "restoration";
+  return {
+    entryNote: "This chapter is later progression, not the starting expectation for a new level 80. Complete the self-contained setup, practice the role in normal and heroic dungeons, and enter raids only after the character and player are ready.",
+    assignmentIcon: advice.assignmentIcon,
+    consumables: advice.consumables,
+    prePull: advice.prePull,
+    assignments: advice.assignments,
+    notes: druidEncounterBase.map(([key, encounter, iconName]) => ({
+      encounter,
+      icon: iconName,
+      size: "10 25",
+      difficulty: "normal heroic",
+      role: advice.roles,
+      sizeLabel: "10 / 25",
+      difficultyLabel: "Normal / Heroic",
+      roleLabel: tank ? "Tank assignments" : healer ? "Healing assignments" : "Damage / utility",
+      verify: advice.verify.includes(key),
+      text: advice.notes[key]
+    }))
+  };
+}
+
+function makeDruidSpec(config, role, content) {
+  return {
+    className: config.className,
+    classSlug: config.classSlug,
+    name: config.specName,
+    shortName: config.specShortName,
+    nickname: config.guideNickname,
+    guideTypes: config.guideTypes,
+    slug: config.specSlug,
+    specKey: config.specKey,
+    guideAudience: config.guideAudience,
+    fresh80Policy: config.fresh80Policy,
+    tooltipFile: config.tooltipFile,
+    cacheKey: config.cacheKey,
+    serverNote: config.serverNote,
+    icons: config.icons,
+    descriptions: config.pageDescriptions,
+    mechanics: config.mechanics.map((mechanic) => ({ ...mechanic, iconEntity: mechanic.examples[0].name })),
+    roleFilters: config.raidRoleFilters.map(({ value, label }) => [value, label]),
+    talent: { points: config.talent.points, name: config.talent.name, summary: config.talent.summary, path: config.talent.wowheadPath },
+    building: druidBuilding(role),
+    equipping: druidEquipping(role),
+    sources: druidSources(role, config),
+    ...content
+  };
+}
+
+const balanceDruid = makeDruidSpec(loadDruidConfig("balance-druid"), "balance", {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Move Eclipse without losing DoTs", detail: "Use the spell that can trigger the next Eclipse, then protect the empowered school while required effects remain useful." },
+      { label: "Default priority", value: "Wrath → Lunar · Starfire → Solar", detail: "Maintain useful DoTs, use safe cooldowns, and return to the Eclipse engine instead of following a fixed rotation." },
+      { label: "Fresh-80 rule", value: "Safe Starfall beats extra targets", detail: "A controlled cast that cannot wake, pull, or hit forbidden targets is worth more than a larger risky cast." }
+    ],
+    engineTitle: "Prepare → trigger → spend → recover",
+    beforeIcon: "spell_nature_forceofnature",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Enter ${entity("Moonkin Form")}, apply ${entity("Mark of the Wild")} or ${entity("Gift of the Wild")}, and place ${entity("Thorns")} on the tank when appropriate.`,
+      `Confirm who supplies ${entity("Faerie Fire")}; use ${entity("Improved Faerie Fire")} only when its debuff is actually needed.`,
+      `Check that ${entity("Starfall")} cannot reach inactive packs or controlled targets and that ${entity("Force of Nature")} can path safely.`,
+      `Carry reagents, water, ${entity("Flask of the Frost Wyrm")}, food, and mana or speed potions appropriate to the content.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the complete 55/0/16 baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; practice Eclipse direction, safe Starfall use, and utility before treating raid caps as entrance requirements.",
+      "Replace leveling gear, secure two useful trinkets, and build toward 10% spell hit from gear for level-83 raid targets under this self-contained build.",
+      "Learn when a target will live long enough for both DoTs before adding cooldown stacking or advanced Eclipse timing."
+    ],
+    chapterTopics: {
+      playing: "Eclipse · DoTs · movement · utility",
+      setup: "55/0/16 · glyphs · macros · tracking",
+      building: "Hit · spell power · haste · budget",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Windows · swaps · control · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Moonkin Form")} and group buffs → required ${entity("Faerie Fire")} → useful ${entity("Moonfire")} and ${entity("Insect Swarm")} → safe ${entity("Force of Nature")} and ${entity("Starfall")} → ${entity("Wrath")} until Lunar Eclipse → ${entity("Starfire")} until Solar Eclipse → repeat.`,
+    openerIcon: "ability_druid_eclipse",
+    trackingIcon: "spell_nature_starfall",
+    opener: [
+      `Precast ${entity("Wrath")} only when the pull timer, travel time, and tank allow it.`,
+      `Apply required ${entity("Faerie Fire")}, then ${entity("Moonfire")} and ${entity("Insect Swarm")} when the target will live for useful ticks.`,
+      `Use ${entity("Force of Nature")} where the treants can connect and survive; use ${entity("Starfall")} only after checking its entire radius.`,
+      `Continue ${entity("Wrath")} until Lunar Eclipse procs, then spend the window with ${entity("Starfire")}.`
+    ],
+    tracking: [
+      `${entity("Eclipse")}: which direction can proc, which buff is active, and how much of the window remains.`,
+      `${entity("Moonfire")}, ${entity("Insect Swarm")}, ${entity("Faerie Fire")}, and target life expectancy.`,
+      `${entity("Starfall")}, ${entity("Force of Nature")}, mana, threat, and ${entity("Innervate")}.`,
+      `Movement timers, ${entity("Nature's Grace")}, and whether the next cast can finish before displacement.`
+    ],
+    cards: [
+      { kicker: "No Eclipse active", title: "Trigger the next window", tag: "Default", iconEntity: "Eclipse", decision: "Use the spell capable of triggering the available Eclipse while preserving required effects.", actions: ["Wrath", "Eclipse", "Starfire"], rules: ["Wrath criticals can trigger Lunar; Starfire criticals can trigger Solar.", "Do not alternate every cast—the proc state determines the filler."], failure: "casting the empowered school while trying to trigger its own locked Eclipse direction." },
+      { kicker: "DoT decision", title: "Refresh for useful ticks", tag: "Maintain", iconEntity: "Moonfire", decision: "Apply or refresh only when the target will live long enough and the global will not waste a critical Eclipse window.", actions: ["Moonfire", "Insect Swarm", "Starfire"], rules: ["DoTs support sustained targets, movement, and debuffs.", "Avoid refreshing both automatically inside every Eclipse."], failure: "turning a strong Eclipse window into repeated early maintenance globals." },
+      { kicker: "Stacked enemies", title: "Use controlled area damage", tag: "AoE", iconEntity: "Starfall", decision: "Choose Starfall, Hurricane, or direct focus damage according to pack safety, life, and movement.", actions: ["Starfall", "Hurricane", "Typhoon"], rules: ["Audit the full Starfall radius before casting.", "Use Typhoon knockback only when it helps the tank or saves a player."], failure: "pulling inactive enemies, breaking control, or scattering a positioned pack." },
+      { kicker: "Forced movement", title: "Move on useful globals", tag: "Mobile", iconEntity: "Typhoon", decision: "Use genuinely due instant effects, utility, or planned movement rather than inventing early refreshes.", actions: ["Moonfire", "Insect Swarm", "Typhoon"], rules: ["Start moving before the hazard reaches you.", "Return to the Eclipse filler immediately after reaching safety."], failure: "standing still to finish a low-value cast or refreshing every effect far too early." },
+      { kicker: "Mana pressure", title: "Recover before empty", tag: "Mana", iconEntity: "Innervate", decision: "Use Innervate early enough to gain its full value and continue the priority without a dry phase.", actions: ["Innervate", "Moonkin Form", "Wrath"], rules: ["Plan the first use from fight length instead of waiting for zero mana.", "A requested healer Innervate is an assignment decision, not an automatic default."], failure: "saving Innervate until the remaining fight is shorter than its useful return." },
+      { kicker: "Control or recovery", title: "Use the Druid toolkit", tag: "Utility", iconEntity: "Rebirth", decision: "Interrupt the damage priority when an assigned control, cleanse, mana, or resurrection action prevents a wipe.", actions: ["Rebirth", "Remove Curse", "Cyclone"], rules: ["Confirm the resurrection target and safe location before casting.", "Coordinate control so immunity and diminishing returns do not waste the global."], failure: "protecting personal damage while the assigned utility action is missed." }
+    ],
+    utility: [
+      [entity("Typhoon"), "Knockback and daze", "Use only when the displacement improves control; glyph it when knockback would be harmful."],
+      [entity("Entangling Roots"), "Root control", "Use on eligible melee enemies with a clear break and movement plan."],
+      [entity("Cyclone"), "Short immunity control", "Coordinate carefully because the target cannot be damaged or healed while cycloned."],
+      [entity("Remove Curse"), "Curse removal", "Prioritize dangerous assigned curses over a damage global."],
+      [entity("Abolish Poison"), "Repeated poison removal", "Use when recurring poison applications justify the ongoing effect."],
+      [entity("Innervate"), "Mana recovery", "Assign before the pull and use early enough for the full return."],
+      [entity("Rebirth"), "Combat resurrection", "Confirm the target, location, and follow-up healing before spending the reagent."],
+      [entity("Barkskin"), "Personal mitigation", "Use before predictable damage and movement; it is not an immunity."]
+    ],
+    mistakes: [
+      "Treating Eclipse as a two-spell alternating rotation instead of a proc state.",
+      "Refreshing Moonfire and Insect Swarm automatically during every empowered window.",
+      "Casting Starfall before checking nearby packs and controlled targets.",
+      "Finishing a low-value cast while a movement mechanic reaches the character.",
+      "Waiting until empty mana to plan Innervate.",
+      "Ignoring an assigned cleanse, control, or Rebirth to preserve the damage meter."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Eclipse engine", icon: "ability_druid_eclipse", items: [`${entity("Eclipse")} creates the alternating Lunar and Solar damage windows.`, `${entity("Nature's Grace")} rewards critical casts with haste.`, `${entity("Starfall")} and ${entity("Force of Nature")} provide planned cooldown damage.`] },
+      { title: "Self-contained hit", icon: "spell_nature_faeriefire", items: [`${entity("Balance of Power")} supplies 4% spell hit and ${entity("Improved Faerie Fire")} supplies 3% when its debuff is active.`, "Against a level-83 raid target, the baseline therefore seeks 10%—about 263 rating—from gear before counting another player’s effects.", "That raid target is progression, not a normal-dungeon entry gate."] },
+      { title: "Dungeon support", icon: "spell_nature_natureguardian", items: [`${entity("Intensity")} and ${entity("Omen of Clarity")} make the baseline functional without assumed raid-only mana support.`, "Later raid swaps must state which self-contained tool is removed and why.", "Preserve 71 allocated points whenever a flex choice is tested."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Starfire", "glyph-name"), '<span class="must">Default</span>', "Durable targets", "Starfire extends Moonfire so the DoT needs fewer maintenance globals."],
+      [entity("Glyph of Moonfire", "glyph-name"), '<span class="must">Default</span>', "Sustained damage", "Strengthens Moonfire's periodic component while reducing its direct component."],
+      [entity("Glyph of Starfall", "glyph-name"), '<span class="must">Default</span>', "Safe cooldown use", "Reduces Starfall cooldown for more planned windows."],
+      [entity("Glyph of Insect Swarm", "glyph-name"), '<span class="optional">Raid swap</span>', "Damage-first assignment", "Raises Insect Swarm damage but removes its hit-reduction utility."],
+      [entity("Glyph of Typhoon", "glyph-name"), '<span class="optional">Control swap</span>', "No knockback", "Removes knockback when displacement would disrupt the tank."],
+      [entity("Glyph of the Wild", "glyph-name"), '<span class="optional">Minor</span>', "Buff recovery", "Reduces the mana cost of Mark and Gift of the Wild."]
+    ],
+    macros: [
+      { title: "Mouseover Innervate", entity: "Innervate", purpose: "Give mana to a living friendly mouseover, otherwise use the current friendly target or self.", code: "#showtooltip Innervate\n/cast [@mouseover,help,nodead][help,nodead][@player] Innervate" },
+      { title: "Focus Entangling Roots", entity: "Entangling Roots", purpose: "Root a hostile focus without losing the damage target; fall back to the current target.", code: "#showtooltip Entangling Roots\n/cast [@focus,harm,nodead][] Entangling Roots" },
+      { title: "Mouseover Rebirth", entity: "Rebirth", purpose: "Combat-resurrect a dead friendly mouseover without changing the current target.", code: "#showtooltip Rebirth\n/cast [@mouseover,help,dead][help,dead] Rebirth" },
+      { title: "Form-safe Barkskin", entity: "Barkskin", purpose: "Use personal mitigation without leaving Moonkin Form.", code: "#showtooltip Barkskin\n/cast Barkskin" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for movement and cooldown timing.`, "A 3.3.5-compatible Eclipse display that shows the active buff, the available trigger direction, and remaining duration.", "A DoT timer that keeps Moonfire and Insect Swarm distinct on the selected target."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Eclipse")}, ${entity("Nature's Grace")}, ${entity("Starfall")}, and ${entity("Innervate")}.`, "Details/Recount to review DoT uptime, Eclipse casts, misses, target damage, and avoidable deaths.", "A threat display so cooldown windows do not surprise the tank."]
+  },
+  raiding: druidRaiding("balance", {
+    assignmentIcon: "ability_druid_eclipse",
+    roles: "single-target aoe movement utility special",
+    consumables: [`${entity("Flask of the Frost Wyrm")} for the default spell-power flask.`, `${entity("Fish Feast")} or equivalent spell-power food after verifying the available feast.`, `${entity("Potion of Speed")} for a planned casting window; mana potion when completion is otherwise at risk.`],
+    prePull: ["Confirm Faerie Fire, Innervate, Rebirth, and control assignments.", "Inspect Starfall range, treant pathing, and the first movement timer.", "State the gear hit assumption rather than silently counting a raid debuff."],
+    assignments: [["Sustained target", "Required DoTs and debuffs remain useful while Eclipse windows land on the assigned target.", "Call forced downtime or a target that will die before maintenance pays back."], ["Adds and AoE", "Priority targets receive immediate damage; Starfall and Hurricane stay inside the raid's control plan.", "Call unsafe radius, crowd control, or a target leaving the stack."], ["Druid utility", "Innervate, Rebirth, cleanses, roots, and Typhoon are used on the agreed target and timing.", "Call reagent, range, immunity, or cooldown conflicts before they become failures."]],
+    verify: ["lich-king"],
+    notes: {
+      toc: `Maintain useful boss effects across target changes and reserve ${entity("Typhoon")} for an agreed control job. On Anub'arak, use ${entity("Starfall")} only when its radius cannot disrupt burrower control or scarabs.`,
+      marrowgar: `Keep Eclipse moving, switch immediately to Bone Spikes, and use genuinely due instant globals during Bone Storm. Check ${entity("Starfall")} against nearby trash before the pull.`,
+      deathwhisper: `Follow add priority, use ${entity("Remove Curse")} when assigned, and do not pad durable DoTs across controlled or low-priority targets. Preserve Typhoon for the raid's positioning plan.`,
+      saurfang: `Keep damage on the boss unless assigned to Blood Beasts. Use roots or Typhoon only under the control plan; uncontrolled knockback can send a beast toward another player.`,
+      putricide: `Switch hard to Volatile Ooze and Gas Cloud, move before Malleable Goo, and cast DoTs only when the add will live for useful ticks. Save instant globals for the planned route.`,
+      "blood-wing": `On Princes, attack only the empowered target and help with Kinetic Bombs only when assigned. On Blood-Queen, protect Eclipse uptime by moving early and follow the bite order.`,
+      valithria: `Prioritize Blazing Skeletons and Suppressors, control with roots or Typhoon only by assignment, and use ${entity("Hurricane")} on stable packs that the tanks have secured.`,
+      sindragosa: `Respect Unchained Magic and Instability, stop casting before stacks become lethal, and break only assigned Ice Tombs. Use line-of-sight correctly for Mystic Buffet resets.`,
+      "lich-king": `Burn Val'kyr and Raging Spirits by priority, use movement globals during Defile routes, and never let ${entity("Starfall")} replace the raid's Vile Spirit control plan. Verify Hellscream-specific targeting before relying on it.`,
+      halion: `Remain in the assigned realm, move early for combustion or consumption, and keep Eclipse casts aligned around cutter movement. Typhoon and Starfall remain control-sensitive tools.`
+    }
+  })
+});
+
+const feralCatDruid = makeDruidSpec(loadDruidConfig("feral-cat-druid"), "cat", {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Keep Roar and Rip purposeful", detail: "Build combo points, pool Energy, and refresh finishers without destroying the next decision window." },
+      { label: "Default priority", value: "Roar → bleeds → Bite with room", detail: "Maintain Mangle's bleed support when required, keep Rake and Rip useful, and Bite only when the timers permit it." },
+      { label: "Fresh-80 rule", value: "Reliable position beats paper DPS", detail: "A clean front-facing Mangle or target swap is better than losing several globals while forcing Shred access." }
+    ],
+    engineTitle: "Position → build → pool → finish",
+    beforeIcon: "ability_druid_catform",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Enter ${entity("Cat Form")}, apply ${entity("Mark of the Wild")} or ${entity("Gift of the Wild")}, and confirm who supplies the bleed-damage debuff.`,
+      `Know whether the target allows rear access for ${entity("Shred")}; bind ${entity("Mangle (Cat)")} for forced frontal moments.`,
+      `Confirm ${entity("Rebirth")}, ${entity("Innervate")}, interrupt or control, and emergency-Bear expectations.`,
+      `Start with repaired gear, poisons and curses visible to the group, food or flask appropriate to the run, and free bag space for upgrades.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the fully allocated 0/55/16 Cat baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; practice rear access, Energy pooling, Savage Roar, and fast target swaps before treating raid caps as entry requirements.",
+      "Replace leveling gear and obtain a level-80 Feral weapon; weapon form attack power is a major upgrade signal.",
+      "Build reliability toward 8% physical special hit and 26 expertise for raid bosses without sacrificing obviously larger Agility upgrades just to display a cap."
+    ],
+    chapterTopics: {
+      playing: "Energy · combo points · bleeds · position",
+      setup: "0/55/16 · glyphs · forms · macros",
+      building: "Agility · hit · expertise · ArP",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Uptime · swaps · survival · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Cat Form")} and group buffs → ${entity("Faerie Fire (Feral)")} when assigned → required ${entity("Mangle (Cat)")} debuff → useful ${entity("Savage Roar")} → ${entity("Rake")} → ${entity("Rip")} at five combo points → ${entity("Shred")} builder from behind → ${entity("Ferocious Bite")} only with safe timer room.`,
+    openerIcon: "ability_druid_savageroar",
+    trackingIcon: "ability_druid_disembowel",
+    opener: [
+      `Use ${entity("Feral Charge - Cat")} only when the path is safe and its movement value is needed.`,
+      `Apply ${entity("Faerie Fire (Feral)")} and ${entity("Mangle (Cat)")} when those effects are assigned and not already covered.`,
+      `Build a short ${entity("Savage Roar")}, apply ${entity("Rake")}, then build toward a five-point ${entity("Rip")}.`,
+      `Use ${entity("Tiger's Fury")} at low Energy without wasting its return; begin pooling before the next finisher collision.`
+    ],
+    tracking: [
+      `${entity("Savage Roar")}, ${entity("Rip")}, ${entity("Rake")}, and the required ${entity("Mangle (Cat)")} debuff.`,
+      `Energy, combo points, ${entity("Tiger's Fury")}, ${entity("Berserk")}, and ${entity("Omen of Clarity")}.`,
+      `Rear access for ${entity("Shred")}, target life, travel time, and the raid's next forced movement.`,
+      `${entity("Barkskin")}, ${entity("Survival Instincts")}, ${entity("Rebirth")}, and emergency-form expectations.`
+    ],
+    cards: [
+      { kicker: "Durable target", title: "Build the maintenance engine", tag: "Default", iconEntity: "Savage Roar", decision: "Keep Roar, Rip, Rake, and required bleed support useful while spending Energy through deliberate builders.", actions: ["Savage Roar", "Rake", "Rip", "Shred"], rules: ["Pool before refresh collisions so the required finisher lands on time.", "Use five combo points for Rip whenever the target can live through it."], failure: "spending Energy immediately and then reaching a Roar or Rip deadline empty." },
+      { kicker: "Timers collide", title: "Pool before the deadline", tag: "Resource", iconEntity: "Tiger's Fury", decision: "Stop unnecessary builders, preserve combo points, and enter the refresh window with enough Energy to act.", actions: ["Tiger's Fury", "Savage Roar", "Rip"], rules: ["Do not use Tiger's Fury near maximum Energy.", "Roar uptime normally takes priority over an optional Bite."], failure: "overcapping early, then starving exactly when two finishers need attention." },
+      { kicker: "No rear access", title: "Stay active from the front", tag: "Position", iconEntity: "Mangle (Cat)", decision: "Use Mangle and assigned utility until safe rear access returns instead of circling through danger.", actions: ["Mangle (Cat)", "Rake", "Savage Roar"], rules: ["Do not expose the raid to cleaves merely to Shred.", "Return behind the target only through the planned safe side."], failure: "losing several globals or dying while chasing a positional attack." },
+      { kicker: "Urgent target", title: "Match setup to target life", tag: "Swap", iconEntity: "Mangle (Cat)", decision: "Use immediate builders and only the maintenance effects that can pay back before the target dies.", actions: ["Feral Charge - Cat", "Mangle (Cat)", "Ferocious Bite"], rules: ["A short-lived add rarely deserves a full Rip setup.", "Follow the assigned kill target rather than preserving boss uptime at the raid's expense."], failure: "finishing a five-point bleed after the urgent target is already dead." },
+      { kicker: "Stacked pack", title: "Swipe after threat", tag: "Adds", iconEntity: "Swipe (Cat)", decision: "Use Swipe on a stable pack after the tank controls it, while preserving enough Energy for the next priority target.", actions: ["Tiger's Fury", "Swipe (Cat)", "Mangle (Cat)"], rules: ["Wait for threat and respect crowd control.", "Return to priority damage immediately when the pack or assignment changes."], failure: "opening with Swipe, pulling threat, or spending all Energy before an urgent target appears." },
+      { kicker: "Danger or utility", title: "Lose damage to save the pull", tag: "Survival", iconEntity: "Barkskin", decision: "Use mitigation, form changes, Rebirth, or Innervate when that action prevents a death or fulfills an assignment.", actions: ["Barkskin", "Survival Instincts", "Rebirth"], rules: ["Barkskin before predictable damage; Survival Instincts is temporary health, not immunity.", "Announce an emergency Bear transition because it changes threat and damage output."], failure: "remaining in the damage priority while a known survival or recovery action is missed." }
+    ],
+    utility: [
+      [entity("Feral Charge - Cat"), "Fast target access", "Use when the landing point is safe and immediate uptime is worth the cooldown."],
+      [entity("Maim"), "Combo-point stun", "Reserve combo points for an assigned interrupt or stun only when the target is eligible."],
+      [entity("Dash"), "Movement cooldown", "Use proactively for long travel or mechanics, not after uptime is already lost."],
+      [entity("Barkskin"), "Personal mitigation", "Use before predictable damage without leaving Cat Form."],
+      [entity("Survival Instincts"), "Temporary health", "Use before a dangerous window and plan healing before it expires."],
+      [entity("Rebirth"), "Combat resurrection", "Confirm the target and safe location; leaving form and casting has a real opportunity cost."],
+      [entity("Innervate"), "Mana support", "Use on the assigned target when the raid value exceeds one damage global."],
+      [entity("Remove Curse"), "Curse removal", "Leave form and cleanse when the assigned debuff is more dangerous than the lost damage."]
+    ],
+    mistakes: [
+      "Treating the priority as a memorized cast sequence instead of reading timers and Energy.",
+      "Using Ferocious Bite when Savage Roar or Rip cannot survive the Energy recovery.",
+      "Chasing rear access through cleaves, hazards, or excessive travel.",
+      "Applying full bleeds to targets that will die before they pay back.",
+      "Opening Swipe before the tank establishes the pack.",
+      "Refusing to use Barkskin, Rebirth, Innervate, or an emergency form because it lowers the meter."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Cat engine", icon: "ability_druid_mangle2", items: [`${entity("Mangle")} unlocks the core bleed-support attack.`, `${entity("Savage Roar")} turns combo points into a sustained physical-damage buff.`, `${entity("Berserk")} creates a planned low-cost Energy window.`] },
+      { title: "Resource control", icon: "ability_mount_jungletiger", items: [`${entity("Omen of Clarity")} creates free-action opportunities.`, `${entity("Primal Precision")} supplies 10 expertise and refunds Energy from missed finishers.`, `${entity("King of the Jungle")} improves Tiger's Fury and supports planned burst.`] },
+      { title: "Self-contained utility", icon: "spell_nature_spiritwolf", items: [`${entity("Naturalist")} and ${entity("Master Shapeshifter")} support the complete dungeon baseline.`, "Later raid flex points must preserve 71 allocated points and state what reliability is being traded.", "This Cat page does not silently substitute the separate Bear tank baseline."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Savage Roar", "glyph-name"), '<span class="must">Default</span>', "All sustained combat", "Raises the damage bonus from the buff that anchors the Cat priority."],
+      [entity("Glyph of Rip", "glyph-name"), '<span class="must">Default</span>', "Durable targets", "Extends Rip for more builder and refresh room."],
+      [entity("Glyph of Shred", "glyph-name"), '<span class="must">Default</span>', "Rear-access targets", "Shred extends Rip within its glyph limit."],
+      [entity("Glyph of Mangle", "glyph-name"), '<span class="optional">Position swap</span>', "Limited rear access", "Improves Mangle when the encounter prevents reliable Shred use."],
+      [entity("Glyph of Dash", "glyph-name"), '<span class="optional">Minor</span>', "Movement", "Reduces Dash cooldown for repeat movement demands."],
+      [entity("Glyph of Unburdened Rebirth", "glyph-name"), '<span class="optional">Minor</span>', "Recovery", "Removes the reagent requirement from Rebirth."]
+    ],
+    extraSection: { id: "forms", short: "Forms", title: "Form boundaries", icon: "ability_druid_catform", body: `<div class="two-col"><div class="guide-box"><h3>Stay Cat for damage</h3>${list(["Use Cat Form for the normal damage priority.", "Plan every utility cast that removes form, then return deliberately.", "Do not shift repeatedly without a reason; form changes consume mana and globals."])}</div><div class="guide-box"><h3>Bear is an emergency role</h3>${list(["Enter Dire Bear Form only for a named survival, pickup, or recovery job.", "Announce the transition because threat behavior changes.", "A Cat talent and gear set is not the dedicated Bear baseline."])}</div></div>` },
+    macros: [
+      { title: "Safe Cat opener", entity: "Cat Form", purpose: "Enter Cat Form when needed, then use the selected hostile ability normally.", code: "#showtooltip Cat Form\n/cast [nostance:3] Cat Form" },
+      { title: "Focus Maim", entity: "Maim", purpose: "Stun a hostile focus without losing the damage target; fall back to the current target.", code: "#showtooltip Maim\n/cast [@focus,harm,nodead][] Maim" },
+      { title: "Mouseover Rebirth", entity: "Rebirth", purpose: "Leave form and combat-resurrect a dead friendly mouseover or target.", code: "#showtooltip Rebirth\n/cancelform\n/cast [@mouseover,help,dead][help,dead] Rebirth" },
+      { title: "Emergency Bear", entity: "Dire Bear Form", purpose: "Enter the survival form directly; defensive abilities remain separate decisions.", code: "#showtooltip Dire Bear Form\n/cast Dire Bear Form" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for movement and target-life planning.`, "A 3.3.5-compatible Cat timer that separates Savage Roar, Rip, Rake, and the Mangle debuff.", "An Energy and combo-point display placed near the target and mechanic timers."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Savage Roar")}, ${entity("Omen of Clarity")}, ${entity("Tiger's Fury")}, and ${entity("Berserk")}.`, "Details/Recount to review target uptime, misses, bleed uptime, deaths, and damage to assigned targets.", "A threat display for Berserk, Swipe, and emergency Bear transitions."]
+  },
+  raiding: druidRaiding("cat", {
+    assignmentIcon: "ability_druid_savageroar",
+    roles: "single-target adds movement utility special",
+    consumables: [`${entity("Flask of Endless Rage")} for the default attack-power flask.`, `${entity("Fish Feast")} or equivalent Agility food after verifying the available feast.`, `${entity("Potion of Speed")} for a planned full-uptime window.`],
+    prePull: ["Confirm Mangle or equivalent bleed-debuff coverage, Rebirth, Innervate, and emergency-Bear expectations.", "Identify rear access, cleave sides, charge paths, and the first forced movement.", "State target-swap and stun priorities before spending combo points."],
+    assignments: [["Sustained target", "Savage Roar, useful bleeds, and required debuffs remain active while Energy is pooled for refreshes.", "Call loss of rear access or a timer collision that changes the normal priority."], ["Adds and swaps", "The raid's priority target receives immediate useful damage with setup matched to its remaining life.", "Call charge hazards, crowd control, or a target likely to die before a bleed pays back."], ["Feral utility", "Stuns, Rebirth, Innervate, mitigation, and emergency form changes happen on the agreed timing.", "Call a form change, reagent, range, immunity, or cooldown conflict." ]],
+    verify: ["lich-king"],
+    notes: {
+      toc: `Maintain the Cat engine on durable targets and match bleed setup to each target's remaining life. On Anub'arak, wait for tank threat before ${entity("Swipe (Cat)")} and respect burrower control.`,
+      marrowgar: `Attack from a safe rear quarter, switch immediately to Bone Spikes, and use ${entity("Dash")} or ${entity("Feral Charge - Cat")} only through a safe path during Bone Storm.`,
+      deathwhisper: `Follow add priority and crowd control, use ${entity("Maim")} only when assigned, and avoid building full bleeds on targets that will die before their ticks matter.`,
+      saurfang: `Remain on the boss unless assigned to Blood Beasts. Never chase a beast through another player's path; immediate Mangle damage and control matter more than a full bleed setup.`,
+      putricide: `Switch hard to Volatile Ooze and Gas Cloud, move before Malleable Goo, and choose builders according to rear access and target life. Use Barkskin for predictable raid damage.`,
+      "blood-wing": `On Princes, attack only the empowered target and preserve position through swaps. On Blood-Queen, follow bite order, move early for Swarming Shadows, and protect the next Roar or Rip deadline.`,
+      valithria: `Prioritize Blazing Skeletons and Suppressors, use Swipe only on secured packs, and reserve Maim for an assigned eligible cast. This encounter rewards correct target selection over long boss-style setup.`,
+      sindragosa: `Respect Chilled to the Bone stacks and movement, stop attacking when required, and break only assigned Ice Tombs. Plan Roar duration around air phases and phase-three resets.`,
+      "lich-king": `Burn Val'kyr and Raging Spirits by priority, move early for Defile, and do not compromise positioning to preserve a bleed. Verify Hellscream charge and target behavior before depending on a specialized route.`,
+      halion: `Stay in the assigned realm, use Barkskin before predictable pulses, and move early around cutters. Keep finishers aligned with periods of actual target access rather than the pull timer alone.`
+    }
+  })
+});
+
+const feralBearDruid = makeDruidSpec(loadDruidConfig("feral-bear-druid"), "bear", {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Hold enemies and stay healable", detail: "Position the pack, keep threat on the right targets, and use survival tools before incoming damage becomes a rescue." },
+      { label: "Default priority", value: "Mangle · Lacerate · Swipe · Maul", detail: "Maintain the required debuffs, queue Maul only with Rage to spare, and react immediately to loose enemies." },
+      { label: "Fresh-80 rule", value: "Control beats the damage meter", detail: "A stable pull with safe positioning and planned mitigation is better than spending every Rage point on damage." }
+    ],
+    engineTitle: "Position → establish → maintain → survive",
+    beforeIcon: "ability_racial_bearform",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Enter ${entity("Dire Bear Form")}, apply ${entity("Mark of the Wild")} or ${entity("Gift of the Wild")}, and place ${entity("Thorns")} on yourself.`,
+      `Mark a kill target, bind ${entity("Growl")}, ${entity("Feral Charge - Bear")}, ${entity("Bash")}, and ${entity("Challenging Roar")} separately.`,
+      `Confirm whether ${entity("Demoralizing Roar")} and ${entity("Faerie Fire (Feral)")} are your assignments or covered elsewhere.`,
+      `Inspect healer mana, patrols, line-of-sight corners, escape routes, and the first dangerous pull before engaging.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the complete 0/60/11 dedicated Bear baseline and glyph set.",
+      "Begin in normal and heroic dungeons as survival and control permit; practice line-of-sight pulls, Rage discipline, and cooldown calls before raid readiness.",
+      "Replace leveling gear with Stamina, armor, Agility, and useful threat stats; Survival of the Fittest provides crit immunity without a 540 Defense requirement.",
+      "Build a separate Cat set if an off-role is desired; do not weaken the tank baseline into one compromised hybrid set."
+    ],
+    chapterTopics: {
+      playing: "Threat · Rage · packs · cooldowns",
+      setup: "0/60/11 · glyphs · forms · macros",
+      building: "Stamina · armor · Agility · threat",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Assignments · swaps · survival · boss notes"
+    }
+  },
+  playing: {
+    priority: `${entity("Dire Bear Form")} and group buffs → position enemies safely → ${entity("Faerie Fire (Feral)")} at range → ${entity("Mangle (Bear)")} → maintain ${entity("Lacerate")} and required ${entity("Demoralizing Roar")} → ${entity("Swipe (Bear)")} for packs or filler → queue ${entity("Maul")} only when Rage remains for the next required action.`,
+    openerIcon: "ability_druid_mangle2",
+    trackingIcon: "ability_druid_lacerate",
+    opener: [
+      `Pull with ${entity("Faerie Fire (Feral)")} or use ${entity("Feral Charge - Bear")} only when the landing position is safe.`,
+      `Face enemies away from the group, establish ${entity("Mangle (Bear)")}, and use ${entity("Swipe (Bear)")} while marking the priority target.`,
+      `Build ${entity("Lacerate")} on a durable target and apply ${entity("Demoralizing Roar")} when the physical-damage reduction is assigned.`,
+      `Queue ${entity("Maul")} only after reserving Rage for taunt recovery, interrupts, debuffs, and the next pack action.`
+    ],
+    tracking: [
+      `Threat on every active enemy, the current kill target, ${entity("Growl")}, and ${entity("Challenging Roar")}.`,
+      `Rage, ${entity("Mangle (Bear)")}, ${entity("Lacerate")}, ${entity("Demoralizing Roar")}, and ${entity("Faerie Fire (Feral)")}.`,
+      `${entity("Savage Defense")}, health, healer mana, ${entity("Barkskin")}, ${entity("Survival Instincts")}, and ${entity("Frenzied Regeneration")}.`,
+      `Boss swing or burst timers, tank-swap debuffs, frontal direction, and safe charge paths.`
+    ],
+    cards: [
+      { kicker: "Single durable target", title: "Build reliable threat", tag: "Default", iconEntity: "Mangle (Bear)", decision: "Maintain the required debuffs and Lacerate while keeping enough Rage for reactions.", actions: ["Faerie Fire (Feral)", "Mangle (Bear)", "Lacerate", "Maul"], rules: ["Mangle has priority over filler when available.", "Queue Maul only when it cannot starve the next required action."], failure: "spending every Rage point on Maul and missing a taunt, debuff, or pickup." },
+      { kicker: "Enemy pack", title: "Position before accelerating", tag: "Adds", iconEntity: "Swipe (Bear)", decision: "Gather enemies into a stable frontal pack, spread threat, and keep the marked target obvious.", actions: ["Faerie Fire (Feral)", "Swipe (Bear)", "Challenging Roar"], rules: ["Use line of sight to bring casters to the pack.", "Challenging Roar creates a recovery window; it does not establish durable threat by itself."], failure: "charging past the group, exposing frontals, or assuming one Swipe owns every enemy." },
+      { kicker: "Low Rage", title: "Protect required actions", tag: "Resource", iconEntity: "Enrage", decision: "Stop queueing Maul, use Enrage only when the armor penalty is safe, and rebuild through incoming or dealt damage.", actions: ["Enrage", "Mangle (Bear)", "Swipe (Bear)"], rules: ["Never treat Enrage as free Rage during a dangerous physical burst.", "Prioritize control and debuffs over filler damage."], failure: "using Enrage into lethal melee damage or continuing to drain Rage with Maul." },
+      { kicker: "Loose enemy", title: "Recover deliberately", tag: "Pickup", iconEntity: "Growl", decision: "Taunt the correct target, force immediate follow-up threat, and restore safe positioning.", actions: ["Growl", "Feral Charge - Bear", "Mangle (Bear)"], rules: ["Taunt copies threat temporarily; follow it with a real threat action.", "Charge only when the path and new facing are safe."], failure: "taunting without follow-up or turning the pack's frontal attacks through the group." },
+      { kicker: "Physical burst", title: "Layer survival early", tag: "Survival", iconEntity: "Barkskin", decision: "Use the smallest sufficient cooldown before the burst and communicate what remains available.", actions: ["Barkskin", "Survival Instincts", "Frenzied Regeneration"], rules: ["Survival Instincts is temporary health and needs a plan for expiration.", "Frenzied Regeneration converts Rage, so account for the threat and control cost."], failure: "pressing every cooldown after health is already unrecoverable." },
+      { kicker: "Magic or special damage", title: "Use the right defense", tag: "Special", iconEntity: "Survival Instincts", decision: "Favor health, timing, movement, resistance, or external help because armor does not solve most spell bursts.", actions: ["Survival Instincts", "Barkskin", "Feral Charge - Bear"], rules: ["Identify the damage school before choosing gear or cooldowns.", "Call for an external cooldown before the hit, not afterward."], failure: "equating high armor with complete protection from magical mechanics." }
+    ],
+    utility: [
+      [entity("Growl"), "Single-target taunt", "Use on the correct hostile target and follow immediately with threat."],
+      [entity("Challenging Roar"), "Area taunt window", "Use as planned control or emergency recovery, then establish threat on each enemy."],
+      [entity("Feral Charge - Bear"), "Gap close and interrupt", "Use only when the landing position, facing, and path are safe."],
+      [entity("Bash"), "Stun and cast stop", "Reserve it for an eligible assigned cast or dangerous enemy."],
+      [entity("Demoralizing Roar"), "Physical damage reduction", "Maintain when assigned; the baseline version is not the enhanced raid debuff."],
+      [entity("Barkskin"), "Short mitigation", "Use before predictable damage; keep stronger tools for larger windows."],
+      [entity("Survival Instincts"), "Temporary maximum health", "Coordinate healing and the end of the effect."],
+      [entity("Frenzied Regeneration"), "Rage-to-health recovery", "Use with enough Rage and a stated threat plan."]
+    ],
+    mistakes: [
+      "Looking only at the current target's threat while another enemy attacks a healer.",
+      "Queueing Maul until no Rage remains for control or recovery.",
+      "Charging into a position that turns frontal attacks toward the group.",
+      "Treating Challenging Roar as permanent threat rather than a short recovery window.",
+      "Using Enrage during dangerous physical damage without accounting for its armor penalty.",
+      "Waiting for critical health before communicating or activating survival cooldowns."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "Tank foundation", icon: "ability_druid_naturalperfection", items: [`${entity("Survival of the Fittest")} supplies the full 6% reduction to chance to be critically hit, so the Bear does not chase 540 Defense.`, `${entity("Thick Hide")} and ${entity("Protector of the Pack")} support physical survival.`, `${entity("Natural Reaction")} adds dodge, Rage from dodges, and damage reduction in Bear Form.`] },
+      { title: "Threat and control", icon: "ability_druid_mangle2", items: [`${entity("Mangle")} anchors single-target threat and bleed support.`, `${entity("Berserk")} enables a planned multi-target Mangle window and breaks fear on use.`, `${entity("Primal Precision")} supplies 10 expertise and refunds missed finisher Energy for the shared Feral tree, though Bear values its expertise directly.`] },
+      { title: "Known flex boundary", icon: "spell_nature_natureguardian", items: ["The mono-Bear baseline keeps core survival and threat complete.", `Enhanced ${entity("Demoralizing Roar")} requires explicit later talent swaps; never claim the baseline supplies the enhanced effect.`, "Any raid variant must preserve 71 points and document exactly which survival or threat tool moved."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Maul", "glyph-name"), '<span class="must">Default</span>', "Dungeons and adds", "Lets Maul strike an additional target for practical multi-target threat."],
+      [entity("Glyph of Survival Instincts", "glyph-name"), '<span class="must">Default</span>', "Survival", "Raises the temporary-health gain from Survival Instincts."],
+      [entity("Glyph of Frenzied Regeneration", "glyph-name"), '<span class="must">Default</span>', "Recovery", "Raises healing received while Frenzied Regeneration is active."],
+      [entity("Glyph of Growl", "glyph-name"), '<span class="optional">Taunt swap</span>', "Progression taunts", "Adds hit chance to Growl when a missed taunt is the actual risk."],
+      [entity("Glyph of Challenging Roar", "glyph-name"), '<span class="optional">Minor</span>', "Add recovery", "Reduces the cooldown of the area-taunt recovery tool."],
+      [entity("Glyph of Unburdened Rebirth", "glyph-name"), '<span class="optional">Minor</span>', "Off-role recovery", "Removes Rebirth's reagent requirement when a safe form break is possible."]
+    ],
+    extraSection: { id: "debuffs", short: "Debuffs", title: "Debuff truth and raid variants", icon: "ability_druid_demoralizingroar", body: `<div class="two-col"><div class="guide-box"><h3>What the baseline supplies</h3>${list(["Faerie Fire (Feral) armor reduction when assigned.", "Baseline Demoralizing Roar attack-power reduction.", "Mangle's bleed-damage support when no equivalent effect is present."])}</div><div class="guide-box"><h3>What requires a declared swap</h3>${list(["Improved Demoralizing Roar is not silently included.", "Infected Wounds or other control variants change points and assignments.", "Document the exact points removed and verify all 71 remain allocated."])}</div></div>` },
+    macros: [
+      { title: "Mouseover Growl", entity: "Growl", purpose: "Taunt a hostile mouseover without losing the main target; fall back to the current target.", code: "#showtooltip Growl\n/cast [@mouseover,harm,nodead][] Growl" },
+      { title: "Focus Bash", entity: "Bash", purpose: "Stun the hostile focus without changing the tank target; fall back normally.", code: "#showtooltip Bash\n/cast [@focus,harm,nodead][] Bash" },
+      { title: "Direct Bear charge", entity: "Feral Charge - Bear", purpose: "Use the Bear charge on the current hostile target without adding an unsafe target change.", code: "#showtooltip Feral Charge - Bear\n/cast Feral Charge - Bear" },
+      { title: "Emergency survival", entity: "Survival Instincts", purpose: "Activate temporary health; Barkskin and Frenzied Regeneration remain separate timing decisions.", code: "#showtooltip Survival Instincts\n/cast Survival Instincts" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for burst, swap, movement, and add timing.`, "Threat plates that show threat state on every visible enemy, not only the selected target.", "A clear boss frame and debuff display for tank-swap stacks and survival timers."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Savage Defense")}, ${entity("Lacerate")}, ${entity("Demoralizing Roar")}, and survival cooldowns.`, "Details/Recount to review deaths, damage taken, missed taunts, interrupts, and threat losses rather than damage rank.", "A healer-mana and external-cooldown display for pull pacing and planned burst coverage."]
+  },
+  raiding: druidRaiding("bear", {
+    assignmentIcon: "ability_druid_naturalperfection",
+    roles: "main-tank add-tank swap survival special",
+    consumables: [`${entity("Flask of Stoneblood")} for the default health flask.`, `${entity("Fish Feast")} or equivalent Stamina food after verifying the available feast.`, `${entity("Indestructible Potion")} for a planned physical-damage window.`],
+    prePull: ["Confirm main tank, add tank, taunt, interrupt, external-cooldown, and battle-resurrection assignments.", "Identify frontal direction, movement route, line-of-sight position, and the first survival window.", "State whether baseline or enhanced attack-power reduction is actually present."],
+    assignments: [["Boss control", "The boss faces safely, required debuffs remain active, and threat is stable without exhausting Rage.", "Call forced movement, taunt immunity, threat risk, or a missing debuff."], ["Adds and pickups", "Each active enemy has a marked home, threat owner, and recovery path.", "Call a loose enemy, unsafe charge, crowd control, or area-taunt expiration."], ["Survival plan", "Personal and external cooldowns cover named damage windows without unnecessary overlap.", "Call the next burst, current cooldown, healer gap, or plan change early."]],
+    verify: ["toc", "lich-king"],
+    notes: {
+      toc: `Face bosses away, plan taunts and cooldowns before each phase, and separate physical from magical survival needs. On Anub'arak, follow the assigned boss or burrower role and verify Hellscream add positioning and taunt behavior.`,
+      marrowgar: `Keep Marrowgar faced away, call Saber Lash coverage, and reposition cleanly after Bone Storm. Pick up or control Bone Spikes only under the raid's tank plan.`,
+      deathwhisper: `Gather assigned adds without dragging cleaves through the raid, interrupt eligible casts, and prepare the phase-two boss pickup before the shield breaks.`,
+      saurfang: `Hold the boss stable, execute tank swaps on Rune of Blood, and never use uncontrolled movement or area threat that disrupts Blood Beast control.`,
+      putricide: `Follow the assigned boss or Abomination role exactly. Move the boss ahead of slime and Malleable Goo, communicate mutation energy or swap changes, and plan cooldowns for phase three.`,
+      "blood-wing": `On Princes, control only the assigned active target and preserve orb or add paths. On Blood-Queen, face safely, coordinate the opening link, and plan cooldowns around known tank damage.`,
+      valithria: `Pick up assigned Abominations, Zombies, and other adds quickly, keep frontals away from healers, and use Bash or charge interrupts only on eligible priority casts.`,
+      sindragosa: `Manage Frost Breath cooldowns and Mystic Buffet resets, position tombs according to the plan, and never turn the frontal or tail through the raid during phase-three movement.`,
+      "lich-king": `Execute Soul Reaper cooldowns and taunt swaps, position Raging Spirits and Shamblings safely, and communicate every movement before Defile. Verify Hellscream-specific taunt and add behavior before relying on a narrow sequence.`,
+      halion: `Stay in the assigned realm, face Halion away from the raid, move smoothly around cutters, and plan cooldowns for breaths and overlap. Do not allow realm movement to rotate the frontal through players.`
+    }
+  })
+});
+
+const restorationDruid = makeDruidSpec(loadDruidConfig("restoration-druid"), "restoration", {
+  quick: {
+    summaries: [
+      { label: "Core job", value: "Put healing ahead of damage", detail: "Pre-HoT known danger, triage the next injury, and keep enough globals and mana for the mechanic that follows." },
+      { label: "Default priority", value: "Rejuvenation → Wild Growth → Swiftmend", detail: "Use Lifebloom, Regrowth, Nourish, and emergency tools according to assignment and incoming damage—not as a fixed loop." },
+      { label: "Fresh-80 rule", value: "Triage beats blanket casting", detail: "Cover players who will take damage; empty globals on safe targets create mana problems without preventing deaths." }
+    ],
+    engineTitle: "Anticipate → cover → triage → recover",
+    beforeIcon: "spell_nature_rejuvenation",
+    firstIcon: "inv_misc_coin_01",
+    before: [
+      `Apply ${entity("Mark of the Wild")} or ${entity("Gift of the Wild")} and confirm the tank has ${entity("Thorns")} when appropriate.`,
+      `Confirm tank, raid, cleanse, ${entity("Innervate")}, ${entity("Rebirth")}, and emergency-cooldown assignments.`,
+      `Place the tank, focus, raid frames, mana, ${entity("Clearcasting")}, and boss timers where all are visible together.`,
+      `Carry reagents, water, ${entity("Flask of the Frost Wyrm")}, food, and mana potions appropriate to the run.`
+    ],
+    firstMoves: [
+      "Train every level-80 rank and install the complete 11/0/60 self-contained Restoration baseline and glyph set.",
+      "Enter normal and heroic dungeons immediately; practice pre-HoTs, Lifebloom decisions, Swiftmend, cleansing, and mana pacing before raid optimization.",
+      "Replace leveling gear with spell power, useful haste, Spirit or MP5, and enough Intellect to finish pulls safely.",
+      "Treat 735 haste with Celestial Focus or 856 without it as later raid goals under stated raid buffs—not as Fresh-80 dungeon gates."
+    ],
+    chapterTopics: {
+      playing: "HoTs · triage · Lifebloom · mana",
+      setup: "11/0/60 · glyphs · macros · frames",
+      building: "Spell power · haste · Spirit · MP5",
+      equipping: "Dungeons · emblems · ToC · ICC",
+      raiding: "Assignments · recovery · utility · boss notes"
+    }
+  },
+  playing: {
+    priority: `Pre-place ${entity("Rejuvenation")} and assigned ${entity("Regrowth")} before known damage → use ${entity("Wild Growth")} on injured groups → ${entity("Swiftmend")} a HoT target needing immediate help → maintain assigned ${entity("Lifebloom")} stacks deliberately → use ${entity("Nourish")} or ${entity("Regrowth")} for direct triage → use ${entity("Nature's Swiftness")} and ${entity("Healing Touch")} for a planned emergency.`,
+    openerIcon: "spell_nature_rejuvenation",
+    trackingIcon: "ability_druid_flourish",
+    opener: [
+      `Pre-HoT the tank with ${entity("Rejuvenation")} and ${entity("Regrowth")} only close enough to the pull that useful duration remains.`,
+      `Use ${entity("Lifebloom")} according to the tank assignment; refresh the stack intentionally or allow a planned bloom for mana return and healing.`,
+      `Use ${entity("Wild Growth")} after real group damage or just ahead of a known clustered hit.`,
+      `Preserve ${entity("Swiftmend")} and the ${entity("Nature's Swiftness")} emergency for actual triage rather than spending every tool at the pull.`
+    ],
+    tracking: [
+      `${entity("Rejuvenation")}, ${entity("Regrowth")}, and ${entity("Lifebloom")} by target and remaining duration.`,
+      `${entity("Wild Growth")}, ${entity("Swiftmend")}, ${entity("Nature's Swiftness")}, ${entity("Tranquility")}, and ${entity("Barkskin")}.`,
+      `Mana, ${entity("Innervate")}, ${entity("Clearcasting")}, potion use, and the expected remaining encounter time.`,
+      `Incoming-damage timers, range, movement, curses, poisons, and the assigned ${entity("Rebirth")} target.`
+    ],
+    cards: [
+      { kicker: "Steady tank damage", title: "Build a sustainable tank layer", tag: "Tank", iconEntity: "Lifebloom", decision: "Maintain the assigned HoTs and use direct healing only when incoming damage exceeds their coverage.", actions: ["Rejuvenation", "Regrowth", "Lifebloom", "Nourish"], rules: ["Refresh Lifebloom intentionally; a bloom and mana return can be correct when planned.", "Nourish gains value from existing HoTs but should still answer real damage."], failure: "rolling an expensive stack without regard for mana, target swaps, or the next damage event." },
+      { kicker: "Sudden injury", title: "Land the next safe heal", tag: "Triage", iconEntity: "Swiftmend", decision: "Use Swiftmend on an eligible HoT target, then choose Nourish, Regrowth, or the emergency based on time to death.", actions: ["Swiftmend", "Nourish", "Nature's Swiftness", "Healing Touch"], rules: ["The fastest available button is not automatically the smallest sufficient answer.", "Do not consume Nature's Swiftness for damage ordinary triage can cover."], failure: "continuing blanket HoTs while one assigned target will die before the next tick." },
+      { kicker: "Group damage", title: "Heal the cluster that is hurt", tag: "Raid", iconEntity: "Wild Growth", decision: "Place Wild Growth on a target whose nearby group will receive useful jumps, then Rejuvenate players with continuing danger.", actions: ["Wild Growth", "Rejuvenation", "Swiftmend"], rules: ["Target position matters; do not assume the selected unit represents the injured cluster.", "Blanket only the players and duration supported by the actual damage pattern."], failure: "casting Wild Growth on an isolated player or covering safe groups while the damaged group falls." },
+      { kicker: "Forced movement", title: "Move while preserving triage", tag: "Mobile", iconEntity: "Rejuvenation", decision: "Use instant heals, Swiftmend, utility, or Barkskin while moving and choose the destination before leaving range.", actions: ["Rejuvenation", "Swiftmend", "Barkskin"], rules: ["Move early so the mechanic does not force a panic route.", "Do not refresh every HoT early merely because an instant global is available."], failure: "ending movement out of range, out of line of sight, or without an emergency global." },
+      { kicker: "Mana pressure", title: "Recover before the dry phase", tag: "Mana", iconEntity: "Innervate", decision: "Reduce low-value coverage, use Clearcasting intelligently, and activate Innervate early enough for full value.", actions: ["Clearcasting", "Innervate", "Lifebloom"], rules: ["A free cast should answer a useful healing need, not manufacture overheal.", "Match Lifebloom maintenance to the assignment instead of rolling every available tank."], failure: "maintaining maximum coverage until mana reaches zero and recovery comes too late." },
+      { kicker: "Death or collapse", title: "Recover the raid deliberately", tag: "Recovery", iconEntity: "Rebirth", decision: "Stabilize living players, resurrect the agreed target in a safe location, and use Tranquility only where its channel can complete usefully.", actions: ["Rebirth", "Tranquility", "Barkskin"], rules: ["Confirm the target and healing follow-up before Rebirth.", "Use Barkskin before a vulnerable Tranquility channel when incoming damage is expected."], failure: "starting a long recovery cast while the remaining tank or healer is about to die." }
+    ],
+    utility: [
+      [entity("Remove Curse"), "Curse removal", "Prioritize assigned lethal or control curses over another HoT global."],
+      [entity("Abolish Poison"), "Repeated poison removal", "Use when recurring applications justify the ongoing dispel effect."],
+      [entity("Innervate"), "Mana recovery", "Assign before the pull and use early enough to gain the full return."],
+      [entity("Rebirth"), "Combat resurrection", "Confirm target, location, reagent, and immediate healing coverage."],
+      [entity("Barkskin"), "Personal mitigation", "Use before predictable damage or a vulnerable channel."],
+      [entity("Tranquility"), "Group recovery channel", "Use for sustained group damage when range, pushback, and movement permit the channel."],
+      [entity("Entangling Roots"), "Root control", "Use on eligible melee enemies only within the tank and control plan."],
+      [entity("Cyclone"), "Short immunity control", "Coordinate carefully because the target cannot receive damage or healing."]
+    ],
+    mistakes: [
+      "Blanketing safe targets until mana becomes the emergency.",
+      "Refreshing Lifebloom automatically instead of deciding whether the stack should roll or bloom.",
+      "Holding Swiftmend and Nature's Swiftness until after the assigned target dies.",
+      "Casting Wild Growth on a unit positioned away from the injured cluster.",
+      "Moving late and ending outside healing range or line of sight.",
+      "Starting Rebirth or Tranquility before stabilizing the players who must survive the cast."
+    ]
+  },
+  setup: {
+    talentGroups: [
+      { title: "HoT foundation", icon: "spell_nature_rejuvenation", items: [`${entity("Tree of Life")} defines the healing form and reduces HoT mana costs.`, `${entity("Empowered Rejuvenation")} improves scaling for key periodic effects.`, `${entity("Swiftmend")} converts an active Rejuvenation or Regrowth into immediate triage.`] },
+      { title: "Raid and tank tools", icon: "ability_druid_flourish", items: [`${entity("Wild Growth")} supplies efficient short-cooldown group healing.`, `${entity("Living Seed")} creates follow-up healing after critical direct heals.`, `${entity("Nature's Swiftness")} supports a planned instant Healing Touch emergency.`] },
+      { title: "Self-contained mana", icon: "spell_nature_lightning", items: [`${entity("Omen of Clarity")} and ${entity("Intensity")} provide value without assumed raid-only support.`, `${entity("Celestial Focus")} supplies 3% haste in the displayed 11/0/60 baseline.`, "If those Balance points move later, the haste model changes from roughly 735 to roughly 856 under the stated raid buffs."] }
+    ],
+    glyphs: [
+      [entity("Glyph of Swiftmend", "glyph-name"), '<span class="must">Default</span>', "All healing", "Prevents Swiftmend from consuming Rejuvenation or Regrowth."],
+      [entity("Glyph of Wild Growth", "glyph-name"), '<span class="must">Default</span>', "Groups and raids", "Adds one target to Wild Growth."],
+      [entity("Glyph of Rapid Rejuvenation", "glyph-name"), '<span class="must">Default</span>', "Haste-aware coverage", "Lets haste shorten Rejuvenation's tick interval; reassess against mana and assignments."],
+      [entity("Glyph of Nourish", "glyph-name"), '<span class="optional">Tank-healing swap</span>', "Direct tank support", "Improves Nourish for each HoT already present on the target."],
+      [entity("Glyph of Unburdened Rebirth", "glyph-name"), '<span class="optional">Minor</span>', "Recovery", "Removes the reagent requirement from Rebirth."],
+      [entity("Glyph of the Wild", "glyph-name"), '<span class="optional">Minor</span>', "Buff recovery", "Reduces the mana cost of Mark and Gift of the Wild."]
+    ],
+    extraSection: { id: "frames", short: "Frames", title: "Raid-frame information", icon: "inv_misc_pocketwatch_01", body: `<div class="two-col"><div class="guide-box"><h3>Show clearly</h3>${list(["Health deficit and incoming heals.", "Your Rejuvenation, Regrowth, and Lifebloom duration and stacks.", "Curse and poison indicators, range, line of sight, and dead status."])}</div><div class="guide-box"><h3>Avoid noise</h3>${list(["Do not hide dangerous debuffs under oversized HoT icons.", "Separate your effects from other Druids where possible.", "Test every click or mouseover binding outside the raid before relying on it."])}</div></div>` },
+    macros: [
+      { title: "Mouseover Rejuvenation", entity: "Rejuvenation", purpose: "Heal a living friendly mouseover, then a friendly target, then self without changing targets.", code: "#showtooltip Rejuvenation\n/cast [@mouseover,help,nodead][help,nodead][@player] Rejuvenation" },
+      { title: "Mouseover Swiftmend", entity: "Swiftmend", purpose: "Use immediate triage on a living friendly mouseover or target.", code: "#showtooltip Swiftmend\n/cast [@mouseover,help,nodead][help,nodead][@player] Swiftmend" },
+      { title: "Mouseover Remove Curse", entity: "Remove Curse", purpose: "Cleanse a friendly mouseover without changing the healing target.", code: "#showtooltip Remove Curse\n/cast [@mouseover,help,nodead][help,nodead][@player] Remove Curse" },
+      { title: "Mouseover Rebirth", entity: "Rebirth", purpose: "Combat-resurrect a dead friendly mouseover or target.", code: "#showtooltip Rebirth\n/cast [@mouseover,help,dead][help,dead] Rebirth" },
+      { title: "Mouseover Innervate", entity: "Innervate", purpose: "Give mana to a living friendly mouseover, current friendly target, or self.", code: "#showtooltip Innervate\n/cast [@mouseover,help,nodead][help,nodead][@player] Innervate" }
+    ],
+    essentialAddons: [`<a href="addons.html?search=Deadly%20Boss%20Mods">Deadly Boss Mods</a> for incoming-damage and movement timing.`, "3.3.5-compatible raid frames that display your HoT durations, Lifebloom stacks, debuffs, range, and incoming heals.", "A mana and cooldown display visible beside the raid frames rather than at the edge of the screen."],
+    recommendedAddons: [`WeakAuras/TellMeWhen for ${entity("Clearcasting")}, ${entity("Wild Growth")}, ${entity("Swiftmend")}, and ${entity("Innervate")}.`, "Details/Recount to review deaths, target coverage, overhealing, dispels, mana use, and cooldown timing.", "Clique or tested mouseover macros for direct bindings; never install a binding package without verifying original-client behavior."]
+  },
+  raiding: druidRaiding("restoration", {
+    assignmentIcon: "ability_druid_flourish",
+    roles: "tank-healing raid-healing movement utility special",
+    consumables: [`${entity("Flask of the Frost Wyrm")} for the default spell-power flask.`, `${entity("Fish Feast")} or equivalent spell-power food after verifying the available feast.`, `${entity("Runic Mana Potion")} when mana completion matters; use a speed potion only for a named healing window.`],
+    prePull: ["Confirm tank, raid, cleanse, Innervate, Rebirth, and major-recovery assignments.", "Identify the first damage event, movement route, safe Tranquility position, and range boundaries.", "State the selected haste model and actual raid buffs before comparing a cap."],
+    assignments: [["Tank support", "Assigned tanks carry deliberate HoTs and receive direct triage before the next lethal hit.", "Call a tank swap, range loss, expiring stack, or cooldown gap."], ["Raid coverage", "Wild Growth and Rejuvenation land on players who will receive useful healing through the damage pattern.", "Call a spread group, movement gap, or recovery window that needs help."], ["Recovery and utility", "Cleanses, Innervate, Rebirth, Barkskin, and Tranquility occur on agreed targets and safe timings.", "Call target, range, reagent, channel, or mana conflicts early."]],
+    verify: ["valithria", "lich-king"],
+    notes: {
+      toc: `Match HoTs to the active tank and damage pattern, cleanse assigned effects, and preserve mana across the encounter sequence. On Anub'arak, follow the phase-three healing plan rather than reflexively filling every health bar.`,
+      marrowgar: `Pre-HoT assigned tanks, switch triage immediately to Bone Spike targets, and use instant spells while moving during Bone Storm. Re-establish tank coverage before Marrowgar reconnects.`,
+      deathwhisper: `Heal the active add tank and threatened players, remove assigned curses, and move early from Death and Decay. Prepare coverage for the transition as the mana shield ends.`,
+      saurfang: `Keep deliberate coverage on tanks and Mark targets, use Wild Growth only where jumps are valuable, and execute the Rune of Blood swap plan without wasting mana on harmless deficits.`,
+      putricide: `Pre-HoT movement and target-swap damage, stay ahead of Malleable Goo, and keep range on the active tank through transitions. Coordinate plague handling and phase-three mana before the pull.`,
+      "blood-wing": `On Princes, cover the active tank and movement damage without standing in unsafe range. On Blood-Queen, pre-HoT air-phase damage, follow the bite order, and move early with Swarming Shadows.`,
+      valithria: `Follow the assigned portal or outside-healing role. Portal healers preserve stacks and route safely; outside healers stabilize tanks and priority targets. Verify Hellscream portal, buff, and direct-heal interactions before optimizing around them.`,
+      sindragosa: `Manage Unchained Magic and Instability, use instant HoTs while repositioning, and reset Mystic Buffet behind the correct tomb. Stop casting before stacks become lethal.`,
+      "lich-king": `Pre-HoT Infest targets according to the raid plan, cover tanks through Soul Reaper, and move early for Defile. Coordinate Rebirth and Tranquility rather than channeling through an unsafe mechanic; verify Hellscream Infest behavior.`,
+      halion: `Stay in the assigned realm, cover tanks before breaths, and use instant healing while moving around cutters. Preserve line of sight and avoid beginning Tranquility immediately before forced movement.`
+    }
+  })
+});
+
+const specs = [holyPriest, shadowPriest, marksmanshipHunter, afflictionWarlock, demonologyWarlock, destructionWarlock, balanceDruid, feralCatDruid, feralBearDruid, restorationDruid];
 const renderers = {
   quickStart: renderQuickStart,
   playing: renderPlaying,

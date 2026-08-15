@@ -8,7 +8,7 @@
     "test:guide-banner": "node tests/guide-banner-system.test.js",
     "test:fresh-80-workflow": "node tests/fresh-80-guide-workflow.test.mjs",
     "test:guide-audiences": "node tests/guide-audiences.test.mjs",
-    "test:browser": "node tests/addon-browser-smoke.cjs && node tests/ah-hub-smoke.cjs && node tests/merchant-guild-smoke.cjs"
+    "test:browser": "node tests/addon-browser-smoke.cjs && node tests/ah-hub-smoke.cjs && node tests/merchant-guild-smoke.cjs && node tests/druid-guide-browser-smoke.cjs"
   },
   "devDependencies": {
     "jsdom": "24.1.3",

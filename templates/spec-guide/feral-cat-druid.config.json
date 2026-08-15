@@ -1,0 +1,142 @@
+{
+  "className": "Druid",
+  "classSlug": "druid",
+  "specName": "Feral Cat Druid",
+  "specShortName": "Feral Cat",
+  "guideNickname": "Feral Cat",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid DPS Guide"
+  },
+  "specSlug": "feral-cat-druid",
+  "specKey": "feral",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Melee damage",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-14",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/druid-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "druid-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260814-druid-guides-v1",
+  "guideDescription": "A fresh-level-80 path into Cat Form priorities, Energy pooling, bleed maintenance, dungeon utility, and later raid progression.",
+  "classAccent": "#e58b43",
+  "classAccentSoft": "#ffd5b0",
+  "classAccentDeep": "#713c1d",
+  "classAccentRgb": "229,139,67",
+  "specAccent": "#d6c2a6",
+  "specAccentSoft": "#f5eadc",
+  "specAccentDeep": "#64513e",
+  "specAccentRgb": "214,194,166",
+  "mechanics": [
+    {
+      "key": "forms",
+      "label": "Forms",
+      "titleIcon": "ability_druid_catform",
+      "examples": [
+        { "name": "Cat Form", "type": "spell", "id": 768, "icon": "ability_druid_catform" },
+        { "name": "Feral Charge - Cat", "type": "spell", "id": 49376, "icon": "spell_druid_feralchargecat" }
+      ],
+      "color": "#d6c2a6",
+      "soft": "#f5eadc",
+      "deep": "#64513e",
+      "rgb": "214,194,166",
+      "use": "Stay in Cat Form for the damage job and change form only for a deliberate movement, survival, or utility reason."
+    },
+    {
+      "key": "resources",
+      "label": "Resources",
+      "titleIcon": "ability_mount_jungletiger",
+      "examples": [
+        { "name": "Tiger's Fury", "type": "spell", "id": 50213, "icon": "ability_mount_jungletiger" },
+        { "name": "Savage Roar", "type": "spell", "id": 52610, "icon": "ability_druid_skinteeth" }
+      ],
+      "color": "#dfad42",
+      "soft": "#f6dfa6",
+      "deep": "#6a4a13",
+      "rgb": "223,173,66",
+      "use": "Pool Energy, build combo points, and spend only when Savage Roar and Rip remain safe."
+    },
+    {
+      "key": "bleeds",
+      "label": "Bleeds",
+      "titleIcon": "ability_ghoulfrenzy",
+      "examples": [
+        { "name": "Rip", "type": "spell", "id": 49800, "icon": "ability_ghoulfrenzy" },
+        { "name": "Rake", "type": "spell", "id": 48574, "icon": "ability_druid_disembowel" }
+      ],
+      "color": "#d07b91",
+      "soft": "#f3c6d2",
+      "deep": "#6b3041",
+      "rgb": "208,123,145",
+      "use": "Maintain Rake and a strong five-combo-point Rip only on targets that will live long enough."
+    },
+    {
+      "key": "survival",
+      "label": "Survival",
+      "titleIcon": "spell_nature_stoneclawtotem",
+      "examples": [
+        { "name": "Barkskin", "type": "spell", "id": 22812, "icon": "spell_nature_stoneclawtotem" },
+        { "name": "Survival Instincts", "type": "spell", "id": 61336, "icon": "ability_druid_tigersroar" }
+      ],
+      "color": "#78b8d2",
+      "soft": "#c9e8f2",
+      "deep": "#2a5264",
+      "rgb": "120,184,210",
+      "use": "Use Barkskin, Survival Instincts, movement, off-healing, and emergency Bear Form without abandoning the assigned DPS job."
+    }
+  ],
+  "icons": {
+    "class": "classicon_druid",
+    "quickStart": "ability_druid_catform",
+    "playing": "ability_druid_skinteeth",
+    "setup": "ability_druid_mangle2",
+    "building": "ability_druid_predatoryinstincts",
+    "equipping": "inv_chest_leather_13",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_druid_berserk",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_06"
+  },
+  "talent": {
+    "points": "0/55/16",
+    "name": "Fresh-80 self-contained Cat baseline",
+    "summary": "Use the fully allocated Cat build for Savage Roar, Rip, Shred, Energy, mobility, and solo utility. Treat bearweaving and encounter-specific glyph swaps as later options.",
+    "wowheadPath": "druid/-553201132322010053120030310511-203503012"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Cat Form, Savage Roar, bleed priorities, cap assumptions, and a practical dungeon-ready checklist.",
+    "playing": "Manage Energy, combo points, Savage Roar, bleeds, positioning, movement, target life, and utility as one priority system.",
+    "setup": "Install the 0/55/16 build, glyphs, form controls, original-client macros, addons, and tracking.",
+    "building": "Build reliable melee stats first, then compare Strength, Agility, haste, critical strike, and later Armor Penetration sets.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Handle positional uptime, bleeds, target swaps, interrupts, battle resurrection, and encounter responsibilities by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "adds", "label": "Adds / cleave" },
+    { "value": "movement", "label": "Movement" },
+    { "value": "utility", "label": "Utility / interrupt" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Omen of Clarity, Rip extensions, Savage Roar scaling, bearweaving, Armor Penetration, and encounter-specific immunities on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

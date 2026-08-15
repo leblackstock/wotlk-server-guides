@@ -1,0 +1,4 @@
+@import url("./spec-guide.css?v=20260814-druid-guides-v1-spec-guide-v1");
+/* Shared Druid guide presentation. Banner styles live in guide-hero.css. */
+body[data-guide-class="druid"]{background:radial-gradient(circle at 12% -10%,rgba(var(--class-accent-rgb),.14),transparent 34rem),radial-gradient(circle at 94% 2%,rgba(var(--theme-accent-rgb),.11),transparent 30rem),linear-gradient(180deg,var(--surface-page-deep),var(--surface-page))}body[data-guide-class="druid"] a{color:var(--class-accent-soft)}
+@media print{body[data-guide-class="druid"] .filter-panel,body[data-guide-class="druid"] .raid-filter-empty{display:none!important}body[data-guide-class="druid"] .spec-card[hidden],body[data-guide-class="druid"] .raid-encounter[hidden],body[data-guide-class="druid"] .raid-note[hidden]{display:block!important}}

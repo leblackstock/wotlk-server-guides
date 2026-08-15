@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manage threat, Rage, Maul queues, Lacerate, packs, taunts, cooldowns, movement, and utility as one tanking system.">
+  <title>Playing your Feral Bear Druid | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260814-druid-guides-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
+  <link rel="stylesheet" href="../assets/feral-bear-druid.css?v=20260814-druid-guides-v1">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
+  <script src="../assets/druid-tooltips.js?v=20260814-druid-guides-v1" defer></script>
+  <script src="../assets/feral-bear-druid.js?v=20260814-druid-guides-v1" defer></script>
+</head>
+<body data-guide-class="druid" data-guide-spec="feral" data-guide-audience="fresh-80">
+  <div class="wrap" id="top">
+    <nav class="site-nav" aria-label="Feral Bear Druid guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="feral-bear-druid-pve-guide.html">Quick Start</a><a href="feral-bear-druid-playing.html" aria-current="page">Playing</a><a href="feral-bear-druid-setting-up.html">Setup</a><a href="feral-bear-druid-gearing.html">Building</a><a href="feral-bear-druid-gear-targets.html">Equipping</a><a href="feral-bear-druid-raiding.html">Raiding</a></nav>
+    <header class="guide-hero">
+      <span class="page-kicker">Feral Bear Druid • WotLK 3.3.5 • Level 80+</span>
+      <h1 class="guide-hero-title"><span class="hero-spec-nickname">Feral Bear</span> <span class="hero-guide-type">Playing Guide</span></h1>
+      <p class="sub">Manage threat, Rage, Maul queues, Lacerate, packs, taunts, cooldowns, movement, and utility as one tanking system.</p>
+    </header>
+    <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page"><a href="#engine">Combat engine</a><a href="#playbooks">Playbooks</a><a href="#utility">Cooldowns</a><a href="#mistakes">Mistakes</a><a href="#sources">Sources</a></nav>
+    <main><section class="common" id="engine"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_mangle2.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Core decision engine<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="engine-grid"><div class="engine-step mechanic-forms"><strong data-entity-icon="Dire Bear Form">Forms</strong><p>Enter Dire Bear Form before contact and change form only when the tank assignment and incoming damage permit it.</p></div><div class="engine-step mechanic-resources"><strong data-entity-icon="Enrage">Resources</strong><p>Generate Rage safely and queue Maul only when the next required Mangle, Lacerate, Swipe, or control global remains funded.</p></div><div class="engine-step mechanic-bleeds"><strong data-entity-icon="Lacerate">Bleeds</strong><p>Maintain Lacerate on durable targets and use Mangle to support threat and bleed damage without losing pack control.</p></div><div class="engine-step mechanic-survival"><strong data-entity-icon="Survival Instincts">Survival</strong><p>Plan mitigation, health buffers, recovery, taunts, stuns, and emergency pack control before the damage spike arrives.</p></div></div>
+    <div class="note spec" style="margin-top:12px"><strong>Default priority:</strong> <span class="ability-name">Dire Bear Form</span> and group buffs → position enemies safely → <span class="ability-name">Faerie Fire (Feral)</span> at range → <span class="ability-name">Mangle (Bear)</span> → maintain <span class="ability-name">Lacerate</span> and required <span class="ability-name">Demoralizing Roar</span> → <span class="ability-name">Swipe (Bear)</span> for packs or filler → queue <span class="ability-name">Maul</span> only when Rage remains for the next required action.</div>
+    <div class="two-col" style="margin-top:12px"><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_mangle2.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Opener</h3><ul class="clean-list"><li>Pull with <span class="ability-name">Faerie Fire (Feral)</span> or use <span class="ability-name">Feral Charge - Bear</span> only when the landing position is safe.</li><li>Face enemies away from the group, establish <span class="ability-name">Mangle (Bear)</span>, and use <span class="ability-name">Swipe (Bear)</span> while marking the priority target.</li><li>Build <span class="ability-name">Lacerate</span> on a durable target and apply <span class="ability-name">Demoralizing Roar</span> when the physical-damage reduction is assigned.</li><li>Queue <span class="ability-name">Maul</span> only after reserving Rage for taunt recovery, interrupts, debuffs, and the next pack action.</li></ul></div><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_lacerate.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Track this</h3><ul class="clean-list"><li>Threat on every active enemy, the current kill target, <span class="ability-name">Growl</span>, and <span class="ability-name">Challenging Roar</span>.</li><li>Rage, <span class="ability-name">Mangle (Bear)</span>, <span class="ability-name">Lacerate</span>, <span class="ability-name">Demoralizing Roar</span>, and <span class="ability-name">Faerie Fire (Feral)</span>.</li><li><span class="ability-name">Savage Defense</span>, health, healer mana, <span class="ability-name">Barkskin</span>, <span class="ability-name">Survival Instincts</span>, and <span class="ability-name">Frenzied Regeneration</span>.</li><li>Boss swing or burst timers, tank-swap debuffs, frontal direction, and safe charge paths.</li></ul></div></div></section><section class="common" id="playbooks"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_mangle2.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Situation playbooks<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><p class="muted">Select a card header to focus on one situation. Select it again—or press Escape—to restore all cards.</p><div class="spec-playbook-grid"><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Single durable target</span><h3 data-entity-icon="Mangle (Bear)">Build reliable threat</h3></div>
+      <span class="spec-card-tag">Default</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Maintain the required debuffs and Lacerate while keeping enough Rage for reactions.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Faerie Fire (Feral)">Faerie Fire (Feral)</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mangle (Bear)">Mangle (Bear)</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Lacerate">Lacerate</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Maul">Maul</span></div>
+      <ul class="clean-list"><li>Mangle has priority over filler when available.</li><li>Queue Maul only when it cannot starve the next required action.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> spending every Rage point on Maul and missing a taunt, debuff, or pickup.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Enemy pack</span><h3 data-entity-icon="Swipe (Bear)">Position before accelerating</h3></div>
+      <span class="spec-card-tag">Adds</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Gather enemies into a stable frontal pack, spread threat, and keep the marked target obvious.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Faerie Fire (Feral)">Faerie Fire (Feral)</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Swipe (Bear)">Swipe (Bear)</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Challenging Roar">Challenging Roar</span></div>
+      <ul class="clean-list"><li>Use line of sight to bring casters to the pack.</li><li>Challenging Roar creates a recovery window; it does not establish durable threat by itself.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> charging past the group, exposing frontals, or assuming one Swipe owns every enemy.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Low Rage</span><h3 data-entity-icon="Enrage">Protect required actions</h3></div>
+      <span class="spec-card-tag">Resource</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Stop queueing Maul, use Enrage only when the armor penalty is safe, and rebuild through incoming or dealt damage.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Enrage">Enrage</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mangle (Bear)">Mangle (Bear)</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Swipe (Bear)">Swipe (Bear)</span></div>
+      <ul class="clean-list"><li>Never treat Enrage as free Rage during a dangerous physical burst.</li><li>Prioritize control and debuffs over filler damage.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> using Enrage into lethal melee damage or continuing to drain Rage with Maul.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Loose enemy</span><h3 data-entity-icon="Growl">Recover deliberately</h3></div>
+      <span class="spec-card-tag">Pickup</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Taunt the correct target, force immediate follow-up threat, and restore safe positioning.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Growl">Growl</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Feral Charge - Bear">Feral Charge - Bear</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Mangle (Bear)">Mangle (Bear)</span></div>
+      <ul class="clean-list"><li>Taunt copies threat temporarily; follow it with a real threat action.</li><li>Charge only when the path and new facing are safe.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> taunting without follow-up or turning the pack's frontal attacks through the group.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Physical burst</span><h3 data-entity-icon="Barkskin">Layer survival early</h3></div>
+      <span class="spec-card-tag">Survival</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use the smallest sufficient cooldown before the burst and communicate what remains available.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Barkskin">Barkskin</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Survival Instincts">Survival Instincts</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Frenzied Regeneration">Frenzied Regeneration</span></div>
+      <ul class="clean-list"><li>Survival Instincts is temporary health and needs a plan for expiration.</li><li>Frenzied Regeneration converts Rage, so account for the threat and control cost.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> pressing every cooldown after health is already unrecoverable.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Magic or special damage</span><h3 data-entity-icon="Survival Instincts">Use the right defense</h3></div>
+      <span class="spec-card-tag">Special</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Favor health, timing, movement, resistance, or external help because armor does not solve most spell bursts.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Survival Instincts">Survival Instincts</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Barkskin">Barkskin</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Feral Charge - Bear">Feral Charge - Bear</span></div>
+      <ul class="clean-list"><li>Identify the damage school before choosing gear or cooldowns.</li><li>Call for an external cooldown before the hit, not afterward.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> equating high armor with complete protection from magical mechanics.</p></div>
+  </article></div></section><section class="common" id="utility"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Cooldowns and utility<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Primary job</th><th>Timing rule</th></tr></thead><tbody><tr><td><span class="ability-name">Growl</span></td><td>Single-target taunt</td><td>Use on the correct hostile target and follow immediately with threat.</td></tr><tr><td><span class="ability-name">Challenging Roar</span></td><td>Area taunt window</td><td>Use as planned control or emergency recovery, then establish threat on each enemy.</td></tr><tr><td><span class="ability-name">Feral Charge - Bear</span></td><td>Gap close and interrupt</td><td>Use only when the landing position, facing, and path are safe.</td></tr><tr><td><span class="ability-name">Bash</span></td><td>Stun and cast stop</td><td>Reserve it for an eligible assigned cast or dangerous enemy.</td></tr><tr><td><span class="ability-name">Demoralizing Roar</span></td><td>Physical damage reduction</td><td>Maintain when assigned; the baseline version is not the enhanced raid debuff.</td></tr><tr><td><span class="ability-name">Barkskin</span></td><td>Short mitigation</td><td>Use before predictable damage; keep stronger tools for larger windows.</td></tr><tr><td><span class="ability-name">Survival Instincts</span></td><td>Temporary maximum health</td><td>Coordinate healing and the end of the effect.</td></tr><tr><td><span class="ability-name">Frenzied Regeneration</span></td><td>Rage-to-health recovery</td><td>Use with enough Rage and a stated threat plan.</td></tr></tbody></table></div></section><section class="common" id="mistakes"><h2 class="guide-category-heading">Mistakes that cost pulls<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong><ul class="clean-list"><li>Looking only at the current target's threat while another enemy attacks a healer.</li><li>Queueing Maul until no Rage remains for control or recovery.</li><li>Charging into a position that turns frontal attacks toward the group.</li></ul></div><div class="note danger"><strong>Raid mistakes</strong><ul class="clean-list"><li>Treating Challenging Roar as permanent threat rather than a short recovery window.</li><li>Using Enrage during dangerous physical damage without accounting for its armor penalty.</li><li>Waiting for critical health before communicating or activating survival cooldowns.</li></ul></div></div></section><section class="common" id="sources"><h2 class="guide-category-heading">Sources and verification<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><ul class="source-list"><li><a href="https://www.wowhead.com/wotlk/guide/classes/druid/feral/tank-rotation-cooldowns-abilities-pve" target="_blank" rel="noopener">Feral Druid Tank rotation, cooldowns, and abilities</a></li><li><a href="https://www.wowhead.com/wotlk/spells/abilities/druid" target="_blank" rel="noopener">Druid spell records</a></li></ul></section><nav class="page-pager" aria-label="Previous and next guide pages"><a href="feral-bear-druid-pve-guide.html">← Quick Start</a><a href="feral-bear-druid-setting-up.html">Setup →</a></nav></main>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-08-14</footer>
+  </div>
+</body>
+</html>

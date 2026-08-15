@@ -1,0 +1,142 @@
+{
+  "className": "Druid",
+  "classSlug": "druid",
+  "specName": "Balance Druid",
+  "specShortName": "Balance",
+  "guideNickname": "Balance Druid",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid DPS Guide"
+  },
+  "specSlug": "balance-druid",
+  "specKey": "balance",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Ranged damage",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-14",
+  "createClassSharedCss": true,
+  "createTooltipStarter": true,
+  "createEntityRegistry": true,
+  "createTooltipScript": true,
+  "entityRegistryFile": "data/druid-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "druid-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260814-druid-guides-v1",
+  "guideDescription": "A fresh-level-80 path into Eclipse decisions, safe area damage, mana control, dungeon utility, and later raid progression.",
+  "classAccent": "#e58b43",
+  "classAccentSoft": "#ffd5b0",
+  "classAccentDeep": "#713c1d",
+  "classAccentRgb": "229,139,67",
+  "specAccent": "#8c9fe8",
+  "specAccentSoft": "#d5dcff",
+  "specAccentDeep": "#3b456f",
+  "specAccentRgb": "140,159,232",
+  "mechanics": [
+    {
+      "key": "lunar",
+      "label": "Lunar",
+      "titleIcon": "ability_druid_eclipse",
+      "examples": [
+        { "name": "Starfire", "type": "spell", "id": 48465, "icon": "spell_arcane_starfire" },
+        { "name": "Eclipse", "type": "spell", "id": 48525, "icon": "ability_druid_eclipse" }
+      ],
+      "color": "#79b6e8",
+      "soft": "#cce8fb",
+      "deep": "#244b69",
+      "rgb": "121,182,232",
+      "use": "Trigger Lunar Eclipse with Wrath, then protect the Starfire window from movement and needless refreshes."
+    },
+    {
+      "key": "solar",
+      "label": "Solar",
+      "titleIcon": "spell_nature_abolishmagic",
+      "examples": [
+        { "name": "Wrath", "type": "spell", "id": 48461, "icon": "spell_nature_abolishmagic" },
+        { "name": "Starfall", "type": "spell", "id": 53201, "icon": "ability_druid_starfall" }
+      ],
+      "color": "#e4b75b",
+      "soft": "#f9e4af",
+      "deep": "#6b4d18",
+      "rgb": "228,183,91",
+      "use": "Trigger Solar Eclipse with Starfire, then cast Wrath while using Starfall only where its radius is safe."
+    },
+    {
+      "key": "dots",
+      "label": "DoTs",
+      "titleIcon": "spell_nature_starfall",
+      "examples": [
+        { "name": "Moonfire", "type": "spell", "id": 48463, "icon": "spell_nature_starfall" },
+        { "name": "Insect Swarm", "type": "spell", "id": 48468, "icon": "spell_nature_insectswarm" }
+      ],
+      "color": "#c783b4",
+      "soft": "#f0cce5",
+      "deep": "#643654",
+      "rgb": "199,131,180",
+      "use": "Maintain Moonfire and Insect Swarm only when the target will live long enough for their useful ticks."
+    },
+    {
+      "key": "mana-movement",
+      "label": "Mana and movement",
+      "titleIcon": "spell_nature_lightning",
+      "examples": [
+        { "name": "Innervate", "type": "spell", "id": 29166, "icon": "spell_nature_lightning" },
+        { "name": "Typhoon", "type": "spell", "id": 61384, "icon": "ability_druid_typhoon" }
+      ],
+      "color": "#78c6aa",
+      "soft": "#c9efe2",
+      "deep": "#285948",
+      "rgb": "120,198,170",
+      "use": "Plan mana recovery, movement globals, positioning, utility, and safe returns to the Eclipse engine."
+    }
+  ],
+  "icons": {
+    "class": "classicon_druid",
+    "quickStart": "spell_nature_forceofnature",
+    "playing": "ability_druid_eclipse",
+    "setup": "spell_nature_starfall",
+    "building": "spell_nature_crystalball",
+    "equipping": "inv_chest_leather_13",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_druid_starfall",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_04"
+  },
+  "talent": {
+    "points": "55/0/16",
+    "name": "Fresh-80 self-contained Eclipse baseline",
+    "summary": "Use the fully allocated dungeon-and-solo baseline for complete Eclipse, Starfall, hit, and mana support. Treat raid-only damage swaps as later progression.",
+    "wowheadPath": "druid/5012203125331003213305301231--205003312"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Moonkin Form, Eclipse basics, safe Starfall use, hit assumptions, and a dungeon-ready checklist.",
+    "playing": "Manage Eclipse, DoTs, cooldowns, movement, mana, target life, crowd control, and Druid utility as one decision system.",
+    "setup": "Install the 55/0/16 build, glyphs, original-client macros, addons, and Eclipse tracking.",
+    "building": "Build hit deliberately, then balance spell power, haste, critical strike, Spirit, budget gems, and enchants.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum upgrades.",
+    "raiding": "Handle Eclipse windows, movement, target swaps, utility assignments, and encounter responsibilities by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "single-target", "label": "Single target" },
+    { "value": "aoe", "label": "AoE / adds" },
+    { "value": "movement", "label": "Movement" },
+    { "value": "utility", "label": "Utility / control" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Eclipse timing, Starfall targeting, treant pathing, Typhoon knockback, and encounter-specific immunities on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

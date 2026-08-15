@@ -17,6 +17,10 @@ FAMILIES = {
     "affliction-warlock": ("warlock", "affliction"),
     "demonology-warlock": ("warlock", "demonology"),
     "destruction-warlock": ("warlock", "destruction"),
+    "balance-druid": ("druid", "balance"),
+    "feral-cat-druid": ("druid", "feral"),
+    "feral-bear-druid": ("druid", "feral"),
+    "restoration-druid": ("druid", "restoration"),
 }
 SUFFIXES = (
     "pve-guide",
@@ -81,4 +85,4 @@ assert "Updated 2026-08-14" in (
 ).read_text(encoding="utf-8")
 assert hunter_pages.count("Updated 2026-08-05") == len(SUFFIXES) - 1
 
-print("Validated 36 complete config-backed fresh-80 pages, hub cards, and local links.")
+print(f"Validated {len(FAMILIES) * len(SUFFIXES)} complete config-backed fresh-80 pages, hub cards, and local links.")

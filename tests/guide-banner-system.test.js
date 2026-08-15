@@ -56,6 +56,32 @@ const families = {
     nickname: "Destro Lock",
     raidType: "Raid DPS Guide",
     quickStartUpdated: "2026-08-14"
+  },
+  "balance-druid": {
+    specName: "Balance Druid",
+    nickname: "Balance Druid",
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-14"
+  },
+  "feral-cat-druid": {
+    specName: "Feral Cat Druid",
+    nickname: "Feral Cat",
+    specBadge: "Feral Cat",
+    raidType: "Raid DPS Guide",
+    quickStartUpdated: "2026-08-14"
+  },
+  "feral-bear-druid": {
+    specName: "Feral Bear Druid",
+    nickname: "Feral Bear",
+    specBadge: "Feral Bear",
+    raidType: "Raid Tank Guide",
+    quickStartUpdated: "2026-08-14"
+  },
+  "restoration-druid": {
+    specName: "Restoration Druid",
+    nickname: "Resto Druid",
+    raidType: "Raid Healer Guide",
+    quickStartUpdated: "2026-08-14"
   }
 };
 const pageTypes = {
@@ -171,7 +197,7 @@ for (const [prefix, family] of Object.entries(families)) {
   assert.equal(card.querySelectorAll(".guide-card-badges .badge").length, 2, `index.html: ${prefix} card needs class and spec chips`);
   assert.equal(
     card.querySelector(".guide-card-spec-badge")?.textContent.trim(),
-    family.specName.split(" ")[0],
+    family.specBadge || family.specName.split(" ")[0],
     `index.html: ${prefix} card spec chip is incorrect`
   );
   assert.equal(
@@ -201,7 +227,11 @@ for (const [cardClass, classToken] of Object.entries({
   "hunter-marksmanship": "class-hunter-accent",
   "warlock-affliction": "class-warlock-accent",
   "warlock-demonology": "class-warlock-accent",
-  "warlock-destruction": "class-warlock-accent"
+  "warlock-destruction": "class-warlock-accent",
+  "druid-balance": "class-druid-accent",
+  "druid-feral-cat": "class-druid-accent",
+  "druid-feral-bear": "class-druid-accent",
+  "druid-restoration": "class-druid-accent"
 })) {
   assert.match(
     hubInlineCss,
@@ -218,7 +248,11 @@ for (const [cardClass, deepTokens] of Object.entries({
   "hunter-marksmanship": ["class-hunter-deep-rgb", "spec-hunter-marksmanship-deep-rgb"],
   "warlock-affliction": ["class-warlock-deep-rgb", "spec-warlock-affliction-deep-rgb"],
   "warlock-demonology": ["class-warlock-deep-rgb", "spec-warlock-demonology-deep-rgb"],
-  "warlock-destruction": ["class-warlock-deep-rgb", "spec-warlock-destruction-deep-rgb"]
+  "warlock-destruction": ["class-warlock-deep-rgb", "spec-warlock-destruction-deep-rgb"],
+  "druid-balance": ["class-druid-deep-rgb", "spec-druid-balance-deep-rgb"],
+  "druid-feral-cat": ["class-druid-deep-rgb", "spec-druid-feral-deep-rgb"],
+  "druid-feral-bear": ["class-druid-deep-rgb", "spec-druid-feral-deep-rgb"],
+  "druid-restoration": ["class-druid-deep-rgb", "spec-druid-restoration-deep-rgb"]
 })) {
   assert.match(
     hubInlineCss,
@@ -363,7 +397,11 @@ const operatingManuals = {
   "marksmanship-hunter": { id: "quick-start", summaryCards: 5, sequences: 4, fourSummaries: true },
   "affliction-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 },
   "demonology-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 },
-  "destruction-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 }
+  "destruction-warlock": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "balance-druid": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "feral-cat-druid": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "feral-bear-druid": { id: "quick-start", summaryCards: 4, sequences: 4 },
+  "restoration-druid": { id: "quick-start", summaryCards: 4, sequences: 4 }
 };
 for (const [prefix, expected] of Object.entries(operatingManuals)) {
   const relative = `guides/${prefix}-pve-guide.html`;

@@ -1,0 +1,142 @@
+{
+  "className": "Druid",
+  "classSlug": "druid",
+  "specName": "Feral Bear Druid",
+  "specShortName": "Feral Bear",
+  "guideNickname": "Feral Bear",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid Tank Guide"
+  },
+  "specSlug": "feral-bear-druid",
+  "specKey": "feral",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Tank",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-14",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/druid-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "druid-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260814-druid-guides-v1",
+  "guideDescription": "A fresh-level-80 path into Bear Form threat, Rage discipline, active recovery, dungeon control, and later raid progression.",
+  "classAccent": "#e58b43",
+  "classAccentSoft": "#ffd5b0",
+  "classAccentDeep": "#713c1d",
+  "classAccentRgb": "229,139,67",
+  "specAccent": "#d6c2a6",
+  "specAccentSoft": "#f5eadc",
+  "specAccentDeep": "#64513e",
+  "specAccentRgb": "214,194,166",
+  "mechanics": [
+    {
+      "key": "forms",
+      "label": "Forms",
+      "titleIcon": "ability_racial_bearform",
+      "examples": [
+        { "name": "Dire Bear Form", "type": "spell", "id": 9634, "icon": "ability_racial_bearform" },
+        { "name": "Feral Charge - Bear", "type": "spell", "id": 16979, "icon": "ability_hunter_pet_bear" }
+      ],
+      "color": "#d6c2a6",
+      "soft": "#f5eadc",
+      "deep": "#64513e",
+      "rgb": "214,194,166",
+      "use": "Enter Dire Bear Form before contact and change form only when the tank assignment and incoming damage permit it."
+    },
+    {
+      "key": "resources",
+      "label": "Resources",
+      "titleIcon": "ability_druid_enrage",
+      "examples": [
+        { "name": "Enrage", "type": "spell", "id": 5229, "icon": "ability_druid_enrage" },
+        { "name": "Maul", "type": "spell", "id": 48480, "icon": "ability_druid_maul" }
+      ],
+      "color": "#dfad42",
+      "soft": "#f6dfa6",
+      "deep": "#6a4a13",
+      "rgb": "223,173,66",
+      "use": "Generate Rage safely and queue Maul only when the next required Mangle, Lacerate, Swipe, or control global remains funded."
+    },
+    {
+      "key": "bleeds",
+      "label": "Bleeds",
+      "titleIcon": "ability_druid_lacerate",
+      "examples": [
+        { "name": "Lacerate", "type": "spell", "id": 48568, "icon": "ability_druid_lacerate" },
+        { "name": "Mangle (Bear)", "type": "spell", "id": 48564, "icon": "ability_druid_mangle2" }
+      ],
+      "color": "#d07b91",
+      "soft": "#f3c6d2",
+      "deep": "#6b3041",
+      "rgb": "208,123,145",
+      "use": "Maintain Lacerate on durable targets and use Mangle to support threat and bleed damage without losing pack control."
+    },
+    {
+      "key": "survival",
+      "label": "Survival",
+      "titleIcon": "ability_druid_tigersroar",
+      "examples": [
+        { "name": "Survival Instincts", "type": "spell", "id": 61336, "icon": "ability_druid_tigersroar" },
+        { "name": "Frenzied Regeneration", "type": "spell", "id": 22842, "icon": "ability_bullrush" }
+      ],
+      "color": "#78b8d2",
+      "soft": "#c9e8f2",
+      "deep": "#2a5264",
+      "rgb": "120,184,210",
+      "use": "Plan mitigation, health buffers, recovery, taunts, stuns, and emergency pack control before the damage spike arrives."
+    }
+  ],
+  "icons": {
+    "class": "classicon_druid",
+    "quickStart": "ability_racial_bearform",
+    "playing": "ability_druid_mangle2",
+    "setup": "ability_druid_naturalperfection",
+    "building": "ability_druid_naturalreaction",
+    "equipping": "inv_chest_leather_13",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_druid_berserk",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_06"
+  },
+  "talent": {
+    "points": "0/60/11",
+    "name": "Fresh-80 self-contained mono-Bear baseline",
+    "summary": "Use the fully allocated Bear build for mitigation, threat, Rage, recovery, and dungeon control. Document exact debuff-coverage swaps before adopting a raid-composition variant.",
+    "wowheadPath": "druid/-503232132322010353120303013511-20350001"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Dire Bear Form, pull control, Rage discipline, survival rules, and a practical dungeon-ready checklist.",
+    "playing": "Manage threat, Rage, Maul queues, Lacerate, packs, taunts, cooldowns, movement, and utility as one tanking system.",
+    "setup": "Install the 0/60/11 build, glyphs, form controls, original-client macros, addons, and defensive tracking.",
+    "building": "Build effective health and armor first, then compare Agility, hit, expertise, avoidance, threat, budget gems, and enchants.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum tank upgrades.",
+    "raiding": "Handle boss positioning, swaps, adds, cooldowns, survival sets, utility assignments, and encounters by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "main-tank", "label": "Main tank" },
+    { "value": "add-tank", "label": "Add tank" },
+    { "value": "swap", "label": "Taunt swap" },
+    { "value": "survival", "label": "Survival" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Savage Defense, Survival of the Fittest, Maul queueing, Growl hit rules, Lacerate threat, and encounter-specific debuff immunities on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

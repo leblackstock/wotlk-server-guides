@@ -1,0 +1,142 @@
+{
+  "className": "Druid",
+  "classSlug": "druid",
+  "specName": "Restoration Druid",
+  "specShortName": "Restoration",
+  "guideNickname": "Resto Druid",
+  "guideTypes": {
+    "quickStart": "Quick Start",
+    "playing": "Playing Guide",
+    "setup": "Setup Guide",
+    "building": "Build Guide",
+    "equipping": "Gear Guide",
+    "raiding": "Raid Healer Guide"
+  },
+  "specSlug": "restoration-druid",
+  "specKey": "restoration",
+  "guideAudience": "fresh-80",
+  "fresh80Policy": {
+    "selfContainedTalents": true,
+    "externalRaidBuffsRequired": false,
+    "capsAreProgressionGoals": true,
+    "budgetBeforePremium": true,
+    "raidContentIsLaterProgression": true
+  },
+  "role": "Healer",
+  "levelLabel": "Level 80+",
+  "updatedDate": "2026-08-14",
+  "createClassSharedCss": false,
+  "createTooltipStarter": false,
+  "createEntityRegistry": false,
+  "createTooltipScript": false,
+  "entityRegistryFile": "data/druid-entities.json",
+  "sharedEntityRegistry": true,
+  "tooltipFile": "druid-tooltips.js",
+  "iconDensityStatus": "required",
+  "iconDensityPolicyFile": "templates/spec-guide/icon-density-policy.json",
+  "entityIconMode": "selective",
+  "allowDenseEntityIcons": false,
+  "cacheKey": "20260814-druid-guides-v1",
+  "guideDescription": "A fresh-level-80 path into proactive HoTs, five-player triage, mana control, recovery tools, and later raid progression.",
+  "classAccent": "#e58b43",
+  "classAccentSoft": "#ffd5b0",
+  "classAccentDeep": "#713c1d",
+  "classAccentRgb": "229,139,67",
+  "specAccent": "#54a67a",
+  "specAccentSoft": "#bfe8d1",
+  "specAccentDeep": "#23513a",
+  "specAccentRgb": "84,166,122",
+  "mechanics": [
+    {
+      "key": "hots",
+      "label": "HoTs",
+      "titleIcon": "spell_nature_rejuvenation",
+      "examples": [
+        { "name": "Rejuvenation", "type": "spell", "id": 48441, "icon": "spell_nature_rejuvenation" },
+        { "name": "Regrowth", "type": "spell", "id": 48443, "icon": "spell_nature_resistnature" }
+      ],
+      "color": "#54a67a",
+      "soft": "#bfe8d1",
+      "deep": "#23513a",
+      "rgb": "84,166,122",
+      "use": "Pre-HoT predictable damage with Rejuvenation and Regrowth while avoiding wasteful blanket healing in small groups."
+    },
+    {
+      "key": "lifebloom",
+      "label": "Lifebloom",
+      "titleIcon": "inv_misc_herb_felblossom",
+      "examples": [
+        { "name": "Lifebloom", "type": "spell", "id": 48451, "icon": "inv_misc_herb_felblossom" },
+        { "name": "Clearcasting", "type": "spell", "id": 16870, "icon": "spell_shadow_manaburn" }
+      ],
+      "color": "#d0bd5e",
+      "soft": "#f2e8ad",
+      "deep": "#62571d",
+      "rgb": "208,189,94",
+      "use": "Choose deliberately between rolling a stack, letting it bloom, and using Clearcasting for efficient healing and mana return."
+    },
+    {
+      "key": "raid-healing",
+      "label": "Raid healing",
+      "titleIcon": "ability_druid_flourish",
+      "examples": [
+        { "name": "Wild Growth", "type": "spell", "id": 53251, "icon": "ability_druid_flourish" },
+        { "name": "Swiftmend", "type": "spell", "id": 18562, "icon": "inv_relics_idolofrejuvenation" }
+      ],
+      "color": "#75b9dc",
+      "soft": "#c8e8f8",
+      "deep": "#28556d",
+      "rgb": "117,185,220",
+      "use": "Use Wild Growth for real clustered damage and Swiftmend for urgent recovery while preserving assignment coverage."
+    },
+    {
+      "key": "mana-procs",
+      "label": "Mana and procs",
+      "titleIcon": "spell_nature_lightning",
+      "examples": [
+        { "name": "Innervate", "type": "spell", "id": 29166, "icon": "spell_nature_lightning" },
+        { "name": "Omen of Clarity", "type": "spell", "id": 16864, "icon": "spell_nature_crystalball" }
+      ],
+      "color": "#aa8fe0",
+      "soft": "#ddd2f7",
+      "deep": "#4a3769",
+      "rgb": "170,143,224",
+      "use": "Track mana, Clearcasting, Innervate, Revitalize, and expensive direct heals so recovery tools remain available."
+    }
+  ],
+  "icons": {
+    "class": "classicon_druid",
+    "quickStart": "spell_nature_rejuvenation",
+    "playing": "ability_druid_flourish",
+    "setup": "ability_druid_treeoflife",
+    "building": "spell_nature_crystalball",
+    "equipping": "inv_chest_leather_13",
+    "raiding": "achievement_boss_lichking",
+    "talent": "ability_druid_treeoflife",
+    "server": "inv_misc_wrench_01",
+    "consumables": "inv_alchemy_endlessflask_04"
+  },
+  "talent": {
+    "points": "11/0/60",
+    "name": "Fresh-80 self-contained Tree of Life baseline",
+    "summary": "Use the fully allocated healing baseline for five-player triage, HoTs, Nourish, Swiftmend, mana support, and recovery. Treat Celestial Focus as a later whole-build comparison.",
+    "wowheadPath": "druid/05320001--230033312031512531153313051"
+  },
+  "pageDescriptions": {
+    "quickStart": "Start at level 80 with Tree of Life, proactive HoTs, five-player triage, mana rules, and a dungeon-ready checklist.",
+    "playing": "Choose between HoTs, Lifebloom, Wild Growth, Swiftmend, Nourish, movement, mana, and recovery tools by damage pattern.",
+    "setup": "Install the 11/0/60 build, glyphs, mouseover macros, addons, raid frames, and required tracking.",
+    "building": "Build spell power and sustainable haste, then balance Spirit, MP5, Intellect, budget gems, enchants, and later GCD goals.",
+    "equipping": "Target normal and heroic dungeon, reputation, crafted, emblem, catch-up, ToC, ICC, and Ruby Sanctum healing upgrades.",
+    "raiding": "Handle tank support, raid coverage, dispels, Innervate, Rebirth, movement, and encounter responsibilities by mode."
+  },
+  "raidRoleFilters": [
+    { "value": "tank-healing", "label": "Tank support" },
+    { "value": "raid-healing", "label": "Raid healing" },
+    { "value": "movement", "label": "Movement" },
+    { "value": "utility", "label": "Utility / recovery" },
+    { "value": "special", "label": "Special assignment" }
+  ],
+  "serverNote": "Standard original-client WotLK 3.3.5a behavior is the baseline. Verify Lifebloom refunds, Wild Growth targeting, Swiftmend glyph behavior, Rejuvenation haste, Revitalize, and Tranquility coverage on Hellscream.",
+  "footer": "Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting."
+}

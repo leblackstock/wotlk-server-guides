@@ -21,7 +21,11 @@ for (const configFile of [
   "templates/spec-guide/marksmanship-hunter.config.json",
   "templates/spec-guide/affliction-warlock.config.json",
   "templates/spec-guide/demonology-warlock.config.json",
-  "templates/spec-guide/destruction-warlock.config.json"
+  "templates/spec-guide/destruction-warlock.config.json",
+  "templates/spec-guide/balance-druid.config.json",
+  "templates/spec-guide/feral-cat-druid.config.json",
+  "templates/spec-guide/feral-bear-druid.config.json",
+  "templates/spec-guide/restoration-druid.config.json"
 ]) {
   const freshConfig = JSON.parse(fs.readFileSync(path.join(root, configFile), "utf8"));
   assert.deepEqual(validateFresh80Config(freshConfig), [], configFile);

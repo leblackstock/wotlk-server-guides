@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Choose between HoTs, Lifebloom, Wild Growth, Swiftmend, Nourish, movement, mana, and recovery tools by damage pattern.">
+  <title>Playing your Restoration Druid | WotLK 3.3.5</title>
+  <link rel="icon" href="../assets/brand/hellscream-server-logo.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/brand/hellscream-server-logo-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/hellscream-server-logo-180.png">
+  <link rel="stylesheet" href="../assets/guide-color-system.css?v=20260814-druid-guides-v1">
+  <link rel="stylesheet" href="../assets/style.css?v=20260728-main-ux-v1">
+  <link rel="stylesheet" href="../assets/restoration-druid.css?v=20260814-druid-guides-v1">
+  <link rel="stylesheet" href="../assets/guide-operating-manual.css?v=20260731-operating-manual-v1">
+  <link rel="stylesheet" href="../assets/guide-hero.css?v=20260812-guide-identity-card-v3">
+  <script src="../assets/druid-tooltips.js?v=20260814-druid-guides-v1" defer></script>
+  <script src="../assets/restoration-druid.js?v=20260814-druid-guides-v1" defer></script>
+</head>
+<body data-guide-class="druid" data-guide-spec="restoration" data-guide-audience="fresh-80">
+  <div class="wrap" id="top">
+    <nav class="site-nav" aria-label="Restoration Druid guide pages"><a class="guide-hub-link" href="../index.html">Guide Hub</a><a href="restoration-druid-pve-guide.html">Quick Start</a><a href="restoration-druid-playing.html" aria-current="page">Playing</a><a href="restoration-druid-setting-up.html">Setup</a><a href="restoration-druid-gearing.html">Building</a><a href="restoration-druid-gear-targets.html">Equipping</a><a href="restoration-druid-raiding.html">Raiding</a></nav>
+    <header class="guide-hero">
+      <span class="page-kicker">Restoration Druid • WotLK 3.3.5 • Level 80+</span>
+      <h1 class="guide-hero-title"><span class="hero-spec-nickname">Resto Druid</span> <span class="hero-guide-type">Playing Guide</span></h1>
+      <p class="sub">Choose between HoTs, Lifebloom, Wild Growth, Swiftmend, Nourish, movement, mana, and recovery tools by damage pattern.</p>
+    </header>
+    <nav class="jump-nav jump-nav--detached guide-jump-nav" aria-label="Topics on this page"><a href="#engine">Combat engine</a><a href="#playbooks">Playbooks</a><a href="#utility">Cooldowns</a><a href="#mistakes">Mistakes</a><a href="#sources">Sources</a></nav>
+    <main><section class="common" id="engine"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_flourish.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Core decision engine<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="engine-grid"><div class="engine-step mechanic-hots"><strong data-entity-icon="Rejuvenation">HoTs</strong><p>Pre-HoT predictable damage with Rejuvenation and Regrowth while avoiding wasteful blanket healing in small groups.</p></div><div class="engine-step mechanic-lifebloom"><strong data-entity-icon="Lifebloom">Lifebloom</strong><p>Choose deliberately between rolling a stack, letting it bloom, and using Clearcasting for efficient healing and mana return.</p></div><div class="engine-step mechanic-raid-healing"><strong data-entity-icon="Wild Growth">Raid healing</strong><p>Use Wild Growth for real clustered damage and Swiftmend for urgent recovery while preserving assignment coverage.</p></div><div class="engine-step mechanic-mana-procs"><strong data-entity-icon="Innervate">Mana and procs</strong><p>Track mana, Clearcasting, Innervate, Revitalize, and expensive direct heals so recovery tools remain available.</p></div></div>
+    <div class="note spec" style="margin-top:12px"><strong>Default priority:</strong> Pre-place <span class="ability-name">Rejuvenation</span> and assigned <span class="ability-name">Regrowth</span> before known damage → use <span class="ability-name">Wild Growth</span> on injured groups → <span class="ability-name">Swiftmend</span> a HoT target needing immediate help → maintain assigned <span class="ability-name">Lifebloom</span> stacks deliberately → use <span class="ability-name">Nourish</span> or <span class="ability-name">Regrowth</span> for direct triage → use <span class="ability-name">Nature's Swiftness</span> and <span class="ability-name">Healing Touch</span> for a planned emergency.</div>
+    <div class="two-col" style="margin-top:12px"><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/spell_nature_rejuvenation.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Opener</h3><ul class="clean-list"><li>Pre-HoT the tank with <span class="ability-name">Rejuvenation</span> and <span class="ability-name">Regrowth</span> only close enough to the pull that useful duration remains.</li><li>Use <span class="ability-name">Lifebloom</span> according to the tank assignment; refresh the stack intentionally or allow a planned bloom for mana return and healing.</li><li>Use <span class="ability-name">Wild Growth</span> after real group damage or just ahead of a known clustered hit.</li><li>Preserve <span class="ability-name">Swiftmend</span> and the <span class="ability-name">Nature's Swiftness</span> emergency for actual triage rather than spending every tool at the pull.</li></ul></div><div class="guide-box"><h3><img class="ability-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_flourish.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Track this</h3><ul class="clean-list"><li><span class="ability-name">Rejuvenation</span>, <span class="ability-name">Regrowth</span>, and <span class="ability-name">Lifebloom</span> by target and remaining duration.</li><li><span class="ability-name">Wild Growth</span>, <span class="ability-name">Swiftmend</span>, <span class="ability-name">Nature's Swiftness</span>, <span class="ability-name">Tranquility</span>, and <span class="ability-name">Barkskin</span>.</li><li>Mana, <span class="ability-name">Innervate</span>, <span class="ability-name">Clearcasting</span>, potion use, and the expected remaining encounter time.</li><li>Incoming-damage timers, range, movement, curses, poisons, and the assigned <span class="ability-name">Rebirth</span> target.</li></ul></div></div></section><section class="common" id="playbooks"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/ability_druid_flourish.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Situation playbooks<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><p class="muted">Select a card header to focus on one situation. Select it again—or press Escape—to restore all cards.</p><div class="spec-playbook-grid"><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Steady tank damage</span><h3 data-entity-icon="Lifebloom">Build a sustainable tank layer</h3></div>
+      <span class="spec-card-tag">Tank</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Maintain the assigned HoTs and use direct healing only when incoming damage exceeds their coverage.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Rejuvenation">Rejuvenation</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Regrowth">Regrowth</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Lifebloom">Lifebloom</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Nourish">Nourish</span></div>
+      <ul class="clean-list"><li>Refresh Lifebloom intentionally; a bloom and mana return can be correct when planned.</li><li>Nourish gains value from existing HoTs but should still answer real damage.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> rolling an expensive stack without regard for mana, target swaps, or the next damage event.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Sudden injury</span><h3 data-entity-icon="Swiftmend">Land the next safe heal</h3></div>
+      <span class="spec-card-tag">Triage</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use Swiftmend on an eligible HoT target, then choose Nourish, Regrowth, or the emergency based on time to death.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Swiftmend">Swiftmend</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Nourish">Nourish</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Nature's Swiftness">Nature's Swiftness</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Healing Touch">Healing Touch</span></div>
+      <ul class="clean-list"><li>The fastest available button is not automatically the smallest sufficient answer.</li><li>Do not consume Nature's Swiftness for damage ordinary triage can cover.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> continuing blanket HoTs while one assigned target will die before the next tick.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Group damage</span><h3 data-entity-icon="Wild Growth">Heal the cluster that is hurt</h3></div>
+      <span class="spec-card-tag">Raid</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Place Wild Growth on a target whose nearby group will receive useful jumps, then Rejuvenate players with continuing danger.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Wild Growth">Wild Growth</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Rejuvenation">Rejuvenation</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Swiftmend">Swiftmend</span></div>
+      <ul class="clean-list"><li>Target position matters; do not assume the selected unit represents the injured cluster.</li><li>Blanket only the players and duration supported by the actual damage pattern.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> casting Wild Growth on an isolated player or covering safe groups while the damaged group falls.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Forced movement</span><h3 data-entity-icon="Rejuvenation">Move while preserving triage</h3></div>
+      <span class="spec-card-tag">Mobile</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Use instant heals, Swiftmend, utility, or Barkskin while moving and choose the destination before leaving range.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Rejuvenation">Rejuvenation</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Swiftmend">Swiftmend</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Barkskin">Barkskin</span></div>
+      <ul class="clean-list"><li>Move early so the mechanic does not force a panic route.</li><li>Do not refresh every HoT early merely because an instant global is available.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> ending movement out of range, out of line of sight, or without an emergency global.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Mana pressure</span><h3 data-entity-icon="Innervate">Recover before the dry phase</h3></div>
+      <span class="spec-card-tag">Mana</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Reduce low-value coverage, use Clearcasting intelligently, and activate Innervate early enough for full value.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Clearcasting">Clearcasting</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Innervate">Innervate</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Lifebloom">Lifebloom</span></div>
+      <ul class="clean-list"><li>A free cast should answer a useful healing need, not manufacture overheal.</li><li>Match Lifebloom maintenance to the assignment instead of rolling every available tank.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> maintaining maximum coverage until mana reaches zero and recovery comes too late.</p></div>
+  </article><article class="spec-card">
+    <div class="spec-card-header">
+      <div><span class="spec-card-kicker">Death or collapse</span><h3 data-entity-icon="Rebirth">Recover the raid deliberately</h3></div>
+      <span class="spec-card-tag">Recovery</span>
+    </div>
+    <div class="spec-card-body">
+      <h4>Decision</h4>
+      <p>Stabilize living players, resurrect the agreed target in a safe location, and use Tranquility only where its channel can complete usefully.</p>
+      <div class="ability-strip"><span class="ability-choice ability-name" data-entity-icon="Rebirth">Rebirth</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Tranquility">Tranquility</span><span class="ability-arrow">›</span><span class="ability-choice ability-name" data-entity-icon="Barkskin">Barkskin</span></div>
+      <ul class="clean-list"><li>Confirm the target and healing follow-up before Rebirth.</li><li>Use Barkskin before a vulnerable Tranquility channel when incoming damage is expected.</li></ul>
+    </div>
+    <div class="spec-card-footer"><p><strong>Failure to avoid:</strong> starting a long recovery cast while the remaining tank or healer is about to die.</p></div>
+  </article></div></section><section class="common" id="utility"><h2 class="guide-category-heading"><img class="spell-icon" src="https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg" alt="" aria-hidden="true" onerror="this.remove()"> Cooldowns and utility<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Primary job</th><th>Timing rule</th></tr></thead><tbody><tr><td><span class="ability-name">Remove Curse</span></td><td>Curse removal</td><td>Prioritize assigned lethal or control curses over another HoT global.</td></tr><tr><td><span class="ability-name">Abolish Poison</span></td><td>Repeated poison removal</td><td>Use when recurring applications justify the ongoing dispel effect.</td></tr><tr><td><span class="ability-name">Innervate</span></td><td>Mana recovery</td><td>Assign before the pull and use early enough to gain the full return.</td></tr><tr><td><span class="ability-name">Rebirth</span></td><td>Combat resurrection</td><td>Confirm target, location, reagent, and immediate healing coverage.</td></tr><tr><td><span class="ability-name">Barkskin</span></td><td>Personal mitigation</td><td>Use before predictable damage or a vulnerable channel.</td></tr><tr><td><span class="ability-name">Tranquility</span></td><td>Group recovery channel</td><td>Use for sustained group damage when range, pushback, and movement permit the channel.</td></tr><tr><td><span class="ability-name">Entangling Roots</span></td><td>Root control</td><td>Use on eligible melee enemies only within the tank and control plan.</td></tr><tr><td><span class="ability-name">Cyclone</span></td><td>Short immunity control</td><td>Coordinate carefully because the target cannot receive damage or healing.</td></tr></tbody></table></div></section><section class="common" id="mistakes"><h2 class="guide-category-heading">Mistakes that cost pulls<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><div class="two-col"><div class="note warning"><strong>Mechanical mistakes</strong><ul class="clean-list"><li>Blanketing safe targets until mana becomes the emergency.</li><li>Refreshing Lifebloom automatically instead of deciding whether the stack should roll or bloom.</li><li>Holding Swiftmend and Nature's Swiftness until after the assigned target dies.</li></ul></div><div class="note danger"><strong>Raid mistakes</strong><ul class="clean-list"><li>Casting Wild Growth on a unit positioned away from the injured cluster.</li><li>Moving late and ending outside healing range or line of sight.</li><li>Starting Rebirth or Tranquility before stabilizing the players who must survive the cast.</li></ul></div></div></section><section class="common" id="sources"><h2 class="guide-category-heading">Sources and verification<a class="guide-back-to-top" href="#top" aria-label="Back to top">↑ Top</a></h2><ul class="source-list"><li><a href="https://www.wowhead.com/wotlk/guide/classes/druid/restoration/healer-rotation-cooldowns-abilities-pve" target="_blank" rel="noopener">Restoration Druid rotation, cooldowns, and abilities</a></li><li><a href="https://www.wowhead.com/wotlk/spells/abilities/druid" target="_blank" rel="noopener">Druid spell records</a></li></ul></section><nav class="page-pager" aria-label="Previous and next guide pages"><a href="restoration-druid-pve-guide.html">← Quick Start</a><a href="restoration-druid-setting-up.html">Setup →</a></nav></main>
+    <footer>Unofficial player-made Hellscream guide. Verify live tooltips, raid assignments, and server scripting. • Updated 2026-08-14</footer>
+  </div>
+</body>
+</html>

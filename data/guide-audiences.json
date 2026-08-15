@@ -48,6 +48,30 @@
       "configFile": "templates/spec-guide/destruction-warlock.config.json"
     },
     {
+      "specSlug": "balance-druid",
+      "specName": "Balance Druid",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/balance-druid.config.json"
+    },
+    {
+      "specSlug": "feral-cat-druid",
+      "specName": "Feral Cat Druid",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/feral-cat-druid.config.json"
+    },
+    {
+      "specSlug": "feral-bear-druid",
+      "specName": "Feral Bear Druid",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/feral-bear-druid.config.json"
+    },
+    {
+      "specSlug": "restoration-druid",
+      "specName": "Restoration Druid",
+      "guideAudience": "fresh-80",
+      "configFile": "templates/spec-guide/restoration-druid.config.json"
+    },
+    {
       "specSlug": "blood-death-knight",
       "specName": "Blood Death Knight",
       "guideAudience": "specialized-raid",
