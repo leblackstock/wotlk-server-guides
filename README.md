@@ -4,27 +4,35 @@ Static GitHub Pages site for unofficial WotLK 3.3.5 private server Auction House
 
 ## Structure
 
-- `index.html` - main guide hub
-- `auction-house.html` - Auction House search and price-guide browser
-- `guides/` - individual self-contained HTML guide pages
-- `assets/` - shared assets for the guide hub
-- `scripts/build-ah-search-index.py` - regenerates the fuzzy AH item search index
-- `data/ah-vendor-sections.json` - canonical vendor/source costs and suggested AH buyouts
-- `data/ah-price-baselines.json` - frozen non-circular material and posting baselines with confidence
-- `data/ah-profession-use-audit.json` - finished-item profession requirements and general-use exceptions
-- `data/ah-section-ordering.json` - price-first row policy and documented fixed-order sections
-- `data/ah-dropped-gear.json` - canonical catalog for the level-80 BoE epic and sought-after world-drop guides
-- `data/ah-dropped-gear-audit.json` - pinned AzerothCore inclusion, exclusion, and loot-source evidence
-- `templates/ah-guide/` - shared AH guide navigation and vendor-section templates
-- `scripts/render-ah-shared-sections.py` - applies the shared AH blocks to all pricing guides
-- `scripts/apply-ah-price-baselines.py` - reconciles static rows to frozen baselines and shared crafted outputs
-- `scripts/apply-ah-profession-use-sections.py` - moves static restricted items into canonical sections
-- `scripts/apply-ah-section-price-order.py` - sorts eligible AH sections by target buyout, highest first
-- `scripts/audit-ah-dropped-gear.py` - rebuilds and verifies the pinned dropped-gear scope
-- `scripts/render-ah-dropped-gear.py` - renders both dropped-gear guides from the canonical catalog
-- `assets/addon-hub-search.js` - powers the main-hub Addon Library search and query handoff
-- `docs/ah-profession-plans/` - required price-audit plans and saved profession-expansion evidence
-- `README.md` - maintenance notes
+- `index.html` — main Guide Hub.
+- `auction-house.html` — Auction House search and price-guide browser.
+- `guides/` — player-facing, self-contained HTML guide pages.
+- `assets/` — shared styles, scripts, images, search indexes, and tooltip data.
+- `data/` — canonical catalogs, policy records, and saved audit inputs.
+- [`docs/`](docs/README.md) — maintainer workflows, work orders, evidence reports, and addon recipes.
+- [`internal/`](internal/README.md) — visual-system references, research matrices, and implementation checklists.
+- `templates/` — shared AH and specialization-guide templates and configuration.
+- `scripts/` — AH-oriented Python generators, renderers, and audits.
+- `tools/` — JavaScript guide-authoring and Fresh-80 audit utilities.
+- `tests/` — repository validation and browser smoke tests.
+- `.github/workflows/` — continuous-integration validation.
+
+Key AH sources and generators include:
+
+- `data/ah-vendor-sections.json` — canonical vendor/source costs and suggested AH buyouts.
+- `data/ah-price-baselines.json` — frozen non-circular material and posting baselines with confidence.
+- `data/ah-profession-use-audit.json` — finished-item profession requirements and general-use exceptions.
+- `data/ah-section-ordering.json` — price-first row policy and documented fixed-order sections.
+- `data/ah-dropped-gear.json` — canonical catalog for the level-80 BoE epic and sought-after world-drop guides.
+- `data/ah-dropped-gear-audit.json` — pinned AzerothCore inclusion, exclusion, and loot-source evidence.
+- `scripts/render-ah-shared-sections.py` — applies shared AH blocks to all pricing guides.
+- `scripts/apply-ah-price-baselines.py` — reconciles static rows to frozen baselines and shared crafted outputs.
+- `scripts/apply-ah-profession-use-sections.py` — moves static restricted items into canonical sections.
+- `scripts/apply-ah-section-price-order.py` — sorts eligible AH sections by target buyout, highest first.
+- `scripts/audit-ah-dropped-gear.py` — rebuilds and verifies the pinned dropped-gear scope.
+- `scripts/render-ah-dropped-gear.py` — renders both dropped-gear guides from the canonical catalog.
+- `scripts/build-ah-search-index.py` — regenerates the fuzzy AH item search index.
+- `assets/addon-hub-search.js` — powers Addon Library search and query handoff.
 
 ## Update Vendor & Convenience Prices
 
