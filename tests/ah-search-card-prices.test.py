@@ -29,7 +29,7 @@ index = json.loads(
 )
 assert index["version"] == 5
 assert index["itemCount"] == len(index["items"])
-assert index["vendorRecommendationCount"] == 483
+assert index["vendorRecommendationCount"] == 486
 assert index["items"]
 
 canonical = json.loads(CANONICAL_VALUES_PATH.read_text(encoding="utf-8"))

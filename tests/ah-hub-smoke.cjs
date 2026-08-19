@@ -47,6 +47,16 @@ async function verifyAuditedCraftedGuide(page, options) {
   await noOverflow(page, label);
 }
 
+async function verifyPrimalNetherRow(page, label) {
+  const row = page.locator("tr", { hasText: "Primal Nether" }).first();
+  assert.equal(await row.locator('[data-column="target"] .buyout').textContent(), "2g 50s", `${label}: Target`);
+  assert.equal(await row.locator('[data-column="quick"] .buyout').textContent(), "2g", `${label}: Quick`);
+  assert.equal(await row.locator('[data-column="high"] .buyout').textContent(), "3g 50s", `${label}: High`);
+  assert.equal(await row.locator('[data-column="stack"]').textContent(), "1", `${label}: stack`);
+  assert.equal(await row.locator('[data-column="demand"]').textContent(), "Low", `${label}: demand`);
+  assert.match(await row.locator('[data-column="notes"]').textContent(), /instead of Frozen Orbs/, `${label}: server rule`);
+}
+
 async function verifyGuideNavigation(page) {
   await page.goto(`${base}/guides/alchemy-materials-ah-price-guide.html`, { waitUntil: "networkidle" });
   await page.waitForSelector("[data-ah-major-nav] .ah-category-chip");
@@ -519,7 +529,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      footerDate: "2026-08-10",
+      footerDate: "2026-08-19",
       label: "Desktop Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(desktop, {
@@ -596,9 +606,10 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g",
       recipeSpell: 55208,
       notePattern: /Standard 3\.3\.5 data shows no cooldown/,
-      footerDate: "2026-08-14",
+      footerDate: "2026-08-19",
       label: "Desktop Mining guide"
     });
+    await verifyPrimalNetherRow(desktop, "Desktop Primal Nether row");
 
     await desktop.goto(`${base}/guides/tailoring-cloth-ah-price-guide.html`, { waitUntil: "networkidle" });
     assert.equal(await desktop.locator("#tailor-only-nets").count(), 1);
@@ -751,7 +762,7 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "42g 25s",
       recipeSpell: 55656,
       notePattern: /one permanent socket/,
-      footerDate: "2026-08-10",
+      footerDate: "2026-08-19",
       label: "Mobile Blacksmithing materials guide"
     });
     await verifyAuditedCraftedGuide(mobile, {
@@ -828,9 +839,10 @@ async function verifyContainerCollection(page, labelPrefix) {
       target: "84g",
       recipeSpell: 55208,
       notePattern: /Standard 3\.3\.5 data shows no cooldown/,
-      footerDate: "2026-08-14",
+      footerDate: "2026-08-19",
       label: "Mobile Mining guide"
     });
+    await verifyPrimalNetherRow(mobile, "Mobile Primal Nether row");
 
     console.log("Auction House hub, both dropped-gear guides, compact guide UX, nested category chips, redirects, and all twelve crafted guide views passed desktop/mobile smoke tests.");
   } finally {

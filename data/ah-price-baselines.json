@@ -5333,12 +5333,12 @@
     },
     "23572": {
       "name": "Primal Nether",
-      "quick": 40000,
-      "target": 60000,
-      "high": 100000,
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it.",
+      "quick": 20000,
+      "target": 25000,
+      "high": 35000,
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "reason": "User-reviewed Hellscream starter estimate: level-80 upscaled TBC heroics award Primal Nether instead of Frozen Orb, creating abundant byproduct supply for a legacy-craft buyer market. BeanCounter recorded zero completed buyouts and six failed or expired single-unit auctions from 5g 94s to 6g 9s 99c. The 2026-08-18 listing scan was concentrated in two sellers, with one controlling 94.4% of 18 units, so active asks were not used to set the band. External nominal gold was not copied.",
       "evidence_ref": "data/ah-gathering-material-price-evidence.json#items/23572"
     },
     "23573": {

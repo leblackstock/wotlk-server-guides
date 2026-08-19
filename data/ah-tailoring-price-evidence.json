@@ -12326,9 +12326,9 @@
         "high": 930000
       },
       "reagent_floor": {
-        "quick": 415000,
-        "target": 560000,
-        "high": 850000
+        "quick": 395000,
+        "target": 525000,
+        "high": 785000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -12589,9 +12589,9 @@
         "high": 800000
       },
       "reagent_floor": {
-        "quick": 300000,
-        "target": 365000,
-        "high": 510000
+        "quick": 280000,
+        "target": 330000,
+        "high": 445000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -16591,9 +16591,9 @@
         "high": 2850000
       },
       "reagent_floor": {
-        "quick": 1328000,
-        "target": 1740000,
-        "high": 2588000
+        "quick": 1308000,
+        "target": 1705000,
+        "high": 2523000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -16723,9 +16723,9 @@
         "high": 6400000
       },
       "reagent_floor": {
-        "quick": 1232000,
-        "target": 1651000,
-        "high": 2499000
+        "quick": 1212000,
+        "target": 1616000,
+        "high": 2434000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -16859,9 +16859,9 @@
         "high": 1600000
       },
       "reagent_floor": {
-        "quick": 762000,
-        "target": 1026000,
-        "high": 1554000
+        "quick": 742000,
+        "target": 991000,
+        "high": 1489000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -16991,9 +16991,9 @@
         "high": 3250000
       },
       "reagent_floor": {
-        "quick": 1546000,
-        "target": 2040000,
-        "high": 3046000
+        "quick": 1526000,
+        "target": 2005000,
+        "high": 2981000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17123,9 +17123,9 @@
         "high": 5700000
       },
       "reagent_floor": {
-        "quick": 1487000,
-        "target": 1991000,
-        "high": 3009000
+        "quick": 1467000,
+        "target": 1956000,
+        "high": 2944000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17255,9 +17255,9 @@
         "high": 5300000
       },
       "reagent_floor": {
-        "quick": 2309000,
-        "target": 3079000,
-        "high": 4644000
+        "quick": 2289000,
+        "target": 3044000,
+        "high": 4579000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17390,9 +17390,9 @@
         "high": 7900000
       },
       "reagent_floor": {
-        "quick": 3140000,
-        "target": 4360000,
-        "high": 6800000
+        "quick": 3120000,
+        "target": 4325000,
+        "high": 6735000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17526,9 +17526,9 @@
         "high": 9300000
       },
       "reagent_floor": {
-        "quick": 3615000,
-        "target": 4985000,
-        "high": 7750000
+        "quick": 3595000,
+        "target": 4950000,
+        "high": 7685000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17662,9 +17662,9 @@
         "high": 8900000
       },
       "reagent_floor": {
-        "quick": 3248000,
-        "target": 4606000,
-        "high": 7322000
+        "quick": 3228000,
+        "target": 4571000,
+        "high": 7257000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17797,9 +17797,9 @@
         "high": 7900000
       },
       "reagent_floor": {
-        "quick": 3140000,
-        "target": 4360000,
-        "high": 6800000
+        "quick": 3120000,
+        "target": 4325000,
+        "high": 6735000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -17933,9 +17933,9 @@
         "high": 9300000
       },
       "reagent_floor": {
-        "quick": 3615000,
-        "target": 4985000,
-        "high": 7750000
+        "quick": 3595000,
+        "target": 4950000,
+        "high": 7685000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -18069,9 +18069,9 @@
         "high": 8900000
       },
       "reagent_floor": {
-        "quick": 3248000,
-        "target": 4606000,
-        "high": 7322000
+        "quick": 3228000,
+        "target": 4571000,
+        "high": 7257000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -53066,5 +53066,5 @@
     }
   },
   "manual_review_completed": "2026-08-08",
-  "dependency_diagnostics_refreshed": "2026-08-08"
+  "dependency_diagnostics_refreshed": "2026-08-19"
 }

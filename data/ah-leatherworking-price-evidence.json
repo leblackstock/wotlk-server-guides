@@ -1114,7 +1114,7 @@
     "fetch_failed_observations": 0,
     "items_retained_for_source_unavailability": 0,
     "target_changes_over_fifty_percent": 128,
-    "proposals_below_reagent_floor": 284,
+    "proposals_below_reagent_floor": 281,
     "targets_raised": 231,
     "targets_lowered": 220,
     "targets_unchanged": 25,
@@ -20964,9 +20964,9 @@
         "high": 2250000
       },
       "reagent_floor": {
-        "quick": 556000,
-        "target": 748000,
-        "high": 1132000
+        "quick": 536000,
+        "target": 713000,
+        "high": 1067000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -21101,9 +21101,9 @@
         "high": 1850000
       },
       "reagent_floor": {
-        "quick": 472000,
-        "target": 620000,
-        "high": 928000
+        "quick": 452000,
+        "target": 585000,
+        "high": 863000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -23068,9 +23068,9 @@
         "high": 650000
       },
       "reagent_floor": {
-        "quick": 175000,
-        "target": 280000,
-        "high": 490000
+        "quick": 313000,
+        "target": 415000,
+        "high": 625000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -23175,6 +23175,8 @@
         "target_change_percent": -7.8125,
         "model_target_change_percent": -7.8125,
         "below_reagent_floor_bands": [
+          "quick",
+          "target",
           "high"
         ],
         "requires_large_change_review": false,
@@ -23202,9 +23204,9 @@
         "high": 1100000
       },
       "reagent_floor": {
-        "quick": 362500,
-        "target": 523000,
-        "high": 844000
+        "quick": 342500,
+        "target": 488000,
+        "high": 779000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -23339,9 +23341,9 @@
         "high": 1600000
       },
       "reagent_floor": {
-        "quick": 632000,
-        "target": 840000,
-        "high": 1262000
+        "quick": 612000,
+        "target": 805000,
+        "high": 1197000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -26424,9 +26426,9 @@
         "high": 5200000
       },
       "reagent_floor": {
-        "quick": 1376500,
-        "target": 1839500,
-        "high": 2773000
+        "quick": 1356500,
+        "target": 1804500,
+        "high": 2708000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -26568,9 +26570,9 @@
         "high": 4150000
       },
       "reagent_floor": {
-        "quick": 1090000,
-        "target": 1458000,
-        "high": 2200000
+        "quick": 1070000,
+        "target": 1423000,
+        "high": 2135000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -26709,9 +26711,9 @@
         "high": 4950000
       },
       "reagent_floor": {
-        "quick": 1893000,
-        "target": 2529000,
-        "high": 3811000
+        "quick": 1873000,
+        "target": 2494000,
+        "high": 3746000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -26854,9 +26856,9 @@
         "high": 2250000
       },
       "reagent_floor": {
-        "quick": 962000,
-        "target": 1208000,
-        "high": 1734000
+        "quick": 942000,
+        "target": 1173000,
+        "high": 1669000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -26990,9 +26992,9 @@
         "high": 1700000
       },
       "reagent_floor": {
-        "quick": 700000,
-        "target": 848000,
-        "high": 1186000
+        "quick": 680000,
+        "target": 813000,
+        "high": 1121000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -27101,9 +27103,7 @@
         "target_change_copper": 0,
         "target_change_percent": 0.0,
         "model_target_change_percent": 0.0,
-        "below_reagent_floor_bands": [
-          "quick"
-        ],
+        "below_reagent_floor_bands": [],
         "requires_large_change_review": false,
         "reviewer_decision": "accept",
         "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
@@ -27129,9 +27129,9 @@
         "high": 2750000
       },
       "reagent_floor": {
-        "quick": 1060000,
-        "target": 1376000,
-        "high": 2041000
+        "quick": 1040000,
+        "target": 1341000,
+        "high": 1976000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -27244,9 +27244,7 @@
         "target_change_copper": -50000,
         "target_change_percent": -3.2258,
         "model_target_change_percent": -3.2258,
-        "below_reagent_floor_bands": [
-          "quick"
-        ],
+        "below_reagent_floor_bands": [],
         "requires_large_change_review": false,
         "reviewer_decision": "accept",
         "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
@@ -28395,9 +28393,9 @@
         "high": 5300000
       },
       "reagent_floor": {
-        "quick": 1476800,
-        "target": 2378000,
-        "high": 4206000
+        "quick": 1436800,
+        "target": 2308000,
+        "high": 4076000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -31877,9 +31875,9 @@
         "high": 3650000
       },
       "reagent_floor": {
-        "quick": 1522000,
-        "target": 1990000,
-        "high": 2944000
+        "quick": 1502000,
+        "target": 1955000,
+        "high": 2879000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -32023,9 +32021,9 @@
         "high": 4950000
       },
       "reagent_floor": {
-        "quick": 1325000,
-        "target": 1771000,
-        "high": 2670000
+        "quick": 1305000,
+        "target": 1736000,
+        "high": 2605000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -32169,9 +32167,9 @@
         "high": 6000000
       },
       "reagent_floor": {
-        "quick": 1567000,
-        "target": 2098000,
-        "high": 3160000
+        "quick": 1547000,
+        "target": 2063000,
+        "high": 3095000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -32314,9 +32312,9 @@
         "high": 4850000
       },
       "reagent_floor": {
-        "quick": 1283000,
-        "target": 1719000,
-        "high": 2591000
+        "quick": 1263000,
+        "target": 1684000,
+        "high": 2526000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -32460,9 +32458,9 @@
         "high": 2650000
       },
       "reagent_floor": {
-        "quick": 1074000,
-        "target": 1388000,
-        "high": 2049000
+        "quick": 1054000,
+        "target": 1353000,
+        "high": 1984000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -32606,9 +32604,9 @@
         "high": 4100000
       },
       "reagent_floor": {
-        "quick": 1488000,
-        "target": 1944000,
-        "high": 2886000
+        "quick": 1468000,
+        "target": 1909000,
+        "high": 2821000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -34030,9 +34028,9 @@
         "high": 4250000
       },
       "reagent_floor": {
-        "quick": 1171600,
-        "target": 1906000,
-        "high": 3382000
+        "quick": 1091600,
+        "target": 1766000,
+        "high": 3122000
       },
       "local_completed_sales": null,
       "external_relative_review": {
@@ -34141,9 +34139,7 @@
         "target_change_copper": 0,
         "target_change_percent": 0.0,
         "model_target_change_percent": 0.0,
-        "below_reagent_floor_bands": [
-          "high"
-        ],
+        "below_reagent_floor_bands": [],
         "requires_large_change_review": false,
         "reviewer_decision": "accept",
         "reviewer_note": "Accepted after reviewing cohort fit, recipe floor, market purpose, and available completed-sale coverage.",
@@ -65165,5 +65161,5 @@
     }
   },
   "manual_review_completed": "2026-08-08",
-  "dependency_diagnostics_refreshed": "2026-08-08"
+  "dependency_diagnostics_refreshed": "2026-08-19"
 }

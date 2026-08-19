@@ -1,12 +1,12 @@
 # Gathering and Material Evidence Pricing Review
 
-- Reviewed: `2026-08-05`
+- Reviewed: `2026-08-19`
 - Scope: `Mining, Herbalism, and Shared Crafting Materials`
 - Unique items reviewed: `189`
-- Proposed bands changed: `149`
+- Proposed bands changed: `150`
 - Items with completed-sale evidence: `6`
 - Items seen on all three comparison realms: `179`
-- Manually reviewed Target changes over 50%: `31`
+- Manually reviewed Target changes over 50%: `32`
 - External gold copied into Hellscream prices: `no`
 - Publication status: `local only — not published`
 
@@ -173,9 +173,9 @@ All rank-modeled values remain fallback confidence. Direct sales remain low unle
 | mining-smithing-ah-price-guide.html<br>Grinding stones | Rough Grinding Stone | crafted | 5s / 8s / 15s | 10s / 13s / 20s | +62.50% | none | 3 realms / 6 factions | cohort-rank-starter-estimate | fallback | accept |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Eternal Fire | baseline | 12g / 16g / 24g | 7g 10s / 9g 45s / 14g 25s | -40.94% | none | 3 realms / 6 factions | cohort-rank-starter-estimate | fallback | accept |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Eternal Shadow | baseline | 3g / 4g 50s / 7g | 6g 35s / 8g 45s / 12g 75s | +87.78% | none | 3 realms / 6 factions | cohort-rank-starter-estimate | fallback | accept |
-| mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Primal Nether | baseline | 4g / 6g / 10g | 4g / 6g / 10g | +0.00% | none | 3 realms / 6 factions | retain-reviewed-band | low | retain fallback |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Eternal Earth | baseline | 2g 50s / 3g 50s / 5g 50s | 3g 40s / 4g 55s / 6g 85s | +30.00% | none | 3 realms / 6 factions | cohort-rank-starter-estimate | fallback | accept |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Primal Fire | baseline | 6g / 9g / 14g | 1g 95s / 2g 60s / 3g 90s | -71.11% | none | 3 realms / 6 factions | cohort-rank-starter-estimate | fallback | accept |
+| mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Primal Nether | baseline | 4g / 6g / 10g | 2g / 2g 50s / 3g 50s | -58.33% | none | 3 realms / 6 factions | reviewed-server-specific-fallback | fallback | accept |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Primal Earth | baseline | 1g / 1g 50s / 2g 50s | 1g 30s / 1g 50s / 2g 5s | +0.00% | 3u / 3 auctions | 3 realms / 6 factions | direct-completed-sales | low | accept |
 | mining-smithing-ah-price-guide.html<br>Metal-adjacent smithing reagents | Crystallized Earth | baseline | 25s / 35s / 55s | 34s / 45s 50c / 68s 50c | +30.00% | none | 3 realms / 6 factions | deterministic-ten-to-one | fallback | accept |
 | mining-smithing-ah-price-guide.html<br>Mining elemental breakdowns | Mote of Fire | baseline | 60s / 90s / 1g 40s | 19s 50c / 26s / 39s | -71.11% | none | 3 realms / 6 factions | deterministic-ten-to-one | fallback | accept |
@@ -237,6 +237,7 @@ All rank-modeled values remain fallback confidence. Direct sales remain low unle
 - **Grave Moss:** 1g 25s → 49s (-60.80%). Decision: `accept`. Accepted after manual large-change review because the item has broad three-realm relative-rank coverage inside its fixed Hellscream cohort; the result remains a fallback estimate.
 - **Adamantite Rod:** 23g → 9g 25s (-59.78%). Decision: `accept`. Accepted after manual large-change review because the item has broad three-realm relative-rank coverage inside its fixed Hellscream cohort; the result remains a fallback estimate.
 - **Shadow Pearl:** 2g → 81s (-59.50%). Decision: `accept`. Accepted after manual large-change review because the item has broad three-realm relative-rank coverage inside its fixed Hellscream cohort; the result remains a fallback estimate.
+- **Primal Nether:** 6g → 2g 50s (-58.33%). Decision: `accept`. Accepted after manual large-change review. The exact 1g 60s vendor value preserves a liquidation floor, while the user-confirmed level-80 heroic reward mechanic, zero completed sales, six failed auctions near 6g, and severe current seller concentration support a substantially lower price-discovery band. Confidence remains fallback until qualifying completed sales exist.
 - **Fel Iron Rod:** 3g 80s → 6g (+57.89%). Decision: `accept`. Accepted after manual large-change review because the item has broad three-realm relative-rank coverage inside its fixed Hellscream cohort; the result remains a fallback estimate.
 - **Saronite Ore:** 70s → 1g 10s (+57.14%). Decision: `accept`. Accepted after manual large-change review because the sanitized Hellscream completed-sale median supports the move; confidence remains low because buyer concentration fails the medium gate.
 - **Essence of Undeath:** 5g → 2g 15s (-57.00%). Decision: `accept`. Accepted after manual large-change review because the item has broad three-realm relative-rank coverage inside its fixed Hellscream cohort; the result remains a fallback estimate.

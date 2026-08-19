@@ -62,15 +62,12 @@ price_count = 0
 for path in guide_paths:
     source = path.read_text(encoding="utf-8")
     assert not THREE_CURRENCIES.search(source), path.name
-    expected_date = (
-        "2026-08-14"
-        if path.name
-        in {
-            "fishing-cooking-materials-ah-price-guide.html",
-            "mining-smithing-ah-price-guide.html",
-        }
-        else "2026-08-10"
-    )
+    expected_date = {
+        "fishing-cooking-materials-ah-price-guide.html": "2026-08-14",
+        "mining-smithing-ah-price-guide.html": "2026-08-19",
+        "cross-profession-materials-ah-price-guide.html": "2026-08-19",
+        "blacksmithing-materials-ah-price-guide.html": "2026-08-19",
+    }.get(path.name, "2026-08-10")
     assert f"Updated {expected_date}" in source, path.name
     for label in MONEY_SPAN.findall(source):
         units = re.findall(r"[gsc]", label)

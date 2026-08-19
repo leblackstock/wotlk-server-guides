@@ -92,7 +92,7 @@ assert summary["items_seen_on_no_realms"] == 6
 assert summary["fetch_failed_observations"] == 0
 assert summary["items_retained_for_source_unavailability"] == 0
 assert summary["target_changes_over_fifty_percent"] == 128
-assert summary["proposals_below_reagent_floor"] == 284
+assert summary["proposals_below_reagent_floor"] == 281
 assert summary["targets_raised"] == 231
 assert summary["targets_lowered"] == 220
 assert summary["targets_unchanged"] == 25

@@ -132,15 +132,12 @@ assert status["publishing_status"] == "local only — not published"
 
 for filename in evidence["scope"]["guides"]:
     source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
-    expected_date = (
-        "2026-08-14"
-        if filename
-        in {
-            "fishing-cooking-materials-ah-price-guide.html",
-            "mining-smithing-ah-price-guide.html",
-        }
-        else "2026-08-10"
-    )
+    expected_date = {
+        "fishing-cooking-materials-ah-price-guide.html": "2026-08-14",
+        "mining-smithing-ah-price-guide.html": "2026-08-19",
+        "cross-profession-materials-ah-price-guide.html": "2026-08-19",
+        "blacksmithing-materials-ah-price-guide.html": "2026-08-19",
+    }.get(filename, "2026-08-10")
     assert f"Updated {expected_date}" in source, filename
 
 print(

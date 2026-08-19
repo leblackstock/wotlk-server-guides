@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refreshed": "2026-08-05",
+  "refreshed": "2026-08-19",
   "method": "Evidence Pricing",
   "model_version": "gathering-material-evidence-pricing-v2",
   "scope": {
@@ -392,16 +392,17 @@
   },
   "summary": {
     "items_reviewed": 189,
-    "bands_changed": 149,
+    "bands_changed": 150,
     "direct_sale_items": 6,
     "items_seen_on_three_realms": 179,
-    "target_changes_over_fifty_percent": 31,
+    "target_changes_over_fifty_percent": 32,
     "decision_counts": {
       "cohort-rank-starter-estimate": 130,
       "deterministic-ten-to-one": 13,
       "direct-completed-sales": 6,
       "exact-vendor": 9,
-      "retain-reviewed-band": 31
+      "retain-reviewed-band": 30,
+      "reviewed-server-specific-fallback": 1
     },
     "external_gold_values_copied": false
   },
@@ -6221,6 +6222,34 @@
       "pricing_unit": "per item",
       "measured_acquisition_evidence": null,
       "local_completed_sales": null,
+      "local_failed_auction_diagnostic": {
+        "failed_or_expired_auctions": 6,
+        "failed_or_expired_units": 6,
+        "failed_or_expired_price_summary_copper": {
+          "min": 59400,
+          "max": 60999
+        },
+        "snapshot_date": "2026-08-18"
+      },
+      "current_listing_diagnostic": {
+        "snapshot_date": "2026-08-18",
+        "listed_units": 18,
+        "independent_sellers": 2,
+        "largest_seller_unit_share": 0.9444,
+        "all_single_unit_listings": true,
+        "lowest_and_modal_buyout_copper": 59840,
+        "stat_simple_seen_days": 14,
+        "stat_simple_seen_units": 63,
+        "used_to_set_prices": false,
+        "valuation_gate": "failed-seller-concentration"
+      },
+      "server_specific_supply": {
+        "source": "user-confirmed Hellscream rule",
+        "recorded_date": "2026-08-19",
+        "mechanic": "Level-80 upscaled TBC heroics award Primal Nether instead of Frozen Orb.",
+        "pricing_implication": "Repeatable level-80 heroic activity creates abundant byproduct supply while demand remains concentrated in legacy TBC crafts.",
+        "measured_yield": false
+      },
       "external_relative_review": {
         "realm_coverage": 3,
         "faction_observations": 6,
@@ -6268,18 +6297,19 @@
       },
       "proposal": {
         "proposed_band": {
-          "quick": 40000,
-          "target": 60000,
-          "high": 100000
+          "quick": 20000,
+          "target": 25000,
+          "high": 35000
         },
-        "decision": "retain-reviewed-band",
-        "source_type": "frozen-pre-scan-guide",
-        "confidence": "low",
-        "target_change_copper": 0,
-        "target_change_percent": 0.0,
-        "reviewer_decision": "retain fallback",
-        "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it.",
-        "review_reason": "Reviewed and retained because no qualifying direct sales or defensible comparable cohort supports replacing the saved band. External data is diagnostic only."
+        "decision": "reviewed-server-specific-fallback",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
+        "target_change_copper": -35000,
+        "target_change_percent": -58.33,
+        "reviewer_decision": "accept",
+        "reviewer_note": "Accepted after manual large-change review. The exact 1g 60s vendor value preserves a liquidation floor, while the user-confirmed level-80 heroic reward mechanic, zero completed sales, six failed auctions near 6g, and severe current seller concentration support a substantially lower price-discovery band. Confidence remains fallback until qualifying completed sales exist.",
+        "reason": "User-reviewed Hellscream starter estimate: level-80 upscaled TBC heroics award Primal Nether instead of Frozen Orb, creating abundant byproduct supply for a legacy-craft buyer market. BeanCounter recorded zero completed buyouts and six failed or expired single-unit auctions from 5g 94s to 6g 9s 99c. The 2026-08-18 listing scan was concentrated in two sellers, with one controlling 94.4% of 18 units, so active asks were not used to set the band. External nominal gold was not copied.",
+        "review_reason": "Manual review covered the custom acquisition path, 1g 60s vendor floor, legacy TBC craft demand, 57 dependent recipes, saved comparison coverage, zero completed sales, six failed auctions, and unusable active-listing concentration. The resulting 2g / 2g 50s / 3g 50s band is a price-discovery fallback, not a verified current value."
       },
       "before_reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
     },

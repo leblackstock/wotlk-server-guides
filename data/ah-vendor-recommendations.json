@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "reviewed_date": "2026-08-10",
+  "reviewed_date": "2026-08-19",
   "policy": "The Vendor chip is a liquidation recommendation, not a synonym for Low demand. Every priced AH item with a positive NPC SellPrice is checked against a demand-aware minimum Target that covers the 5% AH cut, Hellscream's measured deposit behavior, one failed listing, and a small expected-profit floor for posting effort. Items with no vendor value cannot receive the automatic price-margin signal. NPC-vendor convenience-resale items remain explicitly excluded. The saved manual recommendations remain for unpriced reference rows and unusually narrow buyer cases.",
   "margin_model": {
     "sell_price_source_commit": "e0fe11ba46b885a01e4a4038001e0055822cc7ba",
@@ -36,15 +36,15 @@
     "npc_vendor_resale_excluded_entry_count": 119,
     "zero_vendor_sell_price_entry_count": 387,
     "margin_evaluated_entry_count": 3580,
-    "low_entry_count_after_promotions": 1025,
-    "low_unique_name_count_after_promotions": 1004,
+    "low_entry_count_after_promotions": 1028,
+    "low_unique_name_count_after_promotions": 1005,
     "promoted_reference_entry_count": 2,
     "manual_vendor_recommendation_count": 22,
-    "automatic_margin_vendor_recommendation_count": 466,
+    "automatic_margin_vendor_recommendation_count": 469,
     "below_vendor_after_cut_entry_count": 79,
-    "close_margin_vendor_recommendation_count": 387,
-    "above_margin_entry_count": 3114,
-    "vendor_recommendation_count": 483
+    "close_margin_vendor_recommendation_count": 390,
+    "above_margin_entry_count": 3111,
+    "vendor_recommendation_count": 486
   },
   "section_recommendations": [
     {

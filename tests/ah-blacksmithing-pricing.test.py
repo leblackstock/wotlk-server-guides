@@ -32,7 +32,7 @@ summary = evidence["summary"]
 
 assert evidence["method"] == "Evidence Pricing"
 assert evidence["model_version"] == "blacksmithing-evidence-pricing-v1"
-assert evidence["dependency_diagnostics_refreshed"] == "2026-08-08"
+assert evidence["dependency_diagnostics_refreshed"] == "2026-08-19"
 assert summary == {
     "items_reviewed": 453,
     "materials_enhancements_reviewed": 52,
@@ -144,7 +144,12 @@ for filename in (
     "blacksmithing-gear-ah-price-guide.html",
 ):
     source = (ROOT / "guides" / filename).read_text(encoding="utf-8")
-    assert "Updated 2026-08-10" in source
+    expected_date = (
+        "2026-08-19"
+        if filename == "blacksmithing-materials-ah-price-guide.html"
+        else "2026-08-10"
+    )
+    assert f"Updated {expected_date}" in source
     assert source.count("Evidence Pricing") >= 1
 
 print(

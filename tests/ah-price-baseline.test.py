@@ -48,7 +48,7 @@ def main() -> int:
     if len(baseline.get("items", {})) != 783 + dropped_count:
         fail("Baseline must contain the 783 material and Phase 3 static references plus every audited dropped-gear item")
     confidence = Counter(record["confidence"] for record in baseline["items"].values())
-    if confidence != Counter({"fallback": 1024, "low": 106}):
+    if confidence != Counter({"fallback": 1025, "low": 105}):
         fail(f"Unexpected baseline confidence distribution: {confidence}")
     if dropped_evidence["review"]["decisions"] != {
         "accept-reviewed-starter-estimate": 345,

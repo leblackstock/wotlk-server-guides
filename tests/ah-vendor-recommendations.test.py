@@ -64,14 +64,14 @@ assert set(policy["margin_model"]["sale_probability_basis_points_by_demand"]) ==
     item["demand"] for item in items
 }
 assert len(items) == scope["search_entry_count"] == 4088
-assert index["vendorRecommendationCount"] == len(recommended) == scope["vendor_recommendation_count"] == 483
-assert len(automatic) == scope["automatic_margin_vendor_recommendation_count"] == 466
+assert index["vendorRecommendationCount"] == len(recommended) == scope["vendor_recommendation_count"] == 486
+assert len(automatic) == scope["automatic_margin_vendor_recommendation_count"] == 469
 assert len(manual) == scope["manual_vendor_recommendation_count"] == 22
 assert scope["below_vendor_after_cut_entry_count"] == 79
-assert scope["close_margin_vendor_recommendation_count"] == 387
-assert scope["above_margin_entry_count"] == 3114
-assert 79 + 387 == len(automatic)
-assert 466 + 3114 == scope["margin_evaluated_entry_count"]
+assert scope["close_margin_vendor_recommendation_count"] == 390
+assert scope["above_margin_entry_count"] == 3111
+assert 79 + 390 == len(automatic)
+assert 469 + 3111 == scope["margin_evaluated_entry_count"]
 assert sum(item["target"] == "—" for item in items) == scope["unpriced_reference_entry_count"] == 2
 assert sum(item.get("_vendorReferencePromotion") is True for item in items) == 0
 assert all(
@@ -88,7 +88,7 @@ assert all(
 assert Counter(item["vendorRecommendationNote"] for item in recommended) == Counter(
     {
         "AH net is below NPC value.": 79,
-        "Expected profit is too small.": 387,
+        "Expected profit is too small.": 390,
         "Too niche to keep reposting.": 15,
         "No known use.": 1,
         "Novelty item with little demand.": 1,
@@ -110,7 +110,7 @@ for item in items:
     assert money(item["target"]) < money(item["vendorMinimumTarget"]), item["name"]
 
 assert Counter(item["vendorRecommendationSource"] for item in recommended) == Counter(
-    {"margin": 461, "manual": 17, "manual-and-margin": 5}
+    {"margin": 464, "manual": 17, "manual-and-margin": 5}
 )
 assert not any(
     item.get("vendorRecommended")

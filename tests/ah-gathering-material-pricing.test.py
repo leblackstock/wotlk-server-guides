@@ -44,10 +44,10 @@ assert evidence["method"] == "Evidence Pricing"
 assert evidence["model_version"] == "gathering-material-evidence-pricing-v2"
 assert evidence["scope"]["occurrences"] == 198
 assert evidence["summary"]["items_reviewed"] == 189
-assert evidence["summary"]["bands_changed"] == 149
+assert evidence["summary"]["bands_changed"] == 150
 assert evidence["summary"]["direct_sale_items"] == 6
 assert evidence["summary"]["items_seen_on_three_realms"] == 179
-assert evidence["summary"]["target_changes_over_fifty_percent"] == 31
+assert evidence["summary"]["target_changes_over_fifty_percent"] == 32
 assert evidence["rules"]["active_hellscream_listing_prices_used"] is False
 assert evidence["summary"]["external_gold_values_copied"] is False
 assert evidence["scope"]["application_status"] == "applied locally"
@@ -57,7 +57,8 @@ expected_decisions = {
     "deterministic-ten-to-one": 13,
     "direct-completed-sales": 6,
     "exact-vendor": 9,
-    "retain-reviewed-band": 31,
+    "retain-reviewed-band": 30,
+    "reviewed-server-specific-fallback": 1,
 }
 assert evidence["summary"]["decision_counts"] == expected_decisions
 assert Counter(
@@ -137,8 +138,8 @@ assert status["publishing_status"] == "local only — not published"
 
 report = REPORT_PATH.read_text(encoding="utf-8")
 assert "Unique items reviewed: `189`" in report
-assert "Proposed bands changed: `149`" in report
-assert "Manually reviewed Target changes over 50%: `31`" in report
+assert "Proposed bands changed: `150`" in report
+assert "Manually reviewed Target changes over 50%: `32`" in report
 assert "External gold copied into Hellscream prices: `no`" in report
 
 print("Validated the 189-item Phase 1A gathering/material Evidence Pricing review.")

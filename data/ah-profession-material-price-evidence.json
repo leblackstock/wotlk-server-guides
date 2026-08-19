@@ -31955,13 +31955,13 @@
       "owner": "baseline",
       "canonical_key": "23572",
       "before_band": {
-        "quick": 40000,
-        "target": 60000,
-        "high": 100000
+        "quick": 20000,
+        "target": 25000,
+        "high": 35000
       },
-      "source_type": "frozen-pre-scan-guide",
-      "confidence": "low",
-      "before_reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it.",
+      "source_type": "documented-fallback",
+      "confidence": "fallback",
+      "before_reason": "User-reviewed Hellscream starter estimate: level-80 upscaled TBC heroics award Primal Nether instead of Frozen Orb, creating abundant byproduct supply for a legacy-craft buyer market. BeanCounter recorded zero completed buyouts and six failed or expired single-unit auctions from 5g 94s to 6g 9s 99c. The 2026-08-18 listing scan was concentrated in two sellers, with one controlling 94.4% of 18 units, so active asks were not used to set the band. External nominal gold was not copied.",
       "occurrences": [
         {
           "guide": "blacksmithing-materials-ah-price-guide.html",
@@ -31982,19 +31982,19 @@
       "source_observations": {},
       "proposal": {
         "proposed_band": {
-          "quick": 40000,
-          "target": 60000,
-          "high": 100000
+          "quick": 20000,
+          "target": 25000,
+          "high": 35000
         },
         "decision": "inherit-phase1a",
-        "source_type": "frozen-pre-scan-guide",
-        "confidence": "low",
+        "source_type": "documented-fallback",
+        "confidence": "fallback",
         "inherited_evidence_ref": "data/ah-gathering-material-price-evidence.json#items/23572",
         "target_change_copper": 0,
         "target_change_percent": 0.0,
         "reviewer_decision": "accept",
-        "review_reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it.",
-        "reason": "Frozen from the guide revision before the 2026-08-02 listing scan; provisional until independent sales or acquisition evidence replaces it."
+        "review_reason": "Inherited the user-reviewed Hellscream price-discovery fallback from the Phase 1A gathering-material evidence. Active asks and external nominal gold did not set the band.",
+        "reason": "User-reviewed Hellscream starter estimate: level-80 upscaled TBC heroics award Primal Nether instead of Frozen Orb, creating abundant byproduct supply for a legacy-craft buyer market. BeanCounter recorded zero completed buyouts and six failed or expired single-unit auctions from 5g 94s to 6g 9s 99c. The 2026-08-18 listing scan was concentrated in two sellers, with one controlling 94.4% of 18 units, so active asks were not used to set the band. External nominal gold was not copied."
       }
     },
     "12360": {
